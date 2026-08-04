@@ -1,0 +1,14 @@
+# hcc
+
+The goal of hcc is to …
+
+## Installation
+
+You can install the development version of hcc from
+[GitHub](https://github.com/) with:
+
+``` r
+
+# install.packages("pak")
+pak::pak("andrewallenbruce/hcc")
+```
