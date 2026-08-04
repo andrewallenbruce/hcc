@@ -1,3 +1,3 @@
 # hcc (development version)
 
-* Initial CRAN submission.
+* Initial commit.
