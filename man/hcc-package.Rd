@@ -4,7 +4,7 @@
 \name{hcc-package}
 \alias{hcc}
 \alias{hcc-package}
-\title{hcc: What the Package Does (One Line, Title Case)}
+\title{hcc: Hierarchical Condition Categories}
 \description{
 What the package does (one paragraph).
 }

@@ -1,9 +1,18 @@
 url: https://andrewallenbruce.github.io/hcc/
+
 template:
   bootstrap: 5
+  theme: tango
   light-switch: true
   bslib:
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto Slab"}
     code_font: {google: "Source Code Pro"}
+
+home:
+  title: hcc • Hierarchical Condition Categories
+  description: >
+    Process Hierarchical Condition Categories (HCCs).
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
 

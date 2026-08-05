@@ -1,3 +1,18 @@
+#' Check if x is between min and max (inclusive)
+#'
+#' @param x `<int>` Integer vector to check
+#' @param min `<int>` Minimum value (inclusive)
+#' @param max `<int>` Maximum value (inclusive)
+#' @returns Logical vector indicating if each element of x is between min and max
+#' @examples
+#' in_between(5L, 10L, 15L)
+#' in_between(1L, 2L, 3L)
+#' in_between(0L, 5L, 10L)
+#' @export
+in_between <- function(x, min, max) {
+  (x - min) * (max - x) >= 0L
+}
+
 #' Check if dual eligibility code is Full Benefit Dual
 #' @param dual_code description
 #' @returns logical
