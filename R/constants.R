@@ -193,6 +193,7 @@ MEDI_CAL_AID_CODES = list(
 #' @noRd
 MEDICARE_STATUS_CODE_MAPPING = list(
   # QMB - Qualified Medicare Beneficiary
+  `NA` = NA,
   "QMB" = "01", # QMB Only (Partial)
   "QMBONLY" = "01",
   "QMBPLUS" = "02", # QMB Plus (Full Benefit)
@@ -211,63 +212,3 @@ MEDICARE_STATUS_CODE_MAPPING = list(
   "FBDE" = "08", # Full Benefit Dual Eligible (Other)
   "OTHERFULL" = "08"
 )
-
-# =============================================================================
-# HELPER FUNCTIONS
-# =============================================================================
-
-#' Check if dual eligibility code is Full Benefit Dual
-#' @noRd
-is_full_benefit_dual <- function(dual_code) {
-  dual_code %in_% FULL_BENEFIT_DUAL_CODES
-}
-
-#' Check if dual eligibility code is Partial Benefit Dual
-#' @noRd
-is_partial_benefit_dual <- function(dual_code) {
-  dual_code %in_% PARTIAL_BENEFIT_DUAL_CODES
-}
-
-#' Check if OREC indicates ESRD status
-#' @noRd
-is_esrd_by_orec <- function(orec) {
-  orec %in_% OREC_ESRD_CODES
-}
-
-#' Check if CREC indicates ESRD status
-#' @noRd
-is_esrd_by_crec <- function(crec) {
-  crec %in_% CREC_ESRD_CODES
-}
-
-#' Normalize Medicare status code (uppercase, no spaces/hyphens)
-#' @noRd
-normalize_medicare_status_code <- function(status) {
-  toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))
-}
-
-#' Map Medicare status code to dual eligibility code
-#
-#' @param status Medicare status code (e.g., 'QMB Plus', 'SLMB', 'QI')
-#' @returns Dual eligibility code ('01'-'08') or '00' if not found
-#' @noRd
-map_medicare_status_to_dual_code <- function(status) {
-  x <- MEDICARE_STATUS_CODE_MAPPING[normalize_medicare_status_code(status)]
-  if (is.na(x)) {
-    return(NON_DUAL_CODE)
-  }
-  return(x)
-}
-
-#' Map California Medi-Cal aid code to dual eligibility code
-#'
-#' @param aid_code California aid code (e.g., '4N', '5B')
-#' @returns Dual eligibility code ('01'-'08') or '00' if not found
-#' @noRd
-map_aid_code_to_dual_status <- function(aid_code) {
-  x <- MEDI_CAL_AID_CODES[aid_code]
-  if (is.na(x)) {
-    return(NON_DUAL_CODE)
-  }
-  return(x)
-}
