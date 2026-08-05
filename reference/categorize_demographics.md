@@ -11,8 +11,8 @@ categorize_demographics(
   age,
   sex,
   dual_elgbl_cd = NULL,
-  orec = NULL,
-  crec = NULL,
+  orec = NA,
+  crec = NA,
   version = "V2",
   new_enrollee = FALSE,
   snp = FALSE,
@@ -105,10 +105,10 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #> NULL
 #> 
 #> $orec
-#> NULL
+#> [1] NA
 #> 
 #> $crec
-#> NULL
+#> [1] NA
 #> 
 #> $new_enrollee
 #> [1] FALSE
@@ -135,7 +135,7 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #> [1] FALSE
 #> 
 #> $category
-#> [1] "M45_54"
+#> [1] "NEF45_54"
 #> 
 categorize_demographics(age = 35, sex = "M", version = "V6")
 #> $version
@@ -160,10 +160,10 @@ categorize_demographics(age = 35, sex = "M", version = "V6")
 #> NULL
 #> 
 #> $orec
-#> NULL
+#> [1] NA
 #> 
 #> $crec
-#> NULL
+#> [1] NA
 #> 
 #> $new_enrollee
 #> [1] FALSE
@@ -218,7 +218,7 @@ categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> [1] "0"
 #> 
 #> $crec
-#> NULL
+#> [1] NA
 #> 
 #> $new_enrollee
 #> [1] FALSE
@@ -245,6 +245,6 @@ categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> [1] FALSE
 #> 
 #> $category
-#> [1] "NEM70_74"
+#> [1] "F75_79"
 #> 
 ```
