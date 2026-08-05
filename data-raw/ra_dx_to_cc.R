@@ -16,4 +16,11 @@ ra_dx_to_cc_2026 = collapse::colorderv(ra_dx_to_cc_2026, "year")
 ra_dx_to_cc = vctrs::vec_rbind(ra_dx_to_cc_2025, ra_dx_to_cc_2026)
 
 usethis::use_data(ra_dx_to_cc, overwrite = TRUE)
-hcc::ra_dx_to_cc
+
+collapse::rsplit(
+  collapse::roworderv(
+    hcc::ra_dx_to_cc,
+    c("year", "cc")
+  ),
+  ~model_name
+)

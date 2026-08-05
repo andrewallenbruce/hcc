@@ -48,6 +48,7 @@ age_category_ESRD <- function(age, prefix) {
     c(45, 55),
     c(55, 60),
     c(60, 65),
+    c(65, 70),
     c(70, 75),
     c(75, 80),
     c(80, 85),
@@ -147,8 +148,8 @@ categorize_demographics <- function(
   age,
   sex,
   dual_elgbl_cd = NULL,
-  orec = NULL,
-  crec = NULL,
+  orec = NA,
+  crec = NA,
   version = "V2",
   new_enrollee = FALSE,
   snp = FALSE,
@@ -160,10 +161,12 @@ categorize_demographics <- function(
   rlang::check_number_decimal(age, min = 0)
   version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
 
+  sex <- rlang::arg_match0(sex, c("1", "2", "M", "F"))
+
   sex <- if (version %in_% c("V2", "V4")) {
-    rlang::arg_match0(sex, c("1", "2"))
+    unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
   } else {
-    rlang::arg_match0(sex, c("M", "F"))
+    unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
   }
 
   # Convert to integer using floor
@@ -171,18 +174,14 @@ categorize_demographics <- function(
   non_aged <- age <= 64L
 
   # Determine if person is disabled or originally disabled
-  disabled <- age < 65L & (!is.null(orec) & !identical(orec, "0"))
-  orig_disabled <- (!is.null(orec) & identical(orec, "1")) & !disabled
+  disabled <- age < 65L & (!is.na(orec) & !identical(orec, "0"))
+  orig_disabled <- (!is.na(orec) & identical(orec, "1")) & !disabled
 
   is_fbd <- dual_elgbl_cd %in_% FULL_BENEFIT_DUAL_CODES
   is_pbd <- dual_elgbl_cd %in_% PARTIAL_BENEFIT_DUAL_CODES
 
   # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
-  esrd <- if (!is.null(orec) & !is.null(crec)) {
-    orec %in_% OREC_ESRD_CODES | crec %in_% CREC_ESRD_CODES
-  } else {
-    FALSE
-  }
+  esrd <- orec %in_% OREC_ESRD_CODES | crec %in_% CREC_ESRD_CODES
 
   # Override demographics based on prefix_override
   if (!is.null(prefix_override)) {
@@ -244,15 +243,14 @@ categorize_demographics <- function(
   # V2/V4 Logic (Medicare Population)
   if (version %in_% c("V2", "V4")) {
     if (is.null(orec) || identical(orec, "")) {
-      # Default to 0 if OREC is NULL
-      orec <- "0"
+      orec <- "0" # Default to 0 if OREC is NULL
     }
 
     # Determine prefix based on new_enrollee status
     prefix <- vctrs::vec_if_else(
       new_enrollee,
-      vctrs::vec_if_else(identical(sex, "2"), "NEF", "F"),
-      vctrs::vec_if_else(identical(sex, "2"), "NEM", "M")
+      vctrs::vec_if_else(identical(sex, "2"), "M", "NEM"),
+      vctrs::vec_if_else(identical(sex, "2"), "F", "NEF")
     )
 
     result$category <- if (new_enrollee & !esrd) {
