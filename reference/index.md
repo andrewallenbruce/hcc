@@ -2,6 +2,11 @@
 
 ## All functions
 
+- [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
+  : Categorize a beneficiary's demographics into risk adjustment
+  categories.
+- [`in_between()`](https://andrewallenbruce.github.io/hcc/reference/in_between.md)
+  : Check if x is between min and max (inclusive)
 - [`is_esrd_by_crec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_crec.md)
   : Check if CREC indicates ESRD status
 - [`is_esrd_by_orec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_orec.md)

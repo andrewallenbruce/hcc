@@ -1,4 +1,4 @@
-# hcc: What the Package Does (One Line, Title Case)
+# hcc: Hierarchical Condition Categories
 
 What the package does (one paragraph).
 

@@ -9,13 +9,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/andrewallenbruce/hcc/blob/master/DESCRIPTION)
 
-Bruce AA (2026). *hcc: What the Package Does (One Line, Title Case)*. R
-package version 0.0.0.9002, <https://github.com/andrewallenbruce/hcc>.
+Bruce AA (2026). *hcc: Hierarchical Condition Categories*. R package
+version 0.0.0.9003, <https://github.com/andrewallenbruce/hcc>.
 
     @Manual{,
-      title = {hcc: What the Package Does (One Line, Title Case)},
+      title = {hcc: Hierarchical Condition Categories},
       author = {Andrew Allen Bruce},
       year = {2026},
-      note = {R package version 0.0.0.9002},
+      note = {R package version 0.0.0.9003},
       url = {https://github.com/andrewallenbruce/hcc},
     }
