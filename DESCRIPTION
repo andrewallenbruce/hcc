@@ -6,12 +6,19 @@ Authors@R:
 Maintainer: Andrew Allen Bruce <andrewallenbruce@gmail.com>
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-URL: https://github.com/andrewallenbruce/hcc, https://andrewallenbruce.github.io/hcc/
+URL: https://github.com/andrewallenbruce/hcc,
+    https://andrewallenbruce.github.io/hcc/
 BugReports: https://github.com/andrewallenbruce/hcc/issues
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 8.0.0
-Suggests: 
-    testthat (>= 3.0.0)
+Depends: 
+    R (>= 4.2.0)
+Imports: 
+    cheapr (>= 1.5.2),
+    collapse (>= 2.1.7)
+Suggests:
+    testthat (>= 3.3.2)
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
