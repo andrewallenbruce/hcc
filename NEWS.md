@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9005 (2026-08-05)
+
+* tests for `categorize_demographics()`
+
+
 # hcc 0.0.0.9004 (2026-08-05)
 
 * fixed bugs in `categorize_demographics()` tests
