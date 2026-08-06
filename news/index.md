@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9005 (2026-08-05)
+
+- tests for
+  [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
+
 ## hcc 0.0.0.9004 (2026-08-05)
 
 - fixed bugs in

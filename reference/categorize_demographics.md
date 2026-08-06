@@ -10,10 +10,10 @@ adjustment models.
 categorize_demographics(
   age,
   sex,
-  dual_elgbl_cd = NULL,
+  version = "V2",
+  dual_elgbl_cd = NA,
   orec = NA,
   crec = NA,
-  version = "V2",
   new_enrollee = FALSE,
   snp = FALSE,
   low_income = FALSE,
@@ -33,6 +33,10 @@ categorize_demographics(
 
   `<chr>` Beneficiary sex (M/F or 1/2)
 
+- version:
+
+  `<chr>` Version of categorization to use ("V2", "V4", "V6")
+
 - dual_elgbl_cd:
 
   `<chr>` Dual eligibility code ("00" - "10")
@@ -44,10 +48,6 @@ categorize_demographics(
 - crec:
 
   `<chr>` Current reason for entitlement code ("0" - "3")
-
-- version:
-
-  `<chr>` Version of categorization to use ("V2", "V4", "V6")
 
 - new_enrollee:
 
@@ -102,7 +102,7 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #> [1] "1"
 #> 
 #> $dual_elgbl_cd
-#> NULL
+#> [1] NA
 #> 
 #> $orec
 #> [1] NA
@@ -117,10 +117,10 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #> [1] FALSE
 #> 
 #> $fbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $pbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $esrd
 #> [1] FALSE
@@ -135,7 +135,7 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #> [1] FALSE
 #> 
 #> $category
-#> [1] "NEF45_54"
+#> [1] "M45_54"
 #> 
 categorize_demographics(age = 35, sex = "M", version = "V6")
 #> $version
@@ -157,7 +157,7 @@ categorize_demographics(age = 35, sex = "M", version = "V6")
 #> [1] "M"
 #> 
 #> $dual_elgbl_cd
-#> NULL
+#> [1] NA
 #> 
 #> $orec
 #> [1] NA
@@ -172,10 +172,10 @@ categorize_demographics(age = 35, sex = "M", version = "V6")
 #> [1] FALSE
 #> 
 #> $fbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $pbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $esrd
 #> [1] FALSE
@@ -212,7 +212,7 @@ categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> [1] "2"
 #> 
 #> $dual_elgbl_cd
-#> NULL
+#> [1] NA
 #> 
 #> $orec
 #> [1] "0"
@@ -227,10 +227,10 @@ categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> [1] FALSE
 #> 
 #> $fbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $pbd
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $esrd
 #> [1] FALSE
