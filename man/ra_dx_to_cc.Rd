@@ -9,10 +9,10 @@
 
 A data frame with 112,936 rows and 4 columns:
 \describe{
-\item{year}{State code}
-\item{diagnosis_code}{State abbreviation}
-\item{cc}{State full name}
-\item{model_name}{State full name}
+\item{Year of Release}{State code}
+\item{diagnosis_code}{ICD-10-CM diagnostic codes}
+\item{cc}{Condition Codes}
+\item{model_name}{Model Name}
 ...
 }
 }

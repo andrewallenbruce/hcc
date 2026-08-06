@@ -1,3 +1,168 @@
+#' Categorize a beneficiary's demographics into risk adjustment categories.
+#'
+#' This function takes demographic information about a beneficiary and returns a
+#' Demographics object containing derived fields used in risk adjustment models.
+#'
+#' @param age `<int>` Beneficiary age (floored to `integer`)
+#' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
+#' @param dual_elgbl_cd `<chr>` Dual eligibility code ("00" - "10")
+#' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
+#' @param crec `<chr>` Current reason for entitlement code ("0" - "3")
+#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
+#' @param new_enrollee `<lgl>` Beneficiary is a **New Enrollee**
+#' @param snp `<lgl>` Beneficiary is in a **Special Needs Plan**
+#' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
+#' @param lti `<lgl>` Beneficiary is Long-Term Institutionalized
+#' @param graft_months `<int>` Number of months since transplant (ESRD only)
+#' @param prefix_override `<chr>` Optional prefix to override demographic
+#'   detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)
+#' @returns <Demographics> object containing derived fields like age/sex
+#'   category, disability status, dual status flags, etc.
+#' @examples
+#' categorize_demographics(age = 48, sex = "1", version = "V2")
+#' categorize_demographics(age = 35, sex = "M", version = "V6")
+#' categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
+#' @export
+categorize_demographics <- function(
+  age,
+  sex,
+  version = "V2",
+  dual_elgbl_cd = NA,
+  orec = NA,
+  crec = NA,
+  new_enrollee = FALSE,
+  snp = FALSE,
+  low_income = FALSE,
+  lti = FALSE,
+  graft_months = NULL,
+  prefix_override = NULL
+) {
+  rlang::check_number_decimal(age, min = 0)
+  version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
+
+  sex <- rlang::arg_match0(sex, c("M", "F", "1", "2"))
+
+  if (version %in_% c("V2", "V4")) {
+    sex <- unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
+  } else {
+    sex <- unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
+  }
+
+  # Convert to integer using floor
+  age <- as.integer(age)
+  non_aged <- age <= 64L
+
+  # Determine if currently disabled or previously disabled
+  disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
+  orig_disabled <- identical(orec, "1") & !disabled
+
+  is_fbd <- dual_elgbl_cd %in_% FULL_BENEFIT_DUAL_CODES
+  is_pbd <- dual_elgbl_cd %in_% PARTIAL_BENEFIT_DUAL_CODES
+
+  # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
+  esrd <- orec %in_% OREC_ESRD_CODES | crec %in_% CREC_ESRD_CODES
+
+  # Override demographics based on prefix_override
+  if (!is.null(prefix_override)) {
+    # Set `esrd` flag
+    if (prefix_override %in_% ESRD_PREFIXES) {
+      esrd <- TRUE
+    }
+    # Set `new_enrollee` flag
+    if (prefix_override %in_% NEW_ENROLLEE_PREFIXES) {
+      new_enrollee <- TRUE
+    } else if (
+      prefix_override %in_% c(COMMUNITY_PREFIXES, INSTITUTIONAL_PREFIXES)
+    ) {
+      new_enrollee <- FALSE
+    }
+    # Set dual eligibility flags
+    if (prefix_override %in_% FULL_BENEFIT_DUAL_PREFIXES) {
+      .c(is_fbd, is_pbd) %=% c(TRUE, FALSE)
+    } else if (prefix_override %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
+      .c(is_fbd, is_pbd) %=% c(FALSE, TRUE)
+    } else if (prefix_override %in_% NON_DUAL_PREFIXES) {
+      .c(is_fbd, is_pbd) %=% c(FALSE, FALSE)
+    }
+    # Set lti flag based on prefix
+    if (prefix_override %in_% INSTITUTIONAL_PREFIXES) {
+      lti <- TRUE
+    }
+  }
+
+  result = structure(
+    list(
+      version = version,
+      age = age,
+      sex = sex,
+      non_aged = non_aged,
+      orig_disabled = orig_disabled,
+      disabled = disabled,
+      dual_elgbl_cd = dual_elgbl_cd,
+      orec = orec,
+      crec = crec,
+      new_enrollee = new_enrollee,
+      snp = snp,
+      fbd = is_fbd,
+      pbd = is_pbd,
+      esrd = esrd,
+      lti = lti,
+      graft_months = graft_months,
+      low_income = low_income
+    ),
+    class = "demographics"
+  )
+
+  # V6 Logic (ACA Population)
+  if (version == "V6") {
+    result[["category"]] <- age_category_V6(age, sex)
+    return(result)
+  }
+
+  # V2/V4 Logic (Medicare Population)
+  if (version %in_% c("V2", "V4")) {
+    if (is.null(orec) || identical(orec, "")) {
+      orec <- "0"
+    }
+
+    if (new_enrollee) {
+      prefix <- if (sex == "2") "NEF" else "NEM"
+    } else {
+      prefix <- if (sex == "2") "F" else "M"
+    }
+
+    if (new_enrollee & !esrd) {
+      result[["category"]] <- age_category_NEW(age, orec, prefix)
+    } else {
+      result[["category"]] <- age_category_ESRD(age, prefix)
+    }
+
+    return(result)
+  }
+}
+
+#' @export
+print.demographics <- function(x, ...) {
+  cat("<Demographics>", sep = "\n")
+  cat(fmt_idx(x), sep = "\n")
+  invisible(x)
+}
+
+#' @noRd
+fmt_idx <- function(x) {
+  paste(
+    format(
+      names(x),
+      justify = "right"
+    ),
+    ":",
+    format(
+      unname(x),
+      justify = "left"
+    )
+  )
+}
+
 #' @noRd
 age_category_V6 <- function(age, sex) {
   V6_ACA_age_ranges <- ivs::iv_pairs(
@@ -116,170 +281,5 @@ age_category_NEW <- function(age, orec, prefix) {
       NA_character_
     ),
     default = NA_character_
-  )
-}
-
-#' Categorize a beneficiary's demographics into risk adjustment categories.
-#'
-#' This function takes demographic information about a beneficiary and returns a
-#' Demographics object containing derived fields used in risk adjustment models.
-#'
-#' @param age `<int>` Beneficiary age (floored to `integer`)
-#' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
-#' @param dual_elgbl_cd `<chr>` Dual eligibility code ("00" - "10")
-#' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
-#' @param crec `<chr>` Current reason for entitlement code ("0" - "3")
-#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
-#' @param new_enrollee `<lgl>` Whether beneficiary is a **New Enrollee**
-#' @param snp `<lgl>` Whether beneficiary is in a **Special Needs Plan**
-#' @param low_income `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
-#' @param lti `<lgl>` Whether beneficiary is Long-Term Institutionalized
-#' @param graft_months `<int>` Number of months since transplant (ESRD only)
-#' @param prefix_override `<chr>` Optional prefix to override demographic
-#'   detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)
-#' @returns Demographics object containing derived fields like age/sex category,
-#'   disability status, dual status flags, etc.
-#' @examples
-#' categorize_demographics(age = 48, sex = "1", version = "V2")
-#' categorize_demographics(age = 35, sex = "M", version = "V6")
-#' categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
-#' @export
-categorize_demographics <- function(
-  age,
-  sex,
-  version = "V2",
-  dual_elgbl_cd = NA,
-  orec = NA,
-  crec = NA,
-  new_enrollee = FALSE,
-  snp = FALSE,
-  low_income = FALSE,
-  lti = FALSE,
-  graft_months = NULL,
-  prefix_override = NULL
-) {
-  rlang::check_number_decimal(age, min = 0)
-  version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
-
-  sex <- rlang::arg_match0(sex, c("M", "F", "1", "2"))
-
-  if (version %in_% c("V2", "V4")) {
-    sex <- unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
-  } else {
-    sex <- unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
-  }
-
-  # Convert to integer using floor
-  age <- as.integer(age)
-  non_aged <- age <= 64L
-
-  # Determine if person is disabled or originally disabled
-  disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
-  orig_disabled <- identical(orec, "1") & !disabled
-
-  is_fbd <- dual_elgbl_cd %in_% FULL_BENEFIT_DUAL_CODES
-  is_pbd <- dual_elgbl_cd %in_% PARTIAL_BENEFIT_DUAL_CODES
-
-  # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
-  esrd <- orec %in_% OREC_ESRD_CODES | crec %in_% CREC_ESRD_CODES
-
-  # Override demographics based on prefix_override
-  if (!is.null(prefix_override)) {
-    # Set `esrd` flag
-    if (prefix_override %in_% ESRD_PREFIXES) {
-      esrd <- TRUE
-    }
-    # Set `new_enrollee` flag
-    if (prefix_override %in_% NEW_ENROLLEE_PREFIXES) {
-      new_enrollee <- TRUE
-    } else if (
-      prefix_override %in_% c(COMMUNITY_PREFIXES, INSTITUTIONAL_PREFIXES)
-    ) {
-      new_enrollee <- FALSE
-    }
-    # Set dual eligibility flags
-    if (prefix_override %in_% FULL_BENEFIT_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(TRUE, FALSE)
-    } else if (prefix_override %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(FALSE, TRUE)
-    } else if (prefix_override %in_% NON_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(FALSE, FALSE)
-    }
-    # Set lti flag based on prefix
-    if (prefix_override %in_% INSTITUTIONAL_PREFIXES) {
-      lti <- TRUE
-    }
-  }
-
-  result = structure(
-    list(
-      version = version,
-      age = age,
-      sex = sex,
-      non_aged = non_aged,
-      orig_disabled = orig_disabled,
-      disabled = disabled,
-      dual_elgbl_cd = dual_elgbl_cd,
-      orec = orec,
-      crec = crec,
-      new_enrollee = new_enrollee,
-      snp = snp,
-      fbd = is_fbd,
-      pbd = is_pbd,
-      esrd = esrd,
-      lti = lti,
-      graft_months = graft_months,
-      low_income = low_income
-    ),
-    class = "demographics"
-  )
-
-  # V6 Logic (ACA Population)
-  if (version == "V6") {
-    result[["category"]] <- age_category_V6(age, sex)
-    return(result)
-  }
-
-  # V2/V4 Logic (Medicare Population)
-  if (version %in_% c("V2", "V4")) {
-    if (is.null(orec) || identical(orec, "")) {
-      orec <- "0"
-    }
-
-    if (new_enrollee) {
-      prefix <- if (sex == "2") "NEF" else "NEM"
-    } else {
-      prefix <- if (sex == "2") "F" else "M"
-    }
-
-    if (new_enrollee & !esrd) {
-      result[["category"]] <- age_category_NEW(age, orec, prefix)
-    } else {
-      result[["category"]] <- age_category_ESRD(age, prefix)
-    }
-
-    return(result)
-  }
-}
-
-#' @export
-print.demographics <- function(x, ...) {
-  cat("<Demographics>", sep = "\n")
-  cat(fmt_idx(x), sep = "\n")
-  invisible(x)
-}
-
-#' @noRd
-fmt_idx <- function(x) {
-  paste(
-    format(
-      names(x),
-      justify = "right"
-    ),
-    ":",
-    format(
-      unname(x),
-      justify = "left"
-    )
   )
 }

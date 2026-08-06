@@ -32,13 +32,13 @@ categorize_demographics(
 
 \item{crec}{\verb{<chr>} Current reason for entitlement code ("0" - "3")}
 
-\item{new_enrollee}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
+\item{new_enrollee}{\verb{<lgl>} Beneficiary is a \strong{New Enrollee}}
 
-\item{snp}{\verb{<lgl>} Whether beneficiary is in a \strong{Special Needs Plan}}
+\item{snp}{\verb{<lgl>} Beneficiary is in a \strong{Special Needs Plan}}
 
-\item{low_income}{\verb{<lgl>} Whether beneficiary is \strong{Low Income} (RxHCC only)}
+\item{low_income}{\verb{<lgl>} Beneficiary is \strong{Low Income} (RxHCC only)}
 
-\item{lti}{\verb{<lgl>} Whether beneficiary is Long-Term Institutionalized}
+\item{lti}{\verb{<lgl>} Beneficiary is Long-Term Institutionalized}
 
 \item{graft_months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
@@ -46,8 +46,8 @@ categorize_demographics(
 detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)}
 }
 \value{
-Demographics object containing derived fields like age/sex category,
-disability status, dual status flags, etc.
+\if{html}{\out{<Demographics>}} object containing derived fields like age/sex
+category, disability status, dual status flags, etc.
 }
 \description{
 This function takes demographic information about a beneficiary and returns a
