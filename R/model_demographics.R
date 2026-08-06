@@ -124,7 +124,7 @@ age_category_NEW <- function(age, orec, prefix) {
 #' This function takes demographic information about a beneficiary and returns a
 #' Demographics object containing derived fields used in risk adjustment models.
 #'
-#' @param age `<int>` Beneficiary age (floored to integer)
+#' @param age `<int>` Beneficiary age (floored to `integer`)
 #' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
 #' @param dual_elgbl_cd `<chr>` Dual eligibility code ("00" - "10")
 #' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
@@ -161,12 +161,12 @@ categorize_demographics <- function(
   rlang::check_number_decimal(age, min = 0)
   version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
 
-  sex <- rlang::arg_match0(sex, c("1", "2", "M", "F"))
+  sex <- rlang::arg_match0(sex, c("M", "F", "1", "2"))
 
-  sex <- if (version %in_% c("V2", "V4")) {
-    unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
+  if (version %in_% c("V2", "V4")) {
+    sex <- unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
   } else {
-    unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
+    sex <- unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
   }
 
   # Convert to integer using floor
@@ -174,8 +174,8 @@ categorize_demographics <- function(
   non_aged <- age <= 64L
 
   # Determine if person is disabled or originally disabled
-  disabled <- age < 65L & (!is.na(orec) & !identical(orec, "0"))
-  orig_disabled <- (!is.na(orec) & identical(orec, "1")) & !disabled
+  disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
+  orig_disabled <- identical(orec, "1") & !disabled
 
   is_fbd <- dual_elgbl_cd %in_% FULL_BENEFIT_DUAL_CODES
   is_pbd <- dual_elgbl_cd %in_% PARTIAL_BENEFIT_DUAL_CODES
@@ -185,11 +185,11 @@ categorize_demographics <- function(
 
   # Override demographics based on prefix_override
   if (!is.null(prefix_override)) {
-    # Set esrd flag
+    # Set `esrd` flag
     if (prefix_override %in_% ESRD_PREFIXES) {
       esrd <- TRUE
     }
-    # Set new_enrollee flag
+    # Set `new_enrollee` flag
     if (prefix_override %in_% NEW_ENROLLEE_PREFIXES) {
       new_enrollee <- TRUE
     } else if (
@@ -197,16 +197,13 @@ categorize_demographics <- function(
     ) {
       new_enrollee <- FALSE
     }
-    # Set dual eligibility flags based on prefix
+    # Set dual eligibility flags
     if (prefix_override %in_% FULL_BENEFIT_DUAL_PREFIXES) {
-      is_fbd <- TRUE
-      is_pbd <- FALSE
+      .c(is_fbd, is_pbd) %=% c(TRUE, FALSE)
     } else if (prefix_override %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
-      is_fbd <- FALSE
-      is_pbd <- TRUE
+      .c(is_fbd, is_pbd) %=% c(FALSE, TRUE)
     } else if (prefix_override %in_% NON_DUAL_PREFIXES) {
-      is_fbd <- FALSE
-      is_pbd <- FALSE
+      .c(is_fbd, is_pbd) %=% c(FALSE, FALSE)
     }
     # Set lti flag based on prefix
     if (prefix_override %in_% INSTITUTIONAL_PREFIXES) {
@@ -214,29 +211,32 @@ categorize_demographics <- function(
     }
   }
 
-  result = list(
-    version = version,
-    non_aged = non_aged,
-    orig_disabled = orig_disabled,
-    disabled = disabled,
-    age = age,
-    sex = sex,
-    dual_elgbl_cd = dual_elgbl_cd,
-    orec = orec,
-    crec = crec,
-    new_enrollee = new_enrollee,
-    snp = snp,
-    fbd = is_fbd,
-    pbd = is_pbd,
-    esrd = esrd,
-    lti = lti,
-    graft_months = graft_months,
-    low_income = low_income
+  result = structure(
+    list(
+      version = version,
+      age = age,
+      sex = sex,
+      non_aged = non_aged,
+      orig_disabled = orig_disabled,
+      disabled = disabled,
+      dual_elgbl_cd = dual_elgbl_cd,
+      orec = orec,
+      crec = crec,
+      new_enrollee = new_enrollee,
+      snp = snp,
+      fbd = is_fbd,
+      pbd = is_pbd,
+      esrd = esrd,
+      lti = lti,
+      graft_months = graft_months,
+      low_income = low_income
+    ),
+    class = "demographics"
   )
 
   # V6 Logic (ACA Population)
   if (version == "V6") {
-    result$category <- age_category_V6(age, sex)
+    result[["category"]] <- age_category_V6(age, sex)
     return(result)
   }
 
@@ -252,27 +252,34 @@ categorize_demographics <- function(
       prefix <- if (sex == "2") "F" else "M"
     }
 
-    # Determine prefix based on new_enrollee status
-    # prefix <- vctrs::vec_if_else(
-    #   new_enrollee,
-    #   vctrs::vec_if_else(identical(sex, "2"), "M", "NEM"),
-    #   vctrs::vec_if_else(identical(sex, "2"), "F", "NEF")
-    # )
-
-    result$category <- if (new_enrollee & !esrd) {
-      # CMS-HCC new_enrollee logic
-      age_category_NEW(age, orec, prefix)
+    if (new_enrollee & !esrd) {
+      result[["category"]] <- age_category_NEW(age, orec, prefix)
     } else {
-      # Standard non-new-enrollee OR ESRD logic
-      age_category_ESRD(age, prefix)
+      result[["category"]] <- age_category_ESRD(age, prefix)
     }
 
     return(result)
   }
 }
 
-# disabled is true if the person is disabled and the age is less than 65
-# - basically, the person is in Medicare due to disability not due to age
-# orig_disabled is true if the person started Medicare due to disability, but now aged in
-# - basically, the person is in Medicare due to age (not disability anymore)
-# Reference: https://resdac.org/cms-data/variables/medicare-medicaid-dual-eligibility-code-january
+#' @export
+print.demographics <- function(x, ...) {
+  cat("<Demographics>", sep = "\n")
+  cat(fmt_idx(x), sep = "\n")
+  invisible(x)
+}
+
+#' @noRd
+fmt_idx <- function(x) {
+  paste(
+    format(
+      names(x),
+      justify = "right"
+    ),
+    ":",
+    format(
+      unname(x),
+      justify = "left"
+    )
+  )
+}

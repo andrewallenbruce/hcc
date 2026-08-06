@@ -20,7 +20,7 @@ categorize_demographics(
 )
 }
 \arguments{
-\item{age}{\verb{<int>} Beneficiary age (floored to integer)}
+\item{age}{\verb{<int>} Beneficiary age (floored to \code{integer})}
 
 \item{sex}{\verb{<chr>} Beneficiary sex (M/F or 1/2)}
 

@@ -16,7 +16,7 @@ test_that("basic V2 (Medicare) categorization", {
   expect_false(x$orig_disabled)
 })
 
-test_that("input validation", {
+test_that("input validation works", {
   # `age` must be a number
   expect_error(categorize_demographics(age = "35", sex = "M", version = "V6"))
   # `age` must be positive
@@ -104,4 +104,46 @@ test_that("Dual eligibility categorization", {
   )
   expect_false(x$fbd)
   expect_false(x$pbd)
+})
+
+test_that("ESRD (End Stage Renal Disease) detection", {
+  # Test with null OREC/CREC
+  x = categorize_demographics(age = 65, sex = "M", version = "V6")
+  expect_false(x$esrd)
+
+  # Test with null CREC only
+  x = categorize_demographics(age = 65, sex = "M", orec = "0")
+  expect_false(x$esrd)
+
+  # Test with null OREC only
+  x = categorize_demographics(age = 65, sex = "M", crec = "0", version = "V6")
+  expect_false(x$esrd)
+
+  # ESRD from OREC
+  x = categorize_demographics(age = 65, sex = "M", orec = "2")
+  expect_true(x$esrd)
+
+  # ESRD from CREC
+  x = categorize_demographics(age = 65, sex = "M", orec = "0", crec = "2")
+  expect_true(x$esrd)
+
+  # No ESRD
+  x = categorize_demographics(age = 65, sex = "M", orec = "0", crec = "0")
+  expect_false(x$esrd)
+})
+
+test_that("new enrollee and SNP flags", {
+  x = categorize_demographics(
+    age = 65.1,
+    sex = "M",
+    orec = "0",
+    new_enrollee = TRUE,
+    snp = TRUE
+  )
+  expect_true(x$new_enrollee)
+  expect_true(x$snp)
+
+  x = categorize_demographics(age = 65, sex = "M", orec = "0")
+  expect_false(x$new_enrollee)
+  expect_false(x$snp)
 })

@@ -1,17 +1,15 @@
 # CMS Risk Adjustment Domain Constants
 #
-# This module contains constants used across the HCC risk adjustment system,
-# including dual eligibility codes, OREC/CREC values, and state-specific mappings.
+# These constants are used across the HCC risk adjustment system, including dual
+# eligibility codes, OREC/CREC values, and state-specific mappings.
 #
 # References:
 # - CMS Rate Announcement and Call Letter
 # - Medicare Advantage Enrollment and Disenrollment Guidance
 # - X12 834 Implementation Guides
 
-# =============================================================================
 # DUAL ELIGIBILITY CODES
 # =============================================================================
-
 #' CMS Dual Eligibility Status Codes (Medicare + Medicaid)
 #' Used in coefficient prefix selection (CNA_, CFA_, CPA_, etc.)
 #' @noRd
@@ -21,7 +19,8 @@ VALID_DUAL_CODES = c("00", "01", "02", "03", "04", "05", "06", "08")
 #' @noRd
 NON_DUAL_CODE = "00"
 
-#' Full Benefit Dual Eligible (receive both Medicare and full Medicaid benefits)
+#' Full Benefit Dual Eligible:
+#'    * Receive both Medicare and full Medicaid benefits
 #' Uses CFA_ (Community, Full Benefit Dual, Aged) or CFD_ (Disabled) prefixes
 #' @noRd
 FULL_BENEFIT_DUAL_CODES = c(
@@ -40,11 +39,11 @@ PARTIAL_BENEFIT_DUAL_CODES = c(
   "06" # QI (Qualifying Individual)
 )
 
-# =============================================================================
+
 # OREC - Original Reason for Entitlement Code
 # =============================================================================
-
-#' Determines if beneficiary has ESRD and affects coefficient prefix selection
+#' Determines if beneficiary has ESRD
+#' Affects coefficient prefix selection
 #' @noRd
 VALID_OREC_VALUES = c("0", "1", "2", "3")
 
@@ -60,10 +59,9 @@ OREC_DESCRIPTIONS = list(
 #' @noRd
 OREC_ESRD_CODES = c("2", "3")
 
-# =============================================================================
+
 # CREC - Current Reason for Entitlement Code
 # =============================================================================
-
 #' Current entitlement status (may differ from OREC)
 #' @noRd
 VALID_CREC_VALUES = c("0", "1", "2", "3")
@@ -80,7 +78,7 @@ CREC_DESCRIPTIONS = list(
 #' @noRd
 CREC_ESRD_CODES = c("2", "3")
 
-# =============================================================================
+
 # COEFFICIENT PREFIX GROUPS
 # =============================================================================
 # Used for prefix_override logic in model_demographics
@@ -122,7 +120,7 @@ PARTIAL_BENEFIT_DUAL_PREFIXES = c("CPA_", "CPD_")
 #' @noRd
 NON_DUAL_PREFIXES = c("CNA_", "CND_", "GNPA_", "GNPN_")
 
-# =============================================================================
+
 # DEMOGRAPHIC CODES
 # =============================================================================
 #' @noRd
@@ -137,10 +135,9 @@ X12_SEX_CODE_MAPPING = list(
   "2" = "F" # X12 numeric code
 )
 
-# =============================================================================
+
 # X12 834 MAINTENANCE TYPE CODES
 # =============================================================================
-
 #' INS03 - Maintenance Type Code
 #' @noRd
 MAINTENANCE_TYPE_CHANGE = "001"
@@ -158,11 +155,10 @@ MAINTENANCE_TYPE_DESCRIPTIONS = list(
   "025" = "Reinstatement"
 )
 
-# =============================================================================
+
 # STATE-SPECIFIC MAPPINGS
 # =============================================================================
 
-# -----------------------------------------------------------------------------
 # California DHCS Medi-Cal Aid Codes
 # -----------------------------------------------------------------------------
 
@@ -185,11 +181,11 @@ MEDI_CAL_AID_CODES = list(
   "5F" = "06" # QI - Disabled
 )
 
-# -----------------------------------------------------------------------------
+
 # Medicare Status Code Mappings
 # -----------------------------------------------------------------------------
-# Maps Medicare status codes (from various sources) to CMS dual eligibility codes
-# Used in X12 834 REF*ABB segment and other payer files
+# Maps Medicare status codes (from various sources) to CMS dual eligibility
+# codes. Used in X12 834 REF*ABB segment and other payer files.
 #' @noRd
 MEDICARE_STATUS_CODE_MAPPING = list(
   # QMB - Qualified Medicare Beneficiary
