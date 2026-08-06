@@ -120,6 +120,46 @@ PARTIAL_BENEFIT_DUAL_PREFIXES = c("CPA_", "CPD_")
 #' @noRd
 NON_DUAL_PREFIXES = c("CNA_", "CND_", "GNPA_", "GNPN_")
 
+#' @noRd
+PrefixOverride = list(
+  # CMS-HCC Community prefixes
+  "CNA_" = "Community, Non-Dual, Aged",
+  "CND_" = "Community, Non-Dual, Disabled",
+  "CFA_" = "Community, Full Benefit Dual, Aged",
+  "CFD_" = "Community, Full Benefit Dual, Disabled",
+  "CPA_" = "Community, Partial Benefit Dual, Aged",
+  "CPD_" = "Community, Partial Benefit Dual, Disabled",
+  # CMS-HCC Institutional
+  "INS_" = "Long-Term Institutionalized",
+  # CMS-HCC New Enrollee
+  "NE_" = "New Enrollee",
+  "SNPNE_" = "Special Needs Plan New Enrollee",
+  # ESRD Dialysis
+  "DI_" = "Dialysis",
+  "DNE_" = "Dialysis New Enrollee",
+  # ESRD Graft
+  "GI_" = "Graft, Institutionalized",
+  "GNE_" = "Graft, New Enrollee",
+  "GFPA_" = "Graft, Full Benefit Dual, Aged",
+  "GFPN_" = "Graft, Full Benefit Dual, Non-Aged",
+  "GNPA_" = "Graft, Non-Dual, Aged",
+  "GNPN_" = "Graft, Non-Dual, Non-Aged",
+  # ESRD Transplant
+  "TRANSPLANT_KIDNEY_ONLY_1M", # 1 month post-transplant
+  "TRANSPLANT_KIDNEY_ONLY_2M", # 2 months post-transplant
+  "TRANSPLANT_KIDNEY_ONLY_3M", # 3 months post-transplant
+  # RxHCC Community Enrollee
+  "Rx_CE_LowAged_", # Community Enrollee, Low Income, Aged
+  "Rx_CE_LowNoAged_", # Community Enrollee, Low Income, Non-Aged
+  "Rx_CE_NoLowAged_", # Community Enrollee, Not Low Income, Aged
+  "Rx_CE_NoLowNoAged_", # Community Enrollee, Not Low Income, Non-Aged
+  "Rx_CE_LTI_", # Community Enrollee, Long-Term Institutionalized
+  # RxHCC New Enrollee
+  "Rx_NE_Lo_", # New Enrollee, Low Income
+  "Rx_NE_NoLo_", # New Enrollee, Not Low Income
+  "Rx_NE_LTI_" # New Enrollee, Long-Term Institutionalized
+)
+
 
 # DEMOGRAPHIC CODES
 # =============================================================================
@@ -189,7 +229,6 @@ MEDI_CAL_AID_CODES = list(
 #' @noRd
 MEDICARE_STATUS_CODE_MAPPING = list(
   # QMB - Qualified Medicare Beneficiary
-  `NA` = NA,
   "QMB" = "01", # QMB Only (Partial)
   "QMBONLY" = "01",
   "QMBPLUS" = "02", # QMB Plus (Full Benefit)
@@ -207,4 +246,18 @@ MEDICARE_STATUS_CODE_MAPPING = list(
   "QI1" = "06",
   "FBDE" = "08", # Full Benefit Dual Eligible (Other)
   "OTHERFULL" = "08"
+)
+
+# Define Model Name literal type
+#' @noRd
+ModelName = list(
+  "CMS-HCC Model V22",
+  "CMS-HCC Model V24",
+  "CMS-HCC Model V28",
+  "CMS-HCC ESRD Model V21",
+  "CMS-HCC ESRD Model V24",
+  "RxHCC Model V08",
+  "RxHCC Model V08 PDP_AND_MAPD",
+  "RxHCC Model V08 PDP_ONLY",
+  "RxHCC Model V08 MAPD_ONLY"
 )
