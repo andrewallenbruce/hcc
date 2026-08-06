@@ -51,19 +51,19 @@ categorize_demographics(
 
 - new_enrollee:
 
-  `<lgl>` Whether beneficiary is a **New Enrollee**
+  `<lgl>` Beneficiary is a **New Enrollee**
 
 - snp:
 
-  `<lgl>` Whether beneficiary is in a **Special Needs Plan**
+  `<lgl>` Beneficiary is in a **Special Needs Plan**
 
 - low_income:
 
-  `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
+  `<lgl>` Beneficiary is **Low Income** (RxHCC only)
 
 - lti:
 
-  `<lgl>` Whether beneficiary is Long-Term Institutionalized
+  `<lgl>` Beneficiary is Long-Term Institutionalized
 
 - graft_months:
 
@@ -76,8 +76,8 @@ categorize_demographics(
 
 ## Value
 
-Demographics object containing derived fields like age/sex category,
-disability status, dual status flags, etc.
+object containing derived fields like age/sex category, disability
+status, dual status flags, etc.
 
 ## Examples
 

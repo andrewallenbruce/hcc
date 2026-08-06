@@ -13,6 +13,8 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc-package.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc_is_chronic.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc_is_chronic_without_esrd_model.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/in_between.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_crec.html</loc></url>
@@ -21,6 +23,8 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_partial_benefit_dual.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_coefficients.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_edits.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_to_cc.html</loc></url>
 </urlset>
 

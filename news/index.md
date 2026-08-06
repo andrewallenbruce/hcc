@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9008 (2026-08-06)
+
+- added internal data
+
 ## hcc 0.0.0.9007 (2026-08-06)
 
 - class sketches (Demographics, HCCDetail, HCPCoveragePeriod, RAFResult,
