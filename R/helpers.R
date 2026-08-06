@@ -53,7 +53,6 @@ is_esrd_by_crec <- function(crec) {
   crec %in_% CREC_ESRD_CODES
 }
 
-#' Normalize Medicare status code (uppercase, no spaces/hyphens)
 #' @noRd
 normalize_medicare_status_code <- function(status) {
   toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))

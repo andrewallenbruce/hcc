@@ -7,10 +7,10 @@
 categorize_demographics(
   age,
   sex,
-  dual_elgbl_cd = NULL,
+  version = "V2",
+  dual_elgbl_cd = NA,
   orec = NA,
   crec = NA,
-  version = "V2",
   new_enrollee = FALSE,
   snp = FALSE,
   low_income = FALSE,
@@ -24,13 +24,13 @@ categorize_demographics(
 
 \item{sex}{\verb{<chr>} Beneficiary sex (M/F or 1/2)}
 
+\item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
+
 \item{dual_elgbl_cd}{\verb{<chr>} Dual eligibility code ("00" - "10")}
 
 \item{orec}{\verb{<chr>} Original reason for entitlement code ("0" - "3")}
 
 \item{crec}{\verb{<chr>} Current reason for entitlement code ("0" - "3")}
-
-\item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
 
 \item{new_enrollee}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
 

@@ -147,10 +147,10 @@ age_category_NEW <- function(age, orec, prefix) {
 categorize_demographics <- function(
   age,
   sex,
-  dual_elgbl_cd = NULL,
+  version = "V2",
+  dual_elgbl_cd = NA,
   orec = NA,
   crec = NA,
-  version = "V2",
   new_enrollee = FALSE,
   snp = FALSE,
   low_income = FALSE,
@@ -243,21 +243,27 @@ categorize_demographics <- function(
   # V2/V4 Logic (Medicare Population)
   if (version %in_% c("V2", "V4")) {
     if (is.null(orec) || identical(orec, "")) {
-      orec <- "0" # Default to 0 if OREC is NULL
+      orec <- "0"
+    }
+
+    if (new_enrollee) {
+      prefix <- if (sex == "2") "NEF" else "NEM"
+    } else {
+      prefix <- if (sex == "2") "F" else "M"
     }
 
     # Determine prefix based on new_enrollee status
-    prefix <- vctrs::vec_if_else(
-      new_enrollee,
-      vctrs::vec_if_else(identical(sex, "2"), "M", "NEM"),
-      vctrs::vec_if_else(identical(sex, "2"), "F", "NEF")
-    )
+    # prefix <- vctrs::vec_if_else(
+    #   new_enrollee,
+    #   vctrs::vec_if_else(identical(sex, "2"), "M", "NEM"),
+    #   vctrs::vec_if_else(identical(sex, "2"), "F", "NEF")
+    # )
 
     result$category <- if (new_enrollee & !esrd) {
-      # CMS-HCC new enrollee logic with detailed 65-69 categories
+      # CMS-HCC new_enrollee logic
       age_category_NEW(age, orec, prefix)
     } else {
-      # Standard logic with grouped 65_69 (for non-new-enrollee OR ESRD)
+      # Standard non-new-enrollee OR ESRD logic
       age_category_ESRD(age, prefix)
     }
 
