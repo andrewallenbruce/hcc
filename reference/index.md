@@ -2,6 +2,17 @@
 
 ## All functions
 
+- [`Demographics()`](https://andrewallenbruce.github.io/hcc/reference/Demographics.md)
+  : Response model for demographic categorization
+- [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
+  : Detailed information about an HCC category.
+- [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
+  : A single HCP (Health Care Plan) coverage period from HD loop
+- [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
+  : Risk adjustment calculation results
+- [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
+  : Represents standardized service-level data extracted from healthcare
+  claims.
 - [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
