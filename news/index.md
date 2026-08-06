@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9006 (2026-08-06)
+
+- print method for `Demographics` model
+
 ## hcc 0.0.0.9005 (2026-08-05)
 
 - tests for
