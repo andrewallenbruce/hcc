@@ -55,9 +55,7 @@ Demographics(
 Response model for demographic categorization
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 Demographics(age = 48, sex = "1", version = "V2")
 Demographics(age = 35, sex = "M", version = "V6")
 Demographics(age = 75, sex = "2", orec = "0", version = "V2")
-\dontshow{\}) # examplesIf}
 }

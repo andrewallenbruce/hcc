@@ -8,6 +8,9 @@
 # - Medicare Advantage Enrollment and Disenrollment Guidance
 # - X12 834 Implementation Guides
 
+#' @noRd
+ANY_DUAL_STATUS = c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")
+
 # DUAL ELIGIBILITY CODES
 # =============================================================================
 #' CMS Dual Eligibility Status Codes (Medicare + Medicaid)
@@ -64,20 +67,14 @@ OREC_ESRD_CODES = c("2", "3")
 # =============================================================================
 #' Current entitlement status (may differ from OREC)
 #' @noRd
-VALID_CREC_VALUES = c("0", "1", "2", "3")
+VALID_CREC_VALUES = VALID_OREC_VALUES
 
 #' @noRd
-CREC_DESCRIPTIONS = list(
-  "0" = "Old Age and Survivors Insurance (OASI)",
-  "1" = "Disability Insurance Benefits (DIB)",
-  "2" = "ESRD - End-Stage Renal Disease",
-  "3" = "DIB and ESRD"
-)
+CREC_DESCRIPTIONS = OREC_DESCRIPTIONS
 
 #' CREC codes indicating ESRD status
 #' @noRd
-CREC_ESRD_CODES = c("2", "3")
-
+CREC_ESRD_CODES = OREC_ESRD_CODES
 
 # COEFFICIENT PREFIX GROUPS
 # =============================================================================

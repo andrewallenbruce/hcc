@@ -39,14 +39,7 @@ categorize_demographics <- function(
 ) {
   rlang::check_number_decimal(age, min = 0)
   version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
-
-  sex <- rlang::arg_match0(sex, c("M", "F", "1", "2"))
-
-  if (version %in_% c("V2", "V4")) {
-    sex <- unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
-  } else {
-    sex <- unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
-  }
+  sex <- standardize_sex(sex, version)
 
   # Convert to integer using floor
   age <- as.integer(age)
@@ -56,11 +49,11 @@ categorize_demographics <- function(
   disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
   orig_disabled <- identical(orec, "1") & !disabled
 
-  is_fbd <- dual_elgbl_cd %in_% FULL_BENEFIT_DUAL_CODES
-  is_pbd <- dual_elgbl_cd %in_% PARTIAL_BENEFIT_DUAL_CODES
+  is_fbd <- is_full_benefit_dual(dual_elgbl_cd)
+  is_pbd <- is_partial_benefit_dual(dual_elgbl_cd)
 
   # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
-  esrd <- orec %in_% OREC_ESRD_CODES | crec %in_% CREC_ESRD_CODES
+  esrd <- collapse::anyv(c(orec, crec) %in_% c("2", "3"), TRUE)
 
   # Override demographics based on prefix_override
   if (!is.null(prefix_override)) {
@@ -125,13 +118,13 @@ categorize_demographics <- function(
       orec <- "0"
     }
 
-    if (new_enrollee) {
+    if (isTRUE(new_enrollee)) {
       prefix <- if (sex == "2") "NEF" else "NEM"
     } else {
       prefix <- if (sex == "2") "F" else "M"
     }
 
-    if (new_enrollee & !esrd) {
+    if (isTRUE(new_enrollee) & isFALSE(esrd)) {
       result[["category"]] <- age_category_NEW(age, orec, prefix)
     } else {
       result[["category"]] <- age_category_ESRD(age, prefix)
@@ -161,6 +154,27 @@ fmt_idx <- function(x) {
       justify = "left"
     )
   )
+}
+
+#' @noRd
+standardize_sex <- function(
+  sex,
+  version,
+  error_arg = rlang::caller_arg(sex),
+  error_call = rlang::caller_env()
+) {
+  sex <- rlang::arg_match0(
+    sex,
+    c("M", "F", "1", "2"),
+    arg_nm = error_arg,
+    error_call = error_call
+  )
+
+  if (version %in_% c("V2", "V4")) {
+    unname(c("M" = "1", "F" = "2", "1" = "1", "2" = "2")[sex])
+  } else {
+    unname(c("M" = "M", "F" = "F", "1" = "M", "2" = "F")[sex])
+  }
 }
 
 #' @noRd

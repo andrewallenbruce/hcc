@@ -104,7 +104,7 @@ ServiceLevelData <- function(
 #'    - lti: `TRUE` if LTI (LTI Model)
 #'    - fbd: `TRUE` if FBD (FBD Model)
 #'    - pbd: `TRUE` if PBD (PBD Model)
-#' @examplesIf FALSE
+#' @examples
 #' Demographics(age = 48, sex = "1", version = "V2")
 #' Demographics(age = 35, sex = "M", version = "V6")
 #' Demographics(age = 75, sex = "2", orec = "0", version = "V2")
@@ -121,24 +121,27 @@ Demographics <- function(
   graft_months = integer(),
   low_income = logical()
 ) {
-  list(
-    version = version,
-    age = age,
-    sex = sex,
-    non_aged = logical(),
-    orig_disabled = logical(),
-    disabled = logical(),
-    dual_elgbl_cd = dual_elgbl_cd,
-    orec = orec,
-    crec = crec,
-    new_enrollee = new_enrollee,
-    snp = snp,
-    fbd = logical(),
-    pbd = logical(),
-    esrd = logical(),
-    lti = logical(),
-    graft_months = graft_months,
-    low_income = low_income
+  structure(
+    list(
+      version = version,
+      age = age,
+      sex = sex,
+      non_aged = logical(),
+      orig_disabled = logical(),
+      disabled = logical(),
+      dual_elgbl_cd = dual_elgbl_cd,
+      orec = orec,
+      crec = crec,
+      new_enrollee = new_enrollee,
+      snp = snp,
+      fbd = logical(),
+      pbd = logical(),
+      esrd = logical(),
+      lti = logical(),
+      graft_months = graft_months,
+      low_income = low_income
+    ),
+    class = "demographics"
   )
 }
 

@@ -13,6 +13,26 @@ in_between <- function(x, min, max) {
   (x - min) * (max - x) >= 0L
 }
 
+#' Check if dual eligibility code is valid
+#' @param dual_code description
+#' @returns logical
+#' @examples
+#' is_any_dual_status(c("02", "04", "08"))
+#' @export
+is_any_dual_status <- function(dual_code) {
+  dual_code %in_% ANY_DUAL_STATUS
+}
+
+#' Check if dual eligibility code is valid
+#' @param dual_code description
+#' @returns logical
+#' @examples
+#' is_dual_code(c("02", "04", "08"))
+#' @export
+is_dual_code <- function(dual_code) {
+  dual_code %in_% VALID_DUAL_CODES
+}
+
 #' Check if dual eligibility code is Full Benefit Dual
 #' @param dual_code description
 #' @returns logical
