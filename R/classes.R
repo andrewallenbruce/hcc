@@ -5,81 +5,23 @@
 #' @param is_chronic Whether this HCC is considered a chronic condition
 #' @param coefficient The coefficient value applied for this HCC in the RAF calculation
 #' @returns <HCCDetail> object
-#' @examplesIf FALSE
+#' @examples
 #' HCCDetail()
 #' @export
-HCCDetail <- function(hcc, label, is_chronic, coefficient) {
-  list(
-    hcc = hcc,
-    label = label,
-    is_chronic = is_chronic,
-    coefficient = coefficient
-  )
-}
-
-#' Represents standardized service-level data extracted from healthcare claims.
-#'
-#' @param claim_id Unique identifier for the claim
-#' @param procedure_code Healthcare Common Procedure Coding System (HCPCS) code
-#' @param ndc National Drug Code
-#' @param linked_diagnosis_codes ICD-10 diagnosis codes linked to this service
-#' @param claim_diagnosis_codes All diagnosis codes on the claim
-#' @param claim_type Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
-#' @param provider_specialty Provider taxonomy or specialty code
-#' @param performing_provider_npi National Provider Identifier for performing provider
-#' @param billing_provider_npi National Provider Identifier for billing provider
-#' @param patient_id Unique identifier for the patient
-#' @param facility_type Type of facility where service was rendered
-#' @param service_type Type of service provided (facility type + service type = Type of Bill)
-#' @param service_date Date service was performed (YYYY-MM-DD)
-#' @param place_of_service Place of service code
-#' @param quantity Number of units provided
-#' @param quantity_unit Unit of measure for quantity
-#' @param modifiers List of procedure code modifiers
-#' @param allowed_amount Allowed amount for the service
-#' @returns <ServiceLevelData> object
-#' @examplesIf FALSE
-#' ServiceLevelData()
-#' @export
-ServiceLevelData <- function(
-  claim_id,
-  procedure_code,
-  ndc,
-  linked_diagnosis_codes,
-  claim_diagnosis_codes,
-  claim_type,
-  provider_specialty,
-  performing_provider_npi,
-  billing_provider_npi,
-  patient_id,
-  facility_type,
-  service_type,
-  service_date,
-  place_of_service,
-  quantity,
-  quantity_unit,
-  modifiers,
-  allowed_amount
+HCCDetail <- function(
+  hcc = character(),
+  label = character(),
+  is_chronic = logical(),
+  coefficient = double()
 ) {
-  list(
-    claim_id = claim_id,
-    procedure_code = procedure_code,
-    ndc = ndc,
-    linked_diagnosis_codes = linked_diagnosis_codes,
-    claim_diagnosis_codes = claim_diagnosis_codes,
-    claim_type = claim_type,
-    provider_specialty = provider_specialty,
-    performing_provider_npi = performing_provider_npi,
-    billing_provider_npi = billing_provider_npi,
-    patient_id = patient_id,
-    facility_type = facility_type,
-    service_type = service_type,
-    service_date = service_date,
-    place_of_service = place_of_service,
-    quantity = quantity,
-    quantity_unit = quantity_unit,
-    modifiers = modifiers,
-    allowed_amount = allowed_amount
+  structure(
+    list(
+      hcc = hcc,
+      label = label,
+      is_chronic = is_chronic,
+      coefficient = coefficient
+    ),
+    class = "hcc_detail"
   )
 }
 
@@ -151,6 +93,72 @@ Demographics <- function(
       category = category
     ),
     class = "demographics"
+  )
+}
+
+#' Represents standardized service-level data extracted from healthcare claims.
+#'
+#' @param claim_id Unique identifier for the claim
+#' @param procedure_code Healthcare Common Procedure Coding System (HCPCS) code
+#' @param ndc National Drug Code
+#' @param linked_diagnosis_codes ICD-10 diagnosis codes linked to this service
+#' @param claim_diagnosis_codes All diagnosis codes on the claim
+#' @param claim_type Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
+#' @param provider_specialty Provider taxonomy or specialty code
+#' @param performing_provider_npi National Provider Identifier for performing provider
+#' @param billing_provider_npi National Provider Identifier for billing provider
+#' @param patient_id Unique identifier for the patient
+#' @param facility_type Type of facility where service was rendered
+#' @param service_type Type of service provided (facility type + service type = Type of Bill)
+#' @param service_date Date service was performed (YYYY-MM-DD)
+#' @param place_of_service Place of service code
+#' @param quantity Number of units provided
+#' @param quantity_unit Unit of measure for quantity
+#' @param modifiers List of procedure code modifiers
+#' @param allowed_amount Allowed amount for the service
+#' @returns <ServiceLevelData> object
+#' @examplesIf FALSE
+#' ServiceLevelData()
+#' @export
+ServiceLevelData <- function(
+  claim_id,
+  procedure_code,
+  ndc,
+  linked_diagnosis_codes,
+  claim_diagnosis_codes,
+  claim_type,
+  provider_specialty,
+  performing_provider_npi,
+  billing_provider_npi,
+  patient_id,
+  facility_type,
+  service_type,
+  service_date,
+  place_of_service,
+  quantity,
+  quantity_unit,
+  modifiers,
+  allowed_amount
+) {
+  list(
+    claim_id = claim_id,
+    procedure_code = procedure_code,
+    ndc = ndc,
+    linked_diagnosis_codes = linked_diagnosis_codes,
+    claim_diagnosis_codes = claim_diagnosis_codes,
+    claim_type = claim_type,
+    provider_specialty = provider_specialty,
+    performing_provider_npi = performing_provider_npi,
+    billing_provider_npi = billing_provider_npi,
+    patient_id = patient_id,
+    facility_type = facility_type,
+    service_type = service_type,
+    service_date = service_date,
+    place_of_service = place_of_service,
+    quantity = quantity,
+    quantity_unit = quantity_unit,
+    modifiers = modifiers,
+    allowed_amount = allowed_amount
   )
 }
 

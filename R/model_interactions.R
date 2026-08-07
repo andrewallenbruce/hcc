@@ -16,16 +16,11 @@ create_demographic_interactions <- function(d) {
   fbd = d$fbd
   pbd = d$pbd
   months = d$months
-
-  # Medicaid indicator (any dual status)
   mcaid = is_dual_any(d$dual)
 
-  # Original Disability interactions
-  # (V22, V24, V28, ESRD V21, V24)
-  #
-  # Only for aged (65+)
-  # looked up with prefix (e.g., CNA_, DI_)
-  if (isTRUE(is_aged)) {
+  # Original Disability interactions (V22, V24, V28, ESRD V21, V24)
+  # Only for aged (65+) looked up with prefix (e.g., CNA_, DI_)
+  if (is_aged) {
     act <- cheapr::list_assign(
       act,
       list(
@@ -35,10 +30,8 @@ create_demographic_interactions <- function(d) {
     )
   }
 
-  # Originally ESRD interactions
-  # (ESRD V21, V24 Dialysis)
-  # looked up as DI_Originally_ESRD_*
-  if (isTRUE(is_aged) & is_esrd_by_orec(d$orec)) {
+  # Originally ESRD interactions (ESRD V21, V24 Dialysis) - looked up as DI_Originally_ESRD_*
+  if (is_aged & is_esrd(d$orec)) {
     act <- cheapr::list_assign(
       act,
       list(
@@ -48,11 +41,8 @@ create_demographic_interactions <- function(d) {
     )
   }
 
-  # MCAID × sex × age interactions
-  # (ESRD V21 Dialysis and Community Graft only)
-  #
-  # V21 used MCAID; V24 uses FBDual/PBDual
-  # (handled in create_dual_interactions)
+  # MCAID × sex × age interactions (ESRD V21 Dialysis and Community Graft only)
+  # V21 used MCAID; V24 uses FBDual/PBDual (handled in create_dual_interactions)
   if (mcaid) {
     act <- cheapr::list_assign(
       act,
@@ -66,35 +56,31 @@ create_demographic_interactions <- function(d) {
   }
 
   # LTI interactions for ESRD models
-  if (isTRUE(lti)) {
+  if (lti) {
     act <- cheapr::list_assign(
       act,
       list(
-        # ESRD V24 Dialysis: looked up as
-        # DI_LTI_Aged, DI_LTI_NonAged
+        # ESRD V24 Dialysis: looked up as DI_LTI_Aged, DI_LTI_NonAged
         LTI_Aged = as.integer(is_aged),
         LTI_NonAged = as.integer(!is_aged),
-        # ESRD V24 Graft Institutional: looked up
-        # WITHOUT prefix as LTI_GE65, LTI_LT65
+        # ESRD V24 Graft Institutional: looked up WITHOUT prefix as LTI_GE65, LTI_LT65
         LTI_GE65 = as.integer(is_aged),
         LTI_LT65 = as.integer(!is_aged)
       )
     )
   }
 
-  # LTIMCAID for V24, V28 Institutional model
-  # looked up as INS_LTIMCAID
-  if (isTRUE(lti) & isTRUE(mcaid)) {
+  # LTIMCAID for V24, V28 Institutional model looked up as INS_LTIMCAID
+  if (lti & mcaid) {
     act <- cheapr::list_assign(act, list(LTIMCAID = lti * mcaid))
   }
 
-  # New Enrollee interactions for
-  # V24, V28, ESRD V21, ESRD V24
+  # New Enrollee interactions for V24, V28, ESRD V21, ESRD V24
   nemcaid = FALSE
 
-  if (isTRUE(d$new) & is_dual_valid(d$dual)) {
+  if (d$new & is_dual_valid(d$dual)) {
     nemcaid = TRUE
-    ne_origds = d$age >= 65 & d$orec == "1"
+    ne_origds = d$age >= 65 & identical(d$orec, "1")
 
     act <- cheapr::list_assign(
       act,
@@ -118,13 +104,11 @@ create_demographic_interactions <- function(d) {
 
   # Functioning Graft Duration "transplant bumps" for ESRD models
   # All looked up WITHOUT prefix - they match directly by name
-  if (!is.null(months) & months >= 4) {
-    is_dur4_9 = in_between(months, 4L, 9L)
-    is_dur10pl = months >= 10L
-  }
+  is_dur4_9 = in_between(months, 4L, 9L)
+  is_dur10pl = months >= 10L
 
   # ESRD V21: simple age-based bumps (GE65_DUR4_9, LT65_DUR4_9, etc.)
-  if (isTRUE(is_dur4_9)) {
+  if (is_dur4_9) {
     act <- cheapr::list_assign(
       act,
       list(
@@ -134,7 +118,7 @@ create_demographic_interactions <- function(d) {
     )
   }
 
-  if (isTRUE(is_dur10pl)) {
+  if (is_dur10pl) {
     act <- cheapr::list_assign(
       act,
       list(

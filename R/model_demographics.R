@@ -34,31 +34,26 @@ categorize_demographics <- function(
   snp = FALSE,
   low = FALSE,
   lti = FALSE,
-  months = NULL,
+  months = 0L,
   prefix = NULL
 ) {
   rlang::check_number_decimal(age, min = 0)
   version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
   sex <- standardize_sex(sex, version)
-
-  # Convert to integer using floor
   age <- as.integer(age)
   non_aged <- age <= 64L
 
   # Determine if currently disabled or previously disabled
-  disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
-  orig_disabled <- identical(orec, "1") & !disabled
-
-  is_fbd <- is_dual_full(dual)
-  is_pbd <- is_dual_partial(dual)
-
-  # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
-  esrd <- collapse::anyv(c(orec, crec) %in_% c("2", "3"), TRUE)
+  is_current <- non_aged & (!is.na(orec) & !identical(orec, "0"))
+  is_original <- identical(orec, "1") & !is_current
+  is_full <- is_dual_full(dual)
+  is_part <- is_dual_partial(dual)
+  has_esrd <- any(is_esrd(c(orec, crec)))
 
   # Override demographics based on prefix
   if (!is.null(prefix)) {
     if (prefix %in_% ESRD_PREFIXES) {
-      esrd = TRUE
+      has_esrd = TRUE
     }
 
     if (prefix %in_% NEW_ENROLLEE_PREFIXES) {
@@ -68,11 +63,11 @@ categorize_demographics <- function(
     }
 
     if (prefix %in_% FULL_BENEFIT_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(TRUE, FALSE)
+      .c(is_full, is_part) %=% c(TRUE, FALSE)
     } else if (prefix %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(FALSE, TRUE)
+      .c(is_full, is_part) %=% c(FALSE, TRUE)
     } else if (prefix %in_% NON_DUAL_PREFIXES) {
-      .c(is_fbd, is_pbd) %=% c(FALSE, FALSE)
+      .c(is_full, is_part) %=% c(FALSE, FALSE)
     }
 
     if (prefix %in_% INSTITUTIONAL_PREFIXES) {
@@ -85,16 +80,16 @@ categorize_demographics <- function(
     age = age,
     sex = sex,
     non_aged = non_aged,
-    orig_disabled = orig_disabled,
-    disabled = disabled,
+    orig_disabled = is_original,
+    disabled = is_current,
     dual = dual,
     orec = orec,
     crec = crec,
     new = new,
     snp = snp,
-    fbd = is_fbd,
-    pbd = is_pbd,
-    esrd = esrd,
+    fbd = is_full,
+    pbd = is_part,
+    esrd = has_esrd,
     lti = lti,
     months = months,
     low = low
@@ -107,17 +102,17 @@ categorize_demographics <- function(
 
   # V2/V4 Logic (Medicare Population)
   if (version %in_% c("V2", "V4")) {
-    if (is.na(orec) || identical(orec, "")) {
+    if (is.na(orec)) {
       orec <- "0"
     }
 
-    if (isTRUE(new)) {
+    if (new) {
       prefix <- if (sex == "2") "NEF" else "NEM"
     } else {
       prefix <- if (sex == "2") "F" else "M"
     }
 
-    if (isTRUE(new) & isFALSE(esrd)) {
+    if (new & !has_esrd) {
       category = age_category_NEW(age, orec, prefix)
     } else {
       category = age_category_ESRD(age, prefix)

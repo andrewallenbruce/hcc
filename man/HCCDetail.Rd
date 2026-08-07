@@ -4,7 +4,12 @@
 \alias{HCCDetail}
 \title{Detailed information about an HCC category.}
 \usage{
-HCCDetail(hcc, label, is_chronic, coefficient)
+HCCDetail(
+  hcc = character(),
+  label = character(),
+  is_chronic = logical(),
+  coefficient = double()
+)
 }
 \arguments{
 \item{hcc}{HCC code (e.g., "18", "85")}
@@ -22,7 +27,5 @@ HCCDetail(hcc, label, is_chronic, coefficient)
 Detailed information about an HCC category.
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 HCCDetail()
-\dontshow{\}) # examplesIf}
 }

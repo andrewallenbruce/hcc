@@ -8,21 +8,29 @@
 # - Medicare Advantage Enrollment and Disenrollment Guidance
 # - X12 834 Implementation Guides
 
-#' DUAL ELIGIBILITY CODES
+#' Dual Eligibility Codes
 #'
 #' @description
 #' CMS Dual Eligibility Status Codes (Medicare + Medicaid)
 #'
 #' @details
-#' Used in coefficient prefix selection (CNA_, CFA_, CPA_, etc.)
+#' Used in coefficient prefix selection.
 #'
 #' ### Full Benefit Dual Eligible:
 #'    * Receive both Medicare and full Medicaid benefits
 #'    * Uses "CFA_" or "CFD_" prefixes
 #'
-#' ### Partial Benefit Dual Eligible (Medicare + limited Medicaid)
+#' ### Partial Benefit Dual Eligible
+#'    * Medicare + limited Medicaid
 #'    * Uses "CPA_" or "CPD_" prefixes
 #'
+#' Dual-eligibles are often divided into "full-duals" and "partial-duals" based
+#' on the level of Medicaid benefits they receive. CMS generally considers
+#' beneficiaries to be full-duals if they have values of 02, 04, or 08, and to
+#' be partial-duals if they have values of 01, 03, 05, or 06.
+#'
+#' Partial-duals are sometimes divided into the QMB-only population (01) and all
+#' other partial-duals (03, 05, or 06).
 #' @noRd
 DUAL_CODES = list(
   ANY = c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"),
@@ -31,48 +39,45 @@ DUAL_CODES = list(
   FULL = c("02", "04", "08"),
   PARTIAL = c("01", "03", "05", "06"),
   DESCRIPTION = list(
-    "02" = "QMB Plus (Qualified Medicare Beneficiary Plus)",
-    "04" = "SLMB Plus (Specified Low-Income Medicare Beneficiary Plus)",
-    "08" = "Other Full Benefit Dual Eligible",
+    "00" = "Non-Beneficiary",
     "01" = "QMB Only",
+    "02" = "QMB Plus (Qualified Medicare Beneficiary Plus)",
     "03" = "SLMB Only",
+    "04" = "SLMB Plus (Specified Low-Income Medicare Beneficiary Plus)",
     "05" = "QDWI (Qualified Disabled and Working Individual)",
-    "06" = "QI (Qualifying Individual)"
+    "06" = "QI (Medicare - Qualifying Individual)",
+    "08" = "Other Full Benefit Dual Eligible",
+    "09" = "Medicare without Medicaid Coverage",
+    "10" = "Separate CHIP Eligible Medicare"
   )
 )
 
-#' OREC - Original Reason for Entitlement Code
+#' OREC/CREC Codes
 #'
-#' Determines if beneficiary has ESRD
+#' @description
+#' CMS Reason for Entitlement Codes
 #'
-#' Affects coefficient prefix selection
+#' @details
+#' Determines if beneficiary has ESRD.
+#' Affects coefficient prefix selection.
+#'
+#' ### OREC
+#' Original Reason for Entitlement Code
+#'
+#' ### CREC
+#' Current Reason for Entitlement Code.
+#' May differ from OREC.
 #' @noRd
-VALID_OREC_VALUES = c("0", "1", "2", "3")
-
-#' @noRd
-OREC_DESCRIPTIONS = list(
-  "0" = "Old Age and Survivors Insurance (OASI)",
-  "1" = "Disability Insurance Benefits (DIB)",
-  "2" = "ESRD - End-Stage Renal Disease",
-  "3" = "DIB and ESRD"
+REC_CODES = list(
+  VALID = c("0", "1", "2", "3"),
+  ESRD = c("2", "3"),
+  DESCRIPTION = list(
+    "0" = "Old Age and Survivors Insurance (OASI)",
+    "1" = "Disability Insurance Benefits (DIB)",
+    "2" = "ESRD - End-Stage Renal Disease",
+    "3" = "DIB and ESRD"
+  )
 )
-
-#' OREC codes indicating ESRD status (per CMS documentation)
-#' @noRd
-OREC_ESRD_CODES = c("2", "3")
-
-# CREC - Current Reason for Entitlement Code
-# =============================================================================
-#' Current entitlement status (may differ from OREC)
-#' @noRd
-VALID_CREC_VALUES = VALID_OREC_VALUES
-
-#' @noRd
-CREC_DESCRIPTIONS = OREC_DESCRIPTIONS
-
-#' CREC codes indicating ESRD status
-#' @noRd
-CREC_ESRD_CODES = OREC_ESRD_CODES
 
 # COEFFICIENT PREFIX GROUPS
 # =============================================================================

@@ -62,24 +62,14 @@ is_dual_partial <- function(dual_code) {
   dual_code %in_% DUAL_CODES$PARTIAL
 }
 
-#' Check if OREC indicates ESRD status
-#' @param orec description
+#' Check if OREC/CREC indicates ESRD status
+#' @param rec_code OREC/CREC code
 #' @returns logical
 #' @examples
-#' is_esrd_by_orec(c("2", "3"))
+#' is_esrd(c("2", "3"))
 #' @export
-is_esrd_by_orec <- function(orec) {
-  orec %in_% OREC_ESRD_CODES
-}
-
-#' Check if CREC indicates ESRD status
-#' @param crec description
-#' @returns logical
-#' @examples
-#' is_esrd_by_crec(c("2", "3"))
-#' @export
-is_esrd_by_crec <- function(crec) {
-  crec %in_% CREC_ESRD_CODES
+is_esrd <- function(rec_code) {
+  rec_code %in_% REC_CODES$ESRD
 }
 
 #' Map Medicare status code to dual eligibility code

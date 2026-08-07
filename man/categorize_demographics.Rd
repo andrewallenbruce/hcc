@@ -15,7 +15,7 @@ categorize_demographics(
   snp = FALSE,
   low = FALSE,
   lti = FALSE,
-  months = NULL,
+  months = 0L,
   prefix = NULL
 )
 }
