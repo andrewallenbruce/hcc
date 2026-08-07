@@ -9,7 +9,7 @@ Demographics object containing derived fields used in risk adjustment models."><
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9012</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,9 +52,9 @@ Demographics object containing derived fields used in risk adjustment models.</p
 <span>  <span class="va">age</span>,</span>
 <span>  <span class="va">sex</span>,</span>
 <span>  version <span class="op">=</span> <span class="st">"V2"</span>,</span>
-<span>  dual <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  orec <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  crec <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  dual <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  new <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  snp <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  low <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -80,16 +80,16 @@ Demographics object containing derived fields used in risk adjustment models.</p
 <dd><p><code>&lt;chr&gt;</code> Version of categorization to use ("V2", "V4", "V6")</p></dd>
 
 
-<dt id="arg-dual">dual<a class="anchor" aria-label="anchor" href="#arg-dual"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Dual eligibility code ("00" - "10")</p></dd>
-
-
 <dt id="arg-orec">orec<a class="anchor" aria-label="anchor" href="#arg-orec"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> Original reason for entitlement code ("0" - "3")</p></dd>
 
 
 <dt id="arg-crec">crec<a class="anchor" aria-label="anchor" href="#arg-crec"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> Current reason for entitlement code ("0" - "3")</p></dd>
+
+
+<dt id="arg-dual">dual<a class="anchor" aria-label="anchor" href="#arg-dual"></a></dt>
+<dd><p><code>&lt;chr&gt;</code> Dual eligibility code ("00" - "10")</p></dd>
 
 
 <dt id="arg-new">new<a class="anchor" aria-label="anchor" href="#arg-new"></a></dt>
@@ -119,13 +119,13 @@ detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><demographics> object containing derived fields like age/sex
+    <p>A <demographics> object containing derived fields like age/sex
 category, disability status, dual status flags, etc.</demographics></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span>age <span class="op">=</span> <span class="fl">48</span>, sex <span class="op">=</span> <span class="st">"1"</span>, version <span class="op">=</span> <span class="st">"V2"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span><span class="fl">48</span>, <span class="st">"1"</span>, <span class="st">"V2"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Demographics&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       version : V2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           age : 48</span>
@@ -145,7 +145,7 @@ category, disability status, dual status flags, etc.</demographics></p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        months : NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           low : FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      category : M45_54</span>
-<span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span>age <span class="op">=</span> <span class="fl">35</span>, sex <span class="op">=</span> <span class="st">"M"</span>, version <span class="op">=</span> <span class="st">"V6"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span><span class="fl">35</span>, <span class="st">"M"</span>, <span class="st">"V6"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Demographics&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       version : V6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           age : 35</span>
@@ -165,7 +165,7 @@ category, disability status, dual status flags, etc.</demographics></p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        months : NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           low : FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      category : MAGE_LAST_35_39</span>
-<span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span>age <span class="op">=</span> <span class="fl">75</span>, sex <span class="op">=</span> <span class="st">"2"</span>, orec <span class="op">=</span> <span class="st">"0"</span>, version <span class="op">=</span> <span class="st">"V2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">categorize_demographics</span><span class="op">(</span><span class="fl">75</span>, <span class="st">"2"</span>, <span class="st">"V2"</span>, <span class="st">"0"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Demographics&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       version : V2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           age : 75</span>

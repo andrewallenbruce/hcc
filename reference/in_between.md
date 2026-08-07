@@ -1,6 +1,6 @@
-# Check if x is between min and max (inclusive)
+# Is x Between a Minimum and a Maximum?
 
-Check if x is between min and max (inclusive)
+Is x Between a Minimum and a Maximum?
 
 ## Usage
 
@@ -12,7 +12,7 @@ in_between(x, min, max)
 
 - x:
 
-  `<int>` Integer vector to check
+  `<int>` vector of candidates
 
 - min:
 
@@ -24,15 +24,15 @@ in_between(x, min, max)
 
 ## Value
 
-Logical vector indicating if each element of x is between min and max
+`<lgl>` vector indicating membership
 
 ## Examples
 
 ``` r
+if (FALSE) {
 in_between(5L, 10L, 15L)
-#> [1] FALSE
 in_between(1L, 2L, 3L)
-#> [1] FALSE
 in_between(0L, 5L, 10L)
-#> [1] FALSE
+in_between(0:15, 5L, 10L)
+}
 ```

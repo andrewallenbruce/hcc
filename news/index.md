@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9012 (2026-08-07)
+
+- renamed `is_` function family
+- constants now a set of related lists
+
 ## hcc 0.0.0.9011 (2026-08-07)
 
 - `Demographics` class container refactored

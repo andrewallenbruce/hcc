@@ -11,9 +11,9 @@ categorize_demographics(
   age,
   sex,
   version = "V2",
-  dual = NA,
   orec = NA,
   crec = NA,
+  dual = NA,
   new = FALSE,
   snp = FALSE,
   low = FALSE,
@@ -37,10 +37,6 @@ categorize_demographics(
 
   `<chr>` Version of categorization to use ("V2", "V4", "V6")
 
-- dual:
-
-  `<chr>` Dual eligibility code ("00" - "10")
-
 - orec:
 
   `<chr>` Original reason for entitlement code ("0" - "3")
@@ -48,6 +44,10 @@ categorize_demographics(
 - crec:
 
   `<chr>` Current reason for entitlement code ("0" - "3")
+
+- dual:
+
+  `<chr>` Dual eligibility code ("00" - "10")
 
 - new:
 
@@ -76,13 +76,13 @@ categorize_demographics(
 
 ## Value
 
-object containing derived fields like age/sex category, disability
+A object containing derived fields like age/sex category, disability
 status, dual status flags, etc.
 
 ## Examples
 
 ``` r
-categorize_demographics(age = 48, sex = "1", version = "V2")
+categorize_demographics(48, "1", "V2")
 #> <Demographics>
 #>       version : V2
 #>           age : 48
@@ -102,7 +102,7 @@ categorize_demographics(age = 48, sex = "1", version = "V2")
 #>        months : NULL
 #>           low : FALSE
 #>      category : M45_54
-categorize_demographics(age = 35, sex = "M", version = "V6")
+categorize_demographics(35, "M", "V6")
 #> <Demographics>
 #>       version : V6
 #>           age : 35
@@ -122,7 +122,7 @@ categorize_demographics(age = 35, sex = "M", version = "V6")
 #>        months : NULL
 #>           low : FALSE
 #>      category : MAGE_LAST_35_39
-categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
+categorize_demographics(75, "2", "V2", "0")
 #> <Demographics>
 #>       version : V2
 #>           age : 75

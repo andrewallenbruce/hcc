@@ -17,19 +17,16 @@
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
 - [`in_between()`](https://andrewallenbruce.github.io/hcc/reference/in_between.md)
-  : Check if x is between min and max (inclusive)
-- [`is_any_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/is_any_dual_status.md)
-  : Check if dual eligibility code is valid
-- [`is_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/is_dual_code.md)
-  : Check if dual eligibility code is valid
+  : Is x Between a Minimum and a Maximum?
+- [`is_dual_any()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
+  [`is_dual_valid()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
+  [`is_dual_full()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
+  [`is_dual_partial()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
+  : Dual Eligibility Code Checks
 - [`is_esrd_by_crec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_crec.md)
   : Check if CREC indicates ESRD status
 - [`is_esrd_by_orec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_orec.md)
   : Check if OREC indicates ESRD status
-- [`is_full_benefit_dual()`](https://andrewallenbruce.github.io/hcc/reference/is_full_benefit_dual.md)
-  : Check if dual eligibility code is Full Benefit Dual
-- [`is_partial_benefit_dual()`](https://andrewallenbruce.github.io/hcc/reference/is_partial_benefit_dual.md)
-  : Check if dual eligibility code is Partial Benefit Dual
 - [`map_aid_code_to_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.md)
   : Map California Medi-Cal Aid Code to Dual Eligibility Code
 - [`map_medicare_status_to_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.md)
