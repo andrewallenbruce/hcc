@@ -11,10 +11,10 @@ Demographics(
   crec = character(),
   version = character(),
   snp = logical(),
-  dual_elgbl_cd = character(),
-  new_enrollee = logical(),
-  graft_months = integer(),
-  low_income = logical()
+  dual = character(),
+  new = logical(),
+  months = integer(),
+  low = logical()
 )
 }
 \arguments{
@@ -30,13 +30,13 @@ Demographics(
 
 \item{snp}{\verb{<lgl>} Whether beneficiary is in a \strong{Special Needs Plan}}
 
-\item{dual_elgbl_cd}{\verb{<chr>} Dual eligibility code ("00" - "10")}
+\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
 
-\item{new_enrollee}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
+\item{new}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
 
-\item{graft_months}{\verb{<int>} Number of months since transplant (ESRD only)}
+\item{months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
-\item{low_income}{\verb{<lgl>} Whether beneficiary is \strong{Low Income} (RxHCC only)}
+\item{low}{\verb{<lgl>} Whether beneficiary is \strong{Low Income} (RxHCC only)}
 }
 \value{
 \if{html}{\out{<Demographics>}} object containing the following derived fields:

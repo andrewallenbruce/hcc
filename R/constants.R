@@ -62,7 +62,6 @@ OREC_DESCRIPTIONS = list(
 #' @noRd
 OREC_ESRD_CODES = c("2", "3")
 
-
 # CREC - Current Reason for Entitlement Code
 # =============================================================================
 #' Current entitlement status (may differ from OREC)

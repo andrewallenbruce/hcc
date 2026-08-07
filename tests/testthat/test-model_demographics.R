@@ -79,7 +79,7 @@ test_that("Dual eligibility categorization", {
   x = categorize_demographics(
     age = 65,
     sex = "M",
-    dual_elgbl_cd = "02",
+    dual = "02",
     orec = "0"
   )
   expect_true(x$fbd)
@@ -89,7 +89,7 @@ test_that("Dual eligibility categorization", {
   x = categorize_demographics(
     age = 65,
     sex = "M",
-    dual_elgbl_cd = "01",
+    dual = "01",
     orec = "0"
   )
   expect_false(x$fbd)
@@ -99,7 +99,7 @@ test_that("Dual eligibility categorization", {
   x = categorize_demographics(
     age = 65,
     sex = "M",
-    dual_elgbl_cd = "00",
+    dual = "00",
     orec = "0"
   )
   expect_false(x$fbd)
@@ -137,13 +137,13 @@ test_that("new enrollee and SNP flags", {
     age = 65.1,
     sex = "M",
     orec = "0",
-    new_enrollee = TRUE,
+    new = TRUE,
     snp = TRUE
   )
-  expect_true(x$new_enrollee)
+  expect_true(x$new)
   expect_true(x$snp)
 
   x = categorize_demographics(age = 65, sex = "M", orec = "0")
-  expect_false(x$new_enrollee)
+  expect_false(x$new)
   expect_false(x$snp)
 })

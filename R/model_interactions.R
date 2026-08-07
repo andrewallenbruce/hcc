@@ -15,10 +15,10 @@ create_demographic_interactions <- function(d) {
   lti = d$lti
   fbd = d$fbd
   pbd = d$pbd
-  graft_months = d$graft_months
+  months = d$months
 
   # Medicaid indicator (any dual status)
-  mcaid = is_any_dual_status(d$dual_elgbl_cd)
+  mcaid = is_any_dual_status(d$dual)
 
   # Original Disability interactions
   # (V22, V24, V28, ESRD V21, V24)
@@ -92,10 +92,7 @@ create_demographic_interactions <- function(d) {
   # V24, V28, ESRD V21, ESRD V24
   nemcaid = FALSE
 
-  if (
-    isTRUE(d$new_enrollee) &
-      is_dual_code(d$dual_elgbl_cd)
-  ) {
+  if (isTRUE(d$new) & is_dual_code(d$dual)) {
     nemcaid = TRUE
     ne_origds = d$age >= 65 & d$orec == "1"
 
@@ -121,9 +118,9 @@ create_demographic_interactions <- function(d) {
 
   # Functioning Graft Duration "transplant bumps" for ESRD models
   # All looked up WITHOUT prefix - they match directly by name
-  if (!is.null(graft_months) & graft_months >= 4) {
-    is_dur4_9 = in_between(graft_months, 4L, 9L)
-    is_dur10pl = graft_months >= 10L
+  if (!is.null(months) & months >= 4) {
+    is_dur4_9 = in_between(months, 4L, 9L)
+    is_dur10pl = months >= 10L
   }
 
   # ESRD V21: simple age-based bumps (GE65_DUR4_9, LT65_DUR4_9, etc.)

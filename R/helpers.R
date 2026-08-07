@@ -1,3 +1,8 @@
+#' @noRd
+unlist_ <- function(x, ...) {
+  unlist(x, use.names = FALSE, ...)
+}
+
 #' Check if x is between min and max (inclusive)
 #'
 #' @param x `<int>` Integer vector to check
@@ -74,7 +79,7 @@ is_esrd_by_crec <- function(crec) {
 }
 
 #' @noRd
-normalize_medicare_status_code <- function(status) {
+normalize_status <- function(status) {
   toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))
 }
 
@@ -87,12 +92,17 @@ normalize_medicare_status_code <- function(status) {
 #' map_medicare_status_to_dual_code(x)
 #' @export
 map_medicare_status_to_dual_code <- function(status) {
-  status <- normalize_medicare_status_code(status)
-  i <- collapse::fmatch(status, names(MEDICARE_STATUS_CODE_MAPPING))
-  x <- unlist(MEDICARE_STATUS_CODE_MAPPING, use.names = FALSE)[i]
+  i <- collapse::fmatch(
+    normalize_status(status),
+    names(MEDICARE_STATUS_CODE_MAPPING)
+  )
+
+  x <- unlist_(MEDICARE_STATUS_CODE_MAPPING)[i]
+
   if (anyNA(x)) {
-    x[collapse::whichNA(x)] <- NON_DUAL_CODE
+    collapse::setv(x, collapse::whichNA(x), NON_DUAL_CODE)
   }
+
   return(x)
 }
 
@@ -105,9 +115,10 @@ map_medicare_status_to_dual_code <- function(status) {
 #' @export
 map_aid_code_to_dual_status <- function(aid_code) {
   i <- collapse::fmatch(aid_code, names(MEDI_CAL_AID_CODES))
-  x <- unlist(MEDI_CAL_AID_CODES, use.names = FALSE)[i]
+  x <- unlist_(MEDI_CAL_AID_CODES)[i]
+
   if (anyNA(x)) {
-    x[collapse::whichNA(x)] <- NON_DUAL_CODE
+    collapse::setv(x, collapse::whichNA(x), NON_DUAL_CODE)
   }
   return(x)
 }

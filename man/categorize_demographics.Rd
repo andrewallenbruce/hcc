@@ -8,41 +8,41 @@ categorize_demographics(
   age,
   sex,
   version = "V2",
-  dual_elgbl_cd = NA,
+  dual = NA,
   orec = NA,
   crec = NA,
-  new_enrollee = FALSE,
+  new = FALSE,
   snp = FALSE,
-  low_income = FALSE,
+  low = FALSE,
   lti = FALSE,
-  graft_months = NULL,
-  prefix_override = NULL
+  months = NULL,
+  prefix = NULL
 )
 }
 \arguments{
-\item{age}{\verb{<int>} Beneficiary age (floored to \code{integer})}
+\item{age}{\verb{<int>} Beneficiary age}
 
 \item{sex}{\verb{<chr>} Beneficiary sex (M/F or 1/2)}
 
 \item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
 
-\item{dual_elgbl_cd}{\verb{<chr>} Dual eligibility code ("00" - "10")}
+\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
 
 \item{orec}{\verb{<chr>} Original reason for entitlement code ("0" - "3")}
 
 \item{crec}{\verb{<chr>} Current reason for entitlement code ("0" - "3")}
 
-\item{new_enrollee}{\verb{<lgl>} Beneficiary is a \strong{New Enrollee}}
+\item{new}{\verb{<lgl>} Beneficiary is a \strong{New Enrollee}}
 
 \item{snp}{\verb{<lgl>} Beneficiary is in a \strong{Special Needs Plan}}
 
-\item{low_income}{\verb{<lgl>} Beneficiary is \strong{Low Income} (RxHCC only)}
+\item{low}{\verb{<lgl>} Beneficiary is \strong{Low Income} (RxHCC only)}
 
 \item{lti}{\verb{<lgl>} Beneficiary is Long-Term Institutionalized}
 
-\item{graft_months}{\verb{<int>} Number of months since transplant (ESRD only)}
+\item{months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
-\item{prefix_override}{\verb{<chr>} Optional prefix to override demographic
+\item{prefix}{\verb{<chr>} Optional prefix to override demographic
 detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)}
 }
 \value{

@@ -87,14 +87,14 @@ ServiceLevelData <- function(
 #'
 #' @param age `<int>` Beneficiary age (floored to `integer`)
 #' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
-#' @param dual_elgbl_cd `<chr>` Dual eligibility code ("00" - "10")
+#' @param dual `<chr>` Dual eligibility code ("00" - "10")
 #' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
 #' @param crec `<chr>` Current reason for entitlement code ("0" - "3")
 #' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
-#' @param new_enrollee `<lgl>` Whether beneficiary is a **New Enrollee**
+#' @param new `<lgl>` Whether beneficiary is a **New Enrollee**
 #' @param snp `<lgl>` Whether beneficiary is in a **Special Needs Plan**
-#' @param low_income `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
-#' @param graft_months `<int>` Number of months since transplant (ESRD only)
+#' @param low `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
+#' @param months `<int>` Number of months since transplant (ESRD only)
 #' @returns <Demographics> object containing the following derived fields:
 #'    - category: Age-sex category code
 #'    - non_aged: `TRUE` if `age <= 64`
@@ -116,10 +116,10 @@ Demographics <- function(
   crec = character(),
   version = character(),
   snp = logical(),
-  dual_elgbl_cd = character(),
-  new_enrollee = logical(),
-  graft_months = integer(),
-  low_income = logical()
+  dual = character(),
+  new = logical(),
+  months = integer(),
+  low = logical()
 ) {
   structure(
     list(
@@ -129,17 +129,17 @@ Demographics <- function(
       non_aged = logical(),
       orig_disabled = logical(),
       disabled = logical(),
-      dual_elgbl_cd = dual_elgbl_cd,
+      dual = dual,
       orec = orec,
       crec = crec,
-      new_enrollee = new_enrollee,
+      new = new,
       snp = snp,
       fbd = logical(),
       pbd = logical(),
       esrd = logical(),
       lti = logical(),
-      graft_months = graft_months,
-      low_income = low_income
+      months = months,
+      low = low
     ),
     class = "demographics"
   )
