@@ -6,20 +6,32 @@ Response model for demographic categorization
 
 ``` r
 Demographics(
+  version = character(),
   age = integer(),
   sex = character(),
+  non_aged = logical(),
+  orig_disabled = logical(),
+  disabled = logical(),
+  dual = character(),
   orec = character(),
   crec = character(),
-  version = character(),
-  snp = logical(),
-  dual = character(),
   new = logical(),
+  snp = logical(),
+  fbd = logical(),
+  pbd = logical(),
+  esrd = logical(),
+  lti = logical(),
   months = integer(),
-  low = logical()
+  low = logical(),
+  category = character()
 )
 ```
 
 ## Arguments
+
+- version:
+
+  `<chr>` Version of categorization to use ("V2", "V4", "V6")
 
 - age:
 
@@ -29,6 +41,23 @@ Demographics(
 
   `<chr>` Beneficiary sex (M/F or 1/2)
 
+- non_aged:
+
+  `<lgl>` `TRUE` if `age <= 64`
+
+- orig_disabled:
+
+  `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not
+  currently disabled
+
+- disabled:
+
+  `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
+
+- dual:
+
+  `<chr>` Dual eligibility code ("00" - "10")
+
 - orec:
 
   `<chr>` Original reason for entitlement code ("0" - "3")
@@ -37,21 +66,29 @@ Demographics(
 
   `<chr>` Current reason for entitlement code ("0" - "3")
 
-- version:
+- new:
 
-  `<chr>` Version of categorization to use ("V2", "V4", "V6")
+  `<lgl>` Whether beneficiary is a **New Enrollee**
 
 - snp:
 
   `<lgl>` Whether beneficiary is in a **Special Needs Plan**
 
-- dual:
+- fbd:
 
-  `<chr>` Dual eligibility code ("00" - "10")
+  `<lgl>` `TRUE` if FBD (FBD Model)
 
-- new:
+- pbd:
 
-  `<lgl>` Whether beneficiary is a **New Enrollee**
+  `<lgl>` `TRUE` if PBD (PBD Model)
+
+- esrd:
+
+  `<lgl>` `TRUE` if ESRD (ESRD Model)
+
+- lti:
+
+  `<lgl>` `TRUE` if LTI (LTI Model)
 
 - months:
 
@@ -61,26 +98,13 @@ Demographics(
 
   `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
 
+- category:
+
+  `<chr>` Age-sex category code
+
 ## Value
 
-object containing the following derived fields:
-
-- category: Age-sex category code
-
-- non_aged: `TRUE` if `age <= 64`
-
-- orig_disabled: `TRUE` if originally disabled (`OREC == "1"`) and not
-  currently disabled)
-
-- disabled: `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
-
-- esrd: `TRUE` if ESRD (ESRD Model)
-
-- lti: `TRUE` if LTI (LTI Model)
-
-- fbd: `TRUE` if FBD (FBD Model)
-
-- pbd: `TRUE` if PBD (PBD Model)
+A list object containing the derived fields.
 
 ## Examples
 
@@ -104,6 +128,7 @@ Demographics(age = 48, sex = "1", version = "V2")
 #>           lti : 
 #>        months : 
 #>           low : 
+#>      category : 
 Demographics(age = 35, sex = "M", version = "V6")
 #> <Demographics>
 #>       version : V6
@@ -123,6 +148,7 @@ Demographics(age = 35, sex = "M", version = "V6")
 #>           lti : 
 #>        months : 
 #>           low : 
+#>      category : 
 Demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> <Demographics>
 #>       version : V2
@@ -142,4 +168,5 @@ Demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #>           lti : 
 #>        months : 
 #>           low : 
+#>      category : 
 ```

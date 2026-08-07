@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9011 (2026-08-07)
+
+- `Demographics` class container refactored
+
 ## hcc 0.0.0.9010 (2026-08-06)
 
 - shortened argument names

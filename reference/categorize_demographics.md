@@ -83,168 +83,63 @@ status, dual status flags, etc.
 
 ``` r
 categorize_demographics(age = 48, sex = "1", version = "V2")
-#> $version
-#> [1] "V2"
-#> 
-#> $age
-#> [1] 48
-#> 
-#> $sex
-#> [1] "1"
-#> 
-#> $non_aged
-#> [1] TRUE
-#> 
-#> $orig_disabled
-#> [1] FALSE
-#> 
-#> $disabled
-#> [1] FALSE
-#> 
-#> $dual
-#> [1] NA
-#> 
-#> $orec
-#> [1] NA
-#> 
-#> $crec
-#> [1] NA
-#> 
-#> $new
-#> [1] FALSE
-#> 
-#> $snp
-#> [1] FALSE
-#> 
-#> $fbd
-#> [1] FALSE
-#> 
-#> $pbd
-#> [1] FALSE
-#> 
-#> $esrd
-#> [1] FALSE
-#> 
-#> $lti
-#> [1] FALSE
-#> 
-#> $months
-#> NULL
-#> 
-#> $low
-#> [1] FALSE
-#> 
-#> $category
-#> [1] "M45_54"
-#> 
+#> <Demographics>
+#>       version : V2
+#>           age : 48
+#>           sex : 1
+#>      non_aged : TRUE
+#> orig_disabled : FALSE
+#>      disabled : FALSE
+#>          dual : NA
+#>          orec : NA
+#>          crec : NA
+#>           new : FALSE
+#>           snp : FALSE
+#>           fbd : FALSE
+#>           pbd : FALSE
+#>          esrd : FALSE
+#>           lti : FALSE
+#>        months : NULL
+#>           low : FALSE
+#>      category : M45_54
 categorize_demographics(age = 35, sex = "M", version = "V6")
-#> $version
-#> [1] "V6"
-#> 
-#> $age
-#> [1] 35
-#> 
-#> $sex
-#> [1] "M"
-#> 
-#> $non_aged
-#> [1] TRUE
-#> 
-#> $orig_disabled
-#> [1] FALSE
-#> 
-#> $disabled
-#> [1] FALSE
-#> 
-#> $dual
-#> [1] NA
-#> 
-#> $orec
-#> [1] NA
-#> 
-#> $crec
-#> [1] NA
-#> 
-#> $new
-#> [1] FALSE
-#> 
-#> $snp
-#> [1] FALSE
-#> 
-#> $fbd
-#> [1] FALSE
-#> 
-#> $pbd
-#> [1] FALSE
-#> 
-#> $esrd
-#> [1] FALSE
-#> 
-#> $lti
-#> [1] FALSE
-#> 
-#> $months
-#> NULL
-#> 
-#> $low
-#> [1] FALSE
-#> 
-#> $category
-#> [1] "MAGE_LAST_35_39"
-#> 
+#> <Demographics>
+#>       version : V6
+#>           age : 35
+#>           sex : M
+#>      non_aged : TRUE
+#> orig_disabled : FALSE
+#>      disabled : FALSE
+#>          dual : NA
+#>          orec : NA
+#>          crec : NA
+#>           new : FALSE
+#>           snp : FALSE
+#>           fbd : FALSE
+#>           pbd : FALSE
+#>          esrd : FALSE
+#>           lti : FALSE
+#>        months : NULL
+#>           low : FALSE
+#>      category : MAGE_LAST_35_39
 categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
-#> $version
-#> [1] "V2"
-#> 
-#> $age
-#> [1] 75
-#> 
-#> $sex
-#> [1] "2"
-#> 
-#> $non_aged
-#> [1] FALSE
-#> 
-#> $orig_disabled
-#> [1] FALSE
-#> 
-#> $disabled
-#> [1] FALSE
-#> 
-#> $dual
-#> [1] NA
-#> 
-#> $orec
-#> [1] "0"
-#> 
-#> $crec
-#> [1] NA
-#> 
-#> $new
-#> [1] FALSE
-#> 
-#> $snp
-#> [1] FALSE
-#> 
-#> $fbd
-#> [1] FALSE
-#> 
-#> $pbd
-#> [1] FALSE
-#> 
-#> $esrd
-#> [1] FALSE
-#> 
-#> $lti
-#> [1] FALSE
-#> 
-#> $months
-#> NULL
-#> 
-#> $low
-#> [1] FALSE
-#> 
-#> $category
-#> [1] "F75_79"
-#> 
+#> <Demographics>
+#>       version : V2
+#>           age : 75
+#>           sex : 2
+#>      non_aged : FALSE
+#> orig_disabled : FALSE
+#>      disabled : FALSE
+#>          dual : NA
+#>          orec : 0
+#>          crec : NA
+#>           new : FALSE
+#>           snp : FALSE
+#>           fbd : FALSE
+#>           pbd : FALSE
+#>          esrd : FALSE
+#>           lti : FALSE
+#>        months : NULL
+#>           low : FALSE
+#>      category : F75_79
 ```

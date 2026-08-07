@@ -31,6 +31,6 @@
 - [`is_partial_benefit_dual()`](https://andrewallenbruce.github.io/hcc/reference/is_partial_benefit_dual.md)
   : Check if dual eligibility code is Partial Benefit Dual
 - [`map_aid_code_to_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.md)
-  : Map California Medi-Cal aid code to dual eligibility code
+  : Map California Medi-Cal Aid Code to Dual Eligibility Code
 - [`map_medicare_status_to_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.md)
   : Map Medicare status code to dual eligibility code

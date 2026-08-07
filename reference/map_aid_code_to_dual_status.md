@@ -1,6 +1,6 @@
-# Map California Medi-Cal aid code to dual eligibility code
+# Map California Medi-Cal Aid Code to Dual Eligibility Code
 
-Map California Medi-Cal aid code to dual eligibility code
+Map California Medi-Cal Aid Code to Dual Eligibility Code
 
 ## Usage
 
