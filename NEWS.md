@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9013 (2026-08-07)
+
+* refactored several helpers
+
+
 # hcc 0.0.0.9012 (2026-08-07)
 
 * renamed `is_` function family
