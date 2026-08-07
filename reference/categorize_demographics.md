@@ -11,15 +11,15 @@ categorize_demographics(
   age,
   sex,
   version = "V2",
-  dual_elgbl_cd = NA,
+  dual = NA,
   orec = NA,
   crec = NA,
-  new_enrollee = FALSE,
+  new = FALSE,
   snp = FALSE,
-  low_income = FALSE,
+  low = FALSE,
   lti = FALSE,
-  graft_months = NULL,
-  prefix_override = NULL
+  months = NULL,
+  prefix = NULL
 )
 ```
 
@@ -27,7 +27,7 @@ categorize_demographics(
 
 - age:
 
-  `<int>` Beneficiary age (floored to `integer`)
+  `<int>` Beneficiary age
 
 - sex:
 
@@ -37,7 +37,7 @@ categorize_demographics(
 
   `<chr>` Version of categorization to use ("V2", "V4", "V6")
 
-- dual_elgbl_cd:
+- dual:
 
   `<chr>` Dual eligibility code ("00" - "10")
 
@@ -49,7 +49,7 @@ categorize_demographics(
 
   `<chr>` Current reason for entitlement code ("0" - "3")
 
-- new_enrollee:
+- new:
 
   `<lgl>` Beneficiary is a **New Enrollee**
 
@@ -57,7 +57,7 @@ categorize_demographics(
 
   `<lgl>` Beneficiary is in a **Special Needs Plan**
 
-- low_income:
+- low:
 
   `<lgl>` Beneficiary is **Low Income** (RxHCC only)
 
@@ -65,11 +65,11 @@ categorize_demographics(
 
   `<lgl>` Beneficiary is Long-Term Institutionalized
 
-- graft_months:
+- months:
 
   `<int>` Number of months since transplant (ESRD only)
 
-- prefix_override:
+- prefix:
 
   `<chr>` Optional prefix to override demographic detection (e.g.,
   "DI\_", "DNE\_", "INS\_", "CFA\_", etc.)
@@ -83,63 +83,168 @@ status, dual status flags, etc.
 
 ``` r
 categorize_demographics(age = 48, sex = "1", version = "V2")
-#> <Demographics>
-#>       version : V2
-#>           age : 48
-#>           sex : 1
-#>      non_aged : TRUE
-#> orig_disabled : FALSE
-#>      disabled : FALSE
-#> dual_elgbl_cd : NA
-#>          orec : NA
-#>          crec : NA
-#>  new_enrollee : FALSE
-#>           snp : FALSE
-#>           fbd : FALSE
-#>           pbd : FALSE
-#>          esrd : FALSE
-#>           lti : FALSE
-#>  graft_months : NULL
-#>    low_income : FALSE
-#>      category : M45_54
+#> $version
+#> [1] "V2"
+#> 
+#> $age
+#> [1] 48
+#> 
+#> $sex
+#> [1] "1"
+#> 
+#> $non_aged
+#> [1] TRUE
+#> 
+#> $orig_disabled
+#> [1] FALSE
+#> 
+#> $disabled
+#> [1] FALSE
+#> 
+#> $dual
+#> [1] NA
+#> 
+#> $orec
+#> [1] NA
+#> 
+#> $crec
+#> [1] NA
+#> 
+#> $new
+#> [1] FALSE
+#> 
+#> $snp
+#> [1] FALSE
+#> 
+#> $fbd
+#> [1] FALSE
+#> 
+#> $pbd
+#> [1] FALSE
+#> 
+#> $esrd
+#> [1] FALSE
+#> 
+#> $lti
+#> [1] FALSE
+#> 
+#> $months
+#> NULL
+#> 
+#> $low
+#> [1] FALSE
+#> 
+#> $category
+#> [1] "M45_54"
+#> 
 categorize_demographics(age = 35, sex = "M", version = "V6")
-#> <Demographics>
-#>       version : V6
-#>           age : 35
-#>           sex : M
-#>      non_aged : TRUE
-#> orig_disabled : FALSE
-#>      disabled : FALSE
-#> dual_elgbl_cd : NA
-#>          orec : NA
-#>          crec : NA
-#>  new_enrollee : FALSE
-#>           snp : FALSE
-#>           fbd : FALSE
-#>           pbd : FALSE
-#>          esrd : FALSE
-#>           lti : FALSE
-#>  graft_months : NULL
-#>    low_income : FALSE
-#>      category : MAGE_LAST_35_39
+#> $version
+#> [1] "V6"
+#> 
+#> $age
+#> [1] 35
+#> 
+#> $sex
+#> [1] "M"
+#> 
+#> $non_aged
+#> [1] TRUE
+#> 
+#> $orig_disabled
+#> [1] FALSE
+#> 
+#> $disabled
+#> [1] FALSE
+#> 
+#> $dual
+#> [1] NA
+#> 
+#> $orec
+#> [1] NA
+#> 
+#> $crec
+#> [1] NA
+#> 
+#> $new
+#> [1] FALSE
+#> 
+#> $snp
+#> [1] FALSE
+#> 
+#> $fbd
+#> [1] FALSE
+#> 
+#> $pbd
+#> [1] FALSE
+#> 
+#> $esrd
+#> [1] FALSE
+#> 
+#> $lti
+#> [1] FALSE
+#> 
+#> $months
+#> NULL
+#> 
+#> $low
+#> [1] FALSE
+#> 
+#> $category
+#> [1] "MAGE_LAST_35_39"
+#> 
 categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
-#> <Demographics>
-#>       version : V2
-#>           age : 75
-#>           sex : 2
-#>      non_aged : FALSE
-#> orig_disabled : FALSE
-#>      disabled : FALSE
-#> dual_elgbl_cd : NA
-#>          orec : 0
-#>          crec : NA
-#>  new_enrollee : FALSE
-#>           snp : FALSE
-#>           fbd : FALSE
-#>           pbd : FALSE
-#>          esrd : FALSE
-#>           lti : FALSE
-#>  graft_months : NULL
-#>    low_income : FALSE
-#>      category : F75_79
+#> $version
+#> [1] "V2"
+#> 
+#> $age
+#> [1] 75
+#> 
+#> $sex
+#> [1] "2"
+#> 
+#> $non_aged
+#> [1] FALSE
+#> 
+#> $orig_disabled
+#> [1] FALSE
+#> 
+#> $disabled
+#> [1] FALSE
+#> 
+#> $dual
+#> [1] NA
+#> 
+#> $orec
+#> [1] "0"
+#> 
+#> $crec
+#> [1] NA
+#> 
+#> $new
+#> [1] FALSE
+#> 
+#> $snp
+#> [1] FALSE
+#> 
+#> $fbd
+#> [1] FALSE
+#> 
+#> $pbd
+#> [1] FALSE
+#> 
+#> $esrd
+#> [1] FALSE
+#> 
+#> $lti
+#> [1] FALSE
+#> 
+#> $months
+#> NULL
+#> 
+#> $low
+#> [1] FALSE
+#> 
+#> $category
+#> [1] "F75_79"
+#> 
 ```

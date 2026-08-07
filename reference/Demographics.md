@@ -12,10 +12,10 @@ Demographics(
   crec = character(),
   version = character(),
   snp = logical(),
-  dual_elgbl_cd = character(),
-  new_enrollee = logical(),
-  graft_months = integer(),
-  low_income = logical()
+  dual = character(),
+  new = logical(),
+  months = integer(),
+  low = logical()
 )
 ```
 
@@ -45,19 +45,19 @@ Demographics(
 
   `<lgl>` Whether beneficiary is in a **Special Needs Plan**
 
-- dual_elgbl_cd:
+- dual:
 
   `<chr>` Dual eligibility code ("00" - "10")
 
-- new_enrollee:
+- new:
 
   `<lgl>` Whether beneficiary is a **New Enrollee**
 
-- graft_months:
+- months:
 
   `<int>` Number of months since transplant (ESRD only)
 
-- low_income:
+- low:
 
   `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
 
@@ -93,17 +93,17 @@ Demographics(age = 48, sex = "1", version = "V2")
 #>      non_aged : 
 #> orig_disabled : 
 #>      disabled : 
-#> dual_elgbl_cd : 
+#>          dual : 
 #>          orec : 
 #>          crec : 
-#>  new_enrollee : 
+#>           new : 
 #>           snp : 
 #>           fbd : 
 #>           pbd : 
 #>          esrd : 
 #>           lti : 
-#>  graft_months : 
-#>    low_income : 
+#>        months : 
+#>           low : 
 Demographics(age = 35, sex = "M", version = "V6")
 #> <Demographics>
 #>       version : V6
@@ -112,17 +112,17 @@ Demographics(age = 35, sex = "M", version = "V6")
 #>      non_aged : 
 #> orig_disabled : 
 #>      disabled : 
-#> dual_elgbl_cd : 
+#>          dual : 
 #>          orec : 
 #>          crec : 
-#>  new_enrollee : 
+#>           new : 
 #>           snp : 
 #>           fbd : 
 #>           pbd : 
 #>          esrd : 
 #>           lti : 
-#>  graft_months : 
-#>    low_income : 
+#>        months : 
+#>           low : 
 Demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #> <Demographics>
 #>       version : V2
@@ -131,15 +131,15 @@ Demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #>      non_aged : 
 #> orig_disabled : 
 #>      disabled : 
-#> dual_elgbl_cd : 
+#>          dual : 
 #>          orec : 0
 #>          crec : 
-#>  new_enrollee : 
+#>           new : 
 #>           snp : 
 #>           fbd : 
 #>           pbd : 
 #>          esrd : 
 #>           lti : 
-#>  graft_months : 
-#>    low_income : 
+#>        months : 
+#>           low : 
 ```

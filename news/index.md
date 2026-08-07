@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9010 (2026-08-06)
+
+- shortened argument names
+
 ## hcc 0.0.0.9009 (2026-08-06)
 
 - `create_demographic_interactions()`
