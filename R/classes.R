@@ -94,52 +94,61 @@ ServiceLevelData <- function(
 #' @param new `<lgl>` Whether beneficiary is a **New Enrollee**
 #' @param snp `<lgl>` Whether beneficiary is in a **Special Needs Plan**
 #' @param low `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
+#' @param disabled `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
+#' @param orig_disabled `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled
+#' @param non_aged `<lgl>` `TRUE` if `age <= 64`
+#' @param esrd `<lgl>` `TRUE` if ESRD (ESRD Model)
+#' @param lti `<lgl>` `TRUE` if LTI (LTI Model)
+#' @param fbd `<lgl>` `TRUE` if FBD (FBD Model)
+#' @param pbd `<lgl>` `TRUE` if PBD (PBD Model)
 #' @param months `<int>` Number of months since transplant (ESRD only)
-#' @returns <Demographics> object containing the following derived fields:
-#'    - category: Age-sex category code
-#'    - non_aged: `TRUE` if `age <= 64`
-#'    - orig_disabled: `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled)
-#'    - disabled: `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
-#'    - esrd: `TRUE` if ESRD (ESRD Model)
-#'    - lti: `TRUE` if LTI (LTI Model)
-#'    - fbd: `TRUE` if FBD (FBD Model)
-#'    - pbd: `TRUE` if PBD (PBD Model)
+#' @param category `<chr>` Age-sex category code
+#' @returns A <Demographics> list object containing the derived fields.
 #' @examples
 #' Demographics(age = 48, sex = "1", version = "V2")
 #' Demographics(age = 35, sex = "M", version = "V6")
 #' Demographics(age = 75, sex = "2", orec = "0", version = "V2")
 #' @export
 Demographics <- function(
+  version = character(),
   age = integer(),
   sex = character(),
+  non_aged = logical(),
+  orig_disabled = logical(),
+  disabled = logical(),
+  dual = character(),
   orec = character(),
   crec = character(),
-  version = character(),
-  snp = logical(),
-  dual = character(),
   new = logical(),
+  snp = logical(),
+  fbd = logical(),
+  pbd = logical(),
+  esrd = logical(),
+  lti = logical(),
   months = integer(),
-  low = logical()
+  low = logical(),
+  category = character()
 ) {
   structure(
     list(
       version = version,
       age = age,
       sex = sex,
-      non_aged = logical(),
-      orig_disabled = logical(),
-      disabled = logical(),
+      non_aged = non_aged,
+      orig_disabled = orig_disabled,
+      disabled = disabled,
       dual = dual,
       orec = orec,
       crec = crec,
       new = new,
       snp = snp,
-      fbd = logical(),
-      pbd = logical(),
-      esrd = logical(),
-      lti = logical(),
+      fbd = fbd,
+      pbd = pbd,
+      esrd = esrd,
+      lti = lti,
       months = months,
-      low = low
+      low = low,
+      category = category
     ),
     class = "demographics"
   )

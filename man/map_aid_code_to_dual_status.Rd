@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{map_aid_code_to_dual_status}
 \alias{map_aid_code_to_dual_status}
-\title{Map California Medi-Cal aid code to dual eligibility code}
+\title{Map California Medi-Cal Aid Code to Dual Eligibility Code}
 \usage{
 map_aid_code_to_dual_status(aid_code)
 }
@@ -13,7 +13,7 @@ map_aid_code_to_dual_status(aid_code)
 Dual eligibility code ('01'-'08') or '00' if not found
 }
 \description{
-Map California Medi-Cal aid code to dual eligibility code
+Map California Medi-Cal Aid Code to Dual Eligibility Code
 }
 \examples{
 map_aid_code_to_dual_status(c("4N", "5B"))

@@ -106,7 +106,7 @@ map_medicare_status_to_dual_code <- function(status) {
   return(x)
 }
 
-#' Map California Medi-Cal aid code to dual eligibility code
+#' Map California Medi-Cal Aid Code to Dual Eligibility Code
 #'
 #' @param aid_code California aid code (e.g., '4N', '5B')
 #' @returns Dual eligibility code ('01'-'08') or '00' if not found

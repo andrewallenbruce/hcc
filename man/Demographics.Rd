@@ -5,51 +5,65 @@
 \title{Response model for demographic categorization}
 \usage{
 Demographics(
+  version = character(),
   age = integer(),
   sex = character(),
+  non_aged = logical(),
+  orig_disabled = logical(),
+  disabled = logical(),
+  dual = character(),
   orec = character(),
   crec = character(),
-  version = character(),
-  snp = logical(),
-  dual = character(),
   new = logical(),
+  snp = logical(),
+  fbd = logical(),
+  pbd = logical(),
+  esrd = logical(),
+  lti = logical(),
   months = integer(),
-  low = logical()
+  low = logical(),
+  category = character()
 )
 }
 \arguments{
+\item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
+
 \item{age}{\verb{<int>} Beneficiary age (floored to \code{integer})}
 
 \item{sex}{\verb{<chr>} Beneficiary sex (M/F or 1/2)}
+
+\item{non_aged}{\verb{<lgl>} \code{TRUE} if \code{age <= 64}}
+
+\item{orig_disabled}{\verb{<lgl>} \code{TRUE} if originally disabled (\code{OREC == "1"}) and not currently disabled}
+
+\item{disabled}{\verb{<lgl>} \code{TRUE} if currently disabled (\code{age < 65 & OREC != "0"})}
+
+\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
 
 \item{orec}{\verb{<chr>} Original reason for entitlement code ("0" - "3")}
 
 \item{crec}{\verb{<chr>} Current reason for entitlement code ("0" - "3")}
 
-\item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
+\item{new}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
 
 \item{snp}{\verb{<lgl>} Whether beneficiary is in a \strong{Special Needs Plan}}
 
-\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
+\item{fbd}{\verb{<lgl>} \code{TRUE} if FBD (FBD Model)}
 
-\item{new}{\verb{<lgl>} Whether beneficiary is a \strong{New Enrollee}}
+\item{pbd}{\verb{<lgl>} \code{TRUE} if PBD (PBD Model)}
+
+\item{esrd}{\verb{<lgl>} \code{TRUE} if ESRD (ESRD Model)}
+
+\item{lti}{\verb{<lgl>} \code{TRUE} if LTI (LTI Model)}
 
 \item{months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
 \item{low}{\verb{<lgl>} Whether beneficiary is \strong{Low Income} (RxHCC only)}
+
+\item{category}{\verb{<chr>} Age-sex category code}
 }
 \value{
-\if{html}{\out{<Demographics>}} object containing the following derived fields:
-\itemize{
-\item category: Age-sex category code
-\item non_aged: \code{TRUE} if \code{age <= 64}
-\item orig_disabled: \code{TRUE} if originally disabled (\code{OREC == "1"}) and not currently disabled)
-\item disabled: \code{TRUE} if currently disabled (\code{age < 65 & OREC != "0"})
-\item esrd: \code{TRUE} if ESRD (ESRD Model)
-\item lti: \code{TRUE} if LTI (LTI Model)
-\item fbd: \code{TRUE} if FBD (FBD Model)
-\item pbd: \code{TRUE} if PBD (PBD Model)
-}
+A \if{html}{\out{<Demographics>}} list object containing the derived fields.
 }
 \description{
 Response model for demographic categorization

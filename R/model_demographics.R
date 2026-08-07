@@ -57,17 +57,16 @@ categorize_demographics <- function(
 
   # Override demographics based on prefix_override
   if (!is.null(prefix)) {
-    # Set `esrd` flag
     if (prefix %in_% ESRD_PREFIXES) {
-      esrd <- TRUE
+      esrd = TRUE
     }
-    # Set `new_enrollee` flag
+
     if (prefix %in_% NEW_ENROLLEE_PREFIXES) {
-      new <- TRUE
+      new = TRUE
     } else if (prefix %in_% c(COMMUNITY_PREFIXES, INSTITUTIONAL_PREFIXES)) {
-      new <- FALSE
+      new = FALSE
     }
-    # Set dual eligibility flags
+
     if (prefix %in_% FULL_BENEFIT_DUAL_PREFIXES) {
       .c(is_fbd, is_pbd) %=% c(TRUE, FALSE)
     } else if (prefix %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
@@ -75,46 +74,40 @@ categorize_demographics <- function(
     } else if (prefix %in_% NON_DUAL_PREFIXES) {
       .c(is_fbd, is_pbd) %=% c(FALSE, FALSE)
     }
-    # Set lti flag based on prefix
+
     if (prefix %in_% INSTITUTIONAL_PREFIXES) {
-      lti <- TRUE
+      lti = TRUE
     }
   }
 
-  result = structure(
-    list(
-      version = version,
-      age = age,
-      sex = sex,
-      non_aged = non_aged,
-      orig_disabled = orig_disabled,
-      disabled = disabled,
-      dual = dual,
-      orec = orec,
-      crec = crec,
-      new = new,
-      snp = snp,
-      fbd = is_fbd,
-      pbd = is_pbd,
-      esrd = esrd,
-      lti = lti,
-      months = months,
-      low = low
-    ),
-    class = "demographics"
+  d = Demographics(
+    version = version,
+    age = age,
+    sex = sex,
+    non_aged = non_aged,
+    orig_disabled = orig_disabled,
+    disabled = disabled,
+    dual = dual,
+    orec = orec,
+    crec = crec,
+    new = new,
+    snp = snp,
+    fbd = is_fbd,
+    pbd = is_pbd,
+    esrd = esrd,
+    lti = lti,
+    months = months,
+    low = low
   )
 
   # V6 Logic (ACA Population)
   if (version == "V6") {
-    return(cheapr::list_assign(
-      result,
-      list(category = age_category_V6(age, sex))
-    ))
+    category = age_category_V6(age, sex)
   }
 
   # V2/V4 Logic (Medicare Population)
   if (version %in_% c("V2", "V4")) {
-    if (is.null(orec) || identical(orec, "")) {
+    if (is.na(orec) || identical(orec, "")) {
       orec <- "0"
     }
 
@@ -125,19 +118,13 @@ categorize_demographics <- function(
     }
 
     if (isTRUE(new) & isFALSE(esrd)) {
-      result <- cheapr::list_assign(
-        result,
-        list(category = age_category_NEW(age, orec, prefix))
-      )
+      category = age_category_NEW(age, orec, prefix)
     } else {
-      result <- cheapr::list_assign(
-        result,
-        list(category = age_category_ESRD(age, prefix))
-      )
+      category = age_category_ESRD(age, prefix)
     }
-
-    return(result)
   }
+  d$category <- category
+  return(d)
 }
 
 #' @export

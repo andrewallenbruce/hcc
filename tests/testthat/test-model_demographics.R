@@ -1,4 +1,4 @@
-test_that("basic V6 (ACA) categorization", {
+test_that("Basic V6 (ACA) categorization", {
   x = categorize_demographics(age = 35, sex = "M", version = "V6")
   expect_equal(x$category, "MAGE_LAST_35_39")
   expect_equal(x$version, "V6")
@@ -7,7 +7,7 @@ test_that("basic V6 (ACA) categorization", {
   expect_false(x$orig_disabled)
 })
 
-test_that("basic V2 (Medicare) categorization", {
+test_that("Basic V2 (Medicare) categorization", {
   x = categorize_demographics(age = 75, sex = "F", orec = "0", version = "V2")
   expect_equal(x$category, "F75_79")
   expect_equal(x$version, "V2")
@@ -16,14 +16,10 @@ test_that("basic V2 (Medicare) categorization", {
   expect_false(x$orig_disabled)
 })
 
-test_that("input validation works", {
-  # `age` must be a number
+test_that("Basic input validation works", {
   expect_error(categorize_demographics(age = "35", sex = "M", version = "V6"))
-  # `age` must be positive
   expect_error(categorize_demographics(age = -5, sex = "M", version = "V6"))
-  # `sex` must be one of "1", "2", "M", or "F"
   expect_error(categorize_demographics(age = 35, sex = "X", version = "V6"))
-  # `version` must be one of "V2", "V4", or "V6"
   expect_error(categorize_demographics(age = 35, sex = "M", version = "V3"))
 })
 
@@ -37,7 +33,7 @@ test_that("different sex formats are normalized correctly", {
   expect_equal(x$category, y$category)
 })
 
-test_that("disability and original disability flags", {
+test_that("Current and Original Disability flags are recognized", {
   # Currently disabled
   x = categorize_demographics(age = 45, sex = "M", orec = "1", version = "V2")
   expect_true(x$disabled)
@@ -48,14 +44,14 @@ test_that("disability and original disability flags", {
   expect_false(x$disabled)
   expect_true(x$orig_disabled)
 
-  # Neither disabled
+  # Not disabled
   x = categorize_demographics(age = 70, sex = "M", orec = "0", version = "V2")
   expect_false(x$disabled)
   expect_false(x$orig_disabled)
 })
 
-test_that("Edge cases for age ranges", {
-  # Test V6 boundaries
+test_that("Age Range edge cases", {
+  # V6 boundaries
   w = categorize_demographics(age = 0, sex = "M", version = "V6")
   x = categorize_demographics(age = 1, sex = "M", version = "V6")
   y = categorize_demographics(age = 60, sex = "M", version = "V6")
@@ -106,16 +102,16 @@ test_that("Dual eligibility categorization", {
   expect_false(x$pbd)
 })
 
-test_that("ESRD (End Stage Renal Disease) detection", {
-  # Test with null OREC/CREC
+test_that("ESRD is detected", {
+  # Test with na OREC/CREC
   x = categorize_demographics(age = 65, sex = "M", version = "V6")
   expect_false(x$esrd)
 
-  # Test with null CREC only
+  # Test with na CREC only
   x = categorize_demographics(age = 65, sex = "M", orec = "0")
   expect_false(x$esrd)
 
-  # Test with null OREC only
+  # Test with na OREC only
   x = categorize_demographics(age = 65, sex = "M", crec = "0", version = "V6")
   expect_false(x$esrd)
 
@@ -132,7 +128,7 @@ test_that("ESRD (End Stage Renal Disease) detection", {
   expect_false(x$esrd)
 })
 
-test_that("new enrollee and SNP flags", {
+test_that("New Enrollee and SNP flags are recognized", {
   x = categorize_demographics(
     age = 65.1,
     sex = "M",
