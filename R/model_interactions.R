@@ -18,7 +18,7 @@ create_demographic_interactions <- function(d) {
   months = d$months
 
   # Medicaid indicator (any dual status)
-  mcaid = is_any_dual_status(d$dual)
+  mcaid = is_dual_any(d$dual)
 
   # Original Disability interactions
   # (V22, V24, V28, ESRD V21, V24)
@@ -92,7 +92,7 @@ create_demographic_interactions <- function(d) {
   # V24, V28, ESRD V21, ESRD V24
   nemcaid = FALSE
 
-  if (isTRUE(d$new) & is_dual_code(d$dual)) {
+  if (isTRUE(d$new) & is_dual_valid(d$dual)) {
     nemcaid = TRUE
     ne_origds = d$age >= 65 & d$orec == "1"
 

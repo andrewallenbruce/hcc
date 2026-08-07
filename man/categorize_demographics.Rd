@@ -8,9 +8,9 @@ categorize_demographics(
   age,
   sex,
   version = "V2",
-  dual = NA,
   orec = NA,
   crec = NA,
+  dual = NA,
   new = FALSE,
   snp = FALSE,
   low = FALSE,
@@ -26,11 +26,11 @@ categorize_demographics(
 
 \item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
 
-\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
-
 \item{orec}{\verb{<chr>} Original reason for entitlement code ("0" - "3")}
 
 \item{crec}{\verb{<chr>} Current reason for entitlement code ("0" - "3")}
+
+\item{dual}{\verb{<chr>} Dual eligibility code ("00" - "10")}
 
 \item{new}{\verb{<lgl>} Beneficiary is a \strong{New Enrollee}}
 
@@ -46,7 +46,7 @@ categorize_demographics(
 detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)}
 }
 \value{
-\if{html}{\out{<Demographics>}} object containing derived fields like age/sex
+A \if{html}{\out{<Demographics>}} object containing derived fields like age/sex
 category, disability status, dual status flags, etc.
 }
 \description{
@@ -54,7 +54,7 @@ This function takes demographic information about a beneficiary and returns a
 Demographics object containing derived fields used in risk adjustment models.
 }
 \examples{
-categorize_demographics(age = 48, sex = "1", version = "V2")
-categorize_demographics(age = 35, sex = "M", version = "V6")
-categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
+categorize_demographics(48, "1", "V2")
+categorize_demographics(35, "M", "V6")
+categorize_demographics(75, "2", "V2", "0")
 }

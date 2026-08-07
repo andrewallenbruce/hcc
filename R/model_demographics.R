@@ -6,9 +6,9 @@
 #' @param age `<int>` Beneficiary age
 #' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
 #' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
-#' @param dual `<chr>` Dual eligibility code ("00" - "10")
 #' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
 #' @param crec `<chr>` Current reason for entitlement code ("0" - "3")
+#' @param dual `<chr>` Dual eligibility code ("00" - "10")
 #' @param new `<lgl>` Beneficiary is a **New Enrollee**
 #' @param snp `<lgl>` Beneficiary is in a **Special Needs Plan**
 #' @param low `<lgl>` Beneficiary is **Low Income** (RxHCC only)
@@ -16,20 +16,20 @@
 #' @param months `<int>` Number of months since transplant (ESRD only)
 #' @param prefix `<chr>` Optional prefix to override demographic
 #'   detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)
-#' @returns <Demographics> object containing derived fields like age/sex
+#' @returns A <Demographics> object containing derived fields like age/sex
 #'   category, disability status, dual status flags, etc.
 #' @examples
-#' categorize_demographics(age = 48, sex = "1", version = "V2")
-#' categorize_demographics(age = 35, sex = "M", version = "V6")
-#' categorize_demographics(age = 75, sex = "2", orec = "0", version = "V2")
+#' categorize_demographics(48, "1", "V2")
+#' categorize_demographics(35, "M", "V6")
+#' categorize_demographics(75, "2", "V2", "0")
 #' @export
 categorize_demographics <- function(
   age,
   sex,
   version = "V2",
-  dual = NA,
   orec = NA,
   crec = NA,
+  dual = NA,
   new = FALSE,
   snp = FALSE,
   low = FALSE,
@@ -49,13 +49,13 @@ categorize_demographics <- function(
   disabled <- non_aged & (!is.na(orec) & !identical(orec, "0"))
   orig_disabled <- identical(orec, "1") & !disabled
 
-  is_fbd <- is_full_benefit_dual(dual)
-  is_pbd <- is_partial_benefit_dual(dual)
+  is_fbd <- is_dual_full(dual)
+  is_pbd <- is_dual_partial(dual)
 
   # ESRD detection (2 = ESRD, 3 = DIB+ESRD)
   esrd <- collapse::anyv(c(orec, crec) %in_% c("2", "3"), TRUE)
 
-  # Override demographics based on prefix_override
+  # Override demographics based on prefix
   if (!is.null(prefix)) {
     if (prefix %in_% ESRD_PREFIXES) {
       esrd = TRUE

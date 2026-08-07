@@ -8,44 +8,43 @@
 # - Medicare Advantage Enrollment and Disenrollment Guidance
 # - X12 834 Implementation Guides
 
-#' @noRd
-ANY_DUAL_STATUS = c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")
-
-# DUAL ELIGIBILITY CODES
-# =============================================================================
+#' DUAL ELIGIBILITY CODES
+#'
+#' @description
 #' CMS Dual Eligibility Status Codes (Medicare + Medicaid)
+#'
+#' @details
 #' Used in coefficient prefix selection (CNA_, CFA_, CPA_, etc.)
-#' @noRd
-VALID_DUAL_CODES = c("00", "01", "02", "03", "04", "05", "06", "08")
-
-#' Non-Dual Eligible
-#' @noRd
-NON_DUAL_CODE = "00"
-
-#' Full Benefit Dual Eligible:
+#'
+#' ### Full Benefit Dual Eligible:
 #'    * Receive both Medicare and full Medicaid benefits
-#' Uses CFA_ (Community, Full Benefit Dual, Aged) or CFD_ (Disabled) prefixes
+#'    * Uses "CFA_" or "CFD_" prefixes
+#'
+#' ### Partial Benefit Dual Eligible (Medicare + limited Medicaid)
+#'    * Uses "CPA_" or "CPD_" prefixes
+#'
 #' @noRd
-FULL_BENEFIT_DUAL_CODES = c(
-  "02", # QMB Plus (Qualified Medicare Beneficiary Plus)
-  "04", # SLMB Plus (Specified Low-Income Medicare Beneficiary Plus)
-  "08" # Other Full Benefit Dual Eligible
+DUAL_CODES = list(
+  ANY = c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"),
+  VALID = c("00", "01", "02", "03", "04", "05", "06", "08"),
+  NON_DUAL = "00",
+  FULL = c("02", "04", "08"),
+  PARTIAL = c("01", "03", "05", "06"),
+  DESCRIPTION = list(
+    "02" = "QMB Plus (Qualified Medicare Beneficiary Plus)",
+    "04" = "SLMB Plus (Specified Low-Income Medicare Beneficiary Plus)",
+    "08" = "Other Full Benefit Dual Eligible",
+    "01" = "QMB Only",
+    "03" = "SLMB Only",
+    "05" = "QDWI (Qualified Disabled and Working Individual)",
+    "06" = "QI (Qualifying Individual)"
+  )
 )
 
-#' Partial Benefit Dual Eligible (Medicare + limited Medicaid)
-#' Uses CPA_ (Community, Partial Benefit Dual, Aged) or CPD_ (Disabled) prefixes
-#' @noRd
-PARTIAL_BENEFIT_DUAL_CODES = c(
-  "01", # QMB Only
-  "03", # SLMB Only
-  "05", # QDWI (Qualified Disabled and Working Individual)
-  "06" # QI (Qualifying Individual)
-)
-
-
-# OREC - Original Reason for Entitlement Code
-# =============================================================================
+#' OREC - Original Reason for Entitlement Code
+#'
 #' Determines if beneficiary has ESRD
+#'
 #' Affects coefficient prefix selection
 #' @noRd
 VALID_OREC_VALUES = c("0", "1", "2", "3")

@@ -2,25 +2,28 @@
 % Please edit documentation in R/helpers.R
 \name{in_between}
 \alias{in_between}
-\title{Check if x is between min and max (inclusive)}
+\title{Is x Between a Minimum and a Maximum?}
 \usage{
 in_between(x, min, max)
 }
 \arguments{
-\item{x}{\verb{<int>} Integer vector to check}
+\item{x}{\verb{<int>} vector of candidates}
 
 \item{min}{\verb{<int>} Minimum value (inclusive)}
 
 \item{max}{\verb{<int>} Maximum value (inclusive)}
 }
 \value{
-Logical vector indicating if each element of x is between min and max
+\verb{<lgl>} vector indicating membership
 }
 \description{
-Check if x is between min and max (inclusive)
+Is x Between a Minimum and a Maximum?
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 in_between(5L, 10L, 15L)
 in_between(1L, 2L, 3L)
 in_between(0L, 5L, 10L)
+in_between(0:15, 5L, 10L)
+\dontshow{\}) # examplesIf}
 }

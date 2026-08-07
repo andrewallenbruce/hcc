@@ -3,59 +3,63 @@ unlist_ <- function(x, ...) {
   unlist(x, use.names = FALSE, ...)
 }
 
-#' Check if x is between min and max (inclusive)
+#' @noRd
+normalize_status <- function(status) {
+  toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))
+}
+
+#' Is x Between a Minimum and a Maximum?
 #'
-#' @param x `<int>` Integer vector to check
+#' @param x `<int>` vector of candidates
 #' @param min `<int>` Minimum value (inclusive)
 #' @param max `<int>` Maximum value (inclusive)
-#' @returns Logical vector indicating if each element of x is between min and max
-#' @examples
+#' @returns `<lgl>` vector indicating membership
+#' @examplesIf FALSE
 #' in_between(5L, 10L, 15L)
 #' in_between(1L, 2L, 3L)
 #' in_between(0L, 5L, 10L)
+#' in_between(0:15, 5L, 10L)
 #' @export
 in_between <- function(x, min, max) {
   (x - min) * (max - x) >= 0L
 }
 
-#' Check if dual eligibility code is valid
-#' @param dual_code description
-#' @returns logical
+#' Dual Eligibility Code Checks
+#' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
+#' @returns `<lgl>` vector indicating membership
+#' @name is_dual
+NULL
+
+#' @rdname is_dual
 #' @examples
-#' is_any_dual_status(c("02", "04", "08"))
+#' is_dual_any(c("02", "04", "08"))
 #' @export
-is_any_dual_status <- function(dual_code) {
-  dual_code %in_% ANY_DUAL_STATUS
+is_dual_any <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$ANY
 }
 
-#' Check if dual eligibility code is valid
-#' @param dual_code description
-#' @returns logical
+#' @rdname is_dual
 #' @examples
-#' is_dual_code(c("02", "04", "08"))
+#' is_dual_valid(c("02", "04", "08"))
 #' @export
-is_dual_code <- function(dual_code) {
-  dual_code %in_% VALID_DUAL_CODES
+is_dual_valid <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$VALID
 }
 
-#' Check if dual eligibility code is Full Benefit Dual
-#' @param dual_code description
-#' @returns logical
+#' @rdname is_dual
 #' @examples
-#' is_full_benefit_dual(c("02", "04", "08"))
+#' is_dual_full(c("02", "04", "08"))
 #' @export
-is_full_benefit_dual <- function(dual_code) {
-  dual_code %in_% FULL_BENEFIT_DUAL_CODES
+is_dual_full <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$FULL
 }
 
-#' Check if dual eligibility code is Partial Benefit Dual
-#' @param dual_code description
-#' @returns logical
+#' @rdname is_dual
 #' @examples
-#' is_partial_benefit_dual(c("01", "03", "05", "06"))
+#' is_dual_partial(c("01", "03", "05", "06"))
 #' @export
-is_partial_benefit_dual <- function(dual_code) {
-  dual_code %in_% PARTIAL_BENEFIT_DUAL_CODES
+is_dual_partial <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$PARTIAL
 }
 
 #' Check if OREC indicates ESRD status
@@ -78,11 +82,6 @@ is_esrd_by_crec <- function(crec) {
   crec %in_% CREC_ESRD_CODES
 }
 
-#' @noRd
-normalize_status <- function(status) {
-  toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))
-}
-
 #' Map Medicare status code to dual eligibility code
 #
 #' @param status Medicare status code (e.g., 'QMB Plus', 'SLMB', 'QI')
@@ -100,9 +99,8 @@ map_medicare_status_to_dual_code <- function(status) {
   x <- unlist_(MEDICARE_STATUS_CODE_MAPPING)[i]
 
   if (anyNA(x)) {
-    collapse::setv(x, collapse::whichNA(x), NON_DUAL_CODE)
+    collapse::setv(x, collapse::whichNA(x), DUAL_CODES$NON_DUAL)
   }
-
   return(x)
 }
 
@@ -118,7 +116,7 @@ map_aid_code_to_dual_status <- function(aid_code) {
   x <- unlist_(MEDI_CAL_AID_CODES)[i]
 
   if (anyNA(x)) {
-    collapse::setv(x, collapse::whichNA(x), NON_DUAL_CODE)
+    collapse::setv(x, collapse::whichNA(x), DUAL_CODES$NON_DUAL)
   }
   return(x)
 }
