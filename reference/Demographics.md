@@ -85,9 +85,61 @@ object containing the following derived fields:
 ## Examples
 
 ``` r
-if (FALSE) {
 Demographics(age = 48, sex = "1", version = "V2")
+#> <Demographics>
+#>       version : V2
+#>           age : 48
+#>           sex : 1
+#>      non_aged : 
+#> orig_disabled : 
+#>      disabled : 
+#> dual_elgbl_cd : 
+#>          orec : 
+#>          crec : 
+#>  new_enrollee : 
+#>           snp : 
+#>           fbd : 
+#>           pbd : 
+#>          esrd : 
+#>           lti : 
+#>  graft_months : 
+#>    low_income : 
 Demographics(age = 35, sex = "M", version = "V6")
+#> <Demographics>
+#>       version : V6
+#>           age : 35
+#>           sex : M
+#>      non_aged : 
+#> orig_disabled : 
+#>      disabled : 
+#> dual_elgbl_cd : 
+#>          orec : 
+#>          crec : 
+#>  new_enrollee : 
+#>           snp : 
+#>           fbd : 
+#>           pbd : 
+#>          esrd : 
+#>           lti : 
+#>  graft_months : 
+#>    low_income : 
 Demographics(age = 75, sex = "2", orec = "0", version = "V2")
-}
+#> <Demographics>
+#>       version : V2
+#>           age : 75
+#>           sex : 2
+#>      non_aged : 
+#> orig_disabled : 
+#>      disabled : 
+#> dual_elgbl_cd : 
+#>          orec : 0
+#>          crec : 
+#>  new_enrollee : 
+#>           snp : 
+#>           fbd : 
+#>           pbd : 
+#>          esrd : 
+#>           lti : 
+#>  graft_months : 
+#>    low_income : 
 ```

@@ -33,6 +33,10 @@ pak::pak("andrewallenbruce/hcc")
   categories.
 - [`in_between()`](https://andrewallenbruce.github.io/hcc/reference/in_between.md)
   : Check if x is between min and max (inclusive)
+- [`is_any_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/is_any_dual_status.md)
+  : Check if dual eligibility code is valid
+- [`is_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/is_dual_code.md)
+  : Check if dual eligibility code is valid
 - [`is_esrd_by_crec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_crec.md)
   : Check if CREC indicates ESRD status
 - [`is_esrd_by_orec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_orec.md)
