@@ -23,10 +23,8 @@
   [`is_dual_full()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
   [`is_dual_partial()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
   : Dual Eligibility Code Checks
-- [`is_esrd_by_crec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_crec.md)
-  : Check if CREC indicates ESRD status
-- [`is_esrd_by_orec()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd_by_orec.md)
-  : Check if OREC indicates ESRD status
+- [`is_esrd()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd.md)
+  : Check if OREC/CREC indicates ESRD status
 - [`map_aid_code_to_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.md)
   : Map California Medi-Cal Aid Code to Dual Eligibility Code
 - [`map_medicare_status_to_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.md)

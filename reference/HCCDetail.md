@@ -5,7 +5,12 @@ Detailed information about an HCC category.
 ## Usage
 
 ``` r
-HCCDetail(hcc, label, is_chronic, coefficient)
+HCCDetail(
+  hcc = character(),
+  label = character(),
+  is_chronic = logical(),
+  coefficient = double()
+)
 ```
 
 ## Arguments
@@ -34,7 +39,19 @@ object
 ## Examples
 
 ``` r
-if (FALSE) {
 HCCDetail()
-}
+#> $hcc
+#> character(0)
+#> 
+#> $label
+#> character(0)
+#> 
+#> $is_chronic
+#> logical(0)
+#> 
+#> $coefficient
+#> numeric(0)
+#> 
+#> attr(,"class")
+#> [1] "hcc_detail"
 ```

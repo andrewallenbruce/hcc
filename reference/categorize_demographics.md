@@ -18,7 +18,7 @@ categorize_demographics(
   snp = FALSE,
   low = FALSE,
   lti = FALSE,
-  months = NULL,
+  months = 0L,
   prefix = NULL
 )
 ```
@@ -99,7 +99,7 @@ categorize_demographics(48, "1", "V2")
 #>           pbd : FALSE
 #>          esrd : FALSE
 #>           lti : FALSE
-#>        months : NULL
+#>        months : 0
 #>           low : FALSE
 #>      category : M45_54
 categorize_demographics(35, "M", "V6")
@@ -119,7 +119,7 @@ categorize_demographics(35, "M", "V6")
 #>           pbd : FALSE
 #>          esrd : FALSE
 #>           lti : FALSE
-#>        months : NULL
+#>        months : 0
 #>           low : FALSE
 #>      category : MAGE_LAST_35_39
 categorize_demographics(75, "2", "V2", "0")
@@ -139,7 +139,7 @@ categorize_demographics(75, "2", "V2", "0")
 #>           pbd : FALSE
 #>          esrd : FALSE
 #>           lti : FALSE
-#>        months : NULL
+#>        months : 0
 #>           low : FALSE
 #>      category : F75_79
 ```
