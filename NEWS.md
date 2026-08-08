@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9015 (2026-08-08)
+
+* `map_to_dual()` helper
+* added several internal datasets
+
+
 # hcc 0.0.0.9014 (2026-08-07)
 
 * `create_demographic_interactions()`
