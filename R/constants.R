@@ -7,6 +7,9 @@
 # - CMS Rate Announcement and Call Letter
 # - Medicare Advantage Enrollment and Disenrollment Guidance
 # - X12 834 Implementation Guides
+#
+# - aged: beneficiaries currently eligible for Medicare by age
+# - disabled: beneficiaries currently eligible for Medicare by disability
 
 #' Dual Eligibility Codes
 #'
@@ -260,4 +263,74 @@ ModelName = list(
   "RxHCC Model V08 PDP_AND_MAPD",
   "RxHCC Model V08 PDP_ONLY",
   "RxHCC Model V08 MAPD_ONLY"
+)
+
+#' @noRd
+AGES = list(
+  V6 = list(
+    RANGE = ivs::iv_pairs(
+      c(0, 1),
+      c(1, 2),
+      c(2, 5),
+      c(5, 10),
+      c(10, 15),
+      c(15, 21),
+      c(21, 25),
+      c(25, 30),
+      c(30, 35),
+      c(35, 40),
+      c(40, 45),
+      c(45, 50),
+      c(50, 55),
+      c(55, 60),
+      c(60, Inf)
+    ),
+    LABEL = c(
+      "0_0",
+      "1_1",
+      "2_4",
+      "5_9",
+      "10_14",
+      "15_20",
+      "21_24",
+      "25_29",
+      "30_34",
+      "35_39",
+      "40_44",
+      "45_49",
+      "50_54",
+      "55_59",
+      "60_GT"
+    )
+  ),
+  ESRD = list(
+    RANGE = ivs::iv_pairs(
+      c(0, 35),
+      c(35, 45),
+      c(45, 55),
+      c(55, 60),
+      c(60, 65),
+      c(65, 70),
+      c(70, 75),
+      c(75, 80),
+      c(80, 85),
+      c(85, 90),
+      c(90, 95),
+      c(95, Inf)
+    ),
+    LABEL = c(
+      "0_34",
+      "35_44",
+      "45_54",
+      "55_59",
+      "60_64",
+      "65_69",
+      "70_74",
+      "75_79",
+      "80_84",
+      "85_89",
+      "90_94",
+      "95_GT"
+    )
+  )
 )

@@ -92,3 +92,106 @@ map_to_dual <- function(code, from = c("medicare", "medicalaid")) {
   )
   unlist_(from)[collapse::fmatch(normalize_(code), names(from))]
 }
+
+#' @noRd
+standardize_sex <- function(
+  sex,
+  version,
+  error_arg = rlang::caller_arg(sex),
+  error_call = rlang::caller_env()
+) {
+  sex <- rlang::arg_match0(
+    sex,
+    c("M", "F", "1", "2"),
+    arg_nm = error_arg,
+    error_call = error_call
+  )
+
+  switch(
+    version,
+    "V2" = ,
+    "V4" = unname(
+      c(
+        "M" = "1",
+        "F" = "2",
+        "1" = "1",
+        "2" = "2"
+      )[sex]
+    ),
+    "V6" = unname(
+      c(
+        "M" = "M",
+        "F" = "F",
+        "1" = "M",
+        "2" = "F"
+      )[sex]
+    )
+  )
+}
+
+#' @noRd
+age_category_V6 <- function(age, sex) {
+  paste0(
+    sex,
+    "AGE_LAST_",
+    AGES$V6$LABEL[
+      ivs::iv_locate_between(age, AGES$V6$RANGE)$haystack
+    ]
+  )
+}
+
+#' @noRd
+age_category_ESRD <- function(age, prefix) {
+  paste0(
+    prefix,
+    AGES$ESRD$LABEL[
+      ivs::iv_locate_between(age, AGES$ESRD$RANGE)$haystack
+    ]
+  )
+}
+
+#' @noRd
+age_category_NEW <- function(age, orec, prefix) {
+  if (cheapr::is_na(orec)) {
+    orec <- "0"
+  }
+  vctrs::vec_case_when(
+    conditions = list(
+      age <= 34,
+      in_between(age, 35L, 44L),
+      in_between(age, 45L, 54L),
+      in_between(age, 55L, 59L),
+      in_between(age, 60L, 64L) | (age == 64L & !identical(orec, "0")),
+      (age == 64L & identical(orec, "0")) | age == 65L,
+      age == 66L,
+      age == 67L,
+      age == 68L,
+      age == 69L,
+      in_between(age, 70L, 74L),
+      in_between(age, 75L, 79L),
+      in_between(age, 80L, 84L),
+      in_between(age, 85L, 89L),
+      age >= 95L,
+      vctrs::vec_detect_missing(age)
+    ),
+    values = list(
+      paste0(prefix, "0_34"),
+      paste0(prefix, "35_44"),
+      paste0(prefix, "45_54"),
+      paste0(prefix, "55_59"),
+      paste0(prefix, "60_64"),
+      paste0(prefix, "65"),
+      paste0(prefix, "66"),
+      paste0(prefix, "67"),
+      paste0(prefix, "68"),
+      paste0(prefix, "69"),
+      paste0(prefix, "70_74"),
+      paste0(prefix, "75_79"),
+      paste0(prefix, "80_84"),
+      paste0(prefix, "85_89"),
+      paste0(prefix, "95_GT"),
+      NA_character_
+    ),
+    default = NA_character_
+  )
+}
