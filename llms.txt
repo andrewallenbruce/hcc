@@ -20,7 +20,7 @@ pak::pak("andrewallenbruce/hcc")
 - [`Demographics()`](https://andrewallenbruce.github.io/hcc/reference/Demographics.md)
   : Response model for demographic categorization
 - [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
-  : Detailed information about an HCC category.
+  : Detailed information about an HCC category
 - [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
   : A single HCP (Health Care Plan) coverage period from HD loop
 - [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
@@ -40,8 +40,6 @@ pak::pak("andrewallenbruce/hcc")
   : Dual Eligibility Code Checks
 - [`is_esrd()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd.md)
   : Check if OREC/CREC indicates ESRD status
-- [`map_aid_code_to_dual_status()`](https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.md)
-  : Map California Medi-Cal Aid Code to Dual Eligibility Code
-- [`map_medicare_status_to_dual_code()`](https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.md)
-  : Map Medicare status code to dual eligibility code
+- [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
+  : Map Codes to Dual Eligibility Codes
 

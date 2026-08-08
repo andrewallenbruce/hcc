@@ -19,10 +19,12 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_dual.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_esrd.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/map_aid_code_to_dual_status.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/map_medicare_status_to_dual_code.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/map_to_dual.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_coefficients.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_edits.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_to_cc.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_eligible_hcpcs.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_hierarchies.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_labels.html</loc></url>
 </urlset>
 

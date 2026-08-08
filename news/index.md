@@ -1,5 +1,11 @@
 # Changelog
 
+## hcc 0.0.0.9015 (2026-08-08)
+
+- [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
+  helper
+- added several internal datasets
+
 ## hcc 0.0.0.9014 (2026-08-07)
 
 - [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)

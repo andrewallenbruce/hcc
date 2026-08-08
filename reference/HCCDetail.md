@@ -1,6 +1,6 @@
-# Detailed information about an HCC category.
+# Detailed information about an HCC category
 
-Detailed information about an HCC category.
+Detailed information about an HCC category
 
 ## Usage
 
@@ -39,18 +39,23 @@ object
 ## Examples
 
 ``` r
-HCCDetail()
+HCCDetail(
+ hcc = "80",
+ label = "Coma, Brain Compression/Anoxic Damage",
+ is_chronic = FALSE,
+ coefficient = 0.486
+ )
 #> $hcc
-#> character(0)
+#> [1] "80"
 #> 
 #> $label
-#> character(0)
+#> [1] "Coma, Brain Compression/Anoxic Damage"
 #> 
 #> $is_chronic
-#> logical(0)
+#> [1] FALSE
 #> 
 #> $coefficient
-#> numeric(0)
+#> [1] 0.486
 #> 
 #> attr(,"class")
 #> [1] "hcc_detail"
