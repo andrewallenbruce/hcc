@@ -1,10 +1,26 @@
-#' Creates common demographic-based interactions.
+#' Create Demographic Interactions
 #'
-#' This function creates interaction variables that are model-agnostic.
-#' The coefficient lookup will match only the relevant coefficients for
-#' each model. Comments indicate which models primarily use each interaction.
+#' Creates interaction variables that are model-agnostic. The coefficient lookup
+#' will match only the relevant coefficients for each model.
 #'
-#' @noRd
+#' @param d Demographics object
+#' @returns a list of interactions
+#' @examples
+#' x = categorize_demographics(
+#'   age = 65.1,
+#'   sex = "M",
+#'   orec = "2",
+#'   dual = "2",
+#'   new = TRUE,
+#'   lti = TRUE,
+#'   months = 10
+#'  )
+#'
+#' x
+#'
+#' create_demographic_interactions(x)
+#'
+#' @export
 create_demographic_interactions <- function(d) {
   act <- list()
 
@@ -127,6 +143,7 @@ create_demographic_interactions <- function(d) {
       )
     )
   }
+  return(act)
 }
 
 # ESRD V24: FGC (Community) / FGI (Institutional) stratified by dual status

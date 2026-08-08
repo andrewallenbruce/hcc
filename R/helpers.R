@@ -19,7 +19,7 @@ normalize_status <- function(status) {
 #' in_between(1L, 2L, 3L)
 #' in_between(0L, 5L, 10L)
 #' in_between(0:15, 5L, 10L)
-#' @export
+#' @noRd
 in_between <- function(x, min, max) {
   (x - min) * (max - x) >= 0L
 }
