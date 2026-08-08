@@ -31,8 +31,8 @@ pak::pak("andrewallenbruce/hcc")
 - [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
-- [`in_between()`](https://andrewallenbruce.github.io/hcc/reference/in_between.md)
-  : Is x Between a Minimum and a Maximum?
+- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
+  : Create Demographic Interactions
 - [`is_dual_any()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
   [`is_dual_valid()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
   [`is_dual_full()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)

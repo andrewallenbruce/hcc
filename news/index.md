@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9014 (2026-08-07)
+
+- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
+
 ## hcc 0.0.0.9013 (2026-08-07)
 
 - refactored several helpers
@@ -19,7 +23,7 @@
 
 ## hcc 0.0.0.9009 (2026-08-06)
 
-- `create_demographic_interactions()`
+- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
 
 ## hcc 0.0.0.9008 (2026-08-06)
 
@@ -48,8 +52,7 @@
 ## hcc 0.0.0.9003 (2026-08-05)
 
 - [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
-- [`in_between()`](https://andrewallenbruce.github.io/hcc/reference/in_between.md)
-  helper
+- `in_between()` helper
 
 ## hcc 0.0.0.9002 (2026-08-05)
 
