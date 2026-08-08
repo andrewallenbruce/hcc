@@ -4,8 +4,8 @@ unlist_ <- function(x, ...) {
 }
 
 #' @noRd
-normalize_status <- function(status) {
-  toupper(gsub("-", "", gsub(" ", "", status, fixed = TRUE), fixed = TRUE))
+normalize_ <- function(x) {
+  toupper(gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE))
 }
 
 #' Is x Between a Minimum and a Maximum?
@@ -72,41 +72,23 @@ is_esrd <- function(rec_code) {
   rec_code %in_% REC_CODES$ESRD
 }
 
-#' Map Medicare status code to dual eligibility code
-#
-#' @param status Medicare status code (e.g., 'QMB Plus', 'SLMB', 'QI')
-#' @returns Dual eligibility code ('01'-'08') or '00' if not found
-#' @examples
-#' x <- c("QQQ", "QMB", "QMBONLY", "SLMBPLUS", "SLMB+", "QDWI", "QI", "QI1")
-#' map_medicare_status_to_dual_code(x)
-#' @export
-map_medicare_status_to_dual_code <- function(status) {
-  i <- collapse::fmatch(
-    normalize_status(status),
-    names(MEDICARE_STATUS_CODE_MAPPING)
-  )
-
-  x <- unlist_(MEDICARE_STATUS_CODE_MAPPING)[i]
-
-  if (anyNA(x)) {
-    collapse::setv(x, collapse::whichNA(x), DUAL_CODES$NON_DUAL)
-  }
-  return(x)
-}
-
-#' Map California Medi-Cal Aid Code to Dual Eligibility Code
+#' Map Codes to Dual Eligibility Codes
 #'
-#' @param aid_code California aid code (e.g., '4N', '5B')
-#' @returns Dual eligibility code ('01'-'08') or '00' if not found
+#' @description
+#' Map California Medi-Cal aid codes or Medicare status codes to CMS Dual Eligibility codes
+#'
+#' @param code `<chr>` Medi-Cal aid code or Medicare status code
+#' @param from `<chr>` Type of code; "medicare" or "medicalaid"
+#' @returns Dual eligibility code ('01'-'08') or NA if not found
 #' @examples
-#' map_aid_code_to_dual_status(c("4N", "5B"))
+#' map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"), "medicare")
+#' map_to_dual(c("4N", "5B", "40"), "medicalaid")
 #' @export
-map_aid_code_to_dual_status <- function(aid_code) {
-  i <- collapse::fmatch(aid_code, names(MEDI_CAL_AID_CODES))
-  x <- unlist_(MEDI_CAL_AID_CODES)[i]
-
-  if (anyNA(x)) {
-    collapse::setv(x, collapse::whichNA(x), DUAL_CODES$NON_DUAL)
-  }
-  return(x)
+map_to_dual <- function(code, from = c("medicare", "medicalaid")) {
+  from <- switch(
+    rlang::arg_match(from),
+    medicare = MEDICARE_STATUS_CODE_MAPPING,
+    medicalaid = MEDI_CAL_AID_CODES,
+  )
+  unlist_(from)[collapse::fmatch(normalize_(code), names(from))]
 }

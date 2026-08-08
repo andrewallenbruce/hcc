@@ -1,4 +1,4 @@
-#' Detailed information about an HCC category.
+#' Detailed information about an HCC category
 #'
 #' @param hcc HCC code (e.g., "18", "85")
 #' @param label Human-readable description (e.g., "Diabetes with Chronic Complications")
@@ -6,7 +6,12 @@
 #' @param coefficient The coefficient value applied for this HCC in the RAF calculation
 #' @returns <HCCDetail> object
 #' @examples
-#' HCCDetail()
+#' HCCDetail(
+#'  hcc = "80",
+#'  label = "Coma, Brain Compression/Anoxic Damage",
+#'  is_chronic = FALSE,
+#'  coefficient = 0.486
+#'  )
 #' @export
 HCCDetail <- function(
   hcc = character(),

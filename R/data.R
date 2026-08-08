@@ -27,6 +27,49 @@
 #' @keywords internal
 "ra_coefficients"
 
+#' Risk Adjustment Hierarchies
+#'
+#' @format ## `ra_hierarchies`
+#' A data frame with 1,220 rows and 6 columns:
+#' \describe{
+#'   \item{year}{Year of Release}
+#'   \item{cc_parent}{Model Weight Categories}
+#'   \item{cc_child}{Model Weights}
+#'   \item{model_domain}{Model Domain}
+#'   \item{model_version}{Model Version}
+#'   \item{model_fullname}{Model Version}
+#'   ...
+#' }
+#' @keywords internal
+"ra_hierarchies"
+
+#' 2026 Risk Adjustment Labels
+#'
+#' @format ## `ra_labels`
+#' A data frame with 783 rows and 5 columns:
+#' \describe{
+#'   \item{cc}{Model Weight Categories}
+#'   \item{label}{Model Weights}
+#'   \item{model_domain}{Model Domain}
+#'   \item{model_version}{Model Version}
+#'   \item{model_fullname}{Model Version}
+#'   ...
+#' }
+#' @keywords internal
+"ra_labels"
+
+#' Risk Adjustment Eligible CPT and HCPCS
+#'
+#' @format ## `ra_eligible_hcpcs`
+#' A list with 2 elements:
+#' \describe{
+#'   \item{`2026`}{Model Weight Categories}
+#'   \item{`2025`}{Model Weights}
+#'   ...
+#' }
+#' @keywords internal
+"ra_eligible_hcpcs"
+
 #' Diagnostic Edit Rules
 #'
 #' @format ## `ra_dx_edits`

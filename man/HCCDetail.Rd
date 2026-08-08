@@ -2,7 +2,7 @@
 % Please edit documentation in R/classes.R
 \name{HCCDetail}
 \alias{HCCDetail}
-\title{Detailed information about an HCC category.}
+\title{Detailed information about an HCC category}
 \usage{
 HCCDetail(
   hcc = character(),
@@ -24,8 +24,13 @@ HCCDetail(
 \if{html}{\out{<HCCDetail>}} object
 }
 \description{
-Detailed information about an HCC category.
+Detailed information about an HCC category
 }
 \examples{
-HCCDetail()
+HCCDetail(
+ hcc = "80",
+ label = "Coma, Brain Compression/Anoxic Damage",
+ is_chronic = FALSE,
+ coefficient = 0.486
+ )
 }

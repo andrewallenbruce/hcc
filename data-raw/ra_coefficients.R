@@ -9,7 +9,7 @@ class(ra_coefficients_2025) <- setdiff(
   class(ra_coefficients_2025),
   "spec_tbl_df"
 )
-ra_coefficients_2025$year <- 2025
+ra_coefficients_2025$year <- 2025L
 collapse::settfmv(ra_coefficients_2025, c("year"), as.integer)
 collapse::settfmv(ra_coefficients_2025, c("value"), as.double)
 ra_coefficients_2025 = collapse::colorderv(ra_coefficients_2025, "year")

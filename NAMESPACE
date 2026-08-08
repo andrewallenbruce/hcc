@@ -13,8 +13,7 @@ export(is_dual_full)
 export(is_dual_partial)
 export(is_dual_valid)
 export(is_esrd)
-export(map_aid_code_to_dual_status)
-export(map_medicare_status_to_dual_code)
+export(map_to_dual)
 importFrom(cheapr,
   "%!in_%",
   "%in_%"
