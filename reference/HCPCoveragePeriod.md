@@ -32,4 +32,4 @@ HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
 
 ## Value
 
-object
+A object

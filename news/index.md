@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9016 (2026-08-09)
+
+- class skeletons
+
 ## hcc 0.0.0.9015 (2026-08-08)
 
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)

@@ -84,4 +84,16 @@ create_demographic_interactions(x)
 #> $LT65_DUR10PL
 #> [1] 0
 #> 
+#> $FGC_GE65_DUR10PL_ND_PBD
+#> [1] 0
+#> 
+#> $FGC_LT65_DUR10PL_ND_PBD
+#> [1] TRUE
+#> 
+#> $FGI_GE65_DUR10PL_ND_PBD
+#> [1] 1
+#> 
+#> $FGI_LT65_DUR10PL_ND_PBD
+#> [1] FALSE
+#> 
 ```
