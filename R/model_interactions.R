@@ -101,14 +101,12 @@ create_demographic_interactions <- function(d) {
     act <- cheapr::list_assign(
       act,
       list(
-        # V24, V28, ESRD V21: MCAID/NMCAID style;
-        # looked up with NE_ or SNPNE_ prefix
+        # V24, V28, ESRD V21: MCAID/NMCAID style; looked up with NE_ or SNPNE_ prefix
         NMCAID_NORIGDIS = as.integer(!nemcaid & !ne_origds),
         MCAID_NORIGDIS = as.integer(nemcaid & !ne_origds),
         NMCAID_ORIGDIS = as.integer(!nemcaid & ne_origds),
         MCAID_ORIGDIS = as.integer(nemcaid & ne_origds),
-        # ESRD V24: FBD/ND_PBD style;
-        # looked up with DNE_ or GNE_ prefix
+        # ESRD V24: FBD/ND_PBD style; looked up with DNE_ or GNE_ prefix
         FBD_NORIGDIS = as.integer(fbd & !ne_origds),
         FBD_ORIGDIS = as.integer(fbd & ne_origds),
         ND_PBD_NORIGDIS = as.integer(!fbd & !ne_origds),
@@ -118,7 +116,7 @@ create_demographic_interactions <- function(d) {
     )
   }
 
-  # Functioning Graft Duration "transplant bumps" for ESRD models
+  # Functioning Graft Duration `transplant bumps` for ESRD models
   # All looked up WITHOUT prefix - they match directly by name
   is_dur4_9 = in_between(months, 4L, 9L)
   is_dur10pl = months >= 10L
@@ -143,40 +141,50 @@ create_demographic_interactions <- function(d) {
       )
     )
   }
+
+  # ESRD V24: FGC (Community) / FGI (Institutional) stratified by dual status
+  if (!fbd) {
+    # Non-Dual and Partial Benefit Dual (ND_PBD)
+    if (is_dur4_9) {
+      act <- cheapr::list_assign(
+        act,
+        list(
+          FGC_GE65_DUR4_9_ND_PBD = is_aged * !lti,
+          FGC_LT65_DUR4_9_ND_PBD = !is_aged * !lti,
+          FGI_GE65_DUR4_9_ND_PBD = is_aged * lti,
+          FGI_LT65_DUR4_9_ND_PBD = !is_aged * lti
+        )
+      )
+    }
+    if (is_dur10pl) {
+      act <- cheapr::list_assign(
+        act,
+        list(
+          FGC_GE65_DUR10PL_ND_PBD = is_aged * !lti,
+          FGC_LT65_DUR10PL_ND_PBD = !is_aged * !lti,
+          FGI_GE65_DUR10PL_ND_PBD = is_aged * lti,
+          FGI_LT65_DUR10PL_ND_PBD = !is_aged * lti
+        )
+      )
+    }
+  }
+
+  # Extra PBD flag for Partial Benefit Dual members
+  if (pbd) {
+    act <- cheapr::list_assign(
+      act,
+      list(
+        FGC_PBD_GE65_flag = is_aged * !lti,
+        FGC_PBD_LT65_flag = !is_aged * !lti,
+        FGI_PBD_GE65_flag = is_aged * lti,
+        FGI_PBD_LT65_flag = !is_aged * lti
+      )
+    )
+  }
+
   return(act)
 }
 
-# ESRD V24: FGC (Community) / FGI (Institutional) stratified by dual status
-# if (isFALSE(fbd)) {
-#     # Non-Dual and Partial Benefit Dual (ND_PBD)
-#     if isTRUE(is_dur4_9) {
-#       act <- cheapr::list_assign(
-#         act,
-#         list(
-#           FGC_GE65_DUR4_9_ND_PBD = is_aged * !lti,
-#           FGC_LT65_DUR4_9_ND_PBD = !is_aged * !lti,
-#           FGI_GE65_DUR4_9_ND_PBD = is_aged * lti,
-#           FGI_LT65_DUR4_9_ND_PBD = !is_aged * lti
-#         )
-#       )
-#     }
-#   }
-
-# if is_dur10pl:
-#   interactions.update({
-#     'FGC_GE65_DUR10PL_ND_PBD': as.integer(is_aged) * as.integer(not lti),
-#     'FGC_LT65_DUR10PL_ND_PBD': as.integer(not is_aged) * as.integer(not lti),
-#     'FGI_GE65_DUR10PL_ND_PBD': as.integer(is_aged) * lti,
-#     'FGI_LT65_DUR10PL_ND_PBD': as.integer(not is_aged) * lti,
-#   })
-# # Extra PBD flag for Partial Benefit Dual members
-# if pbd:
-#   interactions.update({
-#     'FGC_PBD_GE65_flag': as.integer(is_aged) * as.integer(not lti),
-#     'FGC_PBD_LT65_flag': as.integer(not is_aged) * as.integer(not lti),
-#     'FGI_PBD_GE65_flag': as.integer(is_aged) * lti,
-#     'FGI_PBD_LT65_flag': as.integer(not is_aged) * lti,
-#   })
 # else:
 #   # Full Benefit Dual (FBD)
 #   if is_dur4_9:

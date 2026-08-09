@@ -2,8 +2,11 @@
 
 S3method(print,demographics)
 export(Demographics)
+export(EnrollmentData)
 export(HCCDetail)
 export(HCPCoveragePeriod)
+export(PaymentData)
+export(PaymentDetail)
 export(RAFResult)
 export(ServiceLevelData)
 export(categorize_demographics)

@@ -18,7 +18,7 @@ HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
 \item{aid_codes}{REF*CE composite}
 }
 \value{
-\if{html}{\out{<HCPCoveragePeriod>}} object
+A \if{html}{\out{<HCPCoveragePeriod>}} object
 }
 \description{
 A single HCP (Health Care Plan) coverage period from HD loop
