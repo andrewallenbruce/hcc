@@ -44,7 +44,7 @@ HCCDetail(
  label = "Coma, Brain Compression/Anoxic Damage",
  is_chronic = FALSE,
  coefficient = 0.486
- )
+)
 #> $hcc
 #> [1] "80"
 #> 

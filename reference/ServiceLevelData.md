@@ -7,24 +7,24 @@ claims.
 
 ``` r
 ServiceLevelData(
-  claim_id,
-  procedure_code,
-  ndc,
-  linked_diagnosis_codes,
-  claim_diagnosis_codes,
-  claim_type,
-  provider_specialty,
-  performing_provider_npi,
-  billing_provider_npi,
-  patient_id,
-  facility_type,
-  service_type,
-  service_date,
-  place_of_service,
-  quantity,
-  quantity_unit,
-  modifiers,
-  allowed_amount
+  claim_id = character(),
+  procedure_code = character(),
+  ndc = character(),
+  linked_diagnosis_codes = character(),
+  claim_diagnosis_codes = character(),
+  claim_type = character(),
+  provider_specialty = character(),
+  performing_provider_npi = character(),
+  billing_provider_npi = character(),
+  patient_id = character(),
+  facility_type = character(),
+  service_type = character(),
+  service_date = character(),
+  place_of_service = character(),
+  quantity = character(),
+  quantity_unit = character(),
+  modifiers = character(),
+  allowed_amount = character()
 )
 ```
 
@@ -109,7 +109,59 @@ object
 ## Examples
 
 ``` r
-if (FALSE) {
 ServiceLevelData()
-}
+#> $claim_id
+#> character(0)
+#> 
+#> $procedure_code
+#> character(0)
+#> 
+#> $ndc
+#> character(0)
+#> 
+#> $linked_diagnosis_codes
+#> character(0)
+#> 
+#> $claim_diagnosis_codes
+#> character(0)
+#> 
+#> $claim_type
+#> character(0)
+#> 
+#> $provider_specialty
+#> character(0)
+#> 
+#> $performing_provider_npi
+#> character(0)
+#> 
+#> $billing_provider_npi
+#> character(0)
+#> 
+#> $patient_id
+#> character(0)
+#> 
+#> $facility_type
+#> character(0)
+#> 
+#> $service_type
+#> character(0)
+#> 
+#> $service_date
+#> character(0)
+#> 
+#> $place_of_service
+#> character(0)
+#> 
+#> $quantity
+#> character(0)
+#> 
+#> $quantity_unit
+#> character(0)
+#> 
+#> $modifiers
+#> character(0)
+#> 
+#> $allowed_amount
+#> character(0)
+#> 
 ```

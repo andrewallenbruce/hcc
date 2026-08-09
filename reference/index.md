@@ -9,13 +9,15 @@
 - [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
   : Detailed information about an HCC category
 - [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
-  : A single HCP (Health Care Plan) coverage period from HD loop
+  : A single Health Care Plan coverage period from HD loop
 - [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : Remittance Data from an X12 820 Transaction
 - [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
   : Per-Member Payment Record from an X12 820 ENT Loop
 - [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
   : Risk adjustment calculation results
+- [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
+  : A single remittance line item within a member's payment record.
 - [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
   : Represents standardized service-level data extracted from healthcare
   claims.

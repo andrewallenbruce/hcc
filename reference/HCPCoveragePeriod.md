@@ -1,11 +1,17 @@
-# A single HCP (Health Care Plan) coverage period from HD loop
+# A single Health Care Plan coverage period from HD loop
 
-A single HCP (Health Care Plan) coverage period from HD loop
+A single Health Care Plan coverage period from HD loop
 
 ## Usage
 
 ``` r
-HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
+HCPCoveragePeriod(
+  start_date = character(),
+  end_date = character(),
+  hcp_code = character(),
+  hcp_status = character(),
+  aid_codes = character()
+)
 ```
 
 ## Arguments
@@ -33,3 +39,24 @@ HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
 ## Value
 
 A object
+
+## Examples
+
+``` r
+HCPCoveragePeriod()
+#> $start_date
+#> character(0)
+#> 
+#> $end_date
+#> character(0)
+#> 
+#> $hcp_code
+#> character(0)
+#> 
+#> $hcp_status
+#> character(0)
+#> 
+#> $aid_codes
+#> character(0)
+#> 
+```
