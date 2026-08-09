@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9016 (2026-08-09)
+
+* class skeletons
+
+
 # hcc 0.0.0.9015 (2026-08-08)
 
 * `map_to_dual()` helper
