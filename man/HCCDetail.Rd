@@ -5,10 +5,10 @@
 \title{Detailed information about an HCC category}
 \usage{
 HCCDetail(
-  hcc = character(),
-  label = character(),
-  is_chronic = logical(),
-  coefficient = double()
+  hcc = character(0),
+  label = character(0),
+  is_chronic = logical(0),
+  coefficient = double(0)
 )
 }
 \arguments{

@@ -78,18 +78,13 @@ is_esrd <- function(rec_code) {
 #' Map California Medi-Cal aid codes or Medicare status codes to CMS Dual Eligibility codes
 #'
 #' @param code `<chr>` Medi-Cal aid code or Medicare status code
-#' @param from `<chr>` Type of code; "medicare" or "medicalaid"
 #' @returns Dual eligibility code ('01'-'08') or NA if not found
 #' @examples
-#' map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"), "medicare")
-#' map_to_dual(c("4N", "5B", "40"), "medicalaid")
+#' map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"))
+#' map_to_dual(c("4N", "5B", "40"))
 #' @export
-map_to_dual <- function(code, from = c("medicare", "medicalaid")) {
-  from <- switch(
-    rlang::arg_match(from),
-    medicare = MEDICARE_STATUS_CODE_MAPPING,
-    medicalaid = MEDI_CAL_AID_CODES,
-  )
+map_to_dual <- function(code) {
+  from <- c(MEDICARE_STATUS_CODE_MAPPING, MEDI_CAL_AID_CODES)
   unlist_(from)[collapse::fmatch(normalize_(code), names(from))]
 }
 
@@ -102,7 +97,7 @@ standardize_sex <- function(
 ) {
   sex <- rlang::arg_match0(
     sex,
-    c("M", "F", "1", "2"),
+    SEX$VALID,
     arg_nm = error_arg,
     error_call = error_call
   )
@@ -110,22 +105,8 @@ standardize_sex <- function(
   switch(
     version,
     "V2" = ,
-    "V4" = unname(
-      c(
-        "M" = "1",
-        "F" = "2",
-        "1" = "1",
-        "2" = "2"
-      )[sex]
-    ),
-    "V6" = unname(
-      c(
-        "M" = "M",
-        "F" = "F",
-        "1" = "M",
-        "2" = "F"
-      )[sex]
-    )
+    "V4" = unname(SEX$V2[sex]),
+    "V6" = unname(SEX$V6[sex]),
   )
 }
 
@@ -141,9 +122,9 @@ age_category_V6 <- function(age, sex) {
 }
 
 #' @noRd
-age_category_ESRD <- function(age, prefix) {
+age_category_ESRD <- function(age, sex) {
   paste0(
-    prefix,
+    if (sex == "2") "F" else "M",
     AGES$ESRD$LABEL[
       ivs::iv_locate_between(age, AGES$ESRD$RANGE)$haystack
     ]
@@ -151,13 +132,13 @@ age_category_ESRD <- function(age, prefix) {
 }
 
 #' @noRd
-age_category_NEW <- function(age, orec, prefix) {
-  if (cheapr::is_na(orec)) {
-    orec <- "0"
-  }
+age_category_NEW <- function(age, sex, orec) {
+  prefix <- if (sex == "2") "NEF" else "NEM"
+  orec <- if (cheapr::is_na(orec)) "0" else orec
+
   vctrs::vec_case_when(
     conditions = list(
-      age <= 34,
+      in_between(age, 0L, 34L),
       in_between(age, 35L, 44L),
       in_between(age, 45L, 54L),
       in_between(age, 55L, 59L),

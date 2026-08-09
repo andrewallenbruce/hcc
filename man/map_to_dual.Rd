@@ -4,12 +4,10 @@
 \alias{map_to_dual}
 \title{Map Codes to Dual Eligibility Codes}
 \usage{
-map_to_dual(code, from = c("medicare", "medicalaid"))
+map_to_dual(code)
 }
 \arguments{
 \item{code}{\verb{<chr>} Medi-Cal aid code or Medicare status code}
-
-\item{from}{\verb{<chr>} Type of code; "medicare" or "medicalaid"}
 }
 \value{
 Dual eligibility code ('01'-'08') or NA if not found
@@ -18,6 +16,6 @@ Dual eligibility code ('01'-'08') or NA if not found
 Map California Medi-Cal aid codes or Medicare status codes to CMS Dual Eligibility codes
 }
 \examples{
-map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"), "medicare")
-map_to_dual(c("4N", "5B", "40"), "medicalaid")
+map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"))
+map_to_dual(c("4N", "5B", "40"))
 }

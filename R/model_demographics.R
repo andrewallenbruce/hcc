@@ -52,30 +52,30 @@ categorize_demographics <- function(
 
   # Override demographics based on prefix
   if (!is.null(prefix)) {
-    if (prefix %in_% ESRD_PREFIXES) {
+    if (prefix %in_% PREFIX$ESRD) {
       has_esrd = TRUE
     }
 
-    if (prefix %in_% NEW_ENROLLEE_PREFIXES) {
+    if (prefix %in_% PREFIX$NEW_ENROLLEE) {
       new = TRUE
-    } else if (prefix %in_% c(COMMUNITY_PREFIXES, INSTITUTIONAL_PREFIXES)) {
+    } else if (prefix %in_% c(PREFIX$COMMUNITY, PREFIX$INSTITUTIONAL)) {
       new = FALSE
     }
 
-    if (prefix %in_% FULL_BENEFIT_DUAL_PREFIXES) {
+    if (prefix %in_% PREFIX$DUAL_FULL) {
       .c(is_full, is_part) %=% c(TRUE, FALSE)
-    } else if (prefix %in_% PARTIAL_BENEFIT_DUAL_PREFIXES) {
+    } else if (prefix %in_% PREFIX$DUAL_PARTIAL) {
       .c(is_full, is_part) %=% c(FALSE, TRUE)
-    } else if (prefix %in_% NON_DUAL_PREFIXES) {
+    } else if (prefix %in_% PREFIX$DUAL_NON) {
       .c(is_full, is_part) %=% c(FALSE, FALSE)
     }
 
-    if (prefix %in_% INSTITUTIONAL_PREFIXES) {
+    if (prefix %in_% PREFIX$INSTITUTIONAL) {
       lti = TRUE
     }
   }
 
-  d = Demographics(
+  Demographics(
     version = version,
     age = age,
     sex = sex,
@@ -92,28 +92,20 @@ categorize_demographics <- function(
     esrd = has_esrd,
     lti = lti,
     months = months,
-    low = low
+    low = low,
+    category = switch(
+      version,
+      "V2" = ,
+      "V4" = {
+        if (new & !has_esrd) {
+          age_category_NEW(age, sex, orec)
+        } else {
+          age_category_ESRD(age, sex)
+        }
+      },
+      "V6" = age_category_V6(age, sex)
+    )
   )
-  d$category <- switch(
-    version,
-    "V2" = ,
-    "V4" = {
-      if (new) {
-        prefix <- if (sex == "2") "NEF" else "NEM"
-      } else {
-        prefix <- if (sex == "2") "F" else "M"
-      }
-
-      if (new & !has_esrd) {
-        age_category_NEW(age, orec, prefix)
-      } else {
-        age_category_ESRD(age, prefix)
-      }
-    },
-    "V6" = age_category_V6(age, sex)
-  )
-
-  return(d)
 }
 
 #' @export
