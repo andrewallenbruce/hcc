@@ -5,21 +5,21 @@
 \title{Risk adjustment calculation results}
 \usage{
 RAFResult(
-  risk_score,
-  risk_score_demographics,
-  risk_score_chronic_only,
-  risk_score_hcc,
-  risk_score_payment,
-  hcc_list,
-  hcc_details,
-  cc_to_dx,
-  coefficients,
-  interactions,
-  demographics,
-  model_name,
-  version,
-  diagnosis_codes,
-  service_level_data
+  risk_score = double(),
+  risk_score_demographics = double(),
+  risk_score_chronic_only = double(),
+  risk_score_hcc = double(),
+  risk_score_payment = double(),
+  hcc_list = character(),
+  hcc_details = character(),
+  cc_to_dx = character(),
+  coefficients = double(),
+  interactions = character(),
+  demographics = character(),
+  model_name = character(),
+  version = character(),
+  diagnosis_codes = character(),
+  service_level_data = character()
 )
 }
 \arguments{
@@ -60,7 +60,5 @@ RAFResult(
 Risk adjustment calculation results
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 RAFResult()
-\dontshow{\}) # examplesIf}
 }

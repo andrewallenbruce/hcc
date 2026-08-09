@@ -114,18 +114,3 @@ print.demographics <- function(x, ...) {
   cat(fmt_idx(x), sep = "\n")
   invisible(x)
 }
-
-#' @noRd
-fmt_idx <- function(x) {
-  paste(
-    format(
-      names(x),
-      justify = "right"
-    ),
-    ":",
-    format(
-      unname(x),
-      justify = "left"
-    )
-  )
-}

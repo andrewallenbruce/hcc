@@ -2,9 +2,15 @@
 % Please edit documentation in R/classes.R
 \name{HCPCoveragePeriod}
 \alias{HCPCoveragePeriod}
-\title{A single HCP (Health Care Plan) coverage period from HD loop}
+\title{A single Health Care Plan coverage period from HD loop}
 \usage{
-HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
+HCPCoveragePeriod(
+  start_date = character(),
+  end_date = character(),
+  hcp_code = character(),
+  hcp_status = character(),
+  aid_codes = character()
+)
 }
 \arguments{
 \item{start_date}{date}
@@ -21,5 +27,8 @@ HCPCoveragePeriod(start_date, end_date, hcp_code, hcp_status, aid_codes)
 A \if{html}{\out{<HCPCoveragePeriod>}} object
 }
 \description{
-A single HCP (Health Care Plan) coverage period from HD loop
+A single Health Care Plan coverage period from HD loop
+}
+\examples{
+HCPCoveragePeriod()
 }

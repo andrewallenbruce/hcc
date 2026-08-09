@@ -5,24 +5,24 @@
 \title{Represents standardized service-level data extracted from healthcare claims.}
 \usage{
 ServiceLevelData(
-  claim_id,
-  procedure_code,
-  ndc,
-  linked_diagnosis_codes,
-  claim_diagnosis_codes,
-  claim_type,
-  provider_specialty,
-  performing_provider_npi,
-  billing_provider_npi,
-  patient_id,
-  facility_type,
-  service_type,
-  service_date,
-  place_of_service,
-  quantity,
-  quantity_unit,
-  modifiers,
-  allowed_amount
+  claim_id = character(),
+  procedure_code = character(),
+  ndc = character(),
+  linked_diagnosis_codes = character(),
+  claim_diagnosis_codes = character(),
+  claim_type = character(),
+  provider_specialty = character(),
+  performing_provider_npi = character(),
+  billing_provider_npi = character(),
+  patient_id = character(),
+  facility_type = character(),
+  service_type = character(),
+  service_date = character(),
+  place_of_service = character(),
+  quantity = character(),
+  quantity_unit = character(),
+  modifiers = character(),
+  allowed_amount = character()
 )
 }
 \arguments{
@@ -69,7 +69,5 @@ ServiceLevelData(
 Represents standardized service-level data extracted from healthcare claims.
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 ServiceLevelData()
-\dontshow{\}) # examplesIf}
 }

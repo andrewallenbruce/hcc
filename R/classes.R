@@ -11,7 +11,7 @@
 #'  label = "Coma, Brain Compression/Anoxic Damage",
 #'  is_chronic = FALSE,
 #'  coefficient = 0.486
-#'  )
+#' )
 #' @export
 HCCDetail <- function(
   hcc = character(0),
@@ -122,28 +122,28 @@ Demographics <- function(
 #' @param modifiers List of procedure code modifiers
 #' @param allowed_amount Allowed amount for the service
 #' @returns <ServiceLevelData> object
-#' @examplesIf FALSE
+#' @examples
 #' ServiceLevelData()
 #' @export
 ServiceLevelData <- function(
-  claim_id,
-  procedure_code,
-  ndc,
-  linked_diagnosis_codes,
-  claim_diagnosis_codes,
-  claim_type,
-  provider_specialty,
-  performing_provider_npi,
-  billing_provider_npi,
-  patient_id,
-  facility_type,
-  service_type,
-  service_date,
-  place_of_service,
-  quantity,
-  quantity_unit,
-  modifiers,
-  allowed_amount
+  claim_id = character(),
+  procedure_code = character(),
+  ndc = character(),
+  linked_diagnosis_codes = character(),
+  claim_diagnosis_codes = character(),
+  claim_type = character(),
+  provider_specialty = character(),
+  performing_provider_npi = character(),
+  billing_provider_npi = character(),
+  patient_id = character(),
+  facility_type = character(),
+  service_type = character(),
+  service_date = character(),
+  place_of_service = character(),
+  quantity = character(),
+  quantity_unit = character(),
+  modifiers = character(),
+  allowed_amount = character()
 ) {
   list(
     claim_id = claim_id,
@@ -185,25 +185,25 @@ ServiceLevelData <- function(
 #' @param diagnosis_codes Input diagnosis codes
 #' @param service_level_data Processed service records
 #' @returns <RAFResult> object
-#' @examplesIf FALSE
+#' @examples
 #' RAFResult()
 #' @export
 RAFResult <- function(
-  risk_score,
-  risk_score_demographics,
-  risk_score_chronic_only,
-  risk_score_hcc,
-  risk_score_payment,
-  hcc_list,
-  hcc_details,
-  cc_to_dx,
-  coefficients,
-  interactions,
-  demographics,
-  model_name,
-  version,
-  diagnosis_codes,
-  service_level_data
+  risk_score = double(),
+  risk_score_demographics = double(),
+  risk_score_chronic_only = double(),
+  risk_score_hcc = double(),
+  risk_score_payment = double(),
+  hcc_list = character(),
+  hcc_details = character(),
+  cc_to_dx = character(),
+  coefficients = double(),
+  interactions = character(),
+  demographics = character(),
+  model_name = character(),
+  version = character(),
+  diagnosis_codes = character(),
+  service_level_data = character()
 ) {
   list(
     risk_score = risk_score,
@@ -224,7 +224,7 @@ RAFResult <- function(
   )
 }
 
-#' A single HCP (Health Care Plan) coverage period from HD loop
+#' A single Health Care Plan coverage period from HD loop
 #'
 #' @param start_date date
 #' @param end_date date
@@ -232,13 +232,15 @@ RAFResult <- function(
 #' @param hcp_status status
 #' @param aid_codes REF*CE composite
 #' @returns A <HCPCoveragePeriod> object
+#' @examples
+#' HCPCoveragePeriod()
 #' @export
 HCPCoveragePeriod <- function(
-  start_date,
-  end_date,
-  hcp_code,
-  hcp_status,
-  aid_codes
+  start_date = character(),
+  end_date = character(),
+  hcp_code = character(),
+  hcp_status = character(),
+  aid_codes = character()
 ) {
   list(
     start_date = start_date,
@@ -249,39 +251,52 @@ HCPCoveragePeriod <- function(
   )
 }
 
-# class RemittanceEntry(BaseModel):
-#   """
-#     A single remittance line item within a member's payment record.
-#
-#     Each RemittanceEntry corresponds to one RMR segment and its associated
-#     REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
-#
-#     Attributes:
-#         reference_number: Invoice/check reference number (RMR02)
-#         payment_amount: Net payment amount for this period; negative = recoupment (RMR04/05)
-#         original_amount: Original amount before adjustment, when present (RMR05/06)
-#         rate_code: Rate code from REF*18 (e.g., "957" = PACE rate)
-#         aid_code: California Medi-Cal aid code from REF*ZZ (e.g., "1H", "M1", "60")
-#         plan_type: Plan type from REF*ZZ composite aid_code;plan_type
-#                    ("1" = primary/medical, "2" = pharmacy/state-only)
-#         description: Payment description from second REF*ZZ
-#                      (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")
-#         coverage_period_start: Coverage period begin date (YYYY-MM-DD) from DTM*582
-#         coverage_period_end: Coverage period end date (YYYY-MM-DD) from DTM*582
-#         adjustment_amount: Adjustment amount from ADX01 (negative = recoupment)
-#         adjustment_reason: Adjustment reason code from ADX02 (e.g., "53" = prior period)
-#     """
-# reference_number: Optional[str] = None
-# payment_amount: Optional[float] = None
-# original_amount: Optional[float] = None
-# rate_code: Optional[str] = None
-# aid_code: Optional[str] = None
-# plan_type: Optional[str] = None
-# description: Optional[str] = None
-# coverage_period_start: Optional[str] = None
-# coverage_period_end: Optional[str] = None
-# adjustment_amount: Optional[float] = None
-# adjustment_reason: Optional[str] = None
+#' A single remittance line item within a member's payment record.
+#'
+#' Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
+#'
+#' @param reference_number Invoice/check reference number (RMR02)
+#' @param payment_amount Net payment amount for this period; negative = recoupment (RMR04/05)
+#' @param original_amount Original amount before adjustment, when present (RMR05/06)
+#' @param rate_code Rate code from REF*18 (e.g., "957" = PACE rate)
+#' @param aid_code California Medi-Cal aid code from REF*ZZ (e.g., "1H", "M1", "60")
+#' @param plan_type Plan type from REF*ZZ composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)
+#' @param description Payment description from second REF*ZZ (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")
+#' @param coverage_period_start Coverage period begin date (YYYY-MM-DD) from DTM*582
+#' @param coverage_period_end Coverage period end date (YYYY-MM-DD) from DTM*582
+#' @param adjustment_amount Adjustment amount from ADX01 (negative = recoupment)
+#' @param adjustment_reason Adjustment reason code from ADX02 (e.g., "53" = prior period)
+#' @returns A <RemittanceEntry> object
+#' @examples
+#' RemittanceEntry()
+#' @export
+RemittanceEntry <- function(
+  reference_number = character(),
+  payment_amount = double(),
+  original_amount = double(),
+  rate_code = character(),
+  aid_code = character(),
+  plan_type = character(),
+  description = character(),
+  coverage_period_start = character(),
+  coverage_period_end = character(),
+  adjustment_amount = double(),
+  adjustment_reason = character()
+) {
+  list(
+    reference_number = reference_number,
+    payment_amount = payment_amount,
+    original_amount = original_amount,
+    rate_code = rate_code,
+    aid_code = aid_code,
+    plan_type = plan_type,
+    description = description,
+    coverage_period_start = coverage_period_start,
+    coverage_period_end = coverage_period_end,
+    adjustment_amount = adjustment_amount,
+    adjustment_reason = adjustment_reason
+  )
+}
 
 #' Per-Member Payment Record from an X12 820 ENT Loop
 #'

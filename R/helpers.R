@@ -1,29 +1,3 @@
-#' @noRd
-unlist_ <- function(x, ...) {
-  unlist(x, use.names = FALSE, ...)
-}
-
-#' @noRd
-normalize_ <- function(x) {
-  toupper(gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE))
-}
-
-#' Is x Between a Minimum and a Maximum?
-#'
-#' @param x `<int>` vector of candidates
-#' @param min `<int>` Minimum value (inclusive)
-#' @param max `<int>` Maximum value (inclusive)
-#' @returns `<lgl>` vector indicating membership
-#' @examplesIf FALSE
-#' in_between(5L, 10L, 15L)
-#' in_between(1L, 2L, 3L)
-#' in_between(0L, 5L, 10L)
-#' in_between(0:15, 5L, 10L)
-#' @noRd
-in_between <- function(x, min, max) {
-  (x - min) * (max - x) >= 0L
-}
-
 #' Dual Eligibility Code Checks
 #' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
 #' @returns `<lgl>` vector indicating membership
