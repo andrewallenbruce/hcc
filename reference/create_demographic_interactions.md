@@ -51,7 +51,7 @@ x
 #>           lti : TRUE
 #>        months : 10
 #>           low : FALSE
-#>      category : NEM65_69
+#>      category : M65_69
 
 create_demographic_interactions(x)
 #> $OriginallyDisabled_Female
