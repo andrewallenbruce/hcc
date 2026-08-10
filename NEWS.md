@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9017 (2026-08-10)
+
+* Work on X12 820 parser (#1)
+
+
 # hcc 0.0.0.9016 (2026-08-09)
 
 * class skeletons
