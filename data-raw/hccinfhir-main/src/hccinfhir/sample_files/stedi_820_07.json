@@ -1,0 +1,59 @@
+{
+  "interchange": {
+    "senderId": "SENDERID",
+    "senderQualifier": "ZZ",
+    "receiverId": "RECEIVERID",
+    "receiverQualifier": "ZZ",
+    "date": "260513",
+    "time": "1430",
+    "controlNumber": "000000001",
+    "acknowledgmentRequested": false,
+    "testIndicator": "P"
+  },
+  "functionalGroups": [
+    {
+      "functionalId": "PO",
+      "sender": "SENDERID",
+      "receiver": "RECEIVERID",
+      "date": "20260513",
+      "controlNumber": "1",
+      "transactions": [
+        {
+          "type": "850",
+          "typeName": "Purchase Order",
+          "controlNumber": "0001",
+          "purchaseOrder": {
+            "number": "PO123456",
+            "date": "20260513",
+            "purpose": "Original",
+            "type": "SA"
+          },
+          "parties": {
+            "buyingParty": {
+              "name": "ACME CORP",
+              "identifierCode": "92",
+              "identifier": "1234"
+            },
+            "shipTo": {
+              "name": "ACME WAREHOUSE",
+              "identifierCode": "92",
+              "identifier": "5678"
+            }
+          },
+          "lineItems": [
+            {
+              "line": "1",
+              "quantity": "10",
+              "unit": "EA",
+              "unitPrice": "49.99",
+              "basisOfUnitPrice": "",
+              "productId": "ABC123",
+              "productIdQualifier": "BP"
+            }
+          ],
+          "totalLineItems": "1"
+        }
+      ]
+    }
+  ]
+}

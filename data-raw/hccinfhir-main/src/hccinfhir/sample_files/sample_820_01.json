@@ -1,0 +1,2203 @@
+{
+  "interchange": {
+    "senderId": "TEST-PAYER",
+    "senderQualifier": "ZZ",
+    "receiverId": "TEST-PAYEE",
+    "receiverQualifier": "30",
+    "date": "260118",
+    "time": "0831",
+    "controlNumber": "000058691",
+    "acknowledgmentRequested": false,
+    "testIndicator": "P"
+  },
+  "functionalGroups": [
+    {
+      "functionalId": "RA",
+      "sender": "TEST-PAYER",
+      "receiver": "TEST-PAYEE",
+      "date": "20260118",
+      "controlNumber": "43304",
+      "transactions": [
+        {
+          "type": "820",
+          "typeName": "Payment Order/Remittance Advice",
+          "controlNumber": "0001",
+          "segments": [
+            {
+              "id": "BPR",
+              "description": "BPR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "I"
+                },
+                {
+                  "position": 2,
+                  "value": "102139.46"
+                },
+                {
+                  "position": 3,
+                  "value": "C"
+                },
+                {
+                  "position": 4,
+                  "value": "NON"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": ""
+                },
+                {
+                  "position": 9,
+                  "value": ""
+                },
+                {
+                  "position": 10,
+                  "value": "68-0317191"
+                },
+                {
+                  "position": 11,
+                  "value": ""
+                },
+                {
+                  "position": 12,
+                  "value": ""
+                },
+                {
+                  "position": 13,
+                  "value": ""
+                },
+                {
+                  "position": 14,
+                  "value": ""
+                },
+                {
+                  "position": 15,
+                  "value": ""
+                },
+                {
+                  "position": 16,
+                  "value": "20260115"
+                }
+              ]
+            },
+            {
+              "id": "TRN",
+              "description": "TRN",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "3"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTTRN01000001"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "14"
+                },
+                {
+                  "position": 2,
+                  "value": "0000245023"
+                }
+              ]
+            },
+            {
+              "id": "N1",
+              "description": "Party Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "PE"
+                },
+                {
+                  "position": 2,
+                  "value": "TEST PAYEE ORGANIZATION"
+                }
+              ]
+            },
+            {
+              "id": "N3",
+              "description": "Party Location",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "123 TEST STREET"
+                }
+              ]
+            },
+            {
+              "id": "N4",
+              "description": "Geographic Location",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "TESTCITY"
+                },
+                {
+                  "position": 2,
+                  "value": "CA"
+                },
+                {
+                  "position": 3,
+                  "value": "00000"
+                }
+              ]
+            },
+            {
+              "id": "N1",
+              "description": "Party Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "PR"
+                },
+                {
+                  "position": 2,
+                  "value": "TEST PAYER AGENCY"
+                }
+              ]
+            },
+            {
+              "id": "N3",
+              "description": "Party Location",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "123 TEST STREET"
+                }
+              ]
+            },
+            {
+              "id": "N4",
+              "description": "Geographic Location",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "TESTCITY"
+                },
+                {
+                  "position": 2,
+                  "value": "CA"
+                },
+                {
+                  "position": 3,
+                  "value": "00000"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME01"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME01"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000001"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "2"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME02"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME02"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000002"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "3"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME03"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME03"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000003"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "4"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME04"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME04"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000004"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "5"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME05"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME05"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000005"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "6"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME06"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME06"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000006"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "7"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME07"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME07"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000007"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251101-20251130"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "8"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME08"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME08"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000008"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "9"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME09"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME09"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000009"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "10"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME10"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME10"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000010"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "1H;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "11"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME11"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME11"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000011"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "8086.53"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "M1;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Medi-Cal Only-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251201-20251231"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "12"
+                },
+                {
+                  "position": 2,
+                  "value": "2J"
+                },
+                {
+                  "position": 3,
+                  "value": "EI"
+                },
+                {
+                  "position": 4,
+                  "value": "999999999"
+                }
+              ]
+            },
+            {
+              "id": "NM1",
+              "description": "NM1",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IL"
+                },
+                {
+                  "position": 2,
+                  "value": "1"
+                },
+                {
+                  "position": 3,
+                  "value": "LASTNAME12"
+                },
+                {
+                  "position": 4,
+                  "value": "FIRSTNAME12"
+                },
+                {
+                  "position": 5,
+                  "value": ""
+                },
+                {
+                  "position": 6,
+                  "value": ""
+                },
+                {
+                  "position": 7,
+                  "value": ""
+                },
+                {
+                  "position": 8,
+                  "value": "N"
+                },
+                {
+                  "position": 9,
+                  "value": "TESTMBR000000012"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "TESTPLAN-SREGLR-2512150225000P"
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": "5101.10"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "18"
+                },
+                {
+                  "position": 2,
+                  "value": "957"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "17;2"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "ZZ"
+                },
+                {
+                  "position": 2,
+                  "value": "Dual-State Only"
+                }
+              ]
+            },
+            {
+              "id": "DTM",
+              "description": "Date/Time Reference",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "582"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": ""
+                },
+                {
+                  "position": 4,
+                  "value": ""
+                },
+                {
+                  "position": 5,
+                  "value": "RD8"
+                },
+                {
+                  "position": 6,
+                  "value": "20251101-20251130"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
