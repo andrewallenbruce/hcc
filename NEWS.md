@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9018 (2026-08-11)
+
+* added X12-820/834/837 examples
+
+
 # hcc 0.0.0.9017 (2026-08-10)
 
 * Work on X12 820 parser (#1)
