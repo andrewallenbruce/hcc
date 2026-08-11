@@ -1,40 +1,52 @@
-x = split_tilde(hcc::x12_820[[1]])
-cat(x, sep = "\n")
-
-# ISA Interchange Control Header - Length = 16
-isa = strsplit(x[1], " ", fixed = TRUE)[[1]]
-isa = unlist_(strsplit(isa[nzchar(isa)], "*", fixed = TRUE))[c(-1, -8, -11)]
-isa = pad_names(isa, replace_na = TRUE)
-
-# GS Functional Group Header - Length = 8
-gs = split_star(x[2], pad = TRUE)
-
-# ST 820 Header - Length = 3
-st = split_star(x[3], pad = TRUE)
-
-# BPR Financial Information - Length = 16
-bpr = split_star(x[4], pad = TRUE, replace_na = TRUE)
-
-# TRN Reassociation Trace Number - Length = 2
-trn = split_star(x[5], pad = TRUE)
-
-# REF Reference Identification
-# Premium Receiver's Identification Key - Length = 2
-ref = split_star(x[6], pad = TRUE)
-
-# 1000A Loop: Premium Receiver's Loop
-n1pe = split_star(x[7], pad = TRUE) # N1 Premium Receiver's Name
-n3pe = split_star(x[8], pad = TRUE) # N3 Premium Receiver's Address
-n4pe = split_star(x[9], pad = TRUE) # N4 Premium Receiver's City State ZIP
-
-# 1000B Loop: Premium Payer's Loop
-n1pr = split_star(x[10], pad = TRUE) # N1 Premium Payer's Name
-n3pr = split_star(x[11], pad = TRUE) # N3 Premium Payer's Address
-n4pr = split_star(x[12], pad = TRUE) # N4 Premium Payer's City State ZIP
-
 # 2000B Loop: Individual Remittance Loop
 # 2100B Loop: Individual Name Loop
 # 2300B Loop: Individual Premium Remittance Detail Loop
+
+text = hcc::x12_820$sample_820_01
+x = split_tilde(text)
+
+y = x[13:length(x)]
+y |> cat(sep = "\n")
+
+ent = grep("^ENT", y)
+y[ent]
+
+nm1 = grep("^NM1", y)
+y[nm1]
+
+start = grep("^RMR", y)
+end = grep("^DTM", y)
+
+leave <- vctrs::vec_interleave(start, end)
+
+idx <- rep(seq_along(leave), each = 2)
+
+vctrs::vec_split(leave, idx[1:length(leave)])$val
+
+end - start
+vctrs::vec_slice(y, vctrs::vec_interleave(start, end))
+
+length(start)
+
+xseq <- purrr::map2(start, end, \(x, y) seq.int(x, y))
+purrr::map(xseq, \(i) y[i])
+
+
+y[start[1]:end[1]]
+y[start[2]:end[2]]
+y[start[3]:end[3]]
+y[start[4]:end[4]]
+y[start[5]:end[5]]
+y[start[6]:end[6]]
+y[start[7]:end[7]]
+y[start[8]:end[8]]
+y[start[9]:end[9]]
+y[start[10]:end[10]]
+y[start[11]:end[11]]
+y[start[12]:end[12]]
+y[start[13]:end[13]]
+
+grep("^SE|^GE|^IEA", y)
 
 list(
   ISA = list(
@@ -71,46 +83,130 @@ list(
     `03` = "Implementation Convention Reference"
   ),
   BPR = list(
-    `01` = "Transaction Handling Code", # I (Remittance Information Only)
+    `01` = "Transaction Handling Code", # I = Remittance Information Only, C = Payment with Remittance
     `02` = "Total Premium Payment Amount",
-    `03` = "Credit or Debit Flag Code", # C (Credit)
-    `04` = "Payment Method Code", # NON (Non-Payment Data)
-    `05` = NA,
-    `06` = NA,
-    `07` = NA,
-    `08` = NA,
-    `09` = NA,
-    `10` = "Payer Identifier",
-    `11` = NA,
-    `12` = NA,
-    `13` = NA,
-    `14` = NA,
-    `15` = NA,
-    `16` = "Check Effective Date (YYYYMMDD)"
+    `03` = "Credit or Debit Flag Code", # C = Credit
+    `04` = "Payment Method Code", # NON = Non-Payment Data, ACH, CHK, FWT = Wire
+    `05` = "Payment Format Code", # CTX = Corporate Trade Exchange
+    `06` = "Originating Bank Routing and Account",
+    `07` = "Originating Bank Routing and Account",
+    `08` = "Originating Bank Routing and Account",
+    `09` = "Originating Bank Routing and Account",
+    `10` = "Payer Identifier/Originator's ID",
+    `11` = "Receiving Bank Routing and Account",
+    `12` = "Receiving Bank Routing and Account",
+    `13` = "Receiving Bank Routing and Account",
+    `14` = "Receiving Bank Routing and Account",
+    `15` = "Receiving Bank Routing and Account",
+    `16` = "Check Issue or EFT Effective Date (YYYYMMDD)"
   ),
   TRN = list(
-    `01` = "Trace Type Code", # 3 (Financial Reassociation Trace Number)
-    `02` = "Check or EFT Trace Number"
+    `01` = "Trace Type Code", # 1 = Current Transaction Trace, 3 = Financial Reassociation Trace Number
+    `02` = "Check or EFT Trace Number", # Reference identification (your payment trace number)
+    `03` = "Originating company identifier"
   ),
   REF = list(
     `01` = "Reference Identification Qualifier", # 14 (Master Account Number)
     `02` = "Payee Reference Identifier"
   ),
-  PE = list(
-    N1 = "Payee's Name",
-    N3 = "Payee's Address",
-    N4 = "Payee's City",
-    N4 = "Payee's State",
-    N4 = "Payee's ZIP"
+  # 1000A Loop Premium Receiver's Name Loop
+  `N1*PE` = list(
+    `01` = "Entity Identifier Code",
+    `02` = "Premium Receiver's Last or Organization Name"
   ),
-  PR = list(
-    N1 = "Payer's Name",
-    N3 = "Payer's Address",
-    N4 = "Payer's City",
-    N4 = "Payer's State",
-    N4 = "Payer's ZIP"
+  `N3*PE` = list(
+    `01` = "Premium Receiver's Address Line"
+  ),
+  `N4*PE` = list(
+    `01` = "Premium Receiver's City Name",
+    `02` = "Premium Receiver's State Code",
+    `03` = "Premium Receiver's Postal Zone or Zip Code"
+  ),
+  # 1000B Loop Premium Payer's Name Loop
+  `N1*PR` = list(
+    `01` = "Entity Identifier Code",
+    `02` = "Premium Payer Name"
+  ),
+  `N3*PR` = list(
+    `01` = "Premium Payer Address Line"
+  ),
+  `N4*PR` = list(
+    `01` = "Premium Payer City Name",
+    `02` = "Premium Payer State Code",
+    `03` = "Premium Payer Postal Zone or Zip Code"
+  ),
+  # 2000B Loop Individual Remittance Loop
+  ENT = list(
+    `01` = "Assigned Number", # 1
+    `02` = "Entity Identifier Code", # 2J = Individual
+    `03` = "Identification Code Qualifier", # EI = Employee Identification Number
+    `04` = "Receiver's Individual Identifier" # 999999999
+  ),
+  # 2100B Loop Individual Name Loop
+  NM1 = list(
+    `01` = "Entity Identifier Code", # IL = Insured or Subscriber
+    `02` = "Entity Type Qualifier", # 1 = Person
+    `03` = "Individual Last Name",
+    `04` = "Individual First Name",
+    `05` = NA,
+    `06` = NA,
+    `07` = NA,
+    `08` = "Identification Code Qualifier", # N = Insured's Unique Identification Number
+    `09` = "Individual Identifier"
+  ),
+  # 2300B Loop Individual Premium Remittance Detail Loop
+  RMR = list(
+    # IK = Invoice Number, IV = Seller's Invoice Number,
+    # AP = Accounts Receivable Number, CM = Buyer's Credit Memo,
+    # CL = Seller's Credit Memo, PO = Purchase Order
+    `01` = "Reference Identification Qualifier",
+    `02` = "Insurance Remittance Reference Number",
+    `03` = NA,
+    `04` = "Detail Premium Payment Amount" # Amount Applied to This Invoice
+  ),
+  REF = list(
+    `01` = "Organizational Reference Identification Qualifier", # 18 = Plan Number
+    `02` = "Organizational Reference Identifier" # 957
+  ),
+  REF = list(
+    `01` = "Organizational Reference Identification Qualifier", # ZZ = Mutually Defined
+    `02` = "Organizational Reference Identifier" # 1H;2
+  ),
+  REF = list(
+    `01` = "Organizational Reference Identification Qualifier", # ZZ = Mutually Defined
+    `02` = "Organizational Reference Identifier" # Medi-Cal Only-State Only
+  ),
+  # Individual Coverage Period
+  DTM = list(
+    `01` = "Date Time Qualifier", # 582 = Report Period, 007 = Effective Date, 003 = Invoice Date
+    `02` = "Date in CCYYMMDD format",
+    `03` = NA,
+    `04` = NA,
+    `05` = "Date Time Period Format Qualifier", # RD8 = Range of Dates Expressed in Format CCYYMMDD-CCYYMMDD
+    `06` = "Coverage Period" # 20251201-20251231
+  ),
+  # Adjustment Segments (ADX): When the buyer takes a deduction, the ADX segment follows the related RMR
+  ADX = list(
+    `01` = "Adjustment Amount",
+    `02` = "Adjustment Reason Code", # 01 = Pricing Error, 02 = Quantity Contested, 03 = Quality/damaged Goods, 04 = Delivery Issue, 05 = Early Payment Discount Taken
+    `03` = "Reference ID Qualifier"
+  ),
+  # Transaction Set Trailer
+  SE = list(
+    `01` = "Transaction Segment Count", # 100
+    `02` = "Transaction Set Control Number" # 1
+  ),
+  # Functional Group Trailer
+  GE = list(
+    `01` = "Number of Transaction Sets Included", # 1
+    `02` = "Group Control Number" # 43304
+  ),
+  # Interchange Control Trailer
+  IEA = list(
+    `01` = "Number of Included Functional Groups", # 1
+    `02` = "Interchange Control Number" # 000058691
   )
 ) |>
   collapse::unlist2d(idcols = "ID") |>
-  collapse::rnm("ID.1" = "SEG", "ID.2" = "N", "V1" = "Meaning") |>
-  collapse::sbt(!is.na(Meaning))
+  collapse::rnm("ID.1" = "SEG", "ID.2" = "PT", "V1" = "DESCRIPTION") |>
+  collapse::sbt(!is.na(DESCRIPTION))

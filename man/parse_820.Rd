@@ -36,7 +36,7 @@ Key segments parsed:
 Typical loop structure within an 820:
 \itemize{
 \item Header: \code{ISA} > \code{GS} > \code{ST} > \code{BPR} > \code{TRN} > \code{N1*PE} > \code{N1*PR}
-\item Per-member: \code{ENT} > \code{NM1} > (\code{RMR} > \code{REF*18} > \code{REF*ZZ} > \code{REF*ZZ} > \code{DTM*582} > \code{ADX}?)
+\item Per-member: \code{ENT} > \code{NM1} > (\code{RMR} > \code{REF*18} > \code{REF*ZZ} > \code{REF*ZZ} > \code{DTM*582} > \code{ADX})
 \item Trailer: \code{SE} > \code{GE} > \code{IEA}
 }
 }

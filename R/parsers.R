@@ -4,7 +4,14 @@ split_tilde <- function(x) {
 }
 
 #' @noRd
-split_star <- function(x, pad = FALSE, replace_na = FALSE) {
+split_isa <- function(x) {
+  x = strsplit(x, " ", fixed = TRUE)[[1]]
+  x = unlist_(strsplit(x[nzchar(x)], "*", fixed = TRUE))[c(-1, -8, -11)]
+  pad_names(x, replace_na = TRUE)
+}
+
+#' @noRd
+split_star <- function(x, pad = TRUE, replace_na = FALSE) {
   if (!pad) {
     return(strsplit(x, "*", fixed = TRUE)[[1]][-1])
   }
@@ -47,7 +54,7 @@ pad_names <- function(x, replace_na = FALSE) {
 #'
 #' Typical loop structure within an 820:
 #'    - Header: `ISA` > `GS` > `ST` > `BPR` > `TRN` > `N1*PE` > `N1*PR`
-#'    - Per-member: `ENT` > `NM1` > (`RMR` > `REF*18` > `REF*ZZ` > `REF*ZZ` > `DTM*582` > `ADX`?)
+#'    - Per-member: `ENT` > `NM1` > (`RMR` > `REF*18` > `REF*ZZ` > `REF*ZZ` > `DTM*582` > `ADX`)
 #'    - Trailer: `SE` > `GE` > `IEA`
 #'
 #' @param text `<chr>` string of raw X12-820 text
@@ -59,54 +66,28 @@ parse_820 <- function(text) {
   x = split_tilde(text)
 
   # ISA Interchange Control Header - Length = 16
-  isa = strsplit(x[1], " ", fixed = TRUE)[[1]]
-  isa = unlist_(strsplit(isa[nzchar(isa)], "*", fixed = TRUE))[c(-1, -8, -11)]
-  isa = pad_names(isa, replace_na = TRUE)
-
   # GS Functional Group Header - Length = 8
-  gs = split_star(x[2], pad = TRUE)
-
   # ST 820 Header - Length = 3
-  st = split_star(x[3], pad = TRUE)
-
   # BPR Financial Information - Length = 16
-  bpr = split_star(x[4], pad = TRUE, replace_na = TRUE)
-
   # TRN Reassociation Trace Number - Length = 2
-  trn = split_star(x[5], pad = TRUE)
-
   # REF Reference Identification - Length = 2
-  ref = split_star(x[6], pad = TRUE)
-
-  # 1000A Loop: Premium Receiver's Loop
-  # pe = list(
-  #   N1 = strsplit(x[7], "*", fixed = TRUE)[[1]][3],
-  #   N3 = strsplit(x[8], "*", fixed = TRUE)[[1]][2],
-  #   rlang::set_names(as.list(strsplit(x[9], "*", fixed = TRUE)[[1]][-1]))
-  #   )
-  n1pe = split_star(x[7], pad = TRUE) # N1 Premium Receiver's Name
-  n3pe = split_star(x[8], pad = TRUE) # N3 Premium Receiver's Address
-  n4pe = split_star(x[9], pad = TRUE) # N4 Premium Receiver's City State ZIP
-
-  # 1000B Loop: Premium Payer's Loop
-  n1pr = split_star(x[10], pad = TRUE) # N1 Premium Payer's Name
-  n3pr = split_star(x[11], pad = TRUE) # N3 Premium Payer's Address
-  n4pr = split_star(x[12], pad = TRUE) # N4 Premium Payer's City State ZIP
+  # N1/N3/N4 Premium Receiver's Name/Address/City-State-ZIP
+  # N1/N3/N4 Premium Payer's Name/Address/City-State-ZIP
 
   list(
-    ISA = isa,
-    GS = gs,
-    ST = st,
-    BPR = bpr,
-    TRN = trn,
-    REF = ref,
-    `N1*PE` = n1pe,
-    `N3*PE` = n3pe,
-    `N4*PE` = n4pe,
-    `N1*PR` = n1pr,
-    `N3*PR` = n3pr,
-    `N4*PR` = n4pr
+    ISA = split_isa(x[1]),
+    GS = split_star(x[2]),
+    ST = split_star(x[3]),
+    BPR = split_star(x[4], replace_na = TRUE),
+    TRN = split_star(x[5]),
+    REF = split_star(x[6]),
+    `N1*PE` = split_star(x[7]),
+    `N3*PE` = split_star(x[8]),
+    `N4*PE` = split_star(x[9]),
+    `N1*PR` = split_star(x[10]),
+    `N3*PR` = split_star(x[11]),
+    `N4*PR` = split_star(x[12])
   ) |>
     collapse::unlist2d(idcols = "id") |>
-    collapse::rnm("id.1" = "SEG", "id.2" = "N", "V1" = "VAL")
+    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VAL")
 }

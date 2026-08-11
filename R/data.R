@@ -167,3 +167,27 @@
 #' }
 #' @keywords internal
 "x12_837"
+
+#' EOB JSON Samples
+#'
+#' @format ## `eob_json`
+#' A list with 3 elements:
+#' \describe{
+#'   \item{`sample_eob_1`}{EOB File}
+#'   \item{`sample_eob_2`}{EOB File}
+#'   \item{`sample_eob_3`}{EOB File}
+#'   ...
+#' }
+#' @keywords internal
+"eob_json"
+
+#' EOB NDJSON Sample
+#'
+#' @format ## `eob_ndjson`
+#' A large list with 1 element:
+#' \describe{
+#'   \item{`sample_eob_200`}{EOB File}
+#'   ...
+#' }
+#' @keywords internal
+"eob_ndjson"
