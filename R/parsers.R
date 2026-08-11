@@ -33,28 +33,27 @@ pad_names <- function(x, replace_na = FALSE) {
 #' but handles the general 820 format used by state Medicaid agencies.
 #'
 #' Key segments parsed:
-#'    - ISA/GS: Interchange and group headers (source ID, report date)
-#'    - BPR: Payment amount and effective date
-#'    - TRN: EFT/check trace number
-#'    - N1/N3/N4: Payer and payee name and address
-#'    - ENT: Per-member entity loop start
-#'    - NM1: Member name and ID
-#'    - RMR: Remittance line item (reference number, payment amount)
-#'    - REF*18: Rate code (e.g., "957" = PACE rate)
-#'    - REF*ZZ: Aid code/plan type composite and description
-#'    - DTM*582: Coverage period date range
-#'    - ADX: Adjustment amount and reason code
+#'    - `ISA/GS`: Interchange and group headers (source ID, report date)
+#'    - `BPR`: Payment amount and effective date
+#'    - `TRN`: EFT/check trace number
+#'    - `N1/N3/N4`: Payer and payee name and address
+#'    - `ENT`: Per-member entity loop start
+#'    - `NM1`: Member name and ID
+#'    - `RMR`: Remittance line item (reference number, payment amount)
+#'    - `REF*18`: Rate code (e.g., "957" = PACE rate)
+#'    - `REF*ZZ`: Aid code/plan type composite and description
+#'    - `DTM*582`: Coverage period date range
+#'    - `ADX`: Adjustment amount and reason code
 #'
 #' Typical loop structure within an 820:
-#'    - Header: ISA > GS > ST > BPR > TRN > N1(PE) > N1(PR)
-#'    - Per-member: ENT > NM1 > (RMR > REF*18 > REF*ZZ > REF*ZZ > DTM*582 > ADX?) +
-#'    - Trailer: SE > GE > IEA
+#'    - Header: `ISA` > `GS` > `ST` > `BPR` > `TRN` > `N1*PE` > `N1*PR`
+#'    - Per-member: `ENT` > `NM1` > (`RMR` > `REF*18` > `REF*ZZ` > `REF*ZZ` > `DTM*582` > `ADX`?)
+#'    - Trailer: `SE` > `GE` > `IEA`
 #'
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' parse_820(hcc::x12_820$sample_820_01)
-#' parse_820(hcc::x12_820$sample_820_05)
+#' purrr::map(hcc::x12_820, parse_820)
 #' @export
 parse_820 <- function(text) {
   x = split_tilde(text)
@@ -80,6 +79,11 @@ parse_820 <- function(text) {
   ref = split_star(x[6], pad = TRUE)
 
   # 1000A Loop: Premium Receiver's Loop
+  # pe = list(
+  #   N1 = strsplit(x[7], "*", fixed = TRUE)[[1]][3],
+  #   N3 = strsplit(x[8], "*", fixed = TRUE)[[1]][2],
+  #   rlang::set_names(as.list(strsplit(x[9], "*", fixed = TRUE)[[1]][-1]))
+  #   )
   n1pe = split_star(x[7], pad = TRUE) # N1 Premium Receiver's Name
   n3pe = split_star(x[8], pad = TRUE) # N3 Premium Receiver's Address
   n4pe = split_star(x[9], pad = TRUE) # N4 Premium Receiver's City State ZIP
@@ -96,12 +100,12 @@ parse_820 <- function(text) {
     BPR = bpr,
     TRN = trn,
     REF = ref,
-    N1_PE = n1pe,
-    N3_PE = n3pe,
-    N4_PE = n4pe,
-    N1_PR = n1pr,
-    N3_PR = n3pr,
-    N4_PR = n4pr
+    `N1*PE` = n1pe,
+    `N3*PE` = n3pe,
+    `N4*PE` = n4pe,
+    `N1*PR` = n1pr,
+    `N3*PR` = n3pr,
+    `N4*PR` = n4pr
   ) |>
     collapse::unlist2d(idcols = "id") |>
     collapse::rnm("id.1" = "SEG", "id.2" = "N", "V1" = "VAL")

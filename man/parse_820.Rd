@@ -20,27 +20,26 @@ but handles the general 820 format used by state Medicaid agencies.
 \details{
 Key segments parsed:
 \itemize{
-\item ISA/GS: Interchange and group headers (source ID, report date)
-\item BPR: Payment amount and effective date
-\item TRN: EFT/check trace number
-\item N1/N3/N4: Payer and payee name and address
-\item ENT: Per-member entity loop start
-\item NM1: Member name and ID
-\item RMR: Remittance line item (reference number, payment amount)
-\item REF*18: Rate code (e.g., "957" = PACE rate)
-\item REF*ZZ: Aid code/plan type composite and description
-\item DTM*582: Coverage period date range
-\item ADX: Adjustment amount and reason code
+\item \code{ISA/GS}: Interchange and group headers (source ID, report date)
+\item \code{BPR}: Payment amount and effective date
+\item \code{TRN}: EFT/check trace number
+\item \code{N1/N3/N4}: Payer and payee name and address
+\item \code{ENT}: Per-member entity loop start
+\item \code{NM1}: Member name and ID
+\item \code{RMR}: Remittance line item (reference number, payment amount)
+\item \code{REF*18}: Rate code (e.g., "957" = PACE rate)
+\item \code{REF*ZZ}: Aid code/plan type composite and description
+\item \code{DTM*582}: Coverage period date range
+\item \code{ADX}: Adjustment amount and reason code
 }
 
 Typical loop structure within an 820:
 \itemize{
-\item Header: ISA > GS > ST > BPR > TRN > N1(PE) > N1(PR)
-\item Per-member: ENT > NM1 > (RMR > REF\emph{18 > REF}ZZ > REF\emph{ZZ > DTM}582 > ADX?) +
-\item Trailer: SE > GE > IEA
+\item Header: \code{ISA} > \code{GS} > \code{ST} > \code{BPR} > \code{TRN} > \code{N1*PE} > \code{N1*PR}
+\item Per-member: \code{ENT} > \code{NM1} > (\code{RMR} > \code{REF*18} > \code{REF*ZZ} > \code{REF*ZZ} > \code{DTM*582} > \code{ADX}?)
+\item Trailer: \code{SE} > \code{GE} > \code{IEA}
 }
 }
 \examples{
-parse_820(hcc::x12_820$sample_820_01)
-parse_820(hcc::x12_820$sample_820_05)
+purrr::map(hcc::x12_820, parse_820)
 }
