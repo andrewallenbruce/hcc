@@ -68,25 +68,26 @@ but handles the general 820 format used by state Medicaid agencies.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Key segments parsed:</p><ul><li><p>ISA/GS: Interchange and group headers (source ID, report date)</p></li>
-<li><p>BPR: Payment amount and effective date</p></li>
-<li><p>TRN: EFT/check trace number</p></li>
-<li><p>N1/N3/N4: Payer and payee name and address</p></li>
-<li><p>ENT: Per-member entity loop start</p></li>
-<li><p>NM1: Member name and ID</p></li>
-<li><p>RMR: Remittance line item (reference number, payment amount)</p></li>
-<li><p>REF*18: Rate code (e.g., "957" = PACE rate)</p></li>
-<li><p>REF*ZZ: Aid code/plan type composite and description</p></li>
-<li><p>DTM*582: Coverage period date range</p></li>
-<li><p>ADX: Adjustment amount and reason code</p></li>
-</ul><p>Typical loop structure within an 820:</p><ul><li><p>Header: ISA &gt; GS &gt; ST &gt; BPR &gt; TRN &gt; N1(PE) &gt; N1(PR)</p></li>
-<li><p>Per-member: ENT &gt; NM1 &gt; (RMR &gt; REF<em>18 &gt; REF</em>ZZ &gt; REF<em>ZZ &gt; DTM</em>582 &gt; ADX?) +</p></li>
-<li><p>Trailer: SE &gt; GE &gt; IEA</p></li>
+    <p>Key segments parsed:</p><ul><li><p><code>ISA/GS</code>: Interchange and group headers (source ID, report date)</p></li>
+<li><p><code>BPR</code>: Payment amount and effective date</p></li>
+<li><p><code>TRN</code>: EFT/check trace number</p></li>
+<li><p><code>N1/N3/N4</code>: Payer and payee name and address</p></li>
+<li><p><code>ENT</code>: Per-member entity loop start</p></li>
+<li><p><code>NM1</code>: Member name and ID</p></li>
+<li><p><code>RMR</code>: Remittance line item (reference number, payment amount)</p></li>
+<li><p><code>REF*18</code>: Rate code (e.g., "957" = PACE rate)</p></li>
+<li><p><code>REF*ZZ</code>: Aid code/plan type composite and description</p></li>
+<li><p><code>DTM*582</code>: Coverage period date range</p></li>
+<li><p><code>ADX</code>: Adjustment amount and reason code</p></li>
+</ul><p>Typical loop structure within an 820:</p><ul><li><p>Header: <code>ISA</code> &gt; <code>GS</code> &gt; <code>ST</code> &gt; <code>BPR</code> &gt; <code>TRN</code> &gt; <code>N1*PE</code> &gt; <code>N1*PR</code></p></li>
+<li><p>Per-member: <code>ENT</code> &gt; <code>NM1</code> &gt; (<code>RMR</code> &gt; <code>REF*18</code> &gt; <code>REF*ZZ</code> &gt; <code>REF*ZZ</code> &gt; <code>DTM*582</code> &gt; <code>ADX</code>?)</p></li>
+<li><p>Trailer: <code>SE</code> &gt; <code>GE</code> &gt; <code>IEA</code></p></li>
 </ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">parse_820</span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span><span class="op">$</span><span class="va">sample_820_01</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
@@ -135,19 +136,206 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45   TRN 02         TESTTRN01000001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 46   REF 01                      14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47   REF 02              0000245023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1_PE 01                      PE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1_PE 02 TEST PAYEE ORGANIZATION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3_PE 01         123 TEST STREET</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4_PE 01                TESTCITY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4_PE 02                      CA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4_PE 03                   00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1_PR 01                      PR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1_PR 02       TEST PAYER AGENCY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3_PR 01         123 TEST STREET</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4_PR 01                TESTCITY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4_PR 02                      CA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4_PR 03                   00000</span>
-<span class="r-in"><span><span class="fu">parse_820</span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span><span class="op">$</span><span class="va">sample_820_05</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1*PE 01                      PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1*PE 02 TEST PAYEE ORGANIZATION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3*PE 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4*PE 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4*PE 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4*PE 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1*PR 01                      PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1*PR 02       TEST PAYER AGENCY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3*PR 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4*PR 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4*PR 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    ISA 04                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    ISA 05                      ZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    ISA 06              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    ISA 07                      30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    ISA 08              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    ISA 09                  260316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   ISA 10                    0855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   ISA 11                       +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   ISA 12                   00501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   ISA 13               000059660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   ISA 14                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   ISA 15                       P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   ISA 16                       :</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17    GS 01                      RA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18    GS 02              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    GS 03              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20    GS 04                20260316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21    GS 05                  085500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    GS 06                   44273</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23    GS 07                       X</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24    GS 08              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    ST 01                     820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26    ST 02                    0001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27    ST 03              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   BPR 01                       I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   BPR 02                91977.81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30   BPR 03                       C</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31   BPR 04                     NON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   BPR 05                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   BPR 06                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34   BPR 07                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   BPR 08                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   BPR 09                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   BPR 10              68-0317191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   BPR 11                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   BPR 12                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40   BPR 13                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   BPR 14                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   BPR 15                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43   BPR 16                20260312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   TRN 01                       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   TRN 02         TESTTRN02000001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46   REF 01                      14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   REF 02              0000245023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1*PE 01                      PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1*PE 02 TEST PAYEE ORGANIZATION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3*PE 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4*PE 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4*PE 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4*PE 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1*PR 01                      PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1*PR 02       TEST PAYER AGENCY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3*PR 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4*PR 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4*PR 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    ISA 04                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    ISA 05                      ZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    ISA 06              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    ISA 07                      30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    ISA 08              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    ISA 09                  260316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   ISA 10                    0854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   ISA 11                       +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   ISA 12                   00501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   ISA 13               000059659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   ISA 14                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   ISA 15                       P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   ISA 16                       :</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17    GS 01                      RA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18    GS 02              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    GS 03              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20    GS 04                20260316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21    GS 05                  085458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    GS 06                   44272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23    GS 07                       X</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24    GS 08              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    ST 01                     820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26    ST 02                    0001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27    ST 03              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   BPR 01                       I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   BPR 02               697085.64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30   BPR 03                       C</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31   BPR 04                     NON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   BPR 05                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   BPR 06                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34   BPR 07                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   BPR 08                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   BPR 09                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   BPR 10              68-0317191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   BPR 11                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   BPR 12                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40   BPR 13                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   BPR 14                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   BPR 15                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43   BPR 16                20260312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   TRN 01                       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   TRN 02         TESTTRN03000001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46   REF 01                      14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   REF 02              0000245023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1*PE 01                      PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1*PE 02 TEST PAYEE ORGANIZATION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3*PE 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4*PE 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4*PE 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4*PE 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1*PR 01                      PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1*PR 02       TEST PAYER AGENCY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3*PR 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4*PR 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4*PR 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    ISA 04                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    ISA 05                      ZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    ISA 06              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    ISA 07                      30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    ISA 08              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    ISA 09                  251217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   ISA 10                    2316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   ISA 11                       +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   ISA 12                   00501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   ISA 13               000058142</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   ISA 14                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   ISA 15                       P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   ISA 16                       :</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17    GS 01                      RA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18    GS 02              TEST-PAYER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    GS 03              TEST-PAYEE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20    GS 04                20251217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21    GS 05                  231624</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    GS 06                   42755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23    GS 07                       X</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24    GS 08              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    ST 01                     820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26    ST 02                    0001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27    ST 03              005010X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   BPR 01                       I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   BPR 02                80865.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30   BPR 03                       C</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31   BPR 04                     NON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   BPR 05                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   BPR 06                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34   BPR 07                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   BPR 08                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   BPR 09                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   BPR 10              68-0317191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   BPR 11                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   BPR 12                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40   BPR 13                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   BPR 14                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   BPR 15                    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43   BPR 16                20251216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   TRN 01                       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   TRN 02         TESTTRN04000001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46   REF 01                      14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   REF 02              0000245023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1*PE 01                      PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1*PE 02 TEST PAYEE ORGANIZATION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3*PE 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4*PE 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4*PE 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4*PE 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1*PR 01                      PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1*PR 02       TEST PAYER AGENCY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3*PR 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4*PR 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4*PR 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
@@ -196,18 +384,19 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45   TRN 02         TESTTRN05000001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 46   REF 01                      14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47   REF 02              0000245023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1_PE 01                      PE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1_PE 02 TEST PAYEE ORGANIZATION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3_PE 01         123 TEST STREET</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4_PE 01                TESTCITY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4_PE 02                      CA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4_PE 03                   00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1_PR 01                      PR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1_PR 02       TEST PAYER AGENCY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3_PR 01         123 TEST STREET</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4_PR 01                TESTCITY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4_PR 02                      CA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4_PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 N1*PE 01                      PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 N1*PE 02 TEST PAYEE ORGANIZATION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 N3*PE 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 N4*PE 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 N4*PE 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 N4*PE 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 N1*PR 01                      PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 N1*PR 02       TEST PAYER AGENCY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 N3*PR 01         123 TEST STREET</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 N4*PR 01                TESTCITY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 N4*PR 02                      CA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
