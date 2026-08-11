@@ -10,14 +10,15 @@ export(PaymentDetail)
 export(RAFResult)
 export(RemittanceEntry)
 export(ServiceLevelData)
-export(categorize_demographics)
-export(create_demographic_interactions)
+export(as_demographics)
+export(interactions)
 export(is_dual_any)
 export(is_dual_full)
 export(is_dual_partial)
 export(is_dual_valid)
 export(is_esrd)
 export(map_to_dual)
+export(parse_820)
 importFrom(cheapr,
   "%!in_%",
   "%in_%"

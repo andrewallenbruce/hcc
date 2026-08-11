@@ -19,11 +19,11 @@
 #' @returns A <Demographics> object containing derived fields like age/sex
 #'   category, disability status, dual status flags, etc.
 #' @examples
-#' categorize_demographics(48, "1", "V2")
-#' categorize_demographics(35, "M", "V6")
-#' categorize_demographics(75, "2", "V2", "0")
+#' as_demographics(48, "1", "V2")
+#' as_demographics(35, "M", "V6")
+#' as_demographics(75, "2", "V2", "0")
 #' @export
-categorize_demographics <- function(
+as_demographics <- function(
   age,
   sex,
   version = "V2",

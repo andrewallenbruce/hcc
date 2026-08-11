@@ -6,7 +6,7 @@
 #' @param d Demographics object
 #' @returns a list of interactions
 #' @examples
-#' x = categorize_demographics(
+#' x = as_demographics(
 #'   age = 65.1,
 #'   sex = "M",
 #'   orec = "2",
@@ -18,10 +18,10 @@
 #'
 #' x
 #'
-#' create_demographic_interactions(x)
+#' interactions(x)
 #'
 #' @export
-create_demographic_interactions <- function(d) {
+interactions <- function(d) {
   act <- list()
 
   # Demographic flags
