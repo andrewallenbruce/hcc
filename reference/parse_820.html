@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9018</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9019</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +80,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <li><p><code>DTM*582</code>: Coverage period date range</p></li>
 <li><p><code>ADX</code>: Adjustment amount and reason code</p></li>
 </ul><p>Typical loop structure within an 820:</p><ul><li><p>Header: <code>ISA</code> &gt; <code>GS</code> &gt; <code>ST</code> &gt; <code>BPR</code> &gt; <code>TRN</code> &gt; <code>N1*PE</code> &gt; <code>N1*PR</code></p></li>
-<li><p>Per-member: <code>ENT</code> &gt; <code>NM1</code> &gt; (<code>RMR</code> &gt; <code>REF*18</code> &gt; <code>REF*ZZ</code> &gt; <code>REF*ZZ</code> &gt; <code>DTM*582</code> &gt; <code>ADX</code>?)</p></li>
+<li><p>Per-member: <code>ENT</code> &gt; <code>NM1</code> &gt; (<code>RMR</code> &gt; <code>REF*18</code> &gt; <code>REF*ZZ</code> &gt; <code>REF*ZZ</code> &gt; <code>DTM*582</code> &gt; <code>ADX</code>)</p></li>
 <li><p>Trailer: <code>SE</code> &gt; <code>GE</code> &gt; <code>IEA</code></p></li>
 </ul></div>
 
@@ -88,7 +88,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG PT                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
@@ -150,7 +150,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG PT                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
@@ -212,7 +212,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG PT                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
@@ -274,7 +274,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG PT                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>
@@ -336,7 +336,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59 N4*PR 03                   00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG  N                     VAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      SEG PT                     VAL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    ISA 01                      00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    ISA 02                    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    ISA 03                      00</span>

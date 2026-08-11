@@ -52,7 +52,7 @@ Typical loop structure within an 820:
 - Header: `ISA` \> `GS` \> `ST` \> `BPR` \> `TRN` \> `N1*PE` \> `N1*PR`
 
 - Per-member: `ENT` \> `NM1` \> (`RMR` \> `REF*18` \> `REF*ZZ` \>
-  `REF*ZZ` \> `DTM*582` \> `ADX`?)
+  `REF*ZZ` \> `DTM*582` \> `ADX`)
 
 - Trailer: `SE` \> `GE` \> `IEA`
 
@@ -61,7 +61,7 @@ Typical loop structure within an 820:
 ``` r
 purrr::map(hcc::x12_820, parse_820)
 #> $sample_820_01
-#>      SEG  N                     VAL
+#>      SEG PT                     VAL
 #> 1    ISA 01                      00
 #> 2    ISA 02                    <NA>
 #> 3    ISA 03                      00
@@ -123,7 +123,7 @@ purrr::map(hcc::x12_820, parse_820)
 #> 59 N4*PR 03                   00000
 #> 
 #> $sample_820_02
-#>      SEG  N                     VAL
+#>      SEG PT                     VAL
 #> 1    ISA 01                      00
 #> 2    ISA 02                    <NA>
 #> 3    ISA 03                      00
@@ -185,7 +185,7 @@ purrr::map(hcc::x12_820, parse_820)
 #> 59 N4*PR 03                   00000
 #> 
 #> $sample_820_03
-#>      SEG  N                     VAL
+#>      SEG PT                     VAL
 #> 1    ISA 01                      00
 #> 2    ISA 02                    <NA>
 #> 3    ISA 03                      00
@@ -247,7 +247,7 @@ purrr::map(hcc::x12_820, parse_820)
 #> 59 N4*PR 03                   00000
 #> 
 #> $sample_820_04
-#>      SEG  N                     VAL
+#>      SEG PT                     VAL
 #> 1    ISA 01                      00
 #> 2    ISA 02                    <NA>
 #> 3    ISA 03                      00
@@ -309,7 +309,7 @@ purrr::map(hcc::x12_820, parse_820)
 #> 59 N4*PR 03                   00000
 #> 
 #> $sample_820_05
-#>      SEG  N                     VAL
+#>      SEG PT                     VAL
 #> 1    ISA 01                      00
 #> 2    ISA 02                    <NA>
 #> 3    ISA 03                      00
