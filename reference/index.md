@@ -21,10 +21,10 @@
 - [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
   : Represents standardized service-level data extracted from healthcare
   claims.
-- [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
+- [`as_demographics()`](https://andrewallenbruce.github.io/hcc/reference/as_demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
-- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
+- [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`is_dual_any()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
   [`is_dual_valid()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
@@ -35,3 +35,5 @@
   : Check if OREC/CREC indicates ESRD status
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
   : Map Codes to Dual Eligibility Codes
+- [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
+  : X12-820 Payment Order/Remittance Advice Parser

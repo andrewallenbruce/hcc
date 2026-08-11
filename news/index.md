@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9018 (2026-08-11)
+
+- added X12-820/834/837 examples
+
 ## hcc 0.0.0.9017 (2026-08-10)
 
 - Work on X12 820 parser
@@ -17,7 +21,7 @@
 
 ## hcc 0.0.0.9014 (2026-08-07)
 
-- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
+- `create_demographic_interactions()`
 
 ## hcc 0.0.0.9013 (2026-08-07)
 
@@ -38,7 +42,7 @@
 
 ## hcc 0.0.0.9009 (2026-08-06)
 
-- [`create_demographic_interactions()`](https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.md)
+- `create_demographic_interactions()`
 
 ## hcc 0.0.0.9008 (2026-08-06)
 
@@ -55,18 +59,15 @@
 
 ## hcc 0.0.0.9005 (2026-08-05)
 
-- tests for
-  [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
+- tests for `categorize_demographics()`
 
 ## hcc 0.0.0.9004 (2026-08-05)
 
-- fixed bugs in
-  [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
-  tests
+- fixed bugs in `categorize_demographics()` tests
 
 ## hcc 0.0.0.9003 (2026-08-05)
 
-- [`categorize_demographics()`](https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.md)
+- `categorize_demographics()`
 - `in_between()` helper
 
 ## hcc 0.0.0.9002 (2026-08-05)

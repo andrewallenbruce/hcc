@@ -15,20 +15,24 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/RAFResult.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/categorize_demographics.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/create_demographic_interactions.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/as_demographics.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc-package.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc_is_chronic.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc_is_chronic_without_esrd_model.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/index.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/interactions.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_dual.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/is_esrd.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/map_to_dual.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/parse_820.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_coefficients.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_edits.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_to_cc.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_eligible_hcpcs.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_hierarchies.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_labels.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_820.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_834.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_837.html</loc></url>
 </urlset>
 
