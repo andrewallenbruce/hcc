@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9020 (2026-08-11)
+
+* initial 820 parser (#1)
+
+
 # hcc 0.0.0.9019 (2026-08-11)
 
 * added json/ndjson example files
