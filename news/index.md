@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9020 (2026-08-11)
+
+- initial 820 parser
+  ([\#1](https://github.com/andrewallenbruce/hcc/issues/1))
+
 ## hcc 0.0.0.9019 (2026-08-11)
 
 - added json/ndjson example files
