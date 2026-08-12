@@ -4,49 +4,68 @@
 
 text = hcc::x12_820$sample_820_01
 x = split_tilde(text)
+x |> cat(sep = "\n")
 
-y = x[13:length(x)]
-y |> cat(sep = "\n")
+purrr::map(x[ent], split_star) |>
+  rlang::set_names(\(x) paste0("ENT", seq_along(x[ent])))
 
-ent = grep("^ENT", y)
-y[ent]
+nm1 = grep("^NM1", x, perl = TRUE)
+x[nm1]
 
-nm1 = grep("^NM1", y)
-y[nm1]
+start = grep("^RMR", x, perl = TRUE)
+end = grep("^DTM", x, perl = TRUE)
 
-start = grep("^RMR", y)
-end = grep("^DTM", y)
-
-leave <- vctrs::vec_interleave(start, end)
-
-idx <- rep(seq_along(leave), each = 2)
-
-vctrs::vec_split(leave, idx[1:length(leave)])$val
+x[start]
+x[end]
 
 end - start
-vctrs::vec_slice(y, vctrs::vec_interleave(start, end))
+which(diff(vctrs::vec_interleave(start, end)) == 1L)
 
-length(start)
+# leave <- vctrs::vec_interleave(start, end)
+# idx <- rep(seq_along(leave), each = 2)
+# vctrs::vec_split(leave, idx[1:length(leave)])$val
+# end - start
+# vctrs::vec_slice(y, vctrs::vec_interleave(start, end))
 
-xseq <- purrr::map2(start, end, \(x, y) seq.int(x, y))
-purrr::map(xseq, \(i) y[i])
+start = grep("^ENT", x, perl = TRUE)
+end = c(start[-1], grep("^SE", x, perl = TRUE)) - 1L
+loop_seq <- purrr::map2(start, end, function(x, y) {
+  seq.int(x, y)
+})
+
+purrr::map(loop_seq, \(i) x[i])
+
+# xd = diff(unlist_(loop_seq))
+# gp = vctrs::vec_rep_each(1:13, times = 5L)
+# gp = gp[-65]
+# sp = vctrs::vec_split(xd, gp)
+# sp$key[purrr::map_lgl(sp$val, \(x) all(x == 1L))]
+#
+# which(diff(which(diff(unlist_(loop_seq)) == 3L)) != 5L)
+# vctrs::vec_group_rle(diff(unlist_(loop_seq)))
+
+# 7 & 8 - sequence boundaries touch
 
 
-y[start[1]:end[1]]
-y[start[2]:end[2]]
-y[start[3]:end[3]]
-y[start[4]:end[4]]
-y[start[5]:end[5]]
-y[start[6]:end[6]]
-y[start[7]:end[7]]
-y[start[8]:end[8]]
-y[start[9]:end[9]]
-y[start[10]:end[10]]
-y[start[11]:end[11]]
-y[start[12]:end[12]]
-y[start[13]:end[13]]
 
-grep("^SE|^GE|^IEA", y)
+x[start[1]:end[1]]
+x[start[2]:end[2]]
+x[start[3]:end[3]]
+x[start[4]:end[4]]
+x[start[5]:end[5]]
+x[start[6]:end[6]]
+x[start[7]:end[7]]
+x[start[8]:end[8]]
+x[start[9]:end[9]]
+x[start[10]:end[10]]
+x[start[11]:end[11]]
+x[start[12]:end[12]]
+x[start[13]:end[13]]
+
+grep("^SE|^GE|^IEA", x)
+split_star(x[grep("^SE", x)])
+split_star(x[grep("^GE", x)])
+split_star(x[grep("^IEA", x)])
 
 list(
   ISA = list(
@@ -64,7 +83,7 @@ list(
     `12` = "Interchange Control Version - Number",
     `13` = "Interchange Control Number",
     `14` = "Acknowledgment Requested", # 0 (No Acknowledgment Requested)
-    `15` = "Usage Indicator", # P (Production Data)
+    `15` = "Usage Indicator", # P = Production, T = Test
     `16` = "Component Element Separator"
   ),
   GS = list(

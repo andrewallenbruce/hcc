@@ -60,21 +60,12 @@ pad_names <- function(x, replace_na = FALSE) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_820, parse_820)
+#' purrr::map(hcc::x12_820[1:3], parse_820)
 #' @export
 parse_820 <- function(text) {
   x = split_tilde(text)
 
-  # ISA Interchange Control Header - Length = 16
-  # GS Functional Group Header - Length = 8
-  # ST 820 Header - Length = 3
-  # BPR Financial Information - Length = 16
-  # TRN Reassociation Trace Number - Length = 2
-  # REF Reference Identification - Length = 2
-  # N1/N3/N4 Premium Receiver's Name/Address/City-State-ZIP
-  # N1/N3/N4 Premium Payer's Name/Address/City-State-ZIP
-
-  list(
+  header <- list(
     ISA = split_isa(x[1]),
     GS = split_star(x[2]),
     ST = split_star(x[3]),
@@ -88,6 +79,30 @@ parse_820 <- function(text) {
     `N3*PR` = split_star(x[11]),
     `N4*PR` = split_star(x[12])
   ) |>
+  collapse::unlist2d(idcols = "id") |>
+    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VALUE")
+
+  start = grep("^ENT", x, perl = TRUE)
+  end = c(start[-1], grep("^SE", x, perl = TRUE)) - 1L
+
+  loops <- purrr::map2(start, end, function(x, y) {
+    seq.int(x, y)
+  })
+
+  loop <- purrr::map(loops, \(i) x[i])
+  loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
+
+  trailer <- list(
+    SE = split_star(x[grep("^SE", x)]),
+    GE = split_star(x[grep("^GE", x)]),
+    IEA = split_star(x[grep("^IEA", x)])
+  ) |>
     collapse::unlist2d(idcols = "id") |>
-    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VAL")
+    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VALUE")
+
+  list(
+    HEADER = header,
+    LOOP = loop,
+    TRAILER = trailer
+  )
 }
