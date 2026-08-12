@@ -46,8 +46,6 @@ purrr::map(loop_seq, \(i) x[i])
 
 # 7 & 8 - sequence boundaries touch
 
-
-
 x[start[1]:end[1]]
 x[start[2]:end[2]]
 x[start[3]:end[3]]

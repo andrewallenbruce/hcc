@@ -1,4 +1,19 @@
 #' @noRd
+perl <- function(x, rex, negate = FALSE) {
+  grep(pattern = rex, x = x, perl = TRUE, invert = negate)
+}
+
+#' @noRd
+unlist_df <- function(x) {
+  collapse::unlist2d(x, idcols = "id") |>
+    collapse::rnm(
+      "id.1" = "SEG",
+      "id.2" = "PT",
+      "V1" = "VALUE"
+    )
+}
+
+#' @noRd
 split_tilde <- function(x) {
   strsplit(x, "~", fixed = TRUE)[[1]]
 }
@@ -33,6 +48,121 @@ pad_names <- function(x, replace_na = FALSE) {
   rlang::set_names(as.list(x), N)
 }
 
+#' @noRd
+parse_loop <- function(x) {
+  if (length(x) == 7L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE)
+    ) |>
+      unlist_df()
+  } else if (length(x) == 8L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE),
+      ADX = split_star(x[8])
+    ) |>
+      unlist_df()
+  } else if (length(x) == 12L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE),
+      RMR = split_star(x[8], replace_na = TRUE),
+      REF = split_star(x[9]),
+      REF = split_star(x[10]),
+      REF = split_star(x[11]),
+      DTM = split_star(x[12], replace_na = TRUE)
+    ) |>
+      unlist_df()
+  } else if (length(x) == 13L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE),
+      RMR = split_star(x[8], replace_na = TRUE),
+      REF = split_star(x[9]),
+      REF = split_star(x[10]),
+      REF = split_star(x[11]),
+      DTM = split_star(x[12], replace_na = TRUE),
+      ADX = split_star(x[13])
+    ) |>
+      unlist_df()
+  } else if (length(x) == 17L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE),
+      RMR = split_star(x[8], replace_na = TRUE),
+      REF = split_star(x[9]),
+      REF = split_star(x[10]),
+      REF = split_star(x[11]),
+      DTM = split_star(x[12], replace_na = TRUE),
+      RMR = split_star(x[13], replace_na = TRUE),
+      REF = split_star(x[14]),
+      REF = split_star(x[15]),
+      REF = split_star(x[16]),
+      DTM = split_star(x[17], replace_na = TRUE)
+    ) |>
+      unlist_df()
+  } else if (length(x) == 27L) {
+    list(
+      ENT = split_star(x[1]),
+      NM1 = split_star(x[2], replace_na = TRUE),
+      RMR = split_star(x[3], replace_na = TRUE),
+      REF = split_star(x[4]),
+      REF = split_star(x[5]),
+      REF = split_star(x[6]),
+      DTM = split_star(x[7], replace_na = TRUE),
+      RMR = split_star(x[8], replace_na = TRUE),
+      REF = split_star(x[9]),
+      REF = split_star(x[10]),
+      REF = split_star(x[11]),
+      DTM = split_star(x[12], replace_na = TRUE),
+      RMR = split_star(x[13], replace_na = TRUE),
+      REF = split_star(x[14]),
+      REF = split_star(x[15]),
+      REF = split_star(x[16]),
+      DTM = split_star(x[17], replace_na = TRUE),
+      RMR = split_star(x[18], replace_na = TRUE),
+      REF = split_star(x[19]),
+      REF = split_star(x[20]),
+      REF = split_star(x[21]),
+      DTM = split_star(x[22], replace_na = TRUE),
+      RMR = split_star(x[23], replace_na = TRUE),
+      REF = split_star(x[24]),
+      REF = split_star(x[25]),
+      REF = split_star(x[26]),
+      DTM = split_star(x[27], replace_na = TRUE)
+    ) |>
+      unlist_df()
+  } else {
+    x
+  }
+}
+
 #' X12-820 Payment Order/Remittance Advice Parser
 #'
 #' Parses X12-820 (005010X218) transactions for Medicaid/Medicare capitation and
@@ -60,30 +190,29 @@ pad_names <- function(x, replace_na = FALSE) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_820[1:3], parse_820)
+#' purrr::map(hcc::x12_820, parse_820)
 #' @export
 parse_820 <- function(text) {
-  x = split_tilde(text)
+  x <- split_tilde(text)
 
   header <- list(
-    ISA = split_isa(x[1]),
-    GS = split_star(x[2]),
-    ST = split_star(x[3]),
-    BPR = split_star(x[4], replace_na = TRUE),
-    TRN = split_star(x[5]),
-    REF = split_star(x[6]),
-    `N1*PE` = split_star(x[7]),
-    `N3*PE` = split_star(x[8]),
-    `N4*PE` = split_star(x[9]),
-    `N1*PR` = split_star(x[10]),
-    `N3*PR` = split_star(x[11]),
-    `N4*PR` = split_star(x[12])
+    ISA = split_isa(x[perl(x, "^ISA")]),
+    GS = split_star(x[perl(x, "^GS")]),
+    ST = split_star(x[perl(x, "^ST")]),
+    BPR = split_star(x[perl(x, "^BPR")], replace_na = TRUE),
+    TRN = split_star(x[perl(x, "^TRN")]),
+    REF = split_star(x[perl(x, "^REF")[1]]),
+    `N1*PE` = split_star(x[perl(x, "^N1\\*PE")]),
+    `N3*PE` = split_star(x[perl(x, "^N3\\*")[1]]),
+    `N4*PE` = split_star(x[perl(x, "^N4\\*")[1]]),
+    `N1*PR` = split_star(x[perl(x, "^N1\\*PR")]),
+    `N3*PR` = split_star(x[perl(x, "^N3\\*")[2]]),
+    `N4*PR` = split_star(x[perl(x, "^N4\\*")[2]])
   ) |>
-  collapse::unlist2d(idcols = "id") |>
-    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VALUE")
+    unlist_df()
 
-  start = grep("^ENT", x, perl = TRUE)
-  end = c(start[-1], grep("^SE", x, perl = TRUE)) - 1L
+  start <- perl(x, "^ENT")
+  end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
 
   loops <- purrr::map2(start, end, function(x, y) {
     seq.int(x, y)
@@ -91,18 +220,18 @@ parse_820 <- function(text) {
 
   loop <- purrr::map(loops, \(i) x[i])
   loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
+  loop <- purrr::map(loop, parse_loop)
 
   trailer <- list(
-    SE = split_star(x[grep("^SE", x)]),
-    GE = split_star(x[grep("^GE", x)]),
-    IEA = split_star(x[grep("^IEA", x)])
+    SE = split_star(x[perl(x, "^SE")]),
+    GE = split_star(x[perl(x, "^GE")]),
+    IEA = split_star(x[perl(x, "^IEA")])
   ) |>
-    collapse::unlist2d(idcols = "id") |>
-    collapse::rnm("id.1" = "SEG", "id.2" = "PT", "V1" = "VALUE")
+    unlist_df()
 
-  list(
+  collapse::qTBL(collapse::rowbind(list(
     HEADER = header,
-    LOOP = loop,
+    LOOP = collapse::rowbind(loop),
     TRAILER = trailer
-  )
+  )))
 }
