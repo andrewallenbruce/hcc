@@ -25,40 +25,80 @@
 interactions <- S7::new_generic("interactions", "x")
 
 S7::method(interactions, PatientDemographics) <- function(x) {
-  list(
-    female = is_female(x@sex),
-    male = is_male(x@sex),
-    aged = !x@non_aged,
-    lti = x@is_lti,
-    fbd = x@dual_full,
-    pbd = x@dual_part,
-    months = x@esrd_months,
-    mcaid = is_dual_any(x@dual_code),
-    nemcaid = x@new_enrollee & is_dual_valid(x@dual_code),
-    ne_origds = x@age >= 65 & identical(x@orec_code, "1"),
-    is_dur4_9 = in_between(x@esrd_months, 4L, 9L),
-    is_dur10pl = x@esrd_months >= 10L,
-    is_esrd = is_esrd(x@orec_code)
+  female = is_female(x@sex)
+  male = is_male(x@sex)
+  aged = !x@non_aged
+  lti = x@is_lti
+  fbd = x@dual_full
+  pbd = x@dual_part
+  months = x@esrd_months
+  mcaid = is_dual_any(x@dual_code)
+  nemcaid = x@new_enrollee & is_dual_valid(x@dual_code)
+  ne_origds = x@age >= 65 & identical(x@orec_code, "1")
+  is_dur4_9 = in_between(x@esrd_months, 4L, 9L)
+  is_dur10pl = x@esrd_months >= 10L
+  is_esrd = is_esrd(x@orec_code)
+
+  named <- list(
+    NMCAID_NORIGDIS = prod(!nemcaid, !ne_origds),
+    MCAID_NORIGDIS = prod(nemcaid, !ne_origds),
+    NMCAID_ORIGDIS = prod(!nemcaid, ne_origds),
+    MCAID_ORIGDIS = prod(nemcaid, ne_origds),
+    FBD_NORIGDIS = prod(fbd, !ne_origds),
+    FBD_ORIGDIS = prod(fbd, ne_origds),
+    ND_PBD_NORIGDIS = prod(!fbd, !ne_origds),
+    ND_PBD_ORIGDIS = prod(!fbd, ne_origds)
+  ) |>
+    rlang::set_names(paste0, "_", x@category)
+
+  x <- rlang::list2(
+    OriginallyDisabled_Female = prod(aged, x@dis_orig, female),
+    OriginallyDisabled_Male = prod(aged, x@dis_orig, male),
+    Originally_ESRD_Female = prod(aged, is_esrd(x@orec_code), female),
+    Originally_ESRD_Male = prod(aged, is_esrd(x@orec_code), male),
+    MCAID_Female_Aged = prod(mcaid, female, aged),
+    MCAID_Female_NonAged = prod(mcaid, female, !aged),
+    MCAID_Male_Aged = prod(mcaid, male, aged),
+    MCAID_Male_NonAged = prod(mcaid, male, !aged),
+    LTI_Aged = prod(lti, aged),
+    LTI_NonAged = prod(lti, !aged),
+    LTI_GE65 = prod(lti, aged),
+    LTI_LT65 = prod(lti, !aged),
+    LTIMCAID = prod(lti, mcaid),
+    !!!named,
+    GE65_DUR4_9 = prod(is_dur4_9, aged),
+    LT65_DUR4_9 = prod(is_dur4_9, !aged),
+    GE65_DUR10PL = prod(is_dur10pl, aged),
+    LT65_DUR10PL = prod(is_dur10pl, !aged),
+
+    FGC_GE65_DUR4_9_ND_PBD = prod(!fbd, is_dur4_9, aged, !lti),
+    FGC_LT65_DUR4_9_ND_PBD = prod(!fbd, is_dur4_9, !aged, !lti),
+    FGI_GE65_DUR4_9_ND_PBD = prod(!fbd, is_dur4_9, aged, lti),
+    FGI_LT65_DUR4_9_ND_PBD = prod(!fbd, is_dur4_9, !aged, lti),
+    FGC_GE65_DUR10PL_ND_PBD = prod(!fbd, is_dur10pl, aged, !lti),
+    FGC_LT65_DUR10PL_ND_PBD = prod(!fbd, is_dur10pl, !aged, !lti),
+    FGI_GE65_DUR10PL_ND_PBD = prod(!fbd, is_dur10pl, aged, lti),
+    FGI_LT65_DUR10PL_ND_PBD = prod(!fbd, is_dur10pl, !aged, lti),
+
+    FGC_PBD_GE65_flag = prod(pbd, aged, !lti),
+    FGC_PBD_LT65_flag = prod(pbd, !aged, !lti),
+    FGI_PBD_GE65_flag = prod(pbd, aged, lti),
+    FGI_PBD_LT65_flag = prod(pbd, !aged, lti),
+
+    FGC_GE65_DUR4_9_FBD = prod(fbd, is_dur4_9, aged, !lti),
+    FGC_LT65_DUR4_9_FBD = prod(fbd, is_dur4_9, !aged, !lti),
+    FGI_GE65_DUR4_9_FBD = prod(fbd, is_dur4_9, aged, lti),
+    FGI_LT65_DUR4_9_FBD = prod(fbd, is_dur4_9, !aged, lti),
+
+    FGC_GE65_DUR4_9_FBD = prod(fbd, is_dur10pl, aged, !lti),
+    FGC_LT65_DUR4_9_FBD = prod(fbd, is_dur10pl, !aged, !lti),
+    FGI_GE65_DUR4_9_FBD = prod(fbd, is_dur10pl, aged, lti),
+    FGI_LT65_DUR4_9_FBD = prod(fbd, is_dur10pl, !aged, lti)
   )
+
+  names(x)[unlist_(x) == 1L]
 }
 
-# interactions <- function(d) {
-#   act <- list()
-#
-#   # Demographic flags
-#   is_female = d$sex %in% c("F", "2")
-#   is_male = d$sex %in% c("M", "1")
-#   is_aged = !d$non_aged
-#   lti = d$lti
-#   fbd = d$fbd
-#   pbd = d$pbd
-#   months = d$months
-#   mcaid = is_dual_any(d$dual)
-#   nemcaid = d$new & is_dual_valid(d$dual)
-#   ne_origds = d$age >= 65 & identical(d$orec, "1")
-#   is_dur4_9 = in_between(months, 4L, 9L)
-#   is_dur10pl = months >= 10L
-#
 #   # Original Disability interactions (V22, V24, V28, ESRD V21, V24)
 #   # Only for aged (65+) looked up with prefix (e.g., CNA_, DI_)
 #   act <- cheapr::list_assign(
