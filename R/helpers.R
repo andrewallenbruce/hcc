@@ -1,55 +1,8 @@
-#' Dual Eligibility Code Checks
-#' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
-#' @returns `<lgl>` vector indicating membership
-#' @name is_dual
-NULL
-
-#' @rdname is_dual
-#' @examples
-#' is_dual_any(c("02", "04", "08"))
-#' @export
-is_dual_any <- function(dual_code) {
-  dual_code %in_% DUAL_CODES$ANY
-}
-
-#' @rdname is_dual
-#' @examples
-#' is_dual_valid(c("02", "04", "08"))
-#' @export
-is_dual_valid <- function(dual_code) {
-  dual_code %in_% DUAL_CODES$VALID
-}
-
-#' @rdname is_dual
-#' @examples
-#' is_dual_full(c("02", "04", "08"))
-#' @export
-is_dual_full <- function(dual_code) {
-  dual_code %in_% DUAL_CODES$FULL
-}
-
-#' @rdname is_dual
-#' @examples
-#' is_dual_partial(c("01", "03", "05", "06"))
-#' @export
-is_dual_partial <- function(dual_code) {
-  dual_code %in_% DUAL_CODES$PARTIAL
-}
-
-#' Check if OREC/CREC indicates ESRD status
-#' @param rec_code OREC/CREC code
-#' @returns logical
-#' @examples
-#' is_esrd(c("2", "3"))
-#' @export
-is_esrd <- function(rec_code) {
-  rec_code %in_% REC_CODES$ESRD
-}
-
 #' Map Codes to Dual Eligibility Codes
 #'
 #' @description
-#' Map California Medi-Cal aid codes or Medicare status codes to CMS Dual Eligibility codes
+#' Map California Medi-Cal aid codes or Medicare status codes to CMS Dual
+#' Eligibility codes
 #'
 #' @param code `<chr>` Medi-Cal aid code or Medicare status code
 #' @returns Dual eligibility code ('01'-'08') or NA if not found
@@ -63,7 +16,37 @@ map_to_dual <- function(code) {
 }
 
 #' @noRd
-standardize_sex <- function(
+is_dual_any <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$ANY
+}
+
+#' @noRd
+is_dual_valid <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$VALID
+}
+
+#' @noRd
+is_dual_full <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$FULL
+}
+
+#' @noRd
+is_dual_partial <- function(dual_code) {
+  dual_code %in_% DUAL_CODES$PARTIAL
+}
+
+#' @noRd
+is_esrd <- function(rec_code) {
+  rec_code %in_% REC_CODES$ESRD
+}
+
+#' @noRd
+has_esrd <- function(orec_code, crec_code) {
+  any(is_esrd(c(orec_code, crec_code)))
+}
+
+#' @noRd
+convert_sex <- function(
   sex,
   version,
   error_arg = rlang::caller_arg(sex),
@@ -82,6 +65,16 @@ standardize_sex <- function(
     "V4" = unname(SEX$V2[sex]),
     "V6" = unname(SEX$V6[sex]),
   )
+}
+
+#' @noRd
+is_male <- function(sex) {
+  sex %in_% SEX$MALE
+}
+
+#' @noRd
+is_female <- function(sex) {
+  sex %in_% SEX$FEMALE
 }
 
 #' @noRd
@@ -106,9 +99,9 @@ age_category_ESRD <- function(age, sex) {
 }
 
 #' @noRd
-age_category_NEW <- function(age, sex, orec) {
+age_category_NEW <- function(age, sex, orec_code) {
   prefix <- if (sex == "2") "NEF" else "NEM"
-  orec <- if (cheapr::is_na(orec)) "0" else orec
+  orec_code <- if (cheapr::is_na(orec_code)) "0" else orec_code
 
   vctrs::vec_case_when(
     conditions = list(
@@ -116,8 +109,8 @@ age_category_NEW <- function(age, sex, orec) {
       in_between(age, 35L, 44L),
       in_between(age, 45L, 54L),
       in_between(age, 55L, 59L),
-      in_between(age, 60L, 64L) | (age == 64L & !identical(orec, "0")),
-      (age == 64L & identical(orec, "0")) | age == 65L,
+      in_between(age, 60L, 64L) | (age == 64L & !identical(orec_code, "0")),
+      (age == 64L & identical(orec_code, "0")) | age == 65L,
       age == 66L,
       age == 67L,
       age == 68L,
@@ -148,5 +141,28 @@ age_category_NEW <- function(age, sex, orec) {
       NA_character_
     ),
     default = NA_character_
+  )
+}
+
+#' @noRd
+age_category <- function(
+  version,
+  new_enrollee,
+  has_esrd,
+  age,
+  sex,
+  orec_code
+) {
+  switch(
+    version,
+    "V2" = ,
+    "V4" = {
+      if (new_enrollee & !has_esrd) {
+        age_category_NEW(age, sex, orec_code)
+      } else {
+        age_category_ESRD(age, sex)
+      }
+    },
+    "V6" = age_category_V6(age, sex)
   )
 }

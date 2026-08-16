@@ -169,6 +169,8 @@ PREFIX = list(
 #' @noRd
 SEX = list(
   VALID = c("M", "F", "1", "2"),
+  MALE = c("M", "1"),
+  FEMALE = c("F", "2"),
   V2 = c(
     "M" = "1",
     "F" = "2",

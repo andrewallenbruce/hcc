@@ -13,7 +13,8 @@ map_to_dual(code)
 Dual eligibility code ('01'-'08') or NA if not found
 }
 \description{
-Map California Medi-Cal aid codes or Medicare status codes to CMS Dual Eligibility codes
+Map California Medi-Cal aid codes or Medicare status codes to CMS Dual
+Eligibility codes
 }
 \examples{
 map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"))

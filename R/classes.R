@@ -4,15 +4,15 @@
 #' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic Complications")
 #' @param is_chronic `<lgl>` Whether this HCC is considered a chronic condition
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the RAF calculation
-#' @returns <HCCDetail> S7 object
-#' @examples
+#' @returns An <HCCDetail> S7 object
+#' @examplesIf FALSE
 #' HCCDetail(
 #'  hcc = "80",
 #'  label = "Coma, Brain Compression/Anoxic Damage",
 #'  is_chronic = FALSE,
 #'  coefficient = 0.486
 #' )
-#' @export
+#' @noRd
 HCCDetail <- S7::new_class(
   "HCCDetail",
   properties = list(
@@ -23,76 +23,77 @@ HCCDetail <- S7::new_class(
   )
 )
 
+#' Health Care Plan coverage period from HD loop
+#'
+#' @param start_date `<date>` coverage start date
+#' @param end_date `<date>` coverage start date
+#' @param hcp_code `<chr>` HCP code
+#' @param hcp_status `<chr>` HCP status
+#' @param aid_codes `<chr>` REF*CE composite
+#' @returns A <HCPCoveragePeriod> S7 object
+#' @examplesIf FALSE
+#' HCPCoveragePeriod()
+#' @noRd
+HCPCoveragePeriod <- S7::new_class(
+  "HCPCoveragePeriod",
+  properties = list(
+    start_date = S7::new_property(S7::class_Date, default = Sys.Date()),
+    end_date = S7::new_property(S7::class_Date, default = Sys.Date() + 1L),
+    hcp_code = S7::class_character,
+    hcp_status = S7::class_character,
+    aid_codes = S7::class_character
+  )
+)
+
 #' Response model for demographic categorization
 #'
+#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
 #' @param age `<int>` Beneficiary age (floored to `integer`)
 #' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
-#' @param dual `<chr>` Dual eligibility code ("00" - "10")
-#' @param orec `<chr>` Original reason for entitlement code ("0" - "3")
-#' @param crec `<chr>` Current reason for entitlement code ("0" - "3")
-#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
-#' @param new `<lgl>` Whether beneficiary is a **New Enrollee**
-#' @param snp `<lgl>` Whether beneficiary is in a **Special Needs Plan**
-#' @param low `<lgl>` Whether beneficiary is **Low Income** (RxHCC only)
-#' @param disabled `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
-#' @param orig_disabled `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled
+#' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
+#' @param orec_code `<chr>` Original reason for entitlement code ("0" - "3")
+#' @param crec_code `<chr>` Current reason for entitlement code ("0" - "3")
+#' @param new_enrollee `<lgl>` Beneficiary is a **New Enrollee**
+#' @param has_snp `<lgl>` Beneficiary is in a **Special Needs Plan**
 #' @param non_aged `<lgl>` `TRUE` if `age <= 64`
-#' @param esrd `<lgl>` `TRUE` if ESRD (ESRD Model)
-#' @param lti `<lgl>` `TRUE` if LTI (LTI Model)
-#' @param fbd `<lgl>` `TRUE` if FBD (FBD Model)
-#' @param pbd `<lgl>` `TRUE` if PBD (PBD Model)
-#' @param months `<int>` Number of months since transplant (ESRD only)
+#' @param dis_orig `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled
+#' @param dis_curr `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
+#' @param dual_full `<lgl>` `TRUE` if FBD (FBD Model)
+#' @param dual_part `<lgl>` `TRUE` if PBD (PBD Model)
+#' @param has_esrd `<lgl>` `TRUE` if ESRD (ESRD Model)
+#' @param is_lti `<lgl>` `TRUE` if LTI (LTI Model)
+#' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
+#' @param esrd_months `<int>` Number of months since transplant (ESRD only)
 #' @param category `<chr>` Age-sex category code
-#' @returns A <Demographics> list object containing the derived fields.
-#' @examples
+#' @returns A <Demographics> S7 object
+#' @examplesIf FALSE
 #' Demographics(age = 48, sex = "1", version = "V2")
 #' Demographics(age = 35, sex = "M", version = "V6")
-#' Demographics(age = 75, sex = "2", orec = "0", version = "V2")
-#' @export
-Demographics <- function(
-  version = character(),
-  age = integer(),
-  sex = character(),
-  non_aged = logical(),
-  orig_disabled = logical(),
-  disabled = logical(),
-  dual = character(),
-  orec = character(),
-  crec = character(),
-  new = logical(),
-  snp = logical(),
-  fbd = logical(),
-  pbd = logical(),
-  esrd = logical(),
-  lti = logical(),
-  months = integer(),
-  low = logical(),
-  category = character()
-) {
-  structure(
-    list(
-      version = version,
-      age = age,
-      sex = sex,
-      non_aged = non_aged,
-      orig_disabled = orig_disabled,
-      disabled = disabled,
-      dual = dual,
-      orec = orec,
-      crec = crec,
-      new = new,
-      snp = snp,
-      fbd = fbd,
-      pbd = pbd,
-      esrd = esrd,
-      lti = lti,
-      months = months,
-      low = low,
-      category = category
-    ),
-    class = "demographics"
+#' Demographics(age = 75, sex = "2", orec_code = "0", version = "V2")
+#' @noRd
+Demographics <- S7::new_class(
+  "Demographics",
+  properties = list(
+    version = S7::class_character,
+    age = S7::class_numeric,
+    sex = S7::class_character,
+    dual_code = S7::class_character,
+    orec_code = S7::class_character,
+    crec_code = S7::class_character,
+    new_enrollee = S7::class_logical,
+    has_snp = S7::class_logical,
+    non_aged = S7::class_logical,
+    dis_orig = S7::class_logical,
+    dis_curr = S7::class_logical,
+    dual_full = S7::class_logical,
+    dual_part = S7::class_logical,
+    has_esrd = S7::class_logical,
+    is_lti = S7::class_logical,
+    low_income = S7::class_logical,
+    esrd_months = S7::class_integer,
+    category = S7::class_character
   )
-}
+)
 
 #' Represents standardized service-level data extracted from healthcare claims.
 #'
@@ -115,9 +116,9 @@ Demographics <- function(
 #' @param modifiers List of procedure code modifiers
 #' @param allowed_amount Allowed amount for the service
 #' @returns <ServiceLevelData> object
-#' @examples
+#' @examplesIf FALSE
 #' ServiceLevelData()
-#' @export
+#' @noRd
 ServiceLevelData <- function(
   claim_id = character(),
   procedure_code = character(),
@@ -178,9 +179,9 @@ ServiceLevelData <- function(
 #' @param diagnosis_codes Input diagnosis codes
 #' @param service_level_data Processed service records
 #' @returns <RAFResult> object
-#' @examples
+#' @examplesIf FALSE
 #' RAFResult()
-#' @export
+#' @noRd
 RAFResult <- function(
   risk_score = double(),
   risk_score_demographics = double(),
@@ -217,33 +218,6 @@ RAFResult <- function(
   )
 }
 
-#' A single Health Care Plan coverage period from HD loop
-#'
-#' @param start_date date
-#' @param end_date date
-#' @param hcp_code code
-#' @param hcp_status status
-#' @param aid_codes REF*CE composite
-#' @returns A <HCPCoveragePeriod> object
-#' @examples
-#' HCPCoveragePeriod()
-#' @export
-HCPCoveragePeriod <- function(
-  start_date = character(),
-  end_date = character(),
-  hcp_code = character(),
-  hcp_status = character(),
-  aid_codes = character()
-) {
-  list(
-    start_date = start_date,
-    end_date = end_date,
-    hcp_code = hcp_code,
-    hcp_status = hcp_status,
-    aid_codes = aid_codes
-  )
-}
-
 #' A single remittance line item within a member's payment record.
 #'
 #' Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
@@ -260,9 +234,9 @@ HCPCoveragePeriod <- function(
 #' @param adjustment_amount Adjustment amount from ADX01 (negative = recoupment)
 #' @param adjustment_reason Adjustment reason code from ADX02 (e.g., "53" = prior period)
 #' @returns A <RemittanceEntry> object
-#' @examples
+#' @examplesIf FALSE
 #' RemittanceEntry()
-#' @export
+#' @noRd
 RemittanceEntry <- function(
   reference_number = character(),
   payment_amount = double(),
@@ -304,9 +278,9 @@ RemittanceEntry <- function(
 #' @param middle_name Member middle name (NM105)
 #' @param remittance_entries List of remittance line items (one per RMR/DTM set)
 #' @returns A <PaymentDetail> object
-#' @examples
+#' @examplesIf FALSE
 #' PaymentDetail()
-#' @export
+#' @noRd
 PaymentDetail <- function(
   entity_number = character(),
   member_id = character(),
@@ -347,9 +321,9 @@ PaymentDetail <- function(
 #' @param payer_zip Payer ZIP code (N4)
 #' @param members List of per-member payment records
 #' @returns A <PaymentData> object
-#' @examples
+#' @examplesIf FALSE
 #' PaymentData()
-#' @export
+#' @noRd
 PaymentData <- function(
   source = character(),
   report_date = character(),
@@ -456,9 +430,9 @@ PaymentData <- function(
 #' @param amount Premium or cost share amount (numeric)
 #' @param hcp_history List of historical HCP coverage periods
 #' @returns <EnrollmentData> object
-#' @examples
+#' @examplesIf FALSE
 #' EnrollmentData()
-#' @export
+#' @noRd
 EnrollmentData <- function(
   source = character(),
   report_date = character(),

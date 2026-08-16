@@ -23,18 +23,3 @@ normalize_ <- function(x) {
 in_between <- function(x, min, max) {
   (x - min) * (max - x) >= 0L
 }
-
-#' @noRd
-fmt_idx <- function(x) {
-  paste(
-    format(
-      names(x),
-      justify = "right"
-    ),
-    ":",
-    format(
-      unname(x),
-      justify = "left"
-    )
-  )
-}
