@@ -37,7 +37,7 @@ x = demographics(
  )
 
 x
-#> <hcc::Demographics>
+#> <hcc::PatientDemographics>
 #>  @ version     : chr "V2"
 #>  @ age         : int 65
 #>  @ sex         : chr "1"

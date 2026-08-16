@@ -2,6 +2,9 @@
 
 ## All functions
 
+- [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
+  : Categorize a beneficiary's demographics into risk adjustment
+  categories.
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
