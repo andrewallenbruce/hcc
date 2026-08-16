@@ -166,7 +166,7 @@ parse_820 <- function(text) {
 #'
 #' @param text `<chr>` string of raw X12-834 text
 #' @returns list
-#' @examplesIf FALSE
+#' @examples
 #' purrr::map(hcc::x12_834, parse_834)
 #' @export
 parse_834 <- function(text) {
@@ -177,7 +177,7 @@ parse_834 <- function(text) {
 #'
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
-#' @examplesIf FALSE
+#' @examples
 #' purrr::map(hcc::x12_837, parse_837)
 #' @export
 parse_837 <- function(text) {

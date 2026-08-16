@@ -16,7 +16,5 @@ list
 X12-837 Health Care Claim Parser
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 purrr::map(hcc::x12_837, parse_837)
-\dontshow{\}) # examplesIf}
 }
