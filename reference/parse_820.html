@@ -87,86 +87,10 @@ but handles the general 820 format used by state Medicaid agencies.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 429 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    TEST-PAYER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    30        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    TEST-PAYEE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    260118    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    0831      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 419 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 632 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    TEST-PAYER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    30        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    TEST-PAYEE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    260316    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    0855      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 622 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4,285 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    TEST-PAYER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    30        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    TEST-PAYEE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    260316    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    0854      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4,275 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 387 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    TEST-PAYER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    30        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    TEST-PAYEE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    251217    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    2316      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 377 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,622 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    TEST-PAYER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    30        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    TEST-PAYEE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    260217    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    0936      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,612 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in purrr::map(hcc::x12_820, parse_820):</span> <span style="color: #00BBBB;">ℹ</span> In index: 1.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> With name: minimal_820.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `strsplit(x, "*", fixed = TRUE)[[1]]`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> subscript out of bounds</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

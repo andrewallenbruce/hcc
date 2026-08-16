@@ -64,6 +64,38 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837.html">x12_837</a></span>, <span class="va">parse_837</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*PROVIDER01     *ZZ*PAYER99        *260415*1030*U*00501*000000837*0*P*&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*HC*PROVIDER01*PAYER99*20260415*1030*1*X*005010X222A1"                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*837*0001*005010X222A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BHT*0019*00*REQ-CLM-001*20260415*1030*CH"                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "NM1*41*2*ACME CLINIC*****46*1234567890"                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "PER*IC*BILLING DEPT*TE*5551234567"                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "NM1*40*2*PAYER99*****46*PAYER99"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "HL*1**20*1"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "NM1*85*2*ACME CLINIC*****XX*1234567890"                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "N3*100 MAIN ST"                                                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "N4*ATLANTA*GA*30303"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*EI*987654321"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "HL*2*1*22*0"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "SBR*P*18*GRP4567*****CI"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "NM1*IL*1*DOE*JANE****MI*MEMBER12345"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "N3*250 OAK AVE"                                                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "N4*ATLANTA*GA*30309"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "DMG*D8*19850412*F"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "NM1*PR*2*PAYER99*****PI*PAYER99"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "CLM*PATACCT-9911*620.00***11:B:1*Y*A*Y*Y"                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "HI*ABK:M5435"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "LX*1"                                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "SV1*HC:99213*120.00*UN*1***1"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "DTP*472*D8*20260401"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "LX*2"                                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "SV1*HC:90834*500.00*UN*1***1"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "DTP*472*D8*20260401"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "SE*26*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "GE*1*1"                                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "IEA*1*000000837"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "ISA*00*          *00*          *01*987654321      *ZZ*123456789      *180508*0833*^*00501*697773230*1*P*:"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [2] "GS*HC*CLEARINGHOUSE*123456789*20180508*0833*212950697*X*005010X222A1"                                     </span>
