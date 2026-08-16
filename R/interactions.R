@@ -24,7 +24,7 @@
 #' @export
 interactions <- S7::new_generic("interactions", "x")
 
-S7::method(interactions, Demographics) <- function(x) {
+S7::method(interactions, PatientDemographics) <- function(x) {
   list(
     female = is_female(x@sex),
     male = is_male(x@sex),

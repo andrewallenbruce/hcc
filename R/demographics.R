@@ -16,7 +16,7 @@
 #' @param esrd_months `<int>` Number of months since transplant (ESRD only)
 #' @param prefix `<chr>` Optional prefix to override demographic
 #'   detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)
-#' @returns A <Demographics> S7 object
+#' @returns A <PatientDemographics> S7 object
 #' @examples
 #' demographics(age = 48, sex = "1")
 #' demographics(version = "V6", age = 35, sex = "M")
@@ -74,7 +74,7 @@ demographics <- function(
     }
   }
 
-  Demographics(
+  PatientDemographics(
     version = version,
     age = age,
     sex = sex,

@@ -65,14 +65,14 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
 #' @param esrd_months `<int>` Number of months since transplant (ESRD only)
 #' @param category `<chr>` Age-sex category code
-#' @returns A <Demographics> S7 object
+#' @returns A <PatientDemographics> S7 object
 #' @examplesIf FALSE
-#' Demographics(age = 48, sex = "1", version = "V2")
-#' Demographics(age = 35, sex = "M", version = "V6")
-#' Demographics(age = 75, sex = "2", orec_code = "0", version = "V2")
+#' PatientDemographics(age = 48, sex = "1", version = "V2")
+#' PatientDemographics(age = 35, sex = "M", version = "V6")
+#' PatientDemographics(age = 75, sex = "2", orec_code = "0", version = "V2")
 #' @noRd
-Demographics <- S7::new_class(
-  "Demographics",
+PatientDemographics <- S7::new_class(
+  "PatientDemographics",
   properties = list(
     version = S7::class_character,
     age = S7::class_numeric,
