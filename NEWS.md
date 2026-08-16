@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9024 (2026-08-16)
+
+* parse_834, parse_837 (#1)
+* interactions polishing
+* 820 parser more robust
+* `Demographics` -> `PatientDemographics`
+
+
 # hcc 0.0.0.9023 (2026-08-16)
 
 * more S7
