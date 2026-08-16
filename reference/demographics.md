@@ -76,7 +76,7 @@ demographics(
 
 ## Value
 
-A S7 object
+A `<PatientDemographics>` S7 object
 
 ## Examples
 
