@@ -1,5 +1,13 @@
 # Changelog
 
+## hcc 0.0.0.9024 (2026-08-16)
+
+- parse_834, parse_837
+  ([\#1](https://github.com/andrewallenbruce/hcc/issues/1))
+- interactions polishing
+- 820 parser more robust
+- `Demographics` -\> `PatientDemographics`
+
 ## hcc 0.0.0.9023 (2026-08-16)
 
 - more S7

@@ -21,52 +21,36 @@ PaymentDetail(
 
 - entity_number:
 
-  ENT sequence number (ENT01)
+  `ENT-01` ENT sequence number
 
 - member_id:
 
-  Member identifier from NM109
+  `NM1-09` Member identifier
 
 - last_name:
 
-  Member last name (NM103)
+  `NM1-03` Member last name
 
 - first_name:
 
-  Member first name (NM104)
+  `NM1-04` Member first name
 
 - middle_name:
 
-  Member middle name (NM105)
+  `NM1-05` Member middle name
 
 - remittance_entries:
 
-  List of remittance line items (one per RMR/DTM set)
+  List of `<RemittanceEntry>` line items (one per RMR/DTM set)
 
 ## Value
 
-A object
+A `<PaymentDetail>` S7 object
 
 ## Examples
 
 ``` r
+if (FALSE) {
 PaymentDetail()
-#> $entity_number
-#> character(0)
-#> 
-#> $member_id
-#> character(0)
-#> 
-#> $last_name
-#> character(0)
-#> 
-#> $first_name
-#> character(0)
-#> 
-#> $middle_name
-#> character(0)
-#> 
-#> $remittance_entries
-#> character(0)
-#> 
+}
 ```

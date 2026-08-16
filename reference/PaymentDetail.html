@@ -11,7 +11,7 @@ prior periods)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9022</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9024</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,55 +66,39 @@ prior periods).</p>
 
 
 <dl><dt id="arg-entity-number">entity_number<a class="anchor" aria-label="anchor" href="#arg-entity-number"></a></dt>
-<dd><p>ENT sequence number (ENT01)</p></dd>
+<dd><p><code>ENT-01</code> ENT sequence number</p></dd>
 
 
 <dt id="arg-member-id">member_id<a class="anchor" aria-label="anchor" href="#arg-member-id"></a></dt>
-<dd><p>Member identifier from NM109</p></dd>
+<dd><p><code>NM1-09</code> Member identifier</p></dd>
 
 
 <dt id="arg-last-name">last_name<a class="anchor" aria-label="anchor" href="#arg-last-name"></a></dt>
-<dd><p>Member last name (NM103)</p></dd>
+<dd><p><code>NM1-03</code> Member last name</p></dd>
 
 
 <dt id="arg-first-name">first_name<a class="anchor" aria-label="anchor" href="#arg-first-name"></a></dt>
-<dd><p>Member first name (NM104)</p></dd>
+<dd><p><code>NM1-04</code> Member first name</p></dd>
 
 
 <dt id="arg-middle-name">middle_name<a class="anchor" aria-label="anchor" href="#arg-middle-name"></a></dt>
-<dd><p>Member middle name (NM105)</p></dd>
+<dd><p><code>NM1-05</code> Member middle name</p></dd>
 
 
 <dt id="arg-remittance-entries">remittance_entries<a class="anchor" aria-label="anchor" href="#arg-remittance-entries"></a></dt>
-<dd><p>List of remittance line items (one per RMR/DTM set)</p></dd>
+<dd><p>List of <code>&lt;RemittanceEntry&gt;</code> line items (one per RMR/DTM set)</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <paymentdetail> object</paymentdetail></p>
+    <p>A <code>&lt;PaymentDetail&gt;</code> S7 object</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">PaymentDetail</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $entity_number</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $member_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $last_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $first_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $middle_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $remittance_entries</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">PaymentDetail</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

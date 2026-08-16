@@ -1,4 +1,4 @@
-# Enrollment Data from 834 Transactions
+# X12-834 Transaction Enrollment Data
 
 Data needed for risk adjustment and Medicaid coverage tracking. Supports
 California DHCS Medi-Cal 834 format with FAME fields.
@@ -76,47 +76,47 @@ EnrollmentData(
 
 - source:
 
-  Interchange sender ID (ISA06)
+  `ISA-06` Interchange sender ID
 
 - report_date:
 
-  Transaction date (GS04)
+  `GS-04` Transaction date
 
 - member_id:
 
-  Unique identifier for the member (REF\*0F)
+  `REF*0F` Unique identifier for the member
 
 - mbi:
 
-  Medicare Beneficiary Identifier (REF\*6P)
+  `REF*6P` Medicare Beneficiary Identifier
 
 - medicaid_id:
 
-  Medicaid/Medi-Cal ID number (REF\*23)
+  `REF*23` Medicaid/Medi-Cal ID number
 
 - hic:
 
-  Medicare HICN (REF\*F6)
+  `REF*F6` Medicare HICN
 
 - cin:
 
-  Client Index Number from REF\*3H
+  `REF*3H` Client Index Number
 
 - cin_check_digit:
 
-  CIN check digit from REF\*3H
+  `REF*3H` CIN check digit
 
 - first_name:
 
-  Member first name (NM104)
+  `NM1-04` Member first name
 
 - last_name:
 
-  Member last name (NM103)
+  `NM1-03` Member last name
 
 - middle_name:
 
-  Member middle name (NM105)
+  `NM1-05` Member middle name
 
 - dob:
 
@@ -132,11 +132,11 @@ EnrollmentData(
 
 - race:
 
-  Race/ethnicity code (DMG05)
+  `DMG-05` Race/ethnicity code
 
 - language:
 
-  Preferred language (LUI02)
+  `LUI-02` Preferred language
 
 - death_date:
 
@@ -144,39 +144,40 @@ EnrollmentData(
 
 - address_1:
 
-  Street address line 1 (N301)
+  `N3-01` Street address line 1
 
 - address_2:
 
-  Street address line 2 (N302)
+  `N3-02` Street address line 2
 
 - city:
 
-  City (N401)
+  `N4-01` City
 
 - state:
 
-  State code (N402)
+  `N4-02` State code
 
 - zip:
 
-  Postal code (N403)
+  `N4-03` Postal code
 
 - phone:
 
-  Phone number (PER04)
+  `PER-04` Phone number
 
 - maintenance_type:
 
-  001 = Change, 021 = Add, 024 = Cancel, 025 = Reinstate (INS03)
+  `INS-03` Change (`001`), Add (`021`), Cancel (`024`), Reinstate
+  (`025`)
 
 - maintenance_reason_code:
 
-  Maintenance reason (INS04)
+  `INS-04` Maintenance reason
 
 - benefit_status_code:
 
-  A=Active, C=COBRA, etc. (INS05)
+  `INS-05` A=Active, C=COBRA, etc.
 
 - coverage_start_date:
 
@@ -196,7 +197,7 @@ EnrollmentData(
 
 - dual_elgbl_cd:
 
-  Dual eligibility status code ('00','01'-'08')
+  Dual eligibility status code (`00`,`01`-`08`)
 
 - is_full_benefit_dual:
 
@@ -220,11 +221,11 @@ EnrollmentData(
 
 - fame_county_id:
 
-  FAME county ID (REF*ZX or N4*CY)
+  FAME county ID (`REF*ZX` or `N4*CY`)
 
 - case_number:
 
-  Case number (REF\*1L)
+  Case number (`REF*1L`)
 
 - fame_card_issue_date:
 
@@ -232,7 +233,7 @@ EnrollmentData(
 
 - fame_redetermination_date:
 
-  FAME redetermination date (REF\*17)
+  FAME redetermination date (`REF*17`)
 
 - fame_death_date:
 
@@ -240,7 +241,7 @@ EnrollmentData(
 
 - primary_aid_code:
 
-  Primary AID code (REF\*RB)
+  Primary AID code (`REF*RB`)
 
 - carrier_code:
 
@@ -256,11 +257,11 @@ EnrollmentData(
 
 - res_addr_flag:
 
-  Residential address flag from REF\*6O
+  Residential address flag from `REF*6O`
 
 - reas_add_ind:
 
-  Reason address indicator from REF\*6O
+  Reason address indicator from `REF*6O`
 
 - res_zip_deliv_code:
 
@@ -288,7 +289,7 @@ EnrollmentData(
 
 - new_enrollee:
 
-  New enrollee status (\<= 3 months)
+  New enrollee status (`<= 3 months`)
 
 - medicare_prt_a:
 
@@ -304,15 +305,15 @@ EnrollmentData(
 
 - hcp_code:
 
-  Current HCP code (HD04 first part)
+  Current HCP code (`HD-04` first part)
 
 - hcp_status:
 
-  Current HCP status (HD04 second part)
+  Current HCP status (`HD-04` second part)
 
 - amount_qualifier:
 
-  AMT qualifier code (e.g., 'D' = premium, 'C1' = copay)
+  AMT qualifier code (e.g., `D` = premium, `C1` = copay)
 
 - amount:
 
@@ -324,196 +325,12 @@ EnrollmentData(
 
 ## Value
 
-object
+A `<EnrollmentData>` S7 object
 
 ## Examples
 
 ``` r
+if (FALSE) {
 EnrollmentData()
-#> $source
-#> character(0)
-#> 
-#> $report_date
-#> character(0)
-#> 
-#> $member_id
-#> character(0)
-#> 
-#> $mbi
-#> character(0)
-#> 
-#> $medicaid_id
-#> character(0)
-#> 
-#> $hic
-#> character(0)
-#> 
-#> $cin
-#> character(0)
-#> 
-#> $cin_check_digit
-#> integer(0)
-#> 
-#> $first_name
-#> character(0)
-#> 
-#> $last_name
-#> character(0)
-#> 
-#> $middle_name
-#> character(0)
-#> 
-#> $dob
-#> character(0)
-#> 
-#> $age
-#> integer(0)
-#> 
-#> $sex
-#> character(0)
-#> 
-#> $race
-#> character(0)
-#> 
-#> $language
-#> character(0)
-#> 
-#> $death_date
-#> character(0)
-#> 
-#> $address_1
-#> character(0)
-#> 
-#> $address_2
-#> character(0)
-#> 
-#> $city
-#> character(0)
-#> 
-#> $state
-#> character(0)
-#> 
-#> $zip
-#> character(0)
-#> 
-#> $phone
-#> character(0)
-#> 
-#> $maintenance_type
-#> character(0)
-#> 
-#> $maintenance_reason_code
-#> character(0)
-#> 
-#> $benefit_status_code
-#> character(0)
-#> 
-#> $coverage_start_date
-#> character(0)
-#> 
-#> $coverage_end_date
-#> character(0)
-#> 
-#> $has_medicare
-#> logical(0)
-#> 
-#> $has_medicaid
-#> logical(0)
-#> 
-#> $dual_elgbl_cd
-#> character(0)
-#> 
-#> $is_full_benefit_dual
-#> logical(0)
-#> 
-#> $is_partial_benefit_dual
-#> logical(0)
-#> 
-#> $medicare_status_code
-#> character(0)
-#> 
-#> $medi_cal_aid_code
-#> character(0)
-#> 
-#> $medi_cal_eligibility_status
-#> character(0)
-#> 
-#> $fame_county_id
-#> character(0)
-#> 
-#> $case_number
-#> character(0)
-#> 
-#> $fame_card_issue_date
-#> character(0)
-#> 
-#> $fame_redetermination_date
-#> character(0)
-#> 
-#> $fame_death_date
-#> character(0)
-#> 
-#> $primary_aid_code
-#> character(0)
-#> 
-#> $carrier_code
-#> character(0)
-#> 
-#> $fed_contract_number
-#> character(0)
-#> 
-#> $client_reporting_cat
-#> character(0)
-#> 
-#> $res_addr_flag
-#> character(0)
-#> 
-#> $reas_add_ind
-#> character(0)
-#> 
-#> $res_zip_deliv_code
-#> character(0)
-#> 
-#> $orec
-#> character(0)
-#> 
-#> $crec
-#> character(0)
-#> 
-#> $snp
-#> logical(0)
-#> 
-#> $low_income
-#> logical(0)
-#> 
-#> $lti
-#> logical(0)
-#> 
-#> $new_enrollee
-#> logical(0)
-#> 
-#> $medicare_prt_a
-#> logical(0)
-#> 
-#> $medicare_prt_b
-#> logical(0)
-#> 
-#> $medicare_prt_d
-#> logical(0)
-#> 
-#> $hcp_code
-#> character(0)
-#> 
-#> $hcp_status
-#> character(0)
-#> 
-#> $amount_qualifier
-#> character(0)
-#> 
-#> $amount
-#> numeric(0)
-#> 
-#> $hcp_history
-#> character(0)
-#> 
+}
 ```

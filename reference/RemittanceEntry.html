@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9022</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9024</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,90 +65,59 @@
 
 
 <dl><dt id="arg-reference-number">reference_number<a class="anchor" aria-label="anchor" href="#arg-reference-number"></a></dt>
-<dd><p>Invoice/check reference number (RMR02)</p></dd>
+<dd><p><code>RMR-02</code> Invoice/check reference number</p></dd>
 
 
 <dt id="arg-payment-amount">payment_amount<a class="anchor" aria-label="anchor" href="#arg-payment-amount"></a></dt>
-<dd><p>Net payment amount for this period; negative = recoupment (RMR04/05)</p></dd>
+<dd><p><code>RMR-04/RMR-05</code> Net payment amount for this period; negative = recoupment</p></dd>
 
 
 <dt id="arg-original-amount">original_amount<a class="anchor" aria-label="anchor" href="#arg-original-amount"></a></dt>
-<dd><p>Original amount before adjustment, when present (RMR05/06)</p></dd>
+<dd><p><code>RMR-05/RMR-06</code> Original amount before adjustment, when present</p></dd>
 
 
 <dt id="arg-rate-code">rate_code<a class="anchor" aria-label="anchor" href="#arg-rate-code"></a></dt>
-<dd><p>Rate code from REF*18 (e.g., "957" = PACE rate)</p></dd>
+<dd><p><code>REF*18</code> Rate code (e.g., "957" = PACE rate)</p></dd>
 
 
 <dt id="arg-aid-code">aid_code<a class="anchor" aria-label="anchor" href="#arg-aid-code"></a></dt>
-<dd><p>California Medi-Cal aid code from REF*ZZ (e.g., "1H", "M1", "60")</p></dd>
+<dd><p><code>REF*ZZ</code> California Medi-Cal aid code (e.g., "1H", "M1", "60")</p></dd>
 
 
 <dt id="arg-plan-type">plan_type<a class="anchor" aria-label="anchor" href="#arg-plan-type"></a></dt>
-<dd><p>Plan type from REF*ZZ composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)</p></dd>
+<dd><p><code>REF*ZZ</code> Plan type - composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)</p></dd>
 
 
 <dt id="arg-description">description<a class="anchor" aria-label="anchor" href="#arg-description"></a></dt>
-<dd><p>Payment description from second REF*ZZ (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")</p></dd>
+<dd><p><code>REF*ZZ</code> Payment description (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")</p></dd>
 
 
 <dt id="arg-coverage-period-start">coverage_period_start<a class="anchor" aria-label="anchor" href="#arg-coverage-period-start"></a></dt>
-<dd><p>Coverage period begin date (YYYY-MM-DD) from DTM*582</p></dd>
+<dd><p><code>DTM*582</code> Coverage period begin date (YYYY-MM-DD)</p></dd>
 
 
 <dt id="arg-coverage-period-end">coverage_period_end<a class="anchor" aria-label="anchor" href="#arg-coverage-period-end"></a></dt>
-<dd><p>Coverage period end date (YYYY-MM-DD) from DTM*582</p></dd>
+<dd><p><code>DTM*582</code> Coverage period end date (YYYY-MM-DD) from DTM*582</p></dd>
 
 
 <dt id="arg-adjustment-amount">adjustment_amount<a class="anchor" aria-label="anchor" href="#arg-adjustment-amount"></a></dt>
-<dd><p>Adjustment amount from ADX01 (negative = recoupment)</p></dd>
+<dd><p><code>ADX-01</code> Adjustment amount (negative = recoupment)</p></dd>
 
 
 <dt id="arg-adjustment-reason">adjustment_reason<a class="anchor" aria-label="anchor" href="#arg-adjustment-reason"></a></dt>
-<dd><p>Adjustment reason code from ADX02 (e.g., "53" = prior period)</p></dd>
+<dd><p><code>ADX-02</code> Adjustment reason code (e.g., "53" = prior period)</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <remittanceentry> object</remittanceentry></p>
+    <p>A <code>&lt;RemittanceEntry&gt;</code> S7 object</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">RemittanceEntry</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $reference_number</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $payment_amount</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> numeric(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $original_amount</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> numeric(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $rate_code</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $aid_code</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $plan_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $coverage_period_start</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $coverage_period_end</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $adjustment_amount</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> numeric(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $adjustment_reason</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">RemittanceEntry</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

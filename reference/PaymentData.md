@@ -1,4 +1,4 @@
-# Remittance Data from an X12 820 Transaction
+# X12-820 Transaction Remittance Data
 
 Represents one ST\*820 transaction, typically a capitation payment
 remittance from a state Medicaid agency or CMS to a managed care plan.
@@ -30,63 +30,63 @@ PaymentData(
 
 - source:
 
-  Interchange sender ID (ISA06), e.g., "CALIFORNIA-DHCS"
+  `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
 
 - report_date:
 
-  Transaction date from GS04 (YYYY-MM-DD)
+  `GS-04` Transaction date (YYYY-MM-DD)
 
 - total_amount:
 
-  Total payment amount from BPR02
+  `BPR-02` Total payment amount
 
 - payment_date:
 
-  EFT effective date from BPR16 (YYYY-MM-DD)
+  `BPR-16` EFT effective date (YYYY-MM-DD)
 
 - check_number:
 
-  EFT/check trace number from TRN02
+  `TRN-02` EFT/check trace number
 
 - payee_name:
 
-  Receiving organization name (N1\*PE)
+  `N1*PE` Receiving organization name
 
 - payee_address_1:
 
-  Payee street address (N3)
+  `N3` Payee street address
 
 - payee_city:
 
-  Payee city (N4)
+  `N4` Payee city
 
 - payee_state:
 
-  Payee state (N4)
+  `N4` Payee state
 
 - payee_zip:
 
-  Payee ZIP code (N4)
+  `N4` Payee ZIP code
 
 - payer_name:
 
-  Paying organization name (N1\*PR)
+  `N1*PR` Paying organization name
 
 - payer_address_1:
 
-  Payer street address (N3)
+  `N3` Payer street address
 
 - payer_city:
 
-  Payer city (N4)
+  `N4` Payer city
 
 - payer_state:
 
-  Payer state (N4)
+  `N4` Payer state
 
 - payer_zip:
 
-  Payer ZIP code (N4)
+  `N4` Payer ZIP code
 
 - members:
 
@@ -94,58 +94,12 @@ PaymentData(
 
 ## Value
 
-A object
+A `<PaymentData>` S7 object
 
 ## Examples
 
 ``` r
+if (FALSE) {
 PaymentData()
-#> $source
-#> character(0)
-#> 
-#> $report_date
-#> character(0)
-#> 
-#> $total_amount
-#> numeric(0)
-#> 
-#> $payment_date
-#> character(0)
-#> 
-#> $check_number
-#> character(0)
-#> 
-#> $payee_name
-#> character(0)
-#> 
-#> $payee_address_1
-#> character(0)
-#> 
-#> $payee_city
-#> character(0)
-#> 
-#> $payee_state
-#> character(0)
-#> 
-#> $payee_zip
-#> character(0)
-#> 
-#> $payer_name
-#> character(0)
-#> 
-#> $payer_address_1
-#> character(0)
-#> 
-#> $payer_city
-#> character(0)
-#> 
-#> $payer_state
-#> character(0)
-#> 
-#> $payer_zip
-#> character(0)
-#> 
-#> $members
-#> character(0)
-#> 
+}
 ```

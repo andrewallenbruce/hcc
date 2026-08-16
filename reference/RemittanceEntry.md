@@ -25,89 +25,59 @@ RemittanceEntry(
 
 - reference_number:
 
-  Invoice/check reference number (RMR02)
+  `RMR-02` Invoice/check reference number
 
 - payment_amount:
 
-  Net payment amount for this period; negative = recoupment (RMR04/05)
+  `RMR-04/RMR-05` Net payment amount for this period; negative =
+  recoupment
 
 - original_amount:
 
-  Original amount before adjustment, when present (RMR05/06)
+  `RMR-05/RMR-06` Original amount before adjustment, when present
 
 - rate_code:
 
-  Rate code from REF\*18 (e.g., "957" = PACE rate)
+  `REF*18` Rate code (e.g., "957" = PACE rate)
 
 - aid_code:
 
-  California Medi-Cal aid code from REF\*ZZ (e.g., "1H", "M1", "60")
+  `REF*ZZ` California Medi-Cal aid code (e.g., "1H", "M1", "60")
 
 - plan_type:
 
-  Plan type from REF\*ZZ composite aid_code;plan_type ("1" =
+  `REF*ZZ` Plan type - composite aid_code;plan_type ("1" =
   primary/medical, "2" = pharmacy/state-only)
 
 - description:
 
-  Payment description from second REF\*ZZ (e.g., "Primary Capitation
-  Dual", "Medi-Cal Only-State Only")
+  `REF*ZZ` Payment description (e.g., "Primary Capitation Dual",
+  "Medi-Cal Only-State Only")
 
 - coverage_period_start:
 
-  Coverage period begin date (YYYY-MM-DD) from DTM\*582
+  `DTM*582` Coverage period begin date (YYYY-MM-DD)
 
 - coverage_period_end:
 
-  Coverage period end date (YYYY-MM-DD) from DTM\*582
+  `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM\*582
 
 - adjustment_amount:
 
-  Adjustment amount from ADX01 (negative = recoupment)
+  `ADX-01` Adjustment amount (negative = recoupment)
 
 - adjustment_reason:
 
-  Adjustment reason code from ADX02 (e.g., "53" = prior period)
+  `ADX-02` Adjustment reason code (e.g., "53" = prior period)
 
 ## Value
 
-A object
+A `<RemittanceEntry>` S7 object
 
 ## Examples
 
 ``` r
+if (FALSE) {
 RemittanceEntry()
-#> $reference_number
-#> character(0)
-#> 
-#> $payment_amount
-#> numeric(0)
-#> 
-#> $original_amount
-#> numeric(0)
-#> 
-#> $rate_code
-#> character(0)
-#> 
-#> $aid_code
-#> character(0)
-#> 
-#> $plan_type
-#> character(0)
-#> 
-#> $description
-#> character(0)
-#> 
-#> $coverage_period_start
-#> character(0)
-#> 
-#> $coverage_period_end
-#> character(0)
-#> 
-#> $adjustment_amount
-#> numeric(0)
-#> 
-#> $adjustment_reason
-#> character(0)
-#> 
+}
 ```
