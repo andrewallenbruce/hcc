@@ -107,10 +107,3 @@ as_demographics <- function(
     )
   )
 }
-
-#' @export
-print.demographics <- function(x, ...) {
-  cat("<Demographics>", sep = "\n")
-  cat(fmt_idx(x), sep = "\n")
-  invisible(x)
-}

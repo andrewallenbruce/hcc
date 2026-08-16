@@ -2,29 +2,29 @@
 % Please edit documentation in R/classes.R
 \name{HCCDetail}
 \alias{HCCDetail}
-\title{Detailed information about an HCC category}
+\title{HCC Category Detail}
 \usage{
 HCCDetail(
   hcc = character(0),
   label = character(0),
   is_chronic = logical(0),
-  coefficient = double(0)
+  coefficient = numeric(0)
 )
 }
 \arguments{
-\item{hcc}{HCC code (e.g., "18", "85")}
+\item{hcc}{\verb{<chr>} HCC code (e.g., "18", "85")}
 
-\item{label}{Human-readable description (e.g., "Diabetes with Chronic Complications")}
+\item{label}{\verb{<chr>} Human-readable description (e.g., "Diabetes with Chronic Complications")}
 
-\item{is_chronic}{Whether this HCC is considered a chronic condition}
+\item{is_chronic}{\verb{<lgl>} Whether this HCC is considered a chronic condition}
 
-\item{coefficient}{The coefficient value applied for this HCC in the RAF calculation}
+\item{coefficient}{\verb{<dbl>} The coefficient value applied for this HCC in the RAF calculation}
 }
 \value{
-\if{html}{\out{<HCCDetail>}} object
+\if{html}{\out{<HCCDetail>}} S7 object
 }
 \description{
-Detailed information about an HCC category
+HCC Category Detail
 }
 \examples{
 HCCDetail(

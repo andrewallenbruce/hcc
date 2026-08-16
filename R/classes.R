@@ -1,10 +1,10 @@
-#' Detailed information about an HCC category
+#' HCC Category Detail
 #'
-#' @param hcc HCC code (e.g., "18", "85")
-#' @param label Human-readable description (e.g., "Diabetes with Chronic Complications")
-#' @param is_chronic Whether this HCC is considered a chronic condition
-#' @param coefficient The coefficient value applied for this HCC in the RAF calculation
-#' @returns <HCCDetail> object
+#' @param hcc `<chr>` HCC code (e.g., "18", "85")
+#' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic Complications")
+#' @param is_chronic `<lgl>` Whether this HCC is considered a chronic condition
+#' @param coefficient `<dbl>` The coefficient value applied for this HCC in the RAF calculation
+#' @returns <HCCDetail> S7 object
 #' @examples
 #' HCCDetail(
 #'  hcc = "80",
@@ -13,22 +13,15 @@
 #'  coefficient = 0.486
 #' )
 #' @export
-HCCDetail <- function(
-  hcc = character(0),
-  label = character(0),
-  is_chronic = logical(0),
-  coefficient = double(0)
-) {
-  structure(
-    list(
-      hcc = hcc,
-      label = label,
-      is_chronic = is_chronic,
-      coefficient = coefficient
-    ),
-    class = "hcc_detail"
+HCCDetail <- S7::new_class(
+  "HCCDetail",
+  properties = list(
+    hcc = S7::class_character,
+    label = S7::class_character,
+    is_chronic = S7::class_logical,
+    coefficient = S7::class_double
   )
-}
+)
 
 #' Response model for demographic categorization
 #'
