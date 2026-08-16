@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9023 (2026-08-16)
+
+- more S7
+- convert to S7
+
 ## hcc 0.0.0.9022 (2026-08-16)
 
 - interactions updated

@@ -6,16 +6,6 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/authors.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/news/index.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/Demographics.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/HCCDetail.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/PaymentData.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/RAFResult.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/as_demographics.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/eob_json.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/eob_ndjson.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc-package.html</loc></url>
@@ -23,8 +13,6 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc_is_chronic_without_esrd_model.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/interactions.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/is_dual.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/is_esrd.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/map_to_dual.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/parse_820.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_coefficients.html</loc></url>

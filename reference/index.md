@@ -2,37 +2,8 @@
 
 ## All functions
 
-- [`Demographics()`](https://andrewallenbruce.github.io/hcc/reference/Demographics.md)
-  : Response model for demographic categorization
-- [`EnrollmentData()`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
-  : Enrollment Data from 834 Transactions
-- [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
-  : HCC Category Detail
-- [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
-  : A single Health Care Plan coverage period from HD loop
-- [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
-  : Remittance Data from an X12 820 Transaction
-- [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
-  : Per-Member Payment Record from an X12 820 ENT Loop
-- [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
-  : Risk adjustment calculation results
-- [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
-  : A single remittance line item within a member's payment record.
-- [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
-  : Represents standardized service-level data extracted from healthcare
-  claims.
-- [`as_demographics()`](https://andrewallenbruce.github.io/hcc/reference/as_demographics.md)
-  : Categorize a beneficiary's demographics into risk adjustment
-  categories.
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
-- [`is_dual_any()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
-  [`is_dual_valid()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
-  [`is_dual_full()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
-  [`is_dual_partial()`](https://andrewallenbruce.github.io/hcc/reference/is_dual.md)
-  : Dual Eligibility Code Checks
-- [`is_esrd()`](https://andrewallenbruce.github.io/hcc/reference/is_esrd.md)
-  : Check if OREC/CREC indicates ESRD status
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
   : Map Codes to Dual Eligibility Codes
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)

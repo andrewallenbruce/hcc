@@ -6,14 +6,18 @@ lookup will match only the relevant coefficients for each model.
 ## Usage
 
 ``` r
-interactions(d)
+interactions(x, ...)
 ```
 
 ## Arguments
 
-- d:
+- x:
 
   Demographics object
+
+- ...:
+
+  dots
 
 ## Value
 
@@ -22,49 +26,49 @@ a list of interactions
 ## Examples
 
 ``` r
-x = as_demographics(
+x = demographics(
   age = 65.1,
   sex = "M",
-  orec = "2",
-  dual = "2",
-  new = TRUE,
-  lti = TRUE,
-  months = 10
+  orec_code = "2",
+  dual_code = "2",
+  new_enrollee = TRUE,
+  is_lti = TRUE,
+  esrd_months = 10L
  )
 
 x
-#> $version
-#> [1] "V2"
-#> 
-#> $age
-#> [1] 65
-#> 
-#> $sex
-#> [1] "1"
-#> 
-#> $non_aged
+#> <hcc::Demographics>
+#>  @ version     : chr "V2"
+#>  @ age         : int 65
+#>  @ sex         : chr "1"
+#>  @ dual_code   : chr "2"
+#>  @ orec_code   : chr NA
+#>  @ crec_code   : chr NA
+#>  @ new_enrollee: logi TRUE
+#>  @ has_snp     : logi FALSE
+#>  @ non_aged    : logi FALSE
+#>  @ dis_orig    : logi FALSE
+#>  @ dis_curr    : logi FALSE
+#>  @ dual_full   : logi FALSE
+#>  @ dual_part   : logi FALSE
+#>  @ has_esrd    : logi TRUE
+#>  @ is_lti      : logi TRUE
+#>  @ low_income  : logi FALSE
+#>  @ esrd_months : int 10
+#>  @ category    : chr "M65_69"
+
+interactions(x)
+#> $female
 #> [1] FALSE
 #> 
-#> $orig_disabled
-#> [1] FALSE
-#> 
-#> $disabled
-#> [1] FALSE
-#> 
-#> $dual
-#> [1] "2"
-#> 
-#> $orec
-#> [1] "2"
-#> 
-#> $crec
-#> [1] NA
-#> 
-#> $new
+#> $male
 #> [1] TRUE
 #> 
-#> $snp
-#> [1] FALSE
+#> $aged
+#> [1] TRUE
+#> 
+#> $lti
+#> [1] TRUE
 #> 
 #> $fbd
 #> [1] FALSE
@@ -72,146 +76,25 @@ x
 #> $pbd
 #> [1] FALSE
 #> 
-#> $esrd
-#> [1] TRUE
-#> 
-#> $lti
-#> [1] TRUE
-#> 
 #> $months
 #> [1] 10
 #> 
-#> $low
+#> $mcaid
 #> [1] FALSE
 #> 
-#> $category
-#> [1] "M65_69"
+#> $nemcaid
+#> [1] FALSE
 #> 
-#> attr(,"class")
-#> [1] "demographics"
-
-interactions(x)
-#> $OriginallyDisabled_Female
-#> [1] 0
+#> $ne_origds
+#> [1] FALSE
 #> 
-#> $OriginallyDisabled_Male
-#> [1] 0
+#> $is_dur4_9
+#> [1] FALSE
 #> 
-#> $Originally_ESRD_Female
-#> [1] 0
-#> 
-#> $Originally_ESRD_Male
-#> [1] 1
-#> 
-#> $MCAID_Female_Aged
-#> [1] 0
-#> 
-#> $MCAID_Female_NonAged
-#> [1] 0
-#> 
-#> $MCAID_Male_Aged
-#> [1] 0
-#> 
-#> $MCAID_Male_NonAged
-#> [1] 0
-#> 
-#> $LTI_Aged
-#> [1] 1
-#> 
-#> $LTI_NonAged
-#> [1] 0
-#> 
-#> $LTI_GE65
-#> [1] 1
-#> 
-#> $LTI_LT65
-#> [1] 0
-#> 
-#> $LTIMCAID
-#> [1] 0
-#> 
-#> $NMCAID_NORIGDIS_M65_69
+#> $is_dur10pl
 #> [1] TRUE
 #> 
-#> $MCAID_NORIGDIS_M65_69
-#> [1] 0
-#> 
-#> $NMCAID_ORIGDIS_M65_69
-#> [1] TRUE
-#> 
-#> $MCAID_ORIGDIS_M65_69
-#> [1] 0
-#> 
-#> $FBD_NORIGDIS_M65_69
-#> [1] 0
-#> 
-#> $FBD_ORIGDIS_M65_69
-#> [1] 0
-#> 
-#> $ND_PBD_NORIGDIS_M65_69
-#> [1] TRUE
-#> 
-#> $ND_PBD_ORIGDIS_M65_69
-#> [1] TRUE
-#> 
-#> $GE65_DUR4_9
-#> [1] 0
-#> 
-#> $LT65_DUR4_9
-#> [1] 0
-#> 
-#> $GE65_DUR10PL
-#> [1] 1
-#> 
-#> $LT65_DUR10PL
-#> [1] 0
-#> 
-#> $FGC_GE65_DUR4_9_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGC_LT65_DUR4_9_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGI_GE65_DUR4_9_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGI_LT65_DUR4_9_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGC_GE65_DUR10PL_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGC_LT65_DUR10PL_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGI_GE65_DUR10PL_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGI_LT65_DUR10PL_ND_PBD
-#> [1] TRUE
-#> 
-#> $FGC_PBD_GE65_flag
-#> [1] 0
-#> 
-#> $FGC_PBD_LT65_flag
-#> [1] 0
-#> 
-#> $FGI_PBD_GE65_flag
-#> [1] 0
-#> 
-#> $FGI_PBD_LT65_flag
-#> [1] 0
-#> 
-#> $FGC_GE65_DUR4_9_FBD
-#> [1] 0
-#> 
-#> $FGC_LT65_DUR4_9_FBD
-#> [1] 0
-#> 
-#> $FGI_GE65_DUR4_9_FBD
-#> [1] 0
-#> 
-#> $FGI_LT65_DUR4_9_FBD
-#> [1] 0
+#> $is_esrd
+#> [1] FALSE
 #> 
 ```
