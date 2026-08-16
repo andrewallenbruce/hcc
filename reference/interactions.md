@@ -58,43 +58,7 @@ x
 #>  @ category    : chr "M65_69"
 
 interactions(x)
-#> $female
-#> [1] FALSE
-#> 
-#> $male
-#> [1] TRUE
-#> 
-#> $aged
-#> [1] TRUE
-#> 
-#> $lti
-#> [1] TRUE
-#> 
-#> $fbd
-#> [1] FALSE
-#> 
-#> $pbd
-#> [1] FALSE
-#> 
-#> $months
-#> [1] 10
-#> 
-#> $mcaid
-#> [1] FALSE
-#> 
-#> $nemcaid
-#> [1] FALSE
-#> 
-#> $ne_origds
-#> [1] FALSE
-#> 
-#> $is_dur4_9
-#> [1] FALSE
-#> 
-#> $is_dur10pl
-#> [1] TRUE
-#> 
-#> $is_esrd
-#> [1] FALSE
-#> 
+#> [1] "LTI_Aged"                "LTI_GE65"               
+#> [3] "NMCAID_NORIGDIS_M65_69"  "ND_PBD_NORIGDIS_M65_69" 
+#> [5] "GE65_DUR10PL"            "FGI_GE65_DUR10PL_ND_PBD"
 ```
