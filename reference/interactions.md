@@ -33,25 +33,62 @@ x = as_demographics(
  )
 
 x
-#> <Demographics>
-#>       version : V2
-#>           age : 65
-#>           sex : 1
-#>      non_aged : FALSE
-#> orig_disabled : FALSE
-#>      disabled : FALSE
-#>          dual : 2
-#>          orec : 2
-#>          crec : NA
-#>           new : TRUE
-#>           snp : FALSE
-#>           fbd : FALSE
-#>           pbd : FALSE
-#>          esrd : TRUE
-#>           lti : TRUE
-#>        months : 10
-#>           low : FALSE
-#>      category : M65_69
+#> $version
+#> [1] "V2"
+#> 
+#> $age
+#> [1] 65
+#> 
+#> $sex
+#> [1] "1"
+#> 
+#> $non_aged
+#> [1] FALSE
+#> 
+#> $orig_disabled
+#> [1] FALSE
+#> 
+#> $disabled
+#> [1] FALSE
+#> 
+#> $dual
+#> [1] "2"
+#> 
+#> $orec
+#> [1] "2"
+#> 
+#> $crec
+#> [1] NA
+#> 
+#> $new
+#> [1] TRUE
+#> 
+#> $snp
+#> [1] FALSE
+#> 
+#> $fbd
+#> [1] FALSE
+#> 
+#> $pbd
+#> [1] FALSE
+#> 
+#> $esrd
+#> [1] TRUE
+#> 
+#> $lti
+#> [1] TRUE
+#> 
+#> $months
+#> [1] 10
+#> 
+#> $low
+#> [1] FALSE
+#> 
+#> $category
+#> [1] "M65_69"
+#> 
+#> attr(,"class")
+#> [1] "demographics"
 
 interactions(x)
 #> $OriginallyDisabled_Female

@@ -7,7 +7,7 @@
 - [`EnrollmentData()`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : Enrollment Data from 834 Transactions
 - [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
-  : Detailed information about an HCC category
+  : HCC Category Detail
 - [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
   : A single Health Care Plan coverage period from HD loop
 - [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)

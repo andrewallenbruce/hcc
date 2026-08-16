@@ -110,63 +110,174 @@ A list object containing the derived fields.
 
 ``` r
 Demographics(age = 48, sex = "1", version = "V2")
-#> <Demographics>
-#>       version : V2
-#>           age : 48
-#>           sex : 1
-#>      non_aged : 
-#> orig_disabled : 
-#>      disabled : 
-#>          dual : 
-#>          orec : 
-#>          crec : 
-#>           new : 
-#>           snp : 
-#>           fbd : 
-#>           pbd : 
-#>          esrd : 
-#>           lti : 
-#>        months : 
-#>           low : 
-#>      category : 
+#> $version
+#> [1] "V2"
+#> 
+#> $age
+#> [1] 48
+#> 
+#> $sex
+#> [1] "1"
+#> 
+#> $non_aged
+#> logical(0)
+#> 
+#> $orig_disabled
+#> logical(0)
+#> 
+#> $disabled
+#> logical(0)
+#> 
+#> $dual
+#> character(0)
+#> 
+#> $orec
+#> character(0)
+#> 
+#> $crec
+#> character(0)
+#> 
+#> $new
+#> logical(0)
+#> 
+#> $snp
+#> logical(0)
+#> 
+#> $fbd
+#> logical(0)
+#> 
+#> $pbd
+#> logical(0)
+#> 
+#> $esrd
+#> logical(0)
+#> 
+#> $lti
+#> logical(0)
+#> 
+#> $months
+#> integer(0)
+#> 
+#> $low
+#> logical(0)
+#> 
+#> $category
+#> character(0)
+#> 
+#> attr(,"class")
+#> [1] "demographics"
 Demographics(age = 35, sex = "M", version = "V6")
-#> <Demographics>
-#>       version : V6
-#>           age : 35
-#>           sex : M
-#>      non_aged : 
-#> orig_disabled : 
-#>      disabled : 
-#>          dual : 
-#>          orec : 
-#>          crec : 
-#>           new : 
-#>           snp : 
-#>           fbd : 
-#>           pbd : 
-#>          esrd : 
-#>           lti : 
-#>        months : 
-#>           low : 
-#>      category : 
+#> $version
+#> [1] "V6"
+#> 
+#> $age
+#> [1] 35
+#> 
+#> $sex
+#> [1] "M"
+#> 
+#> $non_aged
+#> logical(0)
+#> 
+#> $orig_disabled
+#> logical(0)
+#> 
+#> $disabled
+#> logical(0)
+#> 
+#> $dual
+#> character(0)
+#> 
+#> $orec
+#> character(0)
+#> 
+#> $crec
+#> character(0)
+#> 
+#> $new
+#> logical(0)
+#> 
+#> $snp
+#> logical(0)
+#> 
+#> $fbd
+#> logical(0)
+#> 
+#> $pbd
+#> logical(0)
+#> 
+#> $esrd
+#> logical(0)
+#> 
+#> $lti
+#> logical(0)
+#> 
+#> $months
+#> integer(0)
+#> 
+#> $low
+#> logical(0)
+#> 
+#> $category
+#> character(0)
+#> 
+#> attr(,"class")
+#> [1] "demographics"
 Demographics(age = 75, sex = "2", orec = "0", version = "V2")
-#> <Demographics>
-#>       version : V2
-#>           age : 75
-#>           sex : 2
-#>      non_aged : 
-#> orig_disabled : 
-#>      disabled : 
-#>          dual : 
-#>          orec : 0
-#>          crec : 
-#>           new : 
-#>           snp : 
-#>           fbd : 
-#>           pbd : 
-#>          esrd : 
-#>           lti : 
-#>        months : 
-#>           low : 
-#>      category : 
+#> $version
+#> [1] "V2"
+#> 
+#> $age
+#> [1] 75
+#> 
+#> $sex
+#> [1] "2"
+#> 
+#> $non_aged
+#> logical(0)
+#> 
+#> $orig_disabled
+#> logical(0)
+#> 
+#> $disabled
+#> logical(0)
+#> 
+#> $dual
+#> character(0)
+#> 
+#> $orec
+#> [1] "0"
+#> 
+#> $crec
+#> character(0)
+#> 
+#> $new
+#> logical(0)
+#> 
+#> $snp
+#> logical(0)
+#> 
+#> $fbd
+#> logical(0)
+#> 
+#> $pbd
+#> logical(0)
+#> 
+#> $esrd
+#> logical(0)
+#> 
+#> $lti
+#> logical(0)
+#> 
+#> $months
+#> integer(0)
+#> 
+#> $low
+#> logical(0)
+#> 
+#> $category
+#> character(0)
+#> 
+#> attr(,"class")
+#> [1] "demographics"
 ```
