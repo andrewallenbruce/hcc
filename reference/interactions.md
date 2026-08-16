@@ -66,6 +66,18 @@ interactions(x)
 #> $Originally_ESRD_Male
 #> [1] 1
 #> 
+#> $MCAID_Female_Aged
+#> [1] 0
+#> 
+#> $MCAID_Female_NonAged
+#> [1] 0
+#> 
+#> $MCAID_Male_Aged
+#> [1] 0
+#> 
+#> $MCAID_Male_NonAged
+#> [1] 0
+#> 
 #> $LTI_Aged
 #> [1] 1
 #> 
@@ -78,22 +90,91 @@ interactions(x)
 #> $LTI_LT65
 #> [1] 0
 #> 
+#> $LTIMCAID
+#> [1] 0
+#> 
+#> $NMCAID_NORIGDIS_M65_69
+#> [1] TRUE
+#> 
+#> $MCAID_NORIGDIS_M65_69
+#> [1] 0
+#> 
+#> $NMCAID_ORIGDIS_M65_69
+#> [1] TRUE
+#> 
+#> $MCAID_ORIGDIS_M65_69
+#> [1] 0
+#> 
+#> $FBD_NORIGDIS_M65_69
+#> [1] 0
+#> 
+#> $FBD_ORIGDIS_M65_69
+#> [1] 0
+#> 
+#> $ND_PBD_NORIGDIS_M65_69
+#> [1] TRUE
+#> 
+#> $ND_PBD_ORIGDIS_M65_69
+#> [1] TRUE
+#> 
+#> $GE65_DUR4_9
+#> [1] 0
+#> 
+#> $LT65_DUR4_9
+#> [1] 0
+#> 
 #> $GE65_DUR10PL
 #> [1] 1
 #> 
 #> $LT65_DUR10PL
 #> [1] 0
 #> 
+#> $FGC_GE65_DUR4_9_ND_PBD
+#> [1] TRUE
+#> 
+#> $FGC_LT65_DUR4_9_ND_PBD
+#> [1] TRUE
+#> 
+#> $FGI_GE65_DUR4_9_ND_PBD
+#> [1] TRUE
+#> 
+#> $FGI_LT65_DUR4_9_ND_PBD
+#> [1] TRUE
+#> 
 #> $FGC_GE65_DUR10PL_ND_PBD
-#> [1] 0
+#> [1] TRUE
 #> 
 #> $FGC_LT65_DUR10PL_ND_PBD
 #> [1] TRUE
 #> 
 #> $FGI_GE65_DUR10PL_ND_PBD
-#> [1] 1
+#> [1] TRUE
 #> 
 #> $FGI_LT65_DUR10PL_ND_PBD
-#> [1] FALSE
+#> [1] TRUE
+#> 
+#> $FGC_PBD_GE65_flag
+#> [1] 0
+#> 
+#> $FGC_PBD_LT65_flag
+#> [1] 0
+#> 
+#> $FGI_PBD_GE65_flag
+#> [1] 0
+#> 
+#> $FGI_PBD_LT65_flag
+#> [1] 0
+#> 
+#> $FGC_GE65_DUR4_9_FBD
+#> [1] 0
+#> 
+#> $FGC_LT65_DUR4_9_FBD
+#> [1] 0
+#> 
+#> $FGI_GE65_DUR4_9_FBD
+#> [1] 0
+#> 
+#> $FGI_LT65_DUR4_9_FBD
+#> [1] 0
 #> 
 ```
