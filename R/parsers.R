@@ -213,10 +213,14 @@ parse_820 <- function(text) {
 
   start <- perl(x, "^ENT")
   end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
+  # adx <- perl(x, "^ADX")
+  # which(end %in% adx)
 
   loops <- purrr::map2(start, end, function(x, y) {
     seq.int(x, y)
   })
+
+  lengths(loops)
 
   loop <- purrr::map(loops, \(i) x[i])
   loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
