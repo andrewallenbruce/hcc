@@ -4,7 +4,7 @@
 #' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic Complications")
 #' @param is_chronic `<lgl>` Whether this HCC is considered a chronic condition
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the RAF calculation
-#' @returns An <HCCDetail> S7 object
+#' @returns An `<HCCDetail>` S7 object
 #' @examplesIf FALSE
 #' HCCDetail(
 #'  hcc = "80",
@@ -30,7 +30,7 @@ HCCDetail <- S7::new_class(
 #' @param hcp_code `<chr>` HCP code
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
-#' @returns A <HCPCoveragePeriod> S7 object
+#' @returns An `<HCPCoveragePeriod>` S7 object
 #' @examplesIf FALSE
 #' HCPCoveragePeriod()
 #' @noRd
@@ -65,7 +65,7 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
 #' @param esrd_months `<int>` Number of months since transplant (ESRD only)
 #' @param category `<chr>` Age-sex category code
-#' @returns A <PatientDemographics> S7 object
+#' @returns A `<PatientDemographics>` S7 object
 #' @examplesIf FALSE
 #' PatientDemographics(age = 48, sex = "1", version = "V2")
 #' PatientDemographics(age = 35, sex = "M", version = "V6")
@@ -115,7 +115,7 @@ PatientDemographics <- S7::new_class(
 #' @param quantity_unit Unit of measure for quantity
 #' @param modifiers List of procedure code modifiers
 #' @param allowed_amount Allowed amount for the service
-#' @returns <ServiceLevelData> object
+#' @returns A `<ServiceLevelData>` S7 object
 #' @examplesIf FALSE
 #' ServiceLevelData()
 #' @noRd
@@ -178,7 +178,7 @@ ServiceLevelData <- function(
 #' @param version Library version
 #' @param diagnosis_codes Input diagnosis codes
 #' @param service_level_data Processed service records
-#' @returns <RAFResult> object
+#' @returns A `<RAFResult>` S7 object
 #' @examplesIf FALSE
 #' RAFResult()
 #' @noRd
@@ -233,7 +233,7 @@ RAFResult <- function(
 #' @param coverage_period_end Coverage period end date (YYYY-MM-DD) from DTM*582
 #' @param adjustment_amount Adjustment amount from ADX01 (negative = recoupment)
 #' @param adjustment_reason Adjustment reason code from ADX02 (e.g., "53" = prior period)
-#' @returns A <RemittanceEntry> object
+#' @returns A `<RemittanceEntry>` S7 object
 #' @examplesIf FALSE
 #' RemittanceEntry()
 #' @noRd
@@ -277,7 +277,7 @@ RemittanceEntry <- function(
 #' @param first_name Member first name (NM104)
 #' @param middle_name Member middle name (NM105)
 #' @param remittance_entries List of remittance line items (one per RMR/DTM set)
-#' @returns A <PaymentDetail> object
+#' @returns A `<PaymentDetail>` S7 object
 #' @examplesIf FALSE
 #' PaymentDetail()
 #' @noRd
@@ -299,7 +299,7 @@ PaymentDetail <- function(
   )
 }
 
-#' Remittance Data from an X12 820 Transaction
+#' X12 820 Transaction Remittance Data
 #'
 #' Represents one ST*820 transaction, typically a capitation payment remittance
 #' from a state Medicaid agency or CMS to a managed care plan.
@@ -320,7 +320,7 @@ PaymentDetail <- function(
 #' @param payer_state Payer state (N4)
 #' @param payer_zip Payer ZIP code (N4)
 #' @param members List of per-member payment records
-#' @returns A <PaymentData> object
+#' @returns A `<PaymentData>` S7 object
 #' @examplesIf FALSE
 #' PaymentData()
 #' @noRd
@@ -362,7 +362,7 @@ PaymentData <- function(
   )
 }
 
-#' Enrollment Data from 834 Transactions
+#' 834 Transaction Enrollment Data
 #'
 #' Data needed for risk adjustment and Medicaid coverage tracking.
 #' Supports California DHCS Medi-Cal 834 format with FAME fields.
@@ -429,7 +429,7 @@ PaymentData <- function(
 #' @param amount_qualifier AMT qualifier code (e.g., 'D' = premium, 'C1' = copay)
 #' @param amount Premium or cost share amount (numeric)
 #' @param hcp_history List of historical HCP coverage periods
-#' @returns <EnrollmentData> object
+#' @returns A `<EnrollmentData>` S7 object
 #' @examplesIf FALSE
 #' EnrollmentData()
 #' @noRd

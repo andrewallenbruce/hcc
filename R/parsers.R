@@ -52,8 +52,8 @@ pad_names <- function(x, replace_na = FALSE) {
 parse_loop <- function(x) {
   if (length(x) == 7L) {
     list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
+      ENT = split_star(x[perl(x, "^ENT")]),
+      NM1 = split_star(x[perl(x, "^NM1")], replace_na = TRUE),
       RMR = split_star(x[3], replace_na = TRUE),
       REF = split_star(x[4]),
       REF = split_star(x[5]),
@@ -163,6 +163,42 @@ parse_loop <- function(x) {
   }
 }
 
+#' @noRd
+parse_loop2 <- function(x) {
+  start = perl(x, "^RMR")
+  end = perl(x, "^DTM\\*582")
+
+  loop_range <- purrr::map2(start, end, function(x, y) {
+    seq.int(x, y)
+  })
+
+  loops <- purrr::map(loop_range, \(i) x[i])
+
+  LOOPS <- purrr::map(loops, function(x) {
+    list(
+      RMR = split_star(x[perl(x, "^RMR")], replace_na = TRUE),
+      REF = split_star(x[perl(x, "^REF\\*18")]),
+      REF = split_star(x[perl(x, "^REF\\*ZZ")][1]),
+      REF = split_star(x[perl(x, "^REF\\*ZZ")][2]),
+      DTM = split_star(x[perl(x, "^DTM\\*582")], replace_na = TRUE)
+    )
+  }) |>
+    purrr::list_flatten()
+
+  rlang::list2(
+    ENT = split_star(x[perl(x, "^ENT")]),
+    NM1 = split_star(x[perl(x, "^NM1")], replace_na = TRUE),
+    !!!LOOPS,
+    ADX = if (!rlang::is_empty(perl(x, "^ADX"))) {
+      split_star(x[perl(x, "^ADX")])
+    } else {
+      NULL
+    }
+  ) |>
+    purrr::compact() |>
+    unlist_df()
+}
+
 #' X12-820 Payment Order/Remittance Advice Parser
 #'
 #' Parses X12-820 (005010X218) transactions for Medicaid/Medicare capitation and
@@ -213,18 +249,14 @@ parse_820 <- function(text) {
 
   start <- perl(x, "^ENT")
   end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
-  # adx <- perl(x, "^ADX")
-  # which(end %in% adx)
 
   loops <- purrr::map2(start, end, function(x, y) {
     seq.int(x, y)
   })
 
-  lengths(loops)
-
   loop <- purrr::map(loops, \(i) x[i])
   loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
-  loop <- purrr::map(loop, parse_loop)
+  loop <- purrr::map(loop, parse_loop2)
 
   trailer <- list(
     SE = split_star(x[perl(x, "^SE")]),

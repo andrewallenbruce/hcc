@@ -46,7 +46,7 @@ demographics(
 detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)}
 }
 \value{
-A \if{html}{\out{<PatientDemographics>}} S7 object
+A \verb{<PatientDemographics>} S7 object
 }
 \description{
 This function takes demographic information about a beneficiary and returns a
