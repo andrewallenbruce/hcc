@@ -1,9 +1,9 @@
-# CMS Risk Adjustment Domain Constants
-#
+#' CMS Risk Adjustment Domain Constants
+#'
 # References:
 # - CMS Rate Announcement and Call Letter
 # - Medicare Advantage Enrollment and Disenrollment Guidance
-# - X12 834 Implementation Guides
+# - `X12-834` Implementation Guides
 #
 # - aged: beneficiaries currently eligible for Medicare by age
 # - disabled: beneficiaries currently eligible for Medicare by disability
@@ -54,7 +54,7 @@ DUAL_CODES = list(
 
 #' California DHCS Medi-Cal Aid Codes
 #' Maps California-specific aid codes to CMS dual eligibility codes
-#' Source: California DHCS 834 Implementation Guide
+#' Source: California DHCS `834` Implementation Guide
 #' @noRd
 MEDI_CAL_AID_CODES = list(
   # Full Benefit Dual (QMB Plus, SLMB Plus)
@@ -74,7 +74,7 @@ MEDI_CAL_AID_CODES = list(
 
 #' Medicare Status Code Mappings
 #' Maps Medicare status codes (from various sources) to CMS dual eligibility
-#' codes. Used in X12 834 REF*ABB segment and other payer files.
+#' codes. Used in X12-834 `REF*ABB` segment and other payer files.
 #' @noRd
 MEDICARE_STATUS_CODE_MAPPING = list(
   "QMB" = "01", # QMB Only (Partial)
@@ -120,9 +120,7 @@ REC_CODES = list(
 )
 
 #' COEFFICIENT PREFIX GROUPS
-#'
 #' Used for prefix_override logic in model_demographics
-#'
 #' @noRd
 PREFIX = list(
   ESRD = c("DI_", "DNE_", "GI_", "GNE_", "GFPA_", "GFPN_", "GNPA_", "GNPN_"),
@@ -165,7 +163,7 @@ PREFIX = list(
 )
 
 #' DEMOGRAPHIC CODES
-#' X12 834 Gender Code mappings (V6)
+#' X12-834 Gender Code mappings (V6)
 #' @noRd
 SEX = list(
   VALID = c("M", "F", "1", "2"),
@@ -185,7 +183,7 @@ SEX = list(
   )
 )
 
-#' X12 834 MAINTENANCE TYPE CODES (INS03)
+#' X12 834 MAINTENANCE TYPE CODES (INS-03)
 #' @noRd
 MAINTENANCE = list(
   CHANGE = "001",
@@ -200,7 +198,6 @@ MAINTENANCE = list(
   )
 )
 
-#' Define Model Name literal type
 #' @noRd
 MODEL = list(
   "CMS-HCC Model V22",
@@ -281,5 +278,50 @@ AGES = list(
       "90_94",
       "95_GT"
     )
+  )
+)
+
+#' @noRd
+LANG = list(
+  SPA = "Spanish",
+  ENG = "English",
+  CHI = "Chinese",
+  VIE = "Vietnamese",
+  KOR = "Korean",
+  TAG = "Tagalog",
+  ARM = "Armenian",
+  FAR = "Farsi",
+  ARA = "Arabic",
+  RUS = "Russian",
+  JPN = "Japanese",
+  HIN = "Hindi",
+  CAM = "Cambodian",
+  HMO = "Hmong",
+  LAO = "Lao",
+  THA = "Thai"
+)
+
+#' @noRd
+KEYWORDS = list(
+  MEDICARE = c(
+    "MEDICARE",
+    "MA",
+    "PART A",
+    "PART B",
+    "PART C",
+    "PART D",
+    "MEDICARE ADVANTAGE",
+    "MA-PD"
+  ),
+  MEDICAID = c("MEDICAID", "MEDI-CAL", "MEDI CAL", "MEDIC-AID", "LTC"),
+  SNP = c("SNP", "SPECIAL NEEDS", "D-SNP", "DSNP", "DUAL ELIGIBLE SNP"),
+  LTI = c(
+    "LTC",
+    "LONG TERM CARE",
+    "LONG-TERM CARE",
+    "NURSING HOME",
+    "SKILLED NURSING",
+    "SNF",
+    "INSTITUTIONALIZED"
   )
 )

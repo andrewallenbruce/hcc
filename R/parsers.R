@@ -50,121 +50,6 @@ pad_names <- function(x, replace_na = FALSE) {
 
 #' @noRd
 parse_loop <- function(x) {
-  if (length(x) == 7L) {
-    list(
-      ENT = split_star(x[perl(x, "^ENT")]),
-      NM1 = split_star(x[perl(x, "^NM1")], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE)
-    ) |>
-      unlist_df()
-  } else if (length(x) == 8L) {
-    list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE),
-      ADX = split_star(x[8])
-    ) |>
-      unlist_df()
-  } else if (length(x) == 12L) {
-    list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE),
-      RMR = split_star(x[8], replace_na = TRUE),
-      REF = split_star(x[9]),
-      REF = split_star(x[10]),
-      REF = split_star(x[11]),
-      DTM = split_star(x[12], replace_na = TRUE)
-    ) |>
-      unlist_df()
-  } else if (length(x) == 13L) {
-    list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE),
-      RMR = split_star(x[8], replace_na = TRUE),
-      REF = split_star(x[9]),
-      REF = split_star(x[10]),
-      REF = split_star(x[11]),
-      DTM = split_star(x[12], replace_na = TRUE),
-      ADX = split_star(x[13])
-    ) |>
-      unlist_df()
-  } else if (length(x) == 17L) {
-    list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE),
-      RMR = split_star(x[8], replace_na = TRUE),
-      REF = split_star(x[9]),
-      REF = split_star(x[10]),
-      REF = split_star(x[11]),
-      DTM = split_star(x[12], replace_na = TRUE),
-      RMR = split_star(x[13], replace_na = TRUE),
-      REF = split_star(x[14]),
-      REF = split_star(x[15]),
-      REF = split_star(x[16]),
-      DTM = split_star(x[17], replace_na = TRUE)
-    ) |>
-      unlist_df()
-  } else if (length(x) == 27L) {
-    list(
-      ENT = split_star(x[1]),
-      NM1 = split_star(x[2], replace_na = TRUE),
-      RMR = split_star(x[3], replace_na = TRUE),
-      REF = split_star(x[4]),
-      REF = split_star(x[5]),
-      REF = split_star(x[6]),
-      DTM = split_star(x[7], replace_na = TRUE),
-      RMR = split_star(x[8], replace_na = TRUE),
-      REF = split_star(x[9]),
-      REF = split_star(x[10]),
-      REF = split_star(x[11]),
-      DTM = split_star(x[12], replace_na = TRUE),
-      RMR = split_star(x[13], replace_na = TRUE),
-      REF = split_star(x[14]),
-      REF = split_star(x[15]),
-      REF = split_star(x[16]),
-      DTM = split_star(x[17], replace_na = TRUE),
-      RMR = split_star(x[18], replace_na = TRUE),
-      REF = split_star(x[19]),
-      REF = split_star(x[20]),
-      REF = split_star(x[21]),
-      DTM = split_star(x[22], replace_na = TRUE),
-      RMR = split_star(x[23], replace_na = TRUE),
-      REF = split_star(x[24]),
-      REF = split_star(x[25]),
-      REF = split_star(x[26]),
-      DTM = split_star(x[27], replace_na = TRUE)
-    ) |>
-      unlist_df()
-  } else {
-    x
-  }
-}
-
-#' @noRd
-parse_loop2 <- function(x) {
   start = perl(x, "^RMR")
   end = perl(x, "^DTM\\*582")
 
@@ -256,7 +141,7 @@ parse_820 <- function(text) {
 
   loop <- purrr::map(loops, \(i) x[i])
   loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
-  loop <- purrr::map(loop, parse_loop2)
+  loop <- purrr::map(loop, parse_loop)
 
   trailer <- list(
     SE = split_star(x[perl(x, "^SE")]),
@@ -270,4 +155,31 @@ parse_820 <- function(text) {
     LOOP = collapse::rowbind(loop),
     TRAILER = trailer
   )))
+}
+
+#' X12-834 Benefit Enrollment Parser
+#'
+#' Extracts enrollment and demographic data from 834 transactions with focus on:
+#'    - Risk adjustment fields (dual eligibility, OREC/CREC, SNP, LTI)
+#'    - CA DHCS FAME-specific fields
+#'    - HCP (Health Care Plan) coverage history
+#'
+#' @param text `<chr>` string of raw X12-834 text
+#' @returns list
+#' @examplesIf FALSE
+#' purrr::map(hcc::x12_834, parse_834)
+#' @export
+parse_834 <- function(text) {
+  split_tilde(text)
+}
+
+#' X12-837 Health Care Claim Parser
+#'
+#' @param text `<chr>` string of raw X12-837 text
+#' @returns list
+#' @examplesIf FALSE
+#' purrr::map(hcc::x12_837, parse_837)
+#' @export
+parse_837 <- function(text) {
+  split_tilde(text)
 }

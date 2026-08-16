@@ -45,25 +45,25 @@ HCPCoveragePeriod <- S7::new_class(
   )
 )
 
-#' Response model for demographic categorization
+#' Patient Demographics Categorization
 #'
-#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
-#' @param age `<int>` Beneficiary age (floored to `integer`)
-#' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
-#' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
-#' @param orec_code `<chr>` Original reason for entitlement code ("0" - "3")
-#' @param crec_code `<chr>` Current reason for entitlement code ("0" - "3")
+#' @param version `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
+#' @param age `<num>` Beneficiary age
+#' @param sex `<chr>` Beneficiary sex (`M`/`F` or `1`/`2`)
+#' @param dual_code `<chr>` Dual eligibility code (`00` - `10`)
+#' @param orec_code `<chr>` Original reason for entitlement (`0` - `3`)
+#' @param crec_code `<chr>` Current reason for entitlement (`0` - `3`)
 #' @param new_enrollee `<lgl>` Beneficiary is a **New Enrollee**
 #' @param has_snp `<lgl>` Beneficiary is in a **Special Needs Plan**
 #' @param non_aged `<lgl>` `TRUE` if `age <= 64`
 #' @param dis_orig `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled
 #' @param dis_curr `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
-#' @param dual_full `<lgl>` `TRUE` if FBD (FBD Model)
-#' @param dual_part `<lgl>` `TRUE` if PBD (PBD Model)
-#' @param has_esrd `<lgl>` `TRUE` if ESRD (ESRD Model)
-#' @param is_lti `<lgl>` `TRUE` if LTI (LTI Model)
-#' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
-#' @param esrd_months `<int>` Number of months since transplant (ESRD only)
+#' @param dual_full `<lgl>` `TRUE` if FBD *(FBD Model)*
+#' @param dual_part `<lgl>` `TRUE` if PBD *(PBD Model)*
+#' @param has_esrd `<lgl>` `TRUE` if ESRD *(ESRD Model)*
+#' @param is_lti `<lgl>` `TRUE` if LTI *(LTI Model)*
+#' @param low_income `<lgl>` Beneficiary is **Low Income** *(RxHCC only)*
+#' @param esrd_months `<int>` Number of months since transplant *(ESRD only)*
 #' @param category `<chr>` Age-sex category code
 #' @returns A `<PatientDemographics>` S7 object
 #' @examplesIf FALSE
@@ -95,7 +95,7 @@ PatientDemographics <- S7::new_class(
   )
 )
 
-#' Represents standardized service-level data extracted from healthcare claims.
+#' Healthcare Claim Service Level Data
 #'
 #' @param claim_id Unique identifier for the claim
 #' @param procedure_code Healthcare Common Procedure Coding System (HCPCS) code
@@ -222,21 +222,21 @@ RAFResult <- function(
 #'
 #' Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
 #'
-#' @param reference_number Invoice/check reference number (RMR02)
-#' @param payment_amount Net payment amount for this period; negative = recoupment (RMR04/05)
-#' @param original_amount Original amount before adjustment, when present (RMR05/06)
-#' @param rate_code Rate code from REF*18 (e.g., "957" = PACE rate)
-#' @param aid_code California Medi-Cal aid code from REF*ZZ (e.g., "1H", "M1", "60")
-#' @param plan_type Plan type from REF*ZZ composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)
-#' @param description Payment description from second REF*ZZ (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")
-#' @param coverage_period_start Coverage period begin date (YYYY-MM-DD) from DTM*582
-#' @param coverage_period_end Coverage period end date (YYYY-MM-DD) from DTM*582
-#' @param adjustment_amount Adjustment amount from ADX01 (negative = recoupment)
-#' @param adjustment_reason Adjustment reason code from ADX02 (e.g., "53" = prior period)
+#' @param reference_number `RMR-02` Invoice/check reference number
+#' @param payment_amount `RMR-04/RMR-05` Net payment amount for this period; negative = recoupment
+#' @param original_amount `RMR-05/RMR-06` Original amount before adjustment, when present
+#' @param rate_code `REF*18` Rate code (e.g., "957" = PACE rate)
+#' @param aid_code `REF*ZZ` California Medi-Cal aid code (e.g., "1H", "M1", "60")
+#' @param plan_type `REF*ZZ` Plan type - composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)
+#' @param description `REF*ZZ` Payment description (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")
+#' @param coverage_period_start `DTM*582` Coverage period begin date (YYYY-MM-DD)
+#' @param coverage_period_end `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM*582
+#' @param adjustment_amount `ADX-01` Adjustment amount (negative = recoupment)
+#' @param adjustment_reason `ADX-02` Adjustment reason code (e.g., "53" = prior period)
 #' @returns A `<RemittanceEntry>` S7 object
 #' @examplesIf FALSE
 #' RemittanceEntry()
-#' @noRd
+#' @export
 RemittanceEntry <- function(
   reference_number = character(),
   payment_amount = double(),
@@ -271,16 +271,16 @@ RemittanceEntry <- function(
 #' ENT entries within the same transaction (e.g., retroactive adjustments for
 #' prior periods).
 #'
-#' @param entity_number ENT sequence number (ENT01)
-#' @param member_id Member identifier from NM109
-#' @param last_name Member last name (NM103)
-#' @param first_name Member first name (NM104)
-#' @param middle_name Member middle name (NM105)
-#' @param remittance_entries List of remittance line items (one per RMR/DTM set)
+#' @param entity_number `ENT-01` ENT sequence number
+#' @param member_id `NM1-09` Member identifier
+#' @param last_name `NM1-03` Member last name
+#' @param first_name `NM1-04` Member first name
+#' @param middle_name `NM1-05` Member middle name
+#' @param remittance_entries List of `<RemittanceEntry>` line items (one per RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
 #' @examplesIf FALSE
 #' PaymentDetail()
-#' @noRd
+#' @export
 PaymentDetail <- function(
   entity_number = character(),
   member_id = character(),
@@ -299,31 +299,31 @@ PaymentDetail <- function(
   )
 }
 
-#' X12 820 Transaction Remittance Data
+#' X12-820 Transaction Remittance Data
 #'
 #' Represents one ST*820 transaction, typically a capitation payment remittance
 #' from a state Medicaid agency or CMS to a managed care plan.
 #'
-#' @param source Interchange sender ID (ISA06), e.g., "CALIFORNIA-DHCS"
-#' @param report_date Transaction date from GS04 (YYYY-MM-DD)
-#' @param total_amount Total payment amount from BPR02
-#' @param payment_date EFT effective date from BPR16 (YYYY-MM-DD)
-#' @param check_number EFT/check trace number from TRN02
-#' @param payee_name Receiving organization name (N1*PE)
-#' @param payee_address_1 Payee street address (N3)
-#' @param payee_city Payee city (N4)
-#' @param payee_state Payee state (N4)
-#' @param payee_zip Payee ZIP code (N4)
-#' @param payer_name Paying organization name (N1*PR)
-#' @param payer_address_1 Payer street address (N3)
-#' @param payer_city Payer city (N4)
-#' @param payer_state Payer state (N4)
-#' @param payer_zip Payer ZIP code (N4)
+#' @param source `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
+#' @param report_date `GS-04` Transaction date (YYYY-MM-DD)
+#' @param total_amount `BPR-02` Total payment amount
+#' @param payment_date `BPR-16` EFT effective date (YYYY-MM-DD)
+#' @param check_number `TRN-02` EFT/check trace number
+#' @param payee_name `N1*PE` Receiving organization name
+#' @param payee_address_1 `N3` Payee street address
+#' @param payee_city `N4` Payee city
+#' @param payee_state `N4` Payee state
+#' @param payee_zip `N4` Payee ZIP code
+#' @param payer_name `N1*PR` Paying organization name
+#' @param payer_address_1 `N3` Payer street address
+#' @param payer_city `N4` Payer city
+#' @param payer_state `N4` Payer state
+#' @param payer_zip `N4` Payer ZIP code
 #' @param members List of per-member payment records
 #' @returns A `<PaymentData>` S7 object
 #' @examplesIf FALSE
 #' PaymentData()
-#' @noRd
+#' @export
 PaymentData <- function(
   source = character(),
   report_date = character(),
@@ -362,77 +362,77 @@ PaymentData <- function(
   )
 }
 
-#' 834 Transaction Enrollment Data
+#' X12-834 Transaction Enrollment Data
 #'
 #' Data needed for risk adjustment and Medicaid coverage tracking.
 #' Supports California DHCS Medi-Cal 834 format with FAME fields.
 #'
-#' @param source Interchange sender ID (ISA06)
-#' @param report_date Transaction date (GS04)
-#' @param member_id Unique identifier for the member (REF*0F)
-#' @param mbi Medicare Beneficiary Identifier (REF*6P)
-#' @param medicaid_id Medicaid/Medi-Cal ID number (REF*23)
-#' @param hic Medicare HICN (REF*F6)
-#' @param cin Client Index Number from REF*3H
-#' @param cin_check_digit CIN check digit from REF*3H
-#' @param first_name Member first name (NM104)
-#' @param last_name Member last name (NM103)
-#' @param middle_name Member middle name (NM105)
+#' @param source `ISA-06` Interchange sender ID
+#' @param report_date `GS-04` Transaction date
+#' @param member_id `REF*0F` Unique identifier for the member
+#' @param mbi `REF*6P` Medicare Beneficiary Identifier
+#' @param medicaid_id `REF*23` Medicaid/Medi-Cal ID number
+#' @param hic `REF*F6` Medicare HICN
+#' @param cin `REF*3H` Client Index Number
+#' @param cin_check_digit `REF*3H` CIN check digit
+#' @param first_name `NM1-04` Member first name
+#' @param last_name `NM1-03` Member last name
+#' @param middle_name `NM1-05` Member middle name
 #' @param dob Date of birth (YYYY-MM-DD)
 #' @param age Calculated age
 #' @param sex Member sex (M/F)
-#' @param race Race/ethnicity code (DMG05)
-#' @param language Preferred language (LUI02)
+#' @param race `DMG-05` Race/ethnicity code
+#' @param language `LUI-02` Preferred language
 #' @param death_date Date of death if applicable
-#' @param address_1 Street address line 1 (N301)
-#' @param address_2 Street address line 2 (N302)
-#' @param city City (N401)
-#' @param state State code (N402)
-#' @param zip Postal code (N403)
-#' @param phone Phone number (PER04)
-#' @param maintenance_type 001 = Change, 021 = Add, 024 = Cancel, 025 = Reinstate (INS03)
-#' @param maintenance_reason_code Maintenance reason (INS04)
-#' @param benefit_status_code A=Active, C=COBRA, etc. (INS05)
+#' @param address_1 `N3-01` Street address line 1
+#' @param address_2 `N3-02` Street address line 2
+#' @param city `N4-01` City
+#' @param state `N4-02` State code
+#' @param zip `N4-03` Postal code
+#' @param phone `PER-04` Phone number
+#' @param maintenance_type `INS-03` Change (`001`), Add (`021`), Cancel (`024`), Reinstate (`025`)
+#' @param maintenance_reason_code `INS-04` Maintenance reason
+#' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
 #' @param coverage_start_date Coverage effective date
 #' @param coverage_end_date Coverage termination date
 #' @param has_medicare Member has Medicare coverage
 #' @param has_medicaid Member has Medicaid coverage
-#' @param dual_elgbl_cd Dual eligibility status code ('00','01'-'08')
+#' @param dual_elgbl_cd Dual eligibility status code (`00`,`01`-`08`)
 #' @param is_full_benefit_dual Full Benefit Dual (uses CFA_/CFD_ prefix)
 #' @param is_partial_benefit_dual Partial Benefit Dual (uses CPA_/CPD_ prefix)
 #' @param medicare_status_code QMB, SLMB, QI, QDWI, etc.
 #' @param medi_cal_aid_code California Medi-Cal aid code
 #' @param medi_cal_eligibility_status Medi-Cal eligibility status (Active/Terminated/None)
-#' @param fame_county_id FAME county ID (REF*ZX or N4*CY)
-#' @param case_number Case number (REF*1L)
+#' @param fame_county_id FAME county ID (`REF*ZX` or `N4*CY`)
+#' @param case_number Case number (`REF*1L`)
 #' @param fame_card_issue_date FAME card issue date
-#' @param fame_redetermination_date FAME redetermination date (REF*17)
+#' @param fame_redetermination_date FAME redetermination date (`REF*17`)
 #' @param fame_death_date FAME death date
-#' @param primary_aid_code Primary AID code (REF*RB)
+#' @param primary_aid_code Primary AID code (`REF*RB`)
 #' @param carrier_code Carrier code
 #' @param fed_contract_number Federal contract number
 #' @param client_reporting_cat Client reporting category
-#' @param res_addr_flag Residential address flag from REF*6O
-#' @param reas_add_ind Reason address indicator from REF*6O
+#' @param res_addr_flag Residential address flag from `REF*6O`
+#' @param reas_add_ind Reason address indicator from `REF*6O`
 #' @param res_zip_deliv_code Residential zip delivery code
 #' @param orec Original Reason for Entitlement Code
 #' @param crec Current Reason for Entitlement Code
 #' @param snp Special Needs Plan enrollment
 #' @param low_income Low Income Subsidy (Part D)
 #' @param lti Long-Term Institutionalized
-#' @param new_enrollee New enrollee status (<= 3 months)
+#' @param new_enrollee New enrollee status (`<= 3 months`)
 #' @param medicare_prt_a description
 #' @param medicare_prt_b description
 #' @param medicare_prt_d description
-#' @param hcp_code Current HCP code (HD04 first part)
-#' @param hcp_status Current HCP status (HD04 second part)
-#' @param amount_qualifier AMT qualifier code (e.g., 'D' = premium, 'C1' = copay)
+#' @param hcp_code Current HCP code (`HD-04` first part)
+#' @param hcp_status Current HCP status (`HD-04` second part)
+#' @param amount_qualifier AMT qualifier code (e.g., `D` = premium, `C1` = copay)
 #' @param amount Premium or cost share amount (numeric)
 #' @param hcp_history List of historical HCP coverage periods
 #' @returns A `<EnrollmentData>` S7 object
 #' @examplesIf FALSE
 #' EnrollmentData()
-#' @noRd
+#' @export
 EnrollmentData <- function(
   source = character(),
   report_date = character(),
