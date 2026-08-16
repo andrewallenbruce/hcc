@@ -75,9 +75,297 @@ HCP (Health Care Plan) coverage history
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*DHCS           *ZZ*HEALTHPLAN     *250108*1430*^*00501*000000001*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*DHCS*HEALTHPLAN*20250108*1430*1*X*005010X220A1"                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*12345*20250108*1430****2"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "REF*38*MEDI-CAL"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "DTP*007*D8*20250108"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*P5*CALIFORNIA DHCS*FI*953654321"                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "N1*IN*HEALTH PLAN NAME*FI*987654321"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "INS*Y*18*021***FT***AC"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*0F*MBR001"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*6P*TESTMBI000000001"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*1D*TESTMCD000000001"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*ABB*QMBPLUS"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "NM1*IL*1*TESTLAST01*TESTFIRST01****MI*TESTMBR000000001"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "PER*IP**HP*5555550000"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "N3*123 TEST STREET"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "N4*TESTCITY*CA*00000"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "DMG*D8*19000101*F"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "HD*021**HLT*MEDICARE ADVANTAGE D-SNP"                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "DTP*348*D8*20240101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "HD*021**HLT*MEDI-CAL"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "DTP*348*D8*20240101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "INS*Y*18*001***FT***AC"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "REF*0F*MBR002"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "REF*6P*TESTMBI000000002"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "REF*1D*TESTMCD000000002"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "REF*AB*4M"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "NM1*IL*1*TESTLAST02*TESTFIRST02****MI*TESTMBR000000002"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "N3*123 TEST STREET"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "N4*TESTCITY*CA*00000"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "DMG*D8*19000101*M"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "HD*001**HLT*MEDICARE PART C"                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "DTP*348*D8*20230515"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "HD*001**HLT*MEDI-CAL"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "DTP*348*D8*20240101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "INS*Y*18*024***FT***TE"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "REF*0F*MBR003"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "REF*6P*TESTMBI000000003"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "REF*1D*TESTMCD000000003"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "REF*ABB*SLMBPLUS"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "NM1*IL*1*TESTLAST03*TESTFIRST03****MI*TESTMBR000000003"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "N3*123 TEST STREET"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "N4*TESTCITY*CA*00000"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "DMG*D8*19000101*F"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "HD*024**HLT*MEDICARE PART A"                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "DTP*348*D8*20220101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "DTP*349*D8*20250228"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "HD*024**HLT*MEDI-CAL"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "DTP*348*D8*20220101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "DTP*349*D8*20250228"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "INS*Y*18*021***FT***AC"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "REF*0F*MBR004"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "REF*1D*TESTMCD000000004"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "NM1*IL*1*TESTLAST04*TESTFIRST04****MI*TESTMBR000000004"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "N3*123 TEST STREET"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "N4*TESTCITY*CA*00000"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "DMG*D8*19000101*M"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "HD*021**HLT*MEDI-CAL"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "DTP*348*D8*20250101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [60] "INS*Y*18*021***FT***AC"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "REF*0F*MBR005"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [62] "REF*6P*TESTMBI000000005"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "NM1*IL*1*TESTLAST05*TESTFIRST05****MI*TESTMBR000000005"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [64] "N3*123 TEST STREET"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "N4*TESTCITY*CA*00000"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [66] "DMG*D8*19000101*M"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "HD*021**HLT*MEDICARE PART C"                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [68] "DTP*348*D8*20250901"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [69] "SE*68*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [70] "GE*1*1"                                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [71] "IEA*1*000000001"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999991      *250124*1927*^*00501*000000001*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*CADHCS_5010_834*999999991*20250124*192730*10000001*X*005010X220A1"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*DHCS834-DA-20250124-Sample PACE-001*20250124*19273000****2"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "QTY*TO*1"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*IN*Sample PACE Inc.*FI*999999991"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "INS*Y*18*001*AI*A*E**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*0F*randomParticipantID"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*1L*randomCIN1"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*17*;;202501;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*23*4;20200101;;"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*3H*19;10;randomCaseNum1;;"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "REF*6O*;W;Y;;60;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "REF*ZZ*01051;41609;;;;30451;41651;;;"                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "NM1*IL*1*randomLastName*randomFirstName*A"                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "PER*IP**TE*randomPhone"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "N3*randomStreetAddress1"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "N4*LOS ANGELES CA*CA*90019**CY*19"                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "DMG*D8*randomDoB*F**7"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "LUI*LD*SPA**7"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "HD*021**LTC*010;51"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "DTP*348*D8*20250101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "DTP*349*D8*20250131"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "REF*17*N;;;;;;;;;;;;;1"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "REF*9V*9;9;0"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "REF*CE*10;401;;;;;;"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "REF*RB*10"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "SE*29*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "GE*1*10000001"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "IEA*1*000000001"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *250812*1936*^*00501*000000002*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*CADHCS_5010_834*999999992*20250812*193641*10000002*X*005010X220A1"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*DHCS834-DA-20250812-Sample South LA PACE-957-001*20250812*19364100****2"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "QTY*TO*1"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*0F*randomMemberId"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*1L*randomCIN2"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*17*;;202508;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*23*2;20200201;;;"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*3H*19;60;randomCaseNum2;;"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "REF*6O*;W;Y;;08;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "REF*DX*H9999;006;20250201;;;"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "REF*F6*randomMbi"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "REF*QQ*;;202001;202001"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "REF*ZZ*95701;;;;;35201;;;;"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "PER*IP**TE*randomPhone"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "N3*randomAddress1"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "N4*LONG BEACH CA*CA*90813**CY*19"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "DMG*D8*randomDoB*F**7"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "LUI*LD*SPA**7"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "HD*021**LTC*957;01"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "DTP*348*D8*20250801"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "DTP*349*D8*20250831"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "REF*17*F;;;;;;;;;;;;;1"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "REF*9V*2;2;2"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "REF*CE*60;401;80;401;;;;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "REF*RB*60"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "SE*32*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "GE*1*10000002"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "IEA*1*000000002"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *251022*2000*^*00501*000000003*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*CADHCS_5010_834*999999992*20251022*200019*10000003*X*005010X220A1"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*DHCS834-DA-20251022-Sample South LA PACE-957-001*20251022*20001900****2"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "QTY*TO*1"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*0F*randomMemberId"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*1L*randomCIN3"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*17*202605;;202510;"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*23*2;20200301;;;"                                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*3H*19;16;randomCode;;08"                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "REF*6O*;A;Y;;29;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "REF*DX*H9999;001;20251101;;;"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "REF*F6*randomMbi"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "REF*QQ*;;202002;202002"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "REF*ZZ*95701;;;;;20101;;;;"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "PER*IP**TE*randomPhone"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "N3*randomAddress1"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "N4*LOS ANGELES CA*CA*90044**CY*19"                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "DMG*D8*randomDoB*F**:RET:2054-5"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "HD*021**LTC*957;01"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "DTP*348*D8*20251001"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "DTP*349*D8*20251031"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "REF*17*F;;;;1"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "REF*9V*3;2;2"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "REF*CE*16;401;80;401;;;;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "REF*RB*16"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "SE*31*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "GE*1*10000003"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "IEA*1*000000003"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *251023*1959*^*00501*000000004*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*CADHCS_5010_834*999999992*20251023*195928*10000004*X*005010X220A1"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*DHCS834-DA-20251023-Sample South LA PACE-957-001*20251023*19592800****2"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "QTY*TO*1"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*0F*randomMemberId"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*1L*randomCIN4"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*17*202601;;202510;"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*23*6;20200401;20200101;;"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*3H*19;17;randomId1;;07"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "REF*6O*;W;Y;;19;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "REF*DX*H9999;006;20230401;;;"                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "REF*F6*randomId2"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "REF*QQ*;;202003;202003"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "REF*ZZ*957P4;;;;;;;;;"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "PER*IP**TE*randomPhone"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "N3*randomAddress1"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "N4*LONG BEACH CA*CA*90810**CY*19"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "DMG*D8*randomDoB*F**:RET:2135-2"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "HD*001**LTC*957;P4"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "DTP*348*D8*20251001"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "DTP*349*D8*20250930"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "AMT*R*1237"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "REF*17*F;;;;1"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "REF*9V*3;1;0"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "REF*CE*17;501;2K;691;;;;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "SE*31*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "GE*1*10000004"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "IEA*1*000000004"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999991      *250206*2008*^*00501*000000005*0*P*:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*CADHCS_5010_834*999999991*20250206*200823*10000005*X*005010X220A1"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*DHCS834-DA-20250206-Sample PACE-001*20250206*20082300****2"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "QTY*TO*2"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "N1*IN*Sample PACE Inc.*FI*999999991"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "INS*Y*18*001*AI*A*E**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*0F*randomMemberId"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "REF*1L*randomCIN5"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "REF*17*;;202502;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "REF*23*3;20200501;;"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "REF*3H*19;60;randomCaseNum1;;"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "REF*6O*;A;Y;D;67;"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "REF*Q4*randomProviderId;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "REF*ZZ*01059;;;;;010S1;;;;"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "NM1*IL*1*randomLName1*randomFName1"                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "PER*IP**TE*randomPhone1"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "N3*randomFullAddress1"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "N4*LOS ANGELES CA*CA*90037**CY*19"                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "DMG*D8*randomDoB1*F**:RET:2054-5"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "NM1*31*1"                                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "N3*randomAddress"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "N4*LOS ANGELES CA*CA*90037"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "HD*001**LTC*010;59"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "DTP*348*D8*20250201"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "DTP*349*D8*20250131"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "REF*17*N;;;;;;;;;;;;;1"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "REF*CE*60;001;80;891;;;;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "REF*RB*60"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "HD*021**LTC*010;S1"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "DTP*348*D8*20250101"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "DTP*349*D8*20250131"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "REF*17*N;;;;;;;;;;;;;1"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "REF*CE*60;401;80;891;;;;"                                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "REF*RB*60"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "REF*ZZ*;;11"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "INS*Y*18*001*AI*A*C**AC"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "REF*0F*randomMemberId2"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "REF*1L*randomCIN6"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "REF*17*;;202502;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "REF*23*9;20200601;;"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "REF*3H*19;10;randomCaseNum2;;"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "REF*6O*;A;Y;;25;"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "REF*DX*;;;S5617;D635;20240901"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "REF*F6*randomId1"                                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "REF*QQ*;;202004;202004"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "REF*ZZ*01001;;;;;30401;;;;"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "NM1*IL*1*randomLName2*randomFName2*M"                                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "PER*IP**TE*randomPhone2"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "N3*randomAddress2"                                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "N4*LOS ANGELES CA*CA*90029**CY*19"                                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "DMG*D8*randomDoB2*M**:RET:2135-2"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "HD*021**LTC*010;01"                                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "DTP*348*D8*20250201"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "DTP*349*D8*20250228"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [60] "REF*17*D;;;;;;;;;;;;;1"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "REF*9V*2;2;2"                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [62] "REF*CE*10;401;9G;999;80;401;;"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "REF*RB*10"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [64] "REF*ZX*19"                                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "REF*ZZ*;;10"                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [66] "SE*64*0001"                                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [67] "GE*1*10000005"                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [68] "IEA*1*000000005"                                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
