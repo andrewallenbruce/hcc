@@ -2,7 +2,7 @@
 # 2100B Loop: Individual Name Loop
 # 2300B Loop: Individual Premium Remittance Detail Loop
 
-list(
+dict_820 = list(
   ISA = list(
     `01` = "Authorization Info Qualifier", # 00 (No Authorization Information Present)
     `02` = "Authorization Information",

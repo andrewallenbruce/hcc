@@ -2,24 +2,35 @@
 % Please edit documentation in R/dx_to_cc.R
 \name{get_cc}
 \alias{get_cc}
-\title{Get CC for a single diagnosis code.}
+\title{Get CC for an ICD-10 code.}
 \usage{
-get_cc(diagnosis_code, year, model_name)
+get_cc(icd = "E119", model = "CMS-HCC Model V28", year = 2025L)
 }
 \arguments{
-\item{diagnosis_code}{\verb{<chr>} ICD-10 diagnosis code}
+\item{icd}{\verb{<chr>} ICD-10 diagnosis code(s)}
 
-\item{model_name}{\verb{<chr>} HCC model name to use for hierarchy rules}
+\item{model}{\verb{<chr>} HCC model name to use for hierarchy rules; one of:
+\itemize{
+\item CMS-HCC Model V22
+\item CMS-HCC Model V24
+\item CMS-HCC Model V28
+\item RxHCC Model V08
+\item RxHCC Model V05
+}}
+
+\item{year}{\verb{<int>} 2025 (default) or 2026}
 }
 \value{
-CC code if found, NULL otherwise
+\verb{<chr>} CC code if found, NULL otherwise
 }
 \description{
-Get CC for a single diagnosis code.
+Get CC for an ICD-10 code.
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
-get_cc("E119")
-get_cc("E11.9")
-\dontshow{\}) # examplesIf}
+get_cc(icd = "E119", model = "CMS-HCC Model V28", year = 2025)
+get_cc(icd = "E119", model = "CMS-HCC Model V24", year = 2025)
+get_cc(icd = "E119", model = "CMS-HCC ESRD Model V21", year = 2025)
+get_cc(icd = "I5022", model = "CMS-HCC Model V28", year = 2025)
+get_cc(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V28", year = 2025)
+get_cc(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V24", year = 2025)
 }

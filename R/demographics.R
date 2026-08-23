@@ -3,19 +3,18 @@
 #' This function takes demographic information about a beneficiary and returns a
 #' Demographics object containing derived fields used in risk adjustment models.
 #'
-#' @param version `<chr>` Version of categorization to use ("V2", "V4", "V6")
+#' @param version `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
 #' @param age `<num>` Beneficiary age
-#' @param sex `<chr>` Beneficiary sex (M/F or 1/2)
-#' @param dual_code `<chr>` Dual eligibility code ("00" - "10")
-#' @param orec_code `<chr>` Original reason for entitlement code (`"0"` - `"3"`)
-#' @param crec_code `<chr>` Current reason for entitlement code (`"0"` - `"3"`)
-#' @param new_enrollee `<lgl>` Beneficiary is a **New Enrollee**
-#' @param has_snp `<lgl>` Beneficiary is in a **Special Needs Plan**
-#' @param low_income `<lgl>` Beneficiary is **Low Income** (RxHCC only)
-#' @param is_lti `<lgl>` Beneficiary is Long-Term Institutionalized
+#' @param sex `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
+#' @param dual_code `<chr>` Dual eligibility code (`00` - `10`)
+#' @param orec_code,crec_code `<chr>` Original/Current reason for entitlement
+#'   code (`0` - `3`)
+#' @param new_enrollee,has_snp,low_income,is_lti `<lgl>` Beneficiary is a
+#' **New Enrollee**, in a **Special Needs Plan**, is **Low Income** (RxHCC only),
+#'   and/or is Long-Term Institutionalized
 #' @param esrd_months `<int>` Number of months since transplant (ESRD only)
 #' @param prefix `<chr>` Optional prefix to override demographic
-#'   detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)
+#'   detection (e.g., `DI_`, `DNE_`, `INS_`, `CFA_`, etc.)
 #' @returns A `<PatientDemographics>` S7 object
 #' @examples
 #' demographics(age = 48, sex = "1")

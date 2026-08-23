@@ -1,3 +1,15 @@
+#' TOB (Type of Bill) Filter is based on:
+#'    - [HHS Link](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/2012181486-wq-092916_ra_webinar_slides_5cr_092816.pdf)
+#'    - [HHS Link](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/FinalEncounterDataDiagnosisFilteringLogic.pdf)
+#'    - [CMS Link](https://www.cms.gov/files/document/encounterdatasystemedit20495andedit01415andtob87x07162021.pdf)
+#'
+#' 87X NOTE: If no "facility_type" or "service_type", then the claim is
+#' **professional**, in our implementation.
+#'
+#' NOTE: The original CMS logic is for the "record" level, not the service
+#' level. Thus, when preparing the service level data, put all diagnosis codes
+#' into the diagnosis field.
+#'
 #' @noRd
 apply_filter <- function(
   data = ServiceLevelData(),
@@ -15,14 +27,6 @@ apply_filter <- function(
   ),
   professional_cpt = hcc::ra_eligible_hcpcs
 ) {
-  # tob (Type of Bill) Filter is based on:
-  # https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/2012181486-wq-092916_ra_webinar_slides_5cr_092816.pdf
-  # https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/FinalEncounterDataDiagnosisFilteringLogic.pdf
-  # https://www.cms.gov/files/document/encounterdatasystemedit20495andedit01415andtob87x07162021.pdf for 87X
-  # NOTE: If no facility_type or service_type, then the claim is professional, in our implementation.
-  # NOTE: The original CMS logic is for the "record" level, not the service level.
-  #  Thus, when preparing the service level data, put all diagnosis codes into the diagnosis field.
-
   filtered_data = list()
   # for item in data:
   #   item_tob = '?' if item.facility_type is None else item.facility_type

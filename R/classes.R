@@ -7,14 +7,14 @@
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the
 #'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' HCCDetail(
 #'  hcc = "80",
 #'  label = "Coma, Brain Compression/Anoxic Damage",
 #'  is_chronic = FALSE,
 #'  coefficient = 0.486
 #' )
-#' @noRd
+#' @export
 HCCDetail <- S7::new_class(
   "HCCDetail",
   properties = list(

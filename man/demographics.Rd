@@ -20,30 +20,25 @@ demographics(
 )
 }
 \arguments{
-\item{version}{\verb{<chr>} Version of categorization to use ("V2", "V4", "V6")}
+\item{version}{\verb{<chr>} Version of categorization to use (\code{V2}, \code{V4}, \code{V6})}
 
 \item{age}{\verb{<num>} Beneficiary age}
 
-\item{sex}{\verb{<chr>} Beneficiary sex (M/F or 1/2)}
+\item{sex}{\verb{<chr>} Beneficiary sex (\code{M}/\code{1} or \code{F}/\code{2})}
 
-\item{dual_code}{\verb{<chr>} Dual eligibility code ("00" - "10")}
+\item{dual_code}{\verb{<chr>} Dual eligibility code (\code{00} - \code{10})}
 
-\item{orec_code}{\verb{<chr>} Original reason for entitlement code (\code{"0"} - \code{"3"})}
+\item{orec_code, crec_code}{\verb{<chr>} Original/Current reason for entitlement
+code (\code{0} - \code{3})}
 
-\item{crec_code}{\verb{<chr>} Current reason for entitlement code (\code{"0"} - \code{"3"})}
-
-\item{new_enrollee}{\verb{<lgl>} Beneficiary is a \strong{New Enrollee}}
-
-\item{has_snp}{\verb{<lgl>} Beneficiary is in a \strong{Special Needs Plan}}
-
-\item{low_income}{\verb{<lgl>} Beneficiary is \strong{Low Income} (RxHCC only)}
-
-\item{is_lti}{\verb{<lgl>} Beneficiary is Long-Term Institutionalized}
+\item{new_enrollee, has_snp, low_income, is_lti}{\verb{<lgl>} Beneficiary is a
+\strong{New Enrollee}, in a \strong{Special Needs Plan}, is \strong{Low Income} (RxHCC only),
+and/or is Long-Term Institutionalized}
 
 \item{esrd_months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
 \item{prefix}{\verb{<chr>} Optional prefix to override demographic
-detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)}
+detection (e.g., \code{DI_}, \code{DNE_}, \code{INS_}, \code{CFA_}, etc.)}
 }
 \value{
 A \verb{<PatientDemographics>} S7 object
