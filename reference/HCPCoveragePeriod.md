@@ -1,16 +1,16 @@
-# A single Health Care Plan coverage period from HD loop
+# Health Care Plan coverage period from HD loop
 
-A single Health Care Plan coverage period from HD loop
+Health Care Plan coverage period from HD loop
 
 ## Usage
 
 ``` r
 HCPCoveragePeriod(
-  start_date = character(),
-  end_date = character(),
-  hcp_code = character(),
-  hcp_status = character(),
-  aid_codes = character()
+  start_date = structure(20688, class = "Date"),
+  end_date = structure(20689, class = "Date"),
+  hcp_code = character(0),
+  hcp_status = character(0),
+  aid_codes = character(0)
 )
 ```
 
@@ -18,45 +18,36 @@ HCPCoveragePeriod(
 
 - start_date:
 
-  date
+  `<date>` coverage start date
 
 - end_date:
 
-  date
+  `<date>` coverage start date
 
 - hcp_code:
 
-  code
+  `<chr>` HCP code
 
 - hcp_status:
 
-  status
+  `<chr>` HCP status
 
 - aid_codes:
 
-  REF\*CE composite
+  `<chr>` REF\*CE composite
 
 ## Value
 
-A object
+An `<HCPCoveragePeriod>` S7 object
 
 ## Examples
 
 ``` r
 HCPCoveragePeriod()
-#> $start_date
-#> character(0)
-#> 
-#> $end_date
-#> character(0)
-#> 
-#> $hcp_code
-#> character(0)
-#> 
-#> $hcp_status
-#> character(0)
-#> 
-#> $aid_codes
-#> character(0)
-#> 
+#> <hcc::HCPCoveragePeriod>
+#>  @ start_date: Date[1:1], format: "2026-08-23"
+#>  @ end_date  : Date[1:1], format: "2026-08-24"
+#>  @ hcp_code  : chr(0) 
+#>  @ hcp_status: chr(0) 
+#>  @ aid_codes : chr(0) 
 ```

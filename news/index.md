@@ -2,8 +2,7 @@
 
 ## hcc 0.0.0.9025 (2026-08-23)
 
-- added
-  [`get_cc()`](https://andrewallenbruce.github.io/hcc/reference/get_cc.md)
+- added `get_cc()`
 - fixed mistakenly labelled sample
 - added minimal X12 examples
 
