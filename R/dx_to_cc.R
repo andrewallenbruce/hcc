@@ -1,4 +1,4 @@
-#' Get CC for an ICD-10 code.
+#'  Map ICD-10 Codes to CC
 #'
 #' @param icd `<chr>` ICD-10 diagnosis code(s)
 #' @param model `<chr>` HCC model name to use for hierarchy rules; one of:
@@ -8,21 +8,21 @@
 #'    - RxHCC Model V08
 #'    - RxHCC Model V05
 #' @param year `<int>` 2025 (default) or 2026
-#' @returns `<chr>` CC code if found, NULL otherwise
+#' @returns `<chr>` CCs mapped to diagnosis codes
 #' @examples
-#' get_cc(icd = "E119", model = "CMS-HCC Model V28", year = 2025)
-#' get_cc(icd = "E119", model = "CMS-HCC Model V24", year = 2025)
-#' get_cc(icd = "E119", model = "CMS-HCC ESRD Model V21", year = 2025)
-#' get_cc(icd = "I5022", model = "CMS-HCC Model V28", year = 2025)
-#' get_cc(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V28", year = 2025)
-#' get_cc(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V24", year = 2025)
+#' apply_map(icd = "E119", model = "CMS-HCC Model V28")
+#' apply_map(icd = "E119", model = "CMS-HCC Model V24")
+#' apply_map(icd = "E119", model = "CMS-HCC ESRD Model V21")
+#' apply_map(icd = "I5022", model = "CMS-HCC Model V28")
+#' apply_map(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V28")
+#' apply_map(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V24")
 #' @export
-get_cc <- function(
-  icd = "E119",
-  model = "CMS-HCC Model V28",
+apply_map <- function(
+  icd,
+  model,
   year = 2025L
 ) {
-  icd <- gsub("\\.", "", icd, perl = TRUE)
+  icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
   rlang::check_number_whole(year, min = 2025, max = 2026)
 
   model <- rlang::arg_match0(

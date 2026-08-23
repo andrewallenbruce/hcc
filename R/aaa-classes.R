@@ -1,3 +1,31 @@
+#' Single Edit Rule
+#'
+#' @param edit_type `<chr>` "sex" or "age"
+#' @param sex `<int>` For sex edits: 1 (male) or 2 (female)
+#' @param age_min `<int>` For age edits: minimum age (inclusive)
+#' @param age_max `<int>` For age edits: minimum age (inclusive)
+#' @param action `<chr>` "invalid" or "override"
+#' @param cc_override `<chr>` CC to assign when action is "override"
+#' @returns An `<EditRule>` S7 object
+#' @examples
+#' EditRule(
+#'  edit_type = "age",
+#'  age_min = 15L,
+#'  age_max = 65L
+#'  )
+#' @export
+EditRule <- S7::new_class(
+  "EditRule",
+  properties = list(
+    edit_type = S7::class_character,
+    sex = S7::class_character,
+    age_min = S7::class_integer,
+    age_max = S7::class_integer,
+    action = S7::class_character,
+    cc_override = S7::class_character
+  )
+)
+
 #' HCC Category Detail
 #'
 #' @param hcc `<chr>` HCC code (e.g., "18", "85")
@@ -33,9 +61,9 @@ HCCDetail <- S7::new_class(
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
 #' @returns An `<HCPCoveragePeriod>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' HCPCoveragePeriod()
-#' @noRd
+#' @export
 HCPCoveragePeriod <- S7::new_class(
   "HCPCoveragePeriod",
   properties = list(
@@ -68,11 +96,11 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param esrd_months `<int>` Number of months since transplant *(ESRD only)*
 #' @param category `<chr>` Age-sex category code
 #' @returns A `<PatientDemographics>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' PatientDemographics(age = 48, sex = "1", version = "V2")
 #' PatientDemographics(age = 35, sex = "M", version = "V6")
 #' PatientDemographics(age = 75, sex = "2", orec_code = "0", version = "V2")
-#' @noRd
+#' @export
 PatientDemographics <- S7::new_class(
   "PatientDemographics",
   properties = list(
