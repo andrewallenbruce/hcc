@@ -13,6 +13,20 @@ parse_834(text)
 list
 }
 \description{
+The 834 is heavily used by BPaaS (Benefits Administration as a Service):
+\itemize{
+\item Workday Benefits
+\item ADP TotalSource
+\item bswift
+\item BenefitFocus
+\item Empyrean
+}
+}
+\details{
+It is also the official pipe between ACA state exchanges / marketplaces and
+payers. The Open Enrollment window (November – December) produces volume
+spikes that stress overnight batch jobs.
+
 Extracts enrollment and demographic data from 834 transactions with focus on:
 \itemize{
 \item Risk adjustment fields (dual eligibility, OREC/CREC, SNP, LTI)

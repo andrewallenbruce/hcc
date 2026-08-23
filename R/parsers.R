@@ -49,7 +49,7 @@ pad_names <- function(x, replace_na = FALSE) {
 }
 
 #' @noRd
-parse_loop <- function(x) {
+parse_loop_820 <- function(x) {
   start = perl(x, "^RMR")
   end = perl(x, "^DTM\\*582")
 
@@ -141,7 +141,7 @@ parse_820 <- function(text) {
 
   loop <- purrr::map(loops, \(i) x[i])
   loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
-  loop <- purrr::map(loop, parse_loop)
+  loop <- purrr::map(loop, parse_loop_820)
 
   trailer <- list(
     SE = split_star(x[perl(x, "^SE")]),
@@ -159,6 +159,17 @@ parse_820 <- function(text) {
 
 #' X12-834 Benefit Enrollment Parser
 #'
+#' The 834 is heavily used by BPaaS (Benefits Administration as a Service):
+#'    - Workday Benefits
+#'    - ADP TotalSource
+#'    - bswift
+#'    - BenefitFocus
+#'    - Empyrean
+#'
+#' It is also the official pipe between ACA state exchanges / marketplaces and
+#' payers. The Open Enrollment window (November – December) produces volume
+#' spikes that stress overnight batch jobs.
+#'
 #' Extracts enrollment and demographic data from 834 transactions with focus on:
 #'    - Risk adjustment fields (dual eligibility, OREC/CREC, SNP, LTI)
 #'    - CA DHCS FAME-specific fields
@@ -175,12 +186,50 @@ parse_834 <- function(text) {
 
 #' X12-837 Health Care Claim Parser
 #'
+#' The 837 is the highest-volume transaction in US healthcare EDI. Every
+#' commercial and public payer (Medicare, Medicaid, Tricare) consumes hundreds
+#' of millions per month.
+#'
+#' The entire provider-side billing revolves around its generation: from the EHR
+#' (Epic, Cerner, Athenahealth, NextGen) or the PMS (Kareo, AdvancedMD,
+#' eClinicalWorks), through a clearinghouse (Availity, Change Healthcare,
+#' Waystar, Trizetto), with `277CA`, `999`, and ultimately `835` returns.
+#'
+#' ## Common segments
+#' ### Transaction Set Header
+#'    - `BHT`: Beginning of Hierarchical Transaction
+#'       - Purpose `00` (Original)
+#'       - Transaction type `CH` (Chargeable)
+#'       - `RP` Reporting
+#'       - Submitter `NM1*41`
+#'       - Receiver `NM1*40`
+#' ### Detail: Three hierarchical levels
+#'    - `2000A` Billing Provider (Practice or Facility, with NPI, Taxonomy, TIN)
+#'    - `2000B` Subscriber Loop (Contract Holder)
+#'       - `SBR` Subscriber Information with relationship code, claim filing indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid, etc.)
+#'    - `2000C` Patient Loop (the Patient when different from the Subscriber). At the claim level, CLM Claim Information carries the patient account, total charge, facility code, claim frequency. HI Health Care Information Codes carries ICD-10 diagnoses (qualifier ABK Principal Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1 (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via DTP.
+#' ### Summary
+#'    — a single `SE`
+#'
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
-#'
-#' purrr::map(hcc::x12_837, parse_837)
+#' purrr::map(hcc::x12_837[1], parse_837)
 #' @export
 parse_837 <- function(text) {
-  split_tilde(text)
+  x <- split_tilde(text)
+
+  header <- list(
+    ISA = split_isa(x[perl(x, "^ISA")]),
+    GS = split_star(x[perl(x, "^GS")]),
+    ST = split_star(x[perl(x, "^ST")]),
+    BHT = split_star(x[perl(x, "^BHT")], replace_na = TRUE)
+  ) |>
+    unlist_df()
+
+  list(
+    `NM1*41` = split_star(x[perl(x, "^NM1\\*41")]),
+    PER = split_star(x[perl(x, "^PER")], replace_na = TRUE),
+    `NM1*40` = split_star(x[perl(x, "^NM1\\*40")])
+  )
 }

@@ -6,10 +6,10 @@
 #'
 #' @param code `<chr>` Medi-Cal aid code or Medicare status code
 #' @returns Dual eligibility code ('01'-'08') or NA if not found
-#' @examples
+#' @examplesIf FALSE
 #' map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"))
 #' map_to_dual(c("4N", "5B", "40"))
-#' @export
+#' @noRd
 map_to_dual <- function(code) {
   from <- c(MEDICARE_STATUS_CODE_MAPPING, MEDI_CAL_AID_CODES)
   unlist_(from)[collapse::fmatch(normalize_(code), names(from))]

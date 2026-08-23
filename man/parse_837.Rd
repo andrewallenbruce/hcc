@@ -13,9 +13,47 @@ parse_837(text)
 list
 }
 \description{
-X12-837 Health Care Claim Parser
+The 837 is the highest-volume transaction in US healthcare EDI. Every
+commercial and public payer (Medicare, Medicaid, Tricare) consumes hundreds
+of millions per month.
+}
+\details{
+The entire provider-side billing revolves around its generation: from the EHR
+(Epic, Cerner, Athenahealth, NextGen) or the PMS (Kareo, AdvancedMD,
+eClinicalWorks), through a clearinghouse (Availity, Change Healthcare,
+Waystar, Trizetto), with \verb{277CA}, \code{999}, and ultimately \code{835} returns.
+\subsection{Common segments}{
+\subsection{Transaction Set Header}{
+\itemize{
+\item \code{BHT}: Beginning of Hierarchical Transaction
+\itemize{
+\item Purpose \code{00} (Original)
+\item Transaction type \code{CH} (Chargeable)
+\item \code{RP} Reporting
+\item Submitter \code{NM1*41}
+\item Receiver \code{NM1*40}
+}
+}
+}
+
+\subsection{Detail: Three hierarchical levels}{
+\itemize{
+\item \verb{2000A} Billing Provider (Practice or Facility, with NPI, Taxonomy, TIN)
+\item \verb{2000B} Subscriber Loop (Contract Holder)
+\itemize{
+\item \code{SBR} Subscriber Information with relationship code, claim filing indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid, etc.)
+}
+\item \verb{2000C} Patient Loop (the Patient when different from the Subscriber). At the claim level, CLM Claim Information carries the patient account, total charge, facility code, claim frequency. HI Health Care Information Codes carries ICD-10 diagnoses (qualifier ABK Principal Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1 (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via DTP.
+}
+}
+
+\subsection{Summary}{
+
+— a single \code{SE}
+}
+
+}
 }
 \examples{
-
-purrr::map(hcc::x12_837, parse_837)
+purrr::map(hcc::x12_837[1], parse_837)
 }
