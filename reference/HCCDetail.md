@@ -35,7 +35,7 @@ HCCDetail(
 
 ## Value
 
-S7 object
+An `<HCCDetail>` S7 object
 
 ## Examples
 

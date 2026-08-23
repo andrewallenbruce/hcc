@@ -4,6 +4,8 @@
 
 - [`EnrollmentData()`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : X12-834 Transaction Enrollment Data
+- [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
+  : HCC Category Detail
 - [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : X12-820 Transaction Remittance Data
 - [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
@@ -14,7 +16,7 @@
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
 - [`get_cc()`](https://andrewallenbruce.github.io/hcc/reference/get_cc.md)
-  : Get CC for a single diagnosis code.
+  : Get CC for an ICD-10 code.
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)

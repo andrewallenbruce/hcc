@@ -1,5 +1,12 @@
 # Changelog
 
+## hcc 0.0.0.9025 (2026-08-23)
+
+- added
+  [`get_cc()`](https://andrewallenbruce.github.io/hcc/reference/get_cc.md)
+- fixed mistakenly labelled sample
+- added minimal X12 examples
+
 ## hcc 0.0.0.9024 (2026-08-16)
 
 - parse_834, parse_837

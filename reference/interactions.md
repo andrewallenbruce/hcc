@@ -58,7 +58,14 @@ x
 #>  @ category    : chr "M65_69"
 
 interactions(x)
-#> [1] "LTI_Aged"                "LTI_GE65"               
-#> [3] "NMCAID_NORIGDIS_M65_69"  "ND_PBD_NORIGDIS_M65_69" 
-#> [5] "GE65_DUR10PL"            "FGI_GE65_DUR10PL_ND_PBD"
+#>  [1] "OriginallyDisabled_Male" "Originally_ESRD_Male"   
+#>  [3] "LTI_Aged"                "LTI_NonAged"            
+#>  [5] "LTI_GE65"                "LTI_LT65"               
+#>  [7] "LTIMCAID"                "NMCAID_NORIGDIS_M65_69" 
+#>  [9] "NMCAID_ORIGDIS_M65_69"   "ND_PBD_NORIGDIS_M65_69" 
+#> [11] "ND_PBD_ORIGDIS_M65_69"   "GE65_DUR10PL"           
+#> [13] "LT65_DUR10PL"            "FGC_GE65_DUR4_9_ND_PBD" 
+#> [15] "FGC_LT65_DUR4_9_ND_PBD"  "FGI_GE65_DUR4_9_ND_PBD" 
+#> [17] "FGC_GE65_DUR10PL_ND_PBD" "FGC_LT65_DUR10PL_ND_PBD"
+#> [19] "FGI_GE65_DUR10PL_ND_PBD"
 ```

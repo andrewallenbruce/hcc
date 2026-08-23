@@ -9,7 +9,7 @@ Demographics object containing derived fields used in risk adjustment models."><
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9024</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9025</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@ Demographics object containing derived fields used in risk adjustment models.</p
 
 
 <dl><dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Version of categorization to use ("V2", "V4", "V6")</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Version of categorization to use (<code>V2</code>, <code>V4</code>, <code>V6</code>)</p></dd>
 
 
 <dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
@@ -77,35 +77,22 @@ Demographics object containing derived fields used in risk adjustment models.</p
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Beneficiary sex (M/F or 1/2)</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Beneficiary sex (<code>M</code>/<code>1</code> or <code>F</code>/<code>2</code>)</p></dd>
 
 
 <dt id="arg-dual-code">dual_code<a class="anchor" aria-label="anchor" href="#arg-dual-code"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Dual eligibility code ("00" - "10")</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Dual eligibility code (<code>00</code> - <code>10</code>)</p></dd>
 
 
-<dt id="arg-orec-code">orec_code<a class="anchor" aria-label="anchor" href="#arg-orec-code"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Original reason for entitlement code (<code>"0"</code> - <code>"3"</code>)</p></dd>
+<dt id="arg-orec-code-crec-code">orec_code, crec_code<a class="anchor" aria-label="anchor" href="#arg-orec-code-crec-code"></a></dt>
+<dd><p><code>&lt;chr&gt;</code> Original/Current reason for entitlement
+code (<code>0</code> - <code>3</code>)</p></dd>
 
 
-<dt id="arg-crec-code">crec_code<a class="anchor" aria-label="anchor" href="#arg-crec-code"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Current reason for entitlement code (<code>"0"</code> - <code>"3"</code>)</p></dd>
-
-
-<dt id="arg-new-enrollee">new_enrollee<a class="anchor" aria-label="anchor" href="#arg-new-enrollee"></a></dt>
-<dd><p><code>&lt;lgl&gt;</code> Beneficiary is a <strong>New Enrollee</strong></p></dd>
-
-
-<dt id="arg-has-snp">has_snp<a class="anchor" aria-label="anchor" href="#arg-has-snp"></a></dt>
-<dd><p><code>&lt;lgl&gt;</code> Beneficiary is in a <strong>Special Needs Plan</strong></p></dd>
-
-
-<dt id="arg-low-income">low_income<a class="anchor" aria-label="anchor" href="#arg-low-income"></a></dt>
-<dd><p><code>&lt;lgl&gt;</code> Beneficiary is <strong>Low Income</strong> (RxHCC only)</p></dd>
-
-
-<dt id="arg-is-lti">is_lti<a class="anchor" aria-label="anchor" href="#arg-is-lti"></a></dt>
-<dd><p><code>&lt;lgl&gt;</code> Beneficiary is Long-Term Institutionalized</p></dd>
+<dt id="arg-new-enrollee-has-snp-low-income-is-lti">new_enrollee, has_snp, low_income, is_lti<a class="anchor" aria-label="anchor" href="#arg-new-enrollee-has-snp-low-income-is-lti"></a></dt>
+<dd><p><code>&lt;lgl&gt;</code> Beneficiary is a
+<strong>New Enrollee</strong>, in a <strong>Special Needs Plan</strong>, is <strong>Low Income</strong> (RxHCC only),
+and/or is Long-Term Institutionalized</p></dd>
 
 
 <dt id="arg-esrd-months">esrd_months<a class="anchor" aria-label="anchor" href="#arg-esrd-months"></a></dt>
@@ -114,7 +101,7 @@ Demographics object containing derived fields used in risk adjustment models.</p
 
 <dt id="arg-prefix">prefix<a class="anchor" aria-label="anchor" href="#arg-prefix"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> Optional prefix to override demographic
-detection (e.g., "DI_", "DNE_", "INS_", "CFA_", etc.)</p></dd>
+detection (e.g., <code>DI_</code>, <code>DNE_</code>, <code>INS_</code>, <code>CFA_</code>, etc.)</p></dd>
 
 </dl></div>
     <div class="section level2">

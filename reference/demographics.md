@@ -27,7 +27,7 @@ demographics(
 
 - version:
 
-  `<chr>` Version of categorization to use ("V2", "V4", "V6")
+  `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
 
 - age:
 
@@ -35,35 +35,21 @@ demographics(
 
 - sex:
 
-  `<chr>` Beneficiary sex (M/F or 1/2)
+  `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
 
 - dual_code:
 
-  `<chr>` Dual eligibility code ("00" - "10")
+  `<chr>` Dual eligibility code (`00` - `10`)
 
-- orec_code:
+- orec_code, crec_code:
 
-  `<chr>` Original reason for entitlement code (`"0"` - `"3"`)
+  `<chr>` Original/Current reason for entitlement code (`0` - `3`)
 
-- crec_code:
+- new_enrollee, has_snp, low_income, is_lti:
 
-  `<chr>` Current reason for entitlement code (`"0"` - `"3"`)
-
-- new_enrollee:
-
-  `<lgl>` Beneficiary is a **New Enrollee**
-
-- has_snp:
-
-  `<lgl>` Beneficiary is in a **Special Needs Plan**
-
-- low_income:
-
-  `<lgl>` Beneficiary is **Low Income** (RxHCC only)
-
-- is_lti:
-
-  `<lgl>` Beneficiary is Long-Term Institutionalized
+  `<lgl>` Beneficiary is a **New Enrollee**, in a **Special Needs
+  Plan**, is **Low Income** (RxHCC only), and/or is Long-Term
+  Institutionalized
 
 - esrd_months:
 
@@ -72,7 +58,7 @@ demographics(
 - prefix:
 
   `<chr>` Optional prefix to override demographic detection (e.g.,
-  "DI\_", "DNE\_", "INS\_", "CFA\_", etc.)
+  `DI_`, `DNE_`, `INS_`, `CFA_`, etc.)
 
 ## Value
 
