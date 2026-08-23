@@ -1,13 +1,16 @@
 # X12-834 Benefit Enrollment Parser
 
-Extracts enrollment and demographic data from 834 transactions with
-focus on:
+The 834 is heavily used by BPaaS (Benefits Administration as a Service):
 
-- Risk adjustment fields (dual eligibility, OREC/CREC, SNP, LTI)
+- Workday Benefits
 
-- CA DHCS FAME-specific fields
+- ADP TotalSource
 
-- HCP (Health Care Plan) coverage history
+- bswift
+
+- BenefitFocus
+
+- Empyrean
 
 ## Usage
 
@@ -24,6 +27,21 @@ parse_834(text)
 ## Value
 
 list
+
+## Details
+
+It is also the official pipe between ACA state exchanges / marketplaces
+and payers. The Open Enrollment window (November – December) produces
+volume spikes that stress overnight batch jobs.
+
+Extracts enrollment and demographic data from 834 transactions with
+focus on:
+
+- Risk adjustment fields (dual eligibility, OREC/CREC, SNP, LTI)
+
+- CA DHCS FAME-specific fields
+
+- HCP (Health Care Plan) coverage history
 
 ## Examples
 
