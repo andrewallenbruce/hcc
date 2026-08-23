@@ -4,6 +4,11 @@ unlist_ <- function(x, ...) {
 }
 
 #' @noRd
+mult_ <- function(...) {
+  collapse::fprod(c(...))
+}
+
+#' @noRd
 normalize_ <- function(x) {
   toupper(gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE))
 }
