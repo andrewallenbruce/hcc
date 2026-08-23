@@ -60,8 +60,84 @@ Typical loop structure within an 820:
 
 ``` r
 purrr::map(hcc::x12_820, parse_820)
-#> Error in purrr::map(hcc::x12_820, parse_820): ℹ In index: 1.
-#> ℹ With name: minimal_820.
-#> Caused by error in `strsplit(x, "*", fixed = TRUE)[[1]]`:
-#> ! subscript out of bounds
+#> $sample_820_01
+#> # A tibble: 429 × 3
+#>    SEG   PT    VALUE     
+#>    <chr> <chr> <chr>     
+#>  1 ISA   01    00        
+#>  2 ISA   02    NA        
+#>  3 ISA   03    00        
+#>  4 ISA   04    NA        
+#>  5 ISA   05    ZZ        
+#>  6 ISA   06    TEST-PAYER
+#>  7 ISA   07    30        
+#>  8 ISA   08    TEST-PAYEE
+#>  9 ISA   09    260118    
+#> 10 ISA   10    0831      
+#> # ℹ 419 more rows
+#> 
+#> $sample_820_02
+#> # A tibble: 632 × 3
+#>    SEG   PT    VALUE     
+#>    <chr> <chr> <chr>     
+#>  1 ISA   01    00        
+#>  2 ISA   02    NA        
+#>  3 ISA   03    00        
+#>  4 ISA   04    NA        
+#>  5 ISA   05    ZZ        
+#>  6 ISA   06    TEST-PAYER
+#>  7 ISA   07    30        
+#>  8 ISA   08    TEST-PAYEE
+#>  9 ISA   09    260316    
+#> 10 ISA   10    0855      
+#> # ℹ 622 more rows
+#> 
+#> $sample_820_03
+#> # A tibble: 4,285 × 3
+#>    SEG   PT    VALUE     
+#>    <chr> <chr> <chr>     
+#>  1 ISA   01    00        
+#>  2 ISA   02    NA        
+#>  3 ISA   03    00        
+#>  4 ISA   04    NA        
+#>  5 ISA   05    ZZ        
+#>  6 ISA   06    TEST-PAYER
+#>  7 ISA   07    30        
+#>  8 ISA   08    TEST-PAYEE
+#>  9 ISA   09    260316    
+#> 10 ISA   10    0854      
+#> # ℹ 4,275 more rows
+#> 
+#> $sample_820_04
+#> # A tibble: 387 × 3
+#>    SEG   PT    VALUE     
+#>    <chr> <chr> <chr>     
+#>  1 ISA   01    00        
+#>  2 ISA   02    NA        
+#>  3 ISA   03    00        
+#>  4 ISA   04    NA        
+#>  5 ISA   05    ZZ        
+#>  6 ISA   06    TEST-PAYER
+#>  7 ISA   07    30        
+#>  8 ISA   08    TEST-PAYEE
+#>  9 ISA   09    251217    
+#> 10 ISA   10    2316      
+#> # ℹ 377 more rows
+#> 
+#> $sample_820_05
+#> # A tibble: 2,622 × 3
+#>    SEG   PT    VALUE     
+#>    <chr> <chr> <chr>     
+#>  1 ISA   01    00        
+#>  2 ISA   02    NA        
+#>  3 ISA   03    00        
+#>  4 ISA   04    NA        
+#>  5 ISA   05    ZZ        
+#>  6 ISA   06    TEST-PAYER
+#>  7 ISA   07    30        
+#>  8 ISA   08    TEST-PAYEE
+#>  9 ISA   09    260217    
+#> 10 ISA   10    0936      
+#> # ℹ 2,612 more rows
+#> 
 ```

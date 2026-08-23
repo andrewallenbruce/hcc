@@ -21,6 +21,7 @@ list
 ## Examples
 
 ``` r
+
 purrr::map(hcc::x12_837, parse_837)
 #> $minimal_837P
 #>  [1] "ISA*00*          *00*          *ZZ*PROVIDER01     *ZZ*PAYER99        *260415*1030*U*00501*000000837*0*P*>"

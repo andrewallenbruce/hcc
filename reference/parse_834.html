@@ -76,26 +76,7 @@ HCP (Health Care Plan) coverage history
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*EMPLOYER01     *ZZ*PAYER99        *260513*1500*U*00501*000000834*0*P*&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*EMPLOYER01*PAYER99*20260513*1500*1*X*005010X220A1"                                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*FILE-ENROLL-2026Q2*20260513*1500***4"                                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "N1*P5*ACME EMPLOYER*FI*987654321"                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*IN*PAYER99*FI*111223333"                                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "INS*Y*18*030*XN*A***FT"                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "REF*0F*MEMBER12345"                                                                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*1L*GROUP4567"                                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "DTP*356*D8*20260601"                                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "NM1*IL*1*DOE*JANE****34*123456789"                                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "DMG*D8*19850412*F"                                                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "HD*030**HLT*PPO-GOLD-2026"                                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "DTP*348*D8*20260601"                                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "SE*13*0001"                                                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "GE*1*1"                                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "IEA*1*000000834"                                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_834_X12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_820</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*EMPLOYER01     *ZZ*PAYER99        *260513*1500*U*00501*000000834*0*P*&gt;"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*EMPLOYER01*PAYER99*20260513*1500*1*X*005010X220A1"                                                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>

@@ -13,6 +13,8 @@
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
+- [`get_cc()`](https://andrewallenbruce.github.io/hcc/reference/get_cc.md)
+  : Get CC for a single diagnosis code.
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`map_to_dual()`](https://andrewallenbruce.github.io/hcc/reference/map_to_dual.md)
