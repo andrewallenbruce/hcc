@@ -16,5 +16,6 @@ list
 X12-837 Health Care Claim Parser
 }
 \examples{
+
 purrr::map(hcc::x12_837, parse_837)
 }

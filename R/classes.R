@@ -1,9 +1,11 @@
 #' HCC Category Detail
 #'
 #' @param hcc `<chr>` HCC code (e.g., "18", "85")
-#' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic Complications")
+#' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic
+#'   Complications")
 #' @param is_chronic `<lgl>` Whether this HCC is considered a chronic condition
-#' @param coefficient `<dbl>` The coefficient value applied for this HCC in the RAF calculation
+#' @param coefficient `<dbl>` The coefficient value applied for this HCC in the
+#'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
 #' @examplesIf FALSE
 #' HCCDetail(
