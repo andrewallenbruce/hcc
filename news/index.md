@@ -1,5 +1,14 @@
 # Changelog
 
+## hcc 0.0.0.9026 (2026-08-24)
+
+- added interaction helpers and tests
+- added possible dual interactions to
+  [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
+- 837 parser
+- `get_cc()` -\>
+  [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
+
 ## hcc 0.0.0.9025 (2026-08-23)
 
 - added `get_cc()`

@@ -11,7 +11,7 @@ of millions per month."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9025</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9026</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,9 +89,14 @@ Waystar, Trizetto), with <code>277CA</code>, <code>999</code>, and ultimately <c
 <h4 id="detail-three-hierarchical-levels">Detail: Three hierarchical levels<a class="anchor" aria-label="anchor" href="#detail-three-hierarchical-levels"></a></h4>
 
 <ul><li><p><code>2000A</code> Billing Provider (Practice or Facility, with NPI, Taxonomy, TIN)</p></li>
-<li><p><code>2000B</code> Subscriber Loop (Contract Holder)</p><ul><li><p><code>SBR</code> Subscriber Information with relationship code, claim filing indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid, etc.)</p></li>
+<li><p><code>2000B</code> Subscriber Loop (Contract Holder)</p><ul><li><p><code>SBR</code>:</p><ul><li><p>Subscriber Information with relationship code</p></li>
+<li><p>Claim filing indicator (<code>CI</code> Commercial Insurance, <code>MB</code> Medicare Part B, <code>MC</code> Medicaid, etc.)</p></li>
 </ul></li>
-<li><p><code>2000C</code> Patient Loop (the Patient when different from the Subscriber). At the claim level, CLM Claim Information carries the patient account, total charge, facility code, claim frequency. HI Health Care Information Codes carries ICD-10 diagnoses (qualifier ABK Principal Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1 (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via DTP.</p></li>
+</ul></li>
+<li><p><code>2000C</code> Patient Loop (the Patient when different from the Subscriber).</p><ul><li><p>At the claim level, <code>CLM</code> Claim Information carries the patient account, total charge, facility code, claim frequency.</p></li>
+<li><p><code>HI</code> Health Care Information Codes carries ICD-10 diagnoses (qualifier <code>ABK</code> Principal Diagnosis, <code>ABF</code> Other Diagnosis).</p></li>
+<li><p>The service section groups <code>LX</code> + <code>SV1</code> (Professional) / <code>SV2</code> (Institutional) / <code>SV3</code> (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via <code>DTP</code>.</p></li>
+</ul></li>
 </ul></div>
 
 <div class="section">

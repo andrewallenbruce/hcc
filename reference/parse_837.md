@@ -51,18 +51,25 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 
 - `2000B` Subscriber Loop (Contract Holder)
 
-  - `SBR` Subscriber Information with relationship code, claim filing
-    indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid,
-    etc.)
+  - `SBR`:
+
+    - Subscriber Information with relationship code
+
+    - Claim filing indicator (`CI` Commercial Insurance, `MB` Medicare
+      Part B, `MC` Medicaid, etc.)
 
 - `2000C` Patient Loop (the Patient when different from the Subscriber).
-  At the claim level, CLM Claim Information carries the patient account,
-  total charge, facility code, claim frequency. HI Health Care
-  Information Codes carries ICD-10 diagnoses (qualifier ABK Principal
-  Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1
-  (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each
-  procedure with its CPT / HCPCS / CDT code, modifiers, units, charge,
-  and service date via DTP.
+
+  - At the claim level, `CLM` Claim Information carries the patient
+    account, total charge, facility code, claim frequency.
+
+  - `HI` Health Care Information Codes carries ICD-10 diagnoses
+    (qualifier `ABK` Principal Diagnosis, `ABF` Other Diagnosis).
+
+  - The service section groups `LX` + `SV1` (Professional) / `SV2`
+    (Institutional) / `SV3` (Dental) detailing each procedure with its
+    CPT / HCPCS / CDT code, modifiers, units, charge, and service date
+    via `DTP`.
 
 #### Summary
 
