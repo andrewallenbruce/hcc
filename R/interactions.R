@@ -1,3 +1,38 @@
+#' Returns 1 if any HCC in the list is present, 0 otherwise
+#'
+#' @param hcc_list hcc
+#' @param hcc_set hcc
+#' @returns a list of interactions
+#' @examples
+#' hcc_list = c(17, 18, 19)
+#' hcc_set = c(18, 20, 21)
+#' has_any_hcc(hcc_list, hcc_set)
+#' hcc_set = c(20, 21, 22)
+#' has_any_hcc(hcc_list, hcc_set)
+#' @noRd
+has_any_hcc <- function(hcc_list, hcc_set) {
+  as.integer(any(hcc_list %in% hcc_set))
+}
+
+#' Creates HCC count variables
+#' @param hcc_set hcc
+#' @returns a list of interactions
+#' @examples
+#' hcc_set = c(17, 18, 19)
+#' create_hcc_counts(hcc_set)
+#' @noRd
+create_hcc_counts <- function(hcc_set) {
+  counts = rlang::set_names(rep.int(0L, 9L), paste0("D", 1:9))
+  hcc_count = length(hcc_set)
+
+  for (i in 1:10) {
+    counts[i] = as.integer(hcc_count == i)
+    counts["D10P"] = as.integer(hcc_count >= 10L)
+  }
+
+  counts[cheapr::which_(counts > 0L)]
+}
+
 #' Create Demographic Interactions
 #'
 #' Creates interaction variables that are model-agnostic. The coefficient look-up
@@ -84,7 +119,8 @@ S7::method(interactions, PatientDemographics) <- function(x) {
     MCAID_Male_NonAged = mult_(mcaid, male, !aged),
 
     #==== LTI interactions for ESRD models
-    # ESRD V24 Dialysis: looked up as DI_LTI_Aged, DI_LTI_NonAged
+    # ESRD V24 Dialysis
+    # looked up as DI_LTI_Aged, DI_LTI_NonAged
     LTI_Aged = mult_(lti, aged),
     LTI_NonAged = mult_(lti, !aged),
 

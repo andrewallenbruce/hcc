@@ -67,8 +67,8 @@ HCCDetail <- S7::new_class(
 HCPCoveragePeriod <- S7::new_class(
   "HCPCoveragePeriod",
   properties = list(
-    start_date = S7::new_property(S7::class_Date, default = Sys.Date()),
-    end_date = S7::new_property(S7::class_Date, default = Sys.Date() + 1L),
+    start_date = S7::class_Date,
+    end_date = S7::class_Date,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character

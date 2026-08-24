@@ -206,8 +206,13 @@ parse_834 <- function(text) {
 #' ### Detail: Three hierarchical levels
 #'    - `2000A` Billing Provider (Practice or Facility, with NPI, Taxonomy, TIN)
 #'    - `2000B` Subscriber Loop (Contract Holder)
-#'       - `SBR` Subscriber Information with relationship code, claim filing indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid, etc.)
-#'    - `2000C` Patient Loop (the Patient when different from the Subscriber). At the claim level, CLM Claim Information carries the patient account, total charge, facility code, claim frequency. HI Health Care Information Codes carries ICD-10 diagnoses (qualifier ABK Principal Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1 (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via DTP.
+#'       - `SBR`:
+#'          - Subscriber Information with relationship code
+#'          - Claim filing indicator (`CI` Commercial Insurance, `MB` Medicare Part B, `MC` Medicaid, etc.)
+#'    - `2000C` Patient Loop (the Patient when different from the Subscriber).
+#'       - At the claim level, `CLM` Claim Information carries the patient account, total charge, facility code, claim frequency.
+#'       - `HI` Health Care Information Codes carries ICD-10 diagnoses (qualifier `ABK` Principal Diagnosis, `ABF` Other Diagnosis).
+#'       - The service section groups `LX` + `SV1` (Professional) / `SV2` (Institutional) / `SV3` (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via `DTP`.
 #' ### Summary
 #'    — a single `SE`
 #'

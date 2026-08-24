@@ -41,9 +41,18 @@ Waystar, Trizetto), with \verb{277CA}, \code{999}, and ultimately \code{835} ret
 \item \verb{2000A} Billing Provider (Practice or Facility, with NPI, Taxonomy, TIN)
 \item \verb{2000B} Subscriber Loop (Contract Holder)
 \itemize{
-\item \code{SBR} Subscriber Information with relationship code, claim filing indicator CI Commercial Insurance, MB Medicare Part B, MC Medicaid, etc.)
+\item \code{SBR}:
+\itemize{
+\item Subscriber Information with relationship code
+\item Claim filing indicator (\code{CI} Commercial Insurance, \code{MB} Medicare Part B, \code{MC} Medicaid, etc.)
 }
-\item \verb{2000C} Patient Loop (the Patient when different from the Subscriber). At the claim level, CLM Claim Information carries the patient account, total charge, facility code, claim frequency. HI Health Care Information Codes carries ICD-10 diagnoses (qualifier ABK Principal Diagnosis, ABF Other Diagnosis). The service section groups LX + SV1 (Professional) / SV2 (Institutional) / SV3 (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via DTP.
+}
+\item \verb{2000C} Patient Loop (the Patient when different from the Subscriber).
+\itemize{
+\item At the claim level, \code{CLM} Claim Information carries the patient account, total charge, facility code, claim frequency.
+\item \code{HI} Health Care Information Codes carries ICD-10 diagnoses (qualifier \code{ABK} Principal Diagnosis, \code{ABF} Other Diagnosis).
+\item The service section groups \code{LX} + \code{SV1} (Professional) / \code{SV2} (Institutional) / \code{SV3} (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via \code{DTP}.
+}
 }
 }
 

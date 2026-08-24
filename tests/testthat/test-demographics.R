@@ -52,22 +52,22 @@ test_that("Current and Original Disability flags are recognized", {
 
 test_that("Age Range edge cases", {
   # V6 boundaries
-  w = demographics(age = 0, sex = "M", version = "V6")
+  x = demographics(age = 0, sex = "M", version = "V6")
+  expect_equal(x@category, "MAGE_LAST_0_0")
   x = demographics(age = 1, sex = "M", version = "V6")
-  y = demographics(age = 60, sex = "M", version = "V6")
-  z = demographics(age = 99, sex = "M", version = "V6")
-  expect_equal(w@category, "MAGE_LAST_0_0")
   expect_equal(x@category, "MAGE_LAST_1_1")
-  expect_equal(y@category, "MAGE_LAST_60_GT")
-  expect_equal(z@category, "MAGE_LAST_60_GT")
+  x = demographics(age = 60, sex = "M", version = "V6")
+  expect_equal(x@category, "MAGE_LAST_60_GT")
+  x = demographics(age = 99, sex = "M", version = "V6")
+  expect_equal(x@category, "MAGE_LAST_60_GT")
 
   # V2 boundaries
   x = demographics(age = 34, sex = "M", orec_code = "0", version = "V2")
-  y = demographics(age = 35, sex = "M", orec_code = "0", version = "V2")
-  z = demographics(age = 95, sex = "M", orec_code = "0", version = "V2")
   expect_equal(x@category, "M0_34")
-  expect_equal(y@category, "M35_44")
-  expect_equal(z@category, "M95_GT")
+  x = demographics(age = 35, sex = "M", orec_code = "0", version = "V2")
+  expect_equal(x@category, "M35_44")
+  x = demographics(age = 95, sex = "M", orec_code = "0", version = "V2")
+  expect_equal(x@category, "M95_GT")
 })
 
 test_that("Dual eligibility categorization", {

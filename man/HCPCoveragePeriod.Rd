@@ -5,8 +5,14 @@
 \title{Health Care Plan coverage period from HD loop}
 \usage{
 HCPCoveragePeriod(
-  start_date = structure(20688, class = "Date"),
-  end_date = structure(20689, class = "Date"),
+  start_date = (function (.data = double()) 
+ {
+     .Date(.data)
+ })(),
+  end_date = (function (.data = double()) 
+ {
+     .Date(.data)
+ })(),
   hcp_code = character(0),
   hcp_status = character(0),
   aid_codes = character(0)
