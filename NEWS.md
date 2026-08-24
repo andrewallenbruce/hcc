@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9026 (2026-08-24)
+
+* added interaction helpers and tests
+* added possible dual interactions to `interactions()`
+* 837 parser
+* `get_cc()` -> `apply_map()`
+
+
 # hcc 0.0.0.9025 (2026-08-23)
 
 * added `get_cc()`
