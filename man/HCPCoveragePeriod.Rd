@@ -36,5 +36,8 @@ An \verb{<HCPCoveragePeriod>} S7 object
 Health Care Plan coverage period from HD loop
 }
 \examples{
-HCPCoveragePeriod()
+HCPCoveragePeriod(
+  start_date = as.Date("2026-08-20"),
+  end_date = as.Date("2026-08-25")
+  )
 }

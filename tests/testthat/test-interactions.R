@@ -36,9 +36,18 @@ test_that("Dual interactions work", {
 })
 
 test_that("create_hcc_counts works", {
-  hcc_set = c(17, 18, 19)
+  hcc_set = 17:19
   x = create_hcc_counts(hcc_set)
   expect_equal(x[["D3"]], 1)
   expect_no_match(names(x), "D2")
   expect_no_match(names(x), "D10P")
+})
+
+test_that("get_diagnostic_categories works", {
+  hcc_set = c(17:19, 85L)
+  x = get_diagnostic_categories("CMS-HCC Model V24", hcc_set)
+
+  expect_equal(x$DIABETES, 1)
+  expect_equal(x$CHF, 1)
+  expect_equal(x$CANCER, 0)
 })

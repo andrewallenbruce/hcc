@@ -62,13 +62,16 @@ HCCDetail <- S7::new_class(
 #' @param aid_codes `<chr>` REF*CE composite
 #' @returns An `<HCPCoveragePeriod>` S7 object
 #' @examples
-#' HCPCoveragePeriod()
+#' HCPCoveragePeriod(
+#'   start_date = as.Date("2026-08-20"),
+#'   end_date = as.Date("2026-08-25")
+#'   )
 #' @export
 HCPCoveragePeriod <- S7::new_class(
   "HCPCoveragePeriod",
   properties = list(
-    start_date = S7::class_Date,
-    end_date = S7::class_Date,
+    start_date = S7::as_class(S7::class_Date),
+    end_date = S7::as_class(S7::class_Date),
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character
