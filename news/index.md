@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9027 (2026-08-25)
+
+- `get_diagnostic_categories()` & tests
+
 ## hcc 0.0.0.9026 (2026-08-24)
 
 - added interaction helpers and tests

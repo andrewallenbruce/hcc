@@ -49,10 +49,13 @@ An `<HCPCoveragePeriod>` S7 object
 ## Examples
 
 ``` r
-HCPCoveragePeriod()
+HCPCoveragePeriod(
+  start_date = as.Date("2026-08-20"),
+  end_date = as.Date("2026-08-25")
+  )
 #> <hcc::HCPCoveragePeriod>
-#>  @ start_date: 'Date' num(0) 
-#>  @ end_date  : 'Date' num(0) 
+#>  @ start_date: Date[1:1], format: "2026-08-20"
+#>  @ end_date  : Date[1:1], format: "2026-08-25"
 #>  @ hcp_code  : chr(0) 
 #>  @ hcp_status: chr(0) 
 #>  @ aid_codes : chr(0) 
