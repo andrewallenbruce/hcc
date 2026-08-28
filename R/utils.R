@@ -9,6 +9,11 @@ mult_ <- function(...) {
 }
 
 #' @noRd
+any_ <- function(x) {
+  collapse::anyv(x, TRUE)
+}
+
+#' @noRd
 normalize_ <- function(x) {
   toupper(gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE))
 }

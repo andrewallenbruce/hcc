@@ -1,166 +1,26 @@
-#' Creates disease categories based on model version
-#' @param model_name description
-#' @param hcc_set hcc
-#' @returns a list of interactions
-#' @examples
-#' get_diagnostic_categories()
-#' @noRd
-get_diagnostic_categories <- function(model_name, hcc_set) {
-  switch(
-    model_name,
-    "CMS-HCC Model V28" = list(
-      CANCER_V28 = has_any_hcc(17:23, hcc_set),
-      DIABETES_V28 = has_any_hcc(35:38, hcc_set),
-      CARD_RESP_FAIL_V28 = has_any_hcc(211:213, hcc_set),
-      HF_V28 = has_any_hcc(221:226, hcc_set),
-      CHR_LUNG_V28 = has_any_hcc(276:280, hcc_set),
-      KIDNEY_V28 = has_any_hcc(326:329, hcc_set),
-      SEPSIS_V28 = as.integer(2L %in% hcc_set),
-      gSubUseDisorder_V28 = has_any_hcc(135:139, hcc_set),
-      gPsychiatric_V28 = has_any_hcc(151:155, hcc_set),
-      NEURO_V28 = has_any_hcc(c(180:182, 190:192, 195:196, 198:199), hcc_set),
-      ULCER_V28 = has_any_hcc(379:382, hcc_set)
-    ),
-    "CMS-HCC Model V24" = list(
-      CANCER = has_any_hcc(8:12, hcc_set),
-      DIABETES = has_any_hcc(17:19, hcc_set),
-      CARD_RESP_FAIL = has_any_hcc(82:84, hcc_set),
-      CHF = as.integer(85L %in% hcc_set),
-      gCopdCF = has_any_hcc(110:112, hcc_set),
-      RENAL_V24 = has_any_hcc(134:138, hcc_set),
-      SEPSIS = as.integer(2L %in% hcc_set),
-      gSubstanceUseDisorder_V24 = has_any_hcc(54:56, hcc_set),
-      gPsychiatric_V24 = has_any_hcc(57:60, hcc_set),
-      PRESSURE_ULCER = has_any_hcc(157:159, hcc_set) # added in 2018-11-20
-    ),
-    "CMS-HCC Model V22" = list(
-      CANCER = has_any_hcc(8:12, hcc_set),
-      DIABETES = has_any_hcc(17:19, hcc_set),
-      CARD_RESP_FAIL = has_any_hcc(82:84, hcc_set),
-      CHF = as.integer(85L %in% hcc_set),
-      gCopdCF = has_any_hcc(110:112, hcc_set),
-      RENAL = has_any_hcc(134:137, hcc_set),
-      SEPSIS = as.integer(2L %in% hcc_set),
-      gSubstanceUseDisorder = has_any_hcc(54:55, hcc_set),
-      gPsychiatric = has_any_hcc(57:58, hcc_set),
-      PRESSURE_ULCER = has_any_hcc(157:158, hcc_set) # added in 2012-10-19
-    ),
-    "CMS-HCC ESRD Model V24" = list(
-      CANCER = has_any_hcc(8:12, hcc_set),
-      DIABETES = has_any_hcc(17:19, hcc_set),
-      CARD_RESP_FAIL = has_any_hcc(82:84, hcc_set),
-      CHF = as.integer(85L %in% hcc_set),
-      gCopdCF = has_any_hcc(110:112, hcc_set),
-      RENAL_V24 = has_any_hcc(134:138, hcc_set),
-      SEPSIS = as.integer(2L %in% hcc_set),
-      gSubstanceUseDisorder_V24 = has_any_hcc(54:56, hcc_set),
-      gPsychiatric_V24 = has_any_hcc(57:60, hcc_set),
-      PRESSURE_ULCER = has_any_hcc(157:160, hcc_set) # added in 2018-11-20
-    ),
-    "CMS-HCC ESRD Model V21" = list(
-      CANCER = has_any_hcc(8:12, hcc_set),
-      DIABETES = has_any_hcc(17:19, hcc_set),
-      IMMUNE = as.integer(47L %in% hcc_set),
-      CARD_RESP_FAIL = has_any_hcc(82:84, hcc_set),
-      CHF = as.integer(85L %in% hcc_set),
-      COPD = has_any_hcc(110:111, hcc_set),
-      RENAL = has_any_hcc(134:141, hcc_set),
-      COMPL = as.integer(176L %in% hcc_set),
-      SEPSIS = as.integer(2L %in% hcc_set),
-      PRESSURE_ULCER = has_any_hcc(157:160, hcc_set)
-    ),
-    # RxModel doesn"t seem to have any diagnostic category interactions
-    "RxHCC Model V08" = NULL
-  )
-}
-
-#' Creates disease interaction variables based on model version.
+#' Is any HCC present?
 #'
-#' @param model_name The HCC model version being used
-#' @param diagnostic_cats Dictionary of diagnostic categories
-#' @param demographics Optional demographic information for age/sex/disability interactions
-#' @param hcc_set Optional set of HCCs for direct HCC checks
-#' @returns Dictionary containing all disease interaction variables
-#' @examplesIf FALSE
-#' create_disease_interactions()
-#' @noRd
-create_disease_interactions <- function(
-  model_name,
-  diagnostic_cats,
-  demographics,
-  hcc_set
-) {
-  switch(
-    model_name,
-    # Base V28 disease interactions
-    "CMS-HCC Model V28" = list(
-      DIABETES_HF_V28 = diagnostic_cats["DIABETES_V28"] *
-        diagnostic_cats["HF_V28"],
-      HF_CHR_LUNG_V28 = diagnostic_cats["HF_V28"] *
-        diagnostic_cats["CHR_LUNG_V28"],
-      HF_KIDNEY_V28 = diagnostic_cats["HF_V28"] * diagnostic_cats["KIDNEY_V28"],
-      CHR_LUNG_CARD_RESP_FAIL_V28 = diagnostic_cats["CHR_LUNG_V28"] *
-        diagnostic_cats["CARD_RESP_FAIL_V28"],
-      HF_HCC238_V28 = diagnostic_cats["HF_V28"] * 238L %in% hcc_set,
-      gSubUseDisorder_gPsych_V28 = diagnostic_cats["gSubUseDisorder_V28"] *
-        diagnostic_cats["gPsychiatric_V28"],
-      DISABLED_CANCER_V28 = demographics@dis_curr *
-        diagnostic_cats["CANCER_V28"],
-      DISABLED_NEURO_V28 = demographics@dis_curr * diagnostic_cats["NEURO_V28"],
-      DISABLED_HF_V28 = demographics@dis_curr * diagnostic_cats["HF_V28"],
-      DISABLED_CHR_LUNG_V28 = demographics@dis_curr *
-        diagnostic_cats["CHR_LUNG_V28"],
-      DISABLED_ULCER_V28 = demographics@dis_curr * diagnostic_cats["ULCER_V28"]
-    ),
-    # Base V24/V22 disease interactions
-    "CMS-HCC Model V24" = list(
-      DIABETES_HF_V28 = diagnostic_cats["DIABETES_V28"] *
-        diagnostic_cats["HF_V28"],
-      HF_CHR_LUNG_V28 = diagnostic_cats["HF_V28"] *
-        diagnostic_cats["CHR_LUNG_V28"],
-      HF_KIDNEY_V28 = diagnostic_cats["HF_V28"] * diagnostic_cats["KIDNEY_V28"],
-      CHR_LUNG_CARD_RESP_FAIL_V28 = diagnostic_cats["CHR_LUNG_V28"] *
-        diagnostic_cats["CARD_RESP_FAIL_V28"],
-      HF_HCC238_V28 = diagnostic_cats["HF_V28"] * 238L %in% hcc_set,
-      gSubUseDisorder_gPsych_V28 = diagnostic_cats["gSubUseDisorder_V28"] *
-        diagnostic_cats["gPsychiatric_V28"],
-      DISABLED_CANCER_V28 = demographics@dis_curr *
-        diagnostic_cats["CANCER_V28"],
-      DISABLED_NEURO_V28 = demographics@dis_curr * diagnostic_cats["NEURO_V28"],
-      DISABLED_HF_V28 = demographics@dis_curr * diagnostic_cats["HF_V28"],
-      DISABLED_CHR_LUNG_V28 = demographics@dis_curr *
-        diagnostic_cats["CHR_LUNG_V28"],
-      DISABLED_ULCER_V28 = demographics@dis_curr * diagnostic_cats["ULCER_V28"]
-    )
-  )
-}
-
-#' Returns 1 if any HCC in the list is present, 0 otherwise
-#'
-#' @param hcc_list hcc
-#' @param hcc_set hcc
-#' @returns a list of interactions
+#' @param needles `<int>` hcc(s) being searched for
+#' @param haystack `<int>` hcc(s) being searched in
+#' @returns `<int>`, `1` = TRUE, `0` = FALSE
 #' @examples
-#' hcc_list = c(17, 18, 19)
-#' hcc_set = c(18, 20, 21)
-#' has_any_hcc(hcc_list, hcc_set)
-#' hcc_set = c(20, 21, 22)
-#' has_any_hcc(hcc_list, hcc_set)
+#' any_hcc(17:19, 18:21)
+#' any_hcc(17:19, 20:22)
 #' @noRd
-has_any_hcc <- function(hcc_list, hcc_set) {
-  as.integer(any(hcc_list %in% hcc_set))
+any_hcc <- function(needles, haystack) {
+  as.integer(any_(needles %in_% haystack))
 }
 
 #' Creates HCC count variables
-#' @param hcc_set hcc
+#'
+#' @param hcc hcc
 #' @returns a list of interactions
 #' @examples
-#' hcc_set = c(17, 18, 19)
-#' create_hcc_counts(hcc_set)
+#' create_hcc_counts(17:19)
 #' @noRd
-create_hcc_counts <- function(hcc_set) {
+create_hcc_counts <- function(hcc) {
   counts = rlang::set_names(rep.int(0L, 9L), paste0("D", 1:9))
-  hcc_count = length(hcc_set)
+  hcc_count = length(hcc)
 
   for (i in 1:10) {
     counts[i] = as.integer(hcc_count == i)
@@ -168,6 +28,143 @@ create_hcc_counts <- function(hcc_set) {
   }
 
   counts[cheapr::which_(counts > 0L)]
+}
+
+#' Model-Based Disease Categories
+#'
+#' @param model `<chr>` Model Name
+#' @param hcc `<int>` hcc
+#' @returns a list of interactions
+#' @examples
+#' diagnostic_categories("CMS-HCC Model V24", c(17:19, 85L))
+#' @noRd
+diagnostic_categories <- function(model, hcc) {
+  switch(
+    model,
+    "CMS-HCC Model V28" = list(
+      CANCER_V28 = any_hcc(17:23, hcc),
+      DIABETES_V28 = any_hcc(35:38, hcc),
+      CARD_RESP_FAIL_V28 = any_hcc(211:213, hcc),
+      HF_V28 = any_hcc(221:226, hcc),
+      CHR_LUNG_V28 = any_hcc(276:280, hcc),
+      KIDNEY_V28 = any_hcc(326:329, hcc),
+      SEPSIS_V28 = any_hcc(2L, hcc),
+      gSubUseDisorder_V28 = any_hcc(135:139, hcc),
+      gPsychiatric_V28 = any_hcc(151:155, hcc),
+      NEURO_V28 = any_hcc(c(180:182, 190:192, 195:196, 198:199), hcc),
+      ULCER_V28 = any_hcc(379:382, hcc)
+    ),
+    "CMS-HCC Model V24" = list(
+      CANCER = any_hcc(8:12, hcc),
+      DIABETES = any_hcc(17:19, hcc),
+      CARD_RESP_FAIL = any_hcc(82:84, hcc),
+      CHF = any_hcc(85L, hcc),
+      gCopdCF = any_hcc(110:112, hcc),
+      RENAL_V24 = any_hcc(134:138, hcc),
+      SEPSIS = any_hcc(2L, hcc),
+      gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
+      gPsychiatric_V24 = any_hcc(57:60, hcc),
+      PRESSURE_ULCER = any_hcc(157:159, hcc)
+      # added in 2018-11-20
+    ),
+    "CMS-HCC Model V22" = list(
+      CANCER = any_hcc(8:12, hcc),
+      DIABETES = any_hcc(17:19, hcc),
+      CARD_RESP_FAIL = any_hcc(82:84, hcc),
+      CHF = any_hcc(85L, hcc),
+      gCopdCF = any_hcc(110:112, hcc),
+      RENAL = any_hcc(134:137, hcc),
+      SEPSIS = any_hcc(2L, hcc),
+      gSubstanceUseDisorder = any_hcc(54:55, hcc),
+      gPsychiatric = any_hcc(57:58, hcc),
+      PRESSURE_ULCER = any_hcc(157:158, hcc)
+      # added in 2012-10-19
+    ),
+    "CMS-HCC ESRD Model V24" = list(
+      CANCER = any_hcc(8:12, hcc),
+      DIABETES = any_hcc(17:19, hcc),
+      CARD_RESP_FAIL = any_hcc(82:84, hcc),
+      CHF = any_hcc(85L, hcc),
+      gCopdCF = any_hcc(110:112, hcc),
+      RENAL_V24 = any_hcc(134:138, hcc),
+      SEPSIS = any_hcc(2L, hcc),
+      gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
+      gPsychiatric_V24 = any_hcc(57:60, hcc),
+      PRESSURE_ULCER = any_hcc(157:160, hcc)
+      # added in 2018-11-20
+    ),
+    "CMS-HCC ESRD Model V21" = list(
+      CANCER = any_hcc(8:12, hcc),
+      DIABETES = any_hcc(17:19, hcc),
+      IMMUNE = any_hcc(47L, hcc),
+      CARD_RESP_FAIL = any_hcc(82:84, hcc),
+      CHF = any_hcc(85L, hcc),
+      COPD = any_hcc(110:111, hcc),
+      RENAL = any_hcc(134:141, hcc),
+      COMPL = any_hcc(176L, hcc),
+      SEPSIS = any_hcc(2L, hcc),
+      PRESSURE_ULCER = any_hcc(157:160, hcc)
+    ),
+    # RxModel doesn't seem to have any diagnostic category interactions
+    "RxHCC Model V08" = NULL
+  )
+  # Keep the zero-valued categories; will be filtered out later
+}
+
+#' Model-Based Disease Interaction Variables
+#'
+#' @param model The HCC model version being used
+#' @param diagnostics Dictionary of diagnostic categories
+#' @param demographics (Optional) demographic information for age/sex/disability interactions
+#' @param hcc (Optional) set of HCCs for direct HCC checks
+#' @returns Dictionary containing all disease interaction variables
+#' @examplesIf FALSE
+#' disease_interactions(model, diagnostics, demographics, hcc)
+#' @noRd
+disease_interactions <- function(
+  model,
+  diagnostics,
+  demographics,
+  hcc
+) {
+  d = diagnostics
+  g = demographics
+
+  switch(
+    model,
+    # Base V28 disease interactions
+    "CMS-HCC Model V28" = list(
+      DIABETES_HF_V28 = d[["DIABETES_V28"]] * d[["HF_V28"]],
+      HF_CHR_LUNG_V28 = d[["HF_V28"]] * d[["CHR_LUNG_V28"]],
+      HF_KIDNEY_V28 = d[["HF_V28"]] * d[["KIDNEY_V28"]],
+      CHR_LUNG_CARD_RESP_FAIL_V28 = d[["CHR_LUNG_V28"]] *
+        d[["CARD_RESP_FAIL_V28"]],
+      HF_HCC238_V28 = d[["HF_V28"]] * 238L %in_% hcc,
+      gSubUseDisorder_gPsych_V28 = d[["gSubUseDisorder_V28"]] *
+        d[["gPsychiatric_V28"]],
+      DISABLED_CANCER_V28 = g@dis_curr * d[["CANCER_V28"]],
+      DISABLED_NEURO_V28 = g@dis_curr * d[["NEURO_V28"]],
+      DISABLED_HF_V28 = g@dis_curr * d[["HF_V28"]],
+      DISABLED_CHR_LUNG_V28 = g@dis_curr * d[["CHR_LUNG_V28"]],
+      DISABLED_ULCER_V28 = g@dis_curr * d[["ULCER_V28"]]
+    ),
+    # Base V24/V22 disease interactions
+    "CMS-HCC Model V24" = list(
+      DIABETES_HF_V28 = d[["DIABETES_V28"]] * d[["HF_V28"]],
+      HF_CHR_LUNG_V28 = d[["HF_V28"]] * d[["CHR_LUNG_V28"]],
+      HF_KIDNEY_V28 = d[["HF_V28"]] * d[["KIDNEY_V28"]],
+      CHR_LUNG_CARD_RESP_FAIL_V28 = d[["CHR_LUNG_V28"]] *
+        d[["CARD_RESP_FAIL_V28"]],
+      HF_HCC238_V28 = d[["HF_V28"]] * 238L %in% hcc,
+      gSubUseDisorder_gPsych_V28 = d[["gSubUseDisorder_V28"]] *
+        d[["gPsychiatric_V28"]],
+      DISABLED_CANCER_V28 = g@dis_curr * d[["CANCER_V28"]],
+      DISABLED_NEURO_V28 = g@dis_curr * d[["NEURO_V28"]],
+      DISABLED_HF_V28 = g@dis_curr * d[["HF_V28"]],
+      DISABLED_CHR_LUNG_V28 = g@dis_curr * d[["CHR_LUNG_V28"]],
+      DISABLED_ULCER_V28 = g@dis_curr * d[["ULCER_V28"]]
+    )
+  )
 }
 
 #' Create Demographic Interactions

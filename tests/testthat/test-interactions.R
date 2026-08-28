@@ -1,9 +1,6 @@
-test_that("has_any_hcc works", {
-  hcc_list = c(17, 18, 19)
-  hcc_set = c(18, 20, 21)
-  expect_equal(has_any_hcc(hcc_list, hcc_set), 1)
-  hcc_set = c(20, 21, 22)
-  expect_equal(has_any_hcc(hcc_list, hcc_set), 0)
+test_that("any_hcc works", {
+  expect_equal(any_hcc(17:19, 18:21), 1)
+  expect_equal(any_hcc(17:19, 20:22), 0)
 })
 
 x <- interactions(
@@ -36,17 +33,14 @@ test_that("Dual interactions work", {
 })
 
 test_that("create_hcc_counts works", {
-  hcc_set = 17:19
-  x = create_hcc_counts(hcc_set)
+  x = create_hcc_counts(17:19)
   expect_equal(x[["D3"]], 1)
   expect_no_match(names(x), "D2")
   expect_no_match(names(x), "D10P")
 })
 
-test_that("get_diagnostic_categories works", {
-  hcc_set = c(17:19, 85L)
-  x = get_diagnostic_categories("CMS-HCC Model V24", hcc_set)
-
+test_that("diagnostic_categories works", {
+  x = diagnostic_categories("CMS-HCC Model V24", c(17:19, 85L))
   expect_equal(x$DIABETES, 1)
   expect_equal(x$CHF, 1)
   expect_equal(x$CANCER, 0)
