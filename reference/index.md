@@ -8,14 +8,14 @@
   : X12-834 Transaction Enrollment Data
 - [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
   : HCC Category Detail
-- [`HCPCoveragePeriod()`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
+- [`HCPCoveragePeriod`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
   : Health Care Plan coverage period from HD loop
 - [`PatientDemographics()`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
   : Patient Demographics Categorization
 - [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : X12-820 Transaction Remittance Data
 - [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
-  : Per-Member Payment Record from an X12 820 ENT Loop
+  : Per-Member Payment Record from an X12-820 ENT Loop
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
   : A single remittance line item within a member's payment record.
 - [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
@@ -27,6 +27,8 @@
   categories.
 - [`diagnostic_categories()`](https://andrewallenbruce.github.io/hcc/reference/diagnostic_categories.md)
   : Model-Based Disease Categories
+- [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
+  : Model-Based Disease Interaction Variables
 - [`hcc_counts()`](https://andrewallenbruce.github.io/hcc/reference/hcc_counts.md)
   : Creates HCC count variables
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)

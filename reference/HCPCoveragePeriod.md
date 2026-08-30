@@ -2,24 +2,6 @@
 
 Health Care Plan coverage period from HD loop
 
-## Usage
-
-``` r
-HCPCoveragePeriod(
-  start_date = (function (.data = double()) 
- {
-     .Date(.data)
- })(),
-  end_date = (function (.data = double()) 
- {
-     .Date(.data)
- })(),
-  hcp_code = character(0),
-  hcp_status = character(0),
-  aid_codes = character(0)
-)
-```
-
 ## Arguments
 
 - start_date:

@@ -1,4 +1,4 @@
-# Per-Member Payment Record from an X12 820 ENT Loop
+# Per-Member Payment Record from an X12-820 ENT Loop
 
 One PaymentDetail is created per ENT segment. A member may appear in
 multiple ENT entries within the same transaction (e.g., retroactive
