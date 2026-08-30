@@ -131,16 +131,30 @@ S7::method(coefficient_prefix, PatientDemographics) <- function(
 #' @returns Dictionary mapping HCC codes and interaction variables to their
 #'   coefficient values for variables that are present
 #' @examplesIf FALSE
-#' apply_coefficients()
-#' @noRd
+#' apply_coefficients(
+#'   demographics(
+#'     age = 70,
+#'     sex = "F",
+#'     dual_code = "00",
+#'     orec_code = "0",
+#'     crec_code = "0",
+#'     version = "V2",
+#'     new_enrollee = FALSE,
+#'     has_snp = FALSE,
+#'     low_income = FALSE
+#'   )
+#' )
+#' @export
 apply_coefficients <- function(
   demographics,
-  hcc,
   interactions,
-  model = "CMS-HCC Model V28",
   coefficients,
+  model = "CMS-HCC Model V28",
+  hcc = NULL,
   prefix_override = NULL
 ) {
+  rlang::arg_match0(model, MODEL)
+
   prefix <- if (!is.null(prefix_override)) {
     prefix_override
   } else {

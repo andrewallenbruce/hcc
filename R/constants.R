@@ -199,7 +199,7 @@ MAINTENANCE = list(
 )
 
 #' @noRd
-MODEL = list(
+MODEL = c(
   "CMS-HCC Model V22",
   "CMS-HCC Model V24",
   "CMS-HCC Model V28",

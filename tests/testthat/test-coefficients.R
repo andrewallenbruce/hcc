@@ -35,22 +35,6 @@ test_that("coefficient_prefix works", {
 
 test_that("apply_coefficients works", {
   skip()
-  # Create test coefficients
-  coef <-
-    list(
-      c("CNA_HCC19", "CMS-HCC Model V28", 0.421),
-      c("CNA_HCC47", "CMS-HCC Model V28", 0.368),
-      c("CNA_HCC85", "CMS-HCC Model V28", 0.323),
-      c("CNA_D1", "CMS-HCC Model V28", 0.118),
-      c("CNA_D2", "CMS-HCC Model V28", 0.245)
-    ) |>
-    collapse::unlist2d(idcols = FALSE) |>
-    collapse::rnm(
-      "V1" = "coefficient",
-      "V2" = "model",
-      "V3" = "value"
-    )
-
   result <- apply_coefficients(
     demographics = demographics(
       age = 70,
@@ -66,6 +50,14 @@ test_that("apply_coefficients works", {
     hcc = c(19L, 47L, 85L),
     interactions = "D1",
     model = "CMS-HCC Model V28",
-    coefficients = coef
+    coefficients = list(
+      "CMS-HCC Model V28" = list(
+        CNA_HCC19 = 0.421,
+        CNA_HCC47 = 0.368,
+        CNA_HCC85 = 0.323,
+        CNA_D1 = 0.118,
+        CNA_D2 = 0.245
+      )
+    )
   )
 })

@@ -510,3 +510,246 @@ test_that("Non-LTI patient should NOT get LTI interactions", {
 # =============================================================================
 
 # Test Originally_ESRD interactions for ESRD V21 and V24
+test_that("Aged female with OREC = 2 (originally ESRD) should get Originally_ESRD_Female", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    orec_code = "2"
+  )
+
+  x <- interactions(x)
+  expect_match(x, "Originally_ESRD_Female", all = FALSE)
+  expect_no_match(x, "Originally_ESRD_Male")
+})
+
+test_that("Aged male with OREC = 3 should get Originally_ESRD_Male", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "M",
+    category = "M70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    orec_code = "3"
+  )
+
+  x <- interactions(x)
+  expect_match(x, "Originally_ESRD_Male", all = FALSE)
+  expect_no_match(x, "Originally_ESRD_Female")
+})
+
+test_that("Non-aged should NOT get Originally_ESRD interactions", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "F",
+    category = "F55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    orec_code = "2"
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "Originally_ESRD_Female")
+  expect_no_match(x, "Originally_ESRD_Male")
+})
+
+test_that("Aged without OREC = 2 or 3 should NOT get Originally_ESRD", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    orec_code = "0"
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "Originally_ESRD_Female")
+})
+
+# Test MCAID × sex × age interactions for ESRD V21
+test_that("Aged female with Medicaid should get MCAID_Female_Aged", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    dual_code = "02"
+  )
+
+  x <- interactions(x)
+  expect_match(x, "MCAID_Female_Aged", all = FALSE)
+  expect_no_match(x, "MCAID_Female_NonAged")
+  expect_no_match(x, "MCAID_Male_Aged")
+})
+
+test_that("Non-aged male with Medicaid should get MCAID_Male_NonAged", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = TRUE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    dual_code = "01"
+  )
+
+  x <- interactions(x)
+  expect_match(x, "MCAID_Male_NonAged", all = FALSE)
+  expect_no_match(x, "MCAID_Male_Aged")
+})
+
+test_that("Non-Medicaid patient should NOT get MCAID interactions", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE,
+    dual_code = "00"
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "MCAID_Female_Aged")
+  expect_no_match(x, "MCAID_Female_NonAged")
+  expect_no_match(x, "MCAID_Male_Aged")
+  expect_no_match(x, "MCAID_Male_NonAged")
+})
+
+# =============================================================================
+# V24/V28 LTIMCAID Institutional Interaction
+# =============================================================================
+
+# Test LTIMCAID interaction for CMS-HCC V24/V28 Institutional model
+test_that("LTI patient with Medicaid should get LTIMCAID", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    dual_code = "02"
+  )
+
+  x <- interactions(x)
+  expect_match(x, "LTIMCAID", all = FALSE)
+})
+
+test_that("LTI patient without Medicaid should NOT get LTIMCAID", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    dual_code = "00"
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "LTIMCAID")
+})
+
+test_that("Non-LTI patient with Medicaid should NOT get LTIMCAID", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    dual_code = "02"
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "LTIMCAID")
+})
+
+# =============================================================================
+# No-Prefix Coefficient Lookups
+# =============================================================================
+
+# Test no-prefix coefficient lookups for ESRD duration coefficients
+test_that("FGC coefficients should be looked up without prefix", {
+  skip()
+  # Create test coefficients
+  coef <-
+    list(
+      c("CNA_HCC19", "CMS-HCC Model V28", 0.421),
+      c("CNA_HCC47", "CMS-HCC Model V28", 0.368),
+      c("CNA_HCC85", "CMS-HCC Model V28", 0.323),
+      c("CNA_D1", "CMS-HCC Model V28", 0.118),
+      c("CNA_D2", "CMS-HCC Model V28", 0.245)
+    ) |>
+    collapse::unlist2d(idcols = FALSE) |>
+    collapse::rnm(
+      "V1" = "coefficient",
+      "V2" = "model",
+      "V3" = "value"
+    )
+
+  result <- apply_coefficients(
+    demographics = demographics(
+      age = 70,
+      sex = "F",
+      dual_code = "00",
+      orec_code = "2",
+      version = "V2",
+      new_enrollee = FALSE,
+      has_snp = FALSE,
+      low_income = FALSE,
+      esrd_months = 6L
+    ),
+    hcc = c(19L, 47L, 85L),
+    interactions = "D1",
+    model = "CMS-HCC Model V28",
+    coefficients = coef
+  )
+})
