@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9030 (2026-08-30)
+
+* `coefficient_prefix()` + tests
+* `apply_interactions()` + tests
+* added tests for `disease_interactions()`
+
+
 # hcc 0.0.0.9029 (2026-08-30)
 
 * `diagnostic_categories()`
