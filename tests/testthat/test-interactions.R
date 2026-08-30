@@ -86,3 +86,112 @@ test_that("apply_interactions works", {
   expect_match(x, "D3", all = FALSE)
   expect_match(x, "DIABETES_CHF", all = FALSE)
 })
+
+# =============================================================================
+# ESRD V21 Duration Interactions
+# =============================================================================
+# Test ESRD V21 simple age-based duration interactions.
+
+test_that("Aged patient with 6 months graft should get `GE65_DUR4_9`", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "GE65_DUR4_9", all = FALSE)
+  expect_no_match(x, "LT65_DUR4_9")
+  expect_no_match(x, "GE65_DUR10PL")
+})
+
+test_that("Non-aged patient with 5 months graft should get `LT65_DUR4_9`", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "F",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 5L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "LT65_DUR4_9", all = FALSE)
+  expect_no_match(x, "GE65_DUR4_9")
+})
+
+test_that("Aged patient with 15 months graft should get `GE65_DUR10PL`", {
+  x <- PatientDemographics(
+    age = 72,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 15L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "GE65_DUR10PL", all = FALSE)
+  expect_no_match(x, "LT65_DUR10PL")
+  expect_no_match(x, "GE65_DUR4_9")
+})
+
+test_that("Non-aged patient with 24 months graft should get `LT65_DUR10PL`", {
+  x <- PatientDemographics(
+    age = 50,
+    sex = "M",
+    category = "M50_54",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 24L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "LT65_DUR10PL", all = FALSE)
+  expect_no_match(x, "GE65_DUR10PL")
+})
+
+test_that("Patient with < 4 months graft should not get any duration interactions", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "M",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 3L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "GE65_DUR4_9")
+  expect_no_match(x, "LT65_DUR4_9")
+  expect_no_match(x, "GE65_DUR10PL")
+  expect_no_match(x, "LT65_DUR10PL")
+})
