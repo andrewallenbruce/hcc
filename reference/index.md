@@ -24,6 +24,8 @@
   : Calculate HCC interactions across CMS models.
 - [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
   : Map ICD-10 Codes to CC
+- [`coefficient_prefix()`](https://andrewallenbruce.github.io/hcc/reference/coefficient_prefix.md)
+  : Demographics-Based Coefficient Prefix
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.

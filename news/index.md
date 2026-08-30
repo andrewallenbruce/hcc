@@ -1,5 +1,14 @@
 # Changelog
 
+## hcc 0.0.0.9030 (2026-08-30)
+
+- [`coefficient_prefix()`](https://andrewallenbruce.github.io/hcc/reference/coefficient_prefix.md) +
+  tests
+- [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md) +
+  tests
+- added tests for
+  [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
+
 ## hcc 0.0.0.9029 (2026-08-30)
 
 - [`diagnostic_categories()`](https://andrewallenbruce.github.io/hcc/reference/diagnostic_categories.md)
