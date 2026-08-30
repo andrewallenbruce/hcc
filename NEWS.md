@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9029 (2026-08-30)
+
+* `diagnostic_categories()`
+
+
 # hcc 0.0.0.9028 (2026-08-28)
 
 * `any_hcc`
