@@ -1,9 +1,4 @@
 #' @noRd
-perl <- function(x, rex, negate = FALSE) {
-  grep(pattern = rex, x = x, perl = TRUE, invert = negate)
-}
-
-#' @noRd
 unlist_df <- function(x) {
   collapse::unlist2d(x, idcols = "id") |>
     collapse::rnm(

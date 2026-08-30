@@ -1,74 +1,107 @@
+#' Demographics-Based Coefficient Prefix
+#'
 #' Get the coefficient prefix based on beneficiary demographics.
 #'
-#' @param demographics `<PatientDemographics>` object containing beneficiary information
-#' @param model_name `<chr>` HCC model name to use for hierarchy rules
+#' @param x `<PatientDemographics>` S7 object
+#' @param ... dots
 #' @returns String prefix used to look up coefficients for this beneficiary type
-#' @examplesIf FALSE
-#' get_coefficent_prefix(
-#'    demographics = PatientDemographics()
-#'  )
-#' @noRd
-get_coefficent_prefix <- function(
-  demographics = PatientDemographics(),
-  model_name = "CMS-HCC Model V28"
-) {
-  # Get base prefix based on model type
-  if (grepl("ESRD", model_name, fixed = TRUE)) {
-    if (demographics@has_esrd) {
-      if (demographics@esrd_months > 0L) {
-        # Functioning graft case
-        if (demographics@is_lti) {
-          return("GI_")
-        }
-        if (demographics@new_enrollee) {
-          return("GNE_")
-        }
+#' @examples
+#' coefficient_prefix(
+#'   demographics(
+#'     age = 70,
+#'     sex = "F",
+#'     dual_code = "00",
+#'     orec_code = "0",
+#'     crec_code = "0"
+#'   )
+#' ) # CNA_
+#' coefficient_prefix(
+#'   demographics(
+#'     age = 45,
+#'     sex = "M",
+#'     dual_code = "00",
+#'     orec_code = "2",
+#'     crec_code = "0"
+#'   ),
+#'   model = "CMS-HCC ESRD Model V24"
+#' )
+#' @export
+coefficient_prefix <- S7::new_generic("coefficient_prefix", "x")
 
-        # Community functioning graft
-        prefix = "G"
-
-        # if (demographics@fbd) {
-        #   paste0(prefix, "F") else paste0(prefix, "NP")
-        # }
-        # if (demographics@age >= 65L) {
-        #   paste0(prefix, "A") else paste0(prefix, "N")
-        # }
-        return(paste0(prefix, "_"))
-      }
+S7::method(coefficient_prefix, PatientDemographics) <- function(x, model = "default") {
+  if (perl0(model, "ESRD")) {
+    p <- esrd_prefix_(x)
+    if (!is.null(p)) {
+      return(p)
     }
   }
+  if (perl0(model, "RxHCC")) {
+    return(rxhcc_prefix_(x))
+  }
+
+  # Default CMS-HCC Model
+  if (x@is_lti) {
+    return("INS_")
+  }
+
+  if (x@new_enrollee) {
+    return(cheapr::if_else_(x@has_snp, "SNPNE_", "NE_"))
+  }
+
+  # Community case
+  pre <- cheapr::paste_(
+    "C",
+    cheapr::case(
+      isTRUE(x@dual_full) ~ "F",
+      isTRUE(x@dual_part) ~ "P",
+      .default = "N"
+    )
+  )
+  pre <- cheapr::paste_(pre, cheapr::if_else_(x@age >= 65L, "A", "D"))
+  cheapr::paste_(pre, "_")
 }
 
-# # Dialysis case
-# return 'DNE_' if demographics.new_enrollee else 'DI_'
-#
-# # Transplant case
-# if demographics.graft_months in [1, 2, 3]:
-#   return f'TRANSPLANT_KIDNEY_ONLY_{demographics.graft_months}M'
-#
-# elif 'RxHCC' in model_name:
-#   if demographics.lti:
-#   return 'Rx_NE_LTI_' if demographics.new_enrollee else 'Rx_CE_LTI_'
-#
-# if demographics.new_enrollee:
-#   return 'Rx_NE_Lo_' if demographics.low_income else 'Rx_NE_NoLo_'
-#
-# # Community case
-# prefix = 'Rx_CE_'
-# prefix += 'Low' if demographics.low_income else 'NoLow'
-# prefix += 'Aged' if demographics.age >= 65 else 'NoAged'
-# return prefix + '_'
-#
-# # Default CMS-HCC Model
-# if demographics.lti:
-#   return 'INS_'
-#
-# if demographics.new_enrollee:
-#
-#   return 'SNPNE_' if demographics.snp else 'NE_'
-#
-# # Community case
-# prefix = 'C'
-# prefix += 'F' if demographics.fbd else ('P' if demographics.pbd else 'N')
-# prefix += 'A' if demographics.age >= 65 else 'D'
-# return prefix + '_'
+#' @noRd
+esrd_prefix_ <- function(x) {
+  if (x@has_esrd) {
+    if (x@esrd_months > 0L) {
+      # Functioning graft case
+      if (x@is_lti) {
+        return("GI_")
+      }
+      if (x@new_enrollee) {
+        return("GNE_")
+      }
+      # Community functioning graft
+      pre <- cheapr::paste_("G", cheapr::if_else_(x@dual_full, "F", "NP"))
+      pre <- cheapr::paste_(pre, cheapr::if_else_(x@age >= 65L, "A", "N"))
+      return(cheapr::paste_(pre, "_"))
+    }
+    # Dialysis case
+    return(cheapr::if_else_(x@new_enrollee, "DNE_", "DI_"))
+  }
+  # Transplant case
+  if (x@esrd_months %in_% 1:3) {
+    return(cheapr::paste_("TRANSPLANT_KIDNEY_ONLY_", x@esrd_months, "M"))
+  }
+  NULL
+}
+
+#' @noRd
+rxhcc_prefix_ <- function(x) {
+  if (x@is_lti) {
+    return(cheapr::if_else_(x@new_enrollee, "Rx_NE_LTI_", "Rx_CE_LTI_"))
+  }
+  if (x@new_enrollee) {
+    return(cheapr::if_else_(x@low_income, "Rx_NE_Lo_", "Rx_NE_NoLo_"))
+  }
+  pre <- cheapr::paste_(
+    "Rx_CE_",
+    cheapr::if_else_(x@low_income, "Low", "NoLow")
+  )
+  pre <- cheapr::paste_(
+    pre,
+    cheapr::if_else_(x@age >= 65L, "Aged", "NoAged")
+  )
+  cheapr::paste_(pre, "_")
+}

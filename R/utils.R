@@ -1,4 +1,14 @@
 #' @noRd
+perl <- function(x, rex, negate = FALSE) {
+  grep(pattern = rex, x = x, perl = TRUE, invert = negate)
+}
+
+#' @noRd
+perl0 <- function(x, rex, ...) {
+  grepl(pattern = rex, x = x, perl = TRUE, ...)
+}
+
+#' @noRd
 unlist_ <- function(x, ...) {
   unlist(x, use.names = FALSE, ...)
 }
