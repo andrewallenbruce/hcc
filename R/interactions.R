@@ -435,10 +435,10 @@ S7::method(interactions, PatientDemographics) <- function(x) {
     FGI_GE65_DUR4_9_FBD = mult_(fbd, is_dur4_9, aged, lti),
     FGI_LT65_DUR4_9_FBD = mult_(fbd, is_dur4_9, !aged, lti),
 
-    FGC_GE65_DUR4_9_FBD = mult_(fbd, is_dur10pl, aged, !lti),
-    FGC_LT65_DUR4_9_FBD = mult_(fbd, is_dur10pl, !aged, !lti),
-    FGI_GE65_DUR4_9_FBD = mult_(fbd, is_dur10pl, aged, lti),
-    FGI_LT65_DUR4_9_FBD = mult_(fbd, is_dur10pl, !aged, lti),
+    FGC_GE65_DUR10PL_FBD = mult_(fbd, is_dur10pl, aged, !lti),
+    FGC_LT65_DUR10PL_FBD = mult_(fbd, is_dur10pl, !aged, !lti),
+    FGI_GE65_DUR10PL_FBD = mult_(fbd, is_dur10pl, aged, lti),
+    FGI_LT65_DUR10PL_FBD = mult_(fbd, is_dur10pl, !aged, lti),
 
     # create_dual_interactions ============
     # Determine sex from demographics.sex instead of category

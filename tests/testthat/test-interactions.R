@@ -195,3 +195,318 @@ test_that("Patient with < 4 months graft should not get any duration interaction
   expect_no_match(x, "GE65_DUR10PL")
   expect_no_match(x, "LT65_DUR10PL")
 })
+
+# =============================================================================
+# ESRD V24 FGC/FGI Interactions - Non-Dual/Partial Benefit Dual (ND_PBD)
+# =============================================================================
+
+# Test ESRD V24 FGC (Community) interactions for ND_PBD
+test_that("Aged community patient (not LTI, not FBD) with 6 months graft", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGC_GE65_DUR4_9_ND_PBD", all = FALSE)
+  expect_no_match(x, "FGC_LT65_DUR4_9_ND_PBD")
+  expect_no_match(x, "FGI_GE65_DUR4_9_ND_PBD")
+})
+
+test_that("Non-aged community patient with 12 months graft", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 12L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGC_LT65_DUR10PL_ND_PBD", all = FALSE)
+  expect_no_match(x, "FGC_GE65_DUR10PL_ND_PBD")
+})
+
+# Test ESRD V24 FGI (Institutional) interactions for ND_PBD
+test_that("Aged LTI patient (not FBD) with 6 months graft should get FGI", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGI_GE65_DUR4_9_ND_PBD", all = FALSE)
+  expect_no_match(x, "FGC_GE65_DUR4_9_ND_PBD")
+})
+
+test_that("Non-aged LTI patient with 15 months graft", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    esrd_months = 15L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGI_LT65_DUR10PL_ND_PBD", all = FALSE)
+  expect_no_match(x, "FGC_LT65_DUR10PL_ND_PBD")
+})
+
+# =============================================================================
+# ESRD V24 FGC/FGI Interactions - Full Benefit Dual (FBD)
+# =============================================================================
+
+# Test ESRD V24 FGC (Community) interactions for FBD
+test_that("Aged FBD community patient with 6 months graft", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGC_GE65_DUR4_9_FBD", all = FALSE)
+  expect_no_match(x, "FGC_LT65_DUR4_9_FBD")
+  # Should NOT have ND_PBD variants
+  expect_no_match(x, "FGC_GE65_DUR4_9_ND_PBD")
+})
+
+test_that("Non-aged FBD community patient with 12 months graft", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 12L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGC_LT65_DUR10PL_FBD", all = FALSE)
+  expect_no_match(x, "FGC_GE65_DUR10PL_FBD")
+})
+
+# Test ESRD V24 FGI (Institutional) interactions for FBD
+test_that("Aged FBD LTI patient with 6 months graft should get FGI_FBD", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGI_GE65_DUR4_9_FBD", all = FALSE)
+  expect_no_match(x, "FGC_GE65_DUR4_9_FBD")
+})
+
+test_that("Non-aged FBD LTI patient with 15 months graft", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    esrd_months = 15L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGI_LT65_DUR10PL_FBD", all = FALSE)
+  expect_no_match(x, "FGC_LT65_DUR10PL_FBD")
+})
+
+# =============================================================================
+# ESRD V24 PBD Flag Coefficients
+# =============================================================================
+
+# Test ESRD V24 PBD (Partial Benefit Dual) flag interactions
+test_that("PBD aged community patient should get PBD flag", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = TRUE,
+    is_lti = FALSE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGC_PBD_GE65_flag", all = FALSE)
+  expect_no_match(x, "FGC_PBD_LT65_flag")
+  expect_no_match(x, "FGI_PBD_GE65_flag")
+})
+
+test_that("PBD non-aged LTI patient should get FGI PBD flag", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = TRUE,
+    is_lti = TRUE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "FGI_PBD_LT65_flag", all = FALSE)
+  expect_no_match(x, "FGC_PBD_LT65_flag")
+})
+
+test_that("FBD patient should NOT get PBD flag", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = TRUE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    esrd_months = 6L,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "FGC_PBD_GE65_flag")
+  expect_no_match(x, "FGC_PBD_LT65_flag")
+})
+
+# =============================================================================
+# ESRD V24 LTI_GE65/LTI_LT65 Graft Institutional Interactions
+# =============================================================================
+
+# Test ESRD V24 LTI_GE65/LTI_LT65 interactions for Graft Institutional
+test_that("Aged LTI patient should get LTI_GE65", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "LTI_GE65", all = FALSE)
+  expect_no_match(x, "LTI_LT65")
+  # Also should have LTI_Aged (looked up with DI_ prefix)
+  expect_match(x, "LTI_Aged", all = FALSE)
+})
+
+test_that("Non-aged LTI patient should get LTI_LT65", {
+  x <- PatientDemographics(
+    age = 55,
+    sex = "M",
+    category = "M55_59",
+    dis_curr = TRUE,
+    dis_orig = FALSE,
+    non_aged = TRUE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = TRUE,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_match(x, "LTI_LT65", all = FALSE)
+  expect_no_match(x, "LTI_GE65")
+  # Also should have LTI_NonAged
+  expect_match(x, "LTI_NonAged", all = FALSE)
+})
+
+test_that("Non-LTI patient should NOT get LTI interactions", {
+  x <- PatientDemographics(
+    age = 70,
+    sex = "F",
+    category = "F70_74",
+    dis_curr = FALSE,
+    dis_orig = FALSE,
+    non_aged = FALSE,
+    dual_full = FALSE,
+    dual_part = FALSE,
+    is_lti = FALSE,
+    has_esrd = TRUE
+  )
+
+  x <- interactions(x)
+  expect_no_match(x, "LTI_GE65")
+  expect_no_match(x, "LTI_LT65")
+  expect_no_match(x, "LTI_Aged")
+  expect_no_match(x, "LTI_NonAged")
+})
+
+# =============================================================================
+# ESRD V21 Originally ESRD and MCAID Interactions
+# =============================================================================
+
+# Test Originally_ESRD interactions for ESRD V21 and V24
