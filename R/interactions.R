@@ -469,3 +469,46 @@ S7::method(interactions, PatientDemographics) <- function(x) {
 
   names(x)[unlist_(x) == 1L]
 }
+
+#' Calculate HCC interactions across CMS models.
+#'
+#' Handles CMS-HCC, ESRD, and RxHCC models.
+#'
+#' @param demographics demographic information for age/sex/disability interactions
+#' @param hcc set of HCCs for direct HCC checks
+#' @param model The HCC model version being used; default is "CMS-HCC Model V28"
+#' @returns `<chr>` vector of interactions
+#' @examples
+#' apply_interactions(
+#'   model = "CMS-HCC Model V24",
+#'   demographics = PatientDemographics(
+#'     age = 65,
+#'     sex = "F",
+#'     category = "F65",
+#'     dis_curr = FALSE,
+#'     dis_orig = FALSE,
+#'     non_aged = FALSE,
+#'     dual_full = TRUE,
+#'     dual_part = FALSE,
+#'     is_lti = FALSE
+#'   ),
+#'   hcc = c(17:18, 85L)
+#' )
+#' @export
+apply_interactions <- function(demographics, hcc, model = "CMS-HCC Model V28") {
+  # demographic/dual status interactions
+  interactions = interactions(demographics)
+
+  # Get diagnostic categories for the model
+  disease = disease_interactions(
+    model,
+    diagnostics = diagnostic_categories(model, hcc),
+    demographics,
+    hcc
+  )
+
+  # Add HCC counts
+  count = hcc_counts(hcc) |> names()
+
+  cheapr::c_(interactions, disease, count)
+}

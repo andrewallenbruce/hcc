@@ -67,3 +67,24 @@ test_that("disease_interactions works", {
   expect_match(x, "DISABLED_HCC85", all = FALSE)
   expect_match(x, "DIABETES_CHF", all = FALSE)
 })
+
+test_that("apply_interactions works", {
+  x = apply_interactions(
+    model = "CMS-HCC Model V24",
+    demographics = PatientDemographics(
+      age = 65,
+      sex = "F",
+      category = "F65",
+      dis_curr = FALSE,
+      dis_orig = FALSE,
+      non_aged = FALSE,
+      dual_full = TRUE,
+      dual_part = FALSE,
+      is_lti = FALSE
+    ),
+    hcc = c(17:18, 85L)
+  )
+  expect_match(x, "FBDual_Female_Aged", all = FALSE)
+  expect_match(x, "D3", all = FALSE)
+  expect_match(x, "DIABETES_CHF", all = FALSE)
+})
