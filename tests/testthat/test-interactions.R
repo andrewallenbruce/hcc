@@ -32,7 +32,7 @@ test_that("Dual interactions work", {
   expect_no_match(x, "PBDual_Female_Aged")
 })
 
-test_that("create_hcc_counts works", {
+test_that("hcc_counts works", {
   x = hcc_counts(17:19)
   n = names(x)
   expect_equal(x[["D3"]], 1)
@@ -45,4 +45,25 @@ test_that("diagnostic_categories works", {
   expect_equal(x$DIABETES, 1)
   expect_equal(x$CHF, 1)
   expect_equal(x$CANCER, 0)
+})
+
+test_that("disease_interactions works", {
+  x = disease_interactions(
+    model = "CMS-HCC Model V24",
+    diagnostics = diagnostic_categories("CMS-HCC Model V24", c(17L, 85L)),
+    demographics = PatientDemographics(
+      age = 65,
+      sex = "F",
+      category = "F65",
+      dis_curr = TRUE,
+      dis_orig = FALSE,
+      non_aged = FALSE,
+      dual_full = FALSE,
+      dual_part = FALSE,
+      is_lti = FALSE
+    ),
+    hcc = c(17L, 85L)
+  )
+  expect_match(x, "DISABLED_HCC85", all = FALSE)
+  expect_match(x, "DIABETES_CHF", all = FALSE)
 })

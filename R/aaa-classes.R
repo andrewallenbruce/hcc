@@ -61,6 +61,7 @@ HCCDetail <- S7::new_class(
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
 #' @returns An `<HCPCoveragePeriod>` S7 object
+#' @usage NULL
 #' @examples
 #' HCPCoveragePeriod(
 #'   start_date = as.Date("2026-08-20"),
@@ -298,7 +299,7 @@ RemittanceEntry <- function(
   )
 }
 
-#' Per-Member Payment Record from an X12 820 ENT Loop
+#' Per-Member Payment Record from an X12-820 ENT Loop
 #'
 #' One PaymentDetail is created per ENT segment. A member may appear in multiple
 #' ENT entries within the same transaction (e.g., retroactive adjustments for

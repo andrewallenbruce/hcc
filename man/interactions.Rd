@@ -32,5 +32,4 @@ x = demographics(
 x
 
 interactions(x)
-
 }

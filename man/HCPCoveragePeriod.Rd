@@ -3,21 +3,6 @@
 \name{HCPCoveragePeriod}
 \alias{HCPCoveragePeriod}
 \title{Health Care Plan coverage period from HD loop}
-\usage{
-HCPCoveragePeriod(
-  start_date = (function (.data = double()) 
- {
-     .Date(.data)
- })(),
-  end_date = (function (.data = double()) 
- {
-     .Date(.data)
- })(),
-  hcp_code = character(0),
-  hcp_status = character(0),
-  aid_codes = character(0)
-)
-}
 \arguments{
 \item{start_date}{\verb{<date>} coverage start date}
 

@@ -126,19 +126,38 @@ diagnostic_categories <- function(model, hcc) {
 #' @param demographics (Optional) demographic information for age/sex/disability interactions
 #' @param hcc (Optional) set of HCCs for direct HCC checks
 #' @returns Dictionary containing all disease interaction variables
-#' @examplesIf FALSE
-#' disease_interactions(model, diagnostics, demographics, hcc)
-#' @noRd
+#' @examples
+#' disease_interactions(
+#'   model = "CMS-HCC Model V24",
+#'   diagnostics = diagnostic_categories("CMS-HCC Model V24", c(17L, 85L)),
+#'   demographics = PatientDemographics(
+#'     age = 65,
+#'     sex = "F",
+#'     category = "F65",
+#'     dis_curr = TRUE,
+#'     dis_orig = FALSE,
+#'     non_aged = FALSE,
+#'     dual_full = FALSE,
+#'     dual_part = FALSE,
+#'     is_lti = FALSE
+#'   ),
+#'   hcc = c(17L, 85L)
+#'  )
+#' @export
 disease_interactions <- function(
   model,
   diagnostics,
-  demographics,
+  demographics = NULL,
   hcc = 0L
 ) {
+  # purrr::imap_any_hcc(d, \(x, i) mult_(d[x]))
+
+  if (is.null(demographics)) {
+    demographics <- PatientDemographics(dis_curr = FALSE, non_aged = FALSE)
+  }
+
   d = diagnostics
   g = demographics
-
-  # purrr::imap_any_hcc(d, \(x, i) mult_(d[x]))
 
   x <- switch(
     model,
@@ -319,7 +338,6 @@ disease_interactions <- function(
 #' x
 #'
 #' interactions(x)
-#'
 #' @export
 interactions <- S7::new_generic("interactions", "x")
 

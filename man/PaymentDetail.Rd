@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa-classes.R
 \name{PaymentDetail}
 \alias{PaymentDetail}
-\title{Per-Member Payment Record from an X12 820 ENT Loop}
+\title{Per-Member Payment Record from an X12-820 ENT Loop}
 \usage{
 PaymentDetail(
   entity_number = character(),
