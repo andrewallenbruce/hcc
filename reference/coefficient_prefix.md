@@ -20,7 +20,7 @@ coefficient_prefix(x, ...)
 
 ## Value
 
-String prefix used to look up coefficients for this beneficiary type
+String prefix used to look up coefficients for beneficiary type
 
 ## Examples
 
@@ -33,7 +33,7 @@ coefficient_prefix(
     orec_code = "0",
     crec_code = "0"
   )
-) # CNA_
+)
 #> [1] "CNA_"
 coefficient_prefix(
   demographics(

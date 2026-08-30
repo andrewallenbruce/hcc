@@ -48,7 +48,7 @@ pak::pak("andrewallenbruce/hcc")
   : Model-Based Disease Categories
 - [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
   : Model-Based Disease Interaction Variables
-- [`hcc_counts()`](https://andrewallenbruce.github.io/hcc/reference/hcc_counts.md)
+- [`hcc_count()`](https://andrewallenbruce.github.io/hcc/reference/hcc_count.md)
   : Creates HCC count variables
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions

@@ -20,7 +20,7 @@ any_hcc(needles, haystack)
 
 ## Value
 
-`<int>`, `1` = TRUE, `0` = FALSE
+`<int>` scalar, `1` (True), `0` (False)
 
 ## Examples
 
