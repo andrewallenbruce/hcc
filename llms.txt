@@ -35,6 +35,8 @@ pak::pak("andrewallenbruce/hcc")
   : A single remittance line item within a member's payment record.
 - [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
   : Is any HCC present?
+- [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
+  : Calculate HCC interactions across CMS models.
 - [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
   : Map ICD-10 Codes to CC
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
