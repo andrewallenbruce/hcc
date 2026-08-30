@@ -32,12 +32,10 @@ test_that("Dual interactions work", {
   expect_no_match(x, "PBDual_Female_Aged")
 })
 
-test_that("hcc_counts works", {
-  x = hcc_counts(17:19)
-  n = names(x)
-  expect_equal(x[["D3"]], 1)
-  expect_no_match(n, "D2")
-  expect_no_match(n, "D10P")
+test_that("hcc_count works", {
+  x = hcc_count(17:19)
+  expect_equal(x, "D3")
+  expect_disjoint(x, c("D2", "D10P"))
 })
 
 test_that("diagnostic_categories works", {

@@ -12,7 +12,7 @@ coefficient_prefix(x, ...)
 \item{...}{dots}
 }
 \value{
-String prefix used to look up coefficients for this beneficiary type
+String prefix used to look up coefficients for beneficiary type
 }
 \description{
 Get the coefficient prefix based on beneficiary demographics.
@@ -26,7 +26,7 @@ coefficient_prefix(
     orec_code = "0",
     crec_code = "0"
   )
-) # CNA_
+)
 coefficient_prefix(
   demographics(
     age = 45,

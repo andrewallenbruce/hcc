@@ -12,7 +12,7 @@ any_hcc(needles, haystack)
 \item{haystack}{\verb{<int>} hcc(s) being searched in}
 }
 \value{
-\verb{<int>}, \code{1} = TRUE, \code{0} = FALSE
+\verb{<int>} scalar, \code{1} (True), \code{0} (False)
 }
 \description{
 Is any HCC present?

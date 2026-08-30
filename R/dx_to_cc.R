@@ -47,7 +47,7 @@ apply_map <- function(
   # model
   x <- cheapr::sset(x, cheapr::which_(model == x$model_name))
 
-  #icd codes
+  # icd codes
   cheapr::sset(
     x,
     grep(

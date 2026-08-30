@@ -2,7 +2,7 @@
 #'
 #' @param needles `<int>` hcc(s) being searched for
 #' @param haystack `<int>` hcc(s) being searched in
-#' @returns `<int>`, `1` = TRUE, `0` = FALSE
+#' @returns `<int>` scalar, `1` (True), `0` (False)
 #' @examples
 #' any_hcc(17:19, 18:21)
 #' any_hcc(17:19, 20:22)
@@ -16,27 +16,18 @@ any_hcc <- function(needles, haystack) {
 #' @param hcc hcc
 #' @returns a named `<int>` vector of counts
 #' @examples
-#' hcc_counts(17:19)
-#' hcc_counts(c(17:19, 85L))
+#' hcc_count(17:19)
+#' hcc_count(c(17:19, 85L))
 #' @export
-hcc_counts <- function(hcc) {
+hcc_count <- function(hcc) {
   L <- length(hcc)
-
-  X <- rlang::set_names(
-    rep.int(0L, 10L),
-    c(
-      paste0("D", 1:9),
-      "D10P"
-    )
-  )
-
-  X[collapse::fmatch(L, 1:10, nomatch = 0L)] <- 1L
-
-  if (L >= 10L) {
-    X[["D10P"]] <- 1L
+  rlang::check_number_whole(L, min = 1)
+  if (L <= 9L) {
+    return(cheapr::paste_("D", L))
   }
-
-  X[cheapr::which_(X > 0L)]
+  if (L >= 10L) {
+    return("D10P")
+  }
 }
 
 #' Model-Based Disease Categories
@@ -74,7 +65,6 @@ diagnostic_categories <- function(model, hcc) {
       gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
       gPsychiatric_V24 = any_hcc(57:60, hcc),
       PRESSURE_ULCER = any_hcc(157:159, hcc)
-      # added in 2018-11-20
     ),
     "CMS-HCC Model V22" = list(
       CANCER = any_hcc(8:12, hcc),
@@ -87,7 +77,6 @@ diagnostic_categories <- function(model, hcc) {
       gSubstanceUseDisorder = any_hcc(54:55, hcc),
       gPsychiatric = any_hcc(57:58, hcc),
       PRESSURE_ULCER = any_hcc(157:158, hcc)
-      # added in 2012-10-19
     ),
     "CMS-HCC ESRD Model V24" = list(
       CANCER = any_hcc(8:12, hcc),
@@ -100,7 +89,6 @@ diagnostic_categories <- function(model, hcc) {
       gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
       gPsychiatric_V24 = any_hcc(57:60, hcc),
       PRESSURE_ULCER = any_hcc(157:160, hcc)
-      # added in 2018-11-20
     ),
     "CMS-HCC ESRD Model V21" = list(
       CANCER = any_hcc(8:12, hcc),
@@ -115,8 +103,6 @@ diagnostic_categories <- function(model, hcc) {
       PRESSURE_ULCER = any_hcc(157:160, hcc)
     )
   )
-  # RxModel doesn't have any diagnostic category interactions
-  # Keep the zero-valued categories; will be filtered out later
 }
 
 #' Model-Based Disease Interaction Variables
@@ -495,12 +481,16 @@ S7::method(interactions, PatientDemographics) <- function(x) {
 #'   hcc = c(17:18, 85L)
 #' )
 #' @export
-apply_interactions <- function(demographics, hcc, model = "CMS-HCC Model V28") {
+apply_interactions <- function(
+  demographics,
+  hcc,
+  model = "CMS-HCC Model V28"
+) {
   # demographic/dual status interactions
-  interactions = interactions(demographics)
+  interact <- interactions(demographics)
 
   # Get diagnostic categories for the model
-  disease = disease_interactions(
+  disease <- disease_interactions(
     model,
     diagnostics = diagnostic_categories(model, hcc),
     demographics,
@@ -508,7 +498,7 @@ apply_interactions <- function(demographics, hcc, model = "CMS-HCC Model V28") {
   )
 
   # Add HCC counts
-  count = hcc_counts(hcc) |> names()
+  count = hcc_count(hcc)
 
-  cheapr::c_(interactions, disease, count)
+  cheapr::c_(interact, disease, count)
 }
