@@ -20,6 +20,8 @@
   : A single remittance line item within a member's payment record.
 - [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
   : Is any HCC present?
+- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
+  : Apply risk adjustment coefficients to HCCs and interactions.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
   : Calculate HCC interactions across CMS models.
 - [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
