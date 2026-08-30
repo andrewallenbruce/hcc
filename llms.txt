@@ -33,11 +33,17 @@ pak::pak("andrewallenbruce/hcc")
   : Per-Member Payment Record from an X12 820 ENT Loop
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
   : A single remittance line item within a member's payment record.
+- [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
+  : Is any HCC present?
 - [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
   : Map ICD-10 Codes to CC
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
+- [`diagnostic_categories()`](https://andrewallenbruce.github.io/hcc/reference/diagnostic_categories.md)
+  : Model-Based Disease Categories
+- [`hcc_counts()`](https://andrewallenbruce.github.io/hcc/reference/hcc_counts.md)
+  : Creates HCC count variables
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
