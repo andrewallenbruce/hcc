@@ -15,8 +15,8 @@ interactions(x, ...)
 a list of interactions
 }
 \description{
-Creates interaction variables that are model-agnostic. The coefficient look-up
-will match only the relevant coefficients for each model.
+Creates interaction variables that are model-agnostic. The coefficient
+look-up will match only the relevant coefficients for each model.
 }
 \examples{
 x = demographics(

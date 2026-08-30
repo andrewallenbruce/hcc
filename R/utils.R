@@ -15,7 +15,9 @@ any_ <- function(x) {
 
 #' @noRd
 normalize_ <- function(x) {
-  toupper(gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE))
+  toupper(
+    gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE)
+  )
 }
 
 #' Is x Between a Minimum and a Maximum?

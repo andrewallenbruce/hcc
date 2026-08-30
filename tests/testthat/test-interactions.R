@@ -33,10 +33,11 @@ test_that("Dual interactions work", {
 })
 
 test_that("create_hcc_counts works", {
-  x = create_hcc_counts(17:19)
+  x = hcc_counts(17:19)
+  n = names(x)
   expect_equal(x[["D3"]], 1)
-  expect_no_match(names(x), "D2")
-  expect_no_match(names(x), "D10P")
+  expect_no_match(n, "D2")
+  expect_no_match(n, "D10P")
 })
 
 test_that("diagnostic_categories works", {
