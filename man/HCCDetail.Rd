@@ -5,14 +5,14 @@
 \title{HCC Category Detail}
 \usage{
 HCCDetail(
-  hcc = character(0),
+  hcc = integer(0),
   label = character(0),
   is_chronic = logical(0),
   coefficient = numeric(0)
 )
 }
 \arguments{
-\item{hcc}{\verb{<chr>} HCC code (e.g., "18", "85")}
+\item{hcc}{\verb{<int>} HCC code (e.g., 18, 85)}
 
 \item{label}{\verb{<chr>} Human-readable description (e.g., "Diabetes with Chronic
 Complications")}
@@ -29,10 +29,10 @@ An \verb{<HCCDetail>} S7 object
 HCC Category Detail
 }
 \examples{
-HCCDetail(
- hcc = "80",
+HCCDetail( # HCC203
+ hcc = 203L,
  label = "Coma, Brain Compression/Anoxic Damage",
- is_chronic = FALSE,
+ is_chronic = TRUE,
  coefficient = 0.486
 )
 }

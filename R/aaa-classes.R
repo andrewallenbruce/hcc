@@ -5,30 +5,84 @@
 #' @param age_min `<int>` For age edits: minimum age (inclusive)
 #' @param age_max `<int>` For age edits: minimum age (inclusive)
 #' @param action `<chr>` "invalid" or "override"
-#' @param cc_override `<chr>` CC to assign when action is "override"
+#' @param cc_override `<int>` CC to assign when action is "override"
 #' @returns An `<EditRule>` S7 object
 #' @examples
 #' EditRule(
-#'  edit_type = "age",
-#'  age_min = 15L,
-#'  age_max = 65L
-#'  )
+#'   edit_type = "age",
+#'   sex = 2L,
+#'   action = "invalid",
+#'   age_max = 16L,
+#'   age_min = 15L,
+#'   cc_override = 13L
+#' )
 #' @export
 EditRule <- S7::new_class(
   "EditRule",
   properties = list(
     edit_type = S7::class_character,
-    sex = S7::class_character,
+    sex = S7::class_integer,
     age_min = S7::class_integer,
     age_max = S7::class_integer,
     action = S7::class_character,
-    cc_override = S7::class_character
-  )
+    cc_override = S7::class_integer
+  ),
+  validator = function(self) {
+    if (!rlang::is_empty(self@edit_type)) {
+      if (length(self@edit_type) != 1L) {
+        return("@edit_type must be length 1")
+      }
+      if (!self@edit_type %in% c("sex", "age")) {
+        return("@edit_type must be either `sex` or `age`")
+      }
+    }
+
+    if (self@edit_type == "sex") {
+      if (length(self@sex) != 1L) {
+        return("@sex must be length 1")
+      }
+      if (!self@sex %in% 1:2) {
+        return("@sex must be either `1` or `2`")
+      }
+    }
+
+    if (self@edit_type == "age") {
+      if (length(self@age_min) != 1L) {
+        return("@age_min must be length 1")
+      }
+      if (length(self@age_max) != 1L) {
+        return("@age_max must be length 1")
+      }
+      if (self@age_min >= self@age_max) {
+        return("@age_min must be < @age_max")
+      }
+    }
+
+    if (!rlang::is_empty(self@action)) {
+      if (length(self@action) != 1L) {
+        return("@action must be length 1")
+      }
+      if (!self@action %in% c("invalid", "override")) {
+        return("@action must be either `invalid` or `override`")
+      }
+
+      if (self@action == "override") {
+        if (rlang::is_empty(self@cc_override)) {
+          return("@cc_override cannot be empty when @action = `override`")
+        }
+      }
+    }
+    if (!rlang::is_empty(self@cc_override)) {
+      if (length(self@cc_override) != 1L) {
+        return("@cc_override must be length 1")
+      }
+    }
+  }
 )
 
 #' HCC Category Detail
 #'
-#' @param hcc `<chr>` HCC code (e.g., "18", "85")
+#' @param hcc `<int>` HCC code (e.g., 18, 85)
 #' @param label `<chr>` Human-readable description (e.g., "Diabetes with Chronic
 #'   Complications")
 #' @param is_chronic `<lgl>` Whether this HCC is considered a chronic condition
@@ -36,17 +90,17 @@ EditRule <- S7::new_class(
 #'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
 #' @examples
-#' HCCDetail(
-#'  hcc = "80",
+#' HCCDetail( # HCC203
+#'  hcc = 203L,
 #'  label = "Coma, Brain Compression/Anoxic Damage",
-#'  is_chronic = FALSE,
+#'  is_chronic = TRUE,
 #'  coefficient = 0.486
 #' )
 #' @export
 HCCDetail <- S7::new_class(
   "HCCDetail",
   properties = list(
-    hcc = S7::class_character,
+    hcc = S7::class_integer,
     label = S7::class_character,
     is_chronic = S7::class_logical,
     coefficient = S7::class_double
@@ -150,50 +204,32 @@ PatientDemographics <- S7::new_class(
 #' @param modifiers List of procedure code modifiers
 #' @param allowed_amount Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' ServiceLevelData()
-#' @noRd
-ServiceLevelData <- function(
-  claim_id = character(),
-  procedure_code = character(),
-  ndc = character(),
-  linked_diagnosis_codes = character(),
-  claim_diagnosis_codes = character(),
-  claim_type = character(),
-  provider_specialty = character(),
-  performing_provider_npi = character(),
-  billing_provider_npi = character(),
-  patient_id = character(),
-  facility_type = character(),
-  service_type = character(),
-  service_date = character(),
-  place_of_service = character(),
-  quantity = character(),
-  quantity_unit = character(),
-  modifiers = character(),
-  allowed_amount = character()
-) {
-  list(
-    claim_id = claim_id,
-    procedure_code = procedure_code,
-    ndc = ndc,
-    linked_diagnosis_codes = linked_diagnosis_codes,
-    claim_diagnosis_codes = claim_diagnosis_codes,
-    claim_type = claim_type,
-    provider_specialty = provider_specialty,
-    performing_provider_npi = performing_provider_npi,
-    billing_provider_npi = billing_provider_npi,
-    patient_id = patient_id,
-    facility_type = facility_type,
-    service_type = service_type,
-    service_date = service_date,
-    place_of_service = place_of_service,
-    quantity = quantity,
-    quantity_unit = quantity_unit,
-    modifiers = modifiers,
-    allowed_amount = allowed_amount
+#' @export
+ServiceLevelData <- S7::new_class(
+  "ServiceLevelData",
+  properties = list(
+    claim_id = S7::class_character,
+    procedure_code = S7::class_character,
+    ndc = S7::class_character,
+    linked_diagnosis_codes = S7::class_character,
+    claim_diagnosis_codes = S7::class_character,
+    claim_type = S7::class_character,
+    provider_specialty = S7::class_character,
+    performing_provider_npi = S7::class_integer,
+    billing_provider_npi = S7::class_integer,
+    patient_id = S7::class_character,
+    facility_type = S7::class_character,
+    service_type = S7::class_character,
+    service_date = S7::class_character,
+    place_of_service = S7::class_character,
+    quantity = S7::class_integer,
+    quantity_unit = S7::class_character,
+    modifiers = S7::class_character,
+    allowed_amount = S7::class_numeric
   )
-}
+)
 
 #' Risk adjustment calculation results
 #'
@@ -213,44 +249,29 @@ ServiceLevelData <- function(
 #' @param diagnosis_codes Input diagnosis codes
 #' @param service_level_data Processed service records
 #' @returns A `<RAFResult>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' RAFResult()
-#' @noRd
-RAFResult <- function(
-  risk_score = double(),
-  risk_score_demographics = double(),
-  risk_score_chronic_only = double(),
-  risk_score_hcc = double(),
-  risk_score_payment = double(),
-  hcc_list = character(),
-  hcc_details = character(),
-  cc_to_dx = character(),
-  coefficients = double(),
-  interactions = character(),
-  demographics = character(),
-  model_name = character(),
-  version = character(),
-  diagnosis_codes = character(),
-  service_level_data = character()
-) {
-  list(
-    risk_score = risk_score,
-    risk_score_demographics = risk_score_demographics,
-    risk_score_chronic_only = risk_score_chronic_only,
-    risk_score_hcc = risk_score_hcc,
-    risk_score_payment = risk_score_payment,
-    hcc_list = hcc_list,
-    hcc_details = hcc_details,
-    cc_to_dx = cc_to_dx,
-    coefficients = coefficients,
-    interactions = interactions,
-    demographics = demographics,
-    model_name = model_name,
-    version = version,
-    diagnosis_codes = diagnosis_codes,
-    service_level_dat = service_level_data
+#' @export
+RAFResult <- S7::new_class(
+  "RAFResult",
+  properties = list(
+    risk_score = S7::class_double,
+    risk_score_demographics = S7::class_double,
+    risk_score_chronic_only = S7::class_double,
+    risk_score_hcc = S7::class_double,
+    risk_score_payment = S7::class_double,
+    hcc_list = S7::class_character,
+    hcc_details = S7::class_character,
+    cc_to_dx = S7::class_character,
+    coefficients = S7::class_double,
+    interactions = S7::class_character,
+    demographics = S7::class_character,
+    model_name = S7::class_character,
+    version = S7::class_character,
+    diagnosis_codes = S7::class_character,
+    service_level_data = S7::class_list
   )
-}
+)
 
 #' A single remittance line item within a member's payment record.
 #'
@@ -268,36 +289,25 @@ RAFResult <- function(
 #' @param adjustment_amount `ADX-01` Adjustment amount (negative = recoupment)
 #' @param adjustment_reason `ADX-02` Adjustment reason code (e.g., "53" = prior period)
 #' @returns A `<RemittanceEntry>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' RemittanceEntry()
 #' @export
-RemittanceEntry <- function(
-  reference_number = character(),
-  payment_amount = double(),
-  original_amount = double(),
-  rate_code = character(),
-  aid_code = character(),
-  plan_type = character(),
-  description = character(),
-  coverage_period_start = character(),
-  coverage_period_end = character(),
-  adjustment_amount = double(),
-  adjustment_reason = character()
-) {
-  list(
-    reference_number = reference_number,
-    payment_amount = payment_amount,
-    original_amount = original_amount,
-    rate_code = rate_code,
-    aid_code = aid_code,
-    plan_type = plan_type,
-    description = description,
-    coverage_period_start = coverage_period_start,
-    coverage_period_end = coverage_period_end,
-    adjustment_amount = adjustment_amount,
-    adjustment_reason = adjustment_reason
+RemittanceEntry <- S7::new_class(
+  "RemittanceEntry",
+  properties = list(
+    reference_number = S7::class_character,
+    payment_amount = S7::class_double,
+    original_amount = S7::class_double,
+    rate_code = S7::class_character,
+    aid_code = S7::class_character,
+    plan_type = S7::class_character,
+    description = S7::class_character,
+    coverage_period_start = S7::class_character,
+    coverage_period_end = S7::class_character,
+    adjustment_amount = S7::class_double,
+    adjustment_reason = S7::class_character
   )
-}
+)
 
 #' Per-Member Payment Record from an X12-820 ENT Loop
 #'
@@ -312,26 +322,20 @@ RemittanceEntry <- function(
 #' @param middle_name `NM1-05` Member middle name
 #' @param remittance_entries List of `<RemittanceEntry>` line items (one per RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
-#' @examplesIf FALSE
+#' @examples
 #' PaymentDetail()
 #' @export
-PaymentDetail <- function(
-  entity_number = character(),
-  member_id = character(),
-  last_name = character(),
-  first_name = character(),
-  middle_name = character(),
-  remittance_entries = character()
-) {
-  list(
-    entity_number = entity_number,
-    member_id = member_id,
-    last_name = last_name,
-    first_name = first_name,
-    middle_name = middle_name,
-    remittance_entries = remittance_entries
+PaymentDetail <- S7::new_class(
+  "PaymentDetail",
+  properties = list(
+    entity_number = S7::class_character,
+    member_id = S7::class_character,
+    last_name = S7::class_character,
+    first_name = S7::class_character,
+    middle_name = S7::class_character,
+    remittance_entries = RemittanceEntry
   )
-}
+)
 
 #' X12-820 Transaction Remittance Data
 #'

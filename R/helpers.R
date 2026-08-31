@@ -32,8 +32,8 @@ convert_sex <- function(
   switch(
     version,
     "V2" = ,
-    "V4" = unname(SEX$V2[sex]),
-    "V6" = unname(SEX$V6[sex]),
+    "V4" = unname(SEX$V2[sex]), # CMS format
+    "V6" = unname(SEX$V6[sex])
   )
 }
 

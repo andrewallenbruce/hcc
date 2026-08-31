@@ -5,12 +5,12 @@
 \title{Per-Member Payment Record from an X12-820 ENT Loop}
 \usage{
 PaymentDetail(
-  entity_number = character(),
-  member_id = character(),
-  last_name = character(),
-  first_name = character(),
-  middle_name = character(),
-  remittance_entries = character()
+  entity_number = character(0),
+  member_id = character(0),
+  last_name = character(0),
+  first_name = character(0),
+  middle_name = character(0),
+  remittance_entries = RemittanceEntry()
 )
 }
 \arguments{
@@ -35,7 +35,5 @@ ENT entries within the same transaction (e.g., retroactive adjustments for
 prior periods).
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 PaymentDetail()
-\dontshow{\}) # examplesIf}
 }

@@ -6,11 +6,11 @@
 \usage{
 EditRule(
   edit_type = character(0),
-  sex = character(0),
+  sex = integer(0),
   age_min = integer(0),
   age_max = integer(0),
   action = character(0),
-  cc_override = character(0)
+  cc_override = integer(0)
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ EditRule(
 
 \item{action}{\verb{<chr>} "invalid" or "override"}
 
-\item{cc_override}{\verb{<chr>} CC to assign when action is "override"}
+\item{cc_override}{\verb{<int>} CC to assign when action is "override"}
 }
 \value{
 An \verb{<EditRule>} S7 object
@@ -34,8 +34,11 @@ Single Edit Rule
 }
 \examples{
 EditRule(
- edit_type = "age",
- age_min = 15L,
- age_max = 65L
- )
+  edit_type = "age",
+  sex = 2L,
+  action = "invalid",
+  age_max = 16L,
+  age_min = 15L,
+  cc_override = 13L
+)
 }

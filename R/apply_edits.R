@@ -9,11 +9,13 @@
 #'
 #' @param cc_to_dx Dictionary mapping CC codes to sets of diagnosis codes
 #' @param age Patient's age
-#' @param sex Patient's sex (M, F, 1, or 2)
-#' @param model_name HCC model name
-#' @param edits_mapping Dictionary mapping (icd10, model_name) to EditRule
+#' @param sex Patient's sex (`M`/`F` or `1`/`2`)
+#' @param model HCC model name
+#' @param edits Dictionary mapping (icd10, model) to `hcc::EditRule` class object
 #' @returns Modified cc_to_dx dictionary with edits applied
 #' @noRd
-apply_edits <- function(cc_to_dx, age, sex, model_name, edits_mapping) {
-  return(NULL)
+apply_edits <- function(cc_to_dx, age, sex, model, edits) {
+  sex <- convert_sex(sex, "V4")
+
+  # Collect all diagnoses across all CCs for edit checking
 }

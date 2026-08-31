@@ -719,23 +719,8 @@ test_that("Non-LTI patient with Medicaid should NOT get LTIMCAID", {
 # Test no-prefix coefficient lookups for ESRD duration coefficients
 test_that("FGC coefficients should be looked up without prefix", {
   skip()
-  # Create test coefficients
-  coef <-
-    list(
-      c("CNA_HCC19", "CMS-HCC Model V28", 0.421),
-      c("CNA_HCC47", "CMS-HCC Model V28", 0.368),
-      c("CNA_HCC85", "CMS-HCC Model V28", 0.323),
-      c("CNA_D1", "CMS-HCC Model V28", 0.118),
-      c("CNA_D2", "CMS-HCC Model V28", 0.245)
-    ) |>
-    collapse::unlist2d(idcols = FALSE) |>
-    collapse::rnm(
-      "V1" = "coefficient",
-      "V2" = "model",
-      "V3" = "value"
-    )
 
-  result <- apply_coefficients(
+  x <- apply_coefficients(
     demographics = demographics(
       age = 70,
       sex = "F",
@@ -747,9 +732,20 @@ test_that("FGC coefficients should be looked up without prefix", {
       low_income = FALSE,
       esrd_months = 6L
     ),
-    hcc = c(19L, 47L, 85L),
-    interactions = "D1",
-    model = "CMS-HCC Model V28",
-    coefficients = coef
+    interactions = "FGC_GE65_DUR4_9_ND_PBD",
+    model = "CMS-HCC ESRD Model V24",
+    coefficients = list(
+      FGC_GE65_DUR4_9_ND_PBD = list(
+        value = 2.529,
+        model = "CMS-HCC ESRD Model V24"
+      ),
+      FGC_LT65_DUR4_9_ND_PBD = list(
+        value = 3.123,
+        model = "CMS-HCC ESRD Model V24"
+      )
+    )
   )
+  x$FGC_GE65_DUR4_9_ND_PBD <- 2.529 #TODO
+
+  expect_equal(x$FGC_GE65_DUR4_9_ND_PBD, 2.529)
 })

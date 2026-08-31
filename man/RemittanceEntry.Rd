@@ -5,17 +5,17 @@
 \title{A single remittance line item within a member's payment record.}
 \usage{
 RemittanceEntry(
-  reference_number = character(),
-  payment_amount = double(),
-  original_amount = double(),
-  rate_code = character(),
-  aid_code = character(),
-  plan_type = character(),
-  description = character(),
-  coverage_period_start = character(),
-  coverage_period_end = character(),
-  adjustment_amount = double(),
-  adjustment_reason = character()
+  reference_number = character(0),
+  payment_amount = numeric(0),
+  original_amount = numeric(0),
+  rate_code = character(0),
+  aid_code = character(0),
+  plan_type = character(0),
+  description = character(0),
+  coverage_period_start = character(0),
+  coverage_period_end = character(0),
+  adjustment_amount = numeric(0),
+  adjustment_reason = character(0)
 )
 }
 \arguments{
@@ -48,7 +48,5 @@ A \verb{<RemittanceEntry>} S7 object
 Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 RemittanceEntry()
-\dontshow{\}) # examplesIf}
 }
