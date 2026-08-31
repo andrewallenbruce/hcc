@@ -1,30 +1,29 @@
-# Represents standardized service-level data extracted from healthcare claims.
+# Healthcare Claim Service Level Data
 
-Represents standardized service-level data extracted from healthcare
-claims.
+Healthcare Claim Service Level Data
 
 ## Usage
 
 ``` r
 ServiceLevelData(
-  claim_id = character(),
-  procedure_code = character(),
-  ndc = character(),
-  linked_diagnosis_codes = character(),
-  claim_diagnosis_codes = character(),
-  claim_type = character(),
-  provider_specialty = character(),
-  performing_provider_npi = character(),
-  billing_provider_npi = character(),
-  patient_id = character(),
-  facility_type = character(),
-  service_type = character(),
-  service_date = character(),
-  place_of_service = character(),
-  quantity = character(),
-  quantity_unit = character(),
-  modifiers = character(),
-  allowed_amount = character()
+  claim_id = character(0),
+  procedure_code = character(0),
+  ndc = character(0),
+  linked_diagnosis_codes = character(0),
+  claim_diagnosis_codes = character(0),
+  claim_type = character(0),
+  provider_specialty = character(0),
+  performing_provider_npi = integer(0),
+  billing_provider_npi = integer(0),
+  patient_id = character(0),
+  facility_type = character(0),
+  service_type = character(0),
+  service_date = character(0),
+  place_of_service = character(0),
+  quantity = integer(0),
+  quantity_unit = character(0),
+  modifiers = character(0),
+  allowed_amount = integer(0)
 )
 ```
 
@@ -104,64 +103,29 @@ ServiceLevelData(
 
 ## Value
 
-object
+A `<ServiceLevelData>` S7 object
 
 ## Examples
 
 ``` r
 ServiceLevelData()
-#> $claim_id
-#> character(0)
-#> 
-#> $procedure_code
-#> character(0)
-#> 
-#> $ndc
-#> character(0)
-#> 
-#> $linked_diagnosis_codes
-#> character(0)
-#> 
-#> $claim_diagnosis_codes
-#> character(0)
-#> 
-#> $claim_type
-#> character(0)
-#> 
-#> $provider_specialty
-#> character(0)
-#> 
-#> $performing_provider_npi
-#> character(0)
-#> 
-#> $billing_provider_npi
-#> character(0)
-#> 
-#> $patient_id
-#> character(0)
-#> 
-#> $facility_type
-#> character(0)
-#> 
-#> $service_type
-#> character(0)
-#> 
-#> $service_date
-#> character(0)
-#> 
-#> $place_of_service
-#> character(0)
-#> 
-#> $quantity
-#> character(0)
-#> 
-#> $quantity_unit
-#> character(0)
-#> 
-#> $modifiers
-#> character(0)
-#> 
-#> $allowed_amount
-#> character(0)
-#> 
+#> <hcc::ServiceLevelData>
+#>  @ claim_id               : chr(0) 
+#>  @ procedure_code         : chr(0) 
+#>  @ ndc                    : chr(0) 
+#>  @ linked_diagnosis_codes : chr(0) 
+#>  @ claim_diagnosis_codes  : chr(0) 
+#>  @ claim_type             : chr(0) 
+#>  @ provider_specialty     : chr(0) 
+#>  @ performing_provider_npi: int(0) 
+#>  @ billing_provider_npi   : int(0) 
+#>  @ patient_id             : chr(0) 
+#>  @ facility_type          : chr(0) 
+#>  @ service_type           : chr(0) 
+#>  @ service_date           : chr(0) 
+#>  @ place_of_service       : chr(0) 
+#>  @ quantity               : int(0) 
+#>  @ quantity_unit          : chr(0) 
+#>  @ modifiers              : chr(0) 
+#>  @ allowed_amount         : int(0) 
 ```

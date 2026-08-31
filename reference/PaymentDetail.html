@@ -11,7 +11,7 @@ prior periods)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9030</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9031</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,12 +52,12 @@ prior periods).</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PaymentDetail</span><span class="op">(</span></span>
-<span>  entity_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  member_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  last_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  first_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  middle_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  remittance_entries <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  entity_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  member_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  last_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  first_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  middle_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  remittance_entries <span class="op">=</span> <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -96,9 +96,25 @@ prior periods).</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="fu">PaymentDetail</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">PaymentDetail</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PaymentDetail&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ entity_number     : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ member_id         : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ last_name         : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ first_name        : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ middle_name       : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ remittance_entries: &lt;hcc::RemittanceEntry&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ reference_number     : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ payment_amount       : num(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ original_amount      : num(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ rate_code            : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ aid_code             : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ plan_type            : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ description          : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ coverage_period_start: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ coverage_period_end  : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ adjustment_amount    : num(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ adjustment_reason    : chr(0) </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

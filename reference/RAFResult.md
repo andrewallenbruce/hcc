@@ -6,21 +6,21 @@ Risk adjustment calculation results
 
 ``` r
 RAFResult(
-  risk_score = double(),
-  risk_score_demographics = double(),
-  risk_score_chronic_only = double(),
-  risk_score_hcc = double(),
-  risk_score_payment = double(),
-  hcc_list = character(),
-  hcc_details = character(),
-  cc_to_dx = character(),
-  coefficients = double(),
-  interactions = character(),
-  demographics = character(),
-  model_name = character(),
-  version = character(),
-  diagnosis_codes = character(),
-  service_level_data = character()
+  risk_score = numeric(0),
+  risk_score_demographics = numeric(0),
+  risk_score_chronic_only = numeric(0),
+  risk_score_hcc = numeric(0),
+  risk_score_payment = numeric(0),
+  hcc_list = character(0),
+  hcc_details = character(0),
+  cc_to_dx = character(0),
+  coefficients = numeric(0),
+  interactions = character(0),
+  demographics = character(0),
+  model_name = character(0),
+  version = character(0),
+  diagnosis_codes = character(0),
+  service_level_data = list()
 )
 ```
 
@@ -88,55 +88,26 @@ RAFResult(
 
 ## Value
 
-object
+A `<RAFResult>` S7 object
 
 ## Examples
 
 ``` r
 RAFResult()
-#> $risk_score
-#> numeric(0)
-#> 
-#> $risk_score_demographics
-#> numeric(0)
-#> 
-#> $risk_score_chronic_only
-#> numeric(0)
-#> 
-#> $risk_score_hcc
-#> numeric(0)
-#> 
-#> $risk_score_payment
-#> numeric(0)
-#> 
-#> $hcc_list
-#> character(0)
-#> 
-#> $hcc_details
-#> character(0)
-#> 
-#> $cc_to_dx
-#> character(0)
-#> 
-#> $coefficients
-#> numeric(0)
-#> 
-#> $interactions
-#> character(0)
-#> 
-#> $demographics
-#> character(0)
-#> 
-#> $model_name
-#> character(0)
-#> 
-#> $version
-#> character(0)
-#> 
-#> $diagnosis_codes
-#> character(0)
-#> 
-#> $service_level_dat
-#> character(0)
-#> 
+#> <hcc::RAFResult>
+#>  @ risk_score             : num(0) 
+#>  @ risk_score_demographics: num(0) 
+#>  @ risk_score_chronic_only: num(0) 
+#>  @ risk_score_hcc         : num(0) 
+#>  @ risk_score_payment     : num(0) 
+#>  @ hcc_list               : chr(0) 
+#>  @ hcc_details            : chr(0) 
+#>  @ cc_to_dx               : chr(0) 
+#>  @ coefficients           : num(0) 
+#>  @ interactions           : chr(0) 
+#>  @ demographics           : chr(0) 
+#>  @ model_name             : chr(0) 
+#>  @ version                : chr(0) 
+#>  @ diagnosis_codes        : chr(0) 
+#>  @ service_level_data     : list()
 ```

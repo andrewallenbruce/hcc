@@ -6,7 +6,7 @@ HCC Category Detail
 
 ``` r
 HCCDetail(
-  hcc = character(0),
+  hcc = integer(0),
   label = character(0),
   is_chronic = logical(0),
   coefficient = numeric(0)
@@ -17,7 +17,7 @@ HCCDetail(
 
 - hcc:
 
-  `<chr>` HCC code (e.g., "18", "85")
+  `<int>` HCC code (e.g., 18, 85)
 
 - label:
 
@@ -40,15 +40,15 @@ An `<HCCDetail>` S7 object
 ## Examples
 
 ``` r
-HCCDetail(
- hcc = "80",
+HCCDetail( # HCC203
+ hcc = 203L,
  label = "Coma, Brain Compression/Anoxic Damage",
- is_chronic = FALSE,
+ is_chronic = TRUE,
  coefficient = 0.486
 )
 #> <hcc::HCCDetail>
-#>  @ hcc        : chr "80"
+#>  @ hcc        : int 203
 #>  @ label      : chr "Coma, Brain Compression/Anoxic Damage"
-#>  @ is_chronic : logi FALSE
+#>  @ is_chronic : logi TRUE
 #>  @ coefficient: num 0.486
 ```

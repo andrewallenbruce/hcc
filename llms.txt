@@ -31,8 +31,12 @@ pak::pak("andrewallenbruce/hcc")
   : X12-820 Transaction Remittance Data
 - [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
   : Per-Member Payment Record from an X12-820 ENT Loop
+- [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
+  : Risk adjustment calculation results
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
   : A single remittance line item within a member's payment record.
+- [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
+  : Healthcare Claim Service Level Data
 - [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
   : Is any HCC present?
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)

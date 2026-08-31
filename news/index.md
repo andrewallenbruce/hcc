@@ -1,5 +1,15 @@
 # Changelog
 
+## hcc 0.0.0.9031 (2026-08-31)
+
+- more S7 classes
+- more interaction tests
+- added more ESRD interactions tests
+- added ESRD-specific
+  [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
+  tests
+- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
+
 ## hcc 0.0.0.9030 (2026-08-30)
 
 - [`coefficient_prefix()`](https://andrewallenbruce.github.io/hcc/reference/coefficient_prefix.md) +

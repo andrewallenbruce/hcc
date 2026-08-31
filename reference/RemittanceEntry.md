@@ -7,17 +7,17 @@ REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
 
 ``` r
 RemittanceEntry(
-  reference_number = character(),
-  payment_amount = double(),
-  original_amount = double(),
-  rate_code = character(),
-  aid_code = character(),
-  plan_type = character(),
-  description = character(),
-  coverage_period_start = character(),
-  coverage_period_end = character(),
-  adjustment_amount = double(),
-  adjustment_reason = character()
+  reference_number = character(0),
+  payment_amount = numeric(0),
+  original_amount = numeric(0),
+  rate_code = character(0),
+  aid_code = character(0),
+  plan_type = character(0),
+  description = character(0),
+  coverage_period_start = character(0),
+  coverage_period_end = character(0),
+  adjustment_amount = numeric(0),
+  adjustment_reason = character(0)
 )
 ```
 
@@ -77,7 +77,17 @@ A `<RemittanceEntry>` S7 object
 ## Examples
 
 ``` r
-if (FALSE) {
 RemittanceEntry()
-}
+#> <hcc::RemittanceEntry>
+#>  @ reference_number     : chr(0) 
+#>  @ payment_amount       : num(0) 
+#>  @ original_amount      : num(0) 
+#>  @ rate_code            : chr(0) 
+#>  @ aid_code             : chr(0) 
+#>  @ plan_type            : chr(0) 
+#>  @ description          : chr(0) 
+#>  @ coverage_period_start: chr(0) 
+#>  @ coverage_period_end  : chr(0) 
+#>  @ adjustment_amount    : num(0) 
+#>  @ adjustment_reason    : chr(0) 
 ```

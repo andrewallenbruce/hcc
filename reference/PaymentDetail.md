@@ -8,12 +8,12 @@ adjustments for prior periods).
 
 ``` r
 PaymentDetail(
-  entity_number = character(),
-  member_id = character(),
-  last_name = character(),
-  first_name = character(),
-  middle_name = character(),
-  remittance_entries = character()
+  entity_number = character(0),
+  member_id = character(0),
+  last_name = character(0),
+  first_name = character(0),
+  middle_name = character(0),
+  remittance_entries = RemittanceEntry()
 )
 ```
 
@@ -50,7 +50,23 @@ A `<PaymentDetail>` S7 object
 ## Examples
 
 ``` r
-if (FALSE) {
 PaymentDetail()
-}
+#> <hcc::PaymentDetail>
+#>  @ entity_number     : chr(0) 
+#>  @ member_id         : chr(0) 
+#>  @ last_name         : chr(0) 
+#>  @ first_name        : chr(0) 
+#>  @ middle_name       : chr(0) 
+#>  @ remittance_entries: <hcc::RemittanceEntry>
+#>  .. @ reference_number     : chr(0) 
+#>  .. @ payment_amount       : num(0) 
+#>  .. @ original_amount      : num(0) 
+#>  .. @ rate_code            : chr(0) 
+#>  .. @ aid_code             : chr(0) 
+#>  .. @ plan_type            : chr(0) 
+#>  .. @ description          : chr(0) 
+#>  .. @ coverage_period_start: chr(0) 
+#>  .. @ coverage_period_end  : chr(0) 
+#>  .. @ adjustment_amount    : num(0) 
+#>  .. @ adjustment_reason    : chr(0) 
 ```

@@ -7,11 +7,11 @@ Single Edit Rule
 ``` r
 EditRule(
   edit_type = character(0),
-  sex = character(0),
+  sex = integer(0),
   age_min = integer(0),
   age_max = integer(0),
   action = character(0),
-  cc_override = character(0)
+  cc_override = integer(0)
 )
 ```
 
@@ -39,7 +39,7 @@ EditRule(
 
 - cc_override:
 
-  `<chr>` CC to assign when action is "override"
+  `<int>` CC to assign when action is "override"
 
 ## Value
 
@@ -49,15 +49,18 @@ An `<EditRule>` S7 object
 
 ``` r
 EditRule(
- edit_type = "age",
- age_min = 15L,
- age_max = 65L
- )
+  edit_type = "age",
+  sex = 2L,
+  action = "invalid",
+  age_max = 16L,
+  age_min = 15L,
+  cc_override = 13L
+)
 #> <hcc::EditRule>
 #>  @ edit_type  : chr "age"
-#>  @ sex        : chr(0) 
+#>  @ sex        : int 2
 #>  @ age_min    : int 15
-#>  @ age_max    : int 65
-#>  @ action     : chr(0) 
-#>  @ cc_override: chr(0) 
+#>  @ age_max    : int 16
+#>  @ action     : chr "invalid"
+#>  @ cc_override: int 13
 ```
