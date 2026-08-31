@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9031 (2026-08-31)
+
+* more S7 classes
+* more interaction tests
+* added more ESRD interactions tests
+* added ESRD-specific `interactions()` tests
+* `apply_coefficients()`
+
+
 # hcc 0.0.0.9030 (2026-08-30)
 
 * `coefficient_prefix()` + tests
