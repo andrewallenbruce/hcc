@@ -149,7 +149,7 @@ apply_coefficients <- function(
   demographics,
   interactions,
   coefficients,
-  model = "CMS-HCC Model V28",
+  model,
   hcc = NULL,
   prefix_override = NULL
 ) {
@@ -161,31 +161,21 @@ apply_coefficients <- function(
     coefficient_prefix(demographics, model)
   }
 
-  output <- list()
-
   demo_key <- cheapr::c_(
     prefix = cheapr::paste_(prefix, demographics@category),
     model = model
   )
 
-  model_domain <- cheapr::case(
-    perl0(model, "RxHCC") ~ "RxHCC",
-    perl0(model, "CMS-HCC") ~ "CMS-HCC",
-    perl0(model, "ESRD") ~ "ESRD",
-    .default = NULL
-  )
-
-  coefficients <- get_coefficient(
+  coef <- get_coefficient(
     coefficient = demo_key[["prefix"]],
-    domain = model_domain
+    model = demo_key[["model"]],
+    year = 2025
   )
 
-  if (!rlang::is_empty(coefficients)) {
-    output$category <- cheapr::paste_(
-      coefficients$coefficient,
-      "_",
-      coefficients$model_version
-    )
+  output <- list()
+
+  if (!rlang::is_empty(coef)) {
+    output$category <- coef$coefficient
   }
 
   key <- if (perl0(model, "RxHCC")) {
@@ -201,18 +191,14 @@ apply_coefficients <- function(
   }
 
   values <- get_coefficient(
-    coefficient = key$hcc,
-    domain = model_domain
+    coefficient = output$category,
+    model = key$model
   )
 
   if (!rlang::is_empty(values)) {
     output$hcc <- rlang::set_names(
       as.list(values$value),
-      cheapr::paste_(
-        values$coefficient,
-        "_",
-        values$model_version
-      )
+      values$coefficient
     )
   }
   return(output)
@@ -221,17 +207,29 @@ apply_coefficients <- function(
 #' @noRd
 get_coefficient <- function(
   coefficient,
-  domain,
-  # version,
-  year = 2025L
+  model,
+  year = 2026L
 ) {
-  rlang::check_number_whole(year, min = 2025, max = 2026)
+  rlang::check_number_whole(
+    year,
+    min = 2025,
+    max = 2026
+  )
 
-  domain <- rlang::arg_match0(domain, c("CMS-HCC", "ESRD", "RxHCC"))
-  # version <- rlang::arg_match0(
-  #   version,
-  #   c("C21", "C22", "C23", "C24", "C28", "D21", "D24", "R05", "R08")
-  # )
+  model <- rlang::arg_match0(
+    model,
+    c(
+      "CMS-HCC Model V24",
+      "CMS-HCC ESRD Model V21",
+      "CMS-HCC ESRD Model V24",
+      "CMS-HCC Model V22",
+      "CMS-HCC Model V28",
+      "RxHCC Model V05",
+      "RxHCC Model V08",
+      "CMS-HCC Model V21",
+      "CMS-HCC Model V23"
+    )
+  )
 
   # year
   x <- cheapr::sset(
@@ -240,8 +238,7 @@ get_coefficient <- function(
   )
 
   # model
-  x <- cheapr::sset(x, cheapr::which_(domain == x$model_domain))
-  # x <- cheapr::sset(x, cheapr::which_(version == x$model_version))
+  x <- cheapr::sset(x, cheapr::which_(model == x$model_name))
 
   # coefficient
   cheapr::sset(
