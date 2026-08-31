@@ -11,7 +11,7 @@ apply_coefficients(
   demographics,
   interactions,
   coefficients,
-  model = "CMS-HCC Model V28",
+  model,
   hcc = NULL,
   prefix_override = NULL
 )
