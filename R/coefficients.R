@@ -153,7 +153,7 @@ apply_coefficients <- function(
   hcc = NULL,
   prefix_override = NULL
 ) {
-  rlang::arg_match0(model, MODEL)
+  model <- rlang::arg_match0(model, MODEL)
 
   prefix <- if (!is.null(prefix_override)) {
     prefix_override
@@ -230,7 +230,7 @@ get_coefficient <- function(
   domain <- rlang::arg_match0(domain, c("CMS-HCC", "ESRD", "RxHCC"))
   # version <- rlang::arg_match0(
   #   version,
-  #   c("C24", "D21", "D24", "C22", "C28", "R08", "C21", "C23", "R05")
+  #   c("C21", "C22", "C23", "C24", "C28", "D21", "D24", "R05", "R08")
   # )
 
   # year
