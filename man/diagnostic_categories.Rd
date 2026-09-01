@@ -12,11 +12,11 @@ diagnostic_categories(model, hcc)
 \item{hcc}{\verb{<int>} hcc}
 }
 \value{
-a list of interactions
+\verb{<DiagnosticCategories>} S7 object
 }
 \description{
 Model-Based Disease Categories
 }
 \examples{
-diagnostic_categories("CMS-HCC Model V24", c(17:19, 85L))
+diagnostic_categories(model = "CMS-HCC Model V24", hcc = c(17:19, 85L))
 }

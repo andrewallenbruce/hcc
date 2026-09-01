@@ -40,9 +40,9 @@ test_that("hcc_count works", {
 
 test_that("diagnostic_categories works", {
   x = diagnostic_categories("CMS-HCC Model V24", c(17:19, 85L))
-  expect_equal(x$DIABETES, 1)
-  expect_equal(x$CHF, 1)
-  expect_equal(x$CANCER, 0)
+  expect_equal(x@categories$DIABETES, 1)
+  expect_equal(x@categories$CHF, 1)
+  expect_equal(x@categories$CANCER, 0)
 })
 
 test_that("disease_interactions works", {

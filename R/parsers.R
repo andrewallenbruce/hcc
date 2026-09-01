@@ -9,15 +9,39 @@ unlist_df <- function(x) {
 }
 
 #' @noRd
+nzchar_na <- function(x) {
+  x[!nzchar(x)] <- NA_character_
+  x
+}
+
+#' @noRd
+pad_names <- function(x, replace_na = FALSE) {
+  x <- if (replace_na) nzchar_na(x) else x
+  N = as.character(seq_along(x))
+  i = cheapr::which_(nchar(N) == 1L)
+  N[i] = cheapr::paste_("0", N[i])
+  rlang::set_names(as.list(x), N)
+}
+
+#' @noRd
 split_tilde <- function(x) {
   strsplit(x, "~", fixed = TRUE)[[1]]
 }
 
 #' @noRd
 split_isa <- function(x) {
-  x = strsplit(x, " ", fixed = TRUE)[[1]]
-  x = unlist_(strsplit(x[nzchar(x)], "*", fixed = TRUE))[c(-1, -8, -11)]
+  x <- strsplit(x, " ", fixed = TRUE)[[1]]
+  x <- unlist_(strsplit(x[nzchar(x)], "*", fixed = TRUE))[c(-1, -8, -11)]
   pad_names(x, replace_na = TRUE)
+}
+
+#' @noRd
+split_isa2 <- function(x) {
+  # if (grepl("ISA", x[1], fixed = TRUE)) x = x[-1]
+  strsplit(x, "*", fixed = TRUE)[[1]][-1] |>
+    trimws() |>
+    nzchar_na() |>
+    pad_names()
 }
 
 #' @noRd
@@ -29,18 +53,6 @@ split_star <- function(x, pad = TRUE, replace_na = FALSE) {
     strsplit(x, "*", fixed = TRUE)[[1]][-1],
     replace_na = replace_na
   )
-}
-
-#' @noRd
-pad_names <- function(x, replace_na = FALSE) {
-  if (replace_na) {
-    x[!nzchar(x)] <- NA_character_
-  }
-
-  N = as.character(seq_along(x))
-  i = cheapr::which_(nchar(N) == 1L)
-  N[i] = cheapr::paste_("0", N[i])
-  rlang::set_names(as.list(x), N)
 }
 
 #' @noRd
@@ -220,16 +232,17 @@ parse_837 <- function(text) {
   x <- split_tilde(text)
 
   header <- list(
-    ISA = split_isa(x[perl(x, "^ISA")]),
+    ISA = split_isa2(x[perl(x, "^ISA")]),
     GS = split_star(x[perl(x, "^GS")]),
     ST = split_star(x[perl(x, "^ST")]),
     BHT = split_star(x[perl(x, "^BHT")], replace_na = TRUE)
   ) |>
     unlist_df()
+  return(header)
 
-  list(
-    `NM1*41` = split_star(x[perl(x, "^NM1\\*41")]),
-    PER = split_star(x[perl(x, "^PER")], replace_na = TRUE),
-    `NM1*40` = split_star(x[perl(x, "^NM1\\*40")])
-  )
+  # list(
+  #   `NM1*41` = split_star(x[perl(x, "^NM1\\*41")]),
+  #   PER = split_star(x[perl(x, "^PER")], replace_na = TRUE),
+  #   `NM1*40` = split_star(x[perl(x, "^NM1\\*40")])
+  # )
 }
