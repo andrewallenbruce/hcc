@@ -22,45 +22,50 @@ ServiceLevelData(
   quantity = integer(0),
   quantity_unit = character(0),
   modifiers = character(0),
-  allowed_amount = integer(0)
+  allowed_amount = numeric(0)
 )
 }
 \arguments{
-\item{claim_id}{Unique identifier for the claim}
+\item{claim_id}{\verb{<chr>} Unique identifier for the claim}
 
-\item{procedure_code}{Healthcare Common Procedure Coding System (HCPCS) code}
+\item{procedure_code}{\verb{<chr>} HCPCS code}
 
-\item{ndc}{National Drug Code}
+\item{ndc}{\verb{<chr>} National Drug Code}
 
-\item{linked_diagnosis_codes}{ICD-10 diagnosis codes linked to this service}
+\item{linked_diagnosis_codes}{\verb{<chr>} ICD-10 diagnosis codes linked to this
+service}
 
-\item{claim_diagnosis_codes}{All diagnosis codes on the claim}
+\item{claim_diagnosis_codes}{\verb{<chr>} All diagnosis codes on the claim}
 
-\item{claim_type}{Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)}
+\item{claim_type}{\verb{<chr>} Type of claim (e.g., NCH Claim Type Code, or 837I,
+837P)}
 
-\item{provider_specialty}{Provider taxonomy or specialty code}
+\item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
 
-\item{performing_provider_npi}{National Provider Identifier for performing provider}
+\item{performing_provider_npi}{\verb{<int>} National Provider Identifier for
+performing provider}
 
-\item{billing_provider_npi}{National Provider Identifier for billing provider}
+\item{billing_provider_npi}{\verb{<int>} National Provider Identifier for billing
+provider}
 
-\item{patient_id}{Unique identifier for the patient}
+\item{patient_id}{\verb{<chr>} Unique identifier for the patient}
 
-\item{facility_type}{Type of facility where service was rendered}
+\item{facility_type}{\verb{<chr>} Type of facility where service was rendered}
 
-\item{service_type}{Type of service provided (facility type + service type = Type of Bill)}
+\item{service_type}{\verb{<chr>} Type of service provided (facility type + service
+type = Type of Bill)}
 
-\item{service_date}{Date service was performed (YYYY-MM-DD)}
+\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
 
-\item{place_of_service}{Place of service code}
+\item{place_of_service}{\verb{<chr>} Place of service code}
 
-\item{quantity}{Number of units provided}
+\item{quantity}{\verb{<int>} Number of units provided}
 
-\item{quantity_unit}{Unit of measure for quantity}
+\item{quantity_unit}{\verb{<chr>} Unit of measure for quantity}
 
-\item{modifiers}{List of procedure code modifiers}
+\item{modifiers}{\verb{<chr>} List of procedure code modifiers}
 
-\item{allowed_amount}{Allowed amount for the service}
+\item{allowed_amount}{\verb{<dbl>} Allowed amount for the service}
 }
 \value{
 A \verb{<ServiceLevelData>} S7 object

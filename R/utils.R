@@ -45,3 +45,35 @@ normalize_ <- function(x) {
 in_between <- function(x, min, max) {
   (x - min) * (max - x) >= 0L
 }
+
+#' Is any HCC present?
+#'
+#' @param needles `<int>` hcc(s) being searched for
+#' @param haystack `<int>` hcc(s) being searched in
+#' @returns `<int>` scalar, `1` (True), `0` (False)
+#' @examples
+#' any_hcc(17:19, 18:21)
+#' any_hcc(17:19, 20:22)
+#' @export
+any_hcc <- function(needles, haystack) {
+  as.integer(any_(needles %in_% haystack))
+}
+
+#' Creates HCC count variables
+#'
+#' @param hcc hcc
+#' @returns a named `<int>` vector of counts
+#' @examples
+#' hcc_count(17:19)
+#' hcc_count(c(17:19, 85L))
+#' @export
+hcc_count <- function(hcc) {
+  L <- length(hcc)
+  rlang::check_number_whole(L, min = 1)
+  if (L <= 9L) {
+    return(cheapr::paste_("D", L))
+  }
+  if (L >= 10L) {
+    return("D10P")
+  }
+}

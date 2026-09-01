@@ -14,25 +14,26 @@ PaymentDetail(
 )
 }
 \arguments{
-\item{entity_number}{\code{ENT-01} ENT sequence number}
+\item{entity_number}{\verb{<chr>} \code{ENT-01} ENT sequence number}
 
-\item{member_id}{\code{NM1-09} Member identifier}
+\item{member_id}{\verb{<chr>} \code{NM1-09} Member identifier}
 
-\item{last_name}{\code{NM1-03} Member last name}
+\item{last_name}{\verb{<chr>} \code{NM1-03} Member last name}
 
-\item{first_name}{\code{NM1-04} Member first name}
+\item{first_name}{\verb{<chr>} \code{NM1-04} Member first name}
 
-\item{middle_name}{\code{NM1-05} Member middle name}
+\item{middle_name}{\verb{<chr>} \code{NM1-05} Member middle name}
 
-\item{remittance_entries}{List of \verb{<RemittanceEntry>} line items (one per RMR/DTM set)}
+\item{remittance_entries}{List of \verb{<RemittanceEntry>} line items (one per
+RMR/DTM set)}
 }
 \value{
 A \verb{<PaymentDetail>} S7 object
 }
 \description{
-One PaymentDetail is created per ENT segment. A member may appear in multiple
-ENT entries within the same transaction (e.g., retroactive adjustments for
-prior periods).
+One PaymentDetail is created per ENT segment. A member may
+appear in multiple ENT entries within the same transaction
+(e.g., retroactive adjustments for prior periods).
 }
 \examples{
 PaymentDetail()

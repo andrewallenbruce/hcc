@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa-classes.R
 \name{RemittanceEntry}
 \alias{RemittanceEntry}
-\title{A single remittance line item within a member's payment record.}
+\title{Remittance Line Item}
 \usage{
 RemittanceEntry(
   reference_number = character(0),
@@ -19,33 +19,49 @@ RemittanceEntry(
 )
 }
 \arguments{
-\item{reference_number}{\code{RMR-02} Invoice/check reference number}
+\item{reference_number}{\verb{<chr>} \code{RMR-02} Invoice/check reference number}
 
-\item{payment_amount}{\code{RMR-04/RMR-05} Net payment amount for this period; negative = recoupment}
+\item{payment_amount}{\verb{<chr>} \code{RMR-04/RMR-05} Net payment amount for this
+period; negative = recoupment}
 
-\item{original_amount}{\code{RMR-05/RMR-06} Original amount before adjustment, when present}
+\item{original_amount}{\verb{<chr>} \code{RMR-05/RMR-06} Original amount before
+adjustment (when present)}
 
-\item{rate_code}{\code{REF*18} Rate code (e.g., "957" = PACE rate)}
+\item{rate_code}{\verb{<chr>} \code{REF*18} Rate code (e.g., "957" = PACE rate)}
 
-\item{aid_code}{\code{REF*ZZ} California Medi-Cal aid code (e.g., "1H", "M1", "60")}
+\item{aid_code}{\verb{<chr>} \code{REF*ZZ} California Medi-Cal aid code (e.g., "1H",
+"M1", "60")}
 
-\item{plan_type}{\code{REF*ZZ} Plan type - composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)}
+\item{plan_type}{\verb{<chr>} \code{REF*ZZ} Plan type; Composite aid_code;plan_type
+\itemize{
+\item "1": primary/medical
+\item "2" = pharmacy/state-only
+}}
 
-\item{description}{\code{REF*ZZ} Payment description (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")}
+\item{description}{\verb{<chr>} \code{REF*ZZ} Payment description (e.g., "Primary
+Capitation Dual", "Medi-Cal Only-State Only")}
 
-\item{coverage_period_start}{\code{DTM*582} Coverage period begin date (YYYY-MM-DD)}
+\item{coverage_period_start}{\verb{<Date>} \code{DTM*582} Coverage period begin date
+(YYYY-MM-DD)}
 
-\item{coverage_period_end}{\code{DTM*582} Coverage period end date (YYYY-MM-DD) from DTM*582}
+\item{coverage_period_end}{\verb{<Date>} \code{DTM*582} Coverage period end date
+(YYYY-MM-DD) from DTM*582}
 
-\item{adjustment_amount}{\code{ADX-01} Adjustment amount (negative = recoupment)}
+\item{adjustment_amount}{\verb{<chr>} \code{ADX-01} Adjustment amount; If negative, it
+is a recoupment}
 
-\item{adjustment_reason}{\code{ADX-02} Adjustment reason code (e.g., "53" = prior period)}
+\item{adjustment_reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" =
+prior period)}
 }
 \value{
 A \verb{<RemittanceEntry>} S7 object
 }
 \description{
-Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
+A single remittance line item within a member's payment record.
+}
+\details{
+Each RemittanceEntry corresponds to one RMR segment and its associated REF,
+DTM, and ADX segments within an ENT loop of an 820 transaction.
 }
 \examples{
 RemittanceEntry()

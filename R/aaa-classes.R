@@ -3,9 +3,9 @@
 #' @param edit_type `<chr>` "sex" or "age"
 #' @param sex `<int>` For sex edits: 1 (male) or 2 (female)
 #' @param age_min `<int>` For age edits: minimum age (inclusive)
-#' @param age_max `<int>` For age edits: minimum age (inclusive)
+#' @param age_max `<int>` For age edits: maximum age (inclusive)
 #' @param action `<chr>` "invalid" or "override"
-#' @param cc_override `<int>` CC to assign when action is "override"
+#' @param cc_override `<int>` CC to assign when `action = "override"`
 #' @returns An `<EditRule>` S7 object
 #' @examples
 #' EditRule(
@@ -109,8 +109,8 @@ HCCDetail <- S7::new_class(
 
 #' Health Care Plan coverage period from HD loop
 #'
-#' @param start_date `<date>` coverage start date
-#' @param end_date `<date>` coverage start date
+#' @param start_date `<Date>` coverage start date
+#' @param end_date `<Date>` coverage start date
 #' @param hcp_code `<chr>` HCP code
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
@@ -144,8 +144,10 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param new_enrollee `<lgl>` Beneficiary is a **New Enrollee**
 #' @param has_snp `<lgl>` Beneficiary is in a **Special Needs Plan**
 #' @param non_aged `<lgl>` `TRUE` if `age <= 64`
-#' @param dis_orig `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not currently disabled
-#' @param dis_curr `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC != "0"`)
+#' @param dis_orig `<lgl>` `TRUE` if originally disabled (`OREC == "1"`) and not
+#'   currently disabled
+#' @param dis_curr `<lgl>` `TRUE` if currently disabled (`age < 65 & OREC !=
+#'   "0"`)
 #' @param dual_full `<lgl>` `TRUE` if FBD *(FBD Model)*
 #' @param dual_part `<lgl>` `TRUE` if PBD *(PBD Model)*
 #' @param has_esrd `<lgl>` `TRUE` if ESRD *(ESRD Model)*
@@ -185,24 +187,29 @@ PatientDemographics <- S7::new_class(
 
 #' Healthcare Claim Service Level Data
 #'
-#' @param claim_id Unique identifier for the claim
-#' @param procedure_code Healthcare Common Procedure Coding System (HCPCS) code
-#' @param ndc National Drug Code
-#' @param linked_diagnosis_codes ICD-10 diagnosis codes linked to this service
-#' @param claim_diagnosis_codes All diagnosis codes on the claim
-#' @param claim_type Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
-#' @param provider_specialty Provider taxonomy or specialty code
-#' @param performing_provider_npi National Provider Identifier for performing provider
-#' @param billing_provider_npi National Provider Identifier for billing provider
-#' @param patient_id Unique identifier for the patient
-#' @param facility_type Type of facility where service was rendered
-#' @param service_type Type of service provided (facility type + service type = Type of Bill)
-#' @param service_date Date service was performed (YYYY-MM-DD)
-#' @param place_of_service Place of service code
-#' @param quantity Number of units provided
-#' @param quantity_unit Unit of measure for quantity
-#' @param modifiers List of procedure code modifiers
-#' @param allowed_amount Allowed amount for the service
+#' @param claim_id `<chr>` Unique identifier for the claim
+#' @param procedure_code `<chr>` HCPCS code
+#' @param ndc `<chr>` National Drug Code
+#' @param linked_diagnosis_codes `<chr>` ICD-10 diagnosis codes linked to this
+#'   service
+#' @param claim_diagnosis_codes `<chr>` All diagnosis codes on the claim
+#' @param claim_type `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I,
+#'   837P)
+#' @param provider_specialty `<chr>` Provider taxonomy or specialty code
+#' @param performing_provider_npi `<int>` National Provider Identifier for
+#'   performing provider
+#' @param billing_provider_npi `<int>` National Provider Identifier for billing
+#'   provider
+#' @param patient_id `<chr>` Unique identifier for the patient
+#' @param facility_type `<chr>` Type of facility where service was rendered
+#' @param service_type `<chr>` Type of service provided (facility type + service
+#'   type = Type of Bill)
+#' @param service_date `<Date>` Date service was performed (YYYY-MM-DD)
+#' @param place_of_service `<chr>` Place of service code
+#' @param quantity `<int>` Number of units provided
+#' @param quantity_unit `<chr>` Unit of measure for quantity
+#' @param modifiers `<chr>` List of procedure code modifiers
+#' @param allowed_amount `<dbl>` Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
 #' @examples
 #' ServiceLevelData()
@@ -227,27 +234,30 @@ ServiceLevelData <- S7::new_class(
     quantity = S7::class_integer,
     quantity_unit = S7::class_character,
     modifiers = S7::class_character,
-    allowed_amount = S7::class_numeric
+    allowed_amount = S7::class_double
   )
 )
 
-#' Risk adjustment calculation results
+#' Risk Adjustment Factor score results
 #'
-#' @param risk_score Final RAF score
-#' @param risk_score_demographics Demographics-only risk score
-#' @param risk_score_chronic_only Chronic conditions risk score
-#' @param risk_score_hcc HCC conditions risk score
-#' @param risk_score_payment Payment RAF score (adjusted for MACI, normalization, and frailty)
-#' @param hcc_list List of active HCC categories
-#' @param hcc_details Detailed HCC information with labels and chronic status
+#' @param risk_score `<dbl>` Final RAF score
+#' @param risk_score_demographics `<dbl>` Demographics-only risk score
+#' @param risk_score_chronic_only `<dbl>` Chronic conditions risk score
+#' @param risk_score_hcc `<dbl>` HCC conditions risk score
+#' @param risk_score_payment `<dbl>` Payment RAF score, adjusted for MACI,
+#'   normalization, and frailty
+#' @param hcc_list `<chr>` List of active HCC categories
+#' @param hcc_details `<chr>` Detailed HCC information with labels and chronic
+#'   status
 #' @param cc_to_dx Condition categories mapped to diagnosis codes
 #' @param coefficients Applied model coefficients
 #' @param interactions Disease interaction coefficients
 #' @param demographics Patient demographics used in calculation
-#' @param model_name HCC model used for calculation
-#' @param version Library version
-#' @param diagnosis_codes Input diagnosis codes
-#' @param service_level_data Processed service records
+#' @param model_name `<chr>` HCC model used for calculation
+#' @param version `<chr>` Library version
+#' @param diagnosis_codes `<chr>` Input diagnosis codes
+#' @param service_level_data `<ServiceLevelData>` S7 object; Processed service
+#'   records
 #' @returns A `<RAFResult>` S7 object
 #' @examples
 #' RAFResult()
@@ -269,25 +279,39 @@ RAFResult <- S7::new_class(
     model_name = S7::class_character,
     version = S7::class_character,
     diagnosis_codes = S7::class_character,
-    service_level_data = S7::class_list
+    service_level_data = ServiceLevelData
   )
 )
 
+#' Remittance Line Item
+#'
 #' A single remittance line item within a member's payment record.
 #'
-#' Each RemittanceEntry corresponds to one RMR segment and its associated REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
+#' @details
+#' Each RemittanceEntry corresponds to one RMR segment and its associated REF,
+#' DTM, and ADX segments within an ENT loop of an 820 transaction.
 #'
-#' @param reference_number `RMR-02` Invoice/check reference number
-#' @param payment_amount `RMR-04/RMR-05` Net payment amount for this period; negative = recoupment
-#' @param original_amount `RMR-05/RMR-06` Original amount before adjustment, when present
-#' @param rate_code `REF*18` Rate code (e.g., "957" = PACE rate)
-#' @param aid_code `REF*ZZ` California Medi-Cal aid code (e.g., "1H", "M1", "60")
-#' @param plan_type `REF*ZZ` Plan type - composite aid_code;plan_type ("1" = primary/medical, "2" = pharmacy/state-only)
-#' @param description `REF*ZZ` Payment description (e.g., "Primary Capitation Dual", "Medi-Cal Only-State Only")
-#' @param coverage_period_start `DTM*582` Coverage period begin date (YYYY-MM-DD)
-#' @param coverage_period_end `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM*582
-#' @param adjustment_amount `ADX-01` Adjustment amount (negative = recoupment)
-#' @param adjustment_reason `ADX-02` Adjustment reason code (e.g., "53" = prior period)
+#' @param reference_number `<chr>` `RMR-02` Invoice/check reference number
+#' @param payment_amount `<chr>` `RMR-04/RMR-05` Net payment amount for this
+#'   period; negative = recoupment
+#' @param original_amount `<chr>` `RMR-05/RMR-06` Original amount before
+#'   adjustment (when present)
+#' @param rate_code `<chr>` `REF*18` Rate code (e.g., "957" = PACE rate)
+#' @param aid_code `<chr>` `REF*ZZ` California Medi-Cal aid code (e.g., "1H",
+#'   "M1", "60")
+#' @param plan_type `<chr>` `REF*ZZ` Plan type; Composite aid_code;plan_type
+#'    - "1": primary/medical
+#'    - "2" = pharmacy/state-only
+#' @param description `<chr>` `REF*ZZ` Payment description (e.g., "Primary
+#'   Capitation Dual", "Medi-Cal Only-State Only")
+#' @param coverage_period_start `<Date>` `DTM*582` Coverage period begin date
+#'   (YYYY-MM-DD)
+#' @param coverage_period_end `<Date>` `DTM*582` Coverage period end date
+#'   (YYYY-MM-DD) from DTM*582
+#' @param adjustment_amount `<chr>` `ADX-01` Adjustment amount; If negative, it
+#'   is a recoupment
+#' @param adjustment_reason `<chr>` `ADX-02` Adjustment reason code ("53" =
+#'   prior period)
 #' @returns A `<RemittanceEntry>` S7 object
 #' @examples
 #' RemittanceEntry()
@@ -311,16 +335,17 @@ RemittanceEntry <- S7::new_class(
 
 #' Per-Member Payment Record from an X12-820 ENT Loop
 #'
-#' One PaymentDetail is created per ENT segment. A member may appear in multiple
-#' ENT entries within the same transaction (e.g., retroactive adjustments for
-#' prior periods).
+#' One PaymentDetail is created per ENT segment. A member may
+#' appear in multiple ENT entries within the same transaction
+#' (e.g., retroactive adjustments for prior periods).
 #'
-#' @param entity_number `ENT-01` ENT sequence number
-#' @param member_id `NM1-09` Member identifier
-#' @param last_name `NM1-03` Member last name
-#' @param first_name `NM1-04` Member first name
-#' @param middle_name `NM1-05` Member middle name
-#' @param remittance_entries List of `<RemittanceEntry>` line items (one per RMR/DTM set)
+#' @param entity_number `<chr>` `ENT-01` ENT sequence number
+#' @param member_id `<chr>` `NM1-09` Member identifier
+#' @param last_name `<chr>` `NM1-03` Member last name
+#' @param first_name `<chr>` `NM1-04` Member first name
+#' @param middle_name `<chr>` `NM1-05` Member middle name
+#' @param remittance_entries List of `<RemittanceEntry>` line items (one per
+#'   RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
 #' @examples
 #' PaymentDetail()
@@ -339,25 +364,26 @@ PaymentDetail <- S7::new_class(
 
 #' X12-820 Transaction Remittance Data
 #'
-#' Represents one ST*820 transaction, typically a capitation payment remittance
-#' from a state Medicaid agency or CMS to a managed care plan.
+#' Represents one ST*820 transaction, typically a capitation
+#' payment remittance from a state Medicaid agency or CMS to
+#' a managed care plan.
 #'
-#' @param source `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
-#' @param report_date `GS-04` Transaction date (YYYY-MM-DD)
-#' @param total_amount `BPR-02` Total payment amount
-#' @param payment_date `BPR-16` EFT effective date (YYYY-MM-DD)
-#' @param check_number `TRN-02` EFT/check trace number
-#' @param payee_name `N1*PE` Receiving organization name
-#' @param payee_address_1 `N3` Payee street address
-#' @param payee_city `N4` Payee city
-#' @param payee_state `N4` Payee state
-#' @param payee_zip `N4` Payee ZIP code
-#' @param payer_name `N1*PR` Paying organization name
-#' @param payer_address_1 `N3` Payer street address
-#' @param payer_city `N4` Payer city
-#' @param payer_state `N4` Payer state
-#' @param payer_zip `N4` Payer ZIP code
-#' @param members List of per-member payment records
+#' @param source `<chr>` `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
+#' @param report_date `<Date>` `GS-04` Transaction date (YYYY-MM-DD)
+#' @param total_amount `<chr>` `BPR-02` Total payment amount
+#' @param payment_date `<Date>` `BPR-16` EFT effective date (YYYY-MM-DD)
+#' @param check_number `<chr>` `TRN-02` EFT/check trace number
+#' @param payee_name `<chr>` `N1*PE` Receiving organization name
+#' @param payee_address_1 `<chr>` `N3` Payee street address
+#' @param payee_city `<chr>` `N4` Payee city
+#' @param payee_state `<chr>` `N4` Payee state
+#' @param payee_zip `<chr>` `N4` Payee ZIP code
+#' @param payer_name `<chr>` `N1*PR` Paying organization name
+#' @param payer_address_1 `<chr>` `N3` Payer street address
+#' @param payer_city `<chr>` `N4` Payer city
+#' @param payer_state `<chr>` `N4` Payer state
+#' @param payer_zip `<chr>` `N4` Payer ZIP code
+#' @param members `<PaymentDetail>` List of per-member payment records
 #' @returns A `<PaymentData>` S7 object
 #' @examplesIf FALSE
 #' PaymentData()
@@ -378,7 +404,7 @@ PaymentData <- function(
   payer_city = character(),
   payer_state = character(),
   payer_zip = character(),
-  members = character()
+  members = PaymentDetail()
 ) {
   list(
     source = source,
@@ -428,7 +454,8 @@ PaymentData <- function(
 #' @param state `N4-02` State code
 #' @param zip `N4-03` Postal code
 #' @param phone `PER-04` Phone number
-#' @param maintenance_type `INS-03` Change (`001`), Add (`021`), Cancel (`024`), Reinstate (`025`)
+#' @param maintenance_type `INS-03` Change (`001`), Add (`021`), Cancel (`024`),
+#'   Reinstate (`025`)
 #' @param maintenance_reason_code `INS-04` Maintenance reason
 #' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
 #' @param coverage_start_date Coverage effective date
@@ -440,7 +467,8 @@ PaymentData <- function(
 #' @param is_partial_benefit_dual Partial Benefit Dual (uses CPA_/CPD_ prefix)
 #' @param medicare_status_code QMB, SLMB, QI, QDWI, etc.
 #' @param medi_cal_aid_code California Medi-Cal aid code
-#' @param medi_cal_eligibility_status Medi-Cal eligibility status (Active/Terminated/None)
+#' @param medi_cal_eligibility_status Medi-Cal eligibility status
+#'   (Active/Terminated/None)
 #' @param fame_county_id FAME county ID (`REF*ZX` or `N4*CY`)
 #' @param case_number Case number (`REF*1L`)
 #' @param fame_card_issue_date FAME card issue date
@@ -464,9 +492,11 @@ PaymentData <- function(
 #' @param medicare_prt_d description
 #' @param hcp_code Current HCP code (`HD-04` first part)
 #' @param hcp_status Current HCP status (`HD-04` second part)
-#' @param amount_qualifier AMT qualifier code (e.g., `D` = premium, `C1` = copay)
+#' @param amount_qualifier AMT qualifier code (e.g., `D` = premium, `C1` =
+#'   copay)
 #' @param amount Premium or cost share amount (numeric)
-#' @param hcp_history List of historical HCP coverage periods
+#' @param hcp_history `<HCPCoveragePeriod>` List of historical HCP coverage
+#'   periods
 #' @returns A `<EnrollmentData>` S7 object
 #' @examplesIf FALSE
 #' EnrollmentData()
@@ -533,7 +563,7 @@ EnrollmentData <- function(
   hcp_status = character(),
   amount_qualifier = character(),
   amount = double(),
-  hcp_history = character()
+  hcp_history = HCPCoveragePeriod()
 ) {
   list(
     source = source,

@@ -20,11 +20,11 @@ EditRule(
 
 \item{age_min}{\verb{<int>} For age edits: minimum age (inclusive)}
 
-\item{age_max}{\verb{<int>} For age edits: minimum age (inclusive)}
+\item{age_max}{\verb{<int>} For age edits: maximum age (inclusive)}
 
 \item{action}{\verb{<chr>} "invalid" or "override"}
 
-\item{cc_override}{\verb{<int>} CC to assign when action is "override"}
+\item{cc_override}{\verb{<int>} CC to assign when \code{action = "override"}}
 }
 \value{
 An \verb{<EditRule>} S7 object

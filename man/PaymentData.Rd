@@ -20,48 +20,49 @@ PaymentData(
   payer_city = character(),
   payer_state = character(),
   payer_zip = character(),
-  members = character()
+  members = PaymentDetail()
 )
 }
 \arguments{
-\item{source}{\code{ISA-06} Interchange sender ID, e.g., "CALIFORNIA-DHCS"}
+\item{source}{\verb{<chr>} \code{ISA-06} Interchange sender ID, e.g., "CALIFORNIA-DHCS"}
 
-\item{report_date}{\code{GS-04} Transaction date (YYYY-MM-DD)}
+\item{report_date}{\verb{<Date>} \code{GS-04} Transaction date (YYYY-MM-DD)}
 
-\item{total_amount}{\code{BPR-02} Total payment amount}
+\item{total_amount}{\verb{<chr>} \code{BPR-02} Total payment amount}
 
-\item{payment_date}{\code{BPR-16} EFT effective date (YYYY-MM-DD)}
+\item{payment_date}{\verb{<Date>} \code{BPR-16} EFT effective date (YYYY-MM-DD)}
 
-\item{check_number}{\code{TRN-02} EFT/check trace number}
+\item{check_number}{\verb{<chr>} \code{TRN-02} EFT/check trace number}
 
-\item{payee_name}{\code{N1*PE} Receiving organization name}
+\item{payee_name}{\verb{<chr>} \code{N1*PE} Receiving organization name}
 
-\item{payee_address_1}{\code{N3} Payee street address}
+\item{payee_address_1}{\verb{<chr>} \code{N3} Payee street address}
 
-\item{payee_city}{\code{N4} Payee city}
+\item{payee_city}{\verb{<chr>} \code{N4} Payee city}
 
-\item{payee_state}{\code{N4} Payee state}
+\item{payee_state}{\verb{<chr>} \code{N4} Payee state}
 
-\item{payee_zip}{\code{N4} Payee ZIP code}
+\item{payee_zip}{\verb{<chr>} \code{N4} Payee ZIP code}
 
-\item{payer_name}{\code{N1*PR} Paying organization name}
+\item{payer_name}{\verb{<chr>} \code{N1*PR} Paying organization name}
 
-\item{payer_address_1}{\code{N3} Payer street address}
+\item{payer_address_1}{\verb{<chr>} \code{N3} Payer street address}
 
-\item{payer_city}{\code{N4} Payer city}
+\item{payer_city}{\verb{<chr>} \code{N4} Payer city}
 
-\item{payer_state}{\code{N4} Payer state}
+\item{payer_state}{\verb{<chr>} \code{N4} Payer state}
 
-\item{payer_zip}{\code{N4} Payer ZIP code}
+\item{payer_zip}{\verb{<chr>} \code{N4} Payer ZIP code}
 
-\item{members}{List of per-member payment records}
+\item{members}{\verb{<PaymentDetail>} List of per-member payment records}
 }
 \value{
 A \verb{<PaymentData>} S7 object
 }
 \description{
-Represents one ST*820 transaction, typically a capitation payment remittance
-from a state Medicaid agency or CMS to a managed care plan.
+Represents one ST*820 transaction, typically a capitation
+payment remittance from a state Medicaid agency or CMS to
+a managed care plan.
 }
 \examples{
 \dontshow{if (FALSE) withAutoprint(\{ # examplesIf}

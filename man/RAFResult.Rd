@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa-classes.R
 \name{RAFResult}
 \alias{RAFResult}
-\title{Risk adjustment calculation results}
+\title{Risk Adjustment Factor score results}
 \usage{
 RAFResult(
   risk_score = numeric(0),
@@ -19,23 +19,25 @@ RAFResult(
   model_name = character(0),
   version = character(0),
   diagnosis_codes = character(0),
-  service_level_data = list()
+  service_level_data = ServiceLevelData()
 )
 }
 \arguments{
-\item{risk_score}{Final RAF score}
+\item{risk_score}{\verb{<dbl>} Final RAF score}
 
-\item{risk_score_demographics}{Demographics-only risk score}
+\item{risk_score_demographics}{\verb{<dbl>} Demographics-only risk score}
 
-\item{risk_score_chronic_only}{Chronic conditions risk score}
+\item{risk_score_chronic_only}{\verb{<dbl>} Chronic conditions risk score}
 
-\item{risk_score_hcc}{HCC conditions risk score}
+\item{risk_score_hcc}{\verb{<dbl>} HCC conditions risk score}
 
-\item{risk_score_payment}{Payment RAF score (adjusted for MACI, normalization, and frailty)}
+\item{risk_score_payment}{\verb{<dbl>} Payment RAF score, adjusted for MACI,
+normalization, and frailty}
 
-\item{hcc_list}{List of active HCC categories}
+\item{hcc_list}{\verb{<chr>} List of active HCC categories}
 
-\item{hcc_details}{Detailed HCC information with labels and chronic status}
+\item{hcc_details}{\verb{<chr>} Detailed HCC information with labels and chronic
+status}
 
 \item{cc_to_dx}{Condition categories mapped to diagnosis codes}
 
@@ -45,19 +47,20 @@ RAFResult(
 
 \item{demographics}{Patient demographics used in calculation}
 
-\item{model_name}{HCC model used for calculation}
+\item{model_name}{\verb{<chr>} HCC model used for calculation}
 
-\item{version}{Library version}
+\item{version}{\verb{<chr>} Library version}
 
-\item{diagnosis_codes}{Input diagnosis codes}
+\item{diagnosis_codes}{\verb{<chr>} Input diagnosis codes}
 
-\item{service_level_data}{Processed service records}
+\item{service_level_data}{\verb{<ServiceLevelData>} S7 object; Processed service
+records}
 }
 \value{
 A \verb{<RAFResult>} S7 object
 }
 \description{
-Risk adjustment calculation results
+Risk Adjustment Factor score results
 }
 \examples{
 RAFResult()

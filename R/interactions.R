@@ -1,35 +1,3 @@
-#' Is any HCC present?
-#'
-#' @param needles `<int>` hcc(s) being searched for
-#' @param haystack `<int>` hcc(s) being searched in
-#' @returns `<int>` scalar, `1` (True), `0` (False)
-#' @examples
-#' any_hcc(17:19, 18:21)
-#' any_hcc(17:19, 20:22)
-#' @export
-any_hcc <- function(needles, haystack) {
-  as.integer(any_(needles %in_% haystack))
-}
-
-#' Creates HCC count variables
-#'
-#' @param hcc hcc
-#' @returns a named `<int>` vector of counts
-#' @examples
-#' hcc_count(17:19)
-#' hcc_count(c(17:19, 85L))
-#' @export
-hcc_count <- function(hcc) {
-  L <- length(hcc)
-  rlang::check_number_whole(L, min = 1)
-  if (L <= 9L) {
-    return(cheapr::paste_("D", L))
-  }
-  if (L >= 10L) {
-    return("D10P")
-  }
-}
-
 #' Model-Based Disease Categories
 #'
 #' @param model `<chr>` Model Name
@@ -105,6 +73,35 @@ diagnostic_categories <- function(model, hcc) {
   )
 }
 
+#' CMS-HCC Model V28
+#' Base V28 disease interactions
+#' @noRd
+disease_V28 <- function(
+  diag,
+  demo,
+  hcc
+) {
+  list(
+    DIABETES_HF_V28 = mult_(diag$DIABETES_V28, diag$HF_V28),
+    HF_CHR_LUNG_V28 = mult_(diag$HF_V28, diag$CHR_LUNG_V28),
+    HF_KIDNEY_V28 = mult_(diag$HF_V28, diag$KIDNEY_V28),
+    CHR_LUNG_CARD_RESP_FAIL_V28 = mult_(
+      diag$CHR_LUNG_V28,
+      diag$CARD_RESP_FAIL_V28
+    ),
+    HF_HCC238_V28 = mult_(diag$HF_V28, any_hcc(238L, hcc)),
+    gSubUseDisorder_gPsych_V28 = mult_(
+      diag$gSubUseDisorder_V28,
+      diag$gPsychiatric_V28
+    ),
+    DISABLED_CANCER_V28 = mult_(demo@dis_curr, diag$CANCER_V28),
+    DISABLED_NEURO_V28 = mult_(demo@dis_curr, diag$NEURO_V28),
+    DISABLED_HF_V28 = mult_(demo@dis_curr, diag$HF_V28),
+    DISABLED_CHR_LUNG_V28 = mult_(demo@dis_curr, diag$CHR_LUNG_V28),
+    DISABLED_ULCER_V28 = mult_(demo@dis_curr, diag$ULCER_V28)
+  )
+}
+
 #' Model-Based Disease Interaction Variables
 #'
 #' @param model The HCC model version being used
@@ -136,10 +133,11 @@ disease_interactions <- function(
   demographics = NULL,
   hcc = 0L
 ) {
-  # purrr::imap_any_hcc(d, \(x, i) mult_(d[x]))
-
   if (is.null(demographics)) {
-    demographics <- PatientDemographics(dis_curr = FALSE, non_aged = FALSE)
+    demographics <- PatientDemographics(
+      dis_curr = FALSE,
+      non_aged = FALSE
+    )
   }
 
   d = diagnostics
@@ -169,133 +167,165 @@ disease_interactions <- function(
     ),
     "CMS-HCC Model V24" = list(
       # Base V24/V22 disease interactions
-      HCC47_gCancer = any_hcc(47L, hcc) * d[["CANCER"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      CHF_gCopdCF = d[["CHF"]] * d[["gCopdCF"]],
-      HCC85_gRenal_V24 = d[["CHF"]] * d[["RENAL_V24"]],
-      gCopdCF_CARD_RESP_FAIL = d[["gCopdCF"]] * d[["CARD_RESP_FAIL"]],
-      HCC85_HCC96 = any_hcc(85L, hcc) * any_hcc(96L, hcc),
-      gSubstanceUseDisorder_gPsych = d[["gSubstanceUseDisorder_V24"]] *
-        d[["gPsychiatric_V24"]],
-      SEPSIS_PRESSURE_ULCER = d[["SEPSIS"]] * d[["PRESSURE_ULCER"]],
-      SEPSIS_ARTIF_OPENINGS = d[["SEPSIS"]] * any_hcc(188L, hcc),
-      ART_OPENINGS_PRESS_ULCER = any_hcc(188L, hcc) * d[["PRESSURE_ULCER"]],
-      gCopdCF_ASP_SPEC_B_PNEUM = d[["gCopdCF"]] * any_hcc(114L, hcc),
-      ASP_SPEC_B_PNEUM_PRES_ULC = any_hcc(114L, hcc) * d[["PRESSURE_ULCER"]],
-      SEPSIS_ASP_SPEC_BACT_PNEUM = d[["SEPSIS"]] * any_hcc(114L, hcc),
-      SCHIZOPHRENIA_gCopdCF = any_hcc(57L, hcc) * d[["gCopdCF"]],
-      SCHIZOPHRENIA_CHF = any_hcc(57L, hcc) * d[["CHF"]],
-      SCHIZOPHRENIA_SEIZURES = any_hcc(57L, hcc) * any_hcc(79L, hcc),
-      DISABLED_HCC85 = g@dis_curr * any_hcc(85L, hcc),
-      DISABLED_PRESSURE_ULCER = g@dis_curr * d[["PRESSURE_ULCER"]],
-      DISABLED_HCC161 = g@dis_curr * any_hcc(161L, hcc),
-      DISABLED_HCC39 = g@dis_curr * any_hcc(39L, hcc),
-      DISABLED_HCC77 = g@dis_curr * any_hcc(77L, hcc),
-      DISABLED_HCC6 = g@dis_curr * any_hcc(6L, hcc)
+      HCC47_gCancer = mult_(any_hcc(47L, hcc), d[["CANCER"]]),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      CHF_gCopdCF = mult_(d[["CHF"]], d[["gCopdCF"]]),
+      HCC85_gRenal_V24 = mult_(d[["CHF"]], d[["RENAL_V24"]]),
+      gCopdCF_CARD_RESP_FAIL = mult_(d[["gCopdCF"]], d[["CARD_RESP_FAIL"]]),
+      HCC85_HCC96 = mult_(any_hcc(85L, hcc), any_hcc(96L, hcc)),
+      gSubstanceUseDisorder_gPsych = mult_(
+        d[["gSubstanceUseDisorder_V24"]],
+        d[["gPsychiatric_V24"]]
+      ),
+      SEPSIS_PRESSURE_ULCER = mult_(d[["SEPSIS"]], d[["PRESSURE_ULCER"]]),
+      SEPSIS_ARTIF_OPENINGS = mult_(d[["SEPSIS"]], any_hcc(188L, hcc)),
+      ART_OPENINGS_PRESS_ULCER = mult_(
+        any_hcc(188L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      gCopdCF_ASP_SPEC_B_PNEUM = mult_(d[["gCopdCF"]], any_hcc(114L, hcc)),
+      ASP_SPEC_B_PNEUM_PRES_ULC = mult_(
+        any_hcc(114L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      SEPSIS_ASP_SPEC_BACT_PNEUM = mult_(d[["SEPSIS"]], any_hcc(114L, hcc)),
+      SCHIZOPHRENIA_gCopdCF = mult_(any_hcc(57L, hcc), d[["gCopdCF"]]),
+      SCHIZOPHRENIA_CHF = mult_(any_hcc(57L, hcc), d[["CHF"]]),
+      SCHIZOPHRENIA_SEIZURES = mult_(any_hcc(57L, hcc), any_hcc(79L, hcc)),
+      DISABLED_HCC85 = mult_(g@dis_curr, any_hcc(85L, hcc)),
+      DISABLED_PRESSURE_ULCER = mult_(g@dis_curr, d[["PRESSURE_ULCER"]]),
+      DISABLED_HCC161 = mult_(g@dis_curr, any_hcc(161L, hcc)),
+      DISABLED_HCC39 = mult_(g@dis_curr, any_hcc(39L, hcc)),
+      DISABLED_HCC77 = mult_(g@dis_curr, any_hcc(77L, hcc)),
+      DISABLED_HCC6 = mult_(g@dis_curr, any_hcc(6L, hcc))
     ),
     "CMS-HCC Model V22" = list(
       # Base V24/V22 disease interactions
-      HCC47_gCancer = any_hcc(47L, hcc) * d[["CANCER"]],
-      HCC85_gDiabetesMellitus = any_hcc(85L, hcc) * d[["DIABETES"]],
-      HCC85_gCopdCF = any_hcc(85L, hcc) * d[["gCopdCF"]],
-      HCC85_gRenal = any_hcc(85L, hcc) * d[["RENAL"]],
-      gRespDepandArre_gCopdCF = d[["CARD_RESP_FAIL"]] * d[["gCopdCF"]],
-      HCC85_HCC96 = any_hcc(85L, hcc) * any_hcc(188L, hcc),
-      gSubstanceAbuse_gPsychiatric = d[["gSubstanceUseDisorder"]] *
-        d[["gPsychiatric"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      CHF_gCopdCF = d[["CHF"]] * d[["gCopdCF"]],
-      gCopdCF_CARD_RESP_FAIL = d[["gCopdCF"]] * d[["CARD_RESP_FAIL"]],
-      SEPSIS_PRESSURE_ULCER = d[["SEPSIS"]] * d[["PRESSURE_ULCER"]],
-      SEPSIS_ARTIF_OPENINGS = d[["SEPSIS"]] * any_hcc(188L, hcc),
-      ART_OPENINGS_PRESSURE_ULCER = any_hcc(188L, hcc) * d[["PRESSURE_ULCER"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      gCopdCF_ASP_SPEC_BACT_PNEUM = d[["gCopdCF"]] * any_hcc(114L, hcc),
-      ASP_SPEC_BACT_PNEUM_PRES_ULC = any_hcc(114L, hcc) * d[["PRESSURE_ULCER"]],
-      SEPSIS_ASP_SPEC_BACT_PNEUM = d[["SEPSIS"]] * any_hcc(114L, hcc),
-      SCHIZOPHRENIA_gCopdCF = any_hcc(57L, hcc) * d[["gCopdCF"]],
-      SCHIZOPHRENIA_CHF = any_hcc(57L, hcc) * d[["CHF"]],
-      SCHIZOPHRENIA_SEIZURES = any_hcc(57L, hcc) * any_hcc(79L, hcc),
-      DISABLED_HCC85 = g@dis_curr * any_hcc(85L, hcc),
-      DISABLED_PRESSURE_ULCER = g@dis_curr * d["PRESSURE_ULCER"],
-      DISABLED_HCC161 = g@dis_curr * any_hcc(161L, hcc),
-      DISABLED_HCC39 = g@dis_curr * any_hcc(39L, hcc),
-      DISABLED_HCC77 = g@dis_curr * any_hcc(77L, hcc),
-      DISABLED_HCC6 = g@dis_curr * any_hcc(6L, hcc)
+      HCC47_gCancer = mult_(any_hcc(47L, hcc), d[["CANCER"]]),
+      HCC85_gDiabetesMellitus = mult_(any_hcc(85L, hcc), d[["DIABETES"]]),
+      HCC85_gCopdCF = mult_(any_hcc(85L, hcc), d[["gCopdCF"]]),
+      HCC85_gRenal = mult_(any_hcc(85L, hcc), d[["RENAL"]]),
+      gRespDepandArre_gCopdCF = mult_(d[["CARD_RESP_FAIL"]], d[["gCopdCF"]]),
+      HCC85_HCC96 = mult_(any_hcc(85L, hcc), any_hcc(188L, hcc)),
+      gSubstanceAbuse_gPsychiatric = mult_(
+        d[["gSubstanceUseDisorder"]],
+        d[["gPsychiatric"]]
+      ),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      CHF_gCopdCF = mult_(d[["CHF"]], d[["gCopdCF"]]),
+      gCopdCF_CARD_RESP_FAIL = mult_(d[["gCopdCF"]], d[["CARD_RESP_FAIL"]]),
+      SEPSIS_PRESSURE_ULCER = mult_(d[["SEPSIS"]], d[["PRESSURE_ULCER"]]),
+      SEPSIS_ARTIF_OPENINGS = mult_(d[["SEPSIS"]], any_hcc(188L, hcc)),
+      ART_OPENINGS_PRESSURE_ULCER = mult_(
+        any_hcc(188L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      gCopdCF_ASP_SPEC_BACT_PNEUM = mult_(d[["gCopdCF"]], any_hcc(114L, hcc)),
+      ASP_SPEC_BACT_PNEUM_PRES_ULC = mult_(
+        any_hcc(114L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      SEPSIS_ASP_SPEC_BACT_PNEUM = mult_(d[["SEPSIS"]], any_hcc(114L, hcc)),
+      SCHIZOPHRENIA_gCopdCF = mult_(any_hcc(57L, hcc), d[["gCopdCF"]]),
+      SCHIZOPHRENIA_CHF = mult_(any_hcc(57L, hcc), d[["CHF"]]),
+      SCHIZOPHRENIA_SEIZURES = mult_(any_hcc(57L, hcc), any_hcc(79L, hcc)),
+      DISABLED_HCC85 = mult_(g@dis_curr, any_hcc(85L, hcc)),
+      DISABLED_PRESSURE_ULCER = mult_(g@dis_curr, d[["PRESSURE_ULCER"]]),
+      DISABLED_HCC161 = mult_(g@dis_curr, any_hcc(161L, hcc)),
+      DISABLED_HCC39 = mult_(g@dis_curr, any_hcc(39L, hcc)),
+      DISABLED_HCC77 = mult_(g@dis_curr, any_hcc(77L, hcc)),
+      DISABLED_HCC6 = mult_(g@dis_curr, any_hcc(6L, hcc))
     ),
     "CMS-HCC ESRD Model V24" = list(
       # Base ESRD V24 disease interactions
-      HCC47_gCancer = any_hcc(47L, hcc) * d[["CANCER"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      CHF_gCopdCF = d[["CHF"]] * d[["gCopdCF"]],
-      HCC85_gRenal_V24 = any_hcc(85L, hcc) * d[["RENAL_V24"]],
-      gCopdCF_CARD_RESP_FAIL = d[["gCopdCF"]] * d[["CARD_RESP_FAIL"]],
-      HCC85_HCC96 = any_hcc(85L, hcc) * any_hcc(96L, hcc),
-      gSubUseDs_gPsych_V24 = d[["gSubstanceUseDisorder_V24"]] *
-        d[["gPsychiatric_V24"]],
-      NONAGED_gSubUseDs_gPsych = g@non_aged *
-        (d[["gSubstanceUseDisorder_V24"]] * d[["gPsychiatric_V24"]]),
-      NONAGED_HCC6 = g@non_aged * any_hcc(6L, hcc),
-      NONAGED_HCC34 = g@non_aged * any_hcc(34L, hcc),
-      NONAGED_HCC46 = g@non_aged * any_hcc(46L, hcc),
-      NONAGED_HCC110 = g@non_aged * any_hcc(110L, hcc),
-      NONAGED_HCC176 = g@non_aged * any_hcc(176L, hcc),
-      SEPSIS_PRESSURE_ULCER_V24 = d[["SEPSIS"]] * d[["PRESSURE_ULCER"]],
-      SEPSIS_ARTIF_OPENINGS = d[["SEPSIS"]] * any_hcc(188L, hcc),
-      ART_OPENINGS_PRESS_ULCER_V24 = any_hcc(188L, hcc) * d[["PRESSURE_ULCER"]],
-      gCopdCF_ASP_SPEC_B_PNEUM = d[["gCopdCF"]] * any_hcc(114L, hcc),
-      ASP_SPEC_B_PNEUM_PRES_ULC_V24 = any_hcc(114L, hcc) *
-        d[["PRESSURE_ULCER"]],
-      SEPSIS_ASP_SPEC_BACT_PNEUM = d[["SEPSIS"]] * any_hcc(114L, hcc),
-      SCHIZOPHRENIA_gCopdCF = any_hcc(57L, hcc) * d[["gCopdCF"]],
-      SCHIZOPHRENIA_CHF = any_hcc(57L, hcc) * d[["CHF"]],
-      SCHIZOPHRENIA_SEIZURES = any_hcc(57L, hcc) * any_hcc(79L, hcc),
-      NONAGED_HCC85 = g@non_aged * any_hcc(85L, hcc),
-      NONAGED_PRESSURE_ULCER_V24 = g@non_aged * d[["PRESSURE_ULCER"]],
-      NONAGED_HCC161 = g@non_aged * any_hcc(161L, hcc),
-      NONAGED_HCC39 = g@non_aged * any_hcc(39L, hcc),
-      NONAGED_HCC77 = g@non_aged * any_hcc(77L, hcc)
+      HCC47_gCancer = mult_(any_hcc(47L, hcc), d[["CANCER"]]),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      CHF_gCopdCF = mult_(d[["CHF"]], d[["gCopdCF"]]),
+      HCC85_gRenal_V24 = mult_(any_hcc(85L, hcc), d[["RENAL_V24"]]),
+      gCopdCF_CARD_RESP_FAIL = mult_(d[["gCopdCF"]], d[["CARD_RESP_FAIL"]]),
+      HCC85_HCC96 = mult_(any_hcc(85L, hcc), any_hcc(96L, hcc)),
+      gSubUseDs_gPsych_V24 = mult_(
+        d[["gSubstanceUseDisorder_V24"]],
+        d[["gPsychiatric_V24"]]
+      ),
+      NONAGED_gSubUseDs_gPsych = mult_(
+        g@non_aged,
+        d[["gSubstanceUseDisorder_V24"]],
+        d[["gPsychiatric_V24"]]
+      ),
+      NONAGED_HCC6 = mult_(g@non_aged, any_hcc(6L, hcc)),
+      NONAGED_HCC34 = mult_(g@non_aged, any_hcc(34L, hcc)),
+      NONAGED_HCC46 = mult_(g@non_aged, any_hcc(46L, hcc)),
+      NONAGED_HCC110 = mult_(g@non_aged, any_hcc(110L, hcc)),
+      NONAGED_HCC176 = mult_(g@non_aged, any_hcc(176L, hcc)),
+      SEPSIS_PRESSURE_ULCER_V24 = mult_(d[["SEPSIS"]], d[["PRESSURE_ULCER"]]),
+      SEPSIS_ARTIF_OPENINGS = mult_(d[["SEPSIS"]], any_hcc(188L, hcc)),
+      ART_OPENINGS_PRESS_ULCER_V24 = mult_(
+        any_hcc(188L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      gCopdCF_ASP_SPEC_B_PNEUM = mult_(d[["gCopdCF"]], any_hcc(114L, hcc)),
+      ASP_SPEC_B_PNEUM_PRES_ULC_V24 = mult_(
+        any_hcc(114L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      SEPSIS_ASP_SPEC_BACT_PNEUM = mult_(d[["SEPSIS"]], any_hcc(114L, hcc)),
+      SCHIZOPHRENIA_gCopdCF = mult_(any_hcc(57L, hcc), d[["gCopdCF"]]),
+      SCHIZOPHRENIA_CHF = mult_(any_hcc(57L, hcc), d[["CHF"]]),
+      SCHIZOPHRENIA_SEIZURES = mult_(any_hcc(57L, hcc), any_hcc(79L, hcc)),
+      NONAGED_HCC85 = mult_(g@non_aged, any_hcc(85L, hcc)),
+      NONAGED_PRESSURE_ULCER_V24 = mult_(g@non_aged, d[["PRESSURE_ULCER"]]),
+      NONAGED_HCC161 = mult_(g@non_aged, any_hcc(161L, hcc)),
+      NONAGED_HCC39 = mult_(g@non_aged, any_hcc(39L, hcc)),
+      NONAGED_HCC77 = mult_(g@non_aged, any_hcc(77L, hcc))
     ),
     "CMS-HCC ESRD Model V21" = list(
       # ESRD Community model interactions
-      SEPSIS_CARD_RESP_FAIL = d[["SEPSIS"]] * d[["CARD_RESP_FAIL"]],
-      CANCER_IMMUNE = d[["CANCER"]] * d[["IMMUNE"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      CHF_COPD = d[["CHF"]] * d[["COPD"]],
-      CHF_RENAL = d[["CHF"]] * d[["RENAL"]],
-      COPD_CARD_RESP_FAIL = d[["COPD"]] * d[["CARD_RESP_FAIL"]],
-      NONAGED_HCC6 = g@non_aged * any_hcc(6L, hcc),
-      NONAGED_HCC34 = g@non_aged * any_hcc(34L, hcc),
-      NONAGED_HCC46 = g@non_aged * any_hcc(46L, hcc),
-      NONAGED_HCC54 = g@non_aged * any_hcc(54L, hcc),
-      NONAGED_HCC55 = g@non_aged * any_hcc(55L, hcc),
-      NONAGED_HCC110 = g@non_aged * any_hcc(110L, hcc),
-      NONAGED_HCC176 = g@non_aged * any_hcc(176L, hcc),
-      SEPSIS_PRESSURE_ULCER = d[["SEPSIS"]] * d[["PRESSURE_ULCER"]],
-      SEPSIS_ARTIF_OPENINGS = d[["SEPSIS"]] * any_hcc(188L, hcc),
-      ART_OPENINGS_PRESSURE_ULCER = any_hcc(188L, hcc) * d[["PRESSURE_ULCER"]],
-      DIABETES_CHF = d[["DIABETES"]] * d[["CHF"]],
-      COPD_ASP_SPEC_BACT_PNEUM = d[["COPD"]] * any_hcc(114L, hcc),
-      ASP_SPEC_BACT_PNEUM_PRES_ULC = any_hcc(114L, hcc) * d[["PRESSURE_ULCER"]],
-      SEPSIS_ASP_SPEC_BACT_PNEUM = d[["SEPSIS"]] * any_hcc(114L, hcc),
-      SCHIZOPHRENIA_COPD = any_hcc(57L, hcc) * d[["COPD"]],
-      SCHIZOPHRENIA_CHF = any_hcc(57L, hcc) * d[["CHF"]],
-      SCHIZOPHRENIA_SEIZURES = any_hcc(57L, hcc) * any_hcc(79L, hcc),
-      NONAGED_HCC85 = g@non_aged * any_hcc(85L, hcc),
-      NONAGED_PRESSURE_ULCER = g@non_aged * d[["PRESSURE_ULCER"]],
-      NONAGED_HCC161 = g@non_aged * any_hcc(161L, hcc),
-      NONAGED_HCC39 = g@non_aged * any_hcc(39L, hcc),
-      NONAGED_HCC77 = g@non_aged * any_hcc(77L, hcc)
+      SEPSIS_CARD_RESP_FAIL = mult_(d[["SEPSIS"]], d[["CARD_RESP_FAIL"]]),
+      CANCER_IMMUNE = mult_(d[["CANCER"]], d[["IMMUNE"]]),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      CHF_COPD = mult_(d[["CHF"]], d[["COPD"]]),
+      CHF_RENAL = mult_(d[["CHF"]], d[["RENAL"]]),
+      COPD_CARD_RESP_FAIL = mult_(d[["COPD"]], d[["CARD_RESP_FAIL"]]),
+      NONAGED_HCC6 = mult_(g@non_aged, any_hcc(6L, hcc)),
+      NONAGED_HCC34 = mult_(g@non_aged, any_hcc(34L, hcc)),
+      NONAGED_HCC46 = mult_(g@non_aged, any_hcc(46L, hcc)),
+      NONAGED_HCC54 = mult_(g@non_aged, any_hcc(54L, hcc)),
+      NONAGED_HCC55 = mult_(g@non_aged, any_hcc(55L, hcc)),
+      NONAGED_HCC110 = mult_(g@non_aged, any_hcc(110L, hcc)),
+      NONAGED_HCC176 = mult_(g@non_aged, any_hcc(176L, hcc)),
+      SEPSIS_PRESSURE_ULCER = mult_(d[["SEPSIS"]], d[["PRESSURE_ULCER"]]),
+      SEPSIS_ARTIF_OPENINGS = mult_(d[["SEPSIS"]], any_hcc(188L, hcc)),
+      ART_OPENINGS_PRESSURE_ULCER = mult_(
+        any_hcc(188L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      DIABETES_CHF = mult_(d[["DIABETES"]], d[["CHF"]]),
+      COPD_ASP_SPEC_BACT_PNEUM = mult_(d[["COPD"]], any_hcc(114L, hcc)),
+      ASP_SPEC_BACT_PNEUM_PRES_ULC = mult_(
+        any_hcc(114L, hcc),
+        d[["PRESSURE_ULCER"]]
+      ),
+      SEPSIS_ASP_SPEC_BACT_PNEUM = mult_(d[["SEPSIS"]], any_hcc(114L, hcc)),
+      SCHIZOPHRENIA_COPD = mult_(any_hcc(57L, hcc), d[["COPD"]]),
+      SCHIZOPHRENIA_CHF = mult_(any_hcc(57L, hcc), d[["CHF"]]),
+      SCHIZOPHRENIA_SEIZURES = mult_(any_hcc(57L, hcc), any_hcc(79L, hcc)),
+      NONAGED_HCC85 = mult_(g@non_aged, any_hcc(85L, hcc)),
+      NONAGED_PRESSURE_ULCER = mult_(g@non_aged, d[["PRESSURE_ULCER"]]),
+      NONAGED_HCC161 = mult_(g@non_aged, any_hcc(161L, hcc)),
+      NONAGED_HCC39 = mult_(g@non_aged, any_hcc(39L, hcc)),
+      NONAGED_HCC77 = mult_(g@non_aged, any_hcc(77L, hcc))
     ),
     "RxHCC Model V08" = list(
       # RxHCC NonAged interactions
-      NonAged_RXHCC1 = g@non_aged * any_hcc(1L, hcc),
-      NonAged_RXHCC130 = g@non_aged * any_hcc(130L, hcc),
-      NonAged_RXHCC131 = g@non_aged * any_hcc(131L, hcc),
-      NonAged_RXHCC132 = g@non_aged * any_hcc(132L, hcc),
-      NonAged_RXHCC133 = g@non_aged * any_hcc(133L, hcc),
-      NonAged_RXHCC159 = g@non_aged * any_hcc(159L, hcc),
-      NonAged_RXHCC163 = g@non_aged * any_hcc(163L, hcc)
+      NonAged_RXHCC1 = mult_(g@non_aged, any_hcc(1L, hcc)),
+      NonAged_RXHCC130 = mult_(g@non_aged, any_hcc(130L, hcc)),
+      NonAged_RXHCC131 = mult_(g@non_aged, any_hcc(131L, hcc)),
+      NonAged_RXHCC132 = mult_(g@non_aged, any_hcc(132L, hcc)),
+      NonAged_RXHCC133 = mult_(g@non_aged, any_hcc(133L, hcc)),
+      NonAged_RXHCC159 = mult_(g@non_aged, any_hcc(159L, hcc)),
+      NonAged_RXHCC163 = mult_(g@non_aged, any_hcc(163L, hcc))
     )
   )
 

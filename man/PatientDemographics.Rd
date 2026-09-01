@@ -44,7 +44,8 @@ PatientDemographics(
 
 \item{non_aged}{\verb{<lgl>} \code{TRUE} if \code{age <= 64}}
 
-\item{dis_orig}{\verb{<lgl>} \code{TRUE} if originally disabled (\code{OREC == "1"}) and not currently disabled}
+\item{dis_orig}{\verb{<lgl>} \code{TRUE} if originally disabled (\code{OREC == "1"}) and not
+currently disabled}
 
 \item{dis_curr}{\verb{<lgl>} \code{TRUE} if currently disabled (\code{age < 65 & OREC != "0"})}
 

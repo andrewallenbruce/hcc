@@ -4,9 +4,9 @@
 \alias{HCPCoveragePeriod}
 \title{Health Care Plan coverage period from HD loop}
 \arguments{
-\item{start_date}{\verb{<date>} coverage start date}
+\item{start_date}{\verb{<Date>} coverage start date}
 
-\item{end_date}{\verb{<date>} coverage start date}
+\item{end_date}{\verb{<Date>} coverage start date}
 
 \item{hcp_code}{\verb{<chr>} HCP code}
 

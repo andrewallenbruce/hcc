@@ -66,7 +66,7 @@ EnrollmentData(
   hcp_status = character(),
   amount_qualifier = character(),
   amount = double(),
-  hcp_history = character()
+  hcp_history = HCPCoveragePeriod()
 )
 }
 \arguments{
@@ -116,7 +116,8 @@ EnrollmentData(
 
 \item{phone}{\code{PER-04} Phone number}
 
-\item{maintenance_type}{\code{INS-03} Change (\code{001}), Add (\code{021}), Cancel (\code{024}), Reinstate (\code{025})}
+\item{maintenance_type}{\code{INS-03} Change (\code{001}), Add (\code{021}), Cancel (\code{024}),
+Reinstate (\code{025})}
 
 \item{maintenance_reason_code}{\code{INS-04} Maintenance reason}
 
@@ -140,7 +141,8 @@ EnrollmentData(
 
 \item{medi_cal_aid_code}{California Medi-Cal aid code}
 
-\item{medi_cal_eligibility_status}{Medi-Cal eligibility status (Active/Terminated/None)}
+\item{medi_cal_eligibility_status}{Medi-Cal eligibility status
+(Active/Terminated/None)}
 
 \item{fame_county_id}{FAME county ID (\code{REF*ZX} or \code{N4*CY})}
 
@@ -188,11 +190,13 @@ EnrollmentData(
 
 \item{hcp_status}{Current HCP status (\code{HD-04} second part)}
 
-\item{amount_qualifier}{AMT qualifier code (e.g., \code{D} = premium, \code{C1} = copay)}
+\item{amount_qualifier}{AMT qualifier code (e.g., \code{D} = premium, \code{C1} =
+copay)}
 
 \item{amount}{Premium or cost share amount (numeric)}
 
-\item{hcp_history}{List of historical HCP coverage periods}
+\item{hcp_history}{\verb{<HCPCoveragePeriod>} List of historical HCP coverage
+periods}
 }
 \value{
 A \verb{<EnrollmentData>} S7 object
