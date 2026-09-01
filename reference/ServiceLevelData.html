@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9031</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9032</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@
 <span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  quantity_unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  modifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  allowed_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  allowed_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -72,75 +72,80 @@
 
 
 <dl><dt id="arg-claim-id">claim_id<a class="anchor" aria-label="anchor" href="#arg-claim-id"></a></dt>
-<dd><p>Unique identifier for the claim</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Unique identifier for the claim</p></dd>
 
 
 <dt id="arg-procedure-code">procedure_code<a class="anchor" aria-label="anchor" href="#arg-procedure-code"></a></dt>
-<dd><p>Healthcare Common Procedure Coding System (HCPCS) code</p></dd>
+<dd><p><code>&lt;chr&gt;</code> HCPCS code</p></dd>
 
 
 <dt id="arg-ndc">ndc<a class="anchor" aria-label="anchor" href="#arg-ndc"></a></dt>
-<dd><p>National Drug Code</p></dd>
+<dd><p><code>&lt;chr&gt;</code> National Drug Code</p></dd>
 
 
 <dt id="arg-linked-diagnosis-codes">linked_diagnosis_codes<a class="anchor" aria-label="anchor" href="#arg-linked-diagnosis-codes"></a></dt>
-<dd><p>ICD-10 diagnosis codes linked to this service</p></dd>
+<dd><p><code>&lt;chr&gt;</code> ICD-10 diagnosis codes linked to this
+service</p></dd>
 
 
 <dt id="arg-claim-diagnosis-codes">claim_diagnosis_codes<a class="anchor" aria-label="anchor" href="#arg-claim-diagnosis-codes"></a></dt>
-<dd><p>All diagnosis codes on the claim</p></dd>
+<dd><p><code>&lt;chr&gt;</code> All diagnosis codes on the claim</p></dd>
 
 
 <dt id="arg-claim-type">claim_type<a class="anchor" aria-label="anchor" href="#arg-claim-type"></a></dt>
-<dd><p>Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Type of claim (e.g., NCH Claim Type Code, or 837I,
+837P)</p></dd>
 
 
 <dt id="arg-provider-specialty">provider_specialty<a class="anchor" aria-label="anchor" href="#arg-provider-specialty"></a></dt>
-<dd><p>Provider taxonomy or specialty code</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Provider taxonomy or specialty code</p></dd>
 
 
 <dt id="arg-performing-provider-npi">performing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-performing-provider-npi"></a></dt>
-<dd><p>National Provider Identifier for performing provider</p></dd>
+<dd><p><code>&lt;int&gt;</code> National Provider Identifier for
+performing provider</p></dd>
 
 
 <dt id="arg-billing-provider-npi">billing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-billing-provider-npi"></a></dt>
-<dd><p>National Provider Identifier for billing provider</p></dd>
+<dd><p><code>&lt;int&gt;</code> National Provider Identifier for billing
+provider</p></dd>
 
 
 <dt id="arg-patient-id">patient_id<a class="anchor" aria-label="anchor" href="#arg-patient-id"></a></dt>
-<dd><p>Unique identifier for the patient</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Unique identifier for the patient</p></dd>
 
 
 <dt id="arg-facility-type">facility_type<a class="anchor" aria-label="anchor" href="#arg-facility-type"></a></dt>
-<dd><p>Type of facility where service was rendered</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Type of facility where service was rendered</p></dd>
 
 
 <dt id="arg-service-type">service_type<a class="anchor" aria-label="anchor" href="#arg-service-type"></a></dt>
-<dd><p>Type of service provided (facility type + service type = Type of Bill)</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Type of service provided (facility type + service
+type = Type of Bill)</p></dd>
 
 
 <dt id="arg-service-date">service_date<a class="anchor" aria-label="anchor" href="#arg-service-date"></a></dt>
-<dd><p>Date service was performed (YYYY-MM-DD)</p></dd>
+<dd><p><code>&lt;Date&gt;</code> Date service was performed (YYYY-MM-DD)</p></dd>
 
 
 <dt id="arg-place-of-service">place_of_service<a class="anchor" aria-label="anchor" href="#arg-place-of-service"></a></dt>
-<dd><p>Place of service code</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Place of service code</p></dd>
 
 
 <dt id="arg-quantity">quantity<a class="anchor" aria-label="anchor" href="#arg-quantity"></a></dt>
-<dd><p>Number of units provided</p></dd>
+<dd><p><code>&lt;int&gt;</code> Number of units provided</p></dd>
 
 
 <dt id="arg-quantity-unit">quantity_unit<a class="anchor" aria-label="anchor" href="#arg-quantity-unit"></a></dt>
-<dd><p>Unit of measure for quantity</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Unit of measure for quantity</p></dd>
 
 
 <dt id="arg-modifiers">modifiers<a class="anchor" aria-label="anchor" href="#arg-modifiers"></a></dt>
-<dd><p>List of procedure code modifiers</p></dd>
+<dd><p><code>&lt;chr&gt;</code> List of procedure code modifiers</p></dd>
 
 
 <dt id="arg-allowed-amount">allowed_amount<a class="anchor" aria-label="anchor" href="#arg-allowed-amount"></a></dt>
-<dd><p>Allowed amount for the service</p></dd>
+<dd><p><code>&lt;dbl&gt;</code> Allowed amount for the service</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -169,7 +174,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity               : int(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity_unit          : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ modifiers              : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ allowed_amount         : int(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ allowed_amount         : num(0) </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

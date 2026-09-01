@@ -31,7 +31,7 @@ EditRule(
 
 - age_max:
 
-  `<int>` For age edits: minimum age (inclusive)
+  `<int>` For age edits: maximum age (inclusive)
 
 - action:
 
@@ -39,7 +39,7 @@ EditRule(
 
 - cc_override:
 
-  `<int>` CC to assign when action is "override"
+  `<int>` CC to assign when `action = "override"`
 
 ## Value
 

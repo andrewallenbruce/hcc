@@ -21,23 +21,23 @@ PaymentDetail(
 
 - entity_number:
 
-  `ENT-01` ENT sequence number
+  `<chr>` `ENT-01` ENT sequence number
 
 - member_id:
 
-  `NM1-09` Member identifier
+  `<chr>` `NM1-09` Member identifier
 
 - last_name:
 
-  `NM1-03` Member last name
+  `<chr>` `NM1-03` Member last name
 
 - first_name:
 
-  `NM1-04` Member first name
+  `<chr>` `NM1-04` Member first name
 
 - middle_name:
 
-  `NM1-05` Member middle name
+  `<chr>` `NM1-05` Member middle name
 
 - remittance_entries:
 

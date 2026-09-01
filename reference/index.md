@@ -17,9 +17,9 @@
 - [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
   : Per-Member Payment Record from an X12-820 ENT Loop
 - [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
-  : Risk adjustment calculation results
+  : Risk Adjustment Factor score results
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
-  : A single remittance line item within a member's payment record.
+  : Remittance Line Item
 - [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
   : Healthcare Claim Service Level Data
 - [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)

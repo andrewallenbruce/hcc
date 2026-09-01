@@ -1,6 +1,6 @@
-# Risk adjustment calculation results
+# Risk Adjustment Factor score results
 
-Risk adjustment calculation results
+Risk Adjustment Factor score results
 
 ## Usage
 
@@ -20,7 +20,7 @@ RAFResult(
   model_name = character(0),
   version = character(0),
   diagnosis_codes = character(0),
-  service_level_data = list()
+  service_level_data = ServiceLevelData()
 )
 ```
 
@@ -28,31 +28,32 @@ RAFResult(
 
 - risk_score:
 
-  Final RAF score
+  `<dbl>` Final RAF score
 
 - risk_score_demographics:
 
-  Demographics-only risk score
+  `<dbl>` Demographics-only risk score
 
 - risk_score_chronic_only:
 
-  Chronic conditions risk score
+  `<dbl>` Chronic conditions risk score
 
 - risk_score_hcc:
 
-  HCC conditions risk score
+  `<dbl>` HCC conditions risk score
 
 - risk_score_payment:
 
-  Payment RAF score (adjusted for MACI, normalization, and frailty)
+  `<dbl>` Payment RAF score, adjusted for MACI, normalization, and
+  frailty
 
 - hcc_list:
 
-  List of active HCC categories
+  `<chr>` List of active HCC categories
 
 - hcc_details:
 
-  Detailed HCC information with labels and chronic status
+  `<chr>` Detailed HCC information with labels and chronic status
 
 - cc_to_dx:
 
@@ -72,19 +73,19 @@ RAFResult(
 
 - model_name:
 
-  HCC model used for calculation
+  `<chr>` HCC model used for calculation
 
 - version:
 
-  Library version
+  `<chr>` Library version
 
 - diagnosis_codes:
 
-  Input diagnosis codes
+  `<chr>` Input diagnosis codes
 
 - service_level_data:
 
-  Processed service records
+  `<ServiceLevelData>` S7 object; Processed service records
 
 ## Value
 
@@ -109,5 +110,23 @@ RAFResult()
 #>  @ model_name             : chr(0) 
 #>  @ version                : chr(0) 
 #>  @ diagnosis_codes        : chr(0) 
-#>  @ service_level_data     : list()
+#>  @ service_level_data     : <hcc::ServiceLevelData>
+#>  .. @ claim_id               : chr(0) 
+#>  .. @ procedure_code         : chr(0) 
+#>  .. @ ndc                    : chr(0) 
+#>  .. @ linked_diagnosis_codes : chr(0) 
+#>  .. @ claim_diagnosis_codes  : chr(0) 
+#>  .. @ claim_type             : chr(0) 
+#>  .. @ provider_specialty     : chr(0) 
+#>  .. @ performing_provider_npi: int(0) 
+#>  .. @ billing_provider_npi   : int(0) 
+#>  .. @ patient_id             : chr(0) 
+#>  .. @ facility_type          : chr(0) 
+#>  .. @ service_type           : chr(0) 
+#>  .. @ service_date           : chr(0) 
+#>  .. @ place_of_service       : chr(0) 
+#>  .. @ quantity               : int(0) 
+#>  .. @ quantity_unit          : chr(0) 
+#>  .. @ modifiers              : chr(0) 
+#>  .. @ allowed_amount         : num(0) 
 ```

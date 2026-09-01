@@ -23,7 +23,7 @@ ServiceLevelData(
   quantity = integer(0),
   quantity_unit = character(0),
   modifiers = character(0),
-  allowed_amount = integer(0)
+  allowed_amount = numeric(0)
 )
 ```
 
@@ -31,75 +31,76 @@ ServiceLevelData(
 
 - claim_id:
 
-  Unique identifier for the claim
+  `<chr>` Unique identifier for the claim
 
 - procedure_code:
 
-  Healthcare Common Procedure Coding System (HCPCS) code
+  `<chr>` HCPCS code
 
 - ndc:
 
-  National Drug Code
+  `<chr>` National Drug Code
 
 - linked_diagnosis_codes:
 
-  ICD-10 diagnosis codes linked to this service
+  `<chr>` ICD-10 diagnosis codes linked to this service
 
 - claim_diagnosis_codes:
 
-  All diagnosis codes on the claim
+  `<chr>` All diagnosis codes on the claim
 
 - claim_type:
 
-  Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
+  `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
 
 - provider_specialty:
 
-  Provider taxonomy or specialty code
+  `<chr>` Provider taxonomy or specialty code
 
 - performing_provider_npi:
 
-  National Provider Identifier for performing provider
+  `<int>` National Provider Identifier for performing provider
 
 - billing_provider_npi:
 
-  National Provider Identifier for billing provider
+  `<int>` National Provider Identifier for billing provider
 
 - patient_id:
 
-  Unique identifier for the patient
+  `<chr>` Unique identifier for the patient
 
 - facility_type:
 
-  Type of facility where service was rendered
+  `<chr>` Type of facility where service was rendered
 
 - service_type:
 
-  Type of service provided (facility type + service type = Type of Bill)
+  `<chr>` Type of service provided (facility type + service type = Type
+  of Bill)
 
 - service_date:
 
-  Date service was performed (YYYY-MM-DD)
+  `<Date>` Date service was performed (YYYY-MM-DD)
 
 - place_of_service:
 
-  Place of service code
+  `<chr>` Place of service code
 
 - quantity:
 
-  Number of units provided
+  `<int>` Number of units provided
 
 - quantity_unit:
 
-  Unit of measure for quantity
+  `<chr>` Unit of measure for quantity
 
 - modifiers:
 
-  List of procedure code modifiers
+  `<chr>` List of procedure code modifiers
 
 - allowed_amount:
 
-  Allowed amount for the service
+  `<dbl>` Allowed amount for the service
 
 ## Value
 
@@ -127,5 +128,5 @@ ServiceLevelData()
 #>  @ quantity               : int(0) 
 #>  @ quantity_unit          : chr(0) 
 #>  @ modifiers              : chr(0) 
-#>  @ allowed_amount         : int(0) 
+#>  @ allowed_amount         : num(0) 
 ```

@@ -68,7 +68,7 @@ EnrollmentData(
   hcp_status = character(),
   amount_qualifier = character(),
   amount = double(),
-  hcp_history = character()
+  hcp_history = HCPCoveragePeriod()
 )
 ```
 
@@ -321,7 +321,7 @@ EnrollmentData(
 
 - hcp_history:
 
-  List of historical HCP coverage periods
+  `<HCPCoveragePeriod>` List of historical HCP coverage periods
 
 ## Value
 

@@ -22,7 +22,7 @@ PaymentData(
   payer_city = character(),
   payer_state = character(),
   payer_zip = character(),
-  members = character()
+  members = PaymentDetail()
 )
 ```
 
@@ -30,67 +30,67 @@ PaymentData(
 
 - source:
 
-  `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
+  `<chr>` `ISA-06` Interchange sender ID, e.g., "CALIFORNIA-DHCS"
 
 - report_date:
 
-  `GS-04` Transaction date (YYYY-MM-DD)
+  `<Date>` `GS-04` Transaction date (YYYY-MM-DD)
 
 - total_amount:
 
-  `BPR-02` Total payment amount
+  `<chr>` `BPR-02` Total payment amount
 
 - payment_date:
 
-  `BPR-16` EFT effective date (YYYY-MM-DD)
+  `<Date>` `BPR-16` EFT effective date (YYYY-MM-DD)
 
 - check_number:
 
-  `TRN-02` EFT/check trace number
+  `<chr>` `TRN-02` EFT/check trace number
 
 - payee_name:
 
-  `N1*PE` Receiving organization name
+  `<chr>` `N1*PE` Receiving organization name
 
 - payee_address_1:
 
-  `N3` Payee street address
+  `<chr>` `N3` Payee street address
 
 - payee_city:
 
-  `N4` Payee city
+  `<chr>` `N4` Payee city
 
 - payee_state:
 
-  `N4` Payee state
+  `<chr>` `N4` Payee state
 
 - payee_zip:
 
-  `N4` Payee ZIP code
+  `<chr>` `N4` Payee ZIP code
 
 - payer_name:
 
-  `N1*PR` Paying organization name
+  `<chr>` `N1*PR` Paying organization name
 
 - payer_address_1:
 
-  `N3` Payer street address
+  `<chr>` `N3` Payer street address
 
 - payer_city:
 
-  `N4` Payer city
+  `<chr>` `N4` Payer city
 
 - payer_state:
 
-  `N4` Payer state
+  `<chr>` `N4` Payer state
 
 - payer_zip:
 
-  `N4` Payer ZIP code
+  `<chr>` `N4` Payer ZIP code
 
 - members:
 
-  List of per-member payment records
+  `<PaymentDetail>` List of per-member payment records
 
 ## Value
 

@@ -9,7 +9,7 @@ Supports California DHCS Medi-Cal 834 format with FAME fields."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9031</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9032</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +110,7 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 <span>  hcp_status <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  amount_qualifier <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  hcp_history <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  hcp_history <span class="op">=</span> <span class="fu"><a href="HCPCoveragePeriod.html">HCPCoveragePeriod</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -211,7 +211,8 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 
 
 <dt id="arg-maintenance-type">maintenance_type<a class="anchor" aria-label="anchor" href="#arg-maintenance-type"></a></dt>
-<dd><p><code>INS-03</code> Change (<code>001</code>), Add (<code>021</code>), Cancel (<code>024</code>), Reinstate (<code>025</code>)</p></dd>
+<dd><p><code>INS-03</code> Change (<code>001</code>), Add (<code>021</code>), Cancel (<code>024</code>),
+Reinstate (<code>025</code>)</p></dd>
 
 
 <dt id="arg-maintenance-reason-code">maintenance_reason_code<a class="anchor" aria-label="anchor" href="#arg-maintenance-reason-code"></a></dt>
@@ -259,7 +260,8 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 
 
 <dt id="arg-medi-cal-eligibility-status">medi_cal_eligibility_status<a class="anchor" aria-label="anchor" href="#arg-medi-cal-eligibility-status"></a></dt>
-<dd><p>Medi-Cal eligibility status (Active/Terminated/None)</p></dd>
+<dd><p>Medi-Cal eligibility status
+(Active/Terminated/None)</p></dd>
 
 
 <dt id="arg-fame-county-id">fame_county_id<a class="anchor" aria-label="anchor" href="#arg-fame-county-id"></a></dt>
@@ -355,7 +357,8 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 
 
 <dt id="arg-amount-qualifier">amount_qualifier<a class="anchor" aria-label="anchor" href="#arg-amount-qualifier"></a></dt>
-<dd><p>AMT qualifier code (e.g., <code>D</code> = premium, <code>C1</code> = copay)</p></dd>
+<dd><p>AMT qualifier code (e.g., <code>D</code> = premium, <code>C1</code> =
+copay)</p></dd>
 
 
 <dt id="arg-amount">amount<a class="anchor" aria-label="anchor" href="#arg-amount"></a></dt>
@@ -363,7 +366,8 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 
 
 <dt id="arg-hcp-history">hcp_history<a class="anchor" aria-label="anchor" href="#arg-hcp-history"></a></dt>
-<dd><p>List of historical HCP coverage periods</p></dd>
+<dd><p><code>&lt;HCPCoveragePeriod&gt;</code> List of historical HCP coverage
+periods</p></dd>
 
 </dl></div>
     <div class="section level2">

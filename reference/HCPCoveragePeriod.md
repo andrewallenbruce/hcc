@@ -6,11 +6,11 @@ Health Care Plan coverage period from HD loop
 
 - start_date:
 
-  `<date>` coverage start date
+  `<Date>` coverage start date
 
 - end_date:
 
-  `<date>` coverage start date
+  `<Date>` coverage start date
 
 - hcp_code:
 
