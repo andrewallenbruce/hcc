@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9032 (2026-09-01)
+
+* `EditRule` fix
+* `disease_interactions` clean up
+
+
 # hcc 0.0.0.9031 (2026-08-31)
 
 * more S7 classes
