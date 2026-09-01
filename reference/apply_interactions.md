@@ -46,6 +46,6 @@ apply_interactions(
 )
 #>  [1] "Originally_ESRD_Female" "MCAID_Female_Aged"      "NMCAID_NORIGDIS_F65"   
 #>  [4] "MCAID_NORIGDIS_F65"     "FBD_NORIGDIS_F65"       "GE65_DUR4_9"           
-#>  [7] "GE65_DUR10PL"           "FGC_GE65_DUR4_9_FBD"    "FGC_GE65_DUR10PL_FBD"  
+#>  [7] "GE65_DUR10PL"           "FGC_GE65_DUR10PL_FBD"   "FGC_GE65_DUR4_9_FBD"   
 #> [10] "FBDual_Female_Aged"     "DIABETES_CHF"           "D3"                    
 ```

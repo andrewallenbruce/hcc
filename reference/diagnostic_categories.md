@@ -20,40 +20,24 @@ diagnostic_categories(model, hcc)
 
 ## Value
 
-a list of interactions
+`<DiagnosticCategories>` S7 object
 
 ## Examples
 
 ``` r
-diagnostic_categories("CMS-HCC Model V24", c(17:19, 85L))
-#> $CANCER
-#> [1] 0
-#> 
-#> $DIABETES
-#> [1] 1
-#> 
-#> $CARD_RESP_FAIL
-#> [1] 0
-#> 
-#> $CHF
-#> [1] 1
-#> 
-#> $gCopdCF
-#> [1] 0
-#> 
-#> $RENAL_V24
-#> [1] 0
-#> 
-#> $SEPSIS
-#> [1] 0
-#> 
-#> $gSubstanceUseDisorder_V24
-#> [1] 0
-#> 
-#> $gPsychiatric_V24
-#> [1] 0
-#> 
-#> $PRESSURE_ULCER
-#> [1] 0
-#> 
+diagnostic_categories(model = "CMS-HCC Model V24", hcc = c(17:19, 85L))
+#> <hcc::DiagnosticCategories>
+#>  @ model     : chr "CMS-HCC Model V24"
+#>  @ hcc       : int [1:4] 17 18 19 85
+#>  @ categories:List of 10
+#>  .. $ CANCER                   : int 0
+#>  .. $ DIABETES                 : int 1
+#>  .. $ CARD_RESP_FAIL           : int 0
+#>  .. $ CHF                      : int 1
+#>  .. $ gCopdCF                  : int 0
+#>  .. $ RENAL_V24                : int 0
+#>  .. $ SEPSIS                   : int 0
+#>  .. $ gSubstanceUseDisorder_V24: int 0
+#>  .. $ gPsychiatric_V24         : int 0
+#>  .. $ PRESSURE_ULCER           : int 0
 ```

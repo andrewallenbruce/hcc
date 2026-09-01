@@ -80,77 +80,39 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 ``` r
 purrr::map(hcc::x12_837[1], parse_837)
 #> $minimal_837P
-#> $minimal_837P$`NM1*41`
-#> $minimal_837P$`NM1*41`$`01`
-#> [1] "41"
-#> 
-#> $minimal_837P$`NM1*41`$`02`
-#> [1] "2"
-#> 
-#> $minimal_837P$`NM1*41`$`03`
-#> [1] "ACME CLINIC"
-#> 
-#> $minimal_837P$`NM1*41`$`04`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*41`$`05`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*41`$`06`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*41`$`07`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*41`$`08`
-#> [1] "46"
-#> 
-#> $minimal_837P$`NM1*41`$`09`
-#> [1] "1234567890"
-#> 
-#> 
-#> $minimal_837P$PER
-#> $minimal_837P$PER$`01`
-#> [1] "IC"
-#> 
-#> $minimal_837P$PER$`02`
-#> [1] "BILLING DEPT"
-#> 
-#> $minimal_837P$PER$`03`
-#> [1] "TE"
-#> 
-#> $minimal_837P$PER$`04`
-#> [1] "5551234567"
-#> 
-#> 
-#> $minimal_837P$`NM1*40`
-#> $minimal_837P$`NM1*40`$`01`
-#> [1] "40"
-#> 
-#> $minimal_837P$`NM1*40`$`02`
-#> [1] "2"
-#> 
-#> $minimal_837P$`NM1*40`$`03`
-#> [1] "PAYER99"
-#> 
-#> $minimal_837P$`NM1*40`$`04`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*40`$`05`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*40`$`06`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*40`$`07`
-#> [1] ""
-#> 
-#> $minimal_837P$`NM1*40`$`08`
-#> [1] "46"
-#> 
-#> $minimal_837P$`NM1*40`$`09`
-#> [1] "PAYER99"
-#> 
-#> 
+#>    SEG PT        VALUE
+#> 1  ISA 01           00
+#> 2  ISA 02         <NA>
+#> 3  ISA 03           00
+#> 4  ISA 04         <NA>
+#> 5  ISA 05           ZZ
+#> 6  ISA 06   PROVIDER01
+#> 7  ISA 07           ZZ
+#> 8  ISA 08      PAYER99
+#> 9  ISA 09       260415
+#> 10 ISA 10         1030
+#> 11 ISA 11            U
+#> 12 ISA 12        00501
+#> 13 ISA 13    000000837
+#> 14 ISA 14            0
+#> 15 ISA 15            P
+#> 16 ISA 16            >
+#> 17  GS 01           HC
+#> 18  GS 02   PROVIDER01
+#> 19  GS 03      PAYER99
+#> 20  GS 04     20260415
+#> 21  GS 05         1030
+#> 22  GS 06            1
+#> 23  GS 07            X
+#> 24  GS 08 005010X222A1
+#> 25  ST 01          837
+#> 26  ST 02         0001
+#> 27  ST 03 005010X222A1
+#> 28 BHT 01         0019
+#> 29 BHT 02           00
+#> 30 BHT 03  REQ-CLM-001
+#> 31 BHT 04     20260415
+#> 32 BHT 05         1030
+#> 33 BHT 06           CH
 #> 
 ```
