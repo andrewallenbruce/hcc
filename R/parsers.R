@@ -9,6 +9,11 @@ unlist_df <- function(x) {
 }
 
 #' @noRd
+map_seq <- function(text, start, end) {
+  purrr::map(purrr::map2(start, end, \(a, b) seq.int(a, b)), \(i) text[i])
+}
+
+#' @noRd
 nzchar_na <- function(x) {
   x[!nzchar(x)] <- NA_character_
   x
@@ -59,14 +64,10 @@ split_star <- function(x, pad = TRUE, replace_na = FALSE) {
 parse_loop_820 <- function(x) {
   start = perl(x, "^RMR")
   end = perl(x, "^DTM\\*582")
+  # check length(start) == length(end)
+  segments <- map_seq(x, start, end)
 
-  loop_range <- purrr::map2(start, end, function(x, y) {
-    seq.int(x, y)
-  })
-
-  loops <- purrr::map(loop_range, \(i) x[i])
-
-  LOOPS <- purrr::map(loops, function(x) {
+  segment_list <- purrr::map(segments, function(x) {
     list(
       RMR = split_star(x[perl(x, "^RMR")], replace_na = TRUE),
       REF = split_star(x[perl(x, "^REF\\*18")]),
@@ -75,17 +76,21 @@ parse_loop_820 <- function(x) {
       DTM = split_star(x[perl(x, "^DTM\\*582")], replace_na = TRUE)
     )
   }) |>
+    # purrr::list_transpose() |>
+    # list2DF()
     purrr::list_flatten()
+
+  adx <- if (any(grepl("^ADX", x))) {
+    split_star(x[perl(x, "^ADX")])
+  } else {
+    NULL
+  }
 
   rlang::list2(
     ENT = split_star(x[perl(x, "^ENT")]),
     NM1 = split_star(x[perl(x, "^NM1")], replace_na = TRUE),
-    !!!LOOPS,
-    ADX = if (!rlang::is_empty(perl(x, "^ADX"))) {
-      split_star(x[perl(x, "^ADX")])
-    } else {
-      NULL
-    }
+    !!!segment_list,
+    ADX = adx
   ) |>
     purrr::compact() |>
     unlist_df()
@@ -124,12 +129,12 @@ parse_820 <- function(text) {
   x <- split_tilde(text)
 
   header <- list(
-    ISA = split_isa(x[perl(x, "^ISA")]),
+    ISA = split_isa2(x[perl(x, "^ISA")]),
     GS = split_star(x[perl(x, "^GS")]),
     ST = split_star(x[perl(x, "^ST")]),
     BPR = split_star(x[perl(x, "^BPR")], replace_na = TRUE),
     TRN = split_star(x[perl(x, "^TRN")]),
-    REF = split_star(x[perl(x, "^REF")[1]]),
+    REF = split_star(x[perl(x, "^TRN") + 1L]),
     `N1*PE` = split_star(x[perl(x, "^N1\\*PE")]),
     `N3*PE` = split_star(x[perl(x, "^N3\\*")[1]]),
     `N4*PE` = split_star(x[perl(x, "^N4\\*")[1]]),
@@ -142,13 +147,17 @@ parse_820 <- function(text) {
   start <- perl(x, "^ENT")
   end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
 
-  loops <- purrr::map2(start, end, function(x, y) {
-    seq.int(x, y)
-  })
-
-  loop <- purrr::map(loops, \(i) x[i])
-  loop <- rlang::set_names(loop, paste0("L", seq_along(loop)))
-  loop <- purrr::map(loop, parse_loop_820)
+  loop <- map_seq(x, start, end)
+  loop <- purrr::map(
+    rlang::set_names(
+      loop,
+      paste0(
+        "L",
+        seq_along(loop)
+      )
+    ),
+    parse_loop_820
+  )
 
   trailer <- list(
     SE = split_star(x[perl(x, "^SE")]),

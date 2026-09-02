@@ -1,69 +1,86 @@
+# https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
+# https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
+
 # 2000B Loop: Individual Remittance Loop
 # 2100B Loop: Individual Name Loop
 # 2300B Loop: Individual Premium Remittance Detail Loop
 
 dict_820 = list(
+  # length = 16
   ISA = list(
-    `01` = "Authorization Info Qualifier", # 00 (No Authorization Information Present)
+    `01` = "Authorization Info Qualifier", # 00 = No Authorization Information Present
     `02` = "Authorization Information",
-    `03` = "Security Info Qualifier", # 00 (No Security Information Present)
+    `03` = "Security Info Qualifier", # 00 = No Security Information Present
     `04` = "Security Information",
     `05` = "Interchange ID Qualifier",
     `06` = "Interchange Sender ID",
     `07` = "Interchange ID Qualifier",
     `08` = "Interchange Receiver ID",
-    `09` = "Interchange Date (YYMMDD)",
-    `10` = "Interchange Time (HHMM)",
-    `11` = "Interchange Control Standards - ID",
-    `12` = "Interchange Control Version - Number",
+    `09` = "Interchange Date", # YYMMDD
+    `10` = "Interchange Time", # HHMM
+    `11` = "Repetition Separator", # ^
+    `12` = "Interchange Control Version Number", # 00501 = Standards Approved for Publication by ASC X12 Procedures Review Board through October 2003
     `13` = "Interchange Control Number",
-    `14` = "Acknowledgment Requested", # 0 (No Acknowledgment Requested)
-    `15` = "Usage Indicator", # P = Production, T = Test
-    `16` = "Component Element Separator"
+    `14` = "Acknowledgment Requested", # 0 = No Acknowledgment Requested
+    `15` = "Interchange Usage Indicator", # P = Production, T = Test, I = Information
+    `16` = "Component Element Separator" # >
   ),
   GS = list(
-    `01` = "Functional Identifier Code",
+    # length = 8
+    `01` = "Functional Identifier Code", # RA = Payment Order/Remittance Advice (820)
     `02` = "Application Sender's Code",
     `03` = "Application Receiver's Code",
-    `04` = "Date (YYYYMMDD)",
-    `05` = "Time (HHMMSS)",
+    `04` = "Date", # CCYYMMDD format
+    `05` = "Time", # HHMM, HHMMSS, HHMMSSD, or HHMMSSDD format
     `06` = "Group Control Number",
-    `07` = "Responsible Agency Code", # (X = Accredited Standards Committee X12)
-    `08` = "Industry Identifier Code" # (HIPAA Release 005010X218)
+    `07` = "Responsible Agency Code", # X = Accredited Standards Committee X12, T = Transportation Data Coordinating Committee (TDCC)
+    `08` = "Version / Release / Industry Identifier Code" # (HIPAA Release 005010X218)
   ),
   ST = list(
-    `01` = "Transaction Set Identifier Code", # 820 (Payment Order/Remittance Advice)
+    # length = 3
+    `01` = "Transaction Set Identifier Code", # 820 = Payment Order/Remittance Advice
     `02` = "Transaction Set Control Number",
-    `03` = "Implementation Convention Reference"
+    `03` = "Implementation Convention Reference" # Must be the same as the value in GS-08
   ),
   BPR = list(
+    # length = 16
     `01` = "Transaction Handling Code", # I = Remittance Information Only, C = Payment with Remittance
-    `02` = "Total Premium Payment Amount",
-    `03` = "Credit or Debit Flag Code", # C = Credit
-    `04` = "Payment Method Code", # NON = Non-Payment Data, ACH, CHK, FWT = Wire
-    `05` = "Payment Format Code", # CTX = Corporate Trade Exchange
-    `06` = "Originating Bank Routing and Account",
-    `07` = "Originating Bank Routing and Account",
-    `08` = "Originating Bank Routing and Account",
-    `09` = "Originating Bank Routing and Account",
-    `10` = "Payer Identifier/Originator's ID",
-    `11` = "Receiving Bank Routing and Account",
-    `12` = "Receiving Bank Routing and Account",
-    `13` = "Receiving Bank Routing and Account",
-    `14` = "Receiving Bank Routing and Account",
-    `15` = "Receiving Bank Routing and Account",
-    `16` = "Check Issue or EFT Effective Date (YYYYMMDD)"
+    `02` = "Total Payment Amount", # The total payment amount for this 820 cannot exceed eleven characters, including decimals (99999999.99). Although the value can be zero, the 820 cannot be issued for less than zero dollars.
+    `03` = "Credit or Debit Flag Code", # C = Credit, D = Debit
+    `04` = "Payment Method Code", # NON = Non-Payment Data (No dollars, nothing paid), ACH = Automated Clearing House, CHK = Check, FWT = Federal Reserve Funds/Wire Transfer - Nonrepetitive, BOP = Financial Institution Option
+    `05` = "Payment Format Code", # CCP = Cash Concentration/Disbursement plus Addenda (CCD+) (ACH), CTX = Corporate Trade Exchange
+    `06` = "Depository Financial Institution (DFI) Identification Number Qualifier", # 01 = ABA Transit Routing Number Including Check Digits (9 digits), 02 = Swift Identification (8 or 11 characters), 04 = Canadian Bank Branch and Institution Number
+    `07` = "Originating Depository Financial Institution (DFI) Identifier",
+    `08` = "Account Number Qualifier", # DA = Demand Deposit, SG = Savings, ALC = Agency Location Code
+    `09` = "Sender Bank Account Number",
+    `10` = "Payer Identifier",
+    `11` = "Originating Company Supplemental Code", # must be identical to the value sent in the TRN04 data element
+    `12` = "Depository Financial Institution (DFI) Identification Number Qualifier", # 01 = ABA Transit Routing Number Including Check Digits (9 digits), 02 = Swift Identification (8 or 11 characters), 04 = Canadian Bank Branch and Institution Number
+    `13` = "Receiving Depository Financial Institution (DFI) Identifier",
+    `14` = "Account Number Qualifier", # DA = Demand Deposit, SG = Savings, ALC = Agency Location Code
+    `15` = "Receiver Bank Account Number",
+    `16` = "Check Issue or EFT Effective Date" # CCYYMMDD format
   ),
   TRN = list(
+    # length = 2
     `01` = "Trace Type Code", # 1 = Current Transaction Trace, 3 = Financial Reassociation Trace Number
-    `02` = "Check or EFT Trace Number", # Reference identification (your payment trace number)
-    `03` = "Originating company identifier"
+    `02` = "Check or EFT Trace Number"
   ),
+  # REF Variants:
+  # 1. 14 (Master Account Number), Premium Receiver Reference Identifier
+  # 4. 18 (Plan Number), Exchange Assigned Employer Group Identifier
+  # 2. 38 (Master Policy Number), Exchange Assigned Qualified Health Plan Identifier
+  # 5. 1L (Group or Policy Number), Issuer Assigned Employer Group Identifier
+  # 3. TV (Line of Business), Issuer Assigned Qualified Health Plan Identifier
+  # 2F (Consolidated Invoice Number)
+  # 17 (Client Reporting Category)
+  # 72 (Schedule Reference Number)
+  # LB (Lockbox)
   REF = list(
-    `01` = "Reference Identification Qualifier", # 14 (Master Account Number)
-    `02` = "Payee Reference Identifier"
+    `01` = "Reference Identification Qualifier",
+    `02` = "Exchange Assigned Qualified Health Plan Identifier"
   ),
-  # 1000A Loop Premium Receiver's Name Loop
+  # 1000A Payee Name Loop
   `N1*PE` = list(
     `01` = "Entity Identifier Code",
     `02` = "Premium Receiver's Last or Organization Name"
@@ -110,9 +127,12 @@ dict_820 = list(
   ),
   # 2300B Loop Individual Premium Remittance Detail Loop
   RMR = list(
-    # IK = Invoice Number, IV = Seller's Invoice Number,
-    # AP = Accounts Receivable Number, CM = Buyer's Credit Memo,
-    # CL = Seller's Credit Memo, PO = Purchase Order
+    # IK = Invoice Number
+    # IV = Seller's Invoice Number
+    # AP = Accounts Receivable Number
+    # CM = Buyer's Credit Memo
+    # CL = Seller's Credit Memo
+    # PO = Purchase Order
     `01` = "Reference Identification Qualifier",
     `02` = "Insurance Remittance Reference Number",
     `03` = NA,
