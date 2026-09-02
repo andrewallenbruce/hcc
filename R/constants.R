@@ -49,47 +49,43 @@ DUAL_CODES = list(
     "08" = "Other Full Benefit Dual Eligible",
     "09" = "Medicare without Medicaid Coverage",
     "10" = "Separate CHIP Eligible Medicare"
+  ),
+  MAP_AID = list(
+    # Full Benefit Dual
+    "4N" = "02", # QMB Plus - Aged
+    "4P" = "02", # QMB Plus - Disabled
+    "5B" = "04", # SLMB Plus - Aged
+    "5D" = "04", # SLMB Plus - Disabled
+    # Partial Benefit Dual
+    "4M" = "01", # QMB Only - Aged
+    "4O" = "01", # QMB Only - Disabled
+    "5A" = "03", # SLMB Only - Aged
+    "5C" = "03", # SLMB Only - Disabled
+    "5E" = "06", # QI - Aged
+    "5F" = "06" # QI - Disabled
+  ),
+  MAP_STATUS = list(
+    # QMB Only (Partial)
+    "QMB" = "01",
+    "QMBONLY" = "01",
+    # QMB Plus (Full Benefit)
+    "QMBPLUS" = "02",
+    # SLMB Only (Partial)
+    "QMB+" = "02",
+    "SLMB" = "03",
+    # SLMB Plus (Full Benefit)
+    "SLMBONLY" = "03",
+    "SLMBPLUS" = "04",
+    "SLMB+" = "04",
+    # Qualified Disabled and Working Individual
+    "QDWI" = "05",
+    # Qualifying Individual
+    "QI" = "06",
+    "QI1" = "06",
+    # Full Benefit Dual Eligible (Other)
+    "FBDE" = "08",
+    "OTHERFULL" = "08"
   )
-)
-
-#' California DHCS Medi-Cal Aid Codes
-#' Maps California-specific aid codes to CMS dual eligibility codes
-#' Source: California DHCS `834` Implementation Guide
-#' @noRd
-MEDI_CAL_AID_CODES = list(
-  # Full Benefit Dual (QMB Plus, SLMB Plus)
-  "4N" = "02", # QMB Plus - Aged
-  "4P" = "02", # QMB Plus - Disabled
-  "5B" = "04", # SLMB Plus - Aged
-  "5D" = "04", # SLMB Plus - Disabled
-
-  # Partial Benefit Dual (QMB Only, SLMB Only, QI)
-  "4M" = "01", # QMB Only - Aged
-  "4O" = "01", # QMB Only - Disabled
-  "5A" = "03", # SLMB Only - Aged
-  "5C" = "03", # SLMB Only - Disabled
-  "5E" = "06", # QI - Aged
-  "5F" = "06" # QI - Disabled
-)
-
-#' Medicare Status Code Mappings
-#' Maps Medicare status codes (from various sources) to CMS dual eligibility
-#' codes. Used in X12-834 `REF*ABB` segment and other payer files.
-#' @noRd
-MEDICARE_STATUS_CODE_MAPPING = list(
-  "QMB" = "01", # QMB Only (Partial)
-  "QMBONLY" = "01",
-  "QMBPLUS" = "02", # QMB Plus (Full Benefit)
-  "QMB+" = "02",
-  "SLMB" = "03", # SLMB Only (Partial)
-  "SLMBONLY" = "03",
-  "SLMBPLUS" = "04", # SLMB Plus (Full Benefit)
-  "SLMB+" = "04",
-  "QDWI" = "05", # Qualified Disabled and Working Individual
-  "QI" = "06", # Qualifying Individual
-  "QI1" = "06",
-  "FBDE" = "08", # Full Benefit Dual Eligible (Other)
-  "OTHERFULL" = "08"
 )
 
 #' OREC/CREC Codes
@@ -183,7 +179,7 @@ SEX = list(
   )
 )
 
-#' X12 834 MAINTENANCE TYPE CODES (INS-03)
+#' X12-834 MAINTENANCE TYPE CODES (INS-03)
 #' @noRd
 MAINTENANCE = list(
   CHANGE = "001",
@@ -216,21 +212,21 @@ MODEL = c(
 AGES = list(
   V6 = list(
     RANGE = ivs::iv_pairs(
-      c(0, 1),
-      c(1, 2),
-      c(2, 5),
-      c(5, 10),
-      c(10, 15),
-      c(15, 21),
-      c(21, 25),
-      c(25, 30),
-      c(30, 35),
-      c(35, 40),
-      c(40, 45),
-      c(45, 50),
-      c(50, 55),
-      c(55, 60),
-      c(60, Inf)
+      c(0L, 1L),
+      c(1L, 2L),
+      c(2L, 5L),
+      c(5L, 10L),
+      c(10L, 15L),
+      c(15L, 21L),
+      c(21L, 25L),
+      c(25L, 30L),
+      c(30L, 35L),
+      c(35L, 40L),
+      c(40L, 45L),
+      c(45L, 50L),
+      c(50L, 55L),
+      c(55L, 60L),
+      c(60L, 105L)
     ),
     LABEL = c(
       "0_0",
@@ -252,18 +248,18 @@ AGES = list(
   ),
   ESRD = list(
     RANGE = ivs::iv_pairs(
-      c(0, 35),
-      c(35, 45),
-      c(45, 55),
-      c(55, 60),
-      c(60, 65),
-      c(65, 70),
-      c(70, 75),
-      c(75, 80),
-      c(80, 85),
-      c(85, 90),
-      c(90, 95),
-      c(95, Inf)
+      c(0L, 35L),
+      c(35L, 45L),
+      c(45L, 55L),
+      c(55L, 60L),
+      c(60L, 65L),
+      c(65L, 70L),
+      c(70L, 75L),
+      c(75L, 80L),
+      c(80L, 85L),
+      c(85L, 90L),
+      c(90L, 95L),
+      c(95L, 105L)
     ),
     LABEL = c(
       "0_34",
@@ -326,3 +322,41 @@ KEYWORDS = list(
     "INSTITUTIONALIZED"
   )
 )
+
+# California DHCS Medi-Cal Aid Codes
+# Maps California-specific aid codes to CMS dual eligibility codes
+# Source: California DHCS `834` Implementation Guide
+# MEDI_CAL_AID_CODES = list(
+#   # Full Benefit Dual (QMB Plus, SLMB Plus)
+#   "4N" = "02", # QMB Plus - Aged
+#   "4P" = "02", # QMB Plus - Disabled
+#   "5B" = "04", # SLMB Plus - Aged
+#   "5D" = "04", # SLMB Plus - Disabled
+#
+#   # Partial Benefit Dual (QMB Only, SLMB Only, QI)
+#   "4M" = "01", # QMB Only - Aged
+#   "4O" = "01", # QMB Only - Disabled
+#   "5A" = "03", # SLMB Only - Aged
+#   "5C" = "03", # SLMB Only - Disabled
+#   "5E" = "06", # QI - Aged
+#   "5F" = "06" # QI - Disabled
+# )
+
+# Medicare Status Code Mappings
+# Maps Medicare status codes (from various sources) to CMS dual eligibility
+# codes. Used in X12-834 `REF*ABB` segment and other payer files.
+# MEDICARE_STATUS_CODE_MAPPING = list(
+#   "QMB" = "01", # QMB Only (Partial)
+#   "QMBONLY" = "01",
+#   "QMBPLUS" = "02", # QMB Plus (Full Benefit)
+#   "QMB+" = "02",
+#   "SLMB" = "03", # SLMB Only (Partial)
+#   "SLMBONLY" = "03",
+#   "SLMBPLUS" = "04", # SLMB Plus (Full Benefit)
+#   "SLMB+" = "04",
+#   "QDWI" = "05", # Qualified Disabled and Working Individual
+#   "QI" = "06", # Qualifying Individual
+#   "QI1" = "06",
+#   "FBDE" = "08", # Full Benefit Dual Eligible (Other)
+#   "OTHERFULL" = "08"
+# )

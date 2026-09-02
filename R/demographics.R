@@ -91,7 +91,7 @@ demographics <- function(
     is_lti = is_lti,
     low_income = low_income,
     esrd_months = esrd_months,
-    category = age_category(
+    category = categorize_age(
       version,
       new_enrollee,
       has_esrd,

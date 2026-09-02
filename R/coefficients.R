@@ -99,16 +99,18 @@ S7::method(coefficient_prefix, PatientDemographics) <- function(
   }
 
   # Community case
-  pre <- cheapr::paste_(
-    "C",
-    cheapr::case(
-      isTRUE(x@dual_full) ~ "F",
-      isTRUE(x@dual_part) ~ "P",
-      .default = "N"
-    )
+  cheapr::paste_(
+    cheapr::paste_(
+      "C",
+      cheapr::case(
+        isTRUE(x@dual_full) ~ "F",
+        isTRUE(x@dual_part) ~ "P",
+        .default = "N"
+      )
+    ),
+    cheapr::if_else_(x@age >= 65L, "A", "D"),
+    "_"
   )
-  pre <- cheapr::paste_(pre, cheapr::if_else_(x@age >= 65L, "A", "D"))
-  cheapr::paste_(pre, "_")
 }
 
 #' Apply risk adjustment coefficients to HCCs and interactions.
@@ -121,6 +123,7 @@ S7::method(coefficient_prefix, PatientDemographics) <- function(
 #' @param hcc HCC codes present for the patient
 #' @param interactions Interaction variables and their values (0 or 1)
 #' @param model Risk adjustment model to use; default is "CMS-HCC Model V28"
+#' @param year Model year; default is 2026
 #' @param coefficients Map of variable/model to coefficient values
 #' @param prefix_override Optional prefix to override auto-detected demographic
 #'   prefix. Common values:
@@ -148,9 +151,10 @@ S7::method(coefficient_prefix, PatientDemographics) <- function(
 apply_coefficients <- function(
   demographics,
   interactions,
-  coefficients,
-  model,
-  hcc = NULL,
+  coefficients = NULL,
+  hcc,
+  model = "CMS-HCC Model V28",
+  year = 2026L,
   prefix_override = NULL
 ) {
   model <- rlang::arg_match0(model, MODEL)
@@ -161,84 +165,98 @@ apply_coefficients <- function(
     coefficient_prefix(demographics, model)
   }
 
-  demo_key <- cheapr::c_(
-    prefix = cheapr::paste_(prefix, demographics@category),
-    model = model
-  )
-
-  coef <- get_coefficient(
-    coefficient = demo_key[["prefix"]],
-    model = demo_key[["model"]],
-    year = 2025
-  )
-
-  output <- list()
-
-  if (!rlang::is_empty(coef)) {
-    output$category <- coef$coefficient
+  # No-prefix lookup for ESRD duration coefficients stored without prefix
+  # ESRD V21: GE65_DUR*, LT65_DUR*
+  # ESRD V24: FGC_*, FGI_*, LTI_GE65/LT65
+  if (
+    any(startsWith(interactions, "FGC")) |
+      any(startsWith(interactions, "FGI")) |
+      any(startsWith(interactions, "GE65_DUR")) |
+      any(startsWith(interactions, "LT65_DUR")) |
+      any(interactions %in% c("LTI_GE65", "LTI_LT65"))
+  ) {
+    interactions_key = interactions
+  } else {
+    interactions_key = cheapr::paste_(prefix, interactions)
   }
 
-  key <- if (perl0(model, "RxHCC")) {
-    list(
-      hcc = cheapr::c_(cheapr::paste_(prefix, "RxHCC", hcc)),
-      model = model
+  demographics_key = cheapr::paste_(prefix, demographics@category)
+  infix = cheapr::if_else_(perl0(model, "RxHCC"), "RxHCC", "HCC")
+  key = cheapr::paste_(prefix, infix, hcc)
+
+  if (!is.null(coefficients)) {
+    coef = cheapr::sset(
+      coefficients,
+      cheapr::which_(c(key, interactions_key) %in_% coefficients$coefficient)
+    )
+
+    hcc_key = rlang::set_names(c(hcc, interactions), c(key, interactions_key))
+
+    output = rlang::set_names(
+      as.list(coef$value),
+      unname(hcc_key[coef$coefficient])
     )
   } else {
-    list(
-      hcc = cheapr::c_(cheapr::paste_(prefix, "HCC", hcc)),
-      model = model
-    )
+    coef = get_coefficient(demographics_key, model, year)
+    values = get_coefficient(key, model, year)
+    output = list()
+    if (!rlang::is_empty(coef)) {
+      output$category <- coef$coefficient
+    }
+
+    if (!rlang::is_empty(values)) {
+      output$hcc <- rlang::set_names(
+        as.list(values$value),
+        values$coefficient
+      )
+    }
   }
 
-  values <- get_coefficient(
-    coefficient = output$category,
-    model = key$model
-  )
-
-  if (!rlang::is_empty(values)) {
-    output$hcc <- rlang::set_names(
-      as.list(values$value),
-      values$coefficient
-    )
-  }
   return(output)
 }
 
 #' @noRd
 get_coefficient <- function(
   coefficient,
-  model,
+  model = "CMS-HCC Model V28",
   year = 2026L
 ) {
   rlang::check_number_whole(
     year,
     min = 2025,
-    max = 2026
-  )
-
-  model <- rlang::arg_match0(
-    model,
-    c(
-      "CMS-HCC Model V24",
-      "CMS-HCC ESRD Model V21",
-      "CMS-HCC ESRD Model V24",
-      "CMS-HCC Model V22",
-      "CMS-HCC Model V28",
-      "RxHCC Model V05",
-      "RxHCC Model V08",
-      "CMS-HCC Model V21",
-      "CMS-HCC Model V23"
-    )
+    max = 2026,
+    allow_null = TRUE
   )
 
   # year
-  x <- cheapr::sset(
-    hcc::ra_coefficients,
-    cheapr::which_(year == hcc::ra_coefficients$year)
-  )
+  x <- if (is.null(year)) {
+    hcc::ra_coefficients
+  } else {
+    cheapr::sset(
+      hcc::ra_coefficients,
+      cheapr::which_(year == hcc::ra_coefficients$year)
+    )
+  }
 
   # model
-  x <- cheapr::sset(x, cheapr::which_(model == x$model_name))
+  if (!is.null(model)) {
+    model <- rlang::arg_match0(
+      model,
+      c(
+        "CMS-HCC Model V24",
+        "CMS-HCC ESRD Model V21",
+        "CMS-HCC ESRD Model V24",
+        "CMS-HCC Model V22",
+        "CMS-HCC Model V28",
+        "RxHCC Model V05",
+        "RxHCC Model V08",
+        "CMS-HCC Model V21",
+        "CMS-HCC Model V23"
+      )
+    )
+
+    x <- cheapr::sset(x, cheapr::which_(model == x$model_name))
+  }
 
   # coefficient
   cheapr::sset(

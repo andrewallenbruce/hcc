@@ -7,9 +7,10 @@
 apply_coefficients(
   demographics,
   interactions,
-  coefficients,
-  model,
-  hcc = NULL,
+  coefficients = NULL,
+  hcc,
+  model = "CMS-HCC Model V28",
+  year = 2026L,
   prefix_override = NULL
 )
 }
@@ -20,9 +21,11 @@ apply_coefficients(
 
 \item{coefficients}{Map of variable/model to coefficient values}
 
+\item{hcc}{HCC codes present for the patient}
+
 \item{model}{Risk adjustment model to use; default is "CMS-HCC Model V28"}
 
-\item{hcc}{HCC codes present for the patient}
+\item{year}{Model year; default is 2026}
 
 \item{prefix_override}{Optional prefix to override auto-detected demographic
 prefix. Common values:
