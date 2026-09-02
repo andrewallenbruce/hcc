@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9034 (2026-09-02)
+
+- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
+  reworking + tests
+
 ## hcc 0.0.0.9033 (2026-09-01)
 
 - more S7, work on parsers

@@ -10,9 +10,10 @@ corresponding coefficient value based on the specified model.
 apply_coefficients(
   demographics,
   interactions,
-  coefficients,
-  model,
-  hcc = NULL,
+  coefficients = NULL,
+  hcc,
+  model = "CMS-HCC Model V28",
+  year = 2026L,
   prefix_override = NULL
 )
 ```
@@ -31,13 +32,17 @@ apply_coefficients(
 
   Map of variable/model to coefficient values
 
+- hcc:
+
+  HCC codes present for the patient
+
 - model:
 
   Risk adjustment model to use; default is "CMS-HCC Model V28"
 
-- hcc:
+- year:
 
-  HCC codes present for the patient
+  Model year; default is 2026
 
 - prefix_override:
 

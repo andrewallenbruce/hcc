@@ -11,7 +11,7 @@ corresponding coefficient value based on the specified model."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9033</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9034</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,9 +54,10 @@ corresponding coefficient value based on the specified model.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">apply_coefficients</span><span class="op">(</span></span>
 <span>  <span class="va">demographics</span>,</span>
 <span>  <span class="va">interactions</span>,</span>
-<span>  <span class="va">coefficients</span>,</span>
-<span>  <span class="va">model</span>,</span>
-<span>  hcc <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  coefficients <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">hcc</span>,</span>
+<span>  model <span class="op">=</span> <span class="st">"CMS-HCC Model V28"</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2026L</span>,</span>
 <span>  prefix_override <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -77,12 +78,16 @@ corresponding coefficient value based on the specified model.</p>
 <dd><p>Map of variable/model to coefficient values</p></dd>
 
 
+<dt id="arg-hcc">hcc<a class="anchor" aria-label="anchor" href="#arg-hcc"></a></dt>
+<dd><p>HCC codes present for the patient</p></dd>
+
+
 <dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
 <dd><p>Risk adjustment model to use; default is "CMS-HCC Model V28"</p></dd>
 
 
-<dt id="arg-hcc">hcc<a class="anchor" aria-label="anchor" href="#arg-hcc"></a></dt>
-<dd><p>HCC codes present for the patient</p></dd>
+<dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
+<dd><p>Model year; default is 2026</p></dd>
 
 
 <dt id="arg-prefix-override">prefix_override<a class="anchor" aria-label="anchor" href="#arg-prefix-override"></a></dt>

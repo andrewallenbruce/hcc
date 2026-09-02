@@ -22,8 +22,6 @@
   : Remittance Line Item
 - [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
   : Healthcare Claim Service Level Data
-- [`any_hcc()`](https://andrewallenbruce.github.io/hcc/reference/any_hcc.md)
-  : Is any HCC present?
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
   : Apply risk adjustment coefficients to HCCs and interactions.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
@@ -39,8 +37,6 @@
   : Model-Based Disease Categories
 - [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
   : Model-Based Disease Interaction Variables
-- [`hcc_count()`](https://andrewallenbruce.github.io/hcc/reference/hcc_count.md)
-  : Creates HCC count variables
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Demographic Interactions
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
