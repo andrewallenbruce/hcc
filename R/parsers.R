@@ -10,7 +10,19 @@ unlist_df <- function(x) {
 
 #' @noRd
 map_seq <- function(text, start, end) {
-  purrr::map(purrr::map2(start, end, \(a, b) seq.int(a, b)), \(i) text[i])
+  purrr::map(
+    purrr::map2(
+      start,
+      end,
+      function(a, b) seq.int(a, b)
+    ),
+    function(i) text[i]
+  )
+}
+
+#' @noRd
+name_loop <- function(x) {
+  rlang::set_names(x, ~ paste0("L", seq_along(.)))
 }
 
 #' @noRd
@@ -20,11 +32,10 @@ nzchar_na <- function(x) {
 }
 
 #' @noRd
-pad_names <- function(x, replace_na = FALSE) {
-  x <- if (replace_na) nzchar_na(x) else x
-  N = as.character(seq_along(x))
+pad_names <- function(x) {
+  N <- as.character(seq_along(x))
   i = cheapr::which_(nchar(N) == 1L)
-  N[i] = cheapr::paste_("0", N[i])
+  N[i] <- cheapr::paste_("0", N[i])
   rlang::set_names(as.list(x), N)
 }
 
@@ -34,15 +45,15 @@ split_tilde <- function(x) {
 }
 
 #' @noRd
-split_isa <- function(x) {
-  x <- strsplit(x, " ", fixed = TRUE)[[1]]
-  x <- unlist_(strsplit(x[nzchar(x)], "*", fixed = TRUE))[c(-1, -8, -11)]
-  pad_names(x, replace_na = TRUE)
-}
-
-#' @noRd
-split_isa2 <- function(x) {
-  strsplit(x, "*", fixed = TRUE)[[1]][-1] |>
+split_ISA <- function(x) {
+  strsplit(
+    .subset(
+      x,
+      perl(x, "^ISA")
+    ),
+    "*",
+    fixed = TRUE
+  )[[1]][-1] |>
     trimws() |>
     nzchar_na() |>
     pad_names()
@@ -53,10 +64,11 @@ split_star <- function(x, pad = TRUE, replace_na = FALSE) {
   if (!pad) {
     return(strsplit(x, "*", fixed = TRUE)[[1]][-1])
   }
-  pad_names(
-    strsplit(x, "*", fixed = TRUE)[[1]][-1],
-    replace_na = replace_na
-  )
+
+  if (!replace_na) {
+    return(pad_names(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
+  }
+  pad_names(nzchar_na(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
 }
 
 #' @noRd
@@ -126,7 +138,7 @@ parse_820 <- function(text) {
   x <- split_tilde(text)
 
   header <- list(
-    ISA = split_isa2(x[perl(x, "^ISA")]),
+    ISA = split_ISA(x),
     GS = split_star(x[perl(x, "^GS")]),
     ST = split_star(x[perl(x, "^ST")]),
     BPR = split_star(x[perl(x, "^BPR")], replace_na = TRUE),
@@ -145,16 +157,7 @@ parse_820 <- function(text) {
   end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
 
   loop <- map_seq(x, start, end)
-  loop <- purrr::map(
-    rlang::set_names(
-      loop,
-      paste0(
-        "L",
-        seq_along(loop)
-      )
-    ),
-    parse_loop_820
-  )
+  loop <- purrr::map(name_loop(loop), parse_loop_820)
 
   trailer <- list(
     SE = split_star(x[perl(x, "^SE")]),
@@ -238,7 +241,7 @@ parse_837 <- function(text) {
   x <- split_tilde(text)
 
   header <- list(
-    ISA = split_isa2(x[perl(x, "^ISA")]),
+    ISA = split_ISA(x),
     GS = split_star(x[perl(x, "^GS")]),
     ST = split_star(x[perl(x, "^ST")]),
     BHT = split_star(x[perl(x, "^BHT")], replace_na = TRUE)
