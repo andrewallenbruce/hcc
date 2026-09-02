@@ -42,7 +42,6 @@ split_isa <- function(x) {
 
 #' @noRd
 split_isa2 <- function(x) {
-  # if (grepl("ISA", x[1], fixed = TRUE)) x = x[-1]
   strsplit(x, "*", fixed = TRUE)[[1]][-1] |>
     trimws() |>
     nzchar_na() |>
@@ -76,8 +75,6 @@ parse_loop_820 <- function(x) {
       DTM = split_star(x[perl(x, "^DTM\\*582")], replace_na = TRUE)
     )
   }) |>
-    # purrr::list_transpose() |>
-    # list2DF()
     purrr::list_flatten()
 
   adx <- if (any(grepl("^ADX", x))) {
