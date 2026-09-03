@@ -33,7 +33,6 @@ nzchar_na <- function(x) {
 
 #' @noRd
 pad_names <- function(x) {
-  # N[i] <- cheapr::paste_("0", N[i])
   N <- as.character(seq_along(x))
   i <- collapse::whichv(nchar(N), 1L)
   collapse::setv(N, i, cheapr::paste_("0", N[i]))
@@ -41,28 +40,16 @@ pad_names <- function(x) {
 }
 
 #' @noRd
-split_tilde <- function(x) {
+tilde <- function(x) {
   strsplit(x, "~", fixed = TRUE)[[1]]
 }
 
 #' @noRd
-split_star <- function(x, pad = TRUE, replace_na = FALSE) {
-  if (!pad) {
-    return(strsplit(x, "*", fixed = TRUE)[[1]][-1])
-  }
-
-  if (!replace_na) {
-    return(pad_names(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
-  }
-  pad_names(nzchar_na(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
-}
-
-#' @noRd
-split_ISA <- function(x) {
+split_ <- function(x, p) {
   strsplit(
     .subset(
       x,
-      perl(x, "^ISA")
+      perl(x, p)
     ),
     "*",
     fixed = TRUE
@@ -73,81 +60,59 @@ split_ISA <- function(x) {
 }
 
 #' @noRd
-split_BPR <- function(x) {
-  strsplit(
-    .subset(
-      x,
-      perl(x, "^BPR")
-    ),
-    "*",
-    fixed = TRUE
-  )[[1]][-1] |>
+split_i <- function(x, i) {
+  strsplit(.subset(x, i), "*", fixed = TRUE)[[1]][-1] |>
     trimws() |>
     nzchar_na() |>
     pad_names()
+}
+
+#' @noRd
+split_N1 <- function(x, i) {
+  x <- strsplit(.subset(x, i), "*", fixed = TRUE)
+  purrr::map(x, \(x) {
+    pad_names(nzchar_na(trimws(x[-1L])))
+  }) |>
+    rlang::set_names(purrr::map_chr(x, 1L))
 }
 
 #' @noRd
 split_TRN <- function(x) {
-  trn <- perl(x, "^TRN")
-  ref <- trn + 1L
-
-  pe <- perl(x, "^N1\\*PE")
-  pr <- perl(x, "^N1\\*PR")
-  p2 <- min(perl(x, "^ENT")) - 1L
-
-  sp <- \(x, i) {
-    strsplit(.subset(x, i), "*", fixed = TRUE)[[1]][-1] |>
-      trimws() |>
-      nzchar_na() |>
-      pad_names()
-  }
-
-  n1 <- \(x, i) {
-    x <- strsplit(.subset(x, i), "*", fixed = TRUE)
-    n <- purrr::map_chr(x, 1L)
-    purrr::map(x, \(x) {
-      pad_names(nzchar_na(trimws(x[-1L])))
-    }) |>
-      rlang::set_names(n)
-  }
+  TRN <- perl(x, "^TRN")
+  PE1 <- perl(x, "^N1\\*PE")
+  PR1 <- perl(x, "^N1\\*PR")
+  PR2 <- min(perl(x, "^ENT")) - 1L
 
   rlang::list2(
-    TRN = sp(x, trn),
-    REF = sp(x, ref),
-    !!!n1(x, seq.int(pe, pr - 1L)),
-    !!!n1(x, seq.int(pr, p2))
+    TRN = split_i(x, TRN),
+    REF = split_i(x, TRN + 1L),
+    # 1000A Payee Name Loop
+    !!!split_N1(x, seq.int(PE1, PR1 - 1L)),
+    # 1000B Payer Name Loop
+    !!!split_N1(x, seq.int(PR1, PR2))
   )
 }
 
 #' @noRd
-parse_loop_820 <- function(x) {
-  start = perl(x, "^RMR")
-  end = perl(x, "^DTM\\*582")
-  segments <- map_seq(x, start, end)
+entity_loop_820 <- function(x) {
+  # 2300B Remittance Detail Loop
+  seqs <- map_seq(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
 
-  segment_list <- purrr::map(segments, function(x) {
-    list(
-      RMR = split_star(x[perl(x, "^RMR")], replace_na = TRUE),
-      REF = split_star(x[perl(x, "^REF\\*18")]),
-      REF = split_star(x[perl(x, "^REF\\*ZZ")][1]),
-      REF = split_star(x[perl(x, "^REF\\*ZZ")][2]),
-      DTM = split_star(x[perl(x, "^DTM\\*582")], replace_na = TRUE)
+  loops <- purrr::map(seqs, function(x) {
+    rlang::list2(
+      RMR = split_(x, "^RMR"),
+      !!!split_N1(x, perl(x, "^REF")),
+      DTM = split_(x, "^DTM\\*582")
     )
   }) |>
     purrr::list_flatten()
 
-  adx <- if (any_(grepl("^ADX", x))) {
-    split_star(x[perl(x, "^ADX")])
-  } else {
-    NULL
-  }
-
   rlang::list2(
-    ENT = split_star(x[perl(x, "^ENT")]),
-    NM1 = split_star(x[perl(x, "^NM1")], replace_na = TRUE),
-    !!!segment_list,
-    ADX = adx
+    # 2000B Per-Member Entity Loop
+    ENT = split_(x, "^ENT"),
+    NM1 = split_(x, "^NM1"),
+    !!!loops,
+    ADX = if (any_(grepl("^ADX", x))) split_(x, "^ADX") else NULL
   ) |>
     purrr::compact() |>
     unlist_df()
@@ -183,35 +148,38 @@ parse_loop_820 <- function(x) {
 #' purrr::map(hcc::x12_820, parse_820)
 #' @export
 parse_820 <- function(text) {
-  x <- split_tilde(text)
+  x <- tilde(text)
 
   header <- rlang::list2(
-    ISA = split_ISA(x),
-    GS = split_star(x[perl(x, "^GS")]),
-    ST = split_star(x[perl(x, "^ST")]),
-    BPR = split_BPR(x),
+    ISA = split_(x, "^ISA"),
+    GS = split_(x, "^GS"),
+    ST = split_(x, "^ST"),
+    BPR = split_(x, "^BPR"),
     !!!split_TRN(x)
-  ) |>
-    unlist_df()
+  )
 
-  start <- perl(x, "^ENT")
-  end <- cheapr::c_(start[-1L], perl(x, "^SE")) - 1L
+  ENT_start <- perl(x, "^ENT")
+  ENT_end <- cheapr::c_(ENT_start[-1L], perl(x, "^SE")) - 1L
 
-  loop <- map_seq(x, start, end)
-  loop <- purrr::map(name_loop(loop), parse_loop_820)
+  ENT_loop <- map_seq(x, ENT_start, ENT_end)
+  ENT_loop <- name_loop(ENT_loop)
+  ENT_loop <- purrr::map(ENT_loop, entity_loop_820)
 
   trailer <- list(
-    SE = split_star(x[perl(x, "^SE")]),
-    GE = split_star(x[perl(x, "^GE")]),
-    IEA = split_star(x[perl(x, "^IEA")])
-  ) |>
-    unlist_df()
+    SE = split_(x, "^SE"),
+    GE = split_(x, "^GE"),
+    IEA = split_(x, "^IEA")
+  )
 
-  collapse::qTBL(collapse::rowbind(list(
-    HEADER = header,
-    LOOP = collapse::rowbind(loop),
-    TRAILER = trailer
-  )))
+  collapse::qTBL(
+    collapse::rowbind(
+      list(
+        HEADER = unlist_df(header),
+        ENTITY_LOOP = collapse::rowbind(ENT_loop),
+        TRAILER = unlist_df(trailer)
+      )
+    )
+  )
 }
 
 #' X12-834 Benefit Enrollment Parser
@@ -238,7 +206,7 @@ parse_820 <- function(text) {
 #' purrr::map(hcc::x12_834, parse_834)
 #' @export
 parse_834 <- function(text) {
-  split_tilde(text)
+  tilde(text)
 }
 
 #' X12-837 Health Care Claim Parser
@@ -279,20 +247,38 @@ parse_834 <- function(text) {
 #' purrr::map(hcc::x12_837[1], parse_837)
 #' @export
 parse_837 <- function(text) {
-  x <- split_tilde(text)
+  x <- tilde(text)
 
   header <- list(
-    ISA = split_ISA(x),
-    GS = split_star(x[perl(x, "^GS")]),
-    ST = split_star(x[perl(x, "^ST")]),
-    BHT = split_star(x[perl(x, "^BHT")], replace_na = TRUE)
-  ) |>
-    unlist_df()
-  return(header)
+    ISA = split_(x, "^ISA"),
+    GS = split_(x, "^GS"),
+    ST = split_(x, "^ST"),
+    BHT = split_(x, "^BHT")
+  )
 
-  # list(
-  #   `NM1*41` = split_star(x[perl(x, "^NM1\\*41")]),
-  #   PER = split_star(x[perl(x, "^PER")], replace_na = TRUE),
-  #   `NM1*40` = split_star(x[perl(x, "^NM1\\*40")])
-  # )
+  # perl(x, "^NM1\\*41") # Submitter Name
+  # perl(x, "^PER\\*IC")[1] # Submitter EDI Contact Information
+  # perl(x, "^NM1\\*40") # Receiver Name
+  # perl(x, "^PER\\*IC")[2] # Receiver EDI Contact Information
+  # perl(x, "^HL") # Hierarchical Level
+  # perl(x, "^NM1\\*85") # Billing Provider Name
+  # perl(x, "^SBR") # Subscriber Information
+  # Claim Information
+  # c(perl(x, "^CLM"), perl(x, "^SE") - 1L)
+
+  trailer <- list(
+    SE = split_(x, "^SE"),
+    GE = split_(x, "^GE"),
+    IEA = split_(x, "^IEA")
+  )
+
+  collapse::qTBL(
+    collapse::rowbind(
+      list(
+        HEADER = unlist_df(header),
+        # ENTITY_LOOP = collapse::rowbind(ENT_loop),
+        TRAILER = unlist_df(trailer)
+      )
+    )
+  )
 }
