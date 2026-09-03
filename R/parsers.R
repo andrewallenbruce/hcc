@@ -33,15 +33,28 @@ nzchar_na <- function(x) {
 
 #' @noRd
 pad_names <- function(x) {
+  # N[i] <- cheapr::paste_("0", N[i])
   N <- as.character(seq_along(x))
-  i = cheapr::which_(nchar(N) == 1L)
-  N[i] <- cheapr::paste_("0", N[i])
+  i <- collapse::whichv(nchar(N), 1L)
+  collapse::setv(N, i, cheapr::paste_("0", N[i]))
   rlang::set_names(as.list(x), N)
 }
 
 #' @noRd
 split_tilde <- function(x) {
   strsplit(x, "~", fixed = TRUE)[[1]]
+}
+
+#' @noRd
+split_star <- function(x, pad = TRUE, replace_na = FALSE) {
+  if (!pad) {
+    return(strsplit(x, "*", fixed = TRUE)[[1]][-1])
+  }
+
+  if (!replace_na) {
+    return(pad_names(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
+  }
+  pad_names(nzchar_na(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
 }
 
 #' @noRd
@@ -60,22 +73,57 @@ split_ISA <- function(x) {
 }
 
 #' @noRd
-split_star <- function(x, pad = TRUE, replace_na = FALSE) {
-  if (!pad) {
-    return(strsplit(x, "*", fixed = TRUE)[[1]][-1])
+split_BPR <- function(x) {
+  strsplit(
+    .subset(
+      x,
+      perl(x, "^BPR")
+    ),
+    "*",
+    fixed = TRUE
+  )[[1]][-1] |>
+    trimws() |>
+    nzchar_na() |>
+    pad_names()
+}
+
+#' @noRd
+split_TRN <- function(x) {
+  trn <- perl(x, "^TRN")
+  ref <- trn + 1L
+
+  pe <- perl(x, "^N1\\*PE")
+  pr <- perl(x, "^N1\\*PR")
+  p2 <- min(perl(x, "^ENT")) - 1L
+
+  sp <- \(x, i) {
+    strsplit(.subset(x, i), "*", fixed = TRUE)[[1]][-1] |>
+      trimws() |>
+      nzchar_na() |>
+      pad_names()
   }
 
-  if (!replace_na) {
-    return(pad_names(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
+  n1 <- \(x, i) {
+    x <- strsplit(.subset(x, i), "*", fixed = TRUE)
+    n <- purrr::map_chr(x, 1L)
+    purrr::map(x, \(x) {
+      pad_names(nzchar_na(trimws(x[-1L])))
+    }) |>
+      rlang::set_names(n)
   }
-  pad_names(nzchar_na(strsplit(x, "*", fixed = TRUE)[[1]][-1]))
+
+  rlang::list2(
+    TRN = sp(x, trn),
+    REF = sp(x, ref),
+    !!!n1(x, seq.int(pe, pr - 1L)),
+    !!!n1(x, seq.int(pr, p2))
+  )
 }
 
 #' @noRd
 parse_loop_820 <- function(x) {
   start = perl(x, "^RMR")
   end = perl(x, "^DTM\\*582")
-  # check length(start) == length(end)
   segments <- map_seq(x, start, end)
 
   segment_list <- purrr::map(segments, function(x) {
@@ -89,7 +137,7 @@ parse_loop_820 <- function(x) {
   }) |>
     purrr::list_flatten()
 
-  adx <- if (any(grepl("^ADX", x))) {
+  adx <- if (any_(grepl("^ADX", x))) {
     split_star(x[perl(x, "^ADX")])
   } else {
     NULL
@@ -137,19 +185,12 @@ parse_loop_820 <- function(x) {
 parse_820 <- function(text) {
   x <- split_tilde(text)
 
-  header <- list(
+  header <- rlang::list2(
     ISA = split_ISA(x),
     GS = split_star(x[perl(x, "^GS")]),
     ST = split_star(x[perl(x, "^ST")]),
-    BPR = split_star(x[perl(x, "^BPR")], replace_na = TRUE),
-    TRN = split_star(x[perl(x, "^TRN")]),
-    REF = split_star(x[perl(x, "^TRN") + 1L]),
-    `N1*PE` = split_star(x[perl(x, "^N1\\*PE")]),
-    `N3*PE` = split_star(x[perl(x, "^N3\\*")[1]]),
-    `N4*PE` = split_star(x[perl(x, "^N4\\*")[1]]),
-    `N1*PR` = split_star(x[perl(x, "^N1\\*PR")]),
-    `N3*PR` = split_star(x[perl(x, "^N3\\*")[2]]),
-    `N4*PR` = split_star(x[perl(x, "^N4\\*")[2]])
+    BPR = split_BPR(x),
+    !!!split_TRN(x)
   ) |>
     unlist_df()
 
