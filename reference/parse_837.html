@@ -115,40 +115,20 @@ Waystar, Trizetto), with <code>277CA</code>, <code>999</code>, and ultimately <c
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837.html">x12_837</a></span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">parse_837</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG PT        VALUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  ISA 01           00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ISA 02         &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ISA 03           00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  ISA 04         &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  ISA 05           ZZ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  ISA 06   PROVIDER01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  ISA 07           ZZ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  ISA 08      PAYER99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  ISA 09       260415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 ISA 10         1030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 ISA 11            U</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 ISA 12        00501</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 ISA 13    000000837</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 ISA 14            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 ISA 15            P</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 ISA 16            &gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17  GS 01           HC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18  GS 02   PROVIDER01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19  GS 03      PAYER99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20  GS 04     20260415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21  GS 05         1030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22  GS 06            1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23  GS 07            X</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24  GS 08 005010X222A1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25  ST 01          837</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26  ST 02         0001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27  ST 03 005010X222A1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 BHT 01         0019</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 BHT 02           00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 BHT 03  REQ-CLM-001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 BHT 04     20260415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 BHT 05         1030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 BHT 06           CH</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ISA   01    00        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ISA   02    <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ISA   03    00        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ISA   04    <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ISA   05    ZZ        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ISA   06    PROVIDER01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ISA   07    ZZ        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ISA   08    PAYER99   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ISA   09    260415    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ISA   10    1030      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 29 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
