@@ -1,16 +1,14 @@
 # X12-834 Benefit Enrollment Parser
 
-The 834 is heavily used by BPaaS (Benefits Administration as a Service):
+The 834 carries *membership events*:
 
-- Workday Benefits
+- new enrollment (qualifier 021)
 
-- ADP TotalSource
+- change (001)
 
-- bswift
+- termination (024)
 
-- BenefitFocus
-
-- Empyrean
+- audit/reconciliation (030)
 
 ## Usage
 
@@ -29,6 +27,23 @@ parse_834(text)
 list
 
 ## Details
+
+It transports member demographics, dependents, chosen plan, effective
+and end dates, premium amounts, occasionally tax elements and primary
+care provider. It is the system of record for membership on the payer
+side.
+
+The 834 is heavily used by BPaaS (Benefits Administration as a Service):
+
+- Workday Benefits
+
+- ADP TotalSource
+
+- bswift
+
+- BenefitFocus
+
+- Empyrean
 
 It is also the official pipe between ACA state exchanges / marketplaces
 and payers. The Open Enrollment window (November – December) produces

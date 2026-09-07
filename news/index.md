@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9035 (2026-09-07)
+
+- `x12_type()` helper
+
 ## hcc 0.0.0.9034 (2026-09-02)
 
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
