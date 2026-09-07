@@ -1,118 +1,23 @@
 #' @noRd
-unlist_df <- function(x) {
-  collapse::unlist2d(x, idcols = "id") |>
-    collapse::rnm(
-      "id.1" = "SEG",
-      "id.2" = "PT",
-      "V1" = "VALUE"
-    )
-}
-
-#' @noRd
-map_seq <- function(text, start, end) {
-  purrr::map(
-    purrr::map2(
-      start,
-      end,
-      function(a, b) seq.int(a, b)
-    ),
-    function(i) text[i]
-  )
-}
-
-#' @noRd
-name_loop <- function(x) {
-  rlang::set_names(x, ~ paste0("L", seq_along(.)))
-}
-
-#' @noRd
-nzchar_na <- function(x) {
-  x[!nzchar(x)] <- NA_character_
-  x
-}
-
-#' @noRd
-pad_names <- function(x) {
-  N <- as.character(seq_along(x))
-  i <- collapse::whichv(nchar(N), 1L)
-  collapse::setv(N, i, cheapr::paste_("0", N[i]))
-  rlang::set_names(as.list(x), N)
-}
-
-#' @noRd
-tilde <- function(x) {
-  strsplit(x, "~", fixed = TRUE)[[1]]
-}
-
-#' @noRd
-split_ <- function(x, p) {
-  strsplit(
-    .subset(
-      x,
-      perl(x, p)
-    ),
-    "*",
-    fixed = TRUE
-  )[[1]][-1] |>
-    trimws() |>
-    nzchar_na() |>
-    pad_names()
-}
-
-#' @noRd
-split_i <- function(x, i) {
-  strsplit(.subset(x, i), "*", fixed = TRUE)[[1]][-1] |>
-    trimws() |>
-    nzchar_na() |>
-    pad_names()
-}
-
-#' @noRd
-split_N1 <- function(x, i) {
-  x <- strsplit(.subset(x, i), "*", fixed = TRUE)
-  purrr::map(x, \(x) {
-    pad_names(nzchar_na(trimws(x[-1L])))
-  }) |>
-    rlang::set_names(purrr::map_chr(x, 1L))
-}
-
-#' @noRd
-split_TRN <- function(x) {
-  TRN <- perl(x, "^TRN")
-  PE1 <- perl(x, "^N1\\*PE")
-  PR1 <- perl(x, "^N1\\*PR")
-  PR2 <- min(perl(x, "^ENT")) - 1L
-
-  rlang::list2(
-    TRN = split_i(x, TRN),
-    REF = split_i(x, TRN + 1L),
-    # 1000A Payee Name Loop
-    !!!split_N1(x, seq.int(PE1, PR1 - 1L)),
-    # 1000B Payer Name Loop
-    !!!split_N1(x, seq.int(PR1, PR2))
-  )
-}
-
-#' @noRd
 entity_loop_820 <- function(x) {
   # 2300B Remittance Detail Loop
   seqs <- map_seq(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
 
   loops <- purrr::map(seqs, function(x) {
     rlang::list2(
-      RMR = split_(x, "^RMR"),
+      RMR = split_p(x, "^RMR"),
       !!!split_N1(x, perl(x, "^REF")),
-      DTM = split_(x, "^DTM\\*582")
+      DTM = split_p(x, "^DTM\\*582")
     )
   }) |>
     purrr::list_flatten()
 
   rlang::list2(
     # 2000B Per-Member Entity Loop
-    ENT = split_(x, "^ENT"),
-    NM1 = split_(x, "^NM1"),
+    ENT = split_p(x, "^ENT"),
+    NM1 = split_p(x, "^NM1"),
     !!!loops,
-    ADX = if (any_(grepl("^ADX", x))) split_(x, "^ADX") else NULL
+    ADX = if (any_(grepl("^ADX", x))) split_p(x, "^ADX") else NULL
   ) |>
     purrr::compact() |>
     unlist_df()
@@ -151,10 +56,10 @@ parse_820 <- function(text) {
   x <- tilde(text)
 
   header <- rlang::list2(
-    ISA = split_(x, "^ISA"),
-    GS = split_(x, "^GS"),
-    ST = split_(x, "^ST"),
-    BPR = split_(x, "^BPR"),
+    ISA = split_p(x, "^ISA"),
+    GS = split_p(x, "^GS"),
+    ST = split_p(x, "^ST"),
+    BPR = split_p(x, "^BPR"),
     !!!split_TRN(x)
   )
 
@@ -166,9 +71,9 @@ parse_820 <- function(text) {
   ENT_loop <- purrr::map(ENT_loop, entity_loop_820)
 
   trailer <- list(
-    SE = split_(x, "^SE"),
-    GE = split_(x, "^GE"),
-    IEA = split_(x, "^IEA")
+    SE = split_p(x, "^SE"),
+    GE = split_p(x, "^GE"),
+    IEA = split_p(x, "^IEA")
   )
 
   collapse::qTBL(
@@ -250,10 +155,10 @@ parse_837 <- function(text) {
   x <- tilde(text)
 
   header <- list(
-    ISA = split_(x, "^ISA"),
-    GS = split_(x, "^GS"),
-    ST = split_(x, "^ST"),
-    BHT = split_(x, "^BHT")
+    ISA = split_p(x, "^ISA"),
+    GS = split_p(x, "^GS"),
+    ST = split_p(x, "^ST"),
+    BHT = split_p(x, "^BHT")
   )
 
   # perl(x, "^NM1\\*41") # Submitter Name
@@ -267,9 +172,9 @@ parse_837 <- function(text) {
   # c(perl(x, "^CLM"), perl(x, "^SE") - 1L)
 
   trailer <- list(
-    SE = split_(x, "^SE"),
-    GE = split_(x, "^GE"),
-    IEA = split_(x, "^IEA")
+    SE = split_p(x, "^SE"),
+    GE = split_p(x, "^GE"),
+    IEA = split_p(x, "^IEA")
   )
 
   collapse::qTBL(
