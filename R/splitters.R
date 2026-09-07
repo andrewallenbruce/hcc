@@ -9,15 +9,14 @@ unlist_df <- function(x) {
 }
 
 #' @noRd
-map_seq <- function(text, start, end) {
-  purrr::map(
-    purrr::map2(
-      start,
-      end,
-      function(a, b) seq.int(a, b)
-    ),
-    function(i) text[i]
-  )
+fill_range <- function(start, end) {
+  purrr::map2(start, end, function(a, b) seq.int(from = a, to = b))
+}
+
+#' @noRd
+subset_sequences <- function(text, start, end) {
+  fill_range(start, end) |>
+    purrr::map(\(i) .subset(text, i))
 }
 
 #' @noRd
@@ -66,27 +65,10 @@ split_p <- function(x, p) {
 }
 
 #' @noRd
-split_N1 <- function(x, i) {
+split_n <- function(x, i) {
   x <- star(x, i)
   purrr::map(x, \(x) post_split(x[-1])) |>
     rlang::set_names(purrr::map_chr(x, 1L))
-}
-
-#' @noRd
-split_TRN <- function(x) {
-  TRN <- perl(x, "^TRN")
-  PE1 <- perl(x, "^N1\\*PE")
-  PR1 <- perl(x, "^N1\\*PR")
-  PR2 <- min(perl(x, "^ENT")) - 1L
-
-  rlang::list2(
-    TRN = split_i(x, TRN),
-    REF = split_i(x, TRN + 1L),
-    # 1000A Payee Name Loop
-    !!!split_N1(x, seq.int(PE1, PR1 - 1L)),
-    # 1000B Payer Name Loop
-    !!!split_N1(x, seq.int(PR1, PR2))
-  )
 }
 
 
@@ -94,21 +76,14 @@ split_TRN <- function(x) {
 #' x12_type(c(x12_820, x12_834, x12_837))
 #' @noRd
 x12_type <- function(x) {
-  # i <- purrr::map_int(x, \(x) collapse::fmin(perl(x, "^ST")))
-  # x <- purrr::map_chr(x, \(x) x[collapse::fmin(perl(x, "^ST"))])
+  x <- strsplit(unlist_(x), "~", fixed = TRUE)
+  x <- unlist_elem(x, 3L)
 
-  x <- unlist_(x)
-  x <- strsplit(x, "~", fixed = TRUE)
-  x <- collapse::get_elem(x, 3L)
-
-  x <- unlist_(x)
   x <- strsplit(x, "*", fixed = TRUE)
-  x_1 <- collapse::get_elem(x, 2L)
-  x_1 <- unlist_(x_1)
+  x_1 <- unlist_elem(x, 2L)
 
   if (collapse::anyv(x_1, "837")) {
-    x_2 <- collapse::get_elem(x, 4L)
-    x_2 <- unlist_(x_2)
+    x_2 <- unlist_elem(x, 4L)
     x_i <- collapse::whichv(x_1, "837")
     x_1[x_i] <- cheapr::val_match(
       x_2[x_i],

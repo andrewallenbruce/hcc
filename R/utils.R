@@ -1,4 +1,9 @@
 #' @noRd
+unlist_elem <- function(x, i, ...) {
+  unlist_(collapse::get_elem(x, elem = i, ...))
+}
+
+#' @noRd
 perl <- function(x, rex, negate = FALSE) {
   grep(pattern = rex, x = x, perl = TRUE, invert = negate)
 }

@@ -1,26 +1,41 @@
 #' @noRd
 entity_loop_820 <- function(x) {
   # 2300B Remittance Detail Loop
-  seqs <- map_seq(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
+  i <- subset_sequences(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
 
-  loops <- purrr::map(seqs, function(x) {
+  X <- purrr::map(i, function(x) {
     rlang::list2(
       RMR = split_p(x, "^RMR"),
-      !!!split_N1(x, perl(x, "^REF")),
+      !!!split_n(x, perl(x, "^REF")),
       DTM = split_p(x, "^DTM\\*582")
     )
   }) |>
     purrr::list_flatten()
 
+  # 2000B Per-Member Entity Loop
   rlang::list2(
-    # 2000B Per-Member Entity Loop
     ENT = split_p(x, "^ENT"),
     NM1 = split_p(x, "^NM1"),
-    !!!loops,
-    ADX = if (any_(grepl("^ADX", x))) split_p(x, "^ADX") else NULL
+    !!!X,
+    ADX = if (any_(perl0(x, "^ADX"))) split_p(x, "^ADX") else NULL
   ) |>
     purrr::compact() |>
     unlist_df()
+}
+
+#' @noRd
+payee_loop_820 <- function(x) {
+  rlang::list2(
+    TRN = split_p(x, "^TRN"),
+    REF = split_i(x, perl(x, "^TRN") + 1L),
+    # 1000A Payee Name Loop
+    !!!split_n(x, seq.int(perl(x, "^N1\\*PE"), perl(x, "^N1\\*PR") - 1L)),
+    # 1000B Payer Name Loop
+    !!!split_n(
+      x,
+      seq.int(perl(x, "^N1\\*PR"), collapse::fmin(perl(x, "^ENT")) - 1L)
+    )
+  )
 }
 
 #' X12-820 Payment Order/Remittance Advice Parser
@@ -60,31 +75,31 @@ parse_820 <- function(text) {
     GS = split_p(x, "^GS"),
     ST = split_p(x, "^ST"),
     BPR = split_p(x, "^BPR"),
-    !!!split_TRN(x)
+    !!!payee_loop_820(x)
   )
 
-  ENT_start <- perl(x, "^ENT")
-  ENT_end <- cheapr::c_(ENT_start[-1L], perl(x, "^SE")) - 1L
+  ENT <- perl(x, "^ENT")
+  SE <- perl(x, "^SE")
 
-  ENT_loop <- map_seq(x, ENT_start, ENT_end)
-  ENT_loop <- name_loop(ENT_loop)
-  ENT_loop <- purrr::map(ENT_loop, entity_loop_820)
+  entity <- subset_sequences(
+    x,
+    ENT,
+    cheapr::c_(ENT[-1L], SE) - 1L
+  ) |>
+    purrr::map(entity_loop_820)
 
   trailer <- list(
-    SE = split_p(x, "^SE"),
+    SE = split_i(x, SE),
     GE = split_p(x, "^GE"),
     IEA = split_p(x, "^IEA")
   )
 
-  collapse::qTBL(
-    collapse::rowbind(
-      list(
-        HEADER = unlist_df(header),
-        ENTITY_LOOP = collapse::rowbind(ENT_loop),
-        TRAILER = unlist_df(trailer)
-      )
-    )
-  )
+  collapse::rowbind(
+    unlist_df(header),
+    collapse::rowbind(entity),
+    unlist_df(trailer)
+  ) |>
+    collapse::qTBL()
 }
 
 #' X12-834 Benefit Enrollment Parser
@@ -178,7 +193,7 @@ parse_837 <- function(text) {
     GS = split_p(x, "^GS")
   )
 
-  mid = map_seq(x, perl(x, "^ST"), perl(x, "^SE"))
+  mid <- subset_sequences(x, perl(x, "^ST"), perl(x, "^SE"))
 
   # perl(x, "^ST")
   # perl(x, "^BHT")
