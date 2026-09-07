@@ -88,3 +88,35 @@ split_TRN <- function(x) {
     !!!split_N1(x, seq.int(PR1, PR2))
   )
 }
+
+
+#' @examplesIf FALSE
+#' x12_type(c(x12_820, x12_834, x12_837))
+#' @noRd
+x12_type <- function(x) {
+  # i <- purrr::map_int(x, \(x) collapse::fmin(perl(x, "^ST")))
+  # x <- purrr::map_chr(x, \(x) x[collapse::fmin(perl(x, "^ST"))])
+
+  x <- unlist_(x)
+  x <- strsplit(x, "~", fixed = TRUE)
+  x <- collapse::get_elem(x, 3L)
+
+  x <- unlist_(x)
+  x <- strsplit(x, "*", fixed = TRUE)
+  x_1 <- collapse::get_elem(x, 2L)
+  x_1 <- unlist_(x_1)
+
+  if (collapse::anyv(x_1, "837")) {
+    x_2 <- collapse::get_elem(x, 4L)
+    x_2 <- unlist_(x_2)
+    x_i <- collapse::whichv(x_1, "837")
+    x_1[x_i] <- cheapr::val_match(
+      x_2[x_i],
+      "005010X222A1" ~ "837P",
+      "005010X223A2" ~ "837I",
+      "005010X224A2" ~ "837D",
+      .default = NA
+    )
+  }
+  x_1
+}

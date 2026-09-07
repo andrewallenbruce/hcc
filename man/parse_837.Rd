@@ -13,11 +13,22 @@ parse_837(text)
 list
 }
 \description{
+The 837 describes the care event: who (rendering provider, supervising
+physician, referring), for whom (subscriber, patient), for what (ICD-10
+diagnosis, CPT/HCPCS procedure), when (service date, units), where (place of
+service), and how much (charged amount, contractual reference). Three \code{TR3}s
+segment the audience:
+\itemize{
+\item \verb{005010X222A1}: \strong{837P} Professional (Physicians, Ambulatory, Telemedicine)
+\item \verb{005010X223A2}: \strong{837I} Institutional (Hospitals, ED, Hospice)
+\item \verb{005010X224A2}: \strong{837D} Dental
+}
+}
+\details{
 The 837 is the highest-volume transaction in US healthcare EDI. Every
 commercial and public payer (Medicare, Medicaid, Tricare) consumes hundreds
 of millions per month.
-}
-\details{
+
 The entire provider-side billing revolves around its generation: from the EHR
 (Epic, Cerner, Athenahealth, NextGen) or the PMS (Kareo, AdvancedMD,
 eClinicalWorks), through a clearinghouse (Availity, Change Healthcare,
@@ -64,5 +75,5 @@ Waystar, Trizetto), with \verb{277CA}, \code{999}, and ultimately \code{835} ret
 }
 }
 \examples{
-purrr::map(hcc::x12_837[1], parse_837)
+purrr::map(hcc::x12_837, parse_837)
 }

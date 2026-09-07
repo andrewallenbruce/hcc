@@ -13,6 +13,19 @@ parse_834(text)
 list
 }
 \description{
+The 834 carries \emph{membership events}:
+\itemize{
+\item new enrollment (qualifier 021)
+\item change (001)
+\item termination (024)
+\item audit/reconciliation (030)
+}
+}
+\details{
+It transports member demographics, dependents, chosen plan, effective and end
+dates, premium amounts, occasionally tax elements and primary care provider.
+It is the system of record for membership on the payer side.
+
 The 834 is heavily used by BPaaS (Benefits Administration as a Service):
 \itemize{
 \item Workday Benefits
@@ -21,8 +34,7 @@ The 834 is heavily used by BPaaS (Benefits Administration as a Service):
 \item BenefitFocus
 \item Empyrean
 }
-}
-\details{
+
 It is also the official pipe between ACA state exchanges / marketplaces and
 payers. The Open Enrollment window (November – December) produces volume
 spikes that stress overnight batch jobs.

@@ -89,6 +89,16 @@ parse_820 <- function(text) {
 
 #' X12-834 Benefit Enrollment Parser
 #'
+#' The 834 carries *membership events*:
+#'    - new enrollment (qualifier 021)
+#'    - change (001)
+#'    - termination (024)
+#'    - audit/reconciliation (030)
+#'
+#' It transports member demographics, dependents, chosen plan, effective and end
+#' dates, premium amounts, occasionally tax elements and primary care provider.
+#' It is the system of record for membership on the payer side.
+#'
 #' The 834 is heavily used by BPaaS (Benefits Administration as a Service):
 #'    - Workday Benefits
 #'    - ADP TotalSource
@@ -115,6 +125,15 @@ parse_834 <- function(text) {
 }
 
 #' X12-837 Health Care Claim Parser
+#'
+#' The 837 describes the care event: who (rendering provider, supervising
+#' physician, referring), for whom (subscriber, patient), for what (ICD-10
+#' diagnosis, CPT/HCPCS procedure), when (service date, units), where (place of
+#' service), and how much (charged amount, contractual reference). Three `TR3`s
+#' segment the audience:
+#'    - `005010X222A1`: **837P** Professional (Physicians, Ambulatory, Telemedicine)
+#'    - `005010X223A2`: **837I** Institutional (Hospitals, ED, Hospice)
+#'    - `005010X224A2`: **837D** Dental
 #'
 #' The 837 is the highest-volume transaction in US healthcare EDI. Every
 #' commercial and public payer (Medicare, Medicaid, Tricare) consumes hundreds
@@ -149,18 +168,20 @@ parse_834 <- function(text) {
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_837[1], parse_837)
+#' purrr::map(hcc::x12_837, parse_837)
 #' @export
 parse_837 <- function(text) {
   x <- tilde(text)
 
   header <- list(
     ISA = split_p(x, "^ISA"),
-    GS = split_p(x, "^GS"),
-    ST = split_p(x, "^ST"),
-    BHT = split_p(x, "^BHT")
+    GS = split_p(x, "^GS")
   )
 
+  mid = map_seq(x, perl(x, "^ST"), perl(x, "^SE"))
+
+  # perl(x, "^ST")
+  # perl(x, "^BHT")
   # perl(x, "^NM1\\*41") # Submitter Name
   # perl(x, "^PER\\*IC")[1] # Submitter EDI Contact Information
   # perl(x, "^NM1\\*40") # Receiver Name
@@ -168,22 +189,15 @@ parse_837 <- function(text) {
   # perl(x, "^HL") # Hierarchical Level
   # perl(x, "^NM1\\*85") # Billing Provider Name
   # perl(x, "^SBR") # Subscriber Information
-  # Claim Information
-  # c(perl(x, "^CLM"), perl(x, "^SE") - 1L)
 
   trailer <- list(
-    SE = split_p(x, "^SE"),
     GE = split_p(x, "^GE"),
     IEA = split_p(x, "^IEA")
   )
 
-  collapse::qTBL(
-    collapse::rowbind(
-      list(
-        HEADER = unlist_df(header),
-        # ENTITY_LOOP = collapse::rowbind(ENT_loop),
-        TRAILER = unlist_df(trailer)
-      )
-    )
+  list(
+    HEADER = unlist_df(header),
+    MIDDLE = mid,
+    TRAILER = unlist_df(trailer)
   )
 }
