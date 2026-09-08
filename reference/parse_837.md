@@ -120,8 +120,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07            X
 #> 24  GS 08 005010X222A1
 #> 
-#> $minimal_837P$MIDDLE
-#> $minimal_837P$MIDDLE[[1]]
+#> $minimal_837P$TRANSACTIONS
+#> $minimal_837P$TRANSACTIONS[[1]]
 #>  [1] "ST*837*0001*005010X222A1"                
 #>  [2] "BHT*0019*00*REQ-CLM-001*20260415*1030*CH"
 #>  [3] "NM1*41*2*ACME CLINIC*****46*1234567890"  
@@ -186,8 +186,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07             X
 #> 24  GS 08  005010X222A1
 #> 
-#> $sample_837_0$MIDDLE
-#> $sample_837_0$MIDDLE[[1]]
+#> $sample_837_0$TRANSACTIONS
+#> $sample_837_0$TRANSACTIONS[[1]]
 #>  [1] "ST*837*000000001*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -223,7 +223,7 @@ purrr::map(hcc::x12_837, parse_837)
 #> [33] "REF*6R*142671"                                                   
 #> [34] "SE*34*000000001"                                                 
 #> 
-#> $sample_837_0$MIDDLE[[2]]
+#> $sample_837_0$TRANSACTIONS[[2]]
 #>  [1] "ST*837*000000002*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -259,7 +259,7 @@ purrr::map(hcc::x12_837, parse_837)
 #> [33] "REF*6R*143792"                                                   
 #> [34] "SE*34*000000002"                                                 
 #> 
-#> $sample_837_0$MIDDLE[[3]]
+#> $sample_837_0$TRANSACTIONS[[3]]
 #>  [1] "ST*837*000000003*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -295,7 +295,7 @@ purrr::map(hcc::x12_837, parse_837)
 #> [33] "REF*6R*140976"                                                   
 #> [34] "SE*34*000000003"                                                 
 #> 
-#> $sample_837_0$MIDDLE[[4]]
+#> $sample_837_0$TRANSACTIONS[[4]]
 #>  [1] "ST*837*000000004*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -332,7 +332,7 @@ purrr::map(hcc::x12_837, parse_837)
 #> [34] "NTE*ADD*05"                                                      
 #> [35] "SE*35*000000004"                                                 
 #> 
-#> $sample_837_0$MIDDLE[[5]]
+#> $sample_837_0$TRANSACTIONS[[5]]
 #>  [1] "ST*837*000000005*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -405,8 +405,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_1$MIDDLE
-#> $sample_837_1$MIDDLE[[1]]
+#> $sample_837_1$TRANSACTIONS
+#> $sample_837_1$TRANSACTIONS[[1]]
 #>  [1] "ST*837*0105*005010X223A2"                                                         
 #>  [2] "BHT*0019*00*241205204217*20241205*2042*CH"                                        
 #>  [3] "NM1*41*2*NATIONAL BIRTH CENTERS INC*****XX*1578387320"                            
@@ -490,8 +490,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_2$MIDDLE
-#> $sample_837_2$MIDDLE[[1]]
+#> $sample_837_2$TRANSACTIONS
+#> $sample_837_2$TRANSACTIONS[[1]]
 #>  [1] "ST*837*1462077*005010X223A2"                           
 #>  [2] "BHT*0019*00*241205204218*20241205*2042*CH"             
 #>  [3] "NM1*41*2*COMMUNITY BIRTH GROUP*****XX*1942024799"      
@@ -567,8 +567,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_3$MIDDLE
-#> $sample_837_3$MIDDLE[[1]]
+#> $sample_837_3$TRANSACTIONS
+#> $sample_837_3$TRANSACTIONS[[1]]
 #>  [1] "ST*837*93687*005010X223A2"                             
 #>  [2] "BHT*0019*00*241205204218*20241205*2042*CH"             
 #>  [3] "NM1*41*2*MARYVIEW HOSPITAL LLC*****XX*1316313414"      
@@ -643,8 +643,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_4$MIDDLE
-#> $sample_837_4$MIDDLE[[1]]
+#> $sample_837_4$TRANSACTIONS
+#> $sample_837_4$TRANSACTIONS[[1]]
 #>  [1] "ST*837*91529*005010X223A2"                               
 #>  [2] "BHT*0019*00*241205204219*20241205*2042*CH"               
 #>  [3] "NM1*41*2*HSA ST. JOSEPH, LLC*****XX*1639992514"          
@@ -717,8 +717,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_5$MIDDLE
-#> $sample_837_5$MIDDLE[[1]]
+#> $sample_837_5$TRANSACTIONS
+#> $sample_837_5$TRANSACTIONS[[1]]
 #>  [1] "ST*837*46086*005010X223A2"                                                
 #>  [2] "BHT*0019*00*241205204219*20241205*2042*CH"                                
 #>  [3] "NM1*41*2*NATIONAL BIRTH CENTERS INC*****XX*1578387320"                    
@@ -801,8 +801,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_6$MIDDLE
-#> $sample_837_6$MIDDLE[[1]]
+#> $sample_837_6$TRANSACTIONS
+#> $sample_837_6$TRANSACTIONS[[1]]
 #>  [1] "ST*837*76134698*005010X223A2"                          
 #>  [2] "BHT*0019*00*241205204220*20241205*2042*CH"             
 #>  [3] "NM1*41*2*OKEECHOBEE HOSPITAL, INC.*****XX*1215974134"  
@@ -889,8 +889,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_7$MIDDLE
-#> $sample_837_7$MIDDLE[[1]]
+#> $sample_837_7$TRANSACTIONS
+#> $sample_837_7$TRANSACTIONS[[1]]
 #>  [1] "ST*837*7869171*005010X223A2"                           
 #>  [2] "BHT*0019*00*241205204220*20241205*2042*CH"             
 #>  [3] "NM1*41*2*ELMHURST MEMORIAL HOSPITAL*****XX*1548306343" 
@@ -972,8 +972,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_8$MIDDLE
-#> $sample_837_8$MIDDLE[[1]]
+#> $sample_837_8$TRANSACTIONS
+#> $sample_837_8$TRANSACTIONS[[1]]
 #>  [1] "ST*837*57975326*005010X223A2"                                
 #>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                   
 #>  [3] "NM1*41*2*GUTHRIE CORTLAND MEDICAL CENTER*****XX*1740287531"  
@@ -1053,8 +1053,8 @@ purrr::map(hcc::x12_837, parse_837)
 #> 23  GS 07               X
 #> 24  GS 08    005010X223A2
 #> 
-#> $sample_837_9$MIDDLE
-#> $sample_837_9$MIDDLE[[1]]
+#> $sample_837_9$TRANSACTIONS
+#> $sample_837_9$TRANSACTIONS[[1]]
 #>  [1] "ST*837*4763033*005010X223A2"                                      
 #>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                        
 #>  [3] "NM1*41*2*HCA HEALTH SERVICES OF TENNESSEE, INC.*****XX*1265487193"
