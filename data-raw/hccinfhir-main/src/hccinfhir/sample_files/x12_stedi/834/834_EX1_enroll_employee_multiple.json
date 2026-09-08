@@ -1,0 +1,147 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "834",
+      "transaction_set_control_number_02": 12345,
+      "implementation_convention_reference_03": "005010X220A1"
+    },
+    "beginning_segment_BGN": {
+      "transaction_set_purpose_code_01": "00",
+      "transaction_set_reference_number_02": "12456",
+      "transaction_set_creation_date_03": "1998-05-20",
+      "transaction_set_creation_time_04": "12:00",
+      "action_code_08": "2"
+    },
+    "payer_N1_loop": {
+      "payer_N1": {
+        "entity_identifier_code_01": "IN",
+        "identification_code_qualifier_03": "FI",
+        "insurer_identification_code_04": "654456654"
+      }
+    },
+    "sponsor_name_N1_loop": {
+      "sponsor_name_N1": {
+        "entity_identifier_code_01": "P5",
+        "identification_code_qualifier_03": "FI",
+        "sponsor_identifier_04": "999888777"
+      }
+    }
+  },
+  "detail": {
+    "member_level_detail_INS_loop": [
+      {
+        "member_level_detail_INS": {
+          "member_indicator_01": "Y",
+          "individual_relationship_code_02": "18",
+          "maintenance_type_code_03": "021",
+          "maintenance_reason_code_04": "20",
+          "benefit_status_code_05": "A",
+          "employment_status_code_08": "FT"
+        },
+        "subscriber_identifier_REF": {
+          "reference_identification_qualifier_01": "0F",
+          "subscriber_identifier_02": "123456789"
+        },
+        "member_policy_number_REF": {
+          "reference_identification_qualifier_01": "1L",
+          "member_group_or_policy_number_02": "123456001"
+        },
+        "member_level_dates_DTP": [
+          {
+            "date_time_qualifier_01": "356",
+            "date_time_period_format_qualifier_02": "D8",
+            "status_information_effective_date_03": "19960523"
+          }
+        ],
+        "member_name_NM1_loop": {
+          "member_name_NM1": {
+            "entity_identifier_code_01": "IL",
+            "entity_type_qualifier_02": "1",
+            "member_last_name_03": "DOE",
+            "member_first_name_04": "JOHN",
+            "member_middle_name_05": "P",
+            "identification_code_qualifier_08": "34",
+            "member_identifier_09": "123456789"
+          },
+          "member_communications_numbers_PER": {
+            "contact_function_code_01": "IP",
+            "communication_number_qualifier_03": "HP",
+            "communication_number_04": "7172343334",
+            "communication_number_qualifier_05": "WP",
+            "communication_number_06": "7172341240"
+          },
+          "member_residence_street_address_N3": {
+            "member_address_line_01": "100 MARKET ST",
+            "member_address_line_02": "APT 3G"
+          },
+          "member_city_state_zip_code_N4": {
+            "member_city_name_01": "CAMP HILL",
+            "member_state_code_02": "PA",
+            "member_postal_zone_or_zip_code_03": "17011",
+            "location_qualifier_05": "CY",
+            "location_identifier_06": "CUMBERLAND"
+          },
+          "member_demographics_DMG": {
+            "date_time_period_format_qualifier_01": "D8",
+            "member_birth_date_02": "19400816",
+            "gender_code_03": "M"
+          }
+        },
+        "health_coverage_HD_loop": [
+          {
+            "health_coverage_HD": {
+              "maintenance_type_code_01": "021",
+              "insurance_line_code_03": "HLT"
+            },
+            "health_coverage_dates_DTP": [
+              {
+                "date_time_qualifier_01": "348",
+                "date_time_period_format_qualifier_02": "D8",
+                "coverage_period_03": "19960601"
+              }
+            ],
+            "coordination_of_benefits_COB_loop": [
+              {
+                "coordination_of_benefits_COB": {
+                  "payer_responsibility_sequence_number_code_01": "P",
+                  "member_group_or_policy_number_02": "890111",
+                  "coordination_of_benefits_code_03": "5"
+                }
+              }
+            ]
+          },
+          {
+            "health_coverage_HD": {
+              "maintenance_type_code_01": "021",
+              "insurance_line_code_03": "DEN"
+            },
+            "health_coverage_dates_DTP": [
+              {
+                "date_time_qualifier_01": "348",
+                "date_time_period_format_qualifier_02": "D8",
+                "coverage_period_03": "19960601"
+              }
+            ]
+          },
+          {
+            "health_coverage_HD": {
+              "maintenance_type_code_01": "021",
+              "insurance_line_code_03": "VIS"
+            },
+            "health_coverage_dates_DTP": [
+              {
+                "date_time_qualifier_01": "348",
+                "date_time_period_format_qualifier_02": "D8",
+                "coverage_period_03": "19960601"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 21,
+      "transaction_set_control_number_02": 12345
+    }
+  }
+}

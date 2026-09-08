@@ -1,0 +1,283 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 21,
+      "implementation_guide_version_name_03": "005010X222A1"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "244579",
+      "transaction_set_creation_date_04": "2006-10-15",
+      "transaction_set_creation_time_05": "10:23",
+      "claim_or_encounter_identifier_06": "CH"
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "KEY INSURANCE COMPANY",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "66783JJT"
+      }
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "PREMIER BILLING SERVICE",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "TGJ23"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "JERRY",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "3055552222",
+          "communication_number_qualifier_05": "EX",
+          "communication_number_06": "231"
+        }
+      ]
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_specialty_information_PRV": {
+          "provider_code_01": "BI",
+          "reference_identification_qualifier_02": "PXC",
+          "provider_taxonomy_code_03": "203BF0100Y"
+        },
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_last_or_organizational_name_03": "BEN KILDARE SERVICE",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "9876543210"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "234 SEAWAY ST"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "MIAMI",
+            "billing_provider_state_or_province_code_02": "FL",
+            "billing_provider_postal_zone_or_zip_code_03": "33111"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "587654321"
+          }
+        },
+        "pay_to_address_name_NM1_loop": {
+          "pay_to_address_name_NM1": {
+            "entity_identifier_code_01": "87",
+            "entity_type_qualifier_02": "2"
+          },
+          "pay_to_address_address_N3": {
+            "pay_to_address_line_01": "2345 OCEAN BLVD"
+          },
+          "pay_to_address_city_state_zip_code_N4": {
+            "pay_to_address_city_name_01": "MIAMI",
+            "pay_to_address_state_code_02": "FL",
+            "pay_to_address_postal_zone_or_zip_code_03": "33111"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "subscriber_group_or_policy_number_03": "2222-SJ",
+              "claim_filing_indicator_code_09": "CI"
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "SMITH",
+                "subscriber_first_name_04": "JANE",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "JS00111223333"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19430501",
+                "subscriber_gender_code_03": "F"
+              }
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "KEY INSURANCE COMPANY",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "999996666"
+              },
+              "billing_provider_secondary_identification_REF": [
+                {
+                  "reference_identification_qualifier_01": "G2",
+                  "billing_provider_secondary_identifier_02": "KA6663"
+                }
+              ]
+            },
+            "patient_hierarchical_level_HL_loop": [
+              {
+                "patient_information_PAT": {
+                  "individual_relationship_code_01": "19"
+                },
+                "patient_name_NM1_loop": {
+                  "patient_name_NM1": {
+                    "entity_identifier_code_01": "QC",
+                    "entity_type_qualifier_02": "1",
+                    "patient_last_name_03": "SMITH",
+                    "patient_first_name_04": "TED"
+                  },
+                  "patient_address_N3": {
+                    "patient_address_line_01": "236 N MAIN ST"
+                  },
+                  "patient_city_state_zip_code_N4": {
+                    "patient_city_name_01": "MIAMI",
+                    "patient_state_code_02": "FL",
+                    "patient_postal_zone_or_zip_code_03": "33413"
+                  },
+                  "patient_demographic_information_DMG": {
+                    "date_time_period_format_qualifier_01": "D8",
+                    "patient_birth_date_02": "19730501",
+                    "patient_gender_code_03": "M"
+                  }
+                },
+                "claim_information_CLM_loop": [
+                  {
+                    "claim_information_CLM": {
+                      "patient_control_number_01": "26463774",
+                      "total_claim_charge_amount_02": 100,
+                      "health_care_service_location_information_05": {
+                        "place_of_service_code_01": "11",
+                        "facility_code_qualifier_02": "B",
+                        "claim_frequency_code_03": "1"
+                      },
+                      "provider_or_supplier_signature_indicator_06": "Y",
+                      "assignment_or_plan_participation_code_07": "A",
+                      "benefits_assignment_certification_indicator_08": "Y",
+                      "release_of_information_code_09": "I"
+                    },
+                    "claim_identifier_for_transmission_intermediaries_REF": {
+                      "reference_identification_qualifier_01": "D9",
+                      "value_added_network_trace_number_02": "17312345600006351"
+                    },
+                    "health_care_diagnosis_code_HI": {
+                      "health_care_code_information_01": {
+                        "diagnosis_type_code_01": "BK",
+                        "diagnosis_code_02": "0340"
+                      },
+                      "health_care_code_information_02": {
+                        "diagnosis_type_code_01": "BF",
+                        "diagnosis_code_02": "V7389"
+                      }
+                    },
+                    "service_line_number_LX_loop": [
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 1
+                        },
+                        "professional_service_SV1": {
+                          "composite_medical_procedure_identifier_01": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "99213"
+                          },
+                          "line_item_charge_amount_02": 40,
+                          "unit_or_basis_for_measurement_code_03": "UN",
+                          "service_unit_count_04": 1,
+                          "composite_diagnosis_code_pointer_07": {
+                            "diagnosis_code_pointer_01": 1
+                          }
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20061003"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 2
+                        },
+                        "professional_service_SV1": {
+                          "composite_medical_procedure_identifier_01": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "87070"
+                          },
+                          "line_item_charge_amount_02": 15,
+                          "unit_or_basis_for_measurement_code_03": "UN",
+                          "service_unit_count_04": 1,
+                          "composite_diagnosis_code_pointer_07": {
+                            "diagnosis_code_pointer_01": 1
+                          }
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20061003"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 3
+                        },
+                        "professional_service_SV1": {
+                          "composite_medical_procedure_identifier_01": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "99214"
+                          },
+                          "line_item_charge_amount_02": 35,
+                          "unit_or_basis_for_measurement_code_03": "UN",
+                          "service_unit_count_04": 1,
+                          "composite_diagnosis_code_pointer_07": {
+                            "diagnosis_code_pointer_01": 2
+                          }
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20061010"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 4
+                        },
+                        "professional_service_SV1": {
+                          "composite_medical_procedure_identifier_01": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "86663"
+                          },
+                          "line_item_charge_amount_02": 10,
+                          "unit_or_basis_for_measurement_code_03": "UN",
+                          "service_unit_count_04": 1,
+                          "composite_diagnosis_code_pointer_07": {
+                            "diagnosis_code_pointer_01": 2
+                          }
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20061010"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 42,
+      "transaction_set_control_number_02": 21
+    }
+  }
+}

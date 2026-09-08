@@ -71,27 +71,28 @@ split_n <- function(x, i) {
     rlang::set_names(purrr::map_chr(x, 1L))
 }
 
+#' @noRd
+x12_837_subtype <- function(x) {
+  cheapr::val_match(
+    x,
+    "005010X222A1" ~ "837P",
+    "005010X223A2" ~ "837I",
+    "005010X224A2" ~ "837D",
+    .default = x
+  )
+}
 
 #' @examplesIf FALSE
 #' x12_type(c(x12_820, x12_834, x12_837))
 #' @noRd
 x12_type <- function(x) {
   x <- strsplit(unlist_(x), "~", fixed = TRUE)
-  x <- unlist_elem(x, 3L)
+  x <- strsplit(unlist_elem(x, 3L), "*", fixed = TRUE)
+  x <- list(ST01 = unlist_elem(x, 2L), ST03 = unlist_elem(x, 4L))
 
-  x <- strsplit(x, "*", fixed = TRUE)
-  x_1 <- unlist_elem(x, 2L)
-
-  if (collapse::anyv(x_1, "837")) {
-    x_2 <- unlist_elem(x, 4L)
-    x_i <- collapse::whichv(x_1, "837")
-    x_1[x_i] <- cheapr::val_match(
-      x_2[x_i],
-      "005010X222A1" ~ "837P",
-      "005010X223A2" ~ "837I",
-      "005010X224A2" ~ "837D",
-      .default = NA
-    )
+  if (collapse::anyv(x$ST01, "837")) {
+    i <- collapse::whichv(x$ST01, "837")
+    x$ST01[i] <- x12_837_subtype(x$ST03[i])
   }
-  x_1
+  x
 }

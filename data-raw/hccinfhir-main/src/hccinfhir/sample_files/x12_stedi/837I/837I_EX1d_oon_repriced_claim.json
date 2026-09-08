@@ -1,0 +1,204 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 1024,
+      "version_release_or_industry_identifier_03": "005010X223A2"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "1024",
+      "transaction_set_creation_date_04": "2005-07-11",
+      "transaction_set_creation_time_05": "13:35",
+      "claim_identifier_06": "CH"
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "REGIONAL PPO NETWORK",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "123456789"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "SUBMITTER CONTACT INFO",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "8001231234"
+        }
+      ]
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "CONSERVATIVE INSURANCE",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "000110002"
+      }
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_organizational_name_03": "LOCAL HOSPITAL",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "1122334455"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "3423 SMALL STREET"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "COLUMBUS",
+            "billing_provider_state_or_province_code_02": "OH",
+            "billing_provider_postal_zone_or_zip_code_03": "432150000"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "111002222"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "individual_relationship_code_02": "18",
+              "subscriber_group_or_policy_number_03": "34561W",
+              "claim_filing_indicator_code_09": "CI"
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "SMITH",
+                "subscriber_first_name_04": "JAMES",
+                "subscriber_middle_name_or_initial_05": "A",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "34902390F"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "934 NORTH STREET"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "COLUMBUS",
+                "subscriber_state_code_02": "OH",
+                "subscriber_postal_zone_or_zip_code_03": "432150000"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19621015",
+                "subscriber_gender_code_03": "M"
+              }
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "CONSERVATIVE INSURANCE",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "0012"
+              }
+            },
+            "claim_information_CLM_loop": [
+              {
+                "claim_information_CLM": {
+                  "patient_control_number_01": "W392-49141",
+                  "total_claim_charge_amount_02": 14.84,
+                  "health_care_service_location_information_05": {
+                    "facility_type_code_01": "13",
+                    "facility_code_qualifier_02": "A",
+                    "claim_frequency_code_03": "1"
+                  },
+                  "assignment_or_plan_participation_code_07": "A",
+                  "benefits_assignment_certification_indicator_08": "Y",
+                  "release_of_information_code_09": "Y"
+                },
+                "statement_dates_DTP": {
+                  "date_time_qualifier_01": "434",
+                  "date_time_period_format_qualifier_02": "RD8",
+                  "statement_from_and_to_date_03": "20050617-20050617"
+                },
+                "admission_date_hour_DTP": {
+                  "date_time_qualifier_01": "435",
+                  "date_time_period_format_qualifier_02": "DT",
+                  "admission_date_and_hour_03": "200506170800"
+                },
+                "institutional_claim_code_CL1": {
+                  "admission_type_code_01": "1",
+                  "admission_source_code_02": "1",
+                  "patient_status_code_03": "01"
+                },
+                "patient_estimated_amount_due_AMT": {
+                  "amount_qualifier_code_01": "F3",
+                  "patient_responsibility_amount_02": 14.84
+                },
+                "repriced_claim_number_REF": {
+                  "reference_identification_qualifier_01": "9A",
+                  "repriced_claim_reference_number_02": "459804390823"
+                },
+                "claim_identifier_for_transmission_intermediaries_REF": {
+                  "reference_identification_qualifier_01": "D9",
+                  "value_added_network_trace_number_02": "32423466233"
+                },
+                "principal_diagnosis_HI": {
+                  "health_care_code_information_01": {
+                    "code_list_qualifier_code_01": "BK",
+                    "principal_diagnosis_code_02": "53081"
+                  }
+                },
+                "claim_pricing_repricing_information_HCP": {
+                  "pricing_methodology_01": "00",
+                  "repriced_allowed_amount_02": 0,
+                  "repricing_organization_identifier_04": "333001234",
+                  "reject_reason_code_13": "T1"
+                },
+                "attending_provider_name_NM1_loop": {
+                  "attending_provider_name_NM1": {
+                    "entity_identifier_code_01": "71",
+                    "entity_type_qualifier_02": "1",
+                    "attending_provider_last_name_03": "RIVERS",
+                    "attending_provider_first_name_04": "DAWN",
+                    "identification_code_qualifier_08": "XX",
+                    "attending_provider_primary_identifier_09": "2244224455"
+                  }
+                },
+                "service_line_number_LX_loop": [
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 1
+                    },
+                    "institutional_service_line_SV2": {
+                      "service_line_revenue_code_01": "0301",
+                      "composite_medical_procedure_identifier_02": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "82270"
+                      },
+                      "line_item_charge_amount_03": 14.84,
+                      "unit_or_basis_for_measurement_code_04": "UN",
+                      "service_unit_count_05": 1
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "20050617"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 31,
+      "transaction_set_control_number_02": 1024
+    }
+  }
+}

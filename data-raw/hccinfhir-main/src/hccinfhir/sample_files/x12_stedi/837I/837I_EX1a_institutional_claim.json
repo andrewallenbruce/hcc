@@ -1,0 +1,321 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 987654,
+      "version_release_or_industry_identifier_03": "005010X223A2"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "0123",
+      "transaction_set_creation_date_04": "1996-09-18",
+      "transaction_set_creation_time_05": "09:32",
+      "claim_identifier_06": "CH"
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "JONES HOSPITAL",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "12345"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "JANE DOE",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "9005555555"
+        }
+      ]
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "MEDICARE",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "00120"
+      }
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_specialty_information_PRV": {
+          "provider_code_01": "BI",
+          "reference_identification_qualifier_02": "PXC",
+          "provider_taxonomy_code_03": "203BA0200N"
+        },
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_organizational_name_03": "JONES HOSPITAL",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "9876540809"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "225 MAIN STREET BARKLEY BUILDING"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "CENTERVILLE",
+            "billing_provider_state_or_province_code_02": "PA",
+            "billing_provider_postal_zone_or_zip_code_03": "17111"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "567891234"
+          },
+          "billing_provider_contact_information_PER": [
+            {
+              "contact_function_code_01": "IC",
+              "billing_provider_contact_name_02": "CONNIE",
+              "communication_number_qualifier_03": "TE",
+              "communication_number_04": "3055551234"
+            }
+          ]
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "individual_relationship_code_02": "18",
+              "claim_filing_indicator_code_09": "MB"
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "DOE",
+                "subscriber_first_name_04": "JOHN",
+                "subscriber_middle_name_or_initial_05": "T",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "030005074A"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "125 CITY AVENUE"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "CENTERVILLE",
+                "subscriber_state_code_02": "PA",
+                "subscriber_postal_zone_or_zip_code_03": "17111"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19261111",
+                "subscriber_gender_code_03": "M"
+              }
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "MEDICARE B",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "00435"
+              },
+              "billing_provider_secondary_identification_REF": {
+                "reference_identification_qualifier_01": "G2",
+                "billing_provider_secondary_identifier_02": "330127"
+              }
+            },
+            "claim_information_CLM_loop": [
+              {
+                "claim_information_CLM": {
+                  "patient_control_number_01": "756048Q",
+                  "total_claim_charge_amount_02": 89.93,
+                  "health_care_service_location_information_05": {
+                    "facility_type_code_01": "14",
+                    "facility_code_qualifier_02": "A",
+                    "claim_frequency_code_03": "1"
+                  },
+                  "assignment_or_plan_participation_code_07": "A",
+                  "benefits_assignment_certification_indicator_08": "Y",
+                  "release_of_information_code_09": "Y"
+                },
+                "statement_dates_DTP": {
+                  "date_time_qualifier_01": "434",
+                  "date_time_period_format_qualifier_02": "RD8",
+                  "statement_from_and_to_date_03": "19960911"
+                },
+                "institutional_claim_code_CL1": {
+                  "admission_type_code_01": "3",
+                  "patient_status_code_03": "01"
+                },
+                "occurrence_information_HI": [
+                  {
+                    "health_care_code_information_01": {
+                      "code_list_qualifier_code_01": "BH",
+                      "occurrence_code_02": "A1",
+                      "date_time_period_format_qualifier_03": "D8",
+                      "occurrence_code_date_04": "19261111"
+                    },
+                    "health_care_code_information_02": {
+                      "code_list_qualifier_code_01": "BH",
+                      "occurrence_code_02": "A2",
+                      "date_time_period_format_qualifier_03": "D8",
+                      "occurrence_code_date_04": "19911101"
+                    },
+                    "health_care_code_information_03": {
+                      "code_list_qualifier_code_01": "BH",
+                      "occurrence_code_02": "B1",
+                      "date_time_period_format_qualifier_03": "D8",
+                      "occurrence_code_date_04": "19261111"
+                    },
+                    "health_care_code_information_04": {
+                      "code_list_qualifier_code_01": "BH",
+                      "occurrence_code_02": "B2",
+                      "date_time_period_format_qualifier_03": "D8",
+                      "occurrence_code_date_04": "19870101"
+                    }
+                  }
+                ],
+                "value_information_HI": [
+                  {
+                    "health_care_code_information_01": {
+                      "code_list_qualifier_code_01": "BE",
+                      "value_code_02": "A2",
+                      "value_code_amount_05": 15.31
+                    }
+                  }
+                ],
+                "condition_information_HI": [
+                  {
+                    "health_care_code_information_01": {
+                      "code_list_qualifier_code_01": "BG",
+                      "condition_code_02": "09"
+                    }
+                  }
+                ],
+                "principal_diagnosis_HI": {
+                  "health_care_code_information_01": {
+                    "code_list_qualifier_code_01": "BK",
+                    "principal_diagnosis_code_02": "3669"
+                  }
+                },
+                "other_diagnosis_information_HI": [
+                  {
+                    "health_care_code_information_01": {
+                      "code_list_qualifier_code_01": "BF",
+                      "other_diagnosis_02": "4019"
+                    },
+                    "health_care_code_information_02": {
+                      "code_list_qualifier_code_01": "BF",
+                      "other_diagnosis_02": "79431"
+                    }
+                  }
+                ],
+                "attending_provider_name_NM1_loop": {
+                  "attending_provider_name_NM1": {
+                    "entity_identifier_code_01": "71",
+                    "entity_type_qualifier_02": "1",
+                    "attending_provider_last_name_03": "JONES",
+                    "attending_provider_first_name_04": "JOHN",
+                    "attending_provider_middle_name_or_initial_05": "J"
+                  },
+                  "attending_provider_secondary_identification_REF": [
+                    {
+                      "reference_identification_qualifier_01": "1G",
+                      "attending_provider_secondary_identifier_02": "B99937"
+                    }
+                  ]
+                },
+                "other_subscriber_information_SBR_loop": [
+                  {
+                    "other_subscriber_information_SBR": {
+                      "payer_responsibility_sequence_number_code_01": "S",
+                      "individual_relationship_code_02": "01",
+                      "insured_group_or_policy_number_03": "351630",
+                      "other_insured_group_name_04": "STATE TEACHERS",
+                      "claim_filing_indicator_code_09": "CI"
+                    },
+                    "other_insurance_coverage_information_OI": {
+                      "benefits_assignment_certification_indicator_03": "Y",
+                      "release_of_information_code_06": "Y"
+                    },
+                    "other_subscriber_name_NM1_loop": {
+                      "other_subscriber_name_NM1": {
+                        "entity_identifier_code_01": "IL",
+                        "entity_type_qualifier_02": "1",
+                        "other_insured_last_name_03": "DOE",
+                        "other_insured_first_name_04": "JANE",
+                        "other_insured_middle_name_05": "S",
+                        "identification_code_qualifier_08": "MI",
+                        "other_insured_identifier_09": "222004433"
+                      },
+                      "other_subscriber_address_N3": {
+                        "other_insured_address_line_01": "125 CITY AVENUE"
+                      },
+                      "other_subscriber_city_state_zip_code_N4": {
+                        "other_insured_city_name_01": "CENTERVILLE",
+                        "other_insured_state_code_02": "PA",
+                        "other_insured_postal_zone_or_zip_code_03": "17111"
+                      }
+                    },
+                    "other_payer_name_NM1_loop": {
+                      "other_payer_name_NM1": {
+                        "entity_identifier_code_01": "PR",
+                        "entity_type_qualifier_02": "2",
+                        "other_payer_last_or_organization_name_03": "STATE TEACHERS",
+                        "identification_code_qualifier_08": "PI",
+                        "other_payer_primary_identifier_09": "1135"
+                      }
+                    }
+                  }
+                ],
+                "service_line_number_LX_loop": [
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 1
+                    },
+                    "institutional_service_line_SV2": {
+                      "service_line_revenue_code_01": "0305",
+                      "composite_medical_procedure_identifier_02": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "85025"
+                      },
+                      "line_item_charge_amount_03": 13.39,
+                      "unit_or_basis_for_measurement_code_04": "UN",
+                      "service_unit_count_05": 1
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "19960911"
+                    }
+                  },
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 2
+                    },
+                    "institutional_service_line_SV2": {
+                      "service_line_revenue_code_01": "0730",
+                      "composite_medical_procedure_identifier_02": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "93005"
+                      },
+                      "line_item_charge_amount_03": 76.54,
+                      "unit_or_basis_for_measurement_code_04": "UN",
+                      "service_unit_count_05": 3
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "19960911"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 43,
+      "transaction_set_control_number_02": 987654
+    }
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 1,
+      "implementation_guide_version_name_03": "005010X222A1"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "16",
+      "transaction_set_creation_date_04": "2005-03-26",
+      "transaction_set_creation_time_05": "10:36",
+      "claim_or_encounter_identifier_06": "CH"
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "OXYGEN SUPPLY COMPANY",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "ABC11111"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "BONNIE",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "8125551111",
+          "communication_number_qualifier_05": "EM",
+          "communication_number_06": "HELPDESK@OXYGEN.COM"
+        }
+      ]
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "DMERC CARRIER",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "99999"
+      }
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_last_or_organizational_name_03": "OXYGEN SUPPLY COMPANY",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "9992233334"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "1800 EAST RIDGE DRIVE"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "RICHMOND",
+            "billing_provider_state_or_province_code_02": "IN",
+            "billing_provider_postal_zone_or_zip_code_03": "46224"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "389999999"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "individual_relationship_code_02": "18",
+              "claim_filing_indicator_code_09": "MB"
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "DMERC CARRIER",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "99999"
+              }
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "SMITH",
+                "subscriber_first_name_04": "TERRY",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "111222333A"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "121 SOUTH ST"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "RICHMOND",
+                "subscriber_state_code_02": "IN",
+                "subscriber_postal_zone_or_zip_code_03": "46236"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19380105",
+                "subscriber_gender_code_03": "F"
+              }
+            },
+            "claim_information_CLM_loop": [
+              {
+                "claim_information_CLM": {
+                  "patient_control_number_01": "R03996273 #01",
+                  "total_claim_charge_amount_02": 520.24,
+                  "health_care_service_location_information_05": {
+                    "place_of_service_code_01": "11",
+                    "facility_code_qualifier_02": "B",
+                    "claim_frequency_code_03": "1"
+                  },
+                  "provider_or_supplier_signature_indicator_06": "Y",
+                  "assignment_or_plan_participation_code_07": "A",
+                  "benefits_assignment_certification_indicator_08": "Y",
+                  "release_of_information_code_09": "Y"
+                },
+                "health_care_diagnosis_code_HI": {
+                  "health_care_code_information_01": {
+                    "diagnosis_type_code_01": "BK",
+                    "diagnosis_code_02": "496"
+                  },
+                  "health_care_code_information_02": {
+                    "diagnosis_type_code_01": "BF",
+                    "diagnosis_code_02": "51881"
+                  },
+                  "health_care_code_information_03": {
+                    "diagnosis_type_code_01": "BF",
+                    "diagnosis_code_02": "2859"
+                  }
+                },
+                "service_line_number_LX_loop": [
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 1
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "E1390",
+                        "procedure_modifier_03": "RR"
+                      },
+                      "line_item_charge_amount_02": 461.1,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1,
+                        "diagnosis_code_pointer_02": 2
+                      }
+                    },
+                    "durable_medical_equipment_certificate_of_medical_necessity_indicator_PWK": {
+                      "attachment_report_type_code_01": "CT",
+                      "attachment_transmission_code_02": "AD"
+                    },
+                    "durable_medical_equipment_certification_CR3": {
+                      "certification_type_code_01": "R",
+                      "unit_or_basis_for_measurement_code_02": "MO",
+                      "durable_medical_equipment_duration_03": 99
+                    },
+                    "date_certification_revision_recertification_date_DTP": {
+                      "date_time_qualifier_01": "607",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "certification_revision_or_recertification_date_03": "20050321"
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "RD8",
+                      "service_date_03": "20050321-20050321"
+                    },
+                    "date_begin_therapy_date_DTP": {
+                      "date_time_qualifier_01": "463",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "begin_therapy_date_03": "20040321"
+                    },
+                    "date_last_certification_date_DTP": {
+                      "date_time_qualifier_01": "461",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "last_certification_date_03": "20050321"
+                    },
+                    "ordering_provider_name_NM1_loop": {
+                      "ordering_provider_name_NM1": {
+                        "entity_identifier_code_01": "DK",
+                        "entity_type_qualifier_02": "1",
+                        "ordering_provider_last_name_03": "WILSON",
+                        "ordering_provider_first_name_04": "LARRY",
+                        "identification_code_qualifier_08": "XX",
+                        "ordering_provider_identifier_09": "5555511111"
+                      },
+                      "ordering_provider_address_N3": {
+                        "ordering_provider_address_line_01": "1212 NORTH MERIDIAN"
+                      },
+                      "ordering_provider_city_state_zip_code_N4": {
+                        "ordering_provider_city_name_01": "RICHMOND",
+                        "ordering_provider_state_or_province_code_02": "IN",
+                        "ordering_provider_postal_zone_or_zip_code_03": "46223"
+                      },
+                      "ordering_provider_secondary_identification_REF": [
+                        {
+                          "reference_identification_qualifier_01": "1G",
+                          "ordering_provider_secondary_identifier_02": "X99999"
+                        }
+                      ],
+                      "ordering_provider_contact_information_PER": {
+                        "contact_function_code_01": "IC",
+                        "ordering_provider_contact_name_02": "LEE",
+                        "communication_number_qualifier_03": "TE",
+                        "communication_number_04": "5554446666"
+                      }
+                    },
+                    "form_identification_code_LQ_loop": [
+                      {
+                        "form_identification_code_LQ": {
+                          "code_list_qualifier_code_01": "UT",
+                          "form_identifier_02": "04.03"
+                        },
+                        "supporting_documentation_FRM": [
+                          {
+                            "question_number_letter_01": "1A",
+                            "question_response_03": "056"
+                          },
+                          {
+                            "question_number_letter_01": "1C",
+                            "question_response_03": "20050228"
+                          },
+                          {
+                            "question_number_letter_01": "2",
+                            "question_response_03": "1"
+                          },
+                          {
+                            "question_number_letter_01": "3",
+                            "question_response_03": "1"
+                          },
+                          {
+                            "question_number_letter_01": "4",
+                            "question_response_02": "Y"
+                          },
+                          {
+                            "question_number_letter_01": "5",
+                            "question_response_03": "2"
+                          },
+                          {
+                            "question_number_letter_01": "7",
+                            "question_response_02": "Y"
+                          },
+                          {
+                            "question_number_letter_01": "8",
+                            "question_response_02": "N"
+                          },
+                          {
+                            "question_number_letter_01": "9",
+                            "question_response_02": "Y"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 2
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "E0431",
+                        "procedure_modifier_03": "RR"
+                      },
+                      "line_item_charge_amount_02": 59.14,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1,
+                        "diagnosis_code_pointer_02": 2
+                      }
+                    },
+                    "durable_medical_equipment_certificate_of_medical_necessity_indicator_PWK": {
+                      "attachment_report_type_code_01": "CT",
+                      "attachment_transmission_code_02": "AD"
+                    },
+                    "durable_medical_equipment_certification_CR3": {
+                      "certification_type_code_01": "R",
+                      "unit_or_basis_for_measurement_code_02": "MO",
+                      "durable_medical_equipment_duration_03": 99
+                    },
+                    "date_certification_revision_recertification_date_DTP": {
+                      "date_time_qualifier_01": "607",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "certification_revision_or_recertification_date_03": "20050321"
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "RD8",
+                      "service_date_03": "20050321-20050321"
+                    },
+                    "date_last_certification_date_DTP": {
+                      "date_time_qualifier_01": "461",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "last_certification_date_03": "20050321"
+                    },
+                    "date_begin_therapy_date_DTP": {
+                      "date_time_qualifier_01": "463",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "begin_therapy_date_03": "20040321"
+                    },
+                    "ordering_provider_name_NM1_loop": {
+                      "ordering_provider_name_NM1": {
+                        "entity_identifier_code_01": "DK",
+                        "entity_type_qualifier_02": "1",
+                        "ordering_provider_last_name_03": "WILSON",
+                        "ordering_provider_first_name_04": "LARRY",
+                        "identification_code_qualifier_08": "XX",
+                        "ordering_provider_identifier_09": "5555511111"
+                      },
+                      "ordering_provider_address_N3": {
+                        "ordering_provider_address_line_01": "1212 NORTH MERIDIAN"
+                      },
+                      "ordering_provider_city_state_zip_code_N4": {
+                        "ordering_provider_city_name_01": "RICHMOND",
+                        "ordering_provider_state_or_province_code_02": "IN",
+                        "ordering_provider_postal_zone_or_zip_code_03": "46223"
+                      },
+                      "ordering_provider_secondary_identification_REF": [
+                        {
+                          "reference_identification_qualifier_01": "1G",
+                          "ordering_provider_secondary_identifier_02": "X99999"
+                        }
+                      ],
+                      "ordering_provider_contact_information_PER": {
+                        "contact_function_code_01": "IC",
+                        "ordering_provider_contact_name_02": "LEE",
+                        "communication_number_qualifier_03": "TE",
+                        "communication_number_04": "5554446666"
+                      }
+                    },
+                    "form_identification_code_LQ_loop": [
+                      {
+                        "form_identification_code_LQ": {
+                          "code_list_qualifier_code_01": "UT",
+                          "form_identifier_02": "04.03"
+                        },
+                        "supporting_documentation_FRM": [
+                          {
+                            "question_number_letter_01": "1A",
+                            "question_response_03": "056"
+                          },
+                          {
+                            "question_number_letter_01": "1C",
+                            "question_response_03": "20050228"
+                          },
+                          {
+                            "question_number_letter_01": "2",
+                            "question_response_03": "1"
+                          },
+                          {
+                            "question_number_letter_01": "3",
+                            "question_response_03": "1"
+                          },
+                          {
+                            "question_number_letter_01": "4",
+                            "question_response_02": "Y"
+                          },
+                          {
+                            "question_number_letter_01": "5",
+                            "question_response_03": "2"
+                          },
+                          {
+                            "question_number_letter_01": "7",
+                            "question_response_02": "Y"
+                          },
+                          {
+                            "question_number_letter_01": "8",
+                            "question_response_02": "N"
+                          },
+                          {
+                            "question_number_letter_01": "9",
+                            "question_response_02": "Y"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 66,
+      "transaction_set_control_number_02": 1
+    }
+  }
+}

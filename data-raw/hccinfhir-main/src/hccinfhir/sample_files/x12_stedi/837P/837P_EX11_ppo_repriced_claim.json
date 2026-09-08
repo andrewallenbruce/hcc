@@ -1,0 +1,266 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 1002,
+      "implementation_guide_version_name_03": "005010X222A1"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "1002",
+      "transaction_set_creation_date_04": "2005-06-20",
+      "transaction_set_creation_time_05": "09:46:00.00",
+      "claim_or_encounter_identifier_06": "CH"
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "REGIONAL PPO NETWORK",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "123456789"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "SUBMITTER CONTACT INFO",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "8001231234"
+        }
+      ]
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "EXTRA HEALTHY INSURANCE",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "112244"
+      }
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_last_or_organizational_name_03": "HAPPY DOCTORS GROUP PRACTICE",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "1234567890"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "P O BOX 123"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "FORT WAYNE",
+            "billing_provider_state_or_province_code_02": "IN",
+            "billing_provider_postal_zone_or_zip_code_03": "462540000"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "555512345"
+          },
+          "billing_provider_contact_information_PER": [
+            {
+              "contact_function_code_01": "IC",
+              "billing_provider_contact_name_02": "SUE BILLINGSWORTH",
+              "communication_number_qualifier_03": "TE",
+              "communication_number_04": "8881231234"
+            }
+          ]
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "individual_relationship_code_02": "18",
+              "subscriber_group_or_policy_number_03": "123XYZ",
+              "claim_filing_indicator_code_09": "CI"
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "EXTRA HEALTHY INSURANCE",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "12345"
+              }
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "RING",
+                "subscriber_first_name_04": "DIAMOND",
+                "subscriber_middle_name_or_initial_05": "D",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "00124A089"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "123 EXAMPLE DRIVE"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "INDIANAPOLIS",
+                "subscriber_state_code_02": "IN",
+                "subscriber_postal_zone_or_zip_code_03": "462290000"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19401229",
+                "subscriber_gender_code_03": "F"
+              }
+            },
+            "claim_information_CLM_loop": [
+              {
+                "claim_information_CLM": {
+                  "patient_control_number_01": "ABC123-RI",
+                  "total_claim_charge_amount_02": 28.75,
+                  "health_care_service_location_information_05": {
+                    "place_of_service_code_01": "11",
+                    "facility_code_qualifier_02": "B",
+                    "claim_frequency_code_03": "1"
+                  },
+                  "provider_or_supplier_signature_indicator_06": "Y",
+                  "assignment_or_plan_participation_code_07": "A",
+                  "benefits_assignment_certification_indicator_08": "Y",
+                  "release_of_information_code_09": "Y",
+                  "patient_signature_source_code_10": "P"
+                },
+                "repriced_claim_number_REF": {
+                  "reference_identification_qualifier_01": "9A",
+                  "repriced_claim_reference_number_02": "0902352342"
+                },
+                "claim_identifier_for_transmission_intermediaries_REF": {
+                  "reference_identification_qualifier_01": "D9",
+                  "value_added_network_trace_number_02": "061505501749388"
+                },
+                "health_care_diagnosis_code_HI": {
+                  "health_care_code_information_01": {
+                    "diagnosis_type_code_01": "BK",
+                    "diagnosis_code_02": "496"
+                  },
+                  "health_care_code_information_02": {
+                    "diagnosis_type_code_01": "BF",
+                    "diagnosis_code_02": "25000"
+                  }
+                },
+                "claim_pricing_repricing_information_HCP": {
+                  "pricing_methodology_01": "03",
+                  "repriced_allowed_amount_02": 26.75,
+                  "repriced_saving_amount_03": 2,
+                  "repricing_organization_identifier_04": "908231234"
+                },
+                "rendering_provider_name_NM1_loop": {
+                  "rendering_provider_name_NM1": {
+                    "entity_identifier_code_01": "82",
+                    "entity_type_qualifier_02": "1",
+                    "rendering_provider_last_or_organization_name_03": "ANTHONY",
+                    "rendering_provider_first_name_04": "SUSAN",
+                    "rendering_provider_middle_name_or_initial_05": "B",
+                    "identification_code_qualifier_08": "XX",
+                    "rendering_provider_identifier_09": "1122334455"
+                  }
+                },
+                "service_facility_location_name_NM1_loop": {
+                  "service_facility_location_name_NM1": {
+                    "entity_identifier_code_01": "77",
+                    "entity_type_qualifier_02": "2",
+                    "laboratory_or_facility_name_03": "HAPPY DOCTORS GROUP"
+                  },
+                  "service_facility_location_address_N3": {
+                    "laboratory_or_facility_address_line_01": "123 FEEL GOOD ROAD"
+                  },
+                  "service_facility_location_city_state_zip_code_N4": {
+                    "laboratory_or_facility_city_name_01": "WASHINGTON",
+                    "laboratory_or_facility_state_or_province_code_02": "IN",
+                    "laboratory_or_facility_postal_zone_or_zip_code_03": "475010000"
+                  }
+                },
+                "referring_provider_name_NM1_loop": [
+                  {
+                    "referring_provider_name_NM1": {
+                      "entity_identifier_code_01": "DN",
+                      "entity_type_qualifier_02": "1",
+                      "referring_provider_last_name_03": "DOE",
+                      "referring_provider_first_name_04": "JOHN",
+                      "identification_code_qualifier_08": "XX",
+                      "referring_provider_identifier_09": "9988776655"
+                    }
+                  }
+                ],
+                "service_line_number_LX_loop": [
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 1
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "E0570",
+                        "procedure_modifier_03": "RR"
+                      },
+                      "line_item_charge_amount_02": 25,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1,
+                        "diagnosis_code_pointer_02": 2
+                      }
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "20050514"
+                    },
+                    "line_pricing_repricing_information_HCP": {
+                      "pricing_methodology_01": "03",
+                      "repriced_allowed_amount_02": 23.75,
+                      "repriced_saving_amount_03": 1.25,
+                      "repricing_organization_identifier_04": "908231234"
+                    }
+                  },
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 2
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "A7003",
+                        "procedure_modifier_03": "NU"
+                      },
+                      "line_item_charge_amount_02": 3.75,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1
+                      }
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "20050514"
+                    },
+                    "line_pricing_repricing_information_HCP": {
+                      "pricing_methodology_01": "03",
+                      "repriced_allowed_amount_02": 3,
+                      "repriced_saving_amount_03": 0.75,
+                      "repricing_organization_identifier_04": "908231234"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 37,
+      "transaction_set_control_number_02": 1002
+    }
+  }
+}

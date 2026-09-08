@@ -1,0 +1,282 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 557766,
+      "version_release_or_industry_identifier_03": "005010X223A2"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "0324",
+      "transaction_set_creation_date_04": "2005-11-11",
+      "transaction_set_creation_time_05": "18:00",
+      "claim_identifier_06": "CH"
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "HEISMAN INSURANCE COMPANY",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "999888777"
+      }
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "HALL OF FAME MEMORIAL HOSPITAL",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "737373737"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "KATE CASEY",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "7152569877"
+        }
+      ]
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_specialty_information_PRV": {
+          "provider_code_01": "BI",
+          "reference_identification_qualifier_02": "PXC",
+          "provider_taxonomy_code_03": "203BA0200N"
+        },
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_organizational_name_03": "HALL OF FAME MEMORIAL HOSPITAL",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "2365259638"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "1 CANTON ROAD"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "BROKEN FIELD",
+            "billing_provider_state_or_province_code_02": "CA",
+            "billing_provider_postal_zone_or_zip_code_03": "99998"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "737373737"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "claim_filing_indicator_code_09": "AM"
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "HOWLING",
+                "subscriber_first_name_04": "HAL",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "B999777791G"
+              }
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "HEISMAN INSURANCE COMPANY",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "999888777"
+              }
+            },
+            "patient_hierarchical_level_HL_loop": [
+              {
+                "patient_information_PAT": {
+                  "individual_relationship_code_01": "21"
+                },
+                "patient_name_NM1_loop": {
+                  "patient_name_NM1": {
+                    "entity_identifier_code_01": "QC",
+                    "entity_type_qualifier_02": "1",
+                    "patient_last_name_03": "MEXICO",
+                    "patient_first_name_04": "RON"
+                  },
+                  "patient_address_N3": {
+                    "patient_address_line_01": "32 BUFFALO RUN"
+                  },
+                  "patient_city_state_zip_code_N4": {
+                    "patient_city_name_01": "ROCKING HORSE",
+                    "patient_state_code_02": "CA",
+                    "patient_postal_zone_or_zip_code_03": "99666"
+                  },
+                  "patient_demographic_information_DMG": {
+                    "date_time_period_format_qualifier_01": "D8",
+                    "patient_birth_date_02": "19480601",
+                    "patient_gender_code_03": "M"
+                  },
+                  "property_and_casualty_claim_number_REF": {
+                    "reference_identification_qualifier_01": "Y4",
+                    "property_casualty_claim_number_02": "32323232"
+                  }
+                },
+                "claim_information_CLM_loop": [
+                  {
+                    "claim_information_CLM": {
+                      "patient_control_number_01": "67236695521",
+                      "total_claim_charge_amount_02": 545,
+                      "health_care_service_location_information_05": {
+                        "facility_type_code_01": "13",
+                        "facility_code_qualifier_02": "A",
+                        "claim_frequency_code_03": "1"
+                      },
+                      "assignment_or_plan_participation_code_07": "A",
+                      "benefits_assignment_certification_indicator_08": "Y",
+                      "release_of_information_code_09": "Y"
+                    },
+                    "statement_dates_DTP": {
+                      "date_time_qualifier_01": "434",
+                      "date_time_period_format_qualifier_02": "RD8",
+                      "statement_from_and_to_date_03": "20051031-20051101"
+                    },
+                    "institutional_claim_code_CL1": {
+                      "admission_type_code_01": "3",
+                      "admission_source_code_02": "7",
+                      "patient_status_code_03": "1"
+                    },
+                    "auto_accident_state_REF": {
+                      "reference_identification_qualifier_01": "LU",
+                      "auto_accident_state_or_province_code_02": "CA"
+                    },
+                    "patients_reason_for_visit_HI": {
+                      "health_care_code_information_01": {
+                        "code_list_qualifier_code_01": "PR",
+                        "patient_reason_for_visit_02": "8842"
+                      }
+                    },
+                    "principal_diagnosis_HI": {
+                      "health_care_code_information_01": {
+                        "code_list_qualifier_code_01": "BK",
+                        "principal_diagnosis_code_02": "8842"
+                      }
+                    },
+                    "external_cause_of_injury_HI": {
+                      "health_care_code_information_01": {
+                        "code_list_qualifier_code_01": "BN",
+                        "external_cause_of_injury_code_02": "E9750"
+                      },
+                      "health_care_code_information_02": {
+                        "code_list_qualifier_code_01": "BN",
+                        "external_cause_of_injury_code_02": "E9860"
+                      }
+                    },
+                    "attending_provider_name_NM1_loop": {
+                      "attending_provider_name_NM1": {
+                        "entity_identifier_code_01": "71",
+                        "entity_type_qualifier_02": "1",
+                        "attending_provider_last_name_03": "LOMBARDO",
+                        "attending_provider_first_name_04": "VINCENT",
+                        "identification_code_qualifier_08": "XX",
+                        "attending_provider_primary_identifier_09": "2533698543"
+                      }
+                    },
+                    "service_line_number_LX_loop": [
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 1
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0450",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "98765"
+                          },
+                          "line_item_charge_amount_03": 150,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 1
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20051031"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 2
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0360",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "26591"
+                          },
+                          "line_item_charge_amount_03": 75,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 1
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20051031"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 3
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0312",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "86225"
+                          },
+                          "line_item_charge_amount_03": 100,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 2
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20051031"
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 4
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0360",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "99283"
+                          },
+                          "line_item_charge_amount_03": 220,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 1
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20051031"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 43,
+      "transaction_set_control_number_02": 557766
+    }
+  }
+}

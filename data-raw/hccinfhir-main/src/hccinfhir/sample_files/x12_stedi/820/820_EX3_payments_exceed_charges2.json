@@ -1,0 +1,199 @@
+{
+  "heading": {
+    "820_header_ST": {
+      "transaction_set_identifier_code_01": "820",
+      "transaction_set_control_number_02": 2,
+      "implementation_convention_reference_03": "005010X306"
+    },
+    "financial_information_BPR": {
+      "transaction_handling_code_01": "I",
+      "total_payment_amount_02": 1110,
+      "credit_or_debit_flag_code_03": "C",
+      "payment_method_code_04": "ACH",
+      "payment_format_code_05": "CCP",
+      "depository_financial_institution_dfi_identification_number_qualifier_12": "01",
+      "receiving_depository_financial_institution_dfi_identifier_13": "000000001",
+      "account_number_qualifier_14": "DA",
+      "receiver_bank_account_number_15": "123456772123",
+      "check_issue_or_eft_effective_date_16": "2014-01-28"
+    },
+    "reassociation_trace_number_TRN": {
+      "trace_type_code_01": "3",
+      "check_or_eft_trace_number_02": "123456789123459"
+    },
+    "payee_name_N1_loop": {
+      "payee_name_N1": {
+        "entity_identifier_code_01": "PE",
+        "payee_organization_name_02": "NATIONAL",
+        "identification_code_qualifier_03": "FI",
+        "payees_tax_identification_number_04": "121231233"
+      }
+    },
+    "payers_name_N1_loop": {
+      "payers_name_N1": {
+        "entity_identifier_code_01": "RM",
+        "payer_name_02": "CMS",
+        "identification_code_qualifier_03": "58",
+        "payer_identifier_04": "CMS"
+      },
+      "payers_administrative_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "premium_payer_contact_name_02": "EXCHANGE OPERATIONS CENTER",
+          "communication_number_qualifier_03": "EM",
+          "communication_number_04": "CMS_FEPS@cms.hhs.gov",
+          "communication_number_qualifier_05": "TE",
+          "communication_number_06": "8002671515"
+        }
+      ]
+    }
+  },
+  "detail": {
+    "remittance_information_ENT_loop": [
+      {
+        "remittance_information_ENT": {
+          "assigned_number_01": 1
+        },
+        "individual_name_NM1_loop": {
+          "individual_name_NM1": {
+            "entity_identifier_code_01": "IL",
+            "entity_type_qualifier_02": "1",
+            "individual_last_name_03": "SMITH",
+            "individual_first_name_04": "JANE",
+            "identification_code_qualifier_08": "C1",
+            "exchange_assigned_subscriber_identifier_09": "777222"
+          },
+          "issuer_assigned_policy_identifier_REF": {
+            "reference_identification_qualifier_01": "AZ",
+            "issuer_assigned_policy_identifier_02": "PLAN1"
+          },
+          "exchange_assigned_policy_identifier_REF": {
+            "reference_identification_qualifier_01": "POL",
+            "exchange_assigned_policy_identifier_02": "4567"
+          },
+          "issuer_assigned_subscriber_identifier_REF": {
+            "reference_identification_qualifier_01": "0F",
+            "issuer_assigned_subscriber_identifier_02": "SUB123"
+          },
+          "exchange_assigned_qualified_health_plan_identifier_REF": {
+            "reference_identification_qualifier_01": "38",
+            "exchange_assigned_qualified_health_plan_identifier_02": "12345MD000011221"
+          }
+        },
+        "remittance_detail_RMR_loop": [
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "APTC",
+              "payment_amount_04": 600
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          },
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "CSR",
+              "payment_amount_04": 100
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          },
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "UF",
+              "payment_amount_04": -25
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          }
+        ]
+      },
+      {
+        "remittance_information_ENT": {
+          "assigned_number_01": 2
+        },
+        "individual_name_NM1_loop": {
+          "individual_name_NM1": {
+            "entity_identifier_code_01": "IL",
+            "entity_type_qualifier_02": "1",
+            "individual_last_name_03": "DOE",
+            "individual_first_name_04": "JOHN",
+            "identification_code_qualifier_08": "C1",
+            "exchange_assigned_subscriber_identifier_09": "777223"
+          },
+          "issuer_assigned_policy_identifier_REF": {
+            "reference_identification_qualifier_01": "AZ",
+            "issuer_assigned_policy_identifier_02": "PLAN2"
+          },
+          "exchange_assigned_qualified_health_plan_identifier_REF": {
+            "reference_identification_qualifier_01": "38",
+            "exchange_assigned_qualified_health_plan_identifier_02": "12346MD000011232"
+          },
+          "issuer_assigned_subscriber_identifier_REF": {
+            "reference_identification_qualifier_01": "0F",
+            "issuer_assigned_subscriber_identifier_02": "SUB234"
+          },
+          "exchange_assigned_policy_identifier_REF": {
+            "reference_identification_qualifier_01": "POL",
+            "exchange_assigned_policy_identifier_02": "5678"
+          }
+        },
+        "remittance_detail_RMR_loop": [
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "APTC",
+              "payment_amount_04": 400
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          },
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "CSR",
+              "payment_amount_04": 50
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          },
+          {
+            "remittance_detail_RMR": {
+              "reference_identification_qualifier_01": "ZZ",
+              "exchange_payment_type_02": "UF",
+              "payment_amount_04": -15
+            },
+            "individual_coverage_period_DTM": {
+              "date_time_qualifier_01": "582",
+              "date_time_period_format_qualifier_05": "RD8",
+              "coverage_period_06": "20140101-20140131"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 31,
+      "transaction_set_control_number_02": 2
+    }
+  }
+}

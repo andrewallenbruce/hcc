@@ -1,0 +1,219 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 711,
+      "implementation_guide_version_name_03": "005010X222A1"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "0013",
+      "transaction_set_creation_date_04": "2004-08-01",
+      "transaction_set_creation_time_05": "12:00",
+      "claim_or_encounter_identifier_06": "CH"
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "XYZ Receiver",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "369852758"
+      }
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "Associates in Medicine",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "587654321"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "Bud Holly",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "8017268899"
+        }
+      ]
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_last_or_organizational_name_03": "Associates in Medicine",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "587654321"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "1313 Las Vegas Boulevard"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "Las Vegas",
+            "billing_provider_state_or_province_code_02": "NV",
+            "billing_provider_postal_zone_or_zip_code_03": "89109"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "587654321"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "individual_relationship_code_02": "18",
+              "subscriber_group_or_policy_number_03": "GRP01020102",
+              "claim_filing_indicator_code_09": "CI"
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "Vaughn",
+                "subscriber_first_name_04": "Steve",
+                "subscriber_middle_name_or_initial_05": "R",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "MBRID12345"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "236 Diamond ST"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "Las Vegas",
+                "subscriber_state_code_02": "NV",
+                "subscriber_postal_zone_or_zip_code_03": "89109"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19430501",
+                "subscriber_gender_code_03": "M"
+              }
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "R&R Health Plan",
+                "identification_code_qualifier_08": "XV",
+                "payer_identifier_09": "PLANID12345"
+              }
+            },
+            "claim_information_CLM_loop": [
+              {
+                "claim_information_CLM": {
+                  "patient_control_number_01": "CLMNO12345",
+                  "total_claim_charge_amount_02": 103.37,
+                  "health_care_service_location_information_05": {
+                    "place_of_service_code_01": "11",
+                    "facility_code_qualifier_02": "B",
+                    "claim_frequency_code_03": "1"
+                  },
+                  "provider_or_supplier_signature_indicator_06": "Y",
+                  "assignment_or_plan_participation_code_07": "A",
+                  "benefits_assignment_certification_indicator_08": "Y",
+                  "release_of_information_code_09": "Y"
+                },
+                "health_care_diagnosis_code_HI": {
+                  "health_care_code_information_01": {
+                    "diagnosis_type_code_01": "BK",
+                    "diagnosis_code_02": "03591"
+                  }
+                },
+                "rendering_provider_name_NM1_loop": {
+                  "rendering_provider_name_NM1": {
+                    "entity_identifier_code_01": "82",
+                    "entity_type_qualifier_02": "1",
+                    "rendering_provider_last_or_organization_name_03": "Hendrix",
+                    "rendering_provider_first_name_04": "Jim",
+                    "identification_code_qualifier_08": "XX",
+                    "rendering_provider_identifier_09": "1122333341"
+                  },
+                  "rendering_provider_specialty_information_PRV": {
+                    "provider_code_01": "PE",
+                    "reference_identification_qualifier_02": "PXC",
+                    "provider_taxonomy_code_03": "208D00000X"
+                  }
+                },
+                "service_line_number_LX_loop": [
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 1
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "90782"
+                      },
+                      "line_item_charge_amount_02": 50,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "place_of_service_code_05": "11",
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1
+                      }
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "20040711"
+                    }
+                  },
+                  {
+                    "service_line_number_LX": {
+                      "assigned_number_01": 2
+                    },
+                    "professional_service_SV1": {
+                      "composite_medical_procedure_identifier_01": {
+                        "product_or_service_id_qualifier_01": "HC",
+                        "procedure_code_02": "J1550"
+                      },
+                      "line_item_charge_amount_02": 53.37,
+                      "unit_or_basis_for_measurement_code_03": "UN",
+                      "service_unit_count_04": 1,
+                      "place_of_service_code_05": "11",
+                      "composite_diagnosis_code_pointer_07": {
+                        "diagnosis_code_pointer_01": 1
+                      }
+                    },
+                    "date_service_date_DTP": {
+                      "date_time_qualifier_01": "472",
+                      "date_time_period_format_qualifier_02": "D8",
+                      "service_date_03": "20040711"
+                    },
+                    "sales_tax_amount_AMT": {
+                      "amount_qualifier_code_01": "T",
+                      "sales_tax_amount_02": 3.37
+                    },
+                    "drug_identification_LIN_loop": {
+                      "drug_identification_LIN": {
+                        "product_or_service_id_qualifier_02": "N4",
+                        "national_drug_code_or_universal_product_number_03": "00026063512"
+                      },
+                      "drug_quantity_CTP": {
+                        "national_drug_unit_count_04": 10,
+                        "composite_unit_of_measure_05": {
+                          "code_qualifier_01": "ML"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 31,
+      "transaction_set_control_number_02": 711
+    }
+  }
+}

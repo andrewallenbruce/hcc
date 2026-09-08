@@ -1,0 +1,311 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "837",
+      "transaction_set_control_number_02": 1002,
+      "version_release_or_industry_identifier_03": "005010X223A2"
+    },
+    "beginning_of_hierarchical_transaction_BHT": {
+      "hierarchical_structure_code_01": "0019",
+      "transaction_set_purpose_code_02": "00",
+      "originator_application_transaction_identifier_03": "1002",
+      "transaction_set_creation_date_04": "2005-07-21",
+      "transaction_set_creation_time_05": "09:46:00.00",
+      "claim_identifier_06": "CH"
+    },
+    "receiver_name_NM1_loop": {
+      "receiver_name_NM1": {
+        "entity_identifier_code_01": "40",
+        "entity_type_qualifier_02": "2",
+        "receiver_name_03": "LOCAL INSURANCE COMPANY",
+        "identification_code_qualifier_08": "46",
+        "receiver_primary_identifier_09": "54334452"
+      }
+    },
+    "submitter_name_NM1_loop": {
+      "submitter_name_NM1": {
+        "entity_identifier_code_01": "41",
+        "entity_type_qualifier_02": "2",
+        "submitter_last_or_organization_name_03": "REGIONAL PPO NETWORK",
+        "identification_code_qualifier_08": "46",
+        "submitter_identifier_09": "123456789"
+      },
+      "submitter_edi_contact_information_PER": [
+        {
+          "contact_function_code_01": "IC",
+          "submitter_contact_name_02": "SUBMITTER CONTACT INFO",
+          "communication_number_qualifier_03": "TE",
+          "communication_number_04": "8001231234"
+        }
+      ]
+    }
+  },
+  "detail": {
+    "billing_provider_hierarchical_level_HL_loop": [
+      {
+        "billing_provider_name_NM1_loop": {
+          "billing_provider_name_NM1": {
+            "entity_identifier_code_01": "85",
+            "entity_type_qualifier_02": "2",
+            "billing_provider_organizational_name_03": "GOOD HEALTH HOSPITAL",
+            "identification_code_qualifier_08": "XX",
+            "billing_provider_identifier_09": "1257234346"
+          },
+          "billing_provider_address_N3": {
+            "billing_provider_address_line_01": "592 NORTH ELM STREET"
+          },
+          "billing_provider_city_state_zip_code_N4": {
+            "billing_provider_city_name_01": "EDGEWOOD",
+            "billing_provider_state_or_province_code_02": "AZ",
+            "billing_provider_postal_zone_or_zip_code_03": "860015590"
+          },
+          "billing_provider_tax_identification_REF": {
+            "reference_identification_qualifier_01": "EI",
+            "billing_provider_tax_identification_number_02": "344232321"
+          }
+        },
+        "subscriber_hierarchical_level_HL_loop": [
+          {
+            "subscriber_information_SBR": {
+              "payer_responsibility_sequence_number_code_01": "P",
+              "subscriber_group_or_policy_number_03": "46522567AW",
+              "claim_filing_indicator_code_09": "CI"
+            },
+            "payer_name_NM1_loop": {
+              "payer_name_NM1": {
+                "entity_identifier_code_01": "PR",
+                "entity_type_qualifier_02": "2",
+                "payer_name_03": "LOCAL INSURANCE COMPANY",
+                "identification_code_qualifier_08": "PI",
+                "payer_identifier_09": "7452723"
+              }
+            },
+            "subscriber_name_NM1_loop": {
+              "subscriber_name_NM1": {
+                "entity_identifier_code_01": "IL",
+                "entity_type_qualifier_02": "1",
+                "subscriber_last_name_03": "JONES",
+                "subscriber_first_name_04": "JENNY",
+                "identification_code_qualifier_08": "MI",
+                "subscriber_primary_identifier_09": "345U8423H"
+              },
+              "subscriber_address_N3": {
+                "subscriber_address_line_01": "4512 WEST AVENUE"
+              },
+              "subscriber_city_state_zip_code_N4": {
+                "subscriber_city_name_01": "EVANSVILLE",
+                "subscriber_state_code_02": "AZ",
+                "subscriber_postal_zone_or_zip_code_03": "863030000"
+              },
+              "subscriber_demographic_information_DMG": {
+                "date_time_period_format_qualifier_01": "D8",
+                "subscriber_birth_date_02": "19690731",
+                "subscriber_gender_code_03": "F"
+              }
+            },
+            "patient_hierarchical_level_HL_loop": [
+              {
+                "patient_information_PAT": {
+                  "individual_relationship_code_01": "19"
+                },
+                "patient_name_NM1_loop": {
+                  "patient_name_NM1": {
+                    "entity_identifier_code_01": "QC",
+                    "entity_type_qualifier_02": "1",
+                    "patient_last_name_03": "JONES",
+                    "patient_first_name_04": "JOY"
+                  },
+                  "patient_address_N3": {
+                    "patient_address_line_01": "4512 WEST AVENUE"
+                  },
+                  "patient_city_state_zip_code_N4": {
+                    "patient_city_name_01": "EVANSVILLE",
+                    "patient_state_code_02": "AZ",
+                    "patient_postal_zone_or_zip_code_03": "863030000"
+                  },
+                  "patient_demographic_information_DMG": {
+                    "date_time_period_format_qualifier_01": "D8",
+                    "patient_birth_date_02": "19980820",
+                    "patient_gender_code_03": "F"
+                  }
+                },
+                "claim_information_CLM_loop": [
+                  {
+                    "claim_information_CLM": {
+                      "patient_control_number_01": "456DFH43",
+                      "total_claim_charge_amount_02": 237.5,
+                      "health_care_service_location_information_05": {
+                        "facility_type_code_01": "13",
+                        "facility_code_qualifier_02": "A",
+                        "claim_frequency_code_03": "1"
+                      },
+                      "assignment_or_plan_participation_code_07": "A",
+                      "benefits_assignment_certification_indicator_08": "Y",
+                      "release_of_information_code_09": "Y"
+                    },
+                    "statement_dates_DTP": {
+                      "date_time_qualifier_01": "434",
+                      "date_time_period_format_qualifier_02": "RD8",
+                      "statement_from_and_to_date_03": "20050706-20050706"
+                    },
+                    "admission_date_hour_DTP": {
+                      "date_time_qualifier_01": "435",
+                      "date_time_period_format_qualifier_02": "DT",
+                      "admission_date_and_hour_03": "200507060800"
+                    },
+                    "institutional_claim_code_CL1": {
+                      "admission_type_code_01": "1",
+                      "admission_source_code_02": "2",
+                      "patient_status_code_03": "01"
+                    },
+                    "patient_estimated_amount_due_AMT": {
+                      "amount_qualifier_code_01": "F3",
+                      "patient_responsibility_amount_02": 237.5
+                    },
+                    "claim_identifier_for_transmission_intermediaries_REF": {
+                      "reference_identification_qualifier_01": "D9",
+                      "value_added_network_trace_number_02": "04566877634343456"
+                    },
+                    "repriced_claim_number_REF": {
+                      "reference_identification_qualifier_01": "9A",
+                      "repriced_claim_reference_number_02": "09459034092"
+                    },
+                    "principal_diagnosis_HI": {
+                      "health_care_code_information_01": {
+                        "code_list_qualifier_code_01": "BK",
+                        "principal_diagnosis_code_02": "38181"
+                      }
+                    },
+                    "other_diagnosis_information_HI": [
+                      {
+                        "health_care_code_information_01": {
+                          "code_list_qualifier_code_01": "BF",
+                          "other_diagnosis_02": "38900"
+                        }
+                      }
+                    ],
+                    "occurrence_information_HI": [
+                      {
+                        "health_care_code_information_01": {
+                          "code_list_qualifier_code_01": "BH",
+                          "occurrence_code_02": "11",
+                          "date_time_period_format_qualifier_03": "D8",
+                          "occurrence_code_date_04": "20050706"
+                        }
+                      }
+                    ],
+                    "claim_pricing_repricing_information_HCP": {
+                      "pricing_methodology_01": "03",
+                      "repriced_allowed_amount_02": 182.88,
+                      "repriced_saving_amount_03": 54.62,
+                      "repricing_organization_identifier_04": "123456789"
+                    },
+                    "attending_provider_name_NM1_loop": {
+                      "attending_provider_name_NM1": {
+                        "entity_identifier_code_01": "71",
+                        "entity_type_qualifier_02": "1",
+                        "attending_provider_last_name_03": "JOHNSON",
+                        "attending_provider_first_name_04": "SIMON",
+                        "identification_code_qualifier_08": "XX",
+                        "attending_provider_primary_identifier_09": "5544332211"
+                      }
+                    },
+                    "other_subscriber_information_SBR_loop": [
+                      {
+                        "other_subscriber_information_SBR": {
+                          "payer_responsibility_sequence_number_code_01": "S",
+                          "individual_relationship_code_02": "19",
+                          "other_insured_group_name_04": "T&T PLUMBING COMPANY",
+                          "claim_filing_indicator_code_09": "CI"
+                        },
+                        "other_insurance_coverage_information_OI": {
+                          "benefits_assignment_certification_indicator_03": "Y",
+                          "release_of_information_code_06": "Y"
+                        },
+                        "other_payer_name_NM1_loop": {
+                          "other_payer_name_NM1": {
+                            "entity_identifier_code_01": "PR",
+                            "entity_type_qualifier_02": "2",
+                            "other_payer_last_or_organization_name_03": "OTHER COVERAGE COMPANY",
+                            "identification_code_qualifier_08": "PI",
+                            "other_payer_primary_identifier_09": "534524"
+                          }
+                        },
+                        "other_subscriber_name_NM1_loop": {
+                          "other_subscriber_name_NM1": {
+                            "entity_identifier_code_01": "IL",
+                            "entity_type_qualifier_02": "1",
+                            "other_insured_last_name_03": "JONES",
+                            "other_insured_first_name_04": "GEORGE",
+                            "identification_code_qualifier_08": "MI",
+                            "other_insured_identifier_09": "56454566"
+                          }
+                        }
+                      }
+                    ],
+                    "service_line_number_LX_loop": [
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 1
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0471",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "92557"
+                          },
+                          "line_item_charge_amount_03": 178,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 1
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20050706"
+                        },
+                        "line_pricing_repricing_information_HCP": {
+                          "pricing_methodology_01": "03",
+                          "monetary_amount_02": 137.06,
+                          "monetary_amount_03": 40.94
+                        }
+                      },
+                      {
+                        "service_line_number_LX": {
+                          "assigned_number_01": 2
+                        },
+                        "institutional_service_line_SV2": {
+                          "service_line_revenue_code_01": "0471",
+                          "composite_medical_procedure_identifier_02": {
+                            "product_or_service_id_qualifier_01": "HC",
+                            "procedure_code_02": "92567"
+                          },
+                          "line_item_charge_amount_03": 59.5,
+                          "unit_or_basis_for_measurement_code_04": "UN",
+                          "service_unit_count_05": 1
+                        },
+                        "date_service_date_DTP": {
+                          "date_time_qualifier_01": "472",
+                          "date_time_period_format_qualifier_02": "D8",
+                          "service_date_03": "20050706"
+                        },
+                        "line_pricing_repricing_information_HCP": {
+                          "pricing_methodology_01": "03",
+                          "monetary_amount_02": 45.82,
+                          "monetary_amount_03": 13.68
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 48,
+      "transaction_set_control_number_02": 1002
+    }
+  }
+}

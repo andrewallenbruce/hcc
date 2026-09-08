@@ -193,7 +193,7 @@ parse_837 <- function(text) {
     GS = split_p(x, "^GS")
   )
 
-  mid <- subset_sequences(x, perl(x, "^ST"), perl(x, "^SE"))
+  transactions <- subset_sequences(x, perl(x, "^ST"), perl(x, "^SE"))
 
   # perl(x, "^ST")
   # perl(x, "^BHT")
@@ -212,7 +212,7 @@ parse_837 <- function(text) {
 
   list(
     HEADER = unlist_df(header),
-    MIDDLE = mid,
+    TRANSACTIONS = transactions,
     TRAILER = unlist_df(trailer)
   )
 }

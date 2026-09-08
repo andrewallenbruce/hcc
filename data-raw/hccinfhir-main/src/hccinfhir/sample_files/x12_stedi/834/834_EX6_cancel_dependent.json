@@ -1,0 +1,82 @@
+{
+  "heading": {
+    "transaction_set_header_ST": {
+      "transaction_set_identifier_code_01": "834",
+      "transaction_set_control_number_02": 12345,
+      "implementation_convention_reference_03": "005010X220A1"
+    },
+    "beginning_segment_BGN": {
+      "transaction_set_purpose_code_01": "00",
+      "transaction_set_reference_number_02": "12456",
+      "transaction_set_creation_date_03": "1998-05-20",
+      "transaction_set_creation_time_04": "12:00",
+      "action_code_08": "2"
+    },
+    "transaction_set_policy_number_REF": {
+      "reference_identification_qualifier_01": "38",
+      "master_policy_number_02": "ABCD012354"
+    },
+    "payer_N1_loop": {
+      "payer_N1": {
+        "entity_identifier_code_01": "IN",
+        "identification_code_qualifier_03": "FI",
+        "insurer_identification_code_04": "654456654"
+      }
+    },
+    "sponsor_name_N1_loop": {
+      "sponsor_name_N1": {
+        "entity_identifier_code_01": "P5",
+        "identification_code_qualifier_03": "FI",
+        "sponsor_identifier_04": "999888777"
+      }
+    }
+  },
+  "detail": {
+    "member_level_detail_INS_loop": [
+      {
+        "member_level_detail_INS": {
+          "member_indicator_01": "N",
+          "individual_relationship_code_02": "19",
+          "maintenance_type_code_03": "024",
+          "maintenance_reason_code_04": "07",
+          "benefit_status_code_05": "A"
+        },
+        "subscriber_identifier_REF": {
+          "reference_identification_qualifier_01": "0F",
+          "subscriber_identifier_02": "123456789"
+        },
+        "member_policy_number_REF": {
+          "reference_identification_qualifier_01": "1L",
+          "member_group_or_policy_number_02": "123456001"
+        },
+        "member_level_dates_DTP": [
+          {
+            "date_time_qualifier_01": "357",
+            "date_time_period_format_qualifier_02": "D8",
+            "status_information_effective_date_03": "19960801"
+          }
+        ],
+        "member_name_NM1_loop": {
+          "member_name_NM1": {
+            "entity_identifier_code_01": "IL",
+            "entity_type_qualifier_02": "1",
+            "member_last_name_03": "DOE",
+            "member_first_name_04": "JAMES",
+            "member_middle_name_05": "E",
+            "identification_code_qualifier_08": "34",
+            "member_identifier_09": "103229876"
+          },
+          "member_demographics_DMG": {
+            "date_time_period_format_qualifier_01": "D8",
+            "member_birth_date_02": "19770816",
+            "gender_code_03": "M"
+          }
+        }
+      }
+    ],
+    "transaction_set_trailer_SE": {
+      "transaction_segment_count_01": 12,
+      "transaction_set_control_number_02": 12345
+    }
+  }
+}
