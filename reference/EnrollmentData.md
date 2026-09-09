@@ -168,8 +168,15 @@ EnrollmentData(
 
 - maintenance_type:
 
-  `INS-03` Change (`001`), Add (`021`), Cancel (`024`), Reinstate
-  (`025`)
+  `INS-03`
+
+  - Change (`001`)
+
+  - Add (`021`)
+
+  - Cancel (`024`)
+
+  - Reinstate (`025`)
 
 - maintenance_reason_code:
 

@@ -7,21 +7,21 @@ remittance from a state Medicaid agency or CMS to a managed care plan.
 
 ``` r
 PaymentData(
-  source = character(),
-  report_date = character(),
-  total_amount = double(),
-  payment_date = character(),
-  check_number = character(),
-  payee_name = character(),
-  payee_address_1 = character(),
-  payee_city = character(),
-  payee_state = character(),
-  payee_zip = character(),
-  payer_name = character(),
-  payer_address_1 = character(),
-  payer_city = character(),
-  payer_state = character(),
-  payer_zip = character(),
+  source = character(0),
+  report_date = character(0),
+  total_amount = numeric(0),
+  payment_date = character(0),
+  check_number = character(0),
+  payee_name = character(0),
+  payee_address = character(0),
+  payee_city = character(0),
+  payee_state = character(0),
+  payee_zip = character(0),
+  payer_name = character(0),
+  payer_address = character(0),
+  payer_city = character(0),
+  payer_state = character(0),
+  payer_zip = character(0),
   members = PaymentDetail()
 )
 ```
@@ -52,7 +52,7 @@ PaymentData(
 
   `<chr>` `N1*PE` Receiving organization name
 
-- payee_address_1:
+- payee_address:
 
   `<chr>` `N3` Payee street address
 
@@ -72,7 +72,7 @@ PaymentData(
 
   `<chr>` `N1*PR` Paying organization name
 
-- payer_address_1:
+- payer_address:
 
   `<chr>` `N3` Payer street address
 
