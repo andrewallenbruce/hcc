@@ -29,11 +29,11 @@ a list of interactions
 x = demographics(
   age = 65.1,
   sex = "M",
-  orec_code = "2",
-  dual_code = "2",
-  new_enrollee = TRUE,
-  is_lti = TRUE,
-  esrd_months = 10L
+  orec = "2",
+  dual = "02",
+  new = TRUE,
+  lti = TRUE,
+  months = 10L
  )
 
 x
@@ -41,15 +41,15 @@ x
 #>  @ version     : chr "V2"
 #>  @ age         : int 65
 #>  @ sex         : chr "1"
-#>  @ dual_code   : chr "2"
-#>  @ orec_code   : chr NA
+#>  @ dual_code   : chr "02"
+#>  @ orec_code   : chr "2"
 #>  @ crec_code   : chr NA
 #>  @ new_enrollee: logi TRUE
 #>  @ has_snp     : logi FALSE
 #>  @ non_aged    : logi FALSE
 #>  @ dis_orig    : logi FALSE
 #>  @ dis_curr    : logi FALSE
-#>  @ dual_full   : logi FALSE
+#>  @ dual_full   : logi TRUE
 #>  @ dual_part   : logi FALSE
 #>  @ has_esrd    : logi TRUE
 #>  @ is_lti      : logi TRUE
@@ -58,7 +58,8 @@ x
 #>  @ category    : chr "M65_69"
 
 interactions(x)
-#> [1] "LTI_Aged"                "LTI_GE65"               
-#> [3] "NMCAID_NORIGDIS_M65_69"  "ND_PBD_NORIGDIS_M65_69" 
-#> [5] "GE65_DUR10PL"            "FGI_GE65_DUR10PL_ND_PBD"
+#>  [1] "Originally_ESRD_Male"  "MCAID_Male_Aged"       "LTI_Aged"             
+#>  [4] "LTI_GE65"              "LTIMCAID"              "MCAID_NORIGDIS_M65_69"
+#>  [7] "FBD_NORIGDIS_M65_69"   "GE65_DUR10PL"          "FGI_GE65_DUR10PL_FBD" 
+#> [10] "FBDual_Male_Aged"     
 ```

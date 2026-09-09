@@ -8,26 +8,22 @@ adjustment models.
 
 ``` r
 demographics(
-  version = "V2",
   age,
   sex,
-  dual_code = NA_character_,
-  orec_code = NA_character_,
-  crec_code = NA_character_,
-  new_enrollee = FALSE,
-  has_snp = FALSE,
-  low_income = FALSE,
-  is_lti = FALSE,
-  esrd_months = 0L,
+  version = "V2",
+  dual = NA_character_,
+  orec = NA_character_,
+  crec = NA_character_,
+  new = FALSE,
+  snp = FALSE,
+  low = FALSE,
+  lti = FALSE,
+  months = 0,
   prefix = NULL
 )
 ```
 
 ## Arguments
-
-- version:
-
-  `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
 
 - age:
 
@@ -37,21 +33,25 @@ demographics(
 
   `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
 
-- dual_code:
+- version:
+
+  `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
+
+- dual:
 
   `<chr>` Dual eligibility code (`00` - `10`)
 
-- orec_code, crec_code:
+- orec, crec:
 
   `<chr>` Original/Current reason for entitlement code (`0` - `3`)
 
-- new_enrollee, has_snp, low_income, is_lti:
+- new, snp, low, lti:
 
   `<lgl>` Beneficiary is a **New Enrollee**, in a **Special Needs
-  Plan**, is **Low Income** (RxHCC only), and/or is Long-Term
-  Institutionalized
+  Plan**, is **Low Income** (RxHCC only), and/or is **Long-Term
+  Institutionalized**
 
-- esrd_months:
+- months:
 
   `<int>` Number of months since transplant (ESRD only)
 
@@ -107,13 +107,13 @@ demographics(version = "V6", age = 35, sex = "M")
 #>  @ low_income  : logi FALSE
 #>  @ esrd_months : int 0
 #>  @ category    : chr "MAGE_LAST_35_39"
-demographics(version = "V2", age = 75, sex = "2", orec_code = "0")
+demographics(version = "V2", age = 75, sex = "2", orec = "0")
 #> <hcc::PatientDemographics>
 #>  @ version     : chr "V2"
 #>  @ age         : int 75
 #>  @ sex         : chr "2"
 #>  @ dual_code   : chr NA
-#>  @ orec_code   : chr NA
+#>  @ orec_code   : chr "0"
 #>  @ crec_code   : chr NA
 #>  @ new_enrollee: logi FALSE
 #>  @ has_snp     : logi FALSE
