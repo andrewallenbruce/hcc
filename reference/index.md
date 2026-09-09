@@ -28,8 +28,6 @@
   : Calculate HCC interactions across CMS models.
 - [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
   : Map ICD-10 Codes to CC
-- [`coefficient_prefix()`](https://andrewallenbruce.github.io/hcc/reference/coefficient_prefix.md)
-  : Demographics-Based Coefficient Prefix
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
@@ -45,3 +43,5 @@
   : X12-834 Benefit Enrollment Parser
 - [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837 Health Care Claim Parser
+- [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
+  : Demographics-Based Coefficient Prefix
