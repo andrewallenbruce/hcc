@@ -5,22 +5,18 @@ Handles CMS-HCC, ESRD, and RxHCC models.
 ## Usage
 
 ``` r
-apply_interactions(demographics, hcc, model = "CMS-HCC Model V28")
+apply_interactions(diagnostics, demographics)
 ```
 
 ## Arguments
 
-- demographics:
+- diagnostics:
 
   demographic information for age/sex/disability interactions
 
-- hcc:
+- demographics:
 
   set of HCCs for direct HCC checks
-
-- model:
-
-  The HCC model version being used; default is "CMS-HCC Model V28"
 
 ## Value
 
@@ -30,22 +26,16 @@ apply_interactions(demographics, hcc, model = "CMS-HCC Model V28")
 
 ``` r
 apply_interactions(
-  model = "CMS-HCC Model V24",
-  demographics = PatientDemographics(
-    age = 65,
-    sex = "F",
-    category = "F65",
-    dis_curr = FALSE,
-    dis_orig = FALSE,
-    non_aged = FALSE,
-    dual_full = TRUE,
-    dual_part = FALSE,
-    is_lti = FALSE
-  ),
-  hcc = c(17:18, 85L)
+  diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
+  demographics(age = 64, sex = "F", orec = "1")
 )
-#>  [1] "Originally_ESRD_Female" "MCAID_Female_Aged"      "NMCAID_NORIGDIS_F65"   
-#>  [4] "MCAID_NORIGDIS_F65"     "FBD_NORIGDIS_F65"       "GE65_DUR4_9"           
-#>  [7] "GE65_DUR10PL"           "FGC_GE65_DUR10PL_FBD"   "FGC_GE65_DUR4_9_FBD"   
-#> [10] "FBDual_Female_Aged"     "DIABETES_CHF"           "D3"                    
+#> $demographic_interactions
+#> [1] "NMCAID_NORIGDIS_F60_64" "ND_PBD_NORIGDIS_F60_64"
+#> 
+#> $disease_categories
+#> [1] "DIABETES_CHF"   "DISABLED_HCC85"
+#> 
+#> $number_hccs
+#> [1] "D2"
+#> 
 ```

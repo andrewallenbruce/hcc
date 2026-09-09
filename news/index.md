@@ -42,7 +42,7 @@
 
 ## hcc 0.0.0.9029 (2026-08-30)
 
-- [`diagnostic_categories()`](https://andrewallenbruce.github.io/hcc/reference/diagnostic_categories.md)
+- `diagnostic_categories()`
 
 ## hcc 0.0.0.9028 (2026-08-28)
 

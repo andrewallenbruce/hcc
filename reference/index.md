@@ -31,7 +31,7 @@
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
-- [`diagnostic_categories()`](https://andrewallenbruce.github.io/hcc/reference/diagnostic_categories.md)
+- [`diagnostics()`](https://andrewallenbruce.github.io/hcc/reference/diagnostics.md)
   : Model-Based Disease Categories
 - [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
   : Model-Based Disease Interaction Variables

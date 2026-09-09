@@ -70,38 +70,17 @@ look-up will match only the relevant coefficients for each model.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="demographics.html">demographics</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  age <span class="op">=</span> <span class="fl">65.1</span>,</span></span>
-<span class="r-in"><span>  sex <span class="op">=</span> <span class="st">"M"</span>,</span></span>
-<span class="r-in"><span>  orec <span class="op">=</span> <span class="st">"2"</span>,</span></span>
-<span class="r-in"><span>  dual <span class="op">=</span> <span class="st">"02"</span>,</span></span>
-<span class="r-in"><span>  new <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>  lti <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>  months <span class="op">=</span> <span class="fl">10L</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">interactions</span><span class="op">(</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="demographics.html">demographics</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   age <span class="op">=</span> <span class="fl">65</span>,</span></span>
+<span class="r-in"><span>   sex <span class="op">=</span> <span class="st">"M"</span>,</span></span>
+<span class="r-in"><span>   orec <span class="op">=</span> <span class="st">"2"</span>,</span></span>
+<span class="r-in"><span>   dual <span class="op">=</span> <span class="st">"02"</span>,</span></span>
+<span class="r-in"><span>   new <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>   lti <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>   months <span class="op">=</span> <span class="fl">10L</span></span></span>
 <span class="r-in"><span> <span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">x</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PatientDemographics&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ version     : chr "V2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ age         : int 65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ sex         : chr "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ dual_code   : chr "02"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ orec_code   : chr "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ crec_code   : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ new_enrollee: logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ has_snp     : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ non_aged    : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ dis_orig    : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ dis_curr    : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ dual_full   : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ dual_part   : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ has_esrd    : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ is_lti      : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ low_income  : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ esrd_months : int 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ category    : chr "M65_69"</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">interactions</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Originally_ESRD_Male"  "MCAID_Male_Aged"       "LTI_Aged"             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "LTI_GE65"              "LTIMCAID"              "MCAID_NORIGDIS_M65_69"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "FBD_NORIGDIS_M65_69"   "GE65_DUR10PL"          "FGI_GE65_DUR10PL_FBD" </span>

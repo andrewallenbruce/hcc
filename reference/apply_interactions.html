@@ -45,23 +45,19 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">apply_interactions</span><span class="op">(</span><span class="va">demographics</span>, <span class="va">hcc</span>, model <span class="op">=</span> <span class="st">"CMS-HCC Model V28"</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">apply_interactions</span><span class="op">(</span><span class="va">diagnostics</span>, <span class="va">demographics</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-demographics">demographics<a class="anchor" aria-label="anchor" href="#arg-demographics"></a></dt>
+<dl><dt id="arg-diagnostics">diagnostics<a class="anchor" aria-label="anchor" href="#arg-diagnostics"></a></dt>
 <dd><p>demographic information for age/sex/disability interactions</p></dd>
 
 
-<dt id="arg-hcc">hcc<a class="anchor" aria-label="anchor" href="#arg-hcc"></a></dt>
+<dt id="arg-demographics">demographics<a class="anchor" aria-label="anchor" href="#arg-demographics"></a></dt>
 <dd><p>set of HCCs for direct HCC checks</p></dd>
-
-
-<dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
-<dd><p>The HCC model version being used; default is "CMS-HCC Model V28"</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -72,24 +68,18 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">apply_interactions</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  model <span class="op">=</span> <span class="st">"CMS-HCC Model V24"</span>,</span></span>
-<span class="r-in"><span>  demographics <span class="op">=</span> <span class="fu"><a href="PatientDemographics.html">PatientDemographics</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    age <span class="op">=</span> <span class="fl">65</span>,</span></span>
-<span class="r-in"><span>    sex <span class="op">=</span> <span class="st">"F"</span>,</span></span>
-<span class="r-in"><span>    category <span class="op">=</span> <span class="st">"F65"</span>,</span></span>
-<span class="r-in"><span>    dis_curr <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>    dis_orig <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>    non_aged <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>    dual_full <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>    dual_part <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>    is_lti <span class="op">=</span> <span class="cn">FALSE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>,</span></span>
-<span class="r-in"><span>  hcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span><span class="op">:</span><span class="fl">18</span>, <span class="fl">85L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="diagnostics.html">diagnostics</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"CMS-HCC Model V24"</span>, hcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17L</span>, <span class="fl">85L</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="demographics.html">demographics</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">64</span>, sex <span class="op">=</span> <span class="st">"F"</span>, orec <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Originally_ESRD_Female" "MCAID_Female_Aged"      "NMCAID_NORIGDIS_F65"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "MCAID_NORIGDIS_F65"     "FBD_NORIGDIS_F65"       "GE65_DUR4_9"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "GE65_DUR10PL"           "FGC_GE65_DUR10PL_FBD"   "FGC_GE65_DUR4_9_FBD"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "FBDual_Female_Aged"     "DIABETES_CHF"           "D3"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $demographic_interactions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NMCAID_NORIGDIS_F60_64" "ND_PBD_NORIGDIS_F60_64"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $disease_categories</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DIABETES_CHF"   "DISABLED_HCC85"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $number_hccs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "D2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
