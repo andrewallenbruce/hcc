@@ -9,20 +9,20 @@ unlist_df <- function(x) {
 }
 
 #' @noRd
-fill_range <- function(start, end) {
-  purrr::map2(start, end, function(a, b) seq.int(from = a, to = b))
+fill_sequence <- function(start, end) {
+  purrr::map2(start, end, \(a, b) seq.int(from = a, to = b))
 }
 
 #' @noRd
-subset_sequences <- function(text, start, end) {
-  fill_range(start, end) |>
+subset_ <- function(text, start, end) {
+  fill_sequence(start, end) |>
     purrr::map(\(i) .subset(text, i))
 }
 
-#' @noRd
-name_loop <- function(x) {
-  rlang::set_names(x, ~ paste0("L", seq_along(.)))
-}
+# @noRd
+# name_loop <- function(x) {
+#   rlang::set_names(x, ~ paste0("L", seq_along(.)))
+# }
 
 #' @noRd
 set_zchar <- function(x) {
@@ -46,6 +46,11 @@ post_split <- function(x) {
 #' @noRd
 tilde <- function(x) {
   strsplit(x, "~", fixed = TRUE)[[1]]
+}
+
+#' @noRd
+semicolon <- function(x) {
+  strsplit(x, ";", fixed = TRUE)[[1]]
 }
 
 #' @noRd
@@ -92,7 +97,7 @@ x12_type <- function(x) {
 
   if (collapse::anyv(x$ST01, "837")) {
     i <- collapse::whichv(x$ST01, "837")
-    x$ST01[i] <- x12_837_subtype(x$ST03[i])
+    collapse::setv(x$ST01, i, x12_837_subtype(x$ST03[i]))
   }
   x
 }

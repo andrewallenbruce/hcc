@@ -51,13 +51,13 @@ demographics <- function(
   # Override demographics based on prefix
   if (!is.null(prefix)) {
     if (prefix %in_% PREFIX$ESRD) {
-      has_esrd = TRUE
+      has_esrd <- TRUE
     }
 
     if (prefix %in_% PREFIX$NEW_ENROLLEE) {
-      new_enrollee = TRUE
+      new_enrollee <- TRUE
     } else if (prefix %in_% c(PREFIX$COMMUNITY, PREFIX$INSTITUTIONAL)) {
-      new_enrollee = FALSE
+      new_enrollee <- FALSE
     }
 
     if (prefix %in_% PREFIX$DUAL_FULL) {
@@ -69,7 +69,7 @@ demographics <- function(
     }
 
     if (prefix %in_% PREFIX$INSTITUTIONAL) {
-      is_lti = TRUE
+      is_lti <- TRUE
     }
   }
 
@@ -92,12 +92,12 @@ demographics <- function(
     low_income = low_income,
     esrd_months = esrd_months,
     category = categorize_age(
-      version,
-      new_enrollee,
-      has_esrd,
-      age,
-      sex,
-      orec_code
+      age = age,
+      sex = sex,
+      vers = version,
+      orec = orec_code,
+      new = new_enrollee,
+      esrd = has_esrd
     )
   )
 }

@@ -1,9 +1,10 @@
+#' 2300B Remittance Detail Loop
+#' 2000B Per-Member Entity Loop
 #' @noRd
 entity_loop_820 <- function(x) {
-  # 2300B Remittance Detail Loop
-  i <- subset_sequences(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
+  i <- subset_(x, perl(x, "^RMR"), perl(x, "^DTM\\*582"))
 
-  X <- purrr::map(i, function(x) {
+  REMIT <- purrr::map(i, function(x) {
     rlang::list2(
       RMR = split_p(x, "^RMR"),
       !!!split_n(x, perl(x, "^REF")),
@@ -12,29 +13,24 @@ entity_loop_820 <- function(x) {
   }) |>
     purrr::list_flatten()
 
-  # 2000B Per-Member Entity Loop
   rlang::list2(
     ENT = split_p(x, "^ENT"),
     NM1 = split_p(x, "^NM1"),
-    !!!X,
+    !!!REMIT,
     ADX = if (any_(perl0(x, "^ADX"))) split_p(x, "^ADX") else NULL
   ) |>
     purrr::compact() |>
     unlist_df()
 }
 
+#' 1000A Payee Name Loop
+#' 1000B Payer Name Loop
 #' @noRd
 payee_loop_820 <- function(x) {
-  rlang::list2(
-    TRN = split_p(x, "^TRN"),
-    REF = split_i(x, perl(x, "^TRN") + 1L),
-    # 1000A Payee Name Loop
-    !!!split_n(x, seq.int(perl(x, "^N1\\*PE"), perl(x, "^N1\\*PR") - 1L)),
-    # 1000B Payer Name Loop
-    !!!split_n(
-      x,
-      seq.int(perl(x, "^N1\\*PR"), collapse::fmin(perl(x, "^ENT")) - 1L)
-    )
+  PR <- perl(x, "^N1\\*PR")
+  c(
+    split_n(x, seq.int(perl(x, "^N1\\*PE"), PR - 1L)),
+    split_n(x, seq.int(PR, collapse::fmin(perl(x, "^ENT")) - 1L))
   )
 }
 
@@ -70,23 +66,23 @@ payee_loop_820 <- function(x) {
 parse_820 <- function(text) {
   x <- tilde(text)
 
-  header <- rlang::list2(
+  header <- list(
     ISA = split_p(x, "^ISA"),
     GS = split_p(x, "^GS"),
     ST = split_p(x, "^ST"),
     BPR = split_p(x, "^BPR"),
-    !!!payee_loop_820(x)
+    TRN = split_p(x, "^TRN"),
+    REF = split_i(x, perl(x, "^TRN") + 1L)
   )
+
+  payee <- payee_loop_820(x)
 
   ENT <- perl(x, "^ENT")
   SE <- perl(x, "^SE")
 
-  entity <- subset_sequences(
-    x,
-    ENT,
-    cheapr::c_(ENT[-1L], SE) - 1L
-  ) |>
-    purrr::map(entity_loop_820)
+  entity <- subset_(x, ENT, c(ENT[-1L], SE) - 1L) |>
+    purrr::map(entity_loop_820) |>
+    collapse::rowbind()
 
   trailer <- list(
     SE = split_i(x, SE),
@@ -96,7 +92,8 @@ parse_820 <- function(text) {
 
   collapse::rowbind(
     unlist_df(header),
-    collapse::rowbind(entity),
+    unlist_df(payee),
+    entity,
     unlist_df(trailer)
   ) |>
     collapse::qTBL()
@@ -193,7 +190,7 @@ parse_837 <- function(text) {
     GS = split_p(x, "^GS")
   )
 
-  transactions <- subset_sequences(x, perl(x, "^ST"), perl(x, "^SE"))
+  transactions <- subset_(x, perl(x, "^ST"), perl(x, "^SE"))
 
   # perl(x, "^ST")
   # perl(x, "^BHT")

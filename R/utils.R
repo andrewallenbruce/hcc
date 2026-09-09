@@ -1,9 +1,4 @@
 #' @noRd
-unlist_elem <- function(x, i, ...) {
-  unlist_(collapse::get_elem(x, elem = i, ...))
-}
-
-#' @noRd
 perl <- function(x, rex, negate = FALSE) {
   grep(pattern = rex, x = x, perl = TRUE, invert = negate)
 }
@@ -19,6 +14,11 @@ unlist_ <- function(x, ...) {
 }
 
 #' @noRd
+unlist_elem <- function(x, i, ...) {
+  unlist_(collapse::get_elem(x, elem = i, ...))
+}
+
+#' @noRd
 mult_ <- function(...) {
   collapse::fprod(c(...))
 }
@@ -31,7 +31,12 @@ any_ <- function(x) {
 #' @noRd
 normalize_ <- function(x) {
   toupper(
-    gsub("-", "", gsub(" ", "", x, fixed = TRUE), fixed = TRUE)
+    gsub(
+      "-",
+      "",
+      gsub(" ", "", x, fixed = TRUE),
+      fixed = TRUE
+    )
   )
 }
 
@@ -73,12 +78,12 @@ any_hcc <- function(needles, haystack) {
 #' hcc_count(c(17:19, 85L))
 #' @noRd
 hcc_count <- function(hcc) {
-  L <- length(hcc)
-  rlang::check_number_whole(L, min = 1)
-  if (L <= 9L) {
-    return(cheapr::paste_("D", L))
+  x <- length(hcc)
+  rlang::check_number_whole(x, min = 1)
+  if (x <= 9L) {
+    return(cheapr::paste_("D", x))
   }
-  if (L >= 10L) {
+  if (x >= 10L) {
     return("D10P")
   }
 }
@@ -96,38 +101,40 @@ hcc_count <- function(hcc) {
 #' map_to_dual(c("4N", "5B", "40"))
 #' @noRd
 map_to_dual <- function(code) {
-  from <- c(DUAL_CODES$MAP_STATUS, DUAL_CODES$MAP_AID)
-  unlist_(from)[collapse::fmatch(normalize_(code), names(from))]
+  from <- cheapr::c_(DUAL_CODES$MAP_STATUS, DUAL_CODES$MAP_AID)
+  unlist_(from)[collapse::fmatch(normalize_(code), rlang::names2(from))]
 }
 
 #' Map Patient Age to Category Interval
 #'
-#' @param version `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
-#' @param new_enrollee `<lgl>`
-#' @param has_esrd `<lgl>`
 #' @param age `<int>` Beneficiary age
 #' @param sex `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
-#' @param orec_code `<chr>` Original reason for entitlement code (`0` - `3`)
+#' @param orec `<chr>` Original Reason for Entitlement Code (`0` - `3`)
+#' @param vers `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
+#' @param new `<lgl>` Beneficiary is a **New Enrollee**
+#' @param esrd `<lgl>` Beneficiary has **End Stage Renal Disease**
 #' @returns Category label for age range
 #' @examplesIf FALSE
-#' categorize_age("V2", TRUE, FALSE, 64, "F", "1")
+#' categorize_age(
+#'   age = 64,
+#'   sex = "F",
+#'   orec = "1",
+#'   vers = "V2",
+#'   new = TRUE,
+#'   esrd = FALSE,
+#'  )
 #' @noRd
-categorize_age <- function(
-  version,
-  new_enrollee,
-  has_esrd,
-  age,
-  sex,
-  orec_code
-) {
-  version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
+categorize_age <- function(age, sex, vers, orec, new, esrd) {
+  rlang::check_number_whole(age, min = 0, max = 120)
+  rlang::check_bool(new)
+  rlang::check_bool(esrd)
 
   switch(
-    version,
+    vers,
     "V2" = ,
     "V4" = {
-      if (new_enrollee & !has_esrd) {
-        age_category_NEW(age, sex, orec_code)
+      if (new & !esrd) {
+        age_category_NEW(age, sex, orec)
       } else {
         age_category_ESRD(age, sex)
       }
@@ -179,7 +186,7 @@ age_category_ESRD <- function(age, sex) {
   }
 
   paste0(
-    if (sex == "2") "F" else "M",
+    if (identical(sex, "2")) "F" else "M",
     AGES$ESRD$LABEL[
       ivs::iv_locate_between(age, AGES$ESRD$RANGE)$haystack
     ]
@@ -187,10 +194,15 @@ age_category_ESRD <- function(age, sex) {
 }
 
 #' @noRd
-age_category_NEW <- function(age, sex, orec_code) {
-  prefix <- if (sex == "2") "NEF" else "NEM"
-  orec_code <- if (cheapr::is_na(orec_code)) "0" else orec_code
-  orec_zero <- identical(orec_code, "0")
+age_category_NEW <- function(age, sex, orec) {
+  orec <- if (cheapr::is_na(orec)) {
+    "0"
+  } else {
+    rlang::arg_match0(orec, c("0", "1", "2", "3"))
+  }
+
+  prefix <- if (identical(sex, "2")) "NEF" else "NEM"
+  is_aged <- identical(orec, "0")
 
   label <- vctrs::vec_case_when(
     conditions = list(
@@ -198,8 +210,8 @@ age_category_NEW <- function(age, sex, orec_code) {
       in_between(age, 35L, 44L),
       in_between(age, 45L, 54L),
       in_between(age, 55L, 59L),
-      in_between(age, 60L, 64L) | (age == 64L & !orec_zero),
-      (age == 64L & orec_zero) | age == 65L,
+      in_between(age, 60L, 64L) | (age == 64L & !is_aged),
+      (age == 64L & is_aged) | age == 65L,
       age == 66L,
       age == 67L,
       age == 68L,
@@ -236,4 +248,67 @@ age_category_NEW <- function(age, sex, orec_code) {
     return(label)
   }
   paste0(prefix, label)
+}
+
+#' Convert YYYYMMDD to ISO YYYY-MM-DD
+#' @examplesIf FALSE
+#' parse_date("20200202")
+#' parse_date("20250108")
+#' parse_date("19550315")
+#' @noRd
+parse_date <- function(x, ...) {
+  if (perl0(x, "-")) {
+    as.Date(x)
+  } else {
+    as.Date.character(x, format = "%Y%m%d", ...)
+  }
+}
+
+#' Convert 6-digit date (YYMMDD) to ISO format
+#' @examplesIf FALSE
+#' parse_yymmdd("200202")
+#' @noRd
+parse_yymmdd <- function(x, ...) {
+  as.Date.character(x, format = "%y%m%d", ...)
+}
+
+#' Parse DTM RD8 Date Range (YYYYMMDD-YYYYMMDD)
+#' @examplesIf FALSE
+#' parse_date_range("20200202-20200402")
+#' @noRd
+parse_date_range <- function(x) {
+  x <- strsplit(x, "-", fixed = TRUE)[[1]]
+  cheapr::c_(parse_date(x[1]), parse_date(x[2]))
+}
+
+#' Calculate age from DOB
+#' @examplesIf FALSE
+#' calculate_age("20200202")
+#' calculate_age("1955-03-15", "2025-01-08")
+#' calculate_age("1960-08-22", "2025-01-08")
+#' @noRd
+calculate_age <- function(dob, dos = Sys.Date()) {
+  clock::date_count_between(
+    parse_date(dob),
+    parse_date(dos),
+    precision = "year"
+  )
+}
+
+#' Determine if member is new enrollee
+#' (<= 3 months since coverage start)
+#' @examplesIf FALSE
+#' is_new_enrollee("20200202") # Coverage started 6+ years ago
+#' is_new_enrollee("2024-11-08", "2025-01-08") # Coverage started 2 months ago
+#' is_new_enrollee("2024-10-08", "2025-01-08") # Coverage started 3 months ago
+#' is_new_enrollee("2024-09-08", "2025-01-08") # Coverage started 4 months ago
+#' is_new_enrollee("2024-01-08", "2025-01-08") # Coverage started 1 year ago
+#' @noRd
+is_new_enrollee <- function(start, end = Sys.Date()) {
+  clock::date_count_between(
+    parse_date(start),
+    parse_date(end),
+    precision = "month"
+  ) <=
+    3L
 }

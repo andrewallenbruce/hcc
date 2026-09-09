@@ -116,8 +116,13 @@ EnrollmentData(
 
 \item{phone}{\code{PER-04} Phone number}
 
-\item{maintenance_type}{\code{INS-03} Change (\code{001}), Add (\code{021}), Cancel (\code{024}),
-Reinstate (\code{025})}
+\item{maintenance_type}{\code{INS-03}
+\itemize{
+\item Change (\code{001})
+\item Add (\code{021})
+\item Cancel (\code{024})
+\item Reinstate (\code{025})
+}}
 
 \item{maintenance_reason_code}{\code{INS-04} Maintenance reason}
 

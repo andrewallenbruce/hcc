@@ -19,6 +19,7 @@ Imports:
     S7 (>= 0.2.2),
     vctrs (>= 0.7.3)
 Suggests:
+    clock (>= 0.7.4),
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
     testthat (>= 3.3.2)

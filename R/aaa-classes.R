@@ -374,12 +374,12 @@ PaymentDetail <- S7::new_class(
 #' @param payment_date `<Date>` `BPR-16` EFT effective date (YYYY-MM-DD)
 #' @param check_number `<chr>` `TRN-02` EFT/check trace number
 #' @param payee_name `<chr>` `N1*PE` Receiving organization name
-#' @param payee_address_1 `<chr>` `N3` Payee street address
+#' @param payee_address `<chr>` `N3` Payee street address
 #' @param payee_city `<chr>` `N4` Payee city
 #' @param payee_state `<chr>` `N4` Payee state
 #' @param payee_zip `<chr>` `N4` Payee ZIP code
 #' @param payer_name `<chr>` `N1*PR` Paying organization name
-#' @param payer_address_1 `<chr>` `N3` Payer street address
+#' @param payer_address `<chr>` `N3` Payer street address
 #' @param payer_city `<chr>` `N4` Payer city
 #' @param payer_state `<chr>` `N4` Payer state
 #' @param payer_zip `<chr>` `N4` Payer ZIP code
@@ -388,43 +388,27 @@ PaymentDetail <- S7::new_class(
 #' @examplesIf FALSE
 #' PaymentData()
 #' @export
-PaymentData <- function(
-  source = character(),
-  report_date = character(),
-  total_amount = double(),
-  payment_date = character(),
-  check_number = character(),
-  payee_name = character(),
-  payee_address_1 = character(),
-  payee_city = character(),
-  payee_state = character(),
-  payee_zip = character(),
-  payer_name = character(),
-  payer_address_1 = character(),
-  payer_city = character(),
-  payer_state = character(),
-  payer_zip = character(),
-  members = PaymentDetail()
-) {
-  list(
-    source = source,
-    report_date = report_date,
-    total_amount = total_amount,
-    payment_date = payment_date,
-    check_number = check_number,
-    payee_name = payee_name,
-    payee_address_1 = payee_address_1,
-    payee_city = payee_city,
-    payee_state = payee_state,
-    payee_zip = payee_zip,
-    payer_name = payer_name,
-    payer_address_1 = payer_address_1,
-    payer_city = payer_city,
-    payer_state = payer_state,
-    payer_zip = payer_zip,
-    members = members
+PaymentData <- S7::new_class(
+  "PaymentData",
+  properties = list(
+    source = S7::class_character,
+    report_date = S7::class_character,
+    total_amount = S7::class_double,
+    payment_date = S7::class_character,
+    check_number = S7::class_character,
+    payee_name = S7::class_character,
+    payee_address = S7::class_character,
+    payee_city = S7::class_character,
+    payee_state = S7::class_character,
+    payee_zip = S7::class_character,
+    payer_name = S7::class_character,
+    payer_address = S7::class_character,
+    payer_city = S7::class_character,
+    payer_state = S7::class_character,
+    payer_zip = S7::class_character,
+    members = PaymentDetail
   )
-}
+)
 
 #' X12-834 Transaction Enrollment Data
 #'
@@ -454,8 +438,11 @@ PaymentData <- function(
 #' @param state `N4-02` State code
 #' @param zip `N4-03` Postal code
 #' @param phone `PER-04` Phone number
-#' @param maintenance_type `INS-03` Change (`001`), Add (`021`), Cancel (`024`),
-#'   Reinstate (`025`)
+#' @param maintenance_type `INS-03`
+#'    - Change (`001`)
+#'    - Add (`021`)
+#'    - Cancel (`024`)
+#'    - Reinstate (`025`)
 #' @param maintenance_reason_code `INS-04` Maintenance reason
 #' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
 #' @param coverage_start_date Coverage effective date
