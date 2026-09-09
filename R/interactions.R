@@ -8,6 +8,41 @@ DiagnosticCategories <- S7::new_class(
   )
 )
 
+#' CMS-HCC Model V28
+#' @noRd
+diagnostic_V28 <- function(hcc) {
+  list(
+    CANCER_V28 = any_hcc(17:23, hcc),
+    DIABETES_V28 = any_hcc(35:38, hcc),
+    CARD_RESP_FAIL_V28 = any_hcc(211:213, hcc),
+    HF_V28 = any_hcc(221:226, hcc),
+    CHR_LUNG_V28 = any_hcc(276:280, hcc),
+    KIDNEY_V28 = any_hcc(326:329, hcc),
+    SEPSIS_V28 = any_hcc(2L, hcc),
+    gSubUseDisorder_V28 = any_hcc(135:139, hcc),
+    gPsychiatric_V28 = any_hcc(151:155, hcc),
+    NEURO_V28 = any_hcc(c(180:182, 190:192, 195:196, 198:199), hcc),
+    ULCER_V28 = any_hcc(379:382, hcc)
+  )
+}
+
+#' CMS-HCC Model V28
+#' @noRd
+diagnostic_V24 <- function(hcc) {
+  list(
+    CANCER = any_hcc(8:12, hcc),
+    DIABETES = any_hcc(17:19, hcc),
+    CARD_RESP_FAIL = any_hcc(82:84, hcc),
+    CHF = any_hcc(85L, hcc),
+    gCopdCF = any_hcc(110:112, hcc),
+    RENAL_V24 = any_hcc(134:138, hcc),
+    SEPSIS = any_hcc(2L, hcc),
+    gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
+    gPsychiatric_V24 = any_hcc(57:60, hcc),
+    PRESSURE_ULCER = any_hcc(157:159, hcc)
+  )
+}
+
 #' Model-Based Disease Categories
 #'
 #' @param model `<chr>` Model Name
@@ -22,31 +57,8 @@ diagnostic_categories <- function(model, hcc) {
     hcc = hcc,
     categories = switch(
       model,
-      "CMS-HCC Model V28" = list(
-        CANCER_V28 = any_hcc(17:23, hcc),
-        DIABETES_V28 = any_hcc(35:38, hcc),
-        CARD_RESP_FAIL_V28 = any_hcc(211:213, hcc),
-        HF_V28 = any_hcc(221:226, hcc),
-        CHR_LUNG_V28 = any_hcc(276:280, hcc),
-        KIDNEY_V28 = any_hcc(326:329, hcc),
-        SEPSIS_V28 = any_hcc(2L, hcc),
-        gSubUseDisorder_V28 = any_hcc(135:139, hcc),
-        gPsychiatric_V28 = any_hcc(151:155, hcc),
-        NEURO_V28 = any_hcc(c(180:182, 190:192, 195:196, 198:199), hcc),
-        ULCER_V28 = any_hcc(379:382, hcc)
-      ),
-      "CMS-HCC Model V24" = list(
-        CANCER = any_hcc(8:12, hcc),
-        DIABETES = any_hcc(17:19, hcc),
-        CARD_RESP_FAIL = any_hcc(82:84, hcc),
-        CHF = any_hcc(85L, hcc),
-        gCopdCF = any_hcc(110:112, hcc),
-        RENAL_V24 = any_hcc(134:138, hcc),
-        SEPSIS = any_hcc(2L, hcc),
-        gSubstanceUseDisorder_V24 = any_hcc(54:56, hcc),
-        gPsychiatric_V24 = any_hcc(57:60, hcc),
-        PRESSURE_ULCER = any_hcc(157:159, hcc)
-      ),
+      "CMS-HCC Model V28" = diagnostic_V28(hcc),
+      "CMS-HCC Model V24" = diagnostic_V24(hcc),
       "CMS-HCC Model V22" = list(
         CANCER = any_hcc(8:12, hcc),
         DIABETES = any_hcc(17:19, hcc),
@@ -155,35 +167,7 @@ disease_interactions <- function(
 
   x <- switch(
     model,
-    "CMS-HCC Model V28" = list(
-      # Base V28 disease interactions
-      DIABETES_HF_V28 = mult_(
-        d@categories[["DIABETES_V28"]],
-        d@categories[["HF_V28"]]
-      ),
-      HF_CHR_LUNG_V28 = mult_(
-        d@categories[["HF_V28"]],
-        d@categories[["CHR_LUNG_V28"]]
-      ),
-      HF_KIDNEY_V28 = mult_(
-        d@categories[["HF_V28"]],
-        d@categories[["KIDNEY_V28"]]
-      ),
-      CHR_LUNG_CARD_RESP_FAIL_V28 = mult_(
-        d@categories[["CHR_LUNG_V28"]],
-        d@categories[["CARD_RESP_FAIL_V28"]]
-      ),
-      HF_HCC238_V28 = mult_(d@categories[["HF_V28"]], any_hcc(238L, hcc)),
-      gSubUseDisorder_gPsych_V28 = mult_(
-        d@categories[["gSubUseDisorder_V28"]],
-        d@categories[["gPsychiatric_V28"]]
-      ),
-      DISABLED_CANCER_V28 = mult_(g@dis_curr, d@categories[["CANCER_V28"]]),
-      DISABLED_NEURO_V28 = mult_(g@dis_curr, d@categories[["NEURO_V28"]]),
-      DISABLED_HF_V28 = mult_(g@dis_curr, d@categories[["HF_V28"]]),
-      DISABLED_CHR_LUNG_V28 = mult_(g@dis_curr, d@categories[["CHR_LUNG_V28"]]),
-      DISABLED_ULCER_V28 = mult_(g@dis_curr, d@categories[["ULCER_V28"]])
-    ),
+    "CMS-HCC Model V28" = disease_V28(diagnostics, demographics, hcc),
     "CMS-HCC Model V24" = list(
       # Base V24/V22 disease interactions
       HCC47_gCancer = mult_(any_hcc(47L, hcc), d@categories[["CANCER"]]),

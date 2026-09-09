@@ -1,6 +1,6 @@
 test_that("coefficient_prefix works", {
   # CMS HCC Community default model
-  x = coefficient_prefix(
+  x = prefix(
     demographics(
       version = "V2",
       age = 70,
@@ -16,7 +16,7 @@ test_that("coefficient_prefix works", {
   expect_equal(x, "CNA_")
 
   # ESRD Dialysis model
-  x = coefficient_prefix(
+  x = prefix(
     demographics(
       version = "V2",
       age = 45,
