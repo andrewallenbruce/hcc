@@ -19,17 +19,15 @@ Creates interaction variables that are model-agnostic. The coefficient
 look-up will match only the relevant coefficients for each model.
 }
 \examples{
-x = demographics(
-  age = 65.1,
-  sex = "M",
-  orec = "2",
-  dual = "02",
-  new = TRUE,
-  lti = TRUE,
-  months = 10L
+interactions(
+ demographics(
+   age = 65,
+   sex = "M",
+   orec = "2",
+   dual = "02",
+   new = TRUE,
+   lti = TRUE,
+   months = 10L
  )
-
-x
-
-interactions(x)
+)
 }

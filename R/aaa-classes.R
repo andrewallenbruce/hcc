@@ -1,3 +1,13 @@
+#' @noRd
+DiagnosticCategories <- S7::new_class(
+  "DiagnosticCategories",
+  properties = list(
+    model = S7::class_character,
+    hcc = S7::class_integer,
+    categories = S7::class_list
+  )
+)
+
 #' Single Edit Rule
 #'
 #' @param edit_type `<chr>` "sex" or "age"

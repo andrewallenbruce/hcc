@@ -4,14 +4,12 @@
 \alias{apply_interactions}
 \title{Calculate HCC interactions across CMS models.}
 \usage{
-apply_interactions(demographics, hcc, model = "CMS-HCC Model V28")
+apply_interactions(diagnostics, demographics)
 }
 \arguments{
-\item{demographics}{demographic information for age/sex/disability interactions}
+\item{diagnostics}{demographic information for age/sex/disability interactions}
 
-\item{hcc}{set of HCCs for direct HCC checks}
-
-\item{model}{The HCC model version being used; default is "CMS-HCC Model V28"}
+\item{demographics}{set of HCCs for direct HCC checks}
 }
 \value{
 \verb{<chr>} vector of interactions
@@ -21,18 +19,7 @@ Handles CMS-HCC, ESRD, and RxHCC models.
 }
 \examples{
 apply_interactions(
-  model = "CMS-HCC Model V24",
-  demographics = PatientDemographics(
-    age = 65,
-    sex = "F",
-    category = "F65",
-    dis_curr = FALSE,
-    dis_orig = FALSE,
-    non_aged = FALSE,
-    dual_full = TRUE,
-    dual_part = FALSE,
-    is_lti = FALSE
-  ),
-  hcc = c(17:18, 85L)
+  diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
+  demographics(age = 64, sex = "F", orec = "1")
 )
 }
