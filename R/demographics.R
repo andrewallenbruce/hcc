@@ -6,98 +6,116 @@
 #' @param version `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
 #' @param age `<num>` Beneficiary age
 #' @param sex `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
-#' @param dual_code `<chr>` Dual eligibility code (`00` - `10`)
-#' @param orec_code,crec_code `<chr>` Original/Current reason for entitlement
+#' @param dual `<chr>` Dual eligibility code (`00` - `10`)
+#' @param orec,crec `<chr>` Original/Current reason for entitlement
 #'   code (`0` - `3`)
-#' @param new_enrollee,has_snp,low_income,is_lti `<lgl>` Beneficiary is a
+#' @param new,snp,low,lti `<lgl>` Beneficiary is a
 #' **New Enrollee**, in a **Special Needs Plan**, is **Low Income** (RxHCC only),
-#'   and/or is Long-Term Institutionalized
-#' @param esrd_months `<int>` Number of months since transplant (ESRD only)
+#'   and/or is **Long-Term Institutionalized**
+#' @param months `<int>` Number of months since transplant (ESRD only)
 #' @param prefix `<chr>` Optional prefix to override demographic
 #'   detection (e.g., `DI_`, `DNE_`, `INS_`, `CFA_`, etc.)
 #' @returns A `<PatientDemographics>` S7 object
 #' @examples
 #' demographics(age = 48, sex = "1")
 #' demographics(version = "V6", age = 35, sex = "M")
-#' demographics(version = "V2", age = 75, sex = "2", orec_code = "0")
+#' demographics(version = "V2", age = 75, sex = "2", orec = "0")
 #' @export
 demographics <- function(
-  version = "V2",
   age,
   sex,
-  dual_code = NA_character_,
-  orec_code = NA_character_,
-  crec_code = NA_character_,
-  new_enrollee = FALSE,
-  has_snp = FALSE,
-  low_income = FALSE,
-  is_lti = FALSE,
-  esrd_months = 0L,
+  version = "V2",
+  dual = NA_character_,
+  orec = NA_character_,
+  crec = NA_character_,
+  new = FALSE,
+  snp = FALSE,
+  low = FALSE,
+  lti = FALSE,
+  months = 0,
   prefix = NULL
 ) {
-  rlang::check_number_decimal(age, min = 0)
-  version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
-  sex <- convert_sex(sex, version)
-  age <- as.integer(age)
-  non_aged <- age <= 64L
+  rlang::check_number_decimal(age, min = 0, max = 125)
+  rlang::check_number_whole(months, min = 0)
+  version <- rlang::arg_match(version, c("V2", "V4", "V6"))
 
-  # Determine if currently disabled or previously disabled
-  is_curr <- non_aged & (!is.na(orec_code) & !identical(orec_code, "0"))
-  is_orig <- identical(orec_code, "1") & !is_curr
-  is_full <- is_dual_full(dual_code)
-  is_part <- is_dual_partial(dual_code)
-  has_esrd <- has_esrd(orec_code, crec_code)
+  if (!cheapr::is_na(dual)) {
+    rlang::arg_match(dual, DUAL_CODES$VALID)
+  }
+  if (!cheapr::is_na(orec)) {
+    rlang::arg_match(orec, REC_CODES$VALID)
+  }
+  if (!cheapr::is_na(crec)) {
+    rlang::arg_match(crec, REC_CODES$VALID)
+  }
+
+  rlang::check_bool(new)
+  rlang::check_bool(snp)
+  rlang::check_bool(low)
+  rlang::check_bool(lti)
+
+  esrd <- has_esrd(orec, crec)
+  full <- is_full(dual)
+  part <- is_partial(dual)
 
   # Override demographics based on prefix
   if (!is.null(prefix)) {
-    if (prefix %in_% PREFIX$ESRD) {
-      has_esrd <- TRUE
+    if (prefix %in_% PREFIX[["ESRD"]]) {
+      esrd <- TRUE
     }
 
-    if (prefix %in_% PREFIX$NEW_ENROLLEE) {
-      new_enrollee <- TRUE
-    } else if (prefix %in_% c(PREFIX$COMMUNITY, PREFIX$INSTITUTIONAL)) {
-      new_enrollee <- FALSE
+    if (prefix %in_% PREFIX[["NEW_ENROLLEE"]]) {
+      new <- TRUE
+    } else if (prefix %in_% PREFIX[["COMMUNITY_INSTITUTIONAL"]]) {
+      new <- FALSE
     }
 
-    if (prefix %in_% PREFIX$DUAL_FULL) {
-      .c(is_full, is_part) %=% c(TRUE, FALSE)
-    } else if (prefix %in_% PREFIX$DUAL_PARTIAL) {
-      .c(is_full, is_part) %=% c(FALSE, TRUE)
-    } else if (prefix %in_% PREFIX$DUAL_NON) {
-      .c(is_full, is_part) %=% c(FALSE, FALSE)
+    if (prefix %in_% PREFIX[["DUAL"]][["FULL"]]) {
+      .c(full, part) %=% c(TRUE, FALSE)
+    } else if (prefix %in_% PREFIX[["DUAL"]][["PARTIAL"]]) {
+      .c(full, part) %=% c(FALSE, TRUE)
+    } else if (prefix %in_% PREFIX[["DUAL"]][["NON"]]) {
+      .c(full, part) %=% c(FALSE, FALSE)
     }
 
-    if (prefix %in_% PREFIX$INSTITUTIONAL) {
-      is_lti <- TRUE
+    if (prefix %in_% PREFIX[["INSTITUTIONAL"]]) {
+      lti <- TRUE
     }
   }
+
+  sex <- convert_sex(sex, version)
+  age <- as.integer(age)
+  non <- age <= 64L
+
+  # Determine if currently disabled or previously disabled
+  current <- non & orec %in_% c("1", "2", "3")
+  previous <- orec %in_% "1" & !current
 
   PatientDemographics(
     version = version,
     age = age,
     sex = sex,
-    dual_code = dual_code,
-    orec_code = crec_code,
-    crec_code = crec_code,
-    non_aged = non_aged,
-    new_enrollee = new_enrollee,
-    has_snp = has_snp,
-    dis_orig = is_orig,
-    dis_curr = is_curr,
-    dual_full = is_full,
-    dual_part = is_part,
-    has_esrd = has_esrd,
-    is_lti = is_lti,
-    low_income = low_income,
-    esrd_months = esrd_months,
+    dual_code = dual,
+    orec_code = orec,
+    crec_code = crec,
+    non_aged = non,
+    new_enrollee = new,
+    has_snp = snp,
+    dis_orig = previous,
+    dis_curr = current,
+    dual_full = full,
+    dual_part = part,
+    has_esrd = esrd,
+    is_lti = lti,
+    low_income = low,
+    esrd_months = as.integer(months),
     category = categorize_age(
       age = age,
       sex = sex,
       vers = version,
-      orec = orec_code,
-      new = new_enrollee,
-      esrd = has_esrd
+      orec = orec,
+      new = new,
+      esrd = esrd
     )
   )
 }

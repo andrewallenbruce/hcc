@@ -22,11 +22,11 @@ look-up will match only the relevant coefficients for each model.
 x = demographics(
   age = 65.1,
   sex = "M",
-  orec_code = "2",
-  dual_code = "2",
-  new_enrollee = TRUE,
-  is_lti = TRUE,
-  esrd_months = 10L
+  orec = "2",
+  dual = "02",
+  new = TRUE,
+  lti = TRUE,
+  months = 10L
  )
 
 x

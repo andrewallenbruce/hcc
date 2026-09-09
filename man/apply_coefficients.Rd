@@ -51,13 +51,13 @@ apply_coefficients(
   demographics(
     age = 70,
     sex = "F",
-    dual_code = "00",
-    orec_code = "0",
-    crec_code = "0",
+    dual = "00",
+    orec = "0",
+    crec = "0",
     version = "V2",
-    new_enrollee = FALSE,
-    has_snp = FALSE,
-    low_income = FALSE
+    new = FALSE,
+    snp = FALSE,
+    low = FALSE
   )
 )
 \dontshow{\}) # examplesIf}

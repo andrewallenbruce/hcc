@@ -57,18 +57,18 @@ rxhcc_prefix_ <- function(x) {
 #'   demographics(
 #'     age = 70,
 #'     sex = "F",
-#'     dual_code = "00",
-#'     orec_code = "0",
-#'     crec_code = "0"
+#'     dual = "00",
+#'     orec = "0",
+#'     crec = "0"
 #'   )
 #' )
 #' coefficient_prefix(
 #'   demographics(
 #'     age = 45,
 #'     sex = "M",
-#'     dual_code = "00",
-#'     orec_code = "2",
-#'     crec_code = "0"
+#'     dual = "00",
+#'     orec = "2",
+#'     crec = "0"
 #'   ),
 #'   model = "CMS-HCC ESRD Model V24"
 #' )
@@ -138,24 +138,24 @@ S7::method(coefficient_prefix, PatientDemographics) <- function(
 #'   demographics(
 #'     age = 70,
 #'     sex = "F",
-#'     dual_code = "00",
-#'     orec_code = "0",
-#'     crec_code = "0",
+#'     dual = "00",
+#'     orec = "0",
+#'     crec = "0",
 #'     version = "V2",
-#'     new_enrollee = FALSE,
-#'     has_snp = FALSE,
-#'     low_income = FALSE
+#'     new = FALSE,
+#'     snp = FALSE,
+#'     low = FALSE
 #'   )
 #' )
 #' @export
 apply_coefficients <- function(
-    demographics,
-    interactions,
-    coefficients = NULL,
-    hcc,
-    model = "CMS-HCC Model V28",
-    year = 2026L,
-    prefix_override = NULL
+  demographics,
+  interactions,
+  coefficients = NULL,
+  hcc,
+  model = "CMS-HCC Model V28",
+  year = 2026L,
+  prefix_override = NULL
 ) {
   model <- rlang::arg_match0(model, MODEL)
 
@@ -170,10 +170,10 @@ apply_coefficients <- function(
   # ESRD V24: FGC_*, FGI_*, LTI_GE65/LT65
   if (
     any(startsWith(interactions, "FGC")) |
-    any(startsWith(interactions, "FGI")) |
-    any(startsWith(interactions, "GE65_DUR")) |
-    any(startsWith(interactions, "LT65_DUR")) |
-    any(interactions %in% c("LTI_GE65", "LTI_LT65"))
+      any(startsWith(interactions, "FGI")) |
+      any(startsWith(interactions, "GE65_DUR")) |
+      any(startsWith(interactions, "LT65_DUR")) |
+      any(interactions %in% c("LTI_GE65", "LTI_LT65"))
   ) {
     interactions_key = interactions
   } else {
@@ -313,9 +313,12 @@ get_coefficient <- function(
   x <- if (is.null(year)) {
     hcc::ra_coefficients
   } else {
-    cheapr::sset(
+    collapse::ss(
       hcc::ra_coefficients,
-      cheapr::which_(year == hcc::ra_coefficients$year)
+      collapse::whichv(
+        hcc::ra_coefficients[["year"]],
+        year
+      )
     )
   }
 
@@ -336,16 +339,21 @@ get_coefficient <- function(
       )
     )
 
-    x <- cheapr::sset(x, cheapr::which_(model == x$model_name))
+    x <- collapse::ss(
+      x,
+      collapse::whichv(
+        x[["model_name"]],
+        model
+        )
+      )
   }
 
   # coefficient
-  cheapr::sset(
-    x,
-    grep(
-      paste0("^", coefficient, "$", collapse = "|"),
-      x$coefficient,
-      perl = TRUE
-    )
-  )
+  if (is.null(coefficient)) {
+    return(x)
+  }
+
+  rex <- paste0("^", coefficient, "$", collapse = "|")
+  idx <- grep(rex, x[["coefficient"]], perl = TRUE)
+  collapse::ss(x, idx)
 }

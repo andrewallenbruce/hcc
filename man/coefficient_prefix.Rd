@@ -22,18 +22,18 @@ coefficient_prefix(
   demographics(
     age = 70,
     sex = "F",
-    dual_code = "00",
-    orec_code = "0",
-    crec_code = "0"
+    dual = "00",
+    orec = "0",
+    crec = "0"
   )
 )
 coefficient_prefix(
   demographics(
     age = 45,
     sex = "M",
-    dual_code = "00",
-    orec_code = "2",
-    crec_code = "0"
+    dual = "00",
+    orec = "2",
+    crec = "0"
   ),
   model = "CMS-HCC ESRD Model V24"
 )

@@ -5,37 +5,37 @@
 \title{Categorize a beneficiary's demographics into risk adjustment categories.}
 \usage{
 demographics(
-  version = "V2",
   age,
   sex,
-  dual_code = NA_character_,
-  orec_code = NA_character_,
-  crec_code = NA_character_,
-  new_enrollee = FALSE,
-  has_snp = FALSE,
-  low_income = FALSE,
-  is_lti = FALSE,
-  esrd_months = 0L,
+  version = "V2",
+  dual = NA_character_,
+  orec = NA_character_,
+  crec = NA_character_,
+  new = FALSE,
+  snp = FALSE,
+  low = FALSE,
+  lti = FALSE,
+  months = 0,
   prefix = NULL
 )
 }
 \arguments{
-\item{version}{\verb{<chr>} Version of categorization to use (\code{V2}, \code{V4}, \code{V6})}
-
 \item{age}{\verb{<num>} Beneficiary age}
 
 \item{sex}{\verb{<chr>} Beneficiary sex (\code{M}/\code{1} or \code{F}/\code{2})}
 
-\item{dual_code}{\verb{<chr>} Dual eligibility code (\code{00} - \code{10})}
+\item{version}{\verb{<chr>} Version of categorization to use (\code{V2}, \code{V4}, \code{V6})}
 
-\item{orec_code, crec_code}{\verb{<chr>} Original/Current reason for entitlement
+\item{dual}{\verb{<chr>} Dual eligibility code (\code{00} - \code{10})}
+
+\item{orec, crec}{\verb{<chr>} Original/Current reason for entitlement
 code (\code{0} - \code{3})}
 
-\item{new_enrollee, has_snp, low_income, is_lti}{\verb{<lgl>} Beneficiary is a
+\item{new, snp, low, lti}{\verb{<lgl>} Beneficiary is a
 \strong{New Enrollee}, in a \strong{Special Needs Plan}, is \strong{Low Income} (RxHCC only),
-and/or is Long-Term Institutionalized}
+and/or is \strong{Long-Term Institutionalized}}
 
-\item{esrd_months}{\verb{<int>} Number of months since transplant (ESRD only)}
+\item{months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
 \item{prefix}{\verb{<chr>} Optional prefix to override demographic
 detection (e.g., \code{DI_}, \code{DNE_}, \code{INS_}, \code{CFA_}, etc.)}
@@ -50,5 +50,5 @@ Demographics object containing derived fields used in risk adjustment models.
 \examples{
 demographics(age = 48, sex = "1")
 demographics(version = "V6", age = 35, sex = "M")
-demographics(version = "V2", age = 75, sex = "2", orec_code = "0")
+demographics(version = "V2", age = 75, sex = "2", orec = "0")
 }

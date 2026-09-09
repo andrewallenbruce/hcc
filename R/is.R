@@ -9,12 +9,12 @@ is_dual_valid <- function(dual_code) {
 }
 
 #' @noRd
-is_dual_full <- function(dual_code) {
+is_full <- function(dual_code) {
   dual_code %in_% DUAL_CODES$FULL
 }
 
 #' @noRd
-is_dual_partial <- function(dual_code) {
+is_partial <- function(dual_code) {
   dual_code %in_% DUAL_CODES$PARTIAL
 }
 
@@ -25,7 +25,7 @@ is_esrd <- function(rec_code) {
 
 #' @noRd
 has_esrd <- function(orec_code, crec_code) {
-  any(is_esrd(c(orec_code, crec_code)))
+  any_(is_esrd(c(orec_code, crec_code)))
 }
 
 #' @noRd

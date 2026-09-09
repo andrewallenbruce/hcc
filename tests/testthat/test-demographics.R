@@ -8,7 +8,7 @@ test_that("Basic V6 (ACA) categorization", {
 })
 
 test_that("Basic V2 (Medicare) categorization", {
-  x = demographics(age = 75, sex = "F", orec_code = "0", version = "V2")
+  x = demographics(age = 75, sex = "F", orec = "0", version = "V2")
   expect_equal(x@category, "F75_79")
   expect_equal(x@version, "V2")
   expect_false(x@non_aged)
@@ -35,17 +35,17 @@ test_that("different sex formats are normalized correctly", {
 
 test_that("Current and Original Disability flags are recognized", {
   # Currently disabled
-  x = demographics(age = 45, sex = "M", orec_code = "1", version = "V2")
+  x = demographics(age = 45, sex = "M", orec = "1", version = "V2")
   expect_true(x@dis_curr)
   expect_false(x@dis_orig)
 
   # Originally disabled, now aged
-  x = demographics(age = 70, sex = "M", orec_code = "1", version = "V2")
+  x = demographics(age = 70, sex = "M", orec = "1", version = "V2")
   expect_false(x@dis_curr)
   expect_true(x@dis_orig)
 
   # Not disabled
-  x = demographics(age = 70, sex = "M", orec_code = "0", version = "V2")
+  x = demographics(age = 70, sex = "M", orec = "0", version = "V2")
   expect_false(x@dis_curr)
   expect_false(x@dis_orig)
 })
@@ -62,42 +62,27 @@ test_that("Age Range edge cases", {
   expect_equal(x@category, "MAGE_LAST_60_GT")
 
   # V2 boundaries
-  x = demographics(age = 34, sex = "M", orec_code = "0", version = "V2")
+  x = demographics(age = 34, sex = "M", orec = "0", version = "V2")
   expect_equal(x@category, "M0_34")
-  x = demographics(age = 35, sex = "M", orec_code = "0", version = "V2")
+  x = demographics(age = 35, sex = "M", orec = "0", version = "V2")
   expect_equal(x@category, "M35_44")
-  x = demographics(age = 95, sex = "M", orec_code = "0", version = "V2")
+  x = demographics(age = 95, sex = "M", orec = "0", version = "V2")
   expect_equal(x@category, "M95_GT")
 })
 
 test_that("Dual eligibility categorization", {
   # Full benefit dual
-  x = demographics(
-    age = 65,
-    sex = "M",
-    dual_code = "02",
-    orec_code = "0"
-  )
+  x = demographics(age = 65, sex = "M", dual = "02", orec = "0")
   expect_true(x@dual_full)
   expect_false(x@dual_part)
 
   # Partial benefit dual
-  x = demographics(
-    age = 65,
-    sex = "M",
-    dual_code = "01",
-    orec_code = "0"
-  )
+  x = demographics(age = 65, sex = "M", dual = "01", orec = "0")
   expect_false(x@dual_full)
   expect_true(x@dual_part)
 
   # Non-dual
-  x = demographics(
-    age = 65,
-    sex = "M",
-    dual_code = "00",
-    orec_code = "0"
-  )
+  x = demographics(age = 65, sex = "M", dual = "00", orec = "0")
   expect_false(x@dual_full)
   expect_false(x@dual_part)
 })
@@ -108,23 +93,23 @@ test_that("ESRD is detected", {
   expect_false(x@has_esrd)
 
   # Test with na CREC only
-  x = demographics(age = 65, sex = "M", orec_code = "0")
+  x = demographics(age = 65, sex = "M", orec = "0")
   expect_false(x@has_esrd)
 
   # Test with na OREC only
-  x = demographics(age = 65, sex = "M", crec_code = "0", version = "V6")
+  x = demographics(age = 65, sex = "M", crec = "0", version = "V6")
   expect_false(x@has_esrd)
 
   # ESRD from OREC
-  x = demographics(age = 65, sex = "M", orec_code = "2")
+  x = demographics(age = 65, sex = "M", orec = "2")
   expect_true(x@has_esrd)
 
   # ESRD from CREC
-  x = demographics(age = 65, sex = "M", orec_code = "0", crec_code = "2")
+  x = demographics(age = 65, sex = "M", orec = "0", crec = "2")
   expect_true(x@has_esrd)
 
   # No ESRD
-  x = demographics(age = 65, sex = "M", orec_code = "0", crec_code = "0")
+  x = demographics(age = 65, sex = "M", orec = "0", crec = "0")
   expect_false(x@has_esrd)
 })
 
@@ -132,14 +117,14 @@ test_that("New Enrollee and SNP flags are recognized", {
   x = demographics(
     age = 65.1,
     sex = "M",
-    orec_code = "0",
-    new_enrollee = TRUE,
-    has_snp = TRUE
+    orec = "0",
+    new = TRUE,
+    snp = TRUE
   )
   expect_true(x@new_enrollee)
   expect_true(x@has_snp)
 
-  x = demographics(age = 65, sex = "M", orec_code = "0")
+  x = demographics(age = 65, sex = "M", orec = "0")
   expect_false(x@new_enrollee)
   expect_false(x@has_snp)
 })

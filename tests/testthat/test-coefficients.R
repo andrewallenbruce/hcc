@@ -5,12 +5,12 @@ test_that("coefficient_prefix works", {
       version = "V2",
       age = 70,
       sex = "F",
-      dual_code = "00",
-      orec_code = "0",
-      crec_code = "0",
-      new_enrollee = FALSE,
-      has_snp = FALSE,
-      low_income = FALSE
+      dual = "00",
+      orec = "0",
+      crec = "0",
+      new = FALSE,
+      snp = FALSE,
+      low = FALSE
     )
   )
   expect_equal(x, "CNA_")
@@ -21,12 +21,12 @@ test_that("coefficient_prefix works", {
       version = "V2",
       age = 45,
       sex = "M",
-      dual_code = "00",
-      orec_code = "2",
-      crec_code = "0",
-      new_enrollee = FALSE,
-      has_snp = FALSE,
-      low_income = FALSE
+      dual = "00",
+      orec = "2",
+      crec = "0",
+      new = FALSE,
+      snp = FALSE,
+      low = FALSE
     ),
     model = "CMS-HCC ESRD Model V24"
   )
@@ -37,13 +37,13 @@ test_that("apply_coefficients works", {
   DEMO = demographics(
     age = 70,
     sex = "F",
-    dual_code = "00",
-    orec_code = "0",
-    crec_code = "0",
+    dual = "00",
+    orec = "0",
+    crec = "0",
     version = "V2",
-    new_enrollee = FALSE,
-    has_snp = FALSE,
-    low_income = FALSE
+    new = FALSE,
+    snp = FALSE,
+    low = FALSE
   )
 
   HCC = c(19L, 47L, 85L)
@@ -95,13 +95,13 @@ test_that("Empty apply_coefficients works", {
   DEMO = demographics(
     age = 70,
     sex = "F",
-    dual_code = "00",
-    orec_code = "0",
-    crec_code = "0",
+    dual = "00",
+    orec = "0",
+    crec = "0",
     version = "V2",
-    new_enrollee = FALSE,
-    has_snp = FALSE,
-    low_income = FALSE
+    new = FALSE,
+    snp = FALSE,
+    low = FALSE
   )
 
   HCC = NA

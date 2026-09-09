@@ -121,11 +121,23 @@ REC_CODES = list(
 PREFIX = list(
   ESRD = c("DI_", "DNE_", "GI_", "GNE_", "GFPA_", "GFPN_", "GNPA_", "GNPN_"),
   NEW_ENROLLEE = c("NE_", "SNPNE_", "DNE_", "GNE_"),
+  COMMUNITY_INSTITUTIONAL = c(
+    "CNA_",
+    "CND_",
+    "CFA_",
+    "CFD_",
+    "CPA_",
+    "CPD_",
+    "INS_",
+    "GI_"
+  ),
   COMMUNITY = c("CNA_", "CND_", "CFA_", "CFD_", "CPA_", "CPD_"),
   INSTITUTIONAL = c("INS_", "GI_"),
-  DUAL_FULL = c("CFA_", "CFD_", "GFPA_", "GFPN_"),
-  DUAL_PARTIAL = c("CPA_", "CPD_"),
-  DUAL_NON = c("CNA_", "CND_", "GNPA_", "GNPN_"),
+  DUAL = list(
+    FULL = c("CFA_", "CFD_", "GFPA_", "GFPN_"),
+    PARTIAL = c("CPA_", "CPD_"),
+    NON = c("CNA_", "CND_", "GNPA_", "GNPN_")
+  ),
   DESCRIPTION = list(
     "CNA_" = "Community, Non-Dual, Aged",
     "CND_" = "Community, Non-Dual, Disabled",
@@ -274,6 +286,26 @@ AGES = list(
       "85_89",
       "90_94",
       "95_GT"
+    )
+  ),
+  NEW = list(
+    LABEL = c(
+      "0_34",
+      "35_44",
+      "45_54",
+      "55_59",
+      "60_64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70_74",
+      "75_79",
+      "80_84",
+      "85_89",
+      "95_GT",
+      NA
     )
   )
 )

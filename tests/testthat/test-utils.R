@@ -1,0 +1,35 @@
+test_that("date parsing utility works", {
+  expect_equal(parse_date("20250108"), as.Date("2025-01-08"))
+  expect_equal(parse_date("19550315"), as.Date("1955-03-15"))
+  expect_equal(parse_date("invalid"), as.Date(NA))
+  expect_equal(parse_date("999999999"), as.Date(NA))
+  expect_equal(parse_date(""), as.Date(NA))
+})
+
+test_that("Age calculation", {
+  expect_equal(calculate_age("1955-03-15", "2025-01-08"), 69L)
+  expect_equal(calculate_age("1960-08-22", "2025-01-08"), 64L)
+  expect_equal(calculate_age("invalid"), NA_integer_)
+  expect_equal(calculate_age("999999999"), NA_integer_)
+  expect_equal(calculate_age(""), NA_integer_)
+})
+
+
+test_that("New Enrollee detection", {
+  expect_true(is_new_enrollee("2024-11-08", "2025-01-08"))
+  expect_true(is_new_enrollee("2024-10-08", "2025-01-08"))
+  expect_false(is_new_enrollee("2024-09-08", "2025-01-08"))
+  expect_false(is_new_enrollee("2024-01-08", "2025-01-08"))
+  expect_equal(is_new_enrollee("None"), NA)
+})
+
+test_that("Status to Dual mapping works", {
+  expect_all_equal(map_to_dual(c("QMB", "4M", "4O")), "01")
+  expect_all_equal(map_to_dual(c("QMBPLUS", "QMB+", "4N", "4P")), "02")
+  expect_all_equal(map_to_dual(c("SLMB", "5A", "5C")), "03")
+  expect_all_equal(map_to_dual(c("SLMBPLUS", "SLMB+", "5B", "5D")), "04")
+  expect_all_equal(map_to_dual(c("QI", "5E", "5F")), "06")
+  expect_equal(map_to_dual("QDWI"), "05")
+  expect_equal(map_to_dual("FBDE"), "08")
+  expect_equal(map_to_dual("INVALID"), NA_character_) # Returns '00' for invalid
+})

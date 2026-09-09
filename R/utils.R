@@ -101,7 +101,7 @@ hcc_count <- function(hcc) {
 #' map_to_dual(c("4N", "5B", "40"))
 #' @noRd
 map_to_dual <- function(code) {
-  from <- cheapr::c_(DUAL_CODES$MAP_STATUS, DUAL_CODES$MAP_AID)
+  from <- c(DUAL_CODES$MAP_STATUS, DUAL_CODES$MAP_AID)
   unlist_(from)[collapse::fmatch(normalize_(code), rlang::names2(from))]
 }
 
@@ -121,7 +121,7 @@ map_to_dual <- function(code) {
 #'   orec = "1",
 #'   vers = "V2",
 #'   new = TRUE,
-#'   esrd = FALSE,
+#'   esrd = FALSE
 #'  )
 #' @noRd
 categorize_age <- function(age, sex, vers, orec, new, esrd) {
@@ -198,7 +198,7 @@ age_category_NEW <- function(age, sex, orec) {
   orec <- if (cheapr::is_na(orec)) {
     "0"
   } else {
-    rlang::arg_match0(orec, c("0", "1", "2", "3"))
+    rlang::arg_match0(orec, REC_CODES$VALID)
   }
 
   prefix <- if (identical(sex, "2")) "NEF" else "NEM"
@@ -223,24 +223,7 @@ age_category_NEW <- function(age, sex, orec) {
       age >= 95L,
       vctrs::vec_detect_missing(age)
     ),
-    values = list(
-      "0_34",
-      "35_44",
-      "45_54",
-      "55_59",
-      "60_64",
-      "65",
-      "66",
-      "67",
-      "68",
-      "69",
-      "70_74",
-      "75_79",
-      "80_84",
-      "85_89",
-      "95_GT",
-      NA
-    ),
+    values = as.list(AGES$NEW$LABEL),
     default = NA
   )
 
@@ -298,11 +281,11 @@ calculate_age <- function(dob, dos = Sys.Date()) {
 #' Determine if member is new enrollee
 #' (<= 3 months since coverage start)
 #' @examplesIf FALSE
-#' is_new_enrollee("20200202") # Coverage started 6+ years ago
-#' is_new_enrollee("2024-11-08", "2025-01-08") # Coverage started 2 months ago
-#' is_new_enrollee("2024-10-08", "2025-01-08") # Coverage started 3 months ago
-#' is_new_enrollee("2024-09-08", "2025-01-08") # Coverage started 4 months ago
-#' is_new_enrollee("2024-01-08", "2025-01-08") # Coverage started 1 year ago
+#' is_new_enrollee("20200202")
+#' is_new_enrollee("2024-11-08", "2025-01-08")
+#' is_new_enrollee("2024-10-08", "2025-01-08")
+#' is_new_enrollee("2024-09-08", "2025-01-08")
+#' is_new_enrollee("2024-01-08", "2025-01-08")
 #' @noRd
 is_new_enrollee <- function(start, end = Sys.Date()) {
   clock::date_count_between(
@@ -311,4 +294,25 @@ is_new_enrollee <- function(start, end = Sys.Date()) {
     precision = "month"
   ) <=
     3L
+}
+
+#' Derive Medi-Cal eligibility status
+#' @examplesIf FALSE
+#' calculate_age("20200202")
+#' calculate_age("1955-03-15", "2025-01-08")
+#' calculate_age("1960-08-22", "2025-01-08")
+#' @noRd
+medi_eligibility_status <- function(end_date, report_date = Sys.Date()) {
+  report_date <- parse_date(report_date)
+
+  first_date <- clock::date_build(
+    clock::get_year(report_date),
+    clock::get_month(report_date)
+  )
+
+  if (parse_date(end_date) < first_date) {
+    return("Terminated")
+  } else {
+    return("Active")
+  }
 }

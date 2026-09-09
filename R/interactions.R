@@ -90,29 +90,25 @@ diagnostic_categories <- function(model, hcc) {
 #' CMS-HCC Model V28
 #' Base V28 disease interactions
 #' @noRd
-disease_V28 <- function(
-  diag,
-  demo,
-  hcc
-) {
+disease_V28 <- function(x, y, hcc) {
   list(
-    DIABETES_HF_V28 = mult_(diag$DIABETES_V28, diag$HF_V28),
-    HF_CHR_LUNG_V28 = mult_(diag$HF_V28, diag$CHR_LUNG_V28),
-    HF_KIDNEY_V28 = mult_(diag$HF_V28, diag$KIDNEY_V28),
+    DIABETES_HF_V28 = mult_(x[["DIABETES_V28"]], x[["HF_V28"]]),
+    HF_CHR_LUNG_V28 = mult_(x[["HF_V28"]], x[["CHR_LUNG_V28"]]),
+    HF_KIDNEY_V28 = mult_(x[["HF_V28"]], x[["KIDNEY_V28"]]),
     CHR_LUNG_CARD_RESP_FAIL_V28 = mult_(
-      diag$CHR_LUNG_V28,
-      diag$CARD_RESP_FAIL_V28
+      x[["CHR_LUNG_V28"]],
+      x[["CARD_RESP_FAIL_V28"]]
     ),
-    HF_HCC238_V28 = mult_(diag$HF_V28, any_hcc(238L, hcc)),
+    HF_HCC238_V28 = mult_(x[["HF_V28"]], any_hcc(238L, hcc)),
     gSubUseDisorder_gPsych_V28 = mult_(
-      diag$gSubUseDisorder_V28,
-      diag$gPsychiatric_V28
+      x[["gSubUseDisorder_V28"]],
+      x[["gPsychiatric_V28"]]
     ),
-    DISABLED_CANCER_V28 = mult_(demo@dis_curr, diag$CANCER_V28),
-    DISABLED_NEURO_V28 = mult_(demo@dis_curr, diag$NEURO_V28),
-    DISABLED_HF_V28 = mult_(demo@dis_curr, diag$HF_V28),
-    DISABLED_CHR_LUNG_V28 = mult_(demo@dis_curr, diag$CHR_LUNG_V28),
-    DISABLED_ULCER_V28 = mult_(demo@dis_curr, diag$ULCER_V28)
+    DISABLED_CANCER_V28 = mult_(y@dis_curr, x[["CANCER_V28"]]),
+    DISABLED_NEURO_V28 = mult_(y@dis_curr, x[["NEURO_V28"]]),
+    DISABLED_HF_V28 = mult_(y@dis_curr, x[["HF_V28"]]),
+    DISABLED_CHR_LUNG_V28 = mult_(y@dis_curr, x[["CHR_LUNG_V28"]]),
+    DISABLED_ULCER_V28 = mult_(y@dis_curr, x[["ULCER_V28"]])
   )
 }
 
@@ -460,11 +456,11 @@ disease_interactions <- function(
 #' x = demographics(
 #'   age = 65.1,
 #'   sex = "M",
-#'   orec_code = "2",
-#'   dual_code = "2",
-#'   new_enrollee = TRUE,
-#'   is_lti = TRUE,
-#'   esrd_months = 10L
+#'   orec = "2",
+#'   dual = "02",
+#'   new = TRUE,
+#'   lti = TRUE,
+#'   months = 10L
 #'  )
 #'
 #' x
