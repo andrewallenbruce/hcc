@@ -19,11 +19,6 @@ subset_ <- function(text, start, end) {
     purrr::map(\(i) .subset(text, i))
 }
 
-# @noRd
-# name_loop <- function(x) {
-#   rlang::set_names(x, ~ paste0("L", seq_along(.)))
-# }
-
 #' @noRd
 set_zchar <- function(x) {
   collapse::setv(x, !nzchar(x), NA_character_)

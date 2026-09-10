@@ -99,6 +99,40 @@ parse_820 <- function(text) {
     collapse::qTBL()
 }
 
+#' @examplesIf FALSE
+#' purrr::map(hcc::x12_820, index_820)
+#' @noRd
+index_820 <- function(text) {
+
+  x <- tilde(text)
+
+  i <- list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    TRN = perl(x, "^TRN"),
+    REF14 = perl(x, "^REF\\*14"),
+    N1 = perl(x, "^N1"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    ENT = perl(x, "^ENT"),
+    NM1 = perl(x, "^NM1"),
+    RMR = perl(x, "^RMR"),
+    REF18 = perl(x, "^REF\\*18"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    DTM = perl(x, "^DTM"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+
+  if (length(x) != cheapr::unlisted_length(i)) {
+    cli::cli_alert_warning("{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}")
+  }
+  return(i)
+}
+
 #' X12-834 Benefit Enrollment Parser
 #'
 #' The 834 carries *membership events*:
@@ -192,16 +226,6 @@ parse_837 <- function(text) {
 
   transactions <- subset_(x, perl(x, "^ST"), perl(x, "^SE"))
 
-  # perl(x, "^ST")
-  # perl(x, "^BHT")
-  # perl(x, "^NM1\\*41") # Submitter Name
-  # perl(x, "^PER\\*IC")[1] # Submitter EDI Contact Information
-  # perl(x, "^NM1\\*40") # Receiver Name
-  # perl(x, "^PER\\*IC")[2] # Receiver EDI Contact Information
-  # perl(x, "^HL") # Hierarchical Level
-  # perl(x, "^NM1\\*85") # Billing Provider Name
-  # perl(x, "^SBR") # Subscriber Information
-
   trailer <- list(
     GE = split_p(x, "^GE"),
     IEA = split_p(x, "^IEA")
@@ -212,4 +236,42 @@ parse_837 <- function(text) {
     TRANSACTIONS = transactions,
     TRAILER = unlist_df(trailer)
   )
+}
+
+#' @examplesIf FALSE
+#' purrr::map(hcc::x12_837, index_837)
+#' @noRd
+index_837 <- function(text) {
+
+  x <- tilde(text)
+
+  i <- list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BHT"),
+    NM1 = perl(x, "^NM1"), # 41: Submitter Name | 40: Receiver Name | 85:Billing Provider Name
+    PER = perl(x, "^PER"), # IC: Submitter EDI Contact Information/Receiver EDI Contact Information
+    HL = perl(x, "^HL"), # Hierarchical Level
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    REF = perl(x, "^REF"),
+    SBR = perl(x, "^SBR"), # Subscriber Information
+    DMG = perl(x, "^DMG"),
+    CLM = perl(x, "^CLM"),
+    HI = perl(x, "^HI"),
+    PRV = perl(x, "^PRV"),
+    LX = perl(x, "^LX"),
+    SV1 = perl(x, "^SV1"),
+    DTP = perl(x, "^DTP"),
+    SE = perl(x, "^SE"),
+    NTE = perl(x, "^NTE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+
+  if (length(x) != cheapr::unlisted_length(i)) {
+    cli::cli_alert_warning("{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}")
+  }
+  return(i)
 }
