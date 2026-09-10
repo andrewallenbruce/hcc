@@ -1,9 +1,10 @@
 test_that("date parsing utility works", {
+  NA_Date_ <- as.Date(NA)
   expect_equal(parse_date("20250108"), as.Date("2025-01-08"))
   expect_equal(parse_date("19550315"), as.Date("1955-03-15"))
-  expect_equal(parse_date("invalid"), as.Date(NA))
-  expect_equal(parse_date("999999999"), as.Date(NA))
-  expect_equal(parse_date(""), as.Date(NA))
+  expect_equal(parse_date("invalid"), NA_Date_)
+  expect_equal(parse_date("999999999"), NA_Date_)
+  expect_equal(parse_date(""), NA_Date_)
 })
 
 test_that("Age calculation", {
@@ -34,7 +35,7 @@ test_that("Status to Dual mapping works", {
   expect_equal(map_to_dual("INVALID"), NA_character_) # Returns '00' for invalid
 })
 
-test_that("Test Medi-Cal eligibility status derivation from dates", {
+test_that("Medi-Cal eligibility status can be derived from dates", {
   expect_equal(medi_eligibility_status("2025-11-30", "2025-11-15"), "Active")
   expect_equal(medi_eligibility_status("2025-12-31", "2025-11-15"), "Active")
   expect_equal(
