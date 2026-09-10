@@ -33,3 +33,26 @@ test_that("Status to Dual mapping works", {
   expect_equal(map_to_dual("FBDE"), "08")
   expect_equal(map_to_dual("INVALID"), NA_character_) # Returns '00' for invalid
 })
+
+test_that("Test Medi-Cal eligibility status derivation from dates", {
+  expect_equal(medi_eligibility_status("2025-11-30", "2025-11-15"), "Active")
+  expect_equal(medi_eligibility_status("2025-12-31", "2025-11-15"), "Active")
+  expect_equal(
+    medi_eligibility_status("2025-10-31", "2025-11-15"),
+    "Terminated"
+  )
+  expect_equal(
+    medi_eligibility_status("2025-09-30", "2025-11-15"),
+    "Terminated"
+  )
+  expect_error(medi_eligibility_status(NULL, "2025-11-15"))
+  expect_error(medi_eligibility_status("", "2025-11-15"))
+
+  # Edge case: coverage ends on first day of report month
+  expect_equal(medi_eligibility_status("2025-11-01", "2025-11-15"), "Active")
+  # Edge case: coverage ends on last day of previous month
+  expect_equal(
+    medi_eligibility_status("2025-10-31", "2025-11-01"),
+    "Terminated"
+  )
+})

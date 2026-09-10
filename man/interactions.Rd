@@ -2,7 +2,7 @@
 % Please edit documentation in R/interactions.R
 \name{interactions}
 \alias{interactions}
-\title{Create Demographic Interactions}
+\title{Create Interactions}
 \usage{
 interactions(x, ...)
 }

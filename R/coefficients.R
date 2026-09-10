@@ -1,3 +1,5 @@
+#' @include demographics.R
+
 #' @noRd
 esrd_prefix_ <- function(x) {
   if (x@has_esrd) {

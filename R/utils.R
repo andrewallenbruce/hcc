@@ -302,15 +302,14 @@ is_new_enrollee <- function(start, end = Sys.Date()) {
 #' calculate_age("1955-03-15", "2025-01-08")
 #' calculate_age("1960-08-22", "2025-01-08")
 #' @noRd
-medi_eligibility_status <- function(end_date, report_date = Sys.Date()) {
-  report_date <- parse_date(report_date)
+medi_eligibility_status <- function(
+  coverage_end_date,
+  report_date = Sys.Date()
+) {
+  first <- clock::date_start(parse_date(report_date), "month")
+  report <- parse_date(coverage_end_date)
 
-  first_date <- clock::date_build(
-    clock::get_year(report_date),
-    clock::get_month(report_date)
-  )
-
-  if (parse_date(end_date) < first_date) {
+  if (report < first) {
     return("Terminated")
   } else {
     return("Active")

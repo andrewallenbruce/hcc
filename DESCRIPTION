@@ -29,3 +29,23 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
+Collate: 
+    'aaa-classes.R'
+    'apply_edits.R'
+    'apply_filter.R'
+    'calculate.R'
+    'demographics.R'
+    'coefficients.R'
+    'constants.R'
+    'data.R'
+    'diagnostics.R'
+    'diseases.R'
+    'dx_to_cc.R'
+    'hcc-package.R'
+    'hierarchies.R'
+    'interactions.R'
+    'is.R'
+    'parsers.R'
+    'splitters.R'
+    'utils.R'
+    'zzz.R'
