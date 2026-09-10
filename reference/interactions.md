@@ -1,4 +1,4 @@
-# Create Demographic Interactions
+# Create Interactions
 
 Creates interaction variables that are model-agnostic. The coefficient
 look-up will match only the relevant coefficients for each model.

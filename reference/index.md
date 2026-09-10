@@ -36,7 +36,7 @@
 - [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
   : Model-Based Disease Interaction Variables
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
-  : Create Demographic Interactions
+  : Create Interactions
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 Payment Order/Remittance Advice Parser
 - [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
