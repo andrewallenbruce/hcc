@@ -22,7 +22,7 @@ export(parse_834)
 export(parse_837)
 export(prefix)
 import(S7)
-import(rlang)
+import(rlang, except = ":=")
 importFrom(cheapr,
   "%!in_%",
   "%in_%"
