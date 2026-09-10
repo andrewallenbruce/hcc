@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9037 (2026-09-10)
+
+- bumped S7 to dev version
+
 ## hcc 0.0.0.9036 (2026-09-08)
 
 - date related helpers
