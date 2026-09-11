@@ -1,6 +1,6 @@
 # Health Care Plan coverage period from HD loop
 
-Health Care Plan coverage period from HD loop
+Single HD loop (HCP coverage period)
 
 ## Arguments
 
