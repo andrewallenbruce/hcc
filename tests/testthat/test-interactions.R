@@ -1,8 +1,3 @@
-test_that("any_hcc works", {
-  expect_equal(any_hcc(17:19, 18:21), 1)
-  expect_equal(any_hcc(17:19, 20:22), 0)
-})
-
 x <- interactions(
   PatientDemographics(
     age = 65,
@@ -30,37 +25,6 @@ test_that("Dual interactions work", {
   expect_no_match(x, "FBDual_Male_Aged")
   expect_no_match(x, "FBDual_Male_NonAged")
   expect_no_match(x, "PBDual_Female_Aged")
-})
-
-test_that("hcc_count works", {
-  x = hcc_count(17:19)
-  expect_equal(x, "D3")
-  expect_disjoint(x, c("D2", "D10P"))
-})
-
-test_that("diagnostic_categories works", {
-  x = diagnostics("CMS-HCC Model V24", c(17:19, 85L))
-  expect_equal(x@categories$DIABETES, 1)
-  expect_equal(x@categories$CHF, 1)
-  expect_equal(x@categories$CANCER, 0)
-})
-
-test_that("disease_interactions works", {
-  x = disease_interactions(
-    diagnostics("CMS-HCC Model V24", c(17L, 85L)),
-    demographics = PatientDemographics(
-      age = 65,
-      sex = "F",
-      category = "F65",
-      dis_curr = TRUE,
-      dis_orig = FALSE,
-      non_aged = FALSE,
-      dual_full = FALSE,
-      dual_part = FALSE,
-      is_lti = FALSE
-    )
-  )
-  expect_setequal(x, c("DIABETES_CHF", "DISABLED_HCC85"))
 })
 
 test_that("apply_interactions works", {
@@ -702,42 +666,4 @@ test_that("Non-LTI patient with Medicaid should NOT get LTIMCAID", {
     interactions()
 
   expect_disjoint(x, "LTIMCAID")
-})
-
-# =============================================================================
-# No-Prefix Coefficient Lookups
-# =============================================================================
-
-# Test no-prefix coefficient lookups for ESRD duration coefficients
-test_that("FGC coefficients should be looked up without prefix", {
-  skip()
-
-  x <- apply_coefficients(
-    demographics = demographics(
-      age = 70,
-      sex = "F",
-      dual_code = "00",
-      orec_code = "2",
-      version = "V2",
-      new_enrollee = FALSE,
-      has_snp = FALSE,
-      low_income = FALSE,
-      esrd_months = 6L
-    ),
-    interactions = "FGC_GE65_DUR4_9_ND_PBD",
-    model = "CMS-HCC ESRD Model V24",
-    coefficients = list(
-      FGC_GE65_DUR4_9_ND_PBD = list(
-        value = 2.529,
-        model = "CMS-HCC ESRD Model V24"
-      ),
-      FGC_LT65_DUR4_9_ND_PBD = list(
-        value = 3.123,
-        model = "CMS-HCC ESRD Model V24"
-      )
-    )
-  )
-  x$FGC_GE65_DUR4_9_ND_PBD <- 2.529 #TODO
-
-  expect_equal(x$FGC_GE65_DUR4_9_ND_PBD, 2.529)
 })

@@ -114,6 +114,7 @@ diagnostics <- function(model, hcc) {
       "CMS-HCC Model V22" = diagnostic_V22(hcc),
       "CMS-HCC ESRD Model V24" = diagnostic_ESRD_V24(hcc),
       "CMS-HCC ESRD Model V21" = diagnostic_ESRD_V21(hcc),
+      "RxHCC Model V08" = list()
     )
   )
 }

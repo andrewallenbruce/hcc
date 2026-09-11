@@ -4,22 +4,23 @@
 \alias{disease_interactions}
 \title{Model-Based Disease Interaction Variables}
 \usage{
-disease_interactions(diagnostics, demographics = NULL)
+disease_interactions(diag, demo = NULL)
 }
 \arguments{
-\item{diagnostics}{Dictionary of diagnostic categories}
+\item{diag}{\verb{<DiagnosticCategories>} object}
 
-\item{demographics}{(Optional) demographic information for age/sex/disability interactions}
+\item{demo}{\verb{<PatientDemographics>} object}
 }
 \value{
-Dictionary containing all disease interaction variables
+\verb{<list>} containing disease interaction variables
 }
 \description{
 Model-Based Disease Interaction Variables
 }
 \examples{
-disease_interactions(
-  diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
-  demographics(age = 64, sex = "F", orec = "1")
- )
+cms = diagnostics("CMS-HCC Model V24", c(17L, 85L))
+rx = diagnostics("RxHCC Model V08", 130:133)
+demo = demographics(age = 64, sex = "F", orec = "1")
+disease_interactions(cms, demo)
+disease_interactions(rx, demo)
 }

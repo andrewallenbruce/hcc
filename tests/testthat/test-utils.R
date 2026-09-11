@@ -1,3 +1,14 @@
+test_that("any_hcc works", {
+  expect_equal(any_hcc(17:19, 18:21), 1)
+  expect_equal(any_hcc(17:19, 20:22), 0)
+})
+
+test_that("hcc_count works", {
+  x = hcc_count(17:19)
+  expect_equal(x, "D3")
+  expect_disjoint(x, c("D2", "D10P"))
+})
+
 test_that("date parsing utility works", {
   NA_Date_ <- as.Date(NA)
   expect_equal(parse_date("20250108"), as.Date("2025-01-08"))

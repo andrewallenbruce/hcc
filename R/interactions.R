@@ -1,3 +1,141 @@
+#' New Enrollee
+#' V24/V28 & ESRD V21/V24
+#'
+#' ## MCAID/NMCAID + ORIGDIS/NORIGDIS
+#'    - Looked up with `NE_`/`SNPNE_`
+#'    - V24/V28 & ESRD V21
+#'
+#' ## FBD/ND_PBD + ORIGDIS/NORIGDIS
+#'    - Looked up with `DNE_`/`GNE_`
+#'    - ESRD V24
+#'
+#' @noRd
+inter_new <- function(new_caid, new_orig, full, category) {
+  rlang::set_names(
+    list(
+      NMCAID_NORIGDIS = mult_(!new_caid, !new_orig),
+      NMCAID_ORIGDIS = mult_(!new_caid, new_orig),
+      MCAID_NORIGDIS = mult_(new_caid, !new_orig),
+      MCAID_ORIGDIS = mult_(new_caid, new_orig),
+      FBD_NORIGDIS = mult_(full, !new_orig),
+      FBD_ORIGDIS = mult_(full, new_orig),
+      ND_PBD_NORIGDIS = mult_(!full, !new_orig),
+      ND_PBD_ORIGDIS = mult_(!full, new_orig)
+    ),
+    paste0,
+    "_",
+    category
+  )
+}
+
+#' Original Disability + Aged
+#'    - V22/V24/V28 & ESRD V21/V24
+#'    - Looked up with Prefix
+#'
+#' Original Disability + ESRD
+#'    - ESRD V21/V24 (Dialysis)
+#'    - Looked up with `DI_`
+#' @noRd
+inter_orig <- function(aged, female, male, orig, esrd) {
+  list(
+    OriginallyDisabled_Female = mult_(aged, female, orig),
+    OriginallyDisabled_Male = mult_(aged, male, orig),
+    Originally_ESRD_Female = mult_(aged, female, esrd),
+    Originally_ESRD_Male = mult_(aged, male, esrd)
+  )
+}
+
+#' MCAID + Sex + Age + ESRD V21
+#' Dialysis & Community Graft Only
+#' @noRd
+inter_caid <- function(aged, caid, female, male) {
+  list(
+    MCAID_Female_Aged = mult_(caid, female, aged),
+    MCAID_Female_NonAged = mult_(caid, female, !aged),
+    MCAID_Male_Aged = mult_(caid, male, aged),
+    MCAID_Male_NonAged = mult_(caid, male, !aged)
+  )
+}
+
+#' LTI interactions for ESRD models
+#'
+#' ESRD V24 Dialysis
+#' Looked up with `DI_`
+#'
+#' ESRD V24 Graft Institutional
+#' Looked up *WITHOUT* Prefix
+#'
+#' LTIMCAID V24/V28 Institutional
+#' Looked up with `INS_`
+#' @noRd
+inter_lti <- function(aged, lti, caid) {
+  list(
+    LTI_Aged = mult_(lti, aged),
+    LTI_NonAged = mult_(lti, !aged),
+    LTI_GE65 = mult_(lti, aged),
+    LTI_LT65 = mult_(lti, !aged),
+    LTIMCAID = mult_(lti, caid)
+  )
+}
+
+#' Functioning Graft Duration
+#' Simple Age-Based Transplant Bumps for ESRD models (V21)
+#' Looked up WITHOUT prefix
+#' @noRd
+inter_graft <- function(aged, dur49, dur10) {
+  list(
+    GE65_DUR4_9 = mult_(dur49, aged),
+    LT65_DUR4_9 = mult_(dur49, !aged),
+    GE65_DUR10PL = mult_(dur10, aged),
+    LT65_DUR10PL = mult_(dur10, !aged)
+  )
+}
+
+#' Non-Dual (ND) & Partial Benefit Dual (ND_PBD)
+#' ESRD V24: FGI (Institutional) & FGC (Community)
+#' @noRd
+inter_fgic <- function(full, part, aged, dur49, dur10, lti) {
+  list(
+    FGI_GE65_DUR4_9_ND_PBD = mult_(!full, aged, dur49, lti),
+    FGI_GE65_DUR4_9_FBD = mult_(full, aged, dur49, lti),
+    FGI_GE65_DUR10PL_ND_PBD = mult_(!full, aged, dur10, lti),
+    FGI_GE65_DUR10PL_FBD = mult_(full, aged, dur10, lti),
+    FGI_LT65_DUR4_9_ND_PBD = mult_(!full, !aged, dur49, lti),
+    FGI_LT65_DUR4_9_FBD = mult_(full, !aged, dur49, lti),
+    FGI_LT65_DUR10PL_ND_PBD = mult_(!full, !aged, dur10, lti),
+    FGI_LT65_DUR10PL_FBD = mult_(full, !aged, dur10, lti),
+    FGI_PBD_GE65_flag = mult_(part, aged, lti),
+    FGI_PBD_LT65_flag = mult_(part, !aged, lti),
+    FGC_GE65_DUR4_9_ND_PBD = mult_(!full, dur49, aged, !lti),
+    FGC_GE65_DUR4_9_FBD = mult_(full, dur49, aged, !lti),
+    FGC_GE65_DUR10PL_ND_PBD = mult_(!full, dur10, aged, !lti),
+    FGC_GE65_DUR10PL_FBD = mult_(full, dur10, aged, !lti),
+    FGC_LT65_DUR4_9_ND_PBD = mult_(!full, dur49, !aged, !lti),
+    FGC_LT65_DUR4_9_FBD = mult_(full, dur49, !aged, !lti),
+    FGC_LT65_DUR10PL_ND_PBD = mult_(!full, dur10, !aged, !lti),
+    FGC_LT65_DUR10PL_FBD = mult_(full, dur10, !aged, !lti),
+    FGC_PBD_GE65_flag = mult_(part, aged, !lti),
+    FGC_PBD_LT65_flag = mult_(part, !aged, !lti)
+  )
+}
+
+#' Dual Interactions
+#' Determine sex from demographics@sex instead of category
+#' Category can start with NEM/NEF for new enrollees, not just M/F
+#' @noRd
+inter_dual <- function(aged, full, part, male, female) {
+  list(
+    FBDual_Female_Aged = mult_(full, female, aged),
+    FBDual_Female_NonAged = mult_(full, female, !aged),
+    FBDual_Male_Aged = mult_(full, male, aged),
+    FBDual_Male_NonAged = mult_(full, male, !aged),
+    PBDual_Female_Aged = mult_(part, female, aged),
+    PBDual_Female_NonAged = mult_(part, female, !aged),
+    PBDual_Male_Aged = mult_(part, male, aged),
+    PBDual_Male_NonAged = mult_(part, male, !aged)
+  )
+}
+
 #' Create Interactions
 #'
 #' Creates interaction variables that are model-agnostic. The coefficient
@@ -36,105 +174,14 @@ S7::method(interactions, PatientDemographics) <- function(x) {
   is_dur10pl = x@esrd_months >= 10L
   is_esrd = is_esrd(x@orec_code)
 
-  ## New Enrollee [V24/V28/ESRD V21/V24]
-  named <- list(
-    # [V24/V28/ESRD V21] -> MCAID/NMCAID style
-    # looked up with `NE_` or `SNPNE_`
-    NMCAID_NORIGDIS = mult_(!nemcaid, !ne_origds),
-    NMCAID_ORIGDIS = mult_(!nemcaid, ne_origds),
-    MCAID_NORIGDIS = mult_(nemcaid, !ne_origds),
-    MCAID_ORIGDIS = mult_(nemcaid, ne_origds),
-
-    # ESRD V24 -> FBD/ND_PBD style
-    # looked up with DNE_ or GNE_ prefix
-    FBD_NORIGDIS = mult_(fbd, !ne_origds),
-    FBD_ORIGDIS = mult_(fbd, ne_origds),
-    ND_PBD_NORIGDIS = mult_(!fbd, !ne_origds),
-    ND_PBD_ORIGDIS = mult_(!fbd, ne_origds)
-  ) |>
-    rlang::set_names(paste0, "_", x@category)
-
-  x <- rlang::list2(
-    # Original Disability [V22/V24/V28/ESRD V21/V24]
-    # Only for aged - looked up with prefix
-    OriginallyDisabled_Female = mult_(aged, x@dis_orig, female),
-    OriginallyDisabled_Male = mult_(aged, x@dis_orig, male),
-
-    # Originally ESRD [ESRD V21/V24 Dialysis]
-    # Looked up as `DI_Originally_ESRD_*`
-    Originally_ESRD_Female = mult_(aged, is_esrd, female),
-    Originally_ESRD_Male = mult_(aged, is_esrd, male),
-
-    # MCAID × sex × age interactions
-    # (ESRD V21 Dialysis and Community Graft only)
-    # V21 used MCAID; V24 uses FBDual/PBDual
-    # (handled in create_dual_interactions)
-    MCAID_Female_Aged = mult_(mcaid, female, aged),
-    MCAID_Female_NonAged = mult_(mcaid, female, !aged),
-    MCAID_Male_Aged = mult_(mcaid, male, aged),
-    MCAID_Male_NonAged = mult_(mcaid, male, !aged),
-
-    # ==== LTI interactions for ESRD models
-
-    # ESRD V24 Dialysis looked up as DI_LTI_Aged, DI_LTI_NonAged
-    LTI_Aged = mult_(lti, aged),
-    LTI_NonAged = mult_(lti, !aged),
-
-    # ESRD V24 Graft Institutional looked up WITHOUT prefix
-    LTI_GE65 = mult_(lti, aged),
-    LTI_LT65 = mult_(lti, !aged),
-
-    # LTIMCAID for V24, V28 Institutional model looked up as INS_LTIMCAID
-    LTIMCAID = mult_(lti, mcaid),
-
-    !!!named,
-
-    # ==== Functioning Graft Duration `transplant bumps` for ESRD models
-    # All looked up WITHOUT prefix - they match directly by name
-    # ESRD V21 = simple age-based bumps (GE65_DUR4_9, LT65_DUR4_9, etc.)
-    GE65_DUR4_9 = mult_(is_dur4_9, aged),
-    LT65_DUR4_9 = mult_(is_dur4_9, !aged),
-
-    GE65_DUR10PL = mult_(is_dur10pl, aged),
-    LT65_DUR10PL = mult_(is_dur10pl, !aged),
-
-    # ESRD V24 = FGC (Community) / FGI (Institutional) stratified by dual status
-    # Non-Dual and Partial Benefit Dual (ND_PBD)
-
-    FGC_GE65_DUR4_9_ND_PBD = mult_(!fbd, is_dur4_9, aged, !lti),
-    FGC_GE65_DUR10PL_ND_PBD = mult_(!fbd, is_dur10pl, aged, !lti),
-    FGC_GE65_DUR10PL_FBD = mult_(fbd, is_dur10pl, aged, !lti),
-    FGC_GE65_DUR4_9_FBD = mult_(fbd, is_dur4_9, aged, !lti),
-    FGC_LT65_DUR4_9_ND_PBD = mult_(!fbd, is_dur4_9, !aged, !lti),
-    FGC_LT65_DUR10PL_ND_PBD = mult_(!fbd, is_dur10pl, !aged, !lti),
-    FGC_LT65_DUR10PL_FBD = mult_(fbd, is_dur10pl, !aged, !lti),
-    FGC_LT65_DUR4_9_FBD = mult_(fbd, is_dur4_9, !aged, !lti),
-    FGC_PBD_GE65_flag = mult_(pbd, aged, !lti),
-    FGC_PBD_LT65_flag = mult_(pbd, !aged, !lti),
-
-    FGI_GE65_DUR4_9_FBD = mult_(fbd, is_dur4_9, aged, lti),
-    FGI_GE65_DUR4_9_ND_PBD = mult_(!fbd, is_dur4_9, aged, lti),
-    FGI_GE65_DUR10PL_ND_PBD = mult_(!fbd, is_dur10pl, aged, lti),
-    FGI_GE65_DUR10PL_FBD = mult_(fbd, is_dur10pl, aged, lti),
-    FGI_LT65_DUR4_9_FBD = mult_(fbd, is_dur4_9, !aged, lti),
-    FGI_LT65_DUR4_9_ND_PBD = mult_(!fbd, is_dur4_9, !aged, lti),
-    FGI_LT65_DUR10PL_ND_PBD = mult_(!fbd, is_dur10pl, !aged, lti),
-    FGI_LT65_DUR10PL_FBD = mult_(fbd, is_dur10pl, !aged, lti),
-    FGI_PBD_GE65_flag = mult_(pbd, aged, lti),
-    FGI_PBD_LT65_flag = mult_(pbd, !aged, lti),
-
-    # create_dual_interactions
-    # Determine sex from demographics@sex instead of category
-    # Category can start with NEM/NEF for new enrollees, not just M/F
-    FBDual_Female_Aged = mult_(fbd, female, aged),
-    FBDual_Female_NonAged = mult_(fbd, female, !aged),
-    FBDual_Male_Aged = mult_(fbd, male, aged),
-    FBDual_Male_NonAged = mult_(fbd, male, !aged),
-
-    PBDual_Female_Aged = mult_(pbd, female, aged),
-    PBDual_Female_NonAged = mult_(pbd, female, !aged),
-    PBDual_Male_Aged = mult_(pbd, male, aged),
-    PBDual_Male_NonAged = mult_(pbd, male, !aged)
+  x = c(
+    inter_new(nemcaid, ne_origds, fbd, x@category),
+    inter_orig(aged, female, male, x@dis_orig, is_esrd),
+    inter_caid(aged, mcaid, female, male),
+    inter_lti(aged, lti, mcaid),
+    inter_graft(aged, is_dur4_9, is_dur10pl),
+    inter_fgic(fbd, pbd, aged, is_dur4_9, is_dur10pl, lti),
+    inter_dual(aged, fbd, pbd, male, female)
   )
 
   names(x)[unlist_(x) == 1L]

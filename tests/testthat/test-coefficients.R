@@ -132,3 +132,41 @@ test_that("Empty apply_coefficients works", {
 
   expect_equal(result, expect)
 })
+
+# =============================================================================
+# No-Prefix Coefficient Lookups
+# =============================================================================
+
+# Test no-prefix coefficient lookups for ESRD duration coefficients
+test_that("FGC coefficients should be looked up without prefix", {
+  skip()
+
+  x <- apply_coefficients(
+    demographics = demographics(
+      age = 70,
+      sex = "F",
+      dual_code = "00",
+      orec_code = "2",
+      version = "V2",
+      new_enrollee = FALSE,
+      has_snp = FALSE,
+      low_income = FALSE,
+      esrd_months = 6L
+    ),
+    interactions = "FGC_GE65_DUR4_9_ND_PBD",
+    model = "CMS-HCC ESRD Model V24",
+    coefficients = list(
+      FGC_GE65_DUR4_9_ND_PBD = list(
+        value = 2.529,
+        model = "CMS-HCC ESRD Model V24"
+      ),
+      FGC_LT65_DUR4_9_ND_PBD = list(
+        value = 3.123,
+        model = "CMS-HCC ESRD Model V24"
+      )
+    )
+  )
+  x$FGC_GE65_DUR4_9_ND_PBD <- 2.529 #TODO
+
+  expect_equal(x$FGC_GE65_DUR4_9_ND_PBD, 2.529)
+})

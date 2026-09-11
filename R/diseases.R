@@ -209,57 +209,37 @@ disease_RxHCC_V8 <- function(non_aged, hcc) {
 
 #' Model-Based Disease Interaction Variables
 #'
-#' @param diagnostics Dictionary of diagnostic categories
-#' @param demographics (Optional) demographic information for age/sex/disability interactions
-#' @returns Dictionary containing all disease interaction variables
+#' @param diag `<DiagnosticCategories>` object
+#' @param demo `<PatientDemographics>` object
+#' @returns `<list>` containing disease interaction variables
 #' @examples
-#' disease_interactions(
-#'   diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
-#'   demographics(age = 64, sex = "F", orec = "1")
-#'  )
+#' cms = diagnostics("CMS-HCC Model V24", c(17L, 85L))
+#' rx = diagnostics("RxHCC Model V08", 130:133)
+#' demo = demographics(age = 64, sex = "F", orec = "1")
+#' disease_interactions(cms, demo)
+#' disease_interactions(rx, demo)
 #' @export
-disease_interactions <- function(
-  diagnostics,
-  demographics = NULL
-) {
-  if (is.null(demographics)) {
-    demographics <- PatientDemographics(
-      dis_curr = FALSE,
-      non_aged = FALSE
-    )
+disease_interactions <- function(diag, demo = NULL) {
+  if (is.null(demo)) {
+    demo <- PatientDemographics(dis_curr = FALSE, non_aged = FALSE)
   }
 
   x <- switch(
-    diagnostics@model,
-    "CMS-HCC Model V28" = disease_V28(
-      diagnostics@categories,
-      demographics@dis_curr,
-      diagnostics@hcc
-    ),
-    "CMS-HCC Model V24" = disease_V24(
-      diagnostics@categories,
-      demographics@dis_curr,
-      diagnostics@hcc
-    ),
-    "CMS-HCC Model V22" = disease_V22(
-      diagnostics@categories,
-      demographics@dis_curr,
-      diagnostics@hcc
-    ),
+    diag@model,
+    "CMS-HCC Model V28" = disease_V28(diag@categories, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V24" = disease_V24(diag@categories, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V22" = disease_V22(diag@categories, demo@dis_curr, diag@hcc),
     "CMS-HCC ESRD Model V24" = disease_ESRD_V24(
-      diagnostics@categories,
-      demographics@non_aged,
-      diagnostics@hcc
+      diag@categories,
+      demo@non_aged,
+      diag@hcc
     ),
     "CMS-HCC ESRD Model V21" = disease_ESRD_V21(
-      diagnostics@categories,
-      demographics@non_aged,
-      diagnostics@hcc
+      diag@categories,
+      demo@non_aged,
+      diag@hcc
     ),
-    "RxHCC Model V08" = disease_RxHCC_V8(
-      demographics@non_aged,
-      diagnostics@hcc
-    )
+    "RxHCC Model V08" = disease_RxHCC_V8(demo@non_aged, diag@hcc)
   )
 
   names(x)[unlist_(x) == 1L]
