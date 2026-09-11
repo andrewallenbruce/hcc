@@ -109,6 +109,8 @@ HCCDetail <- S7::new_class(
 
 #' Health Care Plan coverage period from HD loop
 #'
+#' Single HD loop (HCP coverage period)
+#'
 #' @param start_date `<Date>` coverage start date
 #' @param end_date `<Date>` coverage start date
 #' @param hcp_code `<chr>` HCP code
@@ -123,10 +125,10 @@ HCCDetail <- S7::new_class(
 #'   )
 #' @export
 HCPCoveragePeriod <- S7::new_class(
-  "HCPCoveragePeriod",
+  "HCPCoveragePeriod", # HCPContext
   properties = list(
-    start_date = S7::as_class(S7::class_Date),
-    end_date = S7::as_class(S7::class_Date),
+    start_date = S7::class_Date,
+    end_date = S7::class_Date,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character

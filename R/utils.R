@@ -315,3 +315,22 @@ medi_eligibility_status <- function(
     return("Active")
   }
 }
+
+#' Parse race code from `DMG05`
+#'
+#' Handles formats like:
+#'
+#'    - `:RET:2135-2` "Hispanic or Latino"
+#'    - `2135-2`: "Hispanic or Latino"
+#'    - `2106-3`: "White"
+#'
+#' @param x Raw race value from DMG segment
+#' @examplesIf FALSE
+#' parse_race_code(c(":RET:2135-2", "2135-2", "2106-3"))
+#' @noRd
+parse_race_code <- function(x) {
+  x <- strsplit(x, ":", fixed = TRUE)
+  o <- x[lengths(x) > 1L][[1]]
+  o <- rev(o[nzchar(o)])[1]
+  c(o, unlist_(x[lengths(x) == 1L]))
+}

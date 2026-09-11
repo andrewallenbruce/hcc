@@ -18,7 +18,7 @@
 An \verb{<HCPCoveragePeriod>} S7 object
 }
 \description{
-Health Care Plan coverage period from HD loop
+Single HD loop (HCP coverage period)
 }
 \examples{
 HCPCoveragePeriod(

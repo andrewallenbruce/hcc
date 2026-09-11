@@ -126,8 +126,8 @@ test_that("Non-aged patient with 24 months graft should get `LT65_DUR10PL`", {
   ) |>
     interactions()
 
-  expect_match(x, "LT65_DUR10PL", all = FALSE)
-  expect_no_match(x, "GE65_DUR10PL")
+  expect_contains(x, "LT65_DUR10PL")
+  expect_disjoint(x, "GE65_DUR10PL")
 })
 
 test_that("Patient with < 4 months graft should not get any duration interactions", {
@@ -146,10 +146,10 @@ test_that("Patient with < 4 months graft should not get any duration interaction
   ) |>
     interactions()
 
-  expect_no_match(x, "GE65_DUR4_9")
-  expect_no_match(x, "LT65_DUR4_9")
-  expect_no_match(x, "GE65_DUR10PL")
-  expect_no_match(x, "LT65_DUR10PL")
+  expect_disjoint(
+    x,
+    c("GE65_DUR4_9", "LT65_DUR4_9", "GE65_DUR10PL", "LT65_DUR10PL")
+  )
 })
 
 # =============================================================================
@@ -173,9 +173,8 @@ test_that("Aged community patient (not LTI, not FBD) with 6 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGC_GE65_DUR4_9_ND_PBD", all = FALSE)
-  expect_no_match(x, "FGC_LT65_DUR4_9_ND_PBD")
-  expect_no_match(x, "FGI_GE65_DUR4_9_ND_PBD")
+  expect_contains(x, "FGC_GE65_DUR4_9_ND_PBD")
+  expect_disjoint(x, c("FGC_LT65_DUR4_9_ND_PBD", "FGI_GE65_DUR4_9_ND_PBD"))
 })
 
 test_that("Non-aged community patient with 12 months graft", {
@@ -194,8 +193,8 @@ test_that("Non-aged community patient with 12 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGC_LT65_DUR10PL_ND_PBD", all = FALSE)
-  expect_no_match(x, "FGC_GE65_DUR10PL_ND_PBD")
+  expect_contains(x, "FGC_LT65_DUR10PL_ND_PBD")
+  expect_disjoint(x, "FGC_GE65_DUR10PL_ND_PBD")
 })
 
 # Test ESRD V24 FGI (Institutional) interactions for ND_PBD
@@ -215,8 +214,8 @@ test_that("Aged LTI patient (not FBD) with 6 months graft should get FGI", {
   ) |>
     interactions()
 
-  expect_match(x, "FGI_GE65_DUR4_9_ND_PBD", all = FALSE)
-  expect_no_match(x, "FGC_GE65_DUR4_9_ND_PBD")
+  expect_contains(x, "FGI_GE65_DUR4_9_ND_PBD")
+  expect_disjoint(x, "FGC_GE65_DUR4_9_ND_PBD")
 })
 
 test_that("Non-aged LTI patient with 15 months graft", {
@@ -235,8 +234,8 @@ test_that("Non-aged LTI patient with 15 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGI_LT65_DUR10PL_ND_PBD", all = FALSE)
-  expect_no_match(x, "FGC_LT65_DUR10PL_ND_PBD")
+  expect_contains(x, "FGI_LT65_DUR10PL_ND_PBD")
+  expect_disjoint(x, "FGC_LT65_DUR10PL_ND_PBD")
 })
 
 # =============================================================================
@@ -260,10 +259,8 @@ test_that("Aged FBD community patient with 6 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGC_GE65_DUR4_9_FBD", all = FALSE)
-  expect_no_match(x, "FGC_LT65_DUR4_9_FBD")
-  # Should NOT have ND_PBD variants
-  expect_no_match(x, "FGC_GE65_DUR4_9_ND_PBD")
+  expect_contains(x, "FGC_GE65_DUR4_9_FBD")
+  expect_disjoint(x, c("FGC_LT65_DUR4_9_FBD", "FGC_GE65_DUR4_9_ND_PBD"))
 })
 
 test_that("Non-aged FBD community patient with 12 months graft", {
@@ -282,8 +279,8 @@ test_that("Non-aged FBD community patient with 12 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGC_LT65_DUR10PL_FBD", all = FALSE)
-  expect_no_match(x, "FGC_GE65_DUR10PL_FBD")
+  expect_contains(x, "FGC_LT65_DUR10PL_FBD")
+  expect_disjoint(x, "FGC_GE65_DUR10PL_FBD")
 })
 
 # Test ESRD V24 FGI (Institutional) interactions for FBD
@@ -303,8 +300,8 @@ test_that("Aged FBD LTI patient with 6 months graft should get FGI_FBD", {
   ) |>
     interactions()
 
-  expect_match(x, "FGI_GE65_DUR4_9_FBD", all = FALSE)
-  expect_no_match(x, "FGC_GE65_DUR4_9_FBD")
+  expect_contains(x, "FGI_GE65_DUR4_9_FBD")
+  expect_disjoint(x, "FGC_GE65_DUR4_9_FBD")
 })
 
 test_that("Non-aged FBD LTI patient with 15 months graft", {
@@ -323,8 +320,8 @@ test_that("Non-aged FBD LTI patient with 15 months graft", {
   ) |>
     interactions()
 
-  expect_match(x, "FGI_LT65_DUR10PL_FBD", all = FALSE)
-  expect_no_match(x, "FGC_LT65_DUR10PL_FBD")
+  expect_contains(x, "FGI_LT65_DUR10PL_FBD")
+  expect_disjoint(x, "FGC_LT65_DUR10PL_FBD")
 })
 
 # =============================================================================
@@ -348,9 +345,8 @@ test_that("PBD aged community patient should get PBD flag", {
   ) |>
     interactions()
 
-  expect_match(x, "FGC_PBD_GE65_flag", all = FALSE)
-  expect_no_match(x, "FGC_PBD_LT65_flag")
-  expect_no_match(x, "FGI_PBD_GE65_flag")
+  expect_contains(x, "FGC_PBD_GE65_flag")
+  expect_disjoint(x, c("FGC_PBD_LT65_flag", "FGI_PBD_GE65_flag"))
 })
 
 test_that("PBD non-aged LTI patient should get FGI PBD flag", {
@@ -369,8 +365,8 @@ test_that("PBD non-aged LTI patient should get FGI PBD flag", {
   ) |>
     interactions()
 
-  expect_match(x, "FGI_PBD_LT65_flag", all = FALSE)
-  expect_no_match(x, "FGC_PBD_LT65_flag")
+  expect_contains(x, "FGI_PBD_LT65_flag")
+  expect_disjoint(x, "FGC_PBD_LT65_flag")
 })
 
 test_that("FBD patient should NOT get PBD flag", {
@@ -389,8 +385,7 @@ test_that("FBD patient should NOT get PBD flag", {
   ) |>
     interactions()
 
-  expect_no_match(x, "FGC_PBD_GE65_flag")
-  expect_no_match(x, "FGC_PBD_LT65_flag")
+  expect_disjoint(x, c("FGC_PBD_GE65_flag", "FGC_PBD_LT65_flag"))
 })
 
 # =============================================================================
@@ -413,10 +408,8 @@ test_that("Aged LTI patient should get LTI_GE65", {
   ) |>
     interactions()
 
-  expect_match(x, "LTI_GE65", all = FALSE)
-  expect_no_match(x, "LTI_LT65")
-  # Also should have LTI_Aged (looked up with DI_ prefix)
-  expect_match(x, "LTI_Aged", all = FALSE)
+  expect_contains(x, c("LTI_GE65", "LTI_Aged"))
+  expect_disjoint(x, "LTI_LT65")
 })
 
 test_that("Non-aged LTI patient should get LTI_LT65", {
@@ -434,10 +427,8 @@ test_that("Non-aged LTI patient should get LTI_LT65", {
   ) |>
     interactions()
 
-  expect_match(x, "LTI_LT65", all = FALSE)
-  expect_no_match(x, "LTI_GE65")
-  # Also should have LTI_NonAged
-  expect_match(x, "LTI_NonAged", all = FALSE)
+  expect_contains(x, c("LTI_LT65", "LTI_NonAged"))
+  expect_disjoint(x, "LTI_GE65")
 })
 
 test_that("Non-LTI patient should NOT get LTI interactions", {
@@ -455,10 +446,7 @@ test_that("Non-LTI patient should NOT get LTI interactions", {
   ) |>
     interactions()
 
-  expect_no_match(x, "LTI_GE65")
-  expect_no_match(x, "LTI_LT65")
-  expect_no_match(x, "LTI_Aged")
-  expect_no_match(x, "LTI_NonAged")
+  expect_disjoint(x, c("LTI_GE65", "LTI_LT65", "LTI_Aged", "LTI_NonAged"))
 })
 
 # =============================================================================
@@ -482,8 +470,8 @@ test_that("Aged female with OREC = 2 (originally ESRD) should get Originally_ESR
   ) |>
     interactions()
 
-  expect_match(x, "Originally_ESRD_Female", all = FALSE)
-  expect_no_match(x, "Originally_ESRD_Male")
+  expect_contains(x, "Originally_ESRD_Female")
+  expect_disjoint(x, "Originally_ESRD_Male")
 })
 
 test_that("Aged male with OREC = 3 should get Originally_ESRD_Male", {
@@ -502,8 +490,8 @@ test_that("Aged male with OREC = 3 should get Originally_ESRD_Male", {
   ) |>
     interactions()
 
-  expect_match(x, "Originally_ESRD_Male", all = FALSE)
-  expect_no_match(x, "Originally_ESRD_Female")
+  expect_contains(x, "Originally_ESRD_Male")
+  expect_disjoint(x, "Originally_ESRD_Female")
 })
 
 test_that("Non-aged should NOT get Originally_ESRD interactions", {
@@ -522,8 +510,7 @@ test_that("Non-aged should NOT get Originally_ESRD interactions", {
   ) |>
     interactions()
 
-  expect_no_match(x, "Originally_ESRD_Female")
-  expect_no_match(x, "Originally_ESRD_Male")
+  expect_disjoint(x, c("Originally_ESRD_Female", "Originally_ESRD_Male"))
 })
 
 test_that("Aged without OREC = 2 or 3 should NOT get Originally_ESRD", {
@@ -542,7 +529,7 @@ test_that("Aged without OREC = 2 or 3 should NOT get Originally_ESRD", {
   ) |>
     interactions()
 
-  expect_no_match(x, "Originally_ESRD_Female")
+  expect_disjoint(x, "Originally_ESRD_Female")
 })
 
 # Test MCAID × sex × age interactions for ESRD V21
@@ -562,9 +549,8 @@ test_that("Aged female with Medicaid should get MCAID_Female_Aged", {
   ) |>
     interactions()
 
-  expect_match(x, "MCAID_Female_Aged", all = FALSE)
-  expect_no_match(x, "MCAID_Female_NonAged")
-  expect_no_match(x, "MCAID_Male_Aged")
+  expect_contains(x, "MCAID_Female_Aged")
+  expect_disjoint(x, c("MCAID_Female_NonAged", "MCAID_Male_Aged"))
 })
 
 test_that("Non-aged male with Medicaid should get MCAID_Male_NonAged", {
@@ -583,8 +569,8 @@ test_that("Non-aged male with Medicaid should get MCAID_Male_NonAged", {
   ) |>
     interactions()
 
-  expect_match(x, "MCAID_Male_NonAged", all = FALSE)
-  expect_no_match(x, "MCAID_Male_Aged")
+  expect_contains(x, "MCAID_Male_NonAged")
+  expect_disjoint(x, "MCAID_Male_Aged")
 })
 
 test_that("Non-Medicaid patient should NOT get MCAID interactions", {
@@ -603,10 +589,15 @@ test_that("Non-Medicaid patient should NOT get MCAID interactions", {
   ) |>
     interactions()
 
-  expect_no_match(x, "MCAID_Female_Aged")
-  expect_no_match(x, "MCAID_Female_NonAged")
-  expect_no_match(x, "MCAID_Male_Aged")
-  expect_no_match(x, "MCAID_Male_NonAged")
+  expect_disjoint(
+    x,
+    c(
+      "MCAID_Female_Aged",
+      "MCAID_Female_NonAged",
+      "MCAID_Male_Aged",
+      "MCAID_Male_NonAged"
+    )
+  )
 })
 
 # =============================================================================

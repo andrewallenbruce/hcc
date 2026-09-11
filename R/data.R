@@ -91,7 +91,7 @@
 
 #' HCC is Chronic
 #'
-#' @format ## `hcc_is_chronic`
+#' @format ## `chronic_hcc`
 #' A data frame with 1,281 rows and 4 columns:
 #' \describe{
 #'   \item{hcc}{Hierarchical Condition Codes}
@@ -101,11 +101,11 @@
 #'   ...
 #' }
 #' @keywords internal
-"hcc_is_chronic"
+"chronic_hcc"
 
 #' HCC is Chronic Without ESRD
 #'
-#' @format ## `hcc_is_chronic_without_esrd_model`
+#' @format ## `chronic_hcc_no_esrd`
 #' A data frame with 876 rows and 4 columns:
 #' \describe{
 #'   \item{hcc}{Hierarchical Condition Codes}
@@ -115,7 +115,21 @@
 #'   ...
 #' }
 #' @keywords internal
-"hcc_is_chronic_without_esrd_model"
+"chronic_hcc_no_esrd"
+
+#' Race and Ethnicity
+#'
+#' @format ## `ph_race`
+#' A data frame with 1324 rows and 9 columns:
+#' \describe{
+#'   \item{hcc}{Hierarchical Condition Codes}
+#'   \item{is_chronic}{HCC is Chronic}
+#'   \item{model_version}{Model Version}
+#'   \item{model_domain}{Model Domain}
+#'   ...
+#' }
+#' @keywords internal
+"ph_race"
 
 #' X12-820 Payment Order/Remittance Advice Examples
 #'
