@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9037</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9038</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,33 +45,35 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">disease_interactions</span><span class="op">(</span><span class="va">diagnostics</span>, demographics <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">disease_interactions</span><span class="op">(</span><span class="va">diag</span>, demo <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-diagnostics">diagnostics<a class="anchor" aria-label="anchor" href="#arg-diagnostics"></a></dt>
-<dd><p>Dictionary of diagnostic categories</p></dd>
+<dl><dt id="arg-diag">diag<a class="anchor" aria-label="anchor" href="#arg-diag"></a></dt>
+<dd><p><code>&lt;DiagnosticCategories&gt;</code> object</p></dd>
 
 
-<dt id="arg-demographics">demographics<a class="anchor" aria-label="anchor" href="#arg-demographics"></a></dt>
-<dd><p>(Optional) demographic information for age/sex/disability interactions</p></dd>
+<dt id="arg-demo">demo<a class="anchor" aria-label="anchor" href="#arg-demo"></a></dt>
+<dd><p><code>&lt;PatientDemographics&gt;</code> object</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Dictionary containing all disease interaction variables</p>
+    <p><code>&lt;list&gt;</code> containing disease interaction variables</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">disease_interactions</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="diagnostics.html">diagnostics</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"CMS-HCC Model V24"</span>, hcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17L</span>, <span class="fl">85L</span><span class="op">)</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="demographics.html">demographics</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">64</span>, sex <span class="op">=</span> <span class="st">"F"</span>, orec <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span></span></span>
-<span class="r-in"><span> <span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">cms</span> <span class="op">=</span> <span class="fu"><a href="diagnostics.html">diagnostics</a></span><span class="op">(</span><span class="st">"CMS-HCC Model V24"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17L</span>, <span class="fl">85L</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rx</span> <span class="op">=</span> <span class="fu"><a href="diagnostics.html">diagnostics</a></span><span class="op">(</span><span class="st">"RxHCC Model V08"</span>, <span class="fl">130</span><span class="op">:</span><span class="fl">133</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">demo</span> <span class="op">=</span> <span class="fu"><a href="demographics.html">demographics</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">64</span>, sex <span class="op">=</span> <span class="st">"F"</span>, orec <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">disease_interactions</span><span class="op">(</span><span class="va">cms</span>, <span class="va">demo</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DIABETES_CHF"   "DISABLED_HCC85"</span>
+<span class="r-in"><span><span class="fu">disease_interactions</span><span class="op">(</span><span class="va">rx</span>, <span class="va">demo</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NonAged_RXHCC130" "NonAged_RXHCC131" "NonAged_RXHCC132" "NonAged_RXHCC133"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

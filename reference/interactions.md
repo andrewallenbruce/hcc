@@ -37,8 +37,8 @@ interactions(
    months = 10L
  )
 )
-#>  [1] "Originally_ESRD_Male"  "MCAID_Male_Aged"       "LTI_Aged"             
-#>  [4] "LTI_GE65"              "LTIMCAID"              "MCAID_NORIGDIS_M65_69"
-#>  [7] "FBD_NORIGDIS_M65_69"   "GE65_DUR10PL"          "FGI_GE65_DUR10PL_FBD" 
+#>  [1] "MCAID_NORIGDIS_M65_69" "FBD_NORIGDIS_M65_69"   "Originally_ESRD_Male" 
+#>  [4] "MCAID_Male_Aged"       "LTI_Aged"              "LTI_GE65"             
+#>  [7] "LTIMCAID"              "GE65_DUR10PL"          "FGI_GE65_DUR10PL_FBD" 
 #> [10] "FBDual_Male_Aged"     
 ```
