@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9039 (2026-09-11)
+
+* parse_race_code
+
+
 # hcc 0.0.0.9038 (2026-09-11)
 
 * added RxHCC model to diagnostics
