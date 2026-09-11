@@ -13,22 +13,32 @@ x <- interactions(
 )
 
 test_that("Demographic interactions work", {
-  expect_no_match(x, "OriginallyDisabled_Female")
-  expect_no_match(x, "OriginallyDisabled_Male")
-  expect_no_match(x, "LTI_Aged")
-  expect_no_match(x, "LTI_NonAged")
+  expect_disjoint(
+    x,
+    c(
+      "OriginallyDisabled_Female",
+      "OriginallyDisabled_Male",
+      "LTI_Aged",
+      "LTI_NonAged"
+    )
+  )
 })
 
 test_that("Dual interactions work", {
-  expect_match(x, "FBDual_Female_Aged", all = FALSE)
-  expect_no_match(x, "FBDual_Female_NonAged")
-  expect_no_match(x, "FBDual_Male_Aged")
-  expect_no_match(x, "FBDual_Male_NonAged")
-  expect_no_match(x, "PBDual_Female_Aged")
+  expect_contains(x, "FBDual_Female_Aged")
+  expect_disjoint(
+    x,
+    c(
+      "FBDual_Female_NonAged",
+      "FBDual_Male_Aged",
+      "FBDual_Male_NonAged",
+      "PBDual_Female_Aged"
+    )
+  )
 })
 
 test_that("apply_interactions works", {
-  x = apply_interactions(
+  x <- apply_interactions(
     diagnostics("CMS-HCC Model V24", c(17:18, 85L)),
     PatientDemographics(
       age = 65,
@@ -42,7 +52,10 @@ test_that("apply_interactions works", {
       is_lti = FALSE
     )
   )
-  expect_contains(unlist_(x), c("FBDual_Female_Aged", "D3", "DIABETES_CHF"))
+  expect_contains(
+    unlist_(x),
+    c("FBDual_Female_Aged", "D3", "DIABETES_CHF")
+  )
 })
 
 # =============================================================================

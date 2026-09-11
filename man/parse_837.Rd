@@ -2,9 +2,12 @@
 % Please edit documentation in R/parsers.R
 \name{parse_837}
 \alias{parse_837}
+\alias{index_837}
 \title{X12-837 Health Care Claim Parser}
 \usage{
 parse_837(text)
+
+index_837(text)
 }
 \arguments{
 \item{text}{\verb{<chr>} string of raw X12-837 text}
@@ -75,5 +78,6 @@ Waystar, Trizetto), with \verb{277CA}, \code{999}, and ultimately \code{835} ret
 }
 }
 \examples{
+purrr::map(hcc::x12_837, index_837)
 purrr::map(hcc::x12_837, parse_837)
 }

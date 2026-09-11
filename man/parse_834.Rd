@@ -2,9 +2,12 @@
 % Please edit documentation in R/parsers.R
 \name{parse_834}
 \alias{parse_834}
+\alias{index_834}
 \title{X12-834 Benefit Enrollment Parser}
 \usage{
 parse_834(text)
+
+index_834(text)
 }
 \arguments{
 \item{text}{\verb{<chr>} string of raw X12-834 text}
@@ -47,5 +50,6 @@ Extracts enrollment and demographic data from 834 transactions with focus on:
 }
 }
 \examples{
+purrr::map(hcc::x12_834, index_834)
 purrr::map(hcc::x12_834, parse_834)
 }

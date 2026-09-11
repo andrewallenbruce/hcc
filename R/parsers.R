@@ -61,6 +61,7 @@ payee_loop_820 <- function(x) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
+#' purrr::map(hcc::x12_820, index_820)
 #' purrr::map(hcc::x12_820, parse_820)
 #' @export
 parse_820 <- function(text) {
@@ -99,11 +100,9 @@ parse_820 <- function(text) {
     collapse::qTBL()
 }
 
-#' @examplesIf FALSE
-#' purrr::map(hcc::x12_820, index_820)
-#' @noRd
+#' @rdname parse_820
+#' @export
 index_820 <- function(text) {
-
   x <- tilde(text)
 
   i <- list(
@@ -128,7 +127,9 @@ index_820 <- function(text) {
   )
 
   if (length(x) != cheapr::unlisted_length(i)) {
-    cli::cli_alert_warning("{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}")
+    cli::cli_alert_warning(
+      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
+    )
   }
   return(i)
 }
@@ -164,10 +165,58 @@ index_820 <- function(text) {
 #' @param text `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examples
+#' purrr::map(hcc::x12_834, index_834)
 #' purrr::map(hcc::x12_834, parse_834)
 #' @export
 parse_834 <- function(text) {
   tilde(text)
+}
+
+#' @rdname parse_834
+#' @export
+index_834 <- function(text) {
+  x <- tilde(text)
+
+  i <- list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BGN = perl(x, "^BGN"),
+    QTY = perl(x, "^QTY"),
+    REF = perl(x, "^REF"),
+    DTP = perl(x, "^DTP"),
+    N1 = perl(x, "^N1"),
+    ACT = perl(x, "^ACT"),
+    INS = perl(x, "^INS"),
+    NM1 = perl(x, "^NM1"),
+    PER = perl(x, "^PER"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    DMG = perl(x, "^DMG"),
+    EC = perl(x, "^EC"),
+    ICM = perl(x, "^ICM"),
+    AMT = perl(x, "^AMT"),
+    HLH = perl(x, "^HLH"),
+    LUI = perl(x, "^LUI"),
+    DSB = perl(x, "^DSB"),
+    IDC = perl(x, "^IDC"),
+    PLA = perl(x, "^PLA"),
+    COB = perl(x, "^COB"),
+    LS = perl(x, "^LS"),
+    LX = perl(x, "^LX"),
+    LE = perl(x, "^LE"),
+    HD = perl(x, "^HD"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+
+  if (length(x) != cheapr::unlisted_length(i)) {
+    cli::cli_alert_warning(
+      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
+    )
+  }
+  return(i)
 }
 
 #' X12-837 Health Care Claim Parser
@@ -214,6 +263,7 @@ parse_834 <- function(text) {
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
+#' purrr::map(hcc::x12_837, index_837)
 #' purrr::map(hcc::x12_837, parse_837)
 #' @export
 parse_837 <- function(text) {
@@ -238,11 +288,9 @@ parse_837 <- function(text) {
   )
 }
 
-#' @examplesIf FALSE
-#' purrr::map(hcc::x12_837, index_837)
-#' @noRd
+#' @rdname parse_837
+#' @export
 index_837 <- function(text) {
-
   x <- tilde(text)
 
   i <- list(
@@ -250,13 +298,13 @@ index_837 <- function(text) {
     GS = perl(x, "^GS"),
     ST = perl(x, "^ST"),
     BPR = perl(x, "^BHT"),
-    NM1 = perl(x, "^NM1"), # 41: Submitter Name | 40: Receiver Name | 85:Billing Provider Name
-    PER = perl(x, "^PER"), # IC: Submitter EDI Contact Information/Receiver EDI Contact Information
-    HL = perl(x, "^HL"), # Hierarchical Level
+    NM1 = perl(x, "^NM1"),
+    PER = perl(x, "^PER"),
+    HL = perl(x, "^HL"),
     N3 = perl(x, "^N3"),
     N4 = perl(x, "^N4"),
     REF = perl(x, "^REF"),
-    SBR = perl(x, "^SBR"), # Subscriber Information
+    SBR = perl(x, "^SBR"),
     DMG = perl(x, "^DMG"),
     CLM = perl(x, "^CLM"),
     HI = perl(x, "^HI"),
@@ -271,7 +319,9 @@ index_837 <- function(text) {
   )
 
   if (length(x) != cheapr::unlisted_length(i)) {
-    cli::cli_alert_warning("{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}")
+    cli::cli_alert_warning(
+      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
+    )
   }
   return(i)
 }
