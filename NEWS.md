@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9038 (2026-09-11)
+
+* added RxHCC model to diagnostics
+
+
 # hcc 0.0.0.9037 (2026-09-10)
 
 * bumped S7 to dev version
