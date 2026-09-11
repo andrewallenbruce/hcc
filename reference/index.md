@@ -38,10 +38,13 @@
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
+  [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 Payment Order/Remittance Advice Parser
 - [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
+  [`index_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
   : X12-834 Benefit Enrollment Parser
 - [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
+  [`index_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837 Health Care Claim Parser
 - [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
   : Demographics-Based Coefficient Prefix

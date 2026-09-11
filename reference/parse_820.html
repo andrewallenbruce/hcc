@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9039</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9040</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,9 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">parse_820</span><span class="op">(</span><span class="va">text</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">parse_820</span><span class="op">(</span><span class="va">text</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">index_820</span><span class="op">(</span><span class="va">text</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -86,7 +88,394 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">index_820</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> <span style="font-style: italic;">input/index</span> lengths differ: <span style="color: #0000BB;">166</span> != <span style="color: #0000BB;">156</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> <span style="font-style: italic;">input/index</span> lengths differ: <span style="color: #0000BB;">1146</span> != <span style="color: #0000BB;">1081</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$N3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$ENT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 13 20 27 34 41 48 55 67 74 81 88 95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 14 21 28 35 42 49 56 68 75 82 89 96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$RMR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 15 22 29 36 43 50 57 62 69 76 83 90 97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$REF18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 16 23 30 37 44 51 58 63 70 77 84 91 98</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$REFZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  17  18  24  25  31  32  38  39  45  46  52  53  59  60  64  65  71  72  78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20]  79  85  86  92  93  99 100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$DTM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  19  26  33  40  47  54  61  66  73  80  87  94 101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 104</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$N3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$ENT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  13  26  39  52  64  77  90  97 110 123 136 144 157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  14  27  40  53  65  78  91  98 111 124 137 145 158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$RMR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  15  20  28  33  41  46  54  59  66  71  79  84  92  99 104 112 117 125 130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 138 146 151 159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$REF18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  16  21  29  34  42  47  55  60  67  72  80  85  93 100 105 113 118 126 131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 139 147 152 160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$REFZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  17  18  22  23  30  31  35  36  43  44  48  49  56  57  61  62  68  69  73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20]  74  81  82  86  87  94  95 101 102 106 107 114 115 119 120 127 128 132 133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 140 141 148 149 153 154 161 162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$DTM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  19  24  32  37  45  50  58  63  70  75  83  88  96 103 108 116 121 129 134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 142 150 155 163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 165</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$N3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$ENT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   13   26   39   46   59   72   79   92   99  112  125  138  151  164  176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16]  189  202  215  228  241  254  267  280  293  306  319  332  345  358  371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31]  384  411  424  437  450  463  476  489  496  509  521  534  547  560  587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46]  600  613  626  639  646  659  666  679  692  705  718  745  758  771  783</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61]  790  797  804  817  824  837  850  867  880  893  906  919  936  949  957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [76]  970  983  996 1009 1022 1035 1048 1055 1062 1075 1082 1089 1096 1103 1110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [91] 1117 1124 1137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   14   27   40   47   60   73   80   93  100  113  126  139  152  165  177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16]  190  203  216  229  242  255  268  281  294  307  320  333  346  359  372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31]  385  412  425  438  451  464  477  490  497  510  522  535  548  561  588</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46]  601  614  627  640  647  660  667  680  693  706  719  746  759  772  784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [61]  791  798  805  818  825  838  851  868  881  894  907  920  937  950  958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [76]  971  984  997 1010 1023 1036 1049 1056 1063 1076 1083 1090 1097 1104 1111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [91] 1118 1125 1138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$RMR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]   15   20   28   33   41   48   53   61   66   74   81   86   94  101  106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16]  114  119  127  132  140  145  153  158  166  171  178  183  191  196  204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31]  209  217  222  230  235  243  248  256  261  269  274  282  287  295  300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46]  308  313  321  326  334  339  347  352  360  365  373  378  386  391  396</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]  401  406  413  418  426  431  439  444  452  457  465  470  478  483  491</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  498  503  511  516  523  528  536  541  549  554  562  567  572  577  582</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91]  589  594  602  607  615  620  628  633  641  648  653  661  668  673  681</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106]  686  694  699  707  712  720  725  730  735  740  747  752  760  765  773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121]  778  785  792  799  806  811  819  826  831  839  844  852  857  862  869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136]  874  882  887  895  900  908  913  921  926  931  938  943  951  959  964</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151]  972  977  985  990  998 1003 1011 1016 1024 1029 1037 1042 1050 1057 1064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] 1069 1077 1084 1091 1098 1105 1112 1119 1126 1131 1139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$REF18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]   16   21   29   34   42   49   54   62   67   75   82   87   95  102  107</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16]  115  120  128  133  141  146  154  159  167  172  179  184  192  197  205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31]  210  218  223  231  236  244  249  257  262  270  275  283  288  296  301</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46]  309  314  322  327  335  340  348  353  361  366  374  379  387  392  397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]  402  407  414  419  427  432  440  445  453  458  466  471  479  484  492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  499  504  512  517  524  529  537  542  550  555  563  568  573  578  583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91]  590  595  603  608  616  621  629  634  642  649  654  662  669  674  682</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106]  687  695  700  708  713  721  726  731  736  741  748  753  761  766  774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121]  779  786  793  800  807  812  820  827  832  840  845  853  858  863  870</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136]  875  883  888  896  901  909  914  922  927  932  939  944  952  960  965</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151]  973  978  986  991  999 1004 1012 1017 1025 1030 1038 1043 1051 1058 1065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] 1070 1078 1085 1092 1099 1106 1113 1120 1127 1132 1140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$REFZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]   17   18   22   23   30   31   35   36   43   44   50   51   55   56   63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16]   64   68   69   76   77   83   84   88   89   96   97  103  104  108  109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31]  116  117  121  122  129  130  134  135  142  143  147  148  155  156  160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46]  161  168  169  173  174  180  181  185  186  193  194  198  199  206  207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]  211  212  219  220  224  225  232  233  237  238  245  246  250  251  258</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  259  263  264  271  272  276  277  284  285  289  290  297  298  302  303</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91]  310  311  315  316  323  324  328  329  336  337  341  342  349  350  354</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106]  355  362  363  367  368  375  376  380  381  388  389  393  394  398  399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121]  403  404  408  409  415  416  420  421  428  429  433  434  441  442  446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136]  447  454  455  459  460  467  468  472  473  480  481  485  486  493  494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151]  500  501  505  506  513  514  518  519  525  526  530  531  538  539  543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166]  544  551  552  556  557  564  565  569  570  574  575  579  580  584  585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181]  591  592  596  597  604  605  609  610  617  618  622  623  630  631  635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [196]  636  643  644  650  651  655  656  663  664  670  671  675  676  683  684</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [211]  688  689  696  697  701  702  709  710  714  715  722  723  727  728  732</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [226]  733  737  738  742  743  749  750  754  755  762  763  767  768  775  776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241]  780  781  787  788  794  795  801  802  808  809  813  814  821  822  828</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [256]  829  833  834  841  842  846  847  854  855  859  860  864  865  871  872</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [271]  876  877  884  885  889  890  897  898  902  903  910  911  915  916  923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [286]  924  928  929  933  934  940  941  945  946  953  954  961  962  966  967</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301]  974  975  979  980  987  988  992  993 1000 1001 1005 1006 1013 1014 1018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [316] 1019 1026 1027 1031 1032 1039 1040 1044 1045 1052 1053 1059 1060 1066 1067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [331] 1071 1072 1079 1080 1086 1087 1093 1094 1100 1101 1107 1108 1114 1115 1121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [346] 1122 1128 1129 1133 1134 1141 1142</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$DTM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]   19   24   32   37   45   52   57   65   70   78   85   90   98  105  110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16]  118  123  131  136  144  149  157  162  170  175  182  187  195  200  208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31]  213  221  226  234  239  247  252  260  265  273  278  286  291  299  304</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46]  312  317  325  330  338  343  351  356  364  369  377  382  390  395  400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]  405  410  417  422  430  435  443  448  456  461  469  474  482  487  495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  502  507  515  520  527  532  540  545  553  558  566  571  576  581  586</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91]  593  598  606  611  619  624  632  637  645  652  657  665  672  677  685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106]  690  698  703  711  716  724  729  734  739  744  751  756  764  769  777</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121]  782  789  796  803  810  815  823  830  835  843  848  856  861  866  873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136]  878  886  891  899  904  912  917  925  930  935  942  947  955  963  968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151]  976  981  989  994 1002 1007 1015 1020 1028 1033 1041 1046 1054 1061 1068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] 1073 1081 1088 1095 1102 1109 1116 1123 1130 1135 1143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$N3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$ENT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 13 20 37 44 51 58 65 72 79 86</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 14 21 38 45 52 59 66 73 80 87</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$RMR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 15 22 27 32 39 46 53 60 67 74 81 88</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$REF18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 16 23 28 33 40 47 54 61 68 75 82 89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$REFZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 17 18 24 25 29 30 34 35 41 42 48 49 55 56 62 63 69 70 76 77 83 84 90 91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$DTM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 19 26 31 36 43 50 57 64 71 78 85 92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$N3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$ENT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  13  20  27  34  41  48  55  62  69  76  88  95 102 109 116 123 135 142 149</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 156 163 170 182 189 201 213 220 227 234 241 248 255 262 269 276 283 290 297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 304 311 323 330 337 364 371 378 390 397 404 416 423 430 437 444 451 458 465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] 472 479 486 493 500 507 514 521 528 540 547 554 561 568 575 582 589 596 603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] 610 617 624 631 638</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  14  21  28  35  42  49  56  63  70  77  89  96 103 110 117 124 136 143 150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 157 164 171 183 190 202 214 221 228 235 242 249 256 263 270 277 284 291 298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 305 312 324 331 338 365 372 379 391 398 405 417 424 431 438 445 452 459 466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] 473 480 487 494 501 508 515 522 529 541 548 555 562 569 576 583 590 597 604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] 611 618 625 632 639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$RMR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  15  22  29  36  43  50  57  64  71  78  83  90  97 104 111 118 125 130 137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 144 151 158 165 172 177 184 191 196 203 208 215 222 229 236 243 250 257 264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 271 278 285 292 299 306 313 318 325 332 339 344 349 354 359 366 373 380 385</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] 392 399 406 411 418 425 432 439 446 453 460 467 474 481 488 495 502 509 516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] 523 530 535 542 549 556 563 570 577 584 591 598 605 612 619 626 633 640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$REF18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  16  23  30  37  44  51  58  65  72  79  84  91  98 105 112 119 126 131 138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 145 152 159 166 173 178 185 192 197 204 209 216 223 230 237 244 251 258 265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 272 279 286 293 300 307 314 319 326 333 340 345 350 355 360 367 374 381 386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] 393 400 407 412 419 426 433 440 447 454 461 468 475 482 489 496 503 510 517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] 524 531 536 543 550 557 564 571 578 585 592 599 606 613 620 627 634 641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$REFZZ</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  17  18  24  25  31  32  38  39  45  46  52  53  59  60  66  67  73  74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19]  80  81  85  86  92  93  99 100 106 107 113 114 120 121 127 128 132 133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] 139 140 146 147 153 154 160 161 167 168 174 175 179 180 186 187 193 194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] 198 199 205 206 210 211 217 218 224 225 231 232 238 239 245 246 252 253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] 259 260 266 267 273 274 280 281 287 288 294 295 301 302 308 309 315 316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 320 321 327 328 334 335 341 342 346 347 351 352 356 357 361 362 368 369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] 375 376 382 383 387 388 394 395 401 402 408 409 413 414 420 421 427 428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] 434 435 441 442 448 449 455 456 462 463 469 470 476 477 483 484 490 491</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] 497 498 504 505 511 512 518 519 525 526 532 533 537 538 544 545 551 552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] 558 559 565 566 572 573 579 580 586 587 593 594 600 601 607 608 614 615</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] 621 622 628 629 635 636 642 643</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$DTM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  19  26  33  40  47  54  61  68  75  82  87  94 101 108 115 122 129 134 141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 148 155 162 169 176 181 188 195 200 207 212 219 226 233 240 247 254 261 268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 275 282 289 296 303 310 317 322 329 336 343 348 353 358 363 370 377 384 389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] 396 403 410 415 422 429 436 443 450 457 464 471 478 485 492 499 506 513 520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [77] 527 534 539 546 553 560 567 574 581 588 595 602 609 616 623 630 637 644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 646</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 647</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 429 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    SEG   PT    VALUE     </span>
