@@ -13,8 +13,8 @@ ServiceLevelData(
   claim_diagnosis_codes = character(0),
   claim_type = character(0),
   provider_specialty = character(0),
-  performing_provider_npi = integer(0),
-  billing_provider_npi = integer(0),
+  performing_provider_npi = character(0),
+  billing_provider_npi = character(0),
   patient_id = character(0),
   facility_type = character(0),
   service_type = character(0),
@@ -23,7 +23,7 @@ ServiceLevelData(
   quantity = integer(0),
   quantity_unit = character(0),
   modifiers = character(0),
-  allowed_amount = numeric(0)
+  allowed_amount = integer(0)
 )
 ```
 
@@ -59,11 +59,11 @@ ServiceLevelData(
 
 - performing_provider_npi:
 
-  `<int>` National Provider Identifier for performing provider
+  `<chr>` National Provider Identifier for performing provider
 
 - billing_provider_npi:
 
-  `<int>` National Provider Identifier for billing provider
+  `<chr>` National Provider Identifier for billing provider
 
 - patient_id:
 
@@ -80,7 +80,7 @@ ServiceLevelData(
 
 - service_date:
 
-  `<Date>` Date service was performed (YYYY-MM-DD)
+  `<chr>` Date service was performed (YYYY-MM-DD)
 
 - place_of_service:
 
@@ -88,7 +88,7 @@ ServiceLevelData(
 
 - quantity:
 
-  `<int>` Number of units provided
+  `<num>` Number of units provided
 
 - quantity_unit:
 
@@ -100,7 +100,7 @@ ServiceLevelData(
 
 - allowed_amount:
 
-  `<dbl>` Allowed amount for the service
+  `<num>` Allowed amount for the service
 
 ## Value
 
@@ -109,24 +109,37 @@ A `<ServiceLevelData>` S7 object
 ## Examples
 
 ``` r
-ServiceLevelData()
+ServiceLevelData(
+  claim_id = "756048Q",
+  procedure_code = c("85025", "93005"),
+  claim_diagnosis_codes = c("3669", "4019", "79431"),
+  claim_type = "837I",
+  provider_specialty = "203BA0200N",
+  billing_provider_npi = "9876540809",
+  patient_id = "030005074A",
+  facility_type = "14",
+  service_date = c("19960911", "19960911"),
+  quantity = c(1L, 3L),
+  quantity_unit = "UN",
+  allowed_amount = 89.93
+)
 #> <hcc::ServiceLevelData>
-#>  @ claim_id               : chr(0) 
-#>  @ procedure_code         : chr(0) 
+#>  @ claim_id               : chr "756048Q"
+#>  @ procedure_code         : chr [1:2] "85025" "93005"
 #>  @ ndc                    : chr(0) 
 #>  @ linked_diagnosis_codes : chr(0) 
-#>  @ claim_diagnosis_codes  : chr(0) 
-#>  @ claim_type             : chr(0) 
-#>  @ provider_specialty     : chr(0) 
-#>  @ performing_provider_npi: int(0) 
-#>  @ billing_provider_npi   : int(0) 
-#>  @ patient_id             : chr(0) 
-#>  @ facility_type          : chr(0) 
+#>  @ claim_diagnosis_codes  : chr [1:3] "3669" "4019" "79431"
+#>  @ claim_type             : chr "837I"
+#>  @ provider_specialty     : chr "203BA0200N"
+#>  @ performing_provider_npi: chr(0) 
+#>  @ billing_provider_npi   : chr "9876540809"
+#>  @ patient_id             : chr "030005074A"
+#>  @ facility_type          : chr "14"
 #>  @ service_type           : chr(0) 
-#>  @ service_date           : chr(0) 
+#>  @ service_date           : chr [1:2] "19960911" "19960911"
 #>  @ place_of_service       : chr(0) 
-#>  @ quantity               : int(0) 
-#>  @ quantity_unit          : chr(0) 
+#>  @ quantity               : int [1:2] 1 3
+#>  @ quantity_unit          : chr "UN"
 #>  @ modifiers              : chr(0) 
-#>  @ allowed_amount         : num(0) 
+#>  @ allowed_amount         : num 89.9
 ```

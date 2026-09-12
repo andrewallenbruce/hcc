@@ -53,8 +53,8 @@
 <span>  claim_diagnosis_codes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  claim_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  provider_specialty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  performing_provider_npi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  billing_provider_npi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  performing_provider_npi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  billing_provider_npi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  patient_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  facility_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  service_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
@@ -63,7 +63,7 @@
 <span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  quantity_unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  modifiers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  allowed_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  allowed_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -102,12 +102,12 @@ service</p></dd>
 
 
 <dt id="arg-performing-provider-npi">performing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-performing-provider-npi"></a></dt>
-<dd><p><code>&lt;int&gt;</code> National Provider Identifier for
+<dd><p><code>&lt;chr&gt;</code> National Provider Identifier for
 performing provider</p></dd>
 
 
 <dt id="arg-billing-provider-npi">billing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-billing-provider-npi"></a></dt>
-<dd><p><code>&lt;int&gt;</code> National Provider Identifier for billing
+<dd><p><code>&lt;chr&gt;</code> National Provider Identifier for billing
 provider</p></dd>
 
 
@@ -125,7 +125,7 @@ type = Type of Bill)</p></dd>
 
 
 <dt id="arg-service-date">service_date<a class="anchor" aria-label="anchor" href="#arg-service-date"></a></dt>
-<dd><p><code>&lt;Date&gt;</code> Date service was performed (YYYY-MM-DD)</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Date service was performed (YYYY-MM-DD)</p></dd>
 
 
 <dt id="arg-place-of-service">place_of_service<a class="anchor" aria-label="anchor" href="#arg-place-of-service"></a></dt>
@@ -133,7 +133,7 @@ type = Type of Bill)</p></dd>
 
 
 <dt id="arg-quantity">quantity<a class="anchor" aria-label="anchor" href="#arg-quantity"></a></dt>
-<dd><p><code>&lt;int&gt;</code> Number of units provided</p></dd>
+<dd><p><code>&lt;num&gt;</code> Number of units provided</p></dd>
 
 
 <dt id="arg-quantity-unit">quantity_unit<a class="anchor" aria-label="anchor" href="#arg-quantity-unit"></a></dt>
@@ -145,7 +145,7 @@ type = Type of Bill)</p></dd>
 
 
 <dt id="arg-allowed-amount">allowed_amount<a class="anchor" aria-label="anchor" href="#arg-allowed-amount"></a></dt>
-<dd><p><code>&lt;dbl&gt;</code> Allowed amount for the service</p></dd>
+<dd><p><code>&lt;num&gt;</code> Allowed amount for the service</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -155,26 +155,39 @@ type = Type of Bill)</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ServiceLevelData</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ServiceLevelData</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  claim_id <span class="op">=</span> <span class="st">"756048Q"</span>,</span></span>
+<span class="r-in"><span>  procedure_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"85025"</span>, <span class="st">"93005"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  claim_diagnosis_codes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"3669"</span>, <span class="st">"4019"</span>, <span class="st">"79431"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  claim_type <span class="op">=</span> <span class="st">"837I"</span>,</span></span>
+<span class="r-in"><span>  provider_specialty <span class="op">=</span> <span class="st">"203BA0200N"</span>,</span></span>
+<span class="r-in"><span>  billing_provider_npi <span class="op">=</span> <span class="st">"9876540809"</span>,</span></span>
+<span class="r-in"><span>  patient_id <span class="op">=</span> <span class="st">"030005074A"</span>,</span></span>
+<span class="r-in"><span>  facility_type <span class="op">=</span> <span class="st">"14"</span>,</span></span>
+<span class="r-in"><span>  service_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"19960911"</span>, <span class="st">"19960911"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  quantity_unit <span class="op">=</span> <span class="st">"UN"</span>,</span></span>
+<span class="r-in"><span>  allowed_amount <span class="op">=</span> <span class="fl">89.93</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::ServiceLevelData&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_id               : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ procedure_code         : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_id               : chr "756048Q"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ procedure_code         : chr [1:2] "85025" "93005"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ ndc                    : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ linked_diagnosis_codes : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_diagnosis_codes  : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_type             : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ provider_specialty     : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ performing_provider_npi: int(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ billing_provider_npi   : int(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ patient_id             : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ facility_type          : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_diagnosis_codes  : chr [1:3] "3669" "4019" "79431"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ claim_type             : chr "837I"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ provider_specialty     : chr "203BA0200N"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ performing_provider_npi: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ billing_provider_npi   : chr "9876540809"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ patient_id             : chr "030005074A"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ facility_type          : chr "14"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ service_type           : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ service_date           : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ service_date           : chr [1:2] "19960911" "19960911"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ place_of_service       : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity               : int(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity_unit          : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity               : int [1:2] 1 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ quantity_unit          : chr "UN"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ modifiers              : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ allowed_amount         : num(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ allowed_amount         : num 89.9</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
