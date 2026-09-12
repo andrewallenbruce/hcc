@@ -183,4 +183,5 @@ format.x12_index <- function(x, ...) {
 #' @export
 print.x12_index <- function(x, ...) {
   format(x, ...)
+  invisible(x)
 }

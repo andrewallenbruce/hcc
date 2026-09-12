@@ -12,8 +12,8 @@ ServiceLevelData(
   claim_diagnosis_codes = character(0),
   claim_type = character(0),
   provider_specialty = character(0),
-  performing_provider_npi = integer(0),
-  billing_provider_npi = integer(0),
+  performing_provider_npi = character(0),
+  billing_provider_npi = character(0),
   patient_id = character(0),
   facility_type = character(0),
   service_type = character(0),
@@ -22,7 +22,7 @@ ServiceLevelData(
   quantity = integer(0),
   quantity_unit = character(0),
   modifiers = character(0),
-  allowed_amount = numeric(0)
+  allowed_amount = integer(0)
 )
 }
 \arguments{
@@ -42,10 +42,10 @@ service}
 
 \item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
 
-\item{performing_provider_npi}{\verb{<int>} National Provider Identifier for
+\item{performing_provider_npi}{\verb{<chr>} National Provider Identifier for
 performing provider}
 
-\item{billing_provider_npi}{\verb{<int>} National Provider Identifier for billing
+\item{billing_provider_npi}{\verb{<chr>} National Provider Identifier for billing
 provider}
 
 \item{patient_id}{\verb{<chr>} Unique identifier for the patient}
@@ -55,17 +55,17 @@ provider}
 \item{service_type}{\verb{<chr>} Type of service provided (facility type + service
 type = Type of Bill)}
 
-\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
+\item{service_date}{\verb{<chr>} Date service was performed (YYYY-MM-DD)}
 
 \item{place_of_service}{\verb{<chr>} Place of service code}
 
-\item{quantity}{\verb{<int>} Number of units provided}
+\item{quantity}{\verb{<num>} Number of units provided}
 
 \item{quantity_unit}{\verb{<chr>} Unit of measure for quantity}
 
 \item{modifiers}{\verb{<chr>} List of procedure code modifiers}
 
-\item{allowed_amount}{\verb{<dbl>} Allowed amount for the service}
+\item{allowed_amount}{\verb{<num>} Allowed amount for the service}
 }
 \value{
 A \verb{<ServiceLevelData>} S7 object
@@ -74,5 +74,18 @@ A \verb{<ServiceLevelData>} S7 object
 Healthcare Claim Service Level Data
 }
 \examples{
-ServiceLevelData()
+ServiceLevelData(
+  claim_id = "756048Q",
+  procedure_code = c("85025", "93005"),
+  claim_diagnosis_codes = c("3669", "4019", "79431"),
+  claim_type = "837I",
+  provider_specialty = "203BA0200N",
+  billing_provider_npi = "9876540809",
+  patient_id = "030005074A",
+  facility_type = "14",
+  service_date = c("19960911", "19960911"),
+  quantity = c(1L, 3L),
+  quantity_unit = "UN",
+  allowed_amount = 89.93
+)
 }

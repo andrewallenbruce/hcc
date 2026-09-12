@@ -146,23 +146,36 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param claim_type `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I,
 #'   837P)
 #' @param provider_specialty `<chr>` Provider taxonomy or specialty code
-#' @param performing_provider_npi `<int>` National Provider Identifier for
+#' @param performing_provider_npi `<chr>` National Provider Identifier for
 #'   performing provider
-#' @param billing_provider_npi `<int>` National Provider Identifier for billing
+#' @param billing_provider_npi `<chr>` National Provider Identifier for billing
 #'   provider
 #' @param patient_id `<chr>` Unique identifier for the patient
 #' @param facility_type `<chr>` Type of facility where service was rendered
 #' @param service_type `<chr>` Type of service provided (facility type + service
 #'   type = Type of Bill)
-#' @param service_date `<Date>` Date service was performed (YYYY-MM-DD)
+#' @param service_date `<chr>` Date service was performed (YYYY-MM-DD)
 #' @param place_of_service `<chr>` Place of service code
-#' @param quantity `<int>` Number of units provided
+#' @param quantity `<num>` Number of units provided
 #' @param quantity_unit `<chr>` Unit of measure for quantity
 #' @param modifiers `<chr>` List of procedure code modifiers
-#' @param allowed_amount `<dbl>` Allowed amount for the service
+#' @param allowed_amount `<num>` Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
 #' @examples
-#' ServiceLevelData()
+#' ServiceLevelData(
+#'   claim_id = "756048Q",
+#'   procedure_code = c("85025", "93005"),
+#'   claim_diagnosis_codes = c("3669", "4019", "79431"),
+#'   claim_type = "837I",
+#'   provider_specialty = "203BA0200N",
+#'   billing_provider_npi = "9876540809",
+#'   patient_id = "030005074A",
+#'   facility_type = "14",
+#'   service_date = c("19960911", "19960911"),
+#'   quantity = c(1L, 3L),
+#'   quantity_unit = "UN",
+#'   allowed_amount = 89.93
+#' )
 #' @export
 ServiceLevelData <- S7::new_class(
   "ServiceLevelData",
@@ -174,17 +187,17 @@ ServiceLevelData <- S7::new_class(
     claim_diagnosis_codes = S7::class_character,
     claim_type = S7::class_character,
     provider_specialty = S7::class_character,
-    performing_provider_npi = S7::class_integer,
-    billing_provider_npi = S7::class_integer,
+    performing_provider_npi = S7::class_character,
+    billing_provider_npi = S7::class_character,
     patient_id = S7::class_character,
     facility_type = S7::class_character,
     service_type = S7::class_character,
     service_date = S7::class_character,
     place_of_service = S7::class_character,
-    quantity = S7::class_integer,
+    quantity = S7::class_numeric,
     quantity_unit = S7::class_character,
     modifiers = S7::class_character,
-    allowed_amount = S7::class_double
+    allowed_amount = S7::class_numeric
   )
 )
 
