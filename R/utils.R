@@ -29,6 +29,11 @@ any_ <- function(x) {
 }
 
 #' @noRd
+all_ <- function(x) {
+  collapse::allv(x, TRUE)
+}
+
+#' @noRd
 normalize_ <- function(x) {
   toupper(
     gsub(

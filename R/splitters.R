@@ -39,8 +39,16 @@ post_split <- function(x) {
 }
 
 #' @noRd
+rm_newline <- function(x) {
+  if (all_(!grepl("\n", x, fixed = TRUE))) {
+    return(x)
+  }
+  gsub("\n", "", x, fixed = TRUE)
+}
+
+#' @noRd
 tilde <- function(x) {
-  strsplit(x, "~", fixed = TRUE)[[1]]
+  strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
 }
 
 #' @noRd
@@ -83,16 +91,96 @@ x12_837_subtype <- function(x) {
 }
 
 #' @examplesIf FALSE
-#' x12_type(c(x12_820, x12_834, x12_837))
+#' x12_type(x = c(x12_820, x12_834, x12_837))
 #' @noRd
 x12_type <- function(x) {
+  x <- rm_newline(x)
+
+  if (length(x) == 1L) {
+    x <- strsplit(x, "~", fixed = TRUE)[[1]]
+    x <- strsplit(.subset(x, 3L), "*", fixed = TRUE)[[1]]
+    if (x[2] == "837") {
+      return(x12_837_subtype(x[4]))
+    }
+    return(x[2])
+  }
+
   x <- strsplit(unlist_(x), "~", fixed = TRUE)
   x <- strsplit(unlist_elem(x, 3L), "*", fixed = TRUE)
-  x <- list(ST01 = unlist_elem(x, 2L), ST03 = unlist_elem(x, 4L))
+  st01 <- unlist_elem(x, 2L)
+  st03 <- unlist_elem(x, 4L)
 
-  if (collapse::anyv(x$ST01, "837")) {
-    i <- collapse::whichv(x$ST01, "837")
-    collapse::setv(x$ST01, i, x12_837_subtype(x$ST03[i]))
+  if (collapse::anyv(st01, "837")) {
+    i <- collapse::whichv(st01, "837")
+    collapse::setv(st01, i, x12_837_subtype(st03[i]))
   }
-  x
+  st01
+}
+
+#' @noRd
+parse_problems <- function(x, i) {
+  if (length(x) != cheapr::unlisted_length(i)) {
+    return(cheapr::setdiff_(seq_along(x), unlist_(i)))
+  }
+  return(integer(0L))
+}
+
+#' @noRd
+new_x12_index <- function(i, x, text) {
+  z <- collapse::whichv(collapse::vlengths(i, FALSE), 0L, TRUE)
+  i <- cheapr::sset(i, z)
+
+  cheapr::attrs_add(
+    i,
+    characters = nchar(text),
+    segments = collapse::vlengths(i),
+    problems = parse_problems(x, i),
+    text = x,
+    type = x12_type(text),
+    class = "x12_index"
+  )
+}
+
+#' @export
+format.x12_index <- function(x, ...) {
+  a <- attributes(x)
+  cat(paste0("<", a$class, ">"), sep = "\n")
+
+  cat(" ", sep = "\n")
+
+  cat(
+    paste0(
+      format(
+        c("Type", "Characters", "Segments", "Problems"),
+        justify = "right"
+      ),
+      ": ",
+      format(
+        c(
+          paste0("X12-", a$type),
+          a$characters,
+          sum(unname(a$segments)),
+          length(a$problems)
+        ),
+        justify = "left"
+      )
+    ),
+    sep = "\n"
+  )
+
+  cat(" ", sep = "\n")
+
+  cat(
+    paste0(
+      format(names(a$segments), justify = "right"),
+      ": ",
+      format(unname(a$segments), justify = "left")
+    ),
+    sep = "\n"
+  )
+}
+
+#' @export
+print.x12_index <- function(x, ...) {
+  format(x, ...)
 }

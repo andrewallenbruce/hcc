@@ -111,15 +111,15 @@ index_820 <- function(text) {
     ST = perl(x, "^ST"),
     BPR = perl(x, "^BPR"),
     TRN = perl(x, "^TRN"),
-    REF14 = perl(x, "^REF\\*14"),
+    `REF*14` = perl(x, r"(REF\*14)"),
     N1 = perl(x, "^N1"),
     N3 = perl(x, "^N3"),
     N4 = perl(x, "^N4"),
     ENT = perl(x, "^ENT"),
     NM1 = perl(x, "^NM1"),
     RMR = perl(x, "^RMR"),
-    REF18 = perl(x, "^REF\\*18"),
-    REFZZ = perl(x, "^REF\\*ZZ"),
+    `REF*18` = perl(x, r"(^REF\*18)"),
+    `REF*ZZ` = perl(x, r"(^REF\*ZZ)"),
     DTM = perl(x, "^DTM"),
     ADX = perl(x, "^ADX"),
     SE = perl(x, "^SE"),
@@ -127,48 +127,7 @@ index_820 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  if (length(x) != cheapr::unlisted_length(i)) {
-    cli::cli_alert_warning(
-      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
-    )
-    cheapr::attrs_add(
-      i,
-      problems = vctrs::vec_set_difference(
-        length(x),
-        sort(unlist_(i))
-      ),
-      .set = TRUE
-    )
-  }
-  cheapr::attrs_add(
-    i,
-    characters = nchar(text),
-    segments = collapse::vlengths(i),
-    text = x,
-    class = "x12_820"
-  )
-}
-
-#' @export
-format.x12_820 <- function(x, ...) {
-  s <- attr(x, "segments")
-  cat(
-    paste0("<x12_820[", attr(x, "characters"), "//", sum(unname(s)), "]>"),
-    sep = "\n"
-  )
-  cat(
-    paste0(
-      format(names(s), justify = "right"),
-      ": ",
-      format(unname(s), justify = "left")
-    ),
-    sep = "\n"
-  )
-}
-
-#' @export
-print.x12_820 <- function(x, ...) {
-  format(x, ...)
+  new_x12_index(i, x, text)
 }
 
 #' X12-834 Benefit Enrollment Parser
@@ -248,12 +207,7 @@ index_834 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  if (length(x) != cheapr::unlisted_length(i)) {
-    cli::cli_alert_warning(
-      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
-    )
-  }
-  return(i)
+  new_x12_index(i, x, text)
 }
 
 #' X12-837 Health Care Claim Parser
@@ -372,10 +326,5 @@ index_837 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  if (length(x) != cheapr::unlisted_length(i)) {
-    cli::cli_alert_warning(
-      "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
-    )
-  }
-  return(i)
+  new_x12_index(i, x, text)
 }
