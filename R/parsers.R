@@ -121,6 +121,7 @@ index_820 <- function(text) {
     REF18 = perl(x, "^REF\\*18"),
     REFZZ = perl(x, "^REF\\*ZZ"),
     DTM = perl(x, "^DTM"),
+    ADX = perl(x, "^ADX"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")
@@ -130,8 +131,44 @@ index_820 <- function(text) {
     cli::cli_alert_warning(
       "{.emph input/index} lengths differ: {.pkg {length(x)}} != {.val {cheapr::unlisted_length(i)}}"
     )
+    cheapr::attrs_add(
+      i,
+      problems = vctrs::vec_set_difference(
+        length(x),
+        sort(unlist_(i))
+      ),
+      .set = TRUE
+    )
   }
-  return(i)
+  cheapr::attrs_add(
+    i,
+    characters = nchar(text),
+    segments = collapse::vlengths(i),
+    text = x,
+    class = "x12_820"
+  )
+}
+
+#' @export
+format.x12_820 <- function(x, ...) {
+  s <- attr(x, "segments")
+  cat(
+    paste0("<x12_820[", attr(x, "characters"), "//", sum(unname(s)), "]>"),
+    sep = "\n"
+  )
+  cat(
+    paste0(
+      format(names(s), justify = "right"),
+      ": ",
+      format(unname(s), justify = "left")
+    ),
+    sep = "\n"
+  )
+}
+
+#' @export
+print.x12_820 <- function(x, ...) {
+  format(x, ...)
 }
 
 #' X12-834 Benefit Enrollment Parser
@@ -305,12 +342,29 @@ index_837 <- function(text) {
     N4 = perl(x, "^N4"),
     REF = perl(x, "^REF"),
     SBR = perl(x, "^SBR"),
+    PAT = perl(x, "^PAT"),
+    PWK = perl(x, "^PWK"),
+    AMT = perl(x, "^AMT"),
+    CN1 = perl(x, "^CN1"),
+    K3 = perl(x, "^K3"),
+    NTE = perl(x, "^NTE"),
+    CR1 = perl(x, "^CR1"),
+    CR2 = perl(x, "^CR2"),
+    CR3 = perl(x, "^CR3"),
+    CRC = perl(x, "^CRC"),
+    HCP = perl(x, "^HCP"),
     DMG = perl(x, "^DMG"),
+    CAS = perl(x, "^CAS"),
+    OI = perl(x, "^OI"),
+    MOA = perl(x, "^MOA"),
+    MEA = perl(x, "^MEA"),
     CLM = perl(x, "^CLM"),
     HI = perl(x, "^HI"),
     PRV = perl(x, "^PRV"),
     LX = perl(x, "^LX"),
     SV1 = perl(x, "^SV1"),
+    SV2 = perl(x, "^SV2"),
+    SV5 = perl(x, "^SV5"),
     DTP = perl(x, "^DTP"),
     SE = perl(x, "^SE"),
     NTE = perl(x, "^NTE"),

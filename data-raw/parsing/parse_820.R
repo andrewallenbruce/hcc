@@ -66,16 +66,6 @@ dict_820 = list(
     `01` = "Trace Type Code", # 1 = Current Transaction Trace, 3 = Financial Reassociation Trace Number
     `02` = "Check or EFT Trace Number"
   ),
-  # REF Variants:
-  # 1. 14 (Master Account Number), Premium Receiver Reference Identifier
-  # 4. 18 (Plan Number), Exchange Assigned Employer Group Identifier
-  # 2. 38 (Master Policy Number), Exchange Assigned Qualified Health Plan Identifier
-  # 5. 1L (Group or Policy Number), Issuer Assigned Employer Group Identifier
-  # 3. TV (Line of Business), Issuer Assigned Qualified Health Plan Identifier
-  # 2F (Consolidated Invoice Number)
-  # 17 (Client Reporting Category)
-  # 72 (Schedule Reference Number)
-  # LB (Lockbox)
   REF = list(
     `01` = "Reference Identification Qualifier",
     `02` = "Exchange Assigned Qualified Health Plan Identifier"
