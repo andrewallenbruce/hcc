@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9041 (2026-09-12)
+
+- class `x12_index`
+
 ## hcc 0.0.0.9040 (2026-09-11)
 
 - exported indexers

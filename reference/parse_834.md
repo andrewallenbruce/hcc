@@ -65,670 +65,191 @@ focus on:
 ``` r
 purrr::map(hcc::x12_834, index_834)
 #> $minimal_820
-#> $minimal_820$ISA
-#> [1] 1
-#> 
-#> $minimal_820$GS
-#> [1] 2
-#> 
-#> $minimal_820$ST
-#> [1] 3
-#> 
-#> $minimal_820$BGN
-#> [1] 4
-#> 
-#> $minimal_820$QTY
-#> integer(0)
-#> 
-#> $minimal_820$REF
-#> [1] 8 9
-#> 
-#> $minimal_820$DTP
-#> [1] 10 14
-#> 
-#> $minimal_820$N1
-#> [1] 5 6
-#> 
-#> $minimal_820$ACT
-#> integer(0)
-#> 
-#> $minimal_820$INS
-#> [1] 7
-#> 
-#> $minimal_820$NM1
-#> [1] 11
-#> 
-#> $minimal_820$PER
-#> integer(0)
-#> 
-#> $minimal_820$N3
-#> integer(0)
-#> 
-#> $minimal_820$N4
-#> integer(0)
-#> 
-#> $minimal_820$DMG
-#> [1] 12
-#> 
-#> $minimal_820$EC
-#> integer(0)
-#> 
-#> $minimal_820$ICM
-#> integer(0)
-#> 
-#> $minimal_820$AMT
-#> integer(0)
-#> 
-#> $minimal_820$HLH
-#> integer(0)
-#> 
-#> $minimal_820$LUI
-#> integer(0)
-#> 
-#> $minimal_820$DSB
-#> integer(0)
-#> 
-#> $minimal_820$IDC
-#> integer(0)
-#> 
-#> $minimal_820$PLA
-#> integer(0)
-#> 
-#> $minimal_820$COB
-#> integer(0)
-#> 
-#> $minimal_820$LS
-#> integer(0)
-#> 
-#> $minimal_820$LX
-#> integer(0)
-#> 
-#> $minimal_820$LE
-#> integer(0)
-#> 
-#> $minimal_820$HD
-#> [1] 13
-#> 
-#> $minimal_820$SE
-#> [1] 15
-#> 
-#> $minimal_820$GE
-#> [1] 16
-#> 
-#> $minimal_820$IEA
-#> [1] 17
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 502    
+#>   Segments: 17     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 2
+#> DTP: 2
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#> DMG: 1
+#>  HD: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_834_01
-#> $sample_834_01$ISA
-#> [1] 1
-#> 
-#> $sample_834_01$GS
-#> [1] 2
-#> 
-#> $sample_834_01$ST
-#> [1] 3
-#> 
-#> $sample_834_01$BGN
-#> [1] 4
-#> 
-#> $sample_834_01$QTY
-#> integer(0)
-#> 
-#> $sample_834_01$REF
-#>  [1]  5 10 11 12 13 24 25 26 27 37 38 39 40 52 53 61 62
-#> 
-#> $sample_834_01$DTP
-#>  [1]  6 20 22 33 35 46 47 49 50 59 68
-#> 
-#> $sample_834_01$N1
-#> [1] 7 8
-#> 
-#> $sample_834_01$ACT
-#> integer(0)
-#> 
-#> $sample_834_01$INS
-#> [1]  9 23 36 51 60
-#> 
-#> $sample_834_01$NM1
-#> [1] 14 28 41 54 63
-#> 
-#> $sample_834_01$PER
-#> [1] 15
-#> 
-#> $sample_834_01$N3
-#> [1] 16 29 42 55 64
-#> 
-#> $sample_834_01$N4
-#> [1] 17 30 43 56 65
-#> 
-#> $sample_834_01$DMG
-#> [1] 18 31 44 57 66
-#> 
-#> $sample_834_01$EC
-#> integer(0)
-#> 
-#> $sample_834_01$ICM
-#> integer(0)
-#> 
-#> $sample_834_01$AMT
-#> integer(0)
-#> 
-#> $sample_834_01$HLH
-#> integer(0)
-#> 
-#> $sample_834_01$LUI
-#> integer(0)
-#> 
-#> $sample_834_01$DSB
-#> integer(0)
-#> 
-#> $sample_834_01$IDC
-#> integer(0)
-#> 
-#> $sample_834_01$PLA
-#> integer(0)
-#> 
-#> $sample_834_01$COB
-#> integer(0)
-#> 
-#> $sample_834_01$LS
-#> integer(0)
-#> 
-#> $sample_834_01$LX
-#> integer(0)
-#> 
-#> $sample_834_01$LE
-#> integer(0)
-#> 
-#> $sample_834_01$HD
-#> [1] 19 21 32 34 45 48 58 67
-#> 
-#> $sample_834_01$SE
-#> [1] 69
-#> 
-#> $sample_834_01$GE
-#> [1] 70
-#> 
-#> $sample_834_01$IEA
-#> [1] 71
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 1769   
+#>   Segments: 71     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> REF: 17
+#> DTP: 11
+#>  N1:  2
+#> INS:  5
+#> NM1:  5
+#> PER:  1
+#>  N3:  5
+#>  N4:  5
+#> DMG:  5
+#>  HD:  8
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_834_02
-#> $sample_834_02$ISA
-#> [1] 1
-#> 
-#> $sample_834_02$GS
-#> [1] 2
-#> 
-#> $sample_834_02$ST
-#> [1] 3
-#> 
-#> $sample_834_02$BGN
-#> [1] 4
-#> 
-#> $sample_834_02$QTY
-#> [1] 5
-#> 
-#> $sample_834_02$REF
-#>  [1]  9 10 11 12 13 14 15 25 26 27 28 29 30
-#> 
-#> $sample_834_02$DTP
-#> [1] 23 24
-#> 
-#> $sample_834_02$N1
-#> [1] 6 7
-#> 
-#> $sample_834_02$ACT
-#> integer(0)
-#> 
-#> $sample_834_02$INS
-#> [1] 8
-#> 
-#> $sample_834_02$NM1
-#> [1] 16
-#> 
-#> $sample_834_02$PER
-#> [1] 17
-#> 
-#> $sample_834_02$N3
-#> [1] 18
-#> 
-#> $sample_834_02$N4
-#> [1] 19
-#> 
-#> $sample_834_02$DMG
-#> [1] 20
-#> 
-#> $sample_834_02$EC
-#> integer(0)
-#> 
-#> $sample_834_02$ICM
-#> integer(0)
-#> 
-#> $sample_834_02$AMT
-#> integer(0)
-#> 
-#> $sample_834_02$HLH
-#> integer(0)
-#> 
-#> $sample_834_02$LUI
-#> [1] 21
-#> 
-#> $sample_834_02$DSB
-#> integer(0)
-#> 
-#> $sample_834_02$IDC
-#> integer(0)
-#> 
-#> $sample_834_02$PLA
-#> integer(0)
-#> 
-#> $sample_834_02$COB
-#> integer(0)
-#> 
-#> $sample_834_02$LS
-#> integer(0)
-#> 
-#> $sample_834_02$LX
-#> integer(0)
-#> 
-#> $sample_834_02$LE
-#> integer(0)
-#> 
-#> $sample_834_02$HD
-#> [1] 22
-#> 
-#> $sample_834_02$SE
-#> [1] 31
-#> 
-#> $sample_834_02$GE
-#> [1] 32
-#> 
-#> $sample_834_02$IEA
-#> [1] 33
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 925    
+#>   Segments: 33     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> QTY:  1
+#> REF: 13
+#> DTP:  2
+#>  N1:  2
+#> INS:  1
+#> NM1:  1
+#> PER:  1
+#>  N3:  1
+#>  N4:  1
+#> DMG:  1
+#> LUI:  1
+#>  HD:  1
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_834_03
-#> $sample_834_03$ISA
-#> [1] 1
-#> 
-#> $sample_834_03$GS
-#> [1] 2
-#> 
-#> $sample_834_03$ST
-#> [1] 3
-#> 
-#> $sample_834_03$BGN
-#> [1] 4
-#> 
-#> $sample_834_03$QTY
-#> [1] 5
-#> 
-#> $sample_834_03$REF
-#>  [1]  9 10 11 12 13 14 15 16 17 18 28 29 30 31 32 33
-#> 
-#> $sample_834_03$DTP
-#> [1] 26 27
-#> 
-#> $sample_834_03$N1
-#> [1] 6 7
-#> 
-#> $sample_834_03$ACT
-#> integer(0)
-#> 
-#> $sample_834_03$INS
-#> [1] 8
-#> 
-#> $sample_834_03$NM1
-#> [1] 19
-#> 
-#> $sample_834_03$PER
-#> [1] 20
-#> 
-#> $sample_834_03$N3
-#> [1] 21
-#> 
-#> $sample_834_03$N4
-#> [1] 22
-#> 
-#> $sample_834_03$DMG
-#> [1] 23
-#> 
-#> $sample_834_03$EC
-#> integer(0)
-#> 
-#> $sample_834_03$ICM
-#> integer(0)
-#> 
-#> $sample_834_03$AMT
-#> integer(0)
-#> 
-#> $sample_834_03$HLH
-#> integer(0)
-#> 
-#> $sample_834_03$LUI
-#> [1] 24
-#> 
-#> $sample_834_03$DSB
-#> integer(0)
-#> 
-#> $sample_834_03$IDC
-#> integer(0)
-#> 
-#> $sample_834_03$PLA
-#> integer(0)
-#> 
-#> $sample_834_03$COB
-#> integer(0)
-#> 
-#> $sample_834_03$LS
-#> integer(0)
-#> 
-#> $sample_834_03$LX
-#> integer(0)
-#> 
-#> $sample_834_03$LE
-#> integer(0)
-#> 
-#> $sample_834_03$HD
-#> [1] 25
-#> 
-#> $sample_834_03$SE
-#> [1] 34
-#> 
-#> $sample_834_03$GE
-#> [1] 35
-#> 
-#> $sample_834_03$IEA
-#> [1] 36
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 998    
+#>   Segments: 36     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> QTY:  1
+#> REF: 16
+#> DTP:  2
+#>  N1:  2
+#> INS:  1
+#> NM1:  1
+#> PER:  1
+#>  N3:  1
+#>  N4:  1
+#> DMG:  1
+#> LUI:  1
+#>  HD:  1
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_834_04
-#> $sample_834_04$ISA
-#> [1] 1
-#> 
-#> $sample_834_04$GS
-#> [1] 2
-#> 
-#> $sample_834_04$ST
-#> [1] 3
-#> 
-#> $sample_834_04$BGN
-#> [1] 4
-#> 
-#> $sample_834_04$QTY
-#> [1] 5
-#> 
-#> $sample_834_04$REF
-#>  [1]  9 10 11 12 13 14 15 16 17 18 27 28 29 30 31 32
-#> 
-#> $sample_834_04$DTP
-#> [1] 25 26
-#> 
-#> $sample_834_04$N1
-#> [1] 6 7
-#> 
-#> $sample_834_04$ACT
-#> integer(0)
-#> 
-#> $sample_834_04$INS
-#> [1] 8
-#> 
-#> $sample_834_04$NM1
-#> [1] 19
-#> 
-#> $sample_834_04$PER
-#> [1] 20
-#> 
-#> $sample_834_04$N3
-#> [1] 21
-#> 
-#> $sample_834_04$N4
-#> [1] 22
-#> 
-#> $sample_834_04$DMG
-#> [1] 23
-#> 
-#> $sample_834_04$EC
-#> integer(0)
-#> 
-#> $sample_834_04$ICM
-#> integer(0)
-#> 
-#> $sample_834_04$AMT
-#> integer(0)
-#> 
-#> $sample_834_04$HLH
-#> integer(0)
-#> 
-#> $sample_834_04$LUI
-#> integer(0)
-#> 
-#> $sample_834_04$DSB
-#> integer(0)
-#> 
-#> $sample_834_04$IDC
-#> integer(0)
-#> 
-#> $sample_834_04$PLA
-#> integer(0)
-#> 
-#> $sample_834_04$COB
-#> integer(0)
-#> 
-#> $sample_834_04$LS
-#> integer(0)
-#> 
-#> $sample_834_04$LX
-#> integer(0)
-#> 
-#> $sample_834_04$LE
-#> integer(0)
-#> 
-#> $sample_834_04$HD
-#> [1] 24
-#> 
-#> $sample_834_04$SE
-#> [1] 33
-#> 
-#> $sample_834_04$GE
-#> [1] 34
-#> 
-#> $sample_834_04$IEA
-#> [1] 35
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 990    
+#>   Segments: 35     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> QTY:  1
+#> REF: 16
+#> DTP:  2
+#>  N1:  2
+#> INS:  1
+#> NM1:  1
+#> PER:  1
+#>  N3:  1
+#>  N4:  1
+#> DMG:  1
+#>  HD:  1
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_834_05
-#> $sample_834_05$ISA
-#> [1] 1
-#> 
-#> $sample_834_05$GS
-#> [1] 2
-#> 
-#> $sample_834_05$ST
-#> [1] 3
-#> 
-#> $sample_834_05$BGN
-#> [1] 4
-#> 
-#> $sample_834_05$QTY
-#> [1] 5
-#> 
-#> $sample_834_05$REF
-#>  [1]  9 10 11 12 13 14 15 16 17 18 28 29 30 31 32
-#> 
-#> $sample_834_05$DTP
-#> [1] 25 26
-#> 
-#> $sample_834_05$N1
-#> [1] 6 7
-#> 
-#> $sample_834_05$ACT
-#> integer(0)
-#> 
-#> $sample_834_05$INS
-#> [1] 8
-#> 
-#> $sample_834_05$NM1
-#> [1] 19
-#> 
-#> $sample_834_05$PER
-#> [1] 20
-#> 
-#> $sample_834_05$N3
-#> [1] 21
-#> 
-#> $sample_834_05$N4
-#> [1] 22
-#> 
-#> $sample_834_05$DMG
-#> [1] 23
-#> 
-#> $sample_834_05$EC
-#> integer(0)
-#> 
-#> $sample_834_05$ICM
-#> integer(0)
-#> 
-#> $sample_834_05$AMT
-#> [1] 27
-#> 
-#> $sample_834_05$HLH
-#> integer(0)
-#> 
-#> $sample_834_05$LUI
-#> integer(0)
-#> 
-#> $sample_834_05$DSB
-#> integer(0)
-#> 
-#> $sample_834_05$IDC
-#> integer(0)
-#> 
-#> $sample_834_05$PLA
-#> integer(0)
-#> 
-#> $sample_834_05$COB
-#> integer(0)
-#> 
-#> $sample_834_05$LS
-#> integer(0)
-#> 
-#> $sample_834_05$LX
-#> integer(0)
-#> 
-#> $sample_834_05$LE
-#> integer(0)
-#> 
-#> $sample_834_05$HD
-#> [1] 24
-#> 
-#> $sample_834_05$SE
-#> [1] 33
-#> 
-#> $sample_834_05$GE
-#> [1] 34
-#> 
-#> $sample_834_05$IEA
-#> [1] 35
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 992    
+#>   Segments: 35     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> QTY:  1
+#> REF: 15
+#> DTP:  2
+#>  N1:  2
+#> INS:  1
+#> NM1:  1
+#> PER:  1
+#>  N3:  1
+#>  N4:  1
+#> DMG:  1
+#> AMT:  1
+#>  HD:  1
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_834_06
-#> $sample_834_06$ISA
-#> [1] 1
-#> 
-#> $sample_834_06$GS
-#> [1] 2
-#> 
-#> $sample_834_06$ST
-#> [1] 3
-#> 
-#> $sample_834_06$BGN
-#> [1] 4
-#> 
-#> $sample_834_06$QTY
-#> [1] 5
-#> 
-#> $sample_834_06$REF
-#>  [1]  9 10 11 12 13 14 15 16 28 29 30 31 32 36 37 38 39 40 42 43 44 45 46 47 48
-#> [26] 49 50 51 60 61 62 63 64 65
-#> 
-#> $sample_834_06$DTP
-#> [1] 26 27 34 35 58 59
-#> 
-#> $sample_834_06$N1
-#> [1] 6 7
-#> 
-#> $sample_834_06$ACT
-#> integer(0)
-#> 
-#> $sample_834_06$INS
-#> [1]  8 41
-#> 
-#> $sample_834_06$NM1
-#> [1] 17 22 52
-#> 
-#> $sample_834_06$PER
-#> [1] 18 53
-#> 
-#> $sample_834_06$N3
-#> [1] 19 23 54
-#> 
-#> $sample_834_06$N4
-#> [1] 20 24 55
-#> 
-#> $sample_834_06$DMG
-#> [1] 21 56
-#> 
-#> $sample_834_06$EC
-#> integer(0)
-#> 
-#> $sample_834_06$ICM
-#> integer(0)
-#> 
-#> $sample_834_06$AMT
-#> integer(0)
-#> 
-#> $sample_834_06$HLH
-#> integer(0)
-#> 
-#> $sample_834_06$LUI
-#> integer(0)
-#> 
-#> $sample_834_06$DSB
-#> integer(0)
-#> 
-#> $sample_834_06$IDC
-#> integer(0)
-#> 
-#> $sample_834_06$PLA
-#> integer(0)
-#> 
-#> $sample_834_06$COB
-#> integer(0)
-#> 
-#> $sample_834_06$LS
-#> integer(0)
-#> 
-#> $sample_834_06$LX
-#> integer(0)
-#> 
-#> $sample_834_06$LE
-#> integer(0)
-#> 
-#> $sample_834_06$HD
-#> [1] 25 33 57
-#> 
-#> $sample_834_06$SE
-#> [1] 66
-#> 
-#> $sample_834_06$GE
-#> [1] 67
-#> 
-#> $sample_834_06$IEA
-#> [1] 68
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 1658   
+#>   Segments: 68     
+#>   Problems: 0      
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BGN:  1
+#> QTY:  1
+#> REF: 34
+#> DTP:  6
+#>  N1:  2
+#> INS:  2
+#> NM1:  3
+#> PER:  2
+#>  N3:  3
+#>  N4:  3
+#> DMG:  2
+#>  HD:  3
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 purrr::map(hcc::x12_834, parse_834)
 #> $minimal_820

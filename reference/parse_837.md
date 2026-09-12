@@ -94,1319 +94,318 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 
 ``` r
 purrr::map(hcc::x12_837, index_837)
-#> ! input/index lengths differ: 175 != 176
 #> $minimal_837P
-#> $minimal_837P$ISA
-#> [1] 1
-#> 
-#> $minimal_837P$GS
-#> [1] 2
-#> 
-#> $minimal_837P$ST
-#> [1] 3
-#> 
-#> $minimal_837P$BPR
-#> [1] 4
-#> 
-#> $minimal_837P$NM1
-#> [1]  5  7  9 15 19
-#> 
-#> $minimal_837P$PER
-#> [1] 6
-#> 
-#> $minimal_837P$HL
-#> [1]  8 13
-#> 
-#> $minimal_837P$N3
-#> [1] 10 16
-#> 
-#> $minimal_837P$N4
-#> [1] 11 17
-#> 
-#> $minimal_837P$REF
-#> [1] 12
-#> 
-#> $minimal_837P$SBR
-#> [1] 14
-#> 
-#> $minimal_837P$PAT
-#> integer(0)
-#> 
-#> $minimal_837P$PWK
-#> integer(0)
-#> 
-#> $minimal_837P$AMT
-#> integer(0)
-#> 
-#> $minimal_837P$CN1
-#> integer(0)
-#> 
-#> $minimal_837P$K3
-#> integer(0)
-#> 
-#> $minimal_837P$NTE
-#> integer(0)
-#> 
-#> $minimal_837P$CR1
-#> integer(0)
-#> 
-#> $minimal_837P$CR2
-#> integer(0)
-#> 
-#> $minimal_837P$CR3
-#> integer(0)
-#> 
-#> $minimal_837P$CRC
-#> integer(0)
-#> 
-#> $minimal_837P$HCP
-#> integer(0)
-#> 
-#> $minimal_837P$DMG
-#> [1] 18
-#> 
-#> $minimal_837P$CAS
-#> integer(0)
-#> 
-#> $minimal_837P$OI
-#> integer(0)
-#> 
-#> $minimal_837P$MOA
-#> integer(0)
-#> 
-#> $minimal_837P$MEA
-#> integer(0)
-#> 
-#> $minimal_837P$CLM
-#> [1] 20
-#> 
-#> $minimal_837P$HI
-#> [1] 21
-#> 
-#> $minimal_837P$PRV
-#> integer(0)
-#> 
-#> $minimal_837P$LX
-#> [1] 22 25
-#> 
-#> $minimal_837P$SV1
-#> [1] 23 26
-#> 
-#> $minimal_837P$SV2
-#> integer(0)
-#> 
-#> $minimal_837P$SV5
-#> integer(0)
-#> 
-#> $minimal_837P$DTP
-#> [1] 24 27
-#> 
-#> $minimal_837P$SE
-#> [1] 28
-#> 
-#> $minimal_837P$NTE
-#> integer(0)
-#> 
-#> $minimal_837P$GE
-#> [1] 29
-#> 
-#> $minimal_837P$IEA
-#> [1] 30
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 788     
+#>   Segments: 30      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 5
+#> PER: 1
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 1
+#> SBR: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 2
+#> SV1: 2
+#> DTP: 2
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_0
-#> $sample_837_0$ISA
-#> [1] 1
-#> 
-#> $sample_837_0$GS
-#> [1] 2
-#> 
-#> $sample_837_0$ST
-#> [1]   3  37  71 105 140
-#> 
-#> $sample_837_0$BPR
-#> [1]   4  38  72 106 141
-#> 
-#> $sample_837_0$NM1
-#>  [1]   5   7   9  14  19  23  27  29  39  41  43  48  53  57  61  63  73  75  77
-#> [20]  82  87  91  95  97 107 109 111 116 121 125 129 131 142 144 146 151 156 160
-#> [39] 164 166
-#> 
-#> $sample_837_0$PER
-#>  [1]   6  13  40  47  74  81 108 115 143 150
-#> 
-#> $sample_837_0$HL
-#>  [1]   8  17  42  51  76  85 110 119 145 154
-#> 
-#> $sample_837_0$N3
-#>  [1]  10  15  20  30  44  49  54  64  78  83  88  98 112 117 122 132 147 152 157
-#> [20] 167
-#> 
-#> $sample_837_0$N4
-#>  [1]  11  16  21  31  45  50  55  65  79  84  89  99 113 118 123 133 148 153 158
-#> [20] 168
-#> 
-#> $sample_837_0$REF
-#>  [1]  12  25  35  46  59  69  80  93 103 114 127 137 149 162 172
-#> 
-#> $sample_837_0$SBR
-#> [1]  18  52  86 120 155
-#> 
-#> $sample_837_0$PAT
-#> integer(0)
-#> 
-#> $sample_837_0$PWK
-#> integer(0)
-#> 
-#> $sample_837_0$AMT
-#> integer(0)
-#> 
-#> $sample_837_0$CN1
-#> integer(0)
-#> 
-#> $sample_837_0$K3
-#> integer(0)
-#> 
-#> $sample_837_0$NTE
-#> [1] 138
-#> 
-#> $sample_837_0$CR1
-#> integer(0)
-#> 
-#> $sample_837_0$CR2
-#> integer(0)
-#> 
-#> $sample_837_0$CR3
-#> integer(0)
-#> 
-#> $sample_837_0$CRC
-#> integer(0)
-#> 
-#> $sample_837_0$HCP
-#> integer(0)
-#> 
-#> $sample_837_0$DMG
-#> [1]  22  56  90 124 159
-#> 
-#> $sample_837_0$CAS
-#> integer(0)
-#> 
-#> $sample_837_0$OI
-#> integer(0)
-#> 
-#> $sample_837_0$MOA
-#> integer(0)
-#> 
-#> $sample_837_0$MEA
-#> integer(0)
-#> 
-#> $sample_837_0$CLM
-#> [1]  24  58  92 126 161
-#> 
-#> $sample_837_0$HI
-#> [1]  26  60  94 128 163
-#> 
-#> $sample_837_0$PRV
-#> [1]  28  62  96 130 165
-#> 
-#> $sample_837_0$LX
-#> [1]  32  66 100 134 169
-#> 
-#> $sample_837_0$SV1
-#> [1]  33  67 101 135 170
-#> 
-#> $sample_837_0$SV2
-#> integer(0)
-#> 
-#> $sample_837_0$SV5
-#> integer(0)
-#> 
-#> $sample_837_0$DTP
-#> [1]  34  68 102 136 171
-#> 
-#> $sample_837_0$SE
-#> [1]  36  70 104 139 173
-#> 
-#> $sample_837_0$NTE
-#> [1] 138
-#> 
-#> $sample_837_0$GE
-#> [1] 174
-#> 
-#> $sample_837_0$IEA
-#> [1] 175
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 4940    
+#>   Segments: 176     
+#>   Problems: 0       
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  5
+#> BPR:  5
+#> NM1: 40
+#> PER: 10
+#>  HL: 10
+#>  N3: 20
+#>  N4: 20
+#> REF: 15
+#> SBR:  5
+#> NTE:  1
+#> DMG:  5
+#> CLM:  5
+#>  HI:  5
+#> PRV:  5
+#>  LX:  5
+#> SV1:  5
+#> DTP:  5
+#>  SE:  5
+#> NTE:  1
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $sample_837_1
-#> $sample_837_1$ISA
-#> [1] 1
-#> 
-#> $sample_837_1$GS
-#> [1] 2
-#> 
-#> $sample_837_1$ST
-#> [1] 3
-#> 
-#> $sample_837_1$BPR
-#> [1] 4
-#> 
-#> $sample_837_1$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_1$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_1$HL
-#> [1]  9 15
-#> 
-#> $sample_837_1$N3
-#> [1] 11 18
-#> 
-#> $sample_837_1$N4
-#> [1] 12 19
-#> 
-#> $sample_837_1$REF
-#> [1] 13 34 38 42 46
-#> 
-#> $sample_837_1$SBR
-#> [1] 16
-#> 
-#> $sample_837_1$PAT
-#> integer(0)
-#> 
-#> $sample_837_1$PWK
-#> integer(0)
-#> 
-#> $sample_837_1$AMT
-#> integer(0)
-#> 
-#> $sample_837_1$CN1
-#> integer(0)
-#> 
-#> $sample_837_1$K3
-#> integer(0)
-#> 
-#> $sample_837_1$NTE
-#> integer(0)
-#> 
-#> $sample_837_1$CR1
-#> integer(0)
-#> 
-#> $sample_837_1$CR2
-#> integer(0)
-#> 
-#> $sample_837_1$CR3
-#> integer(0)
-#> 
-#> $sample_837_1$CRC
-#> integer(0)
-#> 
-#> $sample_837_1$HCP
-#> integer(0)
-#> 
-#> $sample_837_1$DMG
-#> integer(0)
-#> 
-#> $sample_837_1$CAS
-#> integer(0)
-#> 
-#> $sample_837_1$OI
-#> integer(0)
-#> 
-#> $sample_837_1$MOA
-#> integer(0)
-#> 
-#> $sample_837_1$MEA
-#> integer(0)
-#> 
-#> $sample_837_1$CLM
-#> [1] 20
-#> 
-#> $sample_837_1$HI
-#> [1] 24 25 26 27 28 29 30
-#> 
-#> $sample_837_1$PRV
-#> integer(0)
-#> 
-#> $sample_837_1$LX
-#> [1] 31 35 39 43
-#> 
-#> $sample_837_1$SV1
-#> [1] 32 36 40 44
-#> 
-#> $sample_837_1$SV2
-#> integer(0)
-#> 
-#> $sample_837_1$SV5
-#> integer(0)
-#> 
-#> $sample_837_1$DTP
-#> [1] 21 22 23 33 37 41 45
-#> 
-#> $sample_837_1$SE
-#> [1] 47
-#> 
-#> $sample_837_1$NTE
-#> integer(0)
-#> 
-#> $sample_837_1$GE
-#> [1] 48
-#> 
-#> $sample_837_1$IEA
-#> [1] 49
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1269    
+#>   Segments: 49      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 5
+#> SBR: 1
+#> CLM: 1
+#>  HI: 7
+#>  LX: 4
+#> SV1: 4
+#> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_2
-#> $sample_837_2$ISA
-#> [1] 1
-#> 
-#> $sample_837_2$GS
-#> [1] 2
-#> 
-#> $sample_837_2$ST
-#> [1] 3
-#> 
-#> $sample_837_2$BPR
-#> [1] 4
-#> 
-#> $sample_837_2$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_2$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_2$HL
-#> [1]  9 15
-#> 
-#> $sample_837_2$N3
-#> [1] 11 18
-#> 
-#> $sample_837_2$N4
-#> [1] 12 19
-#> 
-#> $sample_837_2$REF
-#> [1] 13 30 34 38
-#> 
-#> $sample_837_2$SBR
-#> [1] 16
-#> 
-#> $sample_837_2$PAT
-#> integer(0)
-#> 
-#> $sample_837_2$PWK
-#> integer(0)
-#> 
-#> $sample_837_2$AMT
-#> integer(0)
-#> 
-#> $sample_837_2$CN1
-#> integer(0)
-#> 
-#> $sample_837_2$K3
-#> integer(0)
-#> 
-#> $sample_837_2$NTE
-#> integer(0)
-#> 
-#> $sample_837_2$CR1
-#> integer(0)
-#> 
-#> $sample_837_2$CR2
-#> integer(0)
-#> 
-#> $sample_837_2$CR3
-#> integer(0)
-#> 
-#> $sample_837_2$CRC
-#> integer(0)
-#> 
-#> $sample_837_2$HCP
-#> integer(0)
-#> 
-#> $sample_837_2$DMG
-#> integer(0)
-#> 
-#> $sample_837_2$CAS
-#> integer(0)
-#> 
-#> $sample_837_2$OI
-#> integer(0)
-#> 
-#> $sample_837_2$MOA
-#> integer(0)
-#> 
-#> $sample_837_2$MEA
-#> integer(0)
-#> 
-#> $sample_837_2$CLM
-#> [1] 20
-#> 
-#> $sample_837_2$HI
-#> [1] 24 25 26
-#> 
-#> $sample_837_2$PRV
-#> integer(0)
-#> 
-#> $sample_837_2$LX
-#> [1] 27 31 35
-#> 
-#> $sample_837_2$SV1
-#> [1] 28 32 36
-#> 
-#> $sample_837_2$SV2
-#> integer(0)
-#> 
-#> $sample_837_2$SV5
-#> integer(0)
-#> 
-#> $sample_837_2$DTP
-#> [1] 21 22 23 29 33 37
-#> 
-#> $sample_837_2$SE
-#> [1] 39
-#> 
-#> $sample_837_2$NTE
-#> integer(0)
-#> 
-#> $sample_837_2$GE
-#> [1] 40
-#> 
-#> $sample_837_2$IEA
-#> [1] 41
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1092    
+#>   Segments: 41      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 4
+#> SBR: 1
+#> CLM: 1
+#>  HI: 3
+#>  LX: 3
+#> SV1: 3
+#> DTP: 6
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_3
-#> $sample_837_3$ISA
-#> [1] 1
-#> 
-#> $sample_837_3$GS
-#> [1] 2
-#> 
-#> $sample_837_3$ST
-#> [1] 3
-#> 
-#> $sample_837_3$BPR
-#> [1] 4
-#> 
-#> $sample_837_3$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_3$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_3$HL
-#> [1]  9 15
-#> 
-#> $sample_837_3$N3
-#> [1] 11 18
-#> 
-#> $sample_837_3$N4
-#> [1] 12 19
-#> 
-#> $sample_837_3$REF
-#> [1] 13 33 37
-#> 
-#> $sample_837_3$SBR
-#> [1] 16
-#> 
-#> $sample_837_3$PAT
-#> integer(0)
-#> 
-#> $sample_837_3$PWK
-#> integer(0)
-#> 
-#> $sample_837_3$AMT
-#> integer(0)
-#> 
-#> $sample_837_3$CN1
-#> integer(0)
-#> 
-#> $sample_837_3$K3
-#> integer(0)
-#> 
-#> $sample_837_3$NTE
-#> integer(0)
-#> 
-#> $sample_837_3$CR1
-#> integer(0)
-#> 
-#> $sample_837_3$CR2
-#> integer(0)
-#> 
-#> $sample_837_3$CR3
-#> integer(0)
-#> 
-#> $sample_837_3$CRC
-#> integer(0)
-#> 
-#> $sample_837_3$HCP
-#> integer(0)
-#> 
-#> $sample_837_3$DMG
-#> integer(0)
-#> 
-#> $sample_837_3$CAS
-#> integer(0)
-#> 
-#> $sample_837_3$OI
-#> integer(0)
-#> 
-#> $sample_837_3$MOA
-#> integer(0)
-#> 
-#> $sample_837_3$MEA
-#> integer(0)
-#> 
-#> $sample_837_3$CLM
-#> [1] 20
-#> 
-#> $sample_837_3$HI
-#> [1] 24 25 26 27 28 29
-#> 
-#> $sample_837_3$PRV
-#> integer(0)
-#> 
-#> $sample_837_3$LX
-#> [1] 30 34
-#> 
-#> $sample_837_3$SV1
-#> [1] 31 35
-#> 
-#> $sample_837_3$SV2
-#> integer(0)
-#> 
-#> $sample_837_3$SV5
-#> integer(0)
-#> 
-#> $sample_837_3$DTP
-#> [1] 21 22 23 32 36
-#> 
-#> $sample_837_3$SE
-#> [1] 38
-#> 
-#> $sample_837_3$NTE
-#> integer(0)
-#> 
-#> $sample_837_3$GE
-#> [1] 39
-#> 
-#> $sample_837_3$IEA
-#> [1] 40
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1059    
+#>   Segments: 40      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 3
+#> SBR: 1
+#> CLM: 1
+#>  HI: 6
+#>  LX: 2
+#> SV1: 2
+#> DTP: 5
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_4
-#> $sample_837_4$ISA
-#> [1] 1
-#> 
-#> $sample_837_4$GS
-#> [1] 2
-#> 
-#> $sample_837_4$ST
-#> [1] 3
-#> 
-#> $sample_837_4$BPR
-#> [1] 4
-#> 
-#> $sample_837_4$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_4$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_4$HL
-#> [1]  9 15
-#> 
-#> $sample_837_4$N3
-#> [1] 11 18
-#> 
-#> $sample_837_4$N4
-#> [1] 12 19
-#> 
-#> $sample_837_4$REF
-#> [1] 13 35
-#> 
-#> $sample_837_4$SBR
-#> [1] 16
-#> 
-#> $sample_837_4$PAT
-#> integer(0)
-#> 
-#> $sample_837_4$PWK
-#> integer(0)
-#> 
-#> $sample_837_4$AMT
-#> integer(0)
-#> 
-#> $sample_837_4$CN1
-#> integer(0)
-#> 
-#> $sample_837_4$K3
-#> integer(0)
-#> 
-#> $sample_837_4$NTE
-#> integer(0)
-#> 
-#> $sample_837_4$CR1
-#> integer(0)
-#> 
-#> $sample_837_4$CR2
-#> integer(0)
-#> 
-#> $sample_837_4$CR3
-#> integer(0)
-#> 
-#> $sample_837_4$CRC
-#> integer(0)
-#> 
-#> $sample_837_4$HCP
-#> integer(0)
-#> 
-#> $sample_837_4$DMG
-#> integer(0)
-#> 
-#> $sample_837_4$CAS
-#> integer(0)
-#> 
-#> $sample_837_4$OI
-#> integer(0)
-#> 
-#> $sample_837_4$MOA
-#> integer(0)
-#> 
-#> $sample_837_4$MEA
-#> integer(0)
-#> 
-#> $sample_837_4$CLM
-#> [1] 20
-#> 
-#> $sample_837_4$HI
-#> [1] 24 25 26 27 28 29 30 31
-#> 
-#> $sample_837_4$PRV
-#> integer(0)
-#> 
-#> $sample_837_4$LX
-#> [1] 32
-#> 
-#> $sample_837_4$SV1
-#> [1] 33
-#> 
-#> $sample_837_4$SV2
-#> integer(0)
-#> 
-#> $sample_837_4$SV5
-#> integer(0)
-#> 
-#> $sample_837_4$DTP
-#> [1] 21 22 23 34
-#> 
-#> $sample_837_4$SE
-#> [1] 36
-#> 
-#> $sample_837_4$NTE
-#> integer(0)
-#> 
-#> $sample_837_4$GE
-#> [1] 37
-#> 
-#> $sample_837_4$IEA
-#> [1] 38
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1034    
+#>   Segments: 38      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 2
+#> SBR: 1
+#> CLM: 1
+#>  HI: 8
+#>  LX: 1
+#> SV1: 1
+#> DTP: 4
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_5
-#> $sample_837_5$ISA
-#> [1] 1
-#> 
-#> $sample_837_5$GS
-#> [1] 2
-#> 
-#> $sample_837_5$ST
-#> [1] 3
-#> 
-#> $sample_837_5$BPR
-#> [1] 4
-#> 
-#> $sample_837_5$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_5$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_5$HL
-#> [1]  9 15
-#> 
-#> $sample_837_5$N3
-#> [1] 11 18
-#> 
-#> $sample_837_5$N4
-#> [1] 12 19
-#> 
-#> $sample_837_5$REF
-#> [1] 13 33 37 41 45
-#> 
-#> $sample_837_5$SBR
-#> [1] 16
-#> 
-#> $sample_837_5$PAT
-#> integer(0)
-#> 
-#> $sample_837_5$PWK
-#> integer(0)
-#> 
-#> $sample_837_5$AMT
-#> integer(0)
-#> 
-#> $sample_837_5$CN1
-#> integer(0)
-#> 
-#> $sample_837_5$K3
-#> integer(0)
-#> 
-#> $sample_837_5$NTE
-#> integer(0)
-#> 
-#> $sample_837_5$CR1
-#> integer(0)
-#> 
-#> $sample_837_5$CR2
-#> integer(0)
-#> 
-#> $sample_837_5$CR3
-#> integer(0)
-#> 
-#> $sample_837_5$CRC
-#> integer(0)
-#> 
-#> $sample_837_5$HCP
-#> integer(0)
-#> 
-#> $sample_837_5$DMG
-#> integer(0)
-#> 
-#> $sample_837_5$CAS
-#> integer(0)
-#> 
-#> $sample_837_5$OI
-#> integer(0)
-#> 
-#> $sample_837_5$MOA
-#> integer(0)
-#> 
-#> $sample_837_5$MEA
-#> integer(0)
-#> 
-#> $sample_837_5$CLM
-#> [1] 20
-#> 
-#> $sample_837_5$HI
-#> [1] 24 25 26 27 28 29
-#> 
-#> $sample_837_5$PRV
-#> integer(0)
-#> 
-#> $sample_837_5$LX
-#> [1] 30 34 38 42
-#> 
-#> $sample_837_5$SV1
-#> [1] 31 35 39 43
-#> 
-#> $sample_837_5$SV2
-#> integer(0)
-#> 
-#> $sample_837_5$SV5
-#> integer(0)
-#> 
-#> $sample_837_5$DTP
-#> [1] 21 22 23 32 36 40 44
-#> 
-#> $sample_837_5$SE
-#> [1] 46
-#> 
-#> $sample_837_5$NTE
-#> integer(0)
-#> 
-#> $sample_837_5$GE
-#> [1] 47
-#> 
-#> $sample_837_5$IEA
-#> [1] 48
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1250    
+#>   Segments: 48      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 5
+#> SBR: 1
+#> CLM: 1
+#>  HI: 6
+#>  LX: 4
+#> SV1: 4
+#> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_6
-#> $sample_837_6$ISA
-#> [1] 1
-#> 
-#> $sample_837_6$GS
-#> [1] 2
-#> 
-#> $sample_837_6$ST
-#> [1] 3
-#> 
-#> $sample_837_6$BPR
-#> [1] 4
-#> 
-#> $sample_837_6$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_6$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_6$HL
-#> [1]  9 15
-#> 
-#> $sample_837_6$N3
-#> [1] 11 18
-#> 
-#> $sample_837_6$N4
-#> [1] 12 19
-#> 
-#> $sample_837_6$REF
-#> [1] 13 33 37 41 45 49
-#> 
-#> $sample_837_6$SBR
-#> [1] 16
-#> 
-#> $sample_837_6$PAT
-#> integer(0)
-#> 
-#> $sample_837_6$PWK
-#> integer(0)
-#> 
-#> $sample_837_6$AMT
-#> integer(0)
-#> 
-#> $sample_837_6$CN1
-#> integer(0)
-#> 
-#> $sample_837_6$K3
-#> integer(0)
-#> 
-#> $sample_837_6$NTE
-#> integer(0)
-#> 
-#> $sample_837_6$CR1
-#> integer(0)
-#> 
-#> $sample_837_6$CR2
-#> integer(0)
-#> 
-#> $sample_837_6$CR3
-#> integer(0)
-#> 
-#> $sample_837_6$CRC
-#> integer(0)
-#> 
-#> $sample_837_6$HCP
-#> integer(0)
-#> 
-#> $sample_837_6$DMG
-#> integer(0)
-#> 
-#> $sample_837_6$CAS
-#> integer(0)
-#> 
-#> $sample_837_6$OI
-#> integer(0)
-#> 
-#> $sample_837_6$MOA
-#> integer(0)
-#> 
-#> $sample_837_6$MEA
-#> integer(0)
-#> 
-#> $sample_837_6$CLM
-#> [1] 20
-#> 
-#> $sample_837_6$HI
-#> [1] 24 25 26 27 28 29
-#> 
-#> $sample_837_6$PRV
-#> integer(0)
-#> 
-#> $sample_837_6$LX
-#> [1] 30 34 38 42 46
-#> 
-#> $sample_837_6$SV1
-#> [1] 31 35 39 43 47
-#> 
-#> $sample_837_6$SV2
-#> integer(0)
-#> 
-#> $sample_837_6$SV5
-#> integer(0)
-#> 
-#> $sample_837_6$DTP
-#> [1] 21 22 23 32 36 40 44 48
-#> 
-#> $sample_837_6$SE
-#> [1] 50
-#> 
-#> $sample_837_6$NTE
-#> integer(0)
-#> 
-#> $sample_837_6$GE
-#> [1] 51
-#> 
-#> $sample_837_6$IEA
-#> [1] 52
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1274    
+#>   Segments: 52      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 6
+#> SBR: 1
+#> CLM: 1
+#>  HI: 6
+#>  LX: 5
+#> SV1: 5
+#> DTP: 8
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_7
-#> $sample_837_7$ISA
-#> [1] 1
-#> 
-#> $sample_837_7$GS
-#> [1] 2
-#> 
-#> $sample_837_7$ST
-#> [1] 3
-#> 
-#> $sample_837_7$BPR
-#> [1] 4
-#> 
-#> $sample_837_7$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_7$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_7$HL
-#> [1]  9 15
-#> 
-#> $sample_837_7$N3
-#> [1] 11 18
-#> 
-#> $sample_837_7$N4
-#> [1] 12 19
-#> 
-#> $sample_837_7$REF
-#> [1] 13 32 36 40 44
-#> 
-#> $sample_837_7$SBR
-#> [1] 16
-#> 
-#> $sample_837_7$PAT
-#> integer(0)
-#> 
-#> $sample_837_7$PWK
-#> integer(0)
-#> 
-#> $sample_837_7$AMT
-#> integer(0)
-#> 
-#> $sample_837_7$CN1
-#> integer(0)
-#> 
-#> $sample_837_7$K3
-#> integer(0)
-#> 
-#> $sample_837_7$NTE
-#> integer(0)
-#> 
-#> $sample_837_7$CR1
-#> integer(0)
-#> 
-#> $sample_837_7$CR2
-#> integer(0)
-#> 
-#> $sample_837_7$CR3
-#> integer(0)
-#> 
-#> $sample_837_7$CRC
-#> integer(0)
-#> 
-#> $sample_837_7$HCP
-#> integer(0)
-#> 
-#> $sample_837_7$DMG
-#> integer(0)
-#> 
-#> $sample_837_7$CAS
-#> integer(0)
-#> 
-#> $sample_837_7$OI
-#> integer(0)
-#> 
-#> $sample_837_7$MOA
-#> integer(0)
-#> 
-#> $sample_837_7$MEA
-#> integer(0)
-#> 
-#> $sample_837_7$CLM
-#> [1] 20
-#> 
-#> $sample_837_7$HI
-#> [1] 24 25 26 27 28
-#> 
-#> $sample_837_7$PRV
-#> integer(0)
-#> 
-#> $sample_837_7$LX
-#> [1] 29 33 37 41
-#> 
-#> $sample_837_7$SV1
-#> [1] 30 34 38 42
-#> 
-#> $sample_837_7$SV2
-#> integer(0)
-#> 
-#> $sample_837_7$SV5
-#> integer(0)
-#> 
-#> $sample_837_7$DTP
-#> [1] 21 22 23 31 35 39 43
-#> 
-#> $sample_837_7$SE
-#> [1] 45
-#> 
-#> $sample_837_7$NTE
-#> integer(0)
-#> 
-#> $sample_837_7$GE
-#> [1] 46
-#> 
-#> $sample_837_7$IEA
-#> [1] 47
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1203    
+#>   Segments: 47      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 5
+#> SBR: 1
+#> CLM: 1
+#>  HI: 5
+#>  LX: 4
+#> SV1: 4
+#> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_8
-#> $sample_837_8$ISA
-#> [1] 1
-#> 
-#> $sample_837_8$GS
-#> [1] 2
-#> 
-#> $sample_837_8$ST
-#> [1] 3
-#> 
-#> $sample_837_8$BPR
-#> [1] 4
-#> 
-#> $sample_837_8$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_8$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_8$HL
-#> [1]  9 15
-#> 
-#> $sample_837_8$N3
-#> [1] 11 18
-#> 
-#> $sample_837_8$N4
-#> [1] 12 19
-#> 
-#> $sample_837_8$REF
-#> [1] 13 30 34 38 42
-#> 
-#> $sample_837_8$SBR
-#> [1] 16
-#> 
-#> $sample_837_8$PAT
-#> integer(0)
-#> 
-#> $sample_837_8$PWK
-#> integer(0)
-#> 
-#> $sample_837_8$AMT
-#> integer(0)
-#> 
-#> $sample_837_8$CN1
-#> integer(0)
-#> 
-#> $sample_837_8$K3
-#> integer(0)
-#> 
-#> $sample_837_8$NTE
-#> integer(0)
-#> 
-#> $sample_837_8$CR1
-#> integer(0)
-#> 
-#> $sample_837_8$CR2
-#> integer(0)
-#> 
-#> $sample_837_8$CR3
-#> integer(0)
-#> 
-#> $sample_837_8$CRC
-#> integer(0)
-#> 
-#> $sample_837_8$HCP
-#> integer(0)
-#> 
-#> $sample_837_8$DMG
-#> integer(0)
-#> 
-#> $sample_837_8$CAS
-#> integer(0)
-#> 
-#> $sample_837_8$OI
-#> integer(0)
-#> 
-#> $sample_837_8$MOA
-#> integer(0)
-#> 
-#> $sample_837_8$MEA
-#> integer(0)
-#> 
-#> $sample_837_8$CLM
-#> [1] 20
-#> 
-#> $sample_837_8$HI
-#> [1] 24 25 26
-#> 
-#> $sample_837_8$PRV
-#> integer(0)
-#> 
-#> $sample_837_8$LX
-#> [1] 27 31 35 39
-#> 
-#> $sample_837_8$SV1
-#> [1] 28 32 36 40
-#> 
-#> $sample_837_8$SV2
-#> integer(0)
-#> 
-#> $sample_837_8$SV5
-#> integer(0)
-#> 
-#> $sample_837_8$DTP
-#> [1] 21 22 23 29 33 37 41
-#> 
-#> $sample_837_8$SE
-#> [1] 43
-#> 
-#> $sample_837_8$NTE
-#> integer(0)
-#> 
-#> $sample_837_8$GE
-#> [1] 44
-#> 
-#> $sample_837_8$IEA
-#> [1] 45
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1191    
+#>   Segments: 45      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 5
+#> SBR: 1
+#> CLM: 1
+#>  HI: 3
+#>  LX: 4
+#> SV1: 4
+#> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 #> $sample_837_9
-#> $sample_837_9$ISA
-#> [1] 1
-#> 
-#> $sample_837_9$GS
-#> [1] 2
-#> 
-#> $sample_837_9$ST
-#> [1] 3
-#> 
-#> $sample_837_9$BPR
-#> [1] 4
-#> 
-#> $sample_837_9$NM1
-#> [1]  5  7 10 17
-#> 
-#> $sample_837_9$PER
-#> [1]  6  8 14
-#> 
-#> $sample_837_9$HL
-#> [1]  9 15
-#> 
-#> $sample_837_9$N3
-#> [1] 11 18
-#> 
-#> $sample_837_9$N4
-#> [1] 12 19
-#> 
-#> $sample_837_9$REF
-#> [1] 13 35 39 43 47
-#> 
-#> $sample_837_9$SBR
-#> [1] 16
-#> 
-#> $sample_837_9$PAT
-#> integer(0)
-#> 
-#> $sample_837_9$PWK
-#> integer(0)
-#> 
-#> $sample_837_9$AMT
-#> integer(0)
-#> 
-#> $sample_837_9$CN1
-#> integer(0)
-#> 
-#> $sample_837_9$K3
-#> integer(0)
-#> 
-#> $sample_837_9$NTE
-#> integer(0)
-#> 
-#> $sample_837_9$CR1
-#> integer(0)
-#> 
-#> $sample_837_9$CR2
-#> integer(0)
-#> 
-#> $sample_837_9$CR3
-#> integer(0)
-#> 
-#> $sample_837_9$CRC
-#> integer(0)
-#> 
-#> $sample_837_9$HCP
-#> integer(0)
-#> 
-#> $sample_837_9$DMG
-#> integer(0)
-#> 
-#> $sample_837_9$CAS
-#> integer(0)
-#> 
-#> $sample_837_9$OI
-#> integer(0)
-#> 
-#> $sample_837_9$MOA
-#> integer(0)
-#> 
-#> $sample_837_9$MEA
-#> integer(0)
-#> 
-#> $sample_837_9$CLM
-#> [1] 20
-#> 
-#> $sample_837_9$HI
-#> [1] 24 25 26 27 28 29 30 31
-#> 
-#> $sample_837_9$PRV
-#> integer(0)
-#> 
-#> $sample_837_9$LX
-#> [1] 32 36 40 44
-#> 
-#> $sample_837_9$SV1
-#> [1] 33 37 41 45
-#> 
-#> $sample_837_9$SV2
-#> integer(0)
-#> 
-#> $sample_837_9$SV5
-#> integer(0)
-#> 
-#> $sample_837_9$DTP
-#> [1] 21 22 23 34 38 42 46
-#> 
-#> $sample_837_9$SE
-#> [1] 48
-#> 
-#> $sample_837_9$NTE
-#> integer(0)
-#> 
-#> $sample_837_9$GE
-#> [1] 49
-#> 
-#> $sample_837_9$IEA
-#> [1] 50
-#> 
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1290    
+#>   Segments: 50      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 5
+#> SBR: 1
+#> CLM: 1
+#>  HI: 8
+#>  LX: 4
+#> SV1: 4
+#> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 purrr::map(hcc::x12_837, parse_837)
 #> $minimal_837P

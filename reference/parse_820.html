@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9040</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9041</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,114 +90,141 @@ but handles the general 820 format used by state Medicaid agencies.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">index_820</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_820[3118//104]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ISA:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GS:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ST:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   BPR:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TRN:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF14:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N1:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N3:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N4:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ENT: 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NM1: 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   RMR: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF18: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REFZZ: 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   DTM: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ADX:  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   IEA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 3118   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 104    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ISA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GS:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    BPR:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    TRN:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*14:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N1:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N3:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N4:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ENT: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NM1: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    RMR: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*18: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*ZZ: 26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    DTM: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     SE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    IEA:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_820[4757//166]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ISA:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GS:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ST:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   BPR:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TRN:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF14:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N1:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N3:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N4:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ENT: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NM1: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   RMR: 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF18: 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REFZZ: 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   DTM: 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ADX: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   IEA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 4757   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 166    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ISA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GS:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    BPR:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    TRN:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*14:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N1:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N3:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N4:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ENT: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NM1: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    RMR: 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*18: 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*ZZ: 46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    DTM: 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ADX: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     SE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    IEA:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_820[33189//1146]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ISA:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GS:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ST:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   BPR:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TRN:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF14:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N1:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N3:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N4:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ENT:  93</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NM1:  93</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   RMR: 176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF18: 176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REFZZ: 352</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   DTM: 176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ADX:  65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SE:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GE:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   IEA:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 33189  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 1146   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ISA:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GS:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    BPR:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    TRN:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*14:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N1:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N3:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N4:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ENT:  93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NM1:  93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    RMR: 176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*18: 176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*ZZ: 352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    DTM: 176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ADX:  65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     SE:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GE:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    IEA:   1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_820[2819//95]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ISA:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GS:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ST:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   BPR:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TRN:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF14:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N1:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N3:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N4:  2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ENT: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NM1: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   RMR: 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF18: 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REFZZ: 24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   DTM: 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ADX:  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GE:  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   IEA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 2819   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 95     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ISA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GS:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    BPR:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    TRN:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*14:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N1:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N3:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N4:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ENT: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NM1: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    RMR: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*18: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*ZZ: 24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    DTM: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     SE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    IEA:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_820[19564//647]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ISA:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GS:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ST:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   BPR:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TRN:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF14:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N1:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N3:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    N4:   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ENT:  81</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NM1:  81</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   RMR:  94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF18:  94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REFZZ: 188</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   DTM:  94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ADX:   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SE:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GE:   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   IEA:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 19564  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 647    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ISA:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GS:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    BPR:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    TRN:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*14:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N1:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N3:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     N4:   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ENT:  81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NM1:  81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    RMR:  94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*18:  94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF*ZZ: 188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    DTM:  94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     SE:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     GE:   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    IEA:   1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>

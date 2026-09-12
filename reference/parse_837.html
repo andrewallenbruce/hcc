@@ -25,7 +25,7 @@ segment the audience:
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9040</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9041</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,1319 +137,318 @@ Waystar, Trizetto), with <code>277CA</code>, <code>999</code>, and ultimately <c
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837.html">x12_837</a></span>, <span class="va">index_837</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> <span style="font-style: italic;">input/index</span> lengths differ: <span style="color: #0000BB;">175</span> != <span style="color: #0000BB;">176</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7  9 15 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22 25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 23 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 788     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 30      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   3  37  71 105 140</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   4  38  72 106 141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   5   7   9  14  19  23  27  29  39  41  43  48  53  57  61  63  73  75  77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20]  82  87  91  95  97 107 109 111 116 121 125 129 131 142 144 146 151 156 160</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] 164 166</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   6  13  40  47  74  81 108 115 143 150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   8  17  42  51  76  85 110 119 145 154</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  10  15  20  30  44  49  54  64  78  83  88  98 112 117 122 132 147 152 157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 167</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  11  16  21  31  45  50  55  65  79  84  89  99 113 118 123 133 148 153 158</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] 168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  12  25  35  46  59  69  80  93 103 114 127 137 149 162 172</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  18  52  86 120 155</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  22  56  90 124 159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  24  58  92 126 161</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  26  60  94 128 163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  28  62  96 130 165</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  32  66 100 134 169</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  33  67 101 135 170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  34  68 102 136 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  36  70 104 139 173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 174</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 4940    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 176     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NTE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE:  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NTE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 34 38 42 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29 30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31 35 39 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32 36 40 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 33 37 41 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1269    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 49      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 30 34 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27 31 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 28 32 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 29 33 37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_2$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1092    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 41      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 33 37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30 34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 32 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_3$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1059    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 40      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29 30 31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_4$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1034    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 38      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 33 37 41 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30 34 38 42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31 35 39 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 32 36 40 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_5$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1250    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 48      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 33 37 41 45 49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30 34 38 42 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31 35 39 43 47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 32 36 40 44 48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_6$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1274    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 52      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 32 36 40 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 29 33 37 41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30 34 38 42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 31 35 39 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_7$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1203    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 47      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 30 34 38 42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27 31 35 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 28 32 36 40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 29 33 37 41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_8$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1191    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 45      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$NM1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  7 10 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$PER</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  8 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$HL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$N3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$N4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$REF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13 35 39 43 47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$SBR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$PAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$PWK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$AMT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CN1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$K3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CR1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CR2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CR3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$HCP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$DMG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$OI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$MOA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$MEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$CLM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$HI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24 25 26 27 28 29 30 31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$PRV</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$LX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32 36 40 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$SV1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33 37 41 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$SV2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$SV5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$DTP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21 22 23 34 38 42 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$NTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_9$IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1290    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 50      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837.html">x12_837</a></span>, <span class="va">parse_837</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_837P</span>
