@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9042 (2026-09-13)
+
+* new `prop_date`
+
+
 # hcc 0.0.0.9041 (2026-09-12)
 
 * class `x12_index`
