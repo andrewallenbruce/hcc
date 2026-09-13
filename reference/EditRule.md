@@ -2,19 +2,6 @@
 
 Single Edit Rule
 
-## Usage
-
-``` r
-EditRule(
-  edit_type = character(0),
-  sex = integer(0),
-  age_min = integer(0),
-  age_max = integer(0),
-  action = character(0),
-  cc_override = integer(0)
-)
-```
-
 ## Arguments
 
 - edit_type:

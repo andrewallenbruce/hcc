@@ -70,24 +70,27 @@ purrr::map(hcc::x12_820, index_820)
 #>   Segments: 104    
 #>   Problems: 0      
 #>  
-#>    ISA:  1
-#>     GS:  1
-#>     ST:  1
-#>    BPR:  1
-#>    TRN:  1
-#> REF*14:  1
-#>     N1:  2
-#>     N3:  2
-#>     N4:  2
-#>    ENT: 12
-#>    NM1: 12
-#>    RMR: 13
-#> REF*18: 13
-#> REF*ZZ: 26
-#>    DTM: 13
-#>     SE:  1
-#>     GE:  1
-#>    IEA:  1
+#>   ISA:  1
+#>    GS:  1
+#>    ST:  1
+#>   BPR:  1
+#>   TRN:  1
+#> REF14:  1
+#>  N1PE:  1
+#>  N3PE:  1
+#>  N4PE:  1
+#>  N1PR:  1
+#>  N3PR:  1
+#>  N4PR:  1
+#>   ENT: 12
+#>   NM1: 12
+#>   RMR: 13
+#> REF18: 13
+#> REFZZ: 26
+#>   DTM: 13
+#>    SE:  1
+#>    GE:  1
+#>   IEA:  1
 #> 
 #> $sample_820_02
 #> <x12_index>
@@ -97,25 +100,28 @@ purrr::map(hcc::x12_820, index_820)
 #>   Segments: 166    
 #>   Problems: 0      
 #>  
-#>    ISA:  1
-#>     GS:  1
-#>     ST:  1
-#>    BPR:  1
-#>    TRN:  1
-#> REF*14:  1
-#>     N1:  2
-#>     N3:  2
-#>     N4:  2
-#>    ENT: 13
-#>    NM1: 13
-#>    RMR: 23
-#> REF*18: 23
-#> REF*ZZ: 46
-#>    DTM: 23
-#>    ADX: 10
-#>     SE:  1
-#>     GE:  1
-#>    IEA:  1
+#>   ISA:  1
+#>    GS:  1
+#>    ST:  1
+#>   BPR:  1
+#>   TRN:  1
+#> REF14:  1
+#>  N1PE:  1
+#>  N3PE:  1
+#>  N4PE:  1
+#>  N1PR:  1
+#>  N3PR:  1
+#>  N4PR:  1
+#>   ENT: 13
+#>   NM1: 13
+#>   RMR: 23
+#> REF18: 23
+#> REFZZ: 46
+#>   DTM: 23
+#>   ADX: 10
+#>    SE:  1
+#>    GE:  1
+#>   IEA:  1
 #> 
 #> $sample_820_03
 #> <x12_index>
@@ -125,25 +131,28 @@ purrr::map(hcc::x12_820, index_820)
 #>   Segments: 1146   
 #>   Problems: 0      
 #>  
-#>    ISA:   1
-#>     GS:   1
-#>     ST:   1
-#>    BPR:   1
-#>    TRN:   1
-#> REF*14:   1
-#>     N1:   2
-#>     N3:   2
-#>     N4:   2
-#>    ENT:  93
-#>    NM1:  93
-#>    RMR: 176
-#> REF*18: 176
-#> REF*ZZ: 352
-#>    DTM: 176
-#>    ADX:  65
-#>     SE:   1
-#>     GE:   1
-#>    IEA:   1
+#>   ISA:   1
+#>    GS:   1
+#>    ST:   1
+#>   BPR:   1
+#>   TRN:   1
+#> REF14:   1
+#>  N1PE:   1
+#>  N3PE:   1
+#>  N4PE:   1
+#>  N1PR:   1
+#>  N3PR:   1
+#>  N4PR:   1
+#>   ENT:  93
+#>   NM1:  93
+#>   RMR: 176
+#> REF18: 176
+#> REFZZ: 352
+#>   DTM: 176
+#>   ADX:  65
+#>    SE:   1
+#>    GE:   1
+#>   IEA:   1
 #> 
 #> $sample_820_04
 #> <x12_index>
@@ -153,24 +162,27 @@ purrr::map(hcc::x12_820, index_820)
 #>   Segments: 95     
 #>   Problems: 0      
 #>  
-#>    ISA:  1
-#>     GS:  1
-#>     ST:  1
-#>    BPR:  1
-#>    TRN:  1
-#> REF*14:  1
-#>     N1:  2
-#>     N3:  2
-#>     N4:  2
-#>    ENT: 10
-#>    NM1: 10
-#>    RMR: 12
-#> REF*18: 12
-#> REF*ZZ: 24
-#>    DTM: 12
-#>     SE:  1
-#>     GE:  1
-#>    IEA:  1
+#>   ISA:  1
+#>    GS:  1
+#>    ST:  1
+#>   BPR:  1
+#>   TRN:  1
+#> REF14:  1
+#>  N1PE:  1
+#>  N3PE:  1
+#>  N4PE:  1
+#>  N1PR:  1
+#>  N3PR:  1
+#>  N4PR:  1
+#>   ENT: 10
+#>   NM1: 10
+#>   RMR: 12
+#> REF18: 12
+#> REFZZ: 24
+#>   DTM: 12
+#>    SE:  1
+#>    GE:  1
+#>   IEA:  1
 #> 
 #> $sample_820_05
 #> <x12_index>
@@ -180,24 +192,27 @@ purrr::map(hcc::x12_820, index_820)
 #>   Segments: 647    
 #>   Problems: 0      
 #>  
-#>    ISA:   1
-#>     GS:   1
-#>     ST:   1
-#>    BPR:   1
-#>    TRN:   1
-#> REF*14:   1
-#>     N1:   2
-#>     N3:   2
-#>     N4:   2
-#>    ENT:  81
-#>    NM1:  81
-#>    RMR:  94
-#> REF*18:  94
-#> REF*ZZ: 188
-#>    DTM:  94
-#>     SE:   1
-#>     GE:   1
-#>    IEA:   1
+#>   ISA:   1
+#>    GS:   1
+#>    ST:   1
+#>   BPR:   1
+#>   TRN:   1
+#> REF14:   1
+#>  N1PE:   1
+#>  N3PE:   1
+#>  N4PE:   1
+#>  N1PR:   1
+#>  N3PR:   1
+#>  N4PR:   1
+#>   ENT:  81
+#>   NM1:  81
+#>   RMR:  94
+#> REF18:  94
+#> REFZZ: 188
+#>   DTM:  94
+#>    SE:   1
+#>    GE:   1
+#>   IEA:   1
 #> 
 purrr::map(hcc::x12_820, parse_820)
 #> $sample_820_01

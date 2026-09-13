@@ -3,75 +3,6 @@
 Data needed for risk adjustment and Medicaid coverage tracking. Supports
 California DHCS Medi-Cal 834 format with FAME fields.
 
-## Usage
-
-``` r
-EnrollmentData(
-  source = character(),
-  report_date = character(),
-  member_id = character(),
-  mbi = character(),
-  medicaid_id = character(),
-  hic = character(),
-  cin = character(),
-  cin_check_digit = integer(),
-  first_name = character(),
-  last_name = character(),
-  middle_name = character(),
-  dob = character(),
-  age = integer(),
-  sex = character(),
-  race = character(),
-  language = character(),
-  death_date = character(),
-  address_1 = character(),
-  address_2 = character(),
-  city = character(),
-  state = character(),
-  zip = character(),
-  phone = character(),
-  maintenance_type = character(),
-  maintenance_reason_code = character(),
-  benefit_status_code = character(),
-  coverage_start_date = character(),
-  coverage_end_date = character(),
-  has_medicare = logical(),
-  has_medicaid = logical(),
-  dual_elgbl_cd = character(),
-  is_full_benefit_dual = logical(),
-  is_partial_benefit_dual = logical(),
-  medicare_status_code = character(),
-  medi_cal_aid_code = character(),
-  medi_cal_eligibility_status = character(),
-  fame_county_id = character(),
-  case_number = character(),
-  fame_card_issue_date = character(),
-  fame_redetermination_date = character(),
-  fame_death_date = character(),
-  primary_aid_code = character(),
-  carrier_code = character(),
-  fed_contract_number = character(),
-  client_reporting_cat = character(),
-  res_addr_flag = character(),
-  reas_add_ind = character(),
-  res_zip_deliv_code = character(),
-  orec = character(),
-  crec = character(),
-  snp = logical(),
-  low_income = logical(),
-  lti = logical(),
-  new_enrollee = logical(),
-  medicare_prt_a = logical(),
-  medicare_prt_b = logical(),
-  medicare_prt_d = logical(),
-  hcp_code = character(),
-  hcp_status = character(),
-  amount_qualifier = character(),
-  amount = double(),
-  hcp_history = HCPCoveragePeriod()
-)
-```
-
 ## Arguments
 
 - source:
@@ -186,11 +117,11 @@ EnrollmentData(
 
   `INS-05` A=Active, C=COBRA, etc.
 
-- coverage_start_date:
+- coverage_start:
 
   Coverage effective date
 
-- coverage_end_date:
+- coverage_end:
 
   Coverage termination date
 

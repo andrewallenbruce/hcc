@@ -17,25 +17,25 @@ pak::pak("andrewallenbruce/hcc")
 
 ## All functions
 
-- [`EditRule()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
+- [`EditRule`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   : Single Edit Rule
-- [`EnrollmentData()`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
+- [`EnrollmentData`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : X12-834 Transaction Enrollment Data
-- [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
+- [`HCCDetail`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
   : HCC Category Detail
 - [`HCPCoveragePeriod`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
   : Health Care Plan coverage period from HD loop
 - [`PatientDemographics()`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
   : Patient Demographics Categorization
-- [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
+- [`PaymentData`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : X12-820 Transaction Remittance Data
-- [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
+- [`PaymentDetail`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
   : Per-Member Payment Record from an X12-820 ENT Loop
-- [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
+- [`RAFResult`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
   : Risk Adjustment Factor score results
-- [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
+- [`RemittanceEntry`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
   : Remittance Line Item
-- [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
+- [`ServiceLevelData`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
   : Healthcare Claim Service Level Data
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
   : Apply risk adjustment coefficients to HCCs and interactions.

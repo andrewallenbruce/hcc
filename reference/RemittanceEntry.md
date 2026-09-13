@@ -2,24 +2,6 @@
 
 A single remittance line item within a member's payment record.
 
-## Usage
-
-``` r
-RemittanceEntry(
-  reference_number = character(0),
-  payment_amount = numeric(0),
-  original_amount = numeric(0),
-  rate_code = character(0),
-  aid_code = character(0),
-  plan_type = character(0),
-  description = character(0),
-  coverage_period_start = character(0),
-  coverage_period_end = character(0),
-  adjustment_amount = numeric(0),
-  adjustment_reason = character(0)
-)
-```
-
 ## Arguments
 
 - reference_number:
@@ -57,11 +39,11 @@ RemittanceEntry(
   `<chr>` `REF*ZZ` Payment description (e.g., "Primary Capitation Dual",
   "Medi-Cal Only-State Only")
 
-- coverage_period_start:
+- coverage_start:
 
   `<Date>` `DTM*582` Coverage period begin date (YYYY-MM-DD)
 
-- coverage_period_end:
+- coverage_end:
 
   `<Date>` `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM\*582
 
@@ -85,17 +67,29 @@ REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
 ## Examples
 
 ``` r
-RemittanceEntry()
+RemittanceEntry(
+  reference_number = "TESTPLAN-SREGLR-2602200043000P",
+  payment_amount = 401.72,
+  original_amount = 8488.25,
+  rate_code = "957",
+  aid_code = "17",
+  plan_type = "2",
+  description = "Dual-State Only",
+  coverage_start = "2026-01-01",
+  coverage_end = "2026-01-31",
+  adjustment_amount = -8086.53,
+  adjustment_reason = "53"
+)
 #> <hcc::RemittanceEntry>
-#>  @ reference_number     : chr(0) 
-#>  @ payment_amount       : num(0) 
-#>  @ original_amount      : num(0) 
-#>  @ rate_code            : chr(0) 
-#>  @ aid_code             : chr(0) 
-#>  @ plan_type            : chr(0) 
-#>  @ description          : chr(0) 
-#>  @ coverage_period_start: chr(0) 
-#>  @ coverage_period_end  : chr(0) 
-#>  @ adjustment_amount    : num(0) 
-#>  @ adjustment_reason    : chr(0) 
+#>  @ reference_number : chr "TESTPLAN-SREGLR-2602200043000P"
+#>  @ payment_amount   : num 402
+#>  @ original_amount  : num 8488
+#>  @ rate_code        : chr "957"
+#>  @ aid_code         : chr "17"
+#>  @ plan_type        : chr "2"
+#>  @ description      : chr "Dual-State Only"
+#>  @ coverage_start   : Date[1:1], format: "2026-01-01"
+#>  @ coverage_end     : Date[1:1], format: "2026-01-31"
+#>  @ adjustment_amount: num -8087
+#>  @ adjustment_reason: chr "53"
 ```

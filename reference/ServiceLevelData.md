@@ -2,31 +2,6 @@
 
 Healthcare Claim Service Level Data
 
-## Usage
-
-``` r
-ServiceLevelData(
-  claim_id = character(0),
-  procedure_code = character(0),
-  ndc = character(0),
-  linked_diagnosis_codes = character(0),
-  claim_diagnosis_codes = character(0),
-  claim_type = character(0),
-  provider_specialty = character(0),
-  performing_provider_npi = character(0),
-  billing_provider_npi = character(0),
-  patient_id = character(0),
-  facility_type = character(0),
-  service_type = character(0),
-  service_date = character(0),
-  place_of_service = character(0),
-  quantity = integer(0),
-  quantity_unit = character(0),
-  modifiers = character(0),
-  allowed_amount = integer(0)
-)
-```
-
 ## Arguments
 
 - claim_id:
@@ -80,7 +55,7 @@ ServiceLevelData(
 
 - service_date:
 
-  `<chr>` Date service was performed (YYYY-MM-DD)
+  `<Date>` Date service was performed (YYYY-MM-DD)
 
 - place_of_service:
 
@@ -118,7 +93,7 @@ ServiceLevelData(
   billing_provider_npi = "9876540809",
   patient_id = "030005074A",
   facility_type = "14",
-  service_date = c("19960911", "19960911"),
+  service_date = "1996-09-11",
   quantity = c(1L, 3L),
   quantity_unit = "UN",
   allowed_amount = 89.93
@@ -136,7 +111,7 @@ ServiceLevelData(
 #>  @ patient_id             : chr "030005074A"
 #>  @ facility_type          : chr "14"
 #>  @ service_type           : chr(0) 
-#>  @ service_date           : chr [1:2] "19960911" "19960911"
+#>  @ service_date           : Date[1:1], format: "1996-09-11"
 #>  @ place_of_service       : chr(0) 
 #>  @ quantity               : int [1:2] 1 3
 #>  @ quantity_unit          : chr "UN"

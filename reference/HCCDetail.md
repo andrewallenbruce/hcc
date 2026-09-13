@@ -2,17 +2,6 @@
 
 HCC Category Detail
 
-## Usage
-
-``` r
-HCCDetail(
-  hcc = integer(0),
-  label = character(0),
-  is_chronic = logical(0),
-  coefficient = numeric(0)
-)
-```
-
 ## Arguments
 
 - hcc:
