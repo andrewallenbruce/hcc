@@ -76,7 +76,6 @@ A `<PaymentData>` S7 object
 ## Examples
 
 ``` r
-if (FALSE) {
 PaymentData(
   source = "TEST-PAYER",
   report_date = "2026-03-16",
@@ -117,5 +116,40 @@ PaymentData(
     )
   )
 )
-}
+#> <hcc::PaymentData>
+#>  @ source         : chr "TEST-PAYER"
+#>  @ report_date    : Date[1:1], format: "2026-03-16"
+#>  @ payment_date   : Date[1:1], format: "2026-03-12"
+#>  @ total_amount   : num 91978
+#>  @ check_number   : chr "TESTTRN02000001"
+#>  @ payee_name     : chr "TEST PAYEE ORGANIZATION"
+#>  @ payee_address  : chr "123 TEST STREET"
+#>  @ payee_city     : chr "TESTCITY"
+#>  @ payee_state    : chr "CA"
+#>  @ payee_zip      : chr "00000"
+#>  @ payer_name     : chr "TEST PAYER AGENCY"
+#>  @ payer_address  : chr "123 TEST STREET"
+#>  @ payer_city     : chr "TESTCITY"
+#>  @ payer_state    : chr "CA"
+#>  @ payer_zip      : chr "00000"
+#>  @ payment_details:List of 1
+#>  .. $ : <hcc::PaymentDetail>
+#>  ..  ..@ entity_number     : chr "1"
+#>  ..  ..@ member_id         : chr "TESTMBR000000001"
+#>  ..  ..@ last_name         : chr "LASTNAME01"
+#>  ..  ..@ first_name        : chr "FIRSTNAME01"
+#>  ..  ..@ middle_name       : chr(0) 
+#>  ..  ..@ remittance_entries:List of 1
+#>  .. .. .. $ : <hcc::RemittanceEntry>
+#>  .. .. ..  ..@ reference_number : chr "TESTPLAN-SREGLR-2602200043000P"
+#>  .. .. ..  ..@ payment_amount   : num 402
+#>  .. .. ..  ..@ original_amount  : num 8488
+#>  .. .. ..  ..@ rate_code        : chr "957"
+#>  .. .. ..  ..@ aid_code         : chr "17"
+#>  .. .. ..  ..@ plan_type        : chr "2"
+#>  .. .. ..  ..@ description      : chr "Dual-State Only"
+#>  .. .. ..  ..@ coverage_start   : Date[1:1], format: "2026-01-01"
+#>  .. .. ..  ..@ coverage_end     : Date[1:1], format: "2026-01-31"
+#>  .. .. ..  ..@ adjustment_amount: num -8087
+#>  .. .. ..  ..@ adjustment_reason: chr "53"
 ```

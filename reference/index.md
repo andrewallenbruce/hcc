@@ -10,7 +10,7 @@
   : HCC Category Detail
 - [`HCPCoveragePeriod`](https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.md)
   : Health Care Plan coverage period from HD loop
-- [`PatientDemographics()`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
+- [`PatientDemographics`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
   : Patient Demographics Categorization
 - [`PaymentData`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : X12-820 Transaction Remittance Data
