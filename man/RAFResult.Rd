@@ -3,25 +3,6 @@
 \name{RAFResult}
 \alias{RAFResult}
 \title{Risk Adjustment Factor score results}
-\usage{
-RAFResult(
-  risk_score = numeric(0),
-  risk_score_demographics = numeric(0),
-  risk_score_chronic_only = numeric(0),
-  risk_score_hcc = numeric(0),
-  risk_score_payment = numeric(0),
-  hcc_list = character(0),
-  hcc_details = character(0),
-  cc_to_dx = character(0),
-  coefficients = numeric(0),
-  interactions = character(0),
-  demographics = character(0),
-  model_name = character(0),
-  version = character(0),
-  diagnosis_codes = character(0),
-  service_level_data = ServiceLevelData()
-)
-}
 \arguments{
 \item{risk_score}{\verb{<dbl>} Final RAF score}
 

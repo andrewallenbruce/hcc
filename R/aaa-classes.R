@@ -1,3 +1,12 @@
+#' @noRd
+prop_date <- S7::new_property(
+  S7::class_Date,
+  setter = function(self, name, value) {
+    S7::prop(self, name) <- as.Date(value)
+    self
+  }
+)
+
 #' Single Edit Rule
 #'
 #' @param edit_type `<chr>` "sex" or "age"
@@ -7,6 +16,7 @@
 #' @param action `<chr>` "invalid" or "override"
 #' @param cc_override `<int>` CC to assign when `action = "override"`
 #' @returns An `<EditRule>` S7 object
+#' @usage NULL
 #' @examples
 #' EditRule(
 #'   edit_type = "age",
@@ -16,9 +26,9 @@
 #'   age_min = 15L,
 #'   cc_override = 13L
 #' )
+#' @name EditRule
 #' @export
-EditRule <- S7::new_class(
-  "EditRule",
+EditRule := S7::new_class(
   properties = list(
     edit_type = S7::class_character,
     sex = S7::class_integer,
@@ -89,6 +99,7 @@ EditRule <- S7::new_class(
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the
 #'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
+#' @usage NULL
 #' @examples
 #' HCCDetail( # HCC203
 #'  hcc = 203L,
@@ -96,9 +107,9 @@ EditRule <- S7::new_class(
 #'  is_chronic = TRUE,
 #'  coefficient = 0.486
 #' )
+#' @name HCCDetail
 #' @export
-HCCDetail <- S7::new_class(
-  "HCCDetail",
+HCCDetail := S7::new_class(
   properties = list(
     hcc = S7::class_integer,
     label = S7::class_character,
@@ -119,20 +130,22 @@ HCCDetail <- S7::new_class(
 #' @returns An `<HCPCoveragePeriod>` S7 object
 #' @usage NULL
 #' @examples
-#' HCPCoveragePeriod(
-#'   start_date = as.Date("2026-08-20"),
-#'   end_date = as.Date("2026-08-25")
-#'   )
+#' HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
+#' @name HCPCoveragePeriod
 #' @export
-HCPCoveragePeriod <- S7::new_class(
-  "HCPCoveragePeriod", # HCPContext
+HCPCoveragePeriod := S7::new_class(
   properties = list(
-    start_date = S7::class_Date,
-    end_date = S7::class_Date,
+    start_date = prop_date,
+    end_date = prop_date,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character
-  )
+  ),
+  validator = function(self) {
+    if (self@start_date >= self@end_date) {
+      return("@start_date must occur before @end_date")
+    }
+  }
 )
 
 #' Healthcare Claim Service Level Data
@@ -154,13 +167,14 @@ HCPCoveragePeriod <- S7::new_class(
 #' @param facility_type `<chr>` Type of facility where service was rendered
 #' @param service_type `<chr>` Type of service provided (facility type + service
 #'   type = Type of Bill)
-#' @param service_date `<chr>` Date service was performed (YYYY-MM-DD)
+#' @param service_date `<Date>` Date service was performed (YYYY-MM-DD)
 #' @param place_of_service `<chr>` Place of service code
 #' @param quantity `<num>` Number of units provided
 #' @param quantity_unit `<chr>` Unit of measure for quantity
 #' @param modifiers `<chr>` List of procedure code modifiers
 #' @param allowed_amount `<num>` Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
+#' @usage NULL
 #' @examples
 #' ServiceLevelData(
 #'   claim_id = "756048Q",
@@ -171,14 +185,14 @@ HCPCoveragePeriod <- S7::new_class(
 #'   billing_provider_npi = "9876540809",
 #'   patient_id = "030005074A",
 #'   facility_type = "14",
-#'   service_date = c("19960911", "19960911"),
+#'   service_date = "1996-09-11",
 #'   quantity = c(1L, 3L),
 #'   quantity_unit = "UN",
 #'   allowed_amount = 89.93
 #' )
+#' @name ServiceLevelData
 #' @export
-ServiceLevelData <- S7::new_class(
-  "ServiceLevelData",
+ServiceLevelData := S7::new_class(
   properties = list(
     claim_id = S7::class_character,
     procedure_code = S7::class_character,
@@ -192,7 +206,7 @@ ServiceLevelData <- S7::new_class(
     patient_id = S7::class_character,
     facility_type = S7::class_character,
     service_type = S7::class_character,
-    service_date = S7::class_character,
+    service_date = prop_date,
     place_of_service = S7::class_character,
     quantity = S7::class_numeric,
     quantity_unit = S7::class_character,
@@ -222,11 +236,12 @@ ServiceLevelData <- S7::new_class(
 #' @param service_level_data `<ServiceLevelData>` S7 object; Processed service
 #'   records
 #' @returns A `<RAFResult>` S7 object
+#' @usage NULL
 #' @examples
 #' RAFResult()
+#' @name RAFResult
 #' @export
-RAFResult <- S7::new_class(
-  "RAFResult",
+RAFResult := S7::new_class(
   properties = list(
     risk_score = S7::class_double,
     risk_score_demographics = S7::class_double,
@@ -267,20 +282,33 @@ RAFResult <- S7::new_class(
 #'    - "2" = pharmacy/state-only
 #' @param description `<chr>` `REF*ZZ` Payment description (e.g., "Primary
 #'   Capitation Dual", "Medi-Cal Only-State Only")
-#' @param coverage_period_start `<Date>` `DTM*582` Coverage period begin date
+#' @param coverage_start `<Date>` `DTM*582` Coverage period begin date
 #'   (YYYY-MM-DD)
-#' @param coverage_period_end `<Date>` `DTM*582` Coverage period end date
+#' @param coverage_end `<Date>` `DTM*582` Coverage period end date
 #'   (YYYY-MM-DD) from DTM*582
 #' @param adjustment_amount `<chr>` `ADX-01` Adjustment amount; If negative, it
 #'   is a recoupment
 #' @param adjustment_reason `<chr>` `ADX-02` Adjustment reason code ("53" =
 #'   prior period)
 #' @returns A `<RemittanceEntry>` S7 object
+#' @usage NULL
 #' @examples
-#' RemittanceEntry()
+#' RemittanceEntry(
+#'   reference_number = "TESTPLAN-SREGLR-2602200043000P",
+#'   payment_amount = 401.72,
+#'   original_amount = 8488.25,
+#'   rate_code = "957",
+#'   aid_code = "17",
+#'   plan_type = "2",
+#'   description = "Dual-State Only",
+#'   coverage_start = "2026-01-01",
+#'   coverage_end = "2026-01-31",
+#'   adjustment_amount = -8086.53,
+#'   adjustment_reason = "53"
+#' )
+#' @name RemittanceEntry
 #' @export
-RemittanceEntry <- S7::new_class(
-  "RemittanceEntry",
+RemittanceEntry := S7::new_class(
   properties = list(
     reference_number = S7::class_character,
     payment_amount = S7::class_double,
@@ -289,8 +317,8 @@ RemittanceEntry <- S7::new_class(
     aid_code = S7::class_character,
     plan_type = S7::class_character,
     description = S7::class_character,
-    coverage_period_start = S7::class_character,
-    coverage_period_end = S7::class_character,
+    coverage_start = prop_date,
+    coverage_end = prop_date,
     adjustment_amount = S7::class_double,
     adjustment_reason = S7::class_character
   )
@@ -310,18 +338,39 @@ RemittanceEntry <- S7::new_class(
 #' @param remittance_entries List of `<RemittanceEntry>` line items (one per
 #'   RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
+#' @usage NULL
 #' @examples
-#' PaymentDetail()
+#' PaymentDetail(
+#'   entity_number = "1",
+#'   member_id = "TESTMBR000000001",
+#'   last_name = "LASTNAME01",
+#'   first_name = "FIRSTNAME01",
+#'   remittance_entries = list(
+#'     RemittanceEntry(
+#'       reference_number = "TESTPLAN-SREGLR-2602200043000P",
+#'       payment_amount = 401.72,
+#'       original_amount = 8488.25,
+#'       rate_code = "957",
+#'       aid_code = "17",
+#'       plan_type = "2",
+#'       description = "Dual-State Only",
+#'       coverage_start = "2026-01-01",
+#'       coverage_end = "2026-01-31",
+#'       adjustment_amount = -8086.53,
+#'       adjustment_reason = "53"
+#'     )
+#'   )
+#' )
+#' @name PaymentDetail
 #' @export
-PaymentDetail <- S7::new_class(
-  "PaymentDetail",
+PaymentDetail := S7::new_class(
   properties = list(
     entity_number = S7::class_character,
     member_id = S7::class_character,
     last_name = S7::class_character,
     first_name = S7::class_character,
     middle_name = S7::class_character,
-    remittance_entries = RemittanceEntry
+    remittance_entries = S7::class_list
   )
 )
 
@@ -346,18 +395,58 @@ PaymentDetail <- S7::new_class(
 #' @param payer_city `<chr>` `N4` Payer city
 #' @param payer_state `<chr>` `N4` Payer state
 #' @param payer_zip `<chr>` `N4` Payer ZIP code
-#' @param members `<PaymentDetail>` List of per-member payment records
+#' @param payment_details `<PaymentDetail>` List of per-member payment records
 #' @returns A `<PaymentData>` S7 object
+#' @usage NULL
 #' @examplesIf FALSE
-#' PaymentData()
+#' PaymentData(
+#'   source = "TEST-PAYER",
+#'   report_date = "2026-03-16",
+#'   payment_date = "2026-03-12",
+#'   total_amount = 91977.81,
+#'   check_number = "TESTTRN02000001",
+#'   payee_name = "TEST PAYEE ORGANIZATION",
+#'   payee_address = "123 TEST STREET",
+#'   payee_city = "TESTCITY",
+#'   payee_state = "CA",
+#'   payee_zip = "00000",
+#'   payer_name = "TEST PAYER AGENCY",
+#'   payer_address = "123 TEST STREET",
+#'   payer_city = "TESTCITY",
+#'   payer_state = "CA",
+#'   payer_zip = "00000",
+#'   payment_details = list(
+#'     PaymentDetail(
+#'       entity_number = "1",
+#'       member_id = "TESTMBR000000001",
+#'       last_name = "LASTNAME01",
+#'       first_name = "FIRSTNAME01",
+#'       remittance_entries = list(
+#'         RemittanceEntry(
+#'           reference_number = "TESTPLAN-SREGLR-2602200043000P",
+#'           payment_amount = 401.72,
+#'           original_amount = 8488.25,
+#'           rate_code = "957",
+#'           aid_code = "17",
+#'           plan_type = "2",
+#'           description = "Dual-State Only",
+#'           coverage_start = "2026-01-01",
+#'           coverage_end = "2026-01-31",
+#'           adjustment_amount = -8086.53,
+#'           adjustment_reason = "53"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' @name PaymentData
 #' @export
-PaymentData <- S7::new_class(
-  "PaymentData",
+PaymentData := S7::new_class(
   properties = list(
     source = S7::class_character,
-    report_date = S7::class_character,
+    report_date = prop_date,
+    payment_date = prop_date,
     total_amount = S7::class_double,
-    payment_date = S7::class_character,
     check_number = S7::class_character,
     payee_name = S7::class_character,
     payee_address = S7::class_character,
@@ -369,7 +458,7 @@ PaymentData <- S7::new_class(
     payer_city = S7::class_character,
     payer_state = S7::class_character,
     payer_zip = S7::class_character,
-    members = PaymentDetail
+    payment_details = S7::class_list
   )
 )
 
@@ -408,8 +497,8 @@ PaymentData <- S7::new_class(
 #'    - Reinstate (`025`)
 #' @param maintenance_reason_code `INS-04` Maintenance reason
 #' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
-#' @param coverage_start_date Coverage effective date
-#' @param coverage_end_date Coverage termination date
+#' @param coverage_start Coverage effective date
+#' @param coverage_end Coverage termination date
 #' @param has_medicare Member has Medicare coverage
 #' @param has_medicaid Member has Medicaid coverage
 #' @param dual_elgbl_cd Dual eligibility status code (`00`,`01`-`08`)
@@ -448,6 +537,7 @@ PaymentData <- S7::new_class(
 #' @param hcp_history `<HCPCoveragePeriod>` List of historical HCP coverage
 #'   periods
 #' @returns A `<EnrollmentData>` S7 object
+#' @usage NULL
 #' @examplesIf FALSE
 #' EnrollmentData()
 #' @export
@@ -478,8 +568,8 @@ EnrollmentData <- function(
   maintenance_type = character(),
   maintenance_reason_code = character(),
   benefit_status_code = character(),
-  coverage_start_date = character(),
-  coverage_end_date = character(),
+  coverage_start = character(),
+  coverage_end = character(),
   has_medicare = logical(),
   has_medicaid = logical(),
   dual_elgbl_cd = character(),
@@ -542,8 +632,8 @@ EnrollmentData <- function(
     maintenance_type = maintenance_type,
     maintenance_reason_code = maintenance_reason_code,
     benefit_status_code = benefit_status_code,
-    coverage_start_date = coverage_start_date,
-    coverage_end_date = coverage_end_date,
+    coverage_start = coverage_start,
+    coverage_end = coverage_end,
     has_medicare = has_medicare,
     has_medicaid = has_medicaid,
     dual_elgbl_cd = dual_elgbl_cd,

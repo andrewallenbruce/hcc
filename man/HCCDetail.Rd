@@ -3,14 +3,6 @@
 \name{HCCDetail}
 \alias{HCCDetail}
 \title{HCC Category Detail}
-\usage{
-HCCDetail(
-  hcc = integer(0),
-  label = character(0),
-  is_chronic = logical(0),
-  coefficient = numeric(0)
-)
-}
 \arguments{
 \item{hcc}{\verb{<int>} HCC code (e.g., 18, 85)}
 

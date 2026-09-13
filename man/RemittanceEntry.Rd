@@ -3,21 +3,6 @@
 \name{RemittanceEntry}
 \alias{RemittanceEntry}
 \title{Remittance Line Item}
-\usage{
-RemittanceEntry(
-  reference_number = character(0),
-  payment_amount = numeric(0),
-  original_amount = numeric(0),
-  rate_code = character(0),
-  aid_code = character(0),
-  plan_type = character(0),
-  description = character(0),
-  coverage_period_start = character(0),
-  coverage_period_end = character(0),
-  adjustment_amount = numeric(0),
-  adjustment_reason = character(0)
-)
-}
 \arguments{
 \item{reference_number}{\verb{<chr>} \code{RMR-02} Invoice/check reference number}
 
@@ -41,10 +26,10 @@ adjustment (when present)}
 \item{description}{\verb{<chr>} \code{REF*ZZ} Payment description (e.g., "Primary
 Capitation Dual", "Medi-Cal Only-State Only")}
 
-\item{coverage_period_start}{\verb{<Date>} \code{DTM*582} Coverage period begin date
+\item{coverage_start}{\verb{<Date>} \code{DTM*582} Coverage period begin date
 (YYYY-MM-DD)}
 
-\item{coverage_period_end}{\verb{<Date>} \code{DTM*582} Coverage period end date
+\item{coverage_end}{\verb{<Date>} \code{DTM*582} Coverage period end date
 (YYYY-MM-DD) from DTM*582}
 
 \item{adjustment_amount}{\verb{<chr>} \code{ADX-01} Adjustment amount; If negative, it
@@ -64,5 +49,17 @@ Each RemittanceEntry corresponds to one RMR segment and its associated REF,
 DTM, and ADX segments within an ENT loop of an 820 transaction.
 }
 \examples{
-RemittanceEntry()
+RemittanceEntry(
+  reference_number = "TESTPLAN-SREGLR-2602200043000P",
+  payment_amount = 401.72,
+  original_amount = 8488.25,
+  rate_code = "957",
+  aid_code = "17",
+  plan_type = "2",
+  description = "Dual-State Only",
+  coverage_start = "2026-01-01",
+  coverage_end = "2026-01-31",
+  adjustment_amount = -8086.53,
+  adjustment_reason = "53"
+)
 }

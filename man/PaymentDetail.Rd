@@ -3,16 +3,6 @@
 \name{PaymentDetail}
 \alias{PaymentDetail}
 \title{Per-Member Payment Record from an X12-820 ENT Loop}
-\usage{
-PaymentDetail(
-  entity_number = character(0),
-  member_id = character(0),
-  last_name = character(0),
-  first_name = character(0),
-  middle_name = character(0),
-  remittance_entries = RemittanceEntry()
-)
-}
 \arguments{
 \item{entity_number}{\verb{<chr>} \code{ENT-01} ENT sequence number}
 
@@ -36,5 +26,25 @@ appear in multiple ENT entries within the same transaction
 (e.g., retroactive adjustments for prior periods).
 }
 \examples{
-PaymentDetail()
+PaymentDetail(
+  entity_number = "1",
+  member_id = "TESTMBR000000001",
+  last_name = "LASTNAME01",
+  first_name = "FIRSTNAME01",
+  remittance_entries = list(
+    RemittanceEntry(
+      reference_number = "TESTPLAN-SREGLR-2602200043000P",
+      payment_amount = 401.72,
+      original_amount = 8488.25,
+      rate_code = "957",
+      aid_code = "17",
+      plan_type = "2",
+      description = "Dual-State Only",
+      coverage_start = "2026-01-01",
+      coverage_end = "2026-01-31",
+      adjustment_amount = -8086.53,
+      adjustment_reason = "53"
+    )
+  )
+)
 }

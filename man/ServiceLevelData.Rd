@@ -3,28 +3,6 @@
 \name{ServiceLevelData}
 \alias{ServiceLevelData}
 \title{Healthcare Claim Service Level Data}
-\usage{
-ServiceLevelData(
-  claim_id = character(0),
-  procedure_code = character(0),
-  ndc = character(0),
-  linked_diagnosis_codes = character(0),
-  claim_diagnosis_codes = character(0),
-  claim_type = character(0),
-  provider_specialty = character(0),
-  performing_provider_npi = character(0),
-  billing_provider_npi = character(0),
-  patient_id = character(0),
-  facility_type = character(0),
-  service_type = character(0),
-  service_date = character(0),
-  place_of_service = character(0),
-  quantity = integer(0),
-  quantity_unit = character(0),
-  modifiers = character(0),
-  allowed_amount = integer(0)
-)
-}
 \arguments{
 \item{claim_id}{\verb{<chr>} Unique identifier for the claim}
 
@@ -55,7 +33,7 @@ provider}
 \item{service_type}{\verb{<chr>} Type of service provided (facility type + service
 type = Type of Bill)}
 
-\item{service_date}{\verb{<chr>} Date service was performed (YYYY-MM-DD)}
+\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
 
 \item{place_of_service}{\verb{<chr>} Place of service code}
 
@@ -83,7 +61,7 @@ ServiceLevelData(
   billing_provider_npi = "9876540809",
   patient_id = "030005074A",
   facility_type = "14",
-  service_date = c("19960911", "19960911"),
+  service_date = "1996-09-11",
   quantity = c(1L, 3L),
   quantity_unit = "UN",
   allowed_amount = 89.93
