@@ -398,7 +398,7 @@ PaymentDetail := S7::new_class(
 #' @param payment_details `<PaymentDetail>` List of per-member payment records
 #' @returns A `<PaymentData>` S7 object
 #' @usage NULL
-#' @examplesIf FALSE
+#' @examples
 #' PaymentData(
 #'   source = "TEST-PAYER",
 #'   report_date = "2026-03-16",

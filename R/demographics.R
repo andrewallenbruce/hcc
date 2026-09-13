@@ -21,13 +21,17 @@
 #' @param esrd_months `<int>` Number of months since transplant *(ESRD only)*
 #' @param category `<chr>` Age-sex category code
 #' @returns A `<PatientDemographics>` S7 object
+#' @usage NULL
 #' @examples
-#' PatientDemographics(age = 48, sex = "1", version = "V2")
-#' PatientDemographics(age = 35, sex = "M", version = "V6")
-#' PatientDemographics(age = 75, sex = "2", orec_code = "0", version = "V2")
+#' PatientDemographics(
+#'   age = 75,
+#'   sex = "2",
+#'   orec_code = "0",
+#'   version = "V2"
+#' )
+#' @name PatientDemographics
 #' @export
-PatientDemographics <- S7::new_class(
-  "PatientDemographics",
+PatientDemographics := S7::new_class(
   properties = list(
     version = S7::class_character,
     age = S7::class_numeric,

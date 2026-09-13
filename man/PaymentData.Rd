@@ -45,7 +45,6 @@ payment remittance from a state Medicaid agency or CMS to
 a managed care plan.
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 PaymentData(
   source = "TEST-PAYER",
   report_date = "2026-03-16",
@@ -86,5 +85,4 @@ PaymentData(
     )
   )
 )
-\dontshow{\}) # examplesIf}
 }

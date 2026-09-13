@@ -3,28 +3,6 @@
 \name{PatientDemographics}
 \alias{PatientDemographics}
 \title{Patient Demographics Categorization}
-\usage{
-PatientDemographics(
-  version = character(0),
-  age = integer(0),
-  sex = character(0),
-  dual_code = character(0),
-  orec_code = character(0),
-  crec_code = character(0),
-  new_enrollee = logical(0),
-  has_snp = logical(0),
-  non_aged = logical(0),
-  dis_orig = logical(0),
-  dis_curr = logical(0),
-  dual_full = logical(0),
-  dual_part = logical(0),
-  has_esrd = logical(0),
-  is_lti = logical(0),
-  low_income = logical(0),
-  esrd_months = integer(0),
-  category = character(0)
-)
-}
 \arguments{
 \item{version}{\verb{<chr>} Version of categorization to use (\code{V2}, \code{V4}, \code{V6})}
 
@@ -70,7 +48,10 @@ A \verb{<PatientDemographics>} S7 object
 Patient Demographics Categorization
 }
 \examples{
-PatientDemographics(age = 48, sex = "1", version = "V2")
-PatientDemographics(age = 35, sex = "M", version = "V6")
-PatientDemographics(age = 75, sex = "2", orec_code = "0", version = "V2")
+PatientDemographics(
+  age = 75,
+  sex = "2",
+  orec_code = "0",
+  version = "V2"
+)
 }

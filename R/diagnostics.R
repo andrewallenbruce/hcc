@@ -1,6 +1,5 @@
 #' @noRd
-DiagnosticCategories <- S7::new_class(
-  "DiagnosticCategories",
+DiagnosticCategories := S7::new_class(
   properties = list(
     model = S7::class_character,
     hcc = S7::class_integer,
