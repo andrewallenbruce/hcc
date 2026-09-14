@@ -77,7 +77,7 @@
 #'   \item{icd}{ICD Code}
 #'   \item{age}{Patient Age}
 #'   \item{bound}{Age Boundary}
-#'   \item{sex}{{Patient Sex}
+#'   \item{sex}{Patient Sex}
 #'   \item{action}{Action}
 #'   \item{override}{Replacement Condition Code}
 #'   \item{model_name}{Model Version}

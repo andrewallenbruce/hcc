@@ -7,12 +7,12 @@
 \format{
 \subsection{\code{ra_dx_edits}}{
 
-A list with 2 data frames:
+A data frame with 107 rows and 9 columns:
 \describe{
 \item{icd}{ICD Code}
 \item{age}{Patient Age}
 \item{bound}{Age Boundary}
-\item{sex}{{Patient Sex}
+\item{sex}{Patient Sex}
 \item{action}{Action}
 \item{override}{Replacement Condition Code}
 \item{model_name}{Model Version}

@@ -21,19 +21,22 @@ Imports:
     vctrs (>= 0.7.3)
 Suggests:
     clock (>= 0.7.4),
+    s7x (>= 1.0.1),
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
     testthat (>= 3.3.2)
 Remotes:
-    RConsortium/S7
+    RConsortium/S7,
+    josiahparry/s7x
 Config/roxygen2/version: 8.1.0.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
 Collate: 
     'aaa-classes.R'
+    'aaa-820-classes.R'
     'apply_edits.R'
     'apply_filter.R'
     'calculate.R'

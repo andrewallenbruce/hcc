@@ -266,7 +266,7 @@ parse_yymmdd <- function(x, ...) {
 #' @noRd
 parse_date_range <- function(x) {
   x <- strsplit(x, "-", fixed = TRUE)[[1]]
-  cheapr::c_(parse_date(x[1]), parse_date(x[2]))
+  ivs::iv_pairs(cheapr::c_(parse_date(x[1]), parse_date(x[2]) + 1L))
 }
 
 #' Calculate age from DOB
