@@ -3,9 +3,9 @@
 #' @format ## `ra_dx_to_cc`
 #' A data frame with 112,936 rows and 4 columns:
 #' \describe{
-#'   \item{Year of Release}{State code}
-#'   \item{diagnosis_code}{ICD-10-CM diagnostic codes}
-#'   \item{cc}{Condition Codes}
+#'   \item{year}{Model Year}
+#'   \item{diagnosis_code}{Diagnosis Code}
+#'   \item{cc}{Condition Code}
 #'   \item{model_name}{Model Name}
 #'   ...
 #' }
@@ -17,11 +17,10 @@
 #' @format ## `ra_coefficients`
 #' A data frame with 14,764 rows and 5 columns:
 #' \describe{
-#'   \item{year}{Year of Release}
+#'   \item{year}{Model Year}
 #'   \item{coefficient}{Model Weight Categories}
 #'   \item{value}{Model Weights}
-#'   \item{model_domain}{Model Domain}
-#'   \item{model_version}{Model Version}
+#'   \item{model_name}{Model Name}
 #'   ...
 #' }
 #' @keywords internal
@@ -32,12 +31,12 @@
 #' @format ## `ra_hierarchies`
 #' A data frame with 1,220 rows and 6 columns:
 #' \describe{
-#'   \item{year}{Year of Release}
-#'   \item{cc_parent}{Model Weight Categories}
-#'   \item{cc_child}{Model Weights}
+#'   \item{year}{Model Year}
+#'   \item{cc_parent}{Parent Condition Code}
+#'   \item{cc_child}{Child Condition Code}
 #'   \item{model_domain}{Model Domain}
 #'   \item{model_version}{Model Version}
-#'   \item{model_fullname}{Model Version}
+#'   \item{model_fullname}{Model Full Name}
 #'   ...
 #' }
 #' @keywords internal
@@ -48,11 +47,11 @@
 #' @format ## `ra_labels`
 #' A data frame with 783 rows and 5 columns:
 #' \describe{
-#'   \item{cc}{Model Weight Categories}
-#'   \item{label}{Model Weights}
+#'   \item{cc}{Condition Code}
+#'   \item{label}{Condition Code Label}
 #'   \item{model_domain}{Model Domain}
 #'   \item{model_version}{Model Version}
-#'   \item{model_fullname}{Model Version}
+#'   \item{model_fullname}{Model Full Name}
 #'   ...
 #' }
 #' @keywords internal
@@ -63,8 +62,8 @@
 #' @format ## `ra_eligible_hcpcs`
 #' A list with 2 elements:
 #' \describe{
-#'   \item{`2026`}{Model Weight Categories}
-#'   \item{`2025`}{Model Weights}
+#'   \item{y2026}{HCPCS Unique to 2026}
+#'   \item{all}{HCPCS All Years}
 #'   ...
 #' }
 #' @keywords internal
@@ -75,15 +74,14 @@
 #' @format ## `ra_dx_edits`
 #' A data frame with 107 rows and 9 columns:
 #' \describe{
-#'   \item{icd10}{Year of Release}
-#'   \item{edit_type}{Model Weight Categories}
-#'   \item{sex}{Model Weights}
-#'   \item{age_min}{Model Domain}
-#'   \item{age_max}{Model Domain}
-#'   \item{action}{Model Domain}
-#'   \item{cc_override}{Model Domain}
+#'   \item{icd}{ICD Code}
+#'   \item{age}{Patient Age}
+#'   \item{bound}{Age Boundary}
+#'   \item{sex}{{Patient Sex}
+#'   \item{action}{Action}
+#'   \item{override}{Replacement Condition Code}
 #'   \item{model_name}{Model Version}
-#'   \item{description}{Model Version}
+#'   \item{rule_description}{Edit Rule Description}
 #'   ...
 #' }
 #' @keywords internal
@@ -119,17 +117,22 @@
 
 #' Race and Ethnicity
 #'
-#' @format ## `ph_race`
+#' @format ## `ra_race`
 #' A data frame with 1324 rows and 9 columns:
 #' \describe{
-#'   \item{hcc}{Hierarchical Condition Codes}
-#'   \item{is_chronic}{HCC is Chronic}
-#'   \item{model_version}{Model Version}
-#'   \item{model_domain}{Model Domain}
+#'   \item{code}{description}
+#'   \item{hierarchy}{description}
+#'   \item{name}{description}
+#'   \item{preferred}{description}
+#'   \item{date_added}{description}
+#'   \item{fed_status}{description}
+#'   \item{file_date}{description}
+#'   \item{sdo_status}{description}
+#'   \item{sys_oid}{description}
 #'   ...
 #' }
 #' @keywords internal
-"ph_race"
+"ra_race"
 
 #' X12-820 Payment Order/Remittance Advice Examples
 #'

@@ -7,17 +7,16 @@
 \format{
 \subsection{\code{ra_dx_edits}}{
 
-A data frame with 107 rows and 9 columns:
+A list with 2 data frames:
 \describe{
-\item{icd10}{Year of Release}
-\item{edit_type}{Model Weight Categories}
-\item{sex}{Model Weights}
-\item{age_min}{Model Domain}
-\item{age_max}{Model Domain}
-\item{action}{Model Domain}
-\item{cc_override}{Model Domain}
+\item{icd}{ICD Code}
+\item{age}{Patient Age}
+\item{bound}{Age Boundary}
+\item{sex}{{Patient Sex}
+\item{action}{Action}
+\item{override}{Replacement Condition Code}
 \item{model_name}{Model Version}
-\item{description}{Model Version}
+\item{rule_description}{Edit Rule Description}
 ...
 }
 }

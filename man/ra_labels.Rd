@@ -9,11 +9,11 @@
 
 A data frame with 783 rows and 5 columns:
 \describe{
-\item{cc}{Model Weight Categories}
-\item{label}{Model Weights}
+\item{cc}{Condition Code}
+\item{label}{Condition Code Label}
 \item{model_domain}{Model Domain}
 \item{model_version}{Model Version}
-\item{model_fullname}{Model Version}
+\item{model_fullname}{Model Full Name}
 ...
 }
 }

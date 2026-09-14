@@ -303,18 +303,19 @@ is_new_enrollee <- function(start, end = Sys.Date()) {
 
 #' Derive Medi-Cal eligibility status
 #' @examplesIf FALSE
-#' calculate_age("20200202")
-#' calculate_age("1955-03-15", "2025-01-08")
-#' calculate_age("1960-08-22", "2025-01-08")
+#' medi_cal_status("20200202")
+#' medi_cal_status("1955-03-15", "2025-01-08")
+#' medi_cal_status("1960-08-22", "2025-01-08")
 #' @noRd
-medi_eligibility_status <- function(
-  coverage_end_date,
+medi_cal_status <- function(
+  end_date,
   report_date = Sys.Date()
 ) {
-  first <- clock::date_start(parse_date(report_date), "month")
-  report <- parse_date(coverage_end_date)
+  report_date <- parse_date(report_date)
+  report_date <- clock::date_start(report_date, "month")
+  end_date <- parse_date(end_date)
 
-  if (report < first) {
+  if (end_date < report_date) {
     return("Terminated")
   } else {
     return("Active")
@@ -334,8 +335,11 @@ medi_eligibility_status <- function(
 #' parse_race_code(c(":RET:2135-2", "2135-2", "2106-3"))
 #' @noRd
 parse_race_code <- function(x) {
-  x <- strsplit(x, ":", fixed = TRUE)
-  o <- x[lengths(x) > 1L][[1]]
-  o <- rev(o[nzchar(o)])[1]
-  c(o, unlist_(x[lengths(x) == 1L]))
+  if (perl0(x, ":")) {
+    x <- strsplit(x, ":", fixed = TRUE)
+    o <- x[lengths(x) > 1L][[1]]
+    o <- rev(o[nzchar(o)])[1]
+    x <- c(o, unlist_(x[lengths(x) == 1L]))
+  }
+  hcc::ra_race[["name"]][collapse::fmatch(x, hcc::ra_race[["code"]])]
 }

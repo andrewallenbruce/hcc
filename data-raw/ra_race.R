@@ -1,10 +1,10 @@
 ## code to prepare `ph_race` dataset goes here
 path = here::here("data-raw", "hccinfhir-main", "src", "hccinfhir", "data")
 files = fs::dir_ls(path, regexp = "ph_race_and_ethnicity_cdc_v1.3")
-ph_race = vroom::vroom(files, col_types = "ccccccccc")
-collapse::setrename(ph_race, heck::to_snake_case)
+ra_race = vroom::vroom(files, col_types = "ccccccccc")
+collapse::setrename(ra_race, heck::to_snake_case)
 collapse::setrename(
-  ph_race,
+  ra_race,
   c(
     "code",
     "hierarchy",
@@ -17,5 +17,5 @@ collapse::setrename(
     "sys_oid"
   )
 )
-ph_race <- collapse::colorderv(ph_race, "code")
-usethis::use_data(ph_race, overwrite = TRUE)
+ra_race <- collapse::colorderv(ra_race, "code")
+usethis::use_data(ra_race, overwrite = TRUE)

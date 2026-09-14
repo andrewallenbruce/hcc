@@ -9,11 +9,10 @@
 
 A data frame with 14,764 rows and 5 columns:
 \describe{
-\item{year}{Year of Release}
+\item{year}{Model Year}
 \item{coefficient}{Model Weight Categories}
 \item{value}{Model Weights}
-\item{model_domain}{Model Domain}
-\item{model_version}{Model Version}
+\item{model_name}{Model Name}
 ...
 }
 }

@@ -16,14 +16,26 @@ class(ra_eligible_hcpcs_2026) <- setdiff(
 )
 
 ra_eligible_hcpcs = list(
-  `2025` = collapse::roworderv(
+  y2025 = collapse::roworderv(
     ra_eligible_hcpcs_2025,
     "cpt_hcpcs_code"
   )$cpt_hcpcs_code,
-  `2026` = collapse::roworderv(
-    ra_eligible_hcpcs_2025,
+  y2026 = collapse::roworderv(
+    ra_eligible_hcpcs_2026,
     "cpt_hcpcs_code"
   )$cpt_hcpcs_code
 )
+
+ra_eligible_hcpcs$all <- vctrs::vec_set_intersect(
+  ra_eligible_hcpcs$y2025,
+  ra_eligible_hcpcs$y2026
+)
+
+ra_eligible_hcpcs$y2026 <- vctrs::vec_set_difference(
+  ra_eligible_hcpcs$y2026,
+  ra_eligible_hcpcs$y2025
+)
+
+ra_eligible_hcpcs$y2025 <- NULL
 
 usethis::use_data(ra_eligible_hcpcs, overwrite = TRUE)

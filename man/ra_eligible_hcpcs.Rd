@@ -9,8 +9,8 @@
 
 A list with 2 elements:
 \describe{
-\item{\code{2026}}{Model Weight Categories}
-\item{\code{2025}}{Model Weights}
+\item{y2026}{HCPCS Unique to 2026}
+\item{all}{HCPCS All Years}
 ...
 }
 }

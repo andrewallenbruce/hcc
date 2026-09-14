@@ -9,12 +9,12 @@
 
 A data frame with 1,220 rows and 6 columns:
 \describe{
-\item{year}{Year of Release}
-\item{cc_parent}{Model Weight Categories}
-\item{cc_child}{Model Weights}
+\item{year}{Model Year}
+\item{cc_parent}{Parent Condition Code}
+\item{cc_child}{Child Condition Code}
 \item{model_domain}{Model Domain}
 \item{model_version}{Model Version}
-\item{model_fullname}{Model Version}
+\item{model_fullname}{Model Full Name}
 ...
 }
 }
