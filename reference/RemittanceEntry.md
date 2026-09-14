@@ -34,7 +34,7 @@ A single remittance line item within a member's payment record.
 
   - "2" = pharmacy/state-only
 
-- description:
+- payment_description:
 
   `<chr>` `REF*ZZ` Payment description (e.g., "Primary Capitation Dual",
   "Medi-Cal Only-State Only")
@@ -46,6 +46,10 @@ A single remittance line item within a member's payment record.
 - coverage_end:
 
   `<Date>` `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM\*582
+
+- coverage_period:
+
+  `<iv>` Coverage period start and end date
 
 - adjustment_amount:
 
@@ -74,22 +78,24 @@ RemittanceEntry(
   rate_code = "957",
   aid_code = "17",
   plan_type = "2",
-  description = "Dual-State Only",
+  payment_description = "Dual-State Only",
   coverage_start = "2026-01-01",
   coverage_end = "2026-01-31",
+  coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
   adjustment_amount = -8086.53,
   adjustment_reason = "53"
 )
 #> <hcc::RemittanceEntry>
-#>  @ reference_number : chr "TESTPLAN-SREGLR-2602200043000P"
-#>  @ payment_amount   : num 402
-#>  @ original_amount  : num 8488
-#>  @ rate_code        : chr "957"
-#>  @ aid_code         : chr "17"
-#>  @ plan_type        : chr "2"
-#>  @ description      : chr "Dual-State Only"
-#>  @ coverage_start   : Date[1:1], format: "2026-01-01"
-#>  @ coverage_end     : Date[1:1], format: "2026-01-31"
-#>  @ adjustment_amount: num -8087
-#>  @ adjustment_reason: chr "53"
+#>  @ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
+#>  @ payment_amount     : num 402
+#>  @ original_amount    : num 8488
+#>  @ rate_code          : chr "957"
+#>  @ aid_code           : chr "17"
+#>  @ plan_type          : chr "2"
+#>  @ payment_description: chr "Dual-State Only"
+#>  @ coverage_start     : Date[1:1], format: "2026-01-01"
+#>  @ coverage_end       : Date[1:1], format: "2026-01-31"
+#>  @ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
+#>  @ adjustment_amount  : num -8087
+#>  @ adjustment_reason  : chr "53"
 ```

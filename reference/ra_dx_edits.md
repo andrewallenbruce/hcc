@@ -1,10 +1,18 @@
 # Diagnostic Edit Rules
 
+Diagnostic Edit Rules
+
+## Usage
+
+``` r
+ra_dx_edits
+```
+
 ## Format
 
 ### `ra_dx_edits`
 
-A list with 2 data frames:
+A data frame with 107 rows and 9 columns:
 
 - icd:
 
@@ -20,7 +28,20 @@ A list with 2 data frames:
 
 - sex:
 
-  Patient Sex actionAction overrideReplacement Condition Code
-  model_nameModel Version rule_descriptionEdit Rule Description ...
+  Patient Sex
 
-ra_dx_edits Diagnostic Edit Rules internal
+- action:
+
+  Action
+
+- override:
+
+  Replacement Condition Code
+
+- model_name:
+
+  Model Version
+
+- rule_description:
+
+  Edit Rule Description

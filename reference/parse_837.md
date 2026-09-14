@@ -93,68 +93,7 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_837, index_837)
-#> $minimal_837P
-#> <x12_index>
-#>  
-#>       Type: X12-837P
-#> Characters: 788     
-#>   Segments: 30      
-#>   Problems: 0       
-#>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BPR: 1
-#> NM1: 5
-#> PER: 1
-#>  HL: 2
-#>  N3: 2
-#>  N4: 2
-#> REF: 1
-#> SBR: 1
-#> DMG: 1
-#> CLM: 1
-#>  HI: 1
-#>  LX: 2
-#> SV1: 2
-#> DTP: 2
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
-#> 
-#> $sample_837_0
-#> <x12_index>
-#>  
-#>       Type: X12-837P
-#> Characters: 4940    
-#>   Segments: 176     
-#>   Problems: 0       
-#>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  5
-#> BPR:  5
-#> NM1: 40
-#> PER: 10
-#>  HL: 10
-#>  N3: 20
-#>  N4: 20
-#> REF: 15
-#> SBR:  5
-#> NTE:  1
-#> DMG:  5
-#> CLM:  5
-#>  HI:  5
-#> PRV:  5
-#>  LX:  5
-#> SV1:  5
-#> DTP:  5
-#>  SE:  5
-#> NTE:  1
-#>  GE:  1
-#> IEA:  1
-#> 
+purrr::map(hcc::x12_837I[8:17], index_837)
 #> $sample_837_1
 #> <x12_index>
 #>  
@@ -179,6 +118,34 @@ purrr::map(hcc::x12_837, index_837)
 #>  LX: 4
 #> SV1: 4
 #> DTP: 7
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $sample_837_10
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1100    
+#>   Segments: 42      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 4
+#> PER: 3
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 4
+#> SBR: 1
+#> CLM: 1
+#>  HI: 4
+#>  LX: 3
+#> SV1: 3
+#> DTP: 6
 #>  SE: 1
 #>  GE: 1
 #> IEA: 1
@@ -407,292 +374,7 @@ purrr::map(hcc::x12_837, index_837)
 #>  GE: 1
 #> IEA: 1
 #> 
-purrr::map(hcc::x12_837, parse_837)
-#> $minimal_837P
-#> $minimal_837P$HEADER
-#>    SEG PT        VALUE
-#> 1  ISA 01           00
-#> 2  ISA 02         <NA>
-#> 3  ISA 03           00
-#> 4  ISA 04         <NA>
-#> 5  ISA 05           ZZ
-#> 6  ISA 06   PROVIDER01
-#> 7  ISA 07           ZZ
-#> 8  ISA 08      PAYER99
-#> 9  ISA 09       260415
-#> 10 ISA 10         1030
-#> 11 ISA 11            U
-#> 12 ISA 12        00501
-#> 13 ISA 13    000000837
-#> 14 ISA 14            0
-#> 15 ISA 15            P
-#> 16 ISA 16            >
-#> 17  GS 01           HC
-#> 18  GS 02   PROVIDER01
-#> 19  GS 03      PAYER99
-#> 20  GS 04     20260415
-#> 21  GS 05         1030
-#> 22  GS 06            1
-#> 23  GS 07            X
-#> 24  GS 08 005010X222A1
-#> 
-#> $minimal_837P$TRANSACTIONS
-#> $minimal_837P$TRANSACTIONS[[1]]
-#>  [1] "ST*837*0001*005010X222A1"                
-#>  [2] "BHT*0019*00*REQ-CLM-001*20260415*1030*CH"
-#>  [3] "NM1*41*2*ACME CLINIC*****46*1234567890"  
-#>  [4] "PER*IC*BILLING DEPT*TE*5551234567"       
-#>  [5] "NM1*40*2*PAYER99*****46*PAYER99"         
-#>  [6] "HL*1**20*1"                              
-#>  [7] "NM1*85*2*ACME CLINIC*****XX*1234567890"  
-#>  [8] "N3*100 MAIN ST"                          
-#>  [9] "N4*ATLANTA*GA*30303"                     
-#> [10] "REF*EI*987654321"                        
-#> [11] "HL*2*1*22*0"                             
-#> [12] "SBR*P*18*GRP4567*****CI"                 
-#> [13] "NM1*IL*1*DOE*JANE****MI*MEMBER12345"     
-#> [14] "N3*250 OAK AVE"                          
-#> [15] "N4*ATLANTA*GA*30309"                     
-#> [16] "DMG*D8*19850412*F"                       
-#> [17] "NM1*PR*2*PAYER99*****PI*PAYER99"         
-#> [18] "CLM*PATACCT-9911*620.00***11:B:1*Y*A*Y*Y"
-#> [19] "HI*ABK:M5435"                            
-#> [20] "LX*1"                                    
-#> [21] "SV1*HC:99213*120.00*UN*1***1"            
-#> [22] "DTP*472*D8*20260401"                     
-#> [23] "LX*2"                                    
-#> [24] "SV1*HC:90834*500.00*UN*1***1"            
-#> [25] "DTP*472*D8*20260401"                     
-#> [26] "SE*26*0001"                              
-#> 
-#> 
-#> $minimal_837P$TRAILER
-#>   SEG PT     VALUE
-#> 1  GE 01         1
-#> 2  GE 02         1
-#> 3 IEA 01         1
-#> 4 IEA 02 000000837
-#> 
-#> 
-#> $sample_837_0
-#> $sample_837_0$HEADER
-#>    SEG PT         VALUE
-#> 1  ISA 01            00
-#> 2  ISA 02          <NA>
-#> 3  ISA 03            00
-#> 4  ISA 04          <NA>
-#> 5  ISA 05            01
-#> 6  ISA 06     987654321
-#> 7  ISA 07            ZZ
-#> 8  ISA 08     123456789
-#> 9  ISA 09        180508
-#> 10 ISA 10          0833
-#> 11 ISA 11             ^
-#> 12 ISA 12         00501
-#> 13 ISA 13     697773230
-#> 14 ISA 14             1
-#> 15 ISA 15             P
-#> 16 ISA 16             :
-#> 17  GS 01            HC
-#> 18  GS 02 CLEARINGHOUSE
-#> 19  GS 03     123456789
-#> 20  GS 04      20180508
-#> 21  GS 05          0833
-#> 22  GS 06     212950697
-#> 23  GS 07             X
-#> 24  GS 08  005010X222A1
-#> 
-#> $sample_837_0$TRANSACTIONS
-#> $sample_837_0$TRANSACTIONS[[1]]
-#>  [1] "ST*837*000000001*005010X222A1"                                   
-#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
-#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
-#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
-#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
-#>  [6] "HL*1**20*1"                                                      
-#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#>  [8] "N3*12345 MAIN ST"                                                
-#>  [9] "N4*VANCOUVER*WA*98662"                                           
-#> [10] "REF*EI*720000000"                                                
-#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
-#> [12] "NM1*87*2"                                                        
-#> [13] "N3*PO BOX 1234"                                                  
-#> [14] "N4*VANCOUVER*WA*986681234"                                       
-#> [15] "HL*2*1*22*0"                                                     
-#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
-#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
-#> [18] "N3*123 TEST STREET"                                              
-#> [19] "N4*TESTCITY*CA*00000"                                            
-#> [20] "DMG*D8*19000101*M"                                               
-#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
-#> [22] "CLM*1805080AV3648339*20***57:B:1*Y*A*Y*Y"                        
-#> [23] "REF*D9*7349065509"                                               
-#> [24] "HI*ABK:F1120"                                                    
-#> [25] "NM1*82*1*PROVIDER*JAMES****XX*1112223338"                        
-#> [26] "PRV*PE*PXC*261QR0405X"                                           
-#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#> [28] "N3*12345 MAIN ST SUITE A1"                                       
-#> [29] "N4*VANCOUVER*WA*98662"                                           
-#> [30] "LX*1"                                                            
-#> [31] "SV1*HC:H0003*20*UN*1***1"                                        
-#> [32] "DTP*472*D8*20180428"                                             
-#> [33] "REF*6R*142671"                                                   
-#> [34] "SE*34*000000001"                                                 
-#> 
-#> $sample_837_0$TRANSACTIONS[[2]]
-#>  [1] "ST*837*000000002*005010X222A1"                                   
-#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
-#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
-#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
-#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
-#>  [6] "HL*63**20*1"                                                     
-#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#>  [8] "N3*12345 MAIN ST"                                                
-#>  [9] "N4*VANCOUVER*WA*98662"                                           
-#> [10] "REF*EI*720000000"                                                
-#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
-#> [12] "NM1*87*2"                                                        
-#> [13] "N3*PO BOX 1234"                                                  
-#> [14] "N4*VANCOUVER*WA*986681234"                                       
-#> [15] "HL*64*63*22*0"                                                   
-#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
-#> [17] "NM1*IL*1*PATIENT*SUSAN*E***MI*765123"                            
-#> [18] "N3*123 TEST STREET"                                              
-#> [19] "N4*TESTCITY*CA*00000"                                            
-#> [20] "DMG*D8*19000101*F"                                               
-#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
-#> [22] "CLM*1805080AV3648347*50.1***57:B:1*Y*A*Y*Y"                      
-#> [23] "REF*D9*7349065730"                                               
-#> [24] "HI*ABK:F1520*ABF:F1220"                                          
-#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
-#> [26] "PRV*PE*PXC*261QR0405X"                                           
-#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#> [28] "N3*12345 MAIN ST SUITE A1"                                       
-#> [29] "N4*VANCOUVER*WA*98662"                                           
-#> [30] "LX*1"                                                            
-#> [31] "SV1*HC:96153:HF*50.1*UN*6***1:2"                                 
-#> [32] "DTP*472*D8*20180426"                                             
-#> [33] "REF*6R*143792"                                                   
-#> [34] "SE*34*000000002"                                                 
-#> 
-#> $sample_837_0$TRANSACTIONS[[3]]
-#>  [1] "ST*837*000000003*005010X222A1"                                   
-#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
-#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
-#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
-#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
-#>  [6] "HL*49**20*1"                                                     
-#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#>  [8] "N3*12345 MAIN ST"                                                
-#>  [9] "N4*VANCOUVER*WA*98662"                                           
-#> [10] "REF*EI*720000000"                                                
-#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
-#> [12] "NM1*87*2"                                                        
-#> [13] "N3*PO BOX 1234"                                                  
-#> [14] "N4*VANCOUVER*WA*986681234"                                       
-#> [15] "HL*50*49*22*0"                                                   
-#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
-#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
-#> [18] "N3*123 TEST STREET"                                              
-#> [19] "N4*TESTCITY*CA*00000"                                            
-#> [20] "DMG*D8*19000101*M"                                               
-#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
-#> [22] "CLM*1805080AV3648340*11.64***57:B:1*Y*A*Y*Y"                     
-#> [23] "REF*D9*7349065492"                                               
-#> [24] "HI*ABK:F1020*ABF:F1220"                                          
-#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
-#> [26] "PRV*PE*PXC*261QR0405X"                                           
-#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#> [28] "N3*12345 MAIN ST SUITE A1"                                       
-#> [29] "N4*VANCOUVER*WA*98662"                                           
-#> [30] "LX*1"                                                            
-#> [31] "SV1*HC:T1017:HF*11.64*UN*1***1:2"                                
-#> [32] "DTP*472*D8*20180427"                                             
-#> [33] "REF*6R*140976"                                                   
-#> [34] "SE*34*000000003"                                                 
-#> 
-#> $sample_837_0$TRANSACTIONS[[4]]
-#>  [1] "ST*837*000000004*005010X222A1"                                   
-#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
-#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
-#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
-#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
-#>  [6] "HL*75**20*1"                                                     
-#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#>  [8] "N3*12345 MAIN ST"                                                
-#>  [9] "N4*VANCOUVER*WA*98662"                                           
-#> [10] "REF*EI*720000000"                                                
-#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
-#> [12] "NM1*87*2"                                                        
-#> [13] "N3*PO BOX 1234"                                                  
-#> [14] "N4*VANCOUVER*WA*986681234"                                       
-#> [15] "HL*76*75*22*0"                                                   
-#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
-#> [17] "NM1*IL*1*PATIENT*SUSAN*E***MI*765123"                            
-#> [18] "N3*123 TEST STREET"                                              
-#> [19] "N4*TESTCITY*CA*00000"                                            
-#> [20] "DMG*D8*19000101*F"                                               
-#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
-#> [22] "CLM*1805080AV3648353*234***53:B:1*Y*A*Y*Y"                       
-#> [23] "REF*D9*7349064290"                                               
-#> [24] "HI*ABK:F251"                                                     
-#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
-#> [26] "PRV*PE*PXC*251S00000X"                                           
-#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#> [28] "N3*12345 MAIN ST SUITE A1"                                       
-#> [29] "N4*VANCOUVER*WA*98662"                                           
-#> [30] "LX*1"                                                            
-#> [31] "SV1*HC:90853*234*UN*120***1"                                     
-#> [32] "DTP*472*D8*20180427"                                             
-#> [33] "REF*6R*140787"                                                   
-#> [34] "NTE*ADD*05"                                                      
-#> [35] "SE*35*000000004"                                                 
-#> 
-#> $sample_837_0$TRANSACTIONS[[5]]
-#>  [1] "ST*837*000000005*005010X222A1"                                   
-#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
-#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
-#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
-#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
-#>  [6] "HL*79**20*1"                                                     
-#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#>  [8] "N3*12345 MAIN ST"                                                
-#>  [9] "N4*VANCOUVER*WA*98662"                                           
-#> [10] "REF*EI*720000000"                                                
-#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
-#> [12] "NM1*87*2"                                                        
-#> [13] "N3*PO BOX 1234"                                                  
-#> [14] "N4*VANCOUVER*WA*986681234"                                       
-#> [15] "HL*80*79*22*0"                                                   
-#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
-#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
-#> [18] "N3*123 TEST STREET"                                              
-#> [19] "N4*TESTCITY*CA*00000"                                            
-#> [20] "DMG*D8*19000101*M"                                               
-#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
-#> [22] "CLM*1805080AV3648355*20***57:B:1*Y*A*Y*Y"                        
-#> [23] "REF*D9*7349064036"                                               
-#> [24] "HI*ABK:F1020*ABF:F1120"                                          
-#> [25] "NM1*82*1*PROVIDER*JAMES****XX*1112223338"                        
-#> [26] "PRV*PE*PXC*261QR0405X"                                           
-#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
-#> [28] "N3*12345 MAIN ST SUITE A1"                                       
-#> [29] "N4*VANCOUVER*WA*98662"                                           
-#> [30] "LX*1"                                                            
-#> [31] "SV1*HC:H0003*20*UN*1***1:2"                                      
-#> [32] "DTP*472*D8*20180427"                                             
-#> [33] "REF*6R*143907"                                                   
-#> [34] "SE*34*000000005"                                                 
-#> 
-#> 
-#> $sample_837_0$TRAILER
-#>   SEG PT     VALUE
-#> 1  GE 01         5
-#> 2  GE 02 212950697
-#> 3 IEA 01         1
-#> 4 IEA 02 697773230
-#> 
-#> 
+purrr::map(hcc::x12_837I[8:17], parse_837)
 #> $sample_837_1
 #> $sample_837_1$HEADER
 #>    SEG PT           VALUE
@@ -776,6 +458,84 @@ purrr::map(hcc::x12_837, parse_837)
 #> 2  GE 02         1
 #> 3 IEA 01         1
 #> 4 IEA 02 566609694
+#> 
+#> 
+#> $sample_837_10
+#> $sample_837_10$HEADER
+#>    SEG PT           VALUE
+#> 1  ISA 01              00
+#> 2  ISA 02            <NA>
+#> 3  ISA 03              00
+#> 4  ISA 04            <NA>
+#> 5  ISA 05              ZZ
+#> 6  ISA 06 765613337801994
+#> 7  ISA 07              ZZ
+#> 8  ISA 08 OptimaFourSight
+#> 9  ISA 09          241205
+#> 10 ISA 10            2042
+#> 11 ISA 11               U
+#> 12 ISA 12           00401
+#> 13 ISA 13       351175143
+#> 14 ISA 14               0
+#> 15 ISA 15               P
+#> 16 ISA 16               :
+#> 17  GS 01              HC
+#> 18  GS 02 765613337801994
+#> 19  GS 03 OptimaFourSight
+#> 20  GS 04        20241205
+#> 21  GS 05            2042
+#> 22  GS 06               1
+#> 23  GS 07               X
+#> 24  GS 08    005010X223A2
+#> 
+#> $sample_837_10$TRANSACTIONS
+#> $sample_837_10$TRANSACTIONS[[1]]
+#>  [1] "ST*837*5856*005010X223A2"                              
+#>  [2] "BHT*0019*00*241205204222*20241205*2042*CH"             
+#>  [3] "NM1*41*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
+#>  [4] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#>  [5] "NM1*40*2*OptimaFourSight*****XX*89242VA018"            
+#>  [6] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#>  [7] "HL*1**20*1"                                            
+#>  [8] "NM1*85*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
+#>  [9] "N3*505 N BRAND BLVD STE 1200"                          
+#> [10] "N4*GLENDALE*CA*91203"                                  
+#> [11] "REF*EI*71-3391736"                                     
+#> [12] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#> [13] "HL*2*1*22*0"                                           
+#> [14] "SBR*P*18*731323546******CI"                            
+#> [15] "NM1*IL*1*TESTLAST01*TESTFIRST01****MI*TESTMBR000000001"
+#> [16] "N3*123 TEST STREET"                                    
+#> [17] "N4*TESTCITY*CA*00000"                                  
+#> [18] "CLM*4742333269*128***11:B:1*Y*A*Y*I"                   
+#> [19] "DTP*434*RD8*20240422-20240430"                         
+#> [20] "DTP*435*D8*20240809"                                   
+#> [21] "DTP*096*TM*2337"                                       
+#> [22] "HI*ABK:W214XXA"                                        
+#> [23] "HI*ABK:S31813D"                                        
+#> [24] "HI*ABK:V0492XD"                                        
+#> [25] "HI*ABK:T498X6A"                                        
+#> [26] "LX*1"                                                  
+#> [27] "SV1*HC:37180*93*UN*1***3:4:1***"                       
+#> [28] "DTP*472*D8*20180428"                                   
+#> [29] "REF*6R*142671"                                         
+#> [30] "LX*2"                                                  
+#> [31] "SV1*HC:24000*4*UN*1***1:3:4***"                        
+#> [32] "DTP*472*D8*20180428"                                   
+#> [33] "REF*6R*142671"                                         
+#> [34] "LX*3"                                                  
+#> [35] "SV1*HC:16035*31*UN*1***3***"                           
+#> [36] "DTP*472*D8*20180428"                                   
+#> [37] "REF*6R*142671"                                         
+#> [38] "SE*38*5856"                                            
+#> 
+#> 
+#> $sample_837_10$TRAILER
+#>   SEG PT     VALUE
+#> 1  GE 01         1
+#> 2  GE 02         1
+#> 3 IEA 01         1
+#> 4 IEA 02 351175143
 #> 
 #> 
 #> $sample_837_2
@@ -1425,6 +1185,537 @@ purrr::map(hcc::x12_837, parse_837)
 #> 2  GE 02         1
 #> 3 IEA 01         1
 #> 4 IEA 02 253034665
+#> 
+#> 
+
+purrr::map(hcc::x12_837P[14:16], index_837)
+#> $sample_837_0
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 4940    
+#>   Segments: 176     
+#>   Problems: 0       
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  5
+#> BPR:  5
+#> NM1: 40
+#> PER: 10
+#>  HL: 10
+#>  N3: 20
+#>  N4: 20
+#> REF: 15
+#> SBR:  5
+#> NTE:  1
+#> DMG:  5
+#> CLM:  5
+#>  HI:  5
+#> PRV:  5
+#>  LX:  5
+#> SV1:  5
+#> DTP:  5
+#>  SE:  5
+#> NTE:  1
+#>  GE:  1
+#> IEA:  1
+#> 
+#> $sample_837_11
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 799     
+#>   Segments: 27      
+#>   Problems: 2       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 5
+#> PER: 1
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 1
+#> SBR: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#> SV1: 1
+#> DTP: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $sample_837_12
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 2807    
+#>   Segments: 111     
+#>   Problems: 2       
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  3
+#> BPR:  3
+#> NM1: 13
+#> PER:  7
+#>  HL:  6
+#>  N3:  6
+#>  N4:  6
+#> REF: 10
+#> SBR:  3
+#> DMG:  1
+#> CLM:  3
+#>  HI: 13
+#> PRV:  1
+#>  LX:  7
+#> SV1:  8
+#> DTP: 14
+#>  SE:  3
+#>  GE:  1
+#> IEA:  1
+#> 
+purrr::map(hcc::x12_837P[14:16], parse_837)
+#> $sample_837_0
+#> $sample_837_0$HEADER
+#>    SEG PT         VALUE
+#> 1  ISA 01            00
+#> 2  ISA 02          <NA>
+#> 3  ISA 03            00
+#> 4  ISA 04          <NA>
+#> 5  ISA 05            01
+#> 6  ISA 06     987654321
+#> 7  ISA 07            ZZ
+#> 8  ISA 08     123456789
+#> 9  ISA 09        180508
+#> 10 ISA 10          0833
+#> 11 ISA 11             ^
+#> 12 ISA 12         00501
+#> 13 ISA 13     697773230
+#> 14 ISA 14             1
+#> 15 ISA 15             P
+#> 16 ISA 16             :
+#> 17  GS 01            HC
+#> 18  GS 02 CLEARINGHOUSE
+#> 19  GS 03     123456789
+#> 20  GS 04      20180508
+#> 21  GS 05          0833
+#> 22  GS 06     212950697
+#> 23  GS 07             X
+#> 24  GS 08  005010X222A1
+#> 
+#> $sample_837_0$TRANSACTIONS
+#> $sample_837_0$TRANSACTIONS[[1]]
+#>  [1] "ST*837*000000001*005010X222A1"                                   
+#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
+#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
+#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
+#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
+#>  [6] "HL*1**20*1"                                                      
+#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#>  [8] "N3*12345 MAIN ST"                                                
+#>  [9] "N4*VANCOUVER*WA*98662"                                           
+#> [10] "REF*EI*720000000"                                                
+#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
+#> [12] "NM1*87*2"                                                        
+#> [13] "N3*PO BOX 1234"                                                  
+#> [14] "N4*VANCOUVER*WA*986681234"                                       
+#> [15] "HL*2*1*22*0"                                                     
+#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
+#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
+#> [18] "N3*123 TEST STREET"                                              
+#> [19] "N4*TESTCITY*CA*00000"                                            
+#> [20] "DMG*D8*19000101*M"                                               
+#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
+#> [22] "CLM*1805080AV3648339*20***57:B:1*Y*A*Y*Y"                        
+#> [23] "REF*D9*7349065509"                                               
+#> [24] "HI*ABK:F1120"                                                    
+#> [25] "NM1*82*1*PROVIDER*JAMES****XX*1112223338"                        
+#> [26] "PRV*PE*PXC*261QR0405X"                                           
+#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#> [28] "N3*12345 MAIN ST SUITE A1"                                       
+#> [29] "N4*VANCOUVER*WA*98662"                                           
+#> [30] "LX*1"                                                            
+#> [31] "SV1*HC:H0003*20*UN*1***1"                                        
+#> [32] "DTP*472*D8*20180428"                                             
+#> [33] "REF*6R*142671"                                                   
+#> [34] "SE*34*000000001"                                                 
+#> 
+#> $sample_837_0$TRANSACTIONS[[2]]
+#>  [1] "ST*837*000000002*005010X222A1"                                   
+#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
+#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
+#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
+#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
+#>  [6] "HL*63**20*1"                                                     
+#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#>  [8] "N3*12345 MAIN ST"                                                
+#>  [9] "N4*VANCOUVER*WA*98662"                                           
+#> [10] "REF*EI*720000000"                                                
+#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
+#> [12] "NM1*87*2"                                                        
+#> [13] "N3*PO BOX 1234"                                                  
+#> [14] "N4*VANCOUVER*WA*986681234"                                       
+#> [15] "HL*64*63*22*0"                                                   
+#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
+#> [17] "NM1*IL*1*PATIENT*SUSAN*E***MI*765123"                            
+#> [18] "N3*123 TEST STREET"                                              
+#> [19] "N4*TESTCITY*CA*00000"                                            
+#> [20] "DMG*D8*19000101*F"                                               
+#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
+#> [22] "CLM*1805080AV3648347*50.1***57:B:1*Y*A*Y*Y"                      
+#> [23] "REF*D9*7349065730"                                               
+#> [24] "HI*ABK:F1520*ABF:F1220"                                          
+#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
+#> [26] "PRV*PE*PXC*261QR0405X"                                           
+#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#> [28] "N3*12345 MAIN ST SUITE A1"                                       
+#> [29] "N4*VANCOUVER*WA*98662"                                           
+#> [30] "LX*1"                                                            
+#> [31] "SV1*HC:96153:HF*50.1*UN*6***1:2"                                 
+#> [32] "DTP*472*D8*20180426"                                             
+#> [33] "REF*6R*143792"                                                   
+#> [34] "SE*34*000000002"                                                 
+#> 
+#> $sample_837_0$TRANSACTIONS[[3]]
+#>  [1] "ST*837*000000003*005010X222A1"                                   
+#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
+#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
+#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
+#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
+#>  [6] "HL*49**20*1"                                                     
+#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#>  [8] "N3*12345 MAIN ST"                                                
+#>  [9] "N4*VANCOUVER*WA*98662"                                           
+#> [10] "REF*EI*720000000"                                                
+#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
+#> [12] "NM1*87*2"                                                        
+#> [13] "N3*PO BOX 1234"                                                  
+#> [14] "N4*VANCOUVER*WA*986681234"                                       
+#> [15] "HL*50*49*22*0"                                                   
+#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
+#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
+#> [18] "N3*123 TEST STREET"                                              
+#> [19] "N4*TESTCITY*CA*00000"                                            
+#> [20] "DMG*D8*19000101*M"                                               
+#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
+#> [22] "CLM*1805080AV3648340*11.64***57:B:1*Y*A*Y*Y"                     
+#> [23] "REF*D9*7349065492"                                               
+#> [24] "HI*ABK:F1020*ABF:F1220"                                          
+#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
+#> [26] "PRV*PE*PXC*261QR0405X"                                           
+#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#> [28] "N3*12345 MAIN ST SUITE A1"                                       
+#> [29] "N4*VANCOUVER*WA*98662"                                           
+#> [30] "LX*1"                                                            
+#> [31] "SV1*HC:T1017:HF*11.64*UN*1***1:2"                                
+#> [32] "DTP*472*D8*20180427"                                             
+#> [33] "REF*6R*140976"                                                   
+#> [34] "SE*34*000000003"                                                 
+#> 
+#> $sample_837_0$TRANSACTIONS[[4]]
+#>  [1] "ST*837*000000004*005010X222A1"                                   
+#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
+#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
+#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
+#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
+#>  [6] "HL*75**20*1"                                                     
+#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#>  [8] "N3*12345 MAIN ST"                                                
+#>  [9] "N4*VANCOUVER*WA*98662"                                           
+#> [10] "REF*EI*720000000"                                                
+#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
+#> [12] "NM1*87*2"                                                        
+#> [13] "N3*PO BOX 1234"                                                  
+#> [14] "N4*VANCOUVER*WA*986681234"                                       
+#> [15] "HL*76*75*22*0"                                                   
+#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
+#> [17] "NM1*IL*1*PATIENT*SUSAN*E***MI*765123"                            
+#> [18] "N3*123 TEST STREET"                                              
+#> [19] "N4*TESTCITY*CA*00000"                                            
+#> [20] "DMG*D8*19000101*F"                                               
+#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
+#> [22] "CLM*1805080AV3648353*234***53:B:1*Y*A*Y*Y"                       
+#> [23] "REF*D9*7349064290"                                               
+#> [24] "HI*ABK:F251"                                                     
+#> [25] "NM1*82*1*PROVIDER*SUSAN****XX*1112223346"                        
+#> [26] "PRV*PE*PXC*251S00000X"                                           
+#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#> [28] "N3*12345 MAIN ST SUITE A1"                                       
+#> [29] "N4*VANCOUVER*WA*98662"                                           
+#> [30] "LX*1"                                                            
+#> [31] "SV1*HC:90853*234*UN*120***1"                                     
+#> [32] "DTP*472*D8*20180427"                                             
+#> [33] "REF*6R*140787"                                                   
+#> [34] "NTE*ADD*05"                                                      
+#> [35] "SE*35*000000004"                                                 
+#> 
+#> $sample_837_0$TRANSACTIONS[[5]]
+#>  [1] "ST*837*000000005*005010X222A1"                                   
+#>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
+#>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
+#>  [4] "PER*IC*CLEARINGHOUSE CLIENT SERVICES*TE*5555550000*FX*5555550000"
+#>  [5] "NM1*40*2*123456789*****46*CHPWA"                                 
+#>  [6] "HL*79**20*1"                                                     
+#>  [7] "NM1*85*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#>  [8] "N3*12345 MAIN ST"                                                
+#>  [9] "N4*VANCOUVER*WA*98662"                                           
+#> [10] "REF*EI*720000000"                                                
+#> [11] "PER*IC*CONTACT*TE*5555550000"                                    
+#> [12] "NM1*87*2"                                                        
+#> [13] "N3*PO BOX 1234"                                                  
+#> [14] "N4*VANCOUVER*WA*986681234"                                       
+#> [15] "HL*80*79*22*0"                                                   
+#> [16] "SBR*P*18**COMMUNITY HLTH PLAN OF WASH*****CI"                    
+#> [17] "NM1*IL*1*SUBSCRIBER*JOHN*J***MI*987321"                          
+#> [18] "N3*123 TEST STREET"                                              
+#> [19] "N4*TESTCITY*CA*00000"                                            
+#> [20] "DMG*D8*19000101*M"                                               
+#> [21] "NM1*PR*2*COMMUNITY HEALTH PLAN OF WASHINGTON*****PI*CHPWA"       
+#> [22] "CLM*1805080AV3648355*20***57:B:1*Y*A*Y*Y"                        
+#> [23] "REF*D9*7349064036"                                               
+#> [24] "HI*ABK:F1020*ABF:F1120"                                          
+#> [25] "NM1*82*1*PROVIDER*JAMES****XX*1112223338"                        
+#> [26] "PRV*PE*PXC*261QR0405X"                                           
+#> [27] "NM1*77*2*BH CLINIC OF VANCOUVER*****XX*1122334455"               
+#> [28] "N3*12345 MAIN ST SUITE A1"                                       
+#> [29] "N4*VANCOUVER*WA*98662"                                           
+#> [30] "LX*1"                                                            
+#> [31] "SV1*HC:H0003*20*UN*1***1:2"                                      
+#> [32] "DTP*472*D8*20180427"                                             
+#> [33] "REF*6R*143907"                                                   
+#> [34] "SE*34*000000005"                                                 
+#> 
+#> 
+#> $sample_837_0$TRAILER
+#>   SEG PT     VALUE
+#> 1  GE 01         5
+#> 2  GE 02 212950697
+#> 3 IEA 01         1
+#> 4 IEA 02 697773230
+#> 
+#> 
+#> $sample_837_11
+#> $sample_837_11$HEADER
+#>    SEG PT        VALUE
+#> 1  ISA 01           00
+#> 2  ISA 02         <NA>
+#> 3  ISA 03           00
+#> 4  ISA 04         <NA>
+#> 5  ISA 05           ZZ
+#> 6  ISA 06 SUBMITTER ID
+#> 7  ISA 07           ZZ
+#> 8  ISA 08  RECEIVER ID
+#> 9  ISA 09       230516
+#> 10 ISA 10         1145
+#> 11 ISA 11            ^
+#> 12 ISA 12        00501
+#> 13 ISA 13    000000001
+#> 14 ISA 14            0
+#> 15 ISA 15            P
+#> 16 ISA 16            :
+#> 17  GS 01           HC
+#> 18  GS 02 SUBMITTER ID
+#> 19  GS 03  RECEIVER ID
+#> 20  GS 04     20230516
+#> 21  GS 05         1145
+#> 22  GS 06            1
+#> 23  GS 07            X
+#> 24  GS 08 005010X222A1
+#> 
+#> $sample_837_11$TRANSACTIONS
+#> $sample_837_11$TRANSACTIONS[[1]]
+#>  [1] "ST*837*0001*005010X222A1"                   
+#>  [2] "BHT*0019*00*244579*20230516*1145*CH"        
+#>  [3] "NM1*41*2*SUBMIT CLINIC*****46*12345"        
+#>  [4] "PER*IC*CONTACT NAME*TE*5555550000"          
+#>  [5] "NM1*40*2*RECEIVER NAME*****46*67890"        
+#>  [6] "HL*1**20*1"                                 
+#>  [7] "NM1*85*2*BILLING PROVIDER*****XX*1234567893"
+#>  [8] "N3*123 TEST STREET"                         
+#>  [9] "N4*TESTCITY*GA*00000"                       
+#> [10] "REF*EI*123456789"                           
+#> [11] "HL*2*1*22*0"                                
+#> [12] "SBR*P*18*******MC"                          
+#> [13] "NM1*IL*1*DOE*JOHN****MI*12345678901"        
+#> [14] "N3*123 TEST STREET"                         
+#> [15] "N4*TESTCITY*GA*00000"                       
+#> [16] "DMG*D8*19000101*M"                          
+#> [17] "CLM*12345*150.00***11:B:1*Y*A*Y*Y"          
+#> [18] "HI*ABK:I109"                                
+#> [19] "NM1*82*1*PROVIDER*JANE****XX*9876543210"    
+#> [20] "PRV*PE*ZZ*207RC0000X"                       
+#> [21] "SV1*HC:J1745*150.00*UN*2*11***1"            
+#> [22] "DTP*472*D8*20230515"                        
+#> [23] "LIN**N4*50242004001"                        
+#> [24] "CTP***2*150.00"                             
+#> [25] "SE*24*0001"                                 
+#> 
+#> 
+#> $sample_837_11$TRAILER
+#>   SEG PT     VALUE
+#> 1  GE 01         1
+#> 2  GE 02         1
+#> 3 IEA 01         1
+#> 4 IEA 02 000000001
+#> 
+#> 
+#> $sample_837_12
+#> $sample_837_12$HEADER
+#>    SEG PT        VALUE
+#> 1  ISA 01           00
+#> 2  ISA 02         <NA>
+#> 3  ISA 03           00
+#> 4  ISA 04         <NA>
+#> 5  ISA 05           ZZ
+#> 6  ISA 06 SUBMITTER ID
+#> 7  ISA 07           ZZ
+#> 8  ISA 08  RECEIVER ID
+#> 9  ISA 09       230516
+#> 10 ISA 10         1145
+#> 11 ISA 11            ^
+#> 12 ISA 12        00501
+#> 13 ISA 13    000000001
+#> 14 ISA 14            0
+#> 15 ISA 15            P
+#> 16 ISA 16            :
+#> 17  GS 01           HC
+#> 18  GS 02 SUBMITTER ID
+#> 19  GS 03  RECEIVER ID
+#> 20  GS 04     20230516
+#> 21  GS 05         1145
+#> 22  GS 06            1
+#> 23  GS 07            X
+#> 24  GS 08 005010X222A1
+#> 
+#> $sample_837_12$TRANSACTIONS
+#> $sample_837_12$TRANSACTIONS[[1]]
+#>  [1] "ST*837*0001*005010X222A1"                              
+#>  [2] "BHT*0019*00*244579*20230516*1145*CH"                   
+#>  [3] "NM1*41*2*SUBMIT CLINIC*****46*12345"                   
+#>  [4] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#>  [5] "NM1*40*2*RECEIVER NAME*****46*67890"                   
+#>  [6] "HL*1**20*1"                                            
+#>  [7] "NM1*85*2*BILLING PROVIDER*****XX*1234567893"           
+#>  [8] "N3*123 BILLING ST"                                     
+#>  [9] "N4*CITY*GA*30001"                                      
+#> [10] "REF*EI*123456789"                                      
+#> [11] "HL*2*1*22*0"                                           
+#> [12] "SBR*P*18*******MC"                                     
+#> [13] "NM1*IL*1*TESTLAST01*TESTFIRST01****MI*TESTMBR000000001"
+#> [14] "N3*123 TEST STREET"                                    
+#> [15] "N4*TESTCITY*CA*00000"                                  
+#> [16] "DMG*D8*19000101*M"                                     
+#> [17] "CLM*12345*150.00***11:B:1*Y*A*Y*Y"                     
+#> [18] "HI*ABK:I109"                                           
+#> [19] "NM1*82*1*PROVIDER*JANE****XX*9876543210"               
+#> [20] "PRV*PE*ZZ*207RC0000X"                                  
+#> [21] "SV1*HC:J1745*150.00*UN*2*11***1"                       
+#> [22] "DTP*472*D8*20230515"                                   
+#> [23] "LIN**N4*50242004001"                                   
+#> [24] "CTP***2*150.00"                                        
+#> [25] "SE*24*0001"                                            
+#> 
+#> $sample_837_12$TRANSACTIONS[[2]]
+#>  [1] "ST*837*5856*005010X223A2"                              
+#>  [2] "BHT*0019*00*241205204222*20241205*2042*CH"             
+#>  [3] "NM1*41*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
+#>  [4] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#>  [5] "NM1*40*2*OptimaFourSight*****XX*89242VA018"            
+#>  [6] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#>  [7] "HL*1**20*1"                                            
+#>  [8] "NM1*85*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
+#>  [9] "N3*505 N BRAND BLVD STE 1200"                          
+#> [10] "N4*GLENDALE*CA*91203"                                  
+#> [11] "REF*EI*71-3391736"                                     
+#> [12] "PER*IC*TEST CONTACT*TE*5555550000"                     
+#> [13] "HL*2*1*22*0"                                           
+#> [14] "SBR*P*18*731323546******CI"                            
+#> [15] "NM1*IL*1*TESTLAST02*TESTFIRST02****MI*TESTMBR000000002"
+#> [16] "N3*123 TEST STREET"                                    
+#> [17] "N4*TESTCITY*CA*00000"                                  
+#> [18] "CLM*4742333269*128***11:B:1*Y*A*Y*I"                   
+#> [19] "DTP*434*RD8*20240422-20240430"                         
+#> [20] "DTP*435*D8*20240809"                                   
+#> [21] "DTP*096*TM*2337"                                       
+#> [22] "HI*ABK:W214XXA"                                        
+#> [23] "HI*ABK:S31813D"                                        
+#> [24] "HI*ABK:V0492XD"                                        
+#> [25] "HI*ABK:T498X6A"                                        
+#> [26] "LX*1"                                                  
+#> [27] "SV1*HC:37180*93*UN*1***3:4:1***"                       
+#> [28] "DTP*472*D8*20180428"                                   
+#> [29] "REF*6R*142671"                                         
+#> [30] "LX*2"                                                  
+#> [31] "SV1*HC:24000*4*UN*1***1:3:4***"                        
+#> [32] "DTP*472*D8*20180428"                                   
+#> [33] "REF*6R*142671"                                         
+#> [34] "LX*3"                                                  
+#> [35] "SV1*HC:16035*31*UN*1***3***"                           
+#> [36] "DTP*472*D8*20180428"                                   
+#> [37] "REF*6R*142671"                                         
+#> [38] "SE*38*5856"                                            
+#> 
+#> $sample_837_12$TRANSACTIONS[[3]]
+#>  [1] "ST*837*4763033*005010X223A2"                                      
+#>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                        
+#>  [3] "NM1*41*2*HCA HEALTH SERVICES OF TENNESSEE, INC.*****XX*1265487193"
+#>  [4] "PER*IC*TEST CONTACT*TE*5555550000"                                
+#>  [5] "NM1*40*2*HMOOffExchangeRegion7*****XX*84014CA002"                 
+#>  [6] "PER*IC*TEST CONTACT*TE*5555550000"                                
+#>  [7] "HL*1**20*1"                                                       
+#>  [8] "NM1*85*2*HCA HEALTH SERVICES OF TENNESSEE, INC.*****XX*1265487193"
+#>  [9] "N3*313 N MAIN ST"                                                 
+#> [10] "N4*ASHLAND CITY*TN*37015"                                         
+#> [11] "REF*EI*99-5971744"                                                
+#> [12] "PER*IC*TEST CONTACT*TE*5555550000"                                
+#> [13] "HL*2*1*22*0"                                                      
+#> [14] "SBR*P*18*556791994******CI"                                       
+#> [15] "NM1*IL*1*TESTLAST03*TESTFIRST03****MI*TESTMBR000000003"           
+#> [16] "N3*123 TEST STREET"                                               
+#> [17] "N4*TESTCITY*CA*00000"                                             
+#> [18] "CLM*4742333269*839***11:B:1*Y*A*Y*I"                              
+#> [19] "DTP*434*RD8*20240422-20240430"                                    
+#> [20] "DTP*435*D8*20240809"                                              
+#> [21] "DTP*096*TM*2337"                                                  
+#> [22] "HI*ABK:V9421XS"                                                   
+#> [23] "HI*ABK:S35292S"                                                   
+#> [24] "HI*ABK:S52272S"                                                   
+#> [25] "HI*ABK:H68022"                                                    
+#> [26] "HI*ABK:T4144XD"                                                   
+#> [27] "HI*ABK:H1030"                                                     
+#> [28] "HI*ABK:S82832J"                                                   
+#> [29] "HI*ABK:B340"                                                      
+#> [30] "LX*1"                                                             
+#> [31] "SV1*HC:35650*161*UN*1***7:3:4:5:8***"                             
+#> [32] "DTP*472*D8*20180428"                                              
+#> [33] "REF*6R*142671"                                                    
+#> [34] "LX*2"                                                             
+#> [35] "SV1*HC:73200*383*UN*1***5:2:7:4:3:6:8:1***"                       
+#> [36] "DTP*472*D8*20180428"                                              
+#> [37] "REF*6R*142671"                                                    
+#> [38] "LX*3"                                                             
+#> [39] "SV1*HC:28262*194*UN*1***7:1:8***"                                 
+#> [40] "DTP*472*D8*20180428"                                              
+#> [41] "REF*6R*142671"                                                    
+#> [42] "LX*4"                                                             
+#> [43] "SV1*HC:84480*101*UN*1***6:3:1:2***"                               
+#> [44] "DTP*472*D8*20180428"                                              
+#> [45] "REF*6R*142671"                                                    
+#> [46] "SE*46*4763033"                                                    
+#> 
+#> 
+#> $sample_837_12$TRAILER
+#>   SEG PT     VALUE
+#> 1  GE 01         1
+#> 2  GE 02         1
+#> 3 IEA 01         1
+#> 4 IEA 02 000000001
 #> 
 #> 
 ```

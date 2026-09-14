@@ -61,7 +61,7 @@ Typical loop structure within an 820:
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_820, index_820)
+purrr::map(hcc::x12_820[13:17], index_820)
 #> $sample_820_01
 #> <x12_index>
 #>  
@@ -214,7 +214,7 @@ purrr::map(hcc::x12_820, index_820)
 #>    GE:   1
 #>   IEA:   1
 #> 
-purrr::map(hcc::x12_820, parse_820)
+purrr::map(hcc::x12_820[13:17], parse_820)
 #> $sample_820_01
 #> # A tibble: 429 × 3
 #>    SEG   PT    VALUE     

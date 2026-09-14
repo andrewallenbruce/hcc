@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9043 (2026-09-14)
+
+- added `ivs_iv` S3 placeholder class for Coverage Period date intervals
+
 ## hcc 0.0.0.9042 (2026-09-13)
 
 - new `prop_date`

@@ -34,11 +34,11 @@ Healthcare Claim Service Level Data
 
 - performing_provider_npi:
 
-  `<chr>` National Provider Identifier for performing provider
+  `<chr>` NPI for performing provider
 
 - billing_provider_npi:
 
-  `<chr>` National Provider Identifier for billing provider
+  `<chr>` NPI for billing provider
 
 - patient_id:
 

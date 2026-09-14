@@ -63,30 +63,7 @@ focus on:
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_834, index_834)
-#> $minimal_820
-#> <x12_index>
-#>  
-#>       Type: X12-834
-#> Characters: 502    
-#>   Segments: 17     
-#>   Problems: 0      
-#>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 2
-#> DTP: 2
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#> DMG: 1
-#>  HD: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
-#> 
+purrr::map(hcc::x12_834[9:14], index_834)
 #> $sample_834_01
 #> <x12_index>
 #>  
@@ -251,26 +228,7 @@ purrr::map(hcc::x12_834, index_834)
 #>  GE:  1
 #> IEA:  1
 #> 
-purrr::map(hcc::x12_834, parse_834)
-#> $minimal_820
-#>  [1] "ISA*00*          *00*          *ZZ*EMPLOYER01     *ZZ*PAYER99        *260513*1500*U*00501*000000834*0*P*>"
-#>  [2] "GS*BE*EMPLOYER01*PAYER99*20260513*1500*1*X*005010X220A1"                                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*FILE-ENROLL-2026Q2*20260513*1500***4"                                                              
-#>  [5] "N1*P5*ACME EMPLOYER*FI*987654321"                                                                         
-#>  [6] "N1*IN*PAYER99*FI*111223333"                                                                               
-#>  [7] "INS*Y*18*030*XN*A***FT"                                                                                   
-#>  [8] "REF*0F*MEMBER12345"                                                                                       
-#>  [9] "REF*1L*GROUP4567"                                                                                         
-#> [10] "DTP*356*D8*20260601"                                                                                      
-#> [11] "NM1*IL*1*DOE*JANE****34*123456789"                                                                        
-#> [12] "DMG*D8*19850412*F"                                                                                        
-#> [13] "HD*030**HLT*PPO-GOLD-2026"                                                                                
-#> [14] "DTP*348*D8*20260601"                                                                                      
-#> [15] "SE*13*0001"                                                                                               
-#> [16] "GE*1*1"                                                                                                   
-#> [17] "IEA*1*000000834"                                                                                          
-#> 
+purrr::map(hcc::x12_834[9:14], parse_834)
 #> $sample_834_01
 #>  [1] "ISA*00*          *00*          *ZZ*DHCS           *ZZ*HEALTHPLAN     *250108*1430*^*00501*000000001*0*P*:"
 #>  [2] "GS*BE*DHCS*HEALTHPLAN*20250108*1430*1*X*005010X220A1"                                                     

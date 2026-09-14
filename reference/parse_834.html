@@ -19,7 +19,7 @@ audit/reconciliation (030)
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9042</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9043</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,30 +97,7 @@ spikes that stress overnight batch jobs.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">index_834</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_820</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 502    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 17     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> BGN: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  N1: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> INS: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  HD: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span><span class="op">[</span><span class="fl">9</span><span class="op">:</span><span class="fl">14</span><span class="op">]</span>, <span class="va">index_834</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
@@ -285,26 +262,7 @@ spikes that stress overnight batch jobs.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  GE:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> IEA:  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $minimal_820</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*EMPLOYER01     *ZZ*PAYER99        *260513*1500*U*00501*000000834*0*P*&gt;"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*EMPLOYER01*PAYER99*20260513*1500*1*X*005010X220A1"                                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ST*834*0001*005010X220A1"                                                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "BGN*00*FILE-ENROLL-2026Q2*20260513*1500***4"                                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "N1*P5*ACME EMPLOYER*FI*987654321"                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "N1*IN*PAYER99*FI*111223333"                                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "INS*Y*18*030*XN*A***FT"                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "REF*0F*MEMBER12345"                                                                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "REF*1L*GROUP4567"                                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "DTP*356*D8*20260601"                                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "NM1*IL*1*DOE*JANE****34*123456789"                                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "DMG*D8*19850412*F"                                                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "HD*030**HLT*PPO-GOLD-2026"                                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "DTP*348*D8*20260601"                                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "SE*13*0001"                                                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "GE*1*1"                                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "IEA*1*000000834"                                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span><span class="op">[</span><span class="fl">9</span><span class="op">:</span><span class="fl">14</span><span class="op">]</span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA*00*          *00*          *ZZ*DHCS           *ZZ*HEALTHPLAN     *250108*1430*^*00501*000000001*0*P*:"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "GS*BE*DHCS*HEALTHPLAN*20250108*1430*1*X*005010X220A1"                                                     </span>

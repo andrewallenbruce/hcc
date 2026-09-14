@@ -48,5 +48,3 @@
   : X12-837 Health Care Claim Parser
 - [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
   : Demographics-Based Coefficient Prefix
-- [`ra_dx_edits`](https://andrewallenbruce.github.io/hcc/reference/ra_dx_edits.md)
-  : Diagnostic Edit Rules
