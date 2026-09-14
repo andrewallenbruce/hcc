@@ -167,7 +167,7 @@
 
 #' X12-837 Health Care Claim Examples
 #'
-#' @format ## `x12_837`
+#' @format ## `x12_837I`
 #' A list with 10 elements:
 #' \describe{
 #'   \item{`sample_837_0`}{X12-837 File}
@@ -183,7 +183,27 @@
 #'   ...
 #' }
 #' @keywords internal
-"x12_837"
+"x12_837I"
+
+#' X12-837 Health Care Claim Examples
+#'
+#' @format ## `x12_837P`
+#' A list with 10 elements:
+#' \describe{
+#'   \item{`sample_837_0`}{X12-837 File}
+#'   \item{`sample_837_1`}{X12-837 File}
+#'   \item{`sample_837_2`}{X12-837 File}
+#'   \item{`sample_837_3`}{X12-837 File}
+#'   \item{`sample_837_4`}{X12-837 File}
+#'   \item{`sample_837_5`}{X12-837 File}
+#'   \item{`sample_837_6`}{X12-837 File}
+#'   \item{`sample_837_7`}{X12-837 File}
+#'   \item{`sample_837_8`}{X12-837 File}
+#'   \item{`sample_837_9`}{X12-837 File}
+#'   ...
+#' }
+#' @keywords internal
+"x12_837P"
 
 #' EOB JSON Samples
 #'

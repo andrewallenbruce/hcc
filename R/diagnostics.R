@@ -1,12 +1,3 @@
-#' @noRd
-DiagnosticCategories := S7::new_class(
-  properties = list(
-    model = S7::class_character,
-    hcc = S7::class_integer,
-    categories = S7::class_list
-  )
-)
-
 #' CMS-HCC Model V28
 #' @noRd
 diagnostic_V28 <- function(hcc) {

@@ -10,6 +10,15 @@ prop_date <- S7::new_property(
   }
 )
 
+#' @noRd
+DiagnosticCategories := S7::new_class(
+  properties = list(
+    model = S7::class_character,
+    hcc = S7::class_integer,
+    categories = S7::class_list
+  )
+)
+
 #' HCC Category Detail
 #'
 #' @param hcc `<int>` HCC code (e.g., 18, 85)
@@ -79,10 +88,8 @@ HCPCoveragePeriod := S7::new_class(
 #' @param claim_type `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I,
 #'   837P)
 #' @param provider_specialty `<chr>` Provider taxonomy or specialty code
-#' @param performing_provider_npi `<chr>` National Provider Identifier for
-#'   performing provider
-#' @param billing_provider_npi `<chr>` National Provider Identifier for billing
-#'   provider
+#' @param performing_provider_npi `<chr>` NPI for performing provider
+#' @param billing_provider_npi `<chr>` NPI for billing provider
 #' @param patient_id `<chr>` Unique identifier for the patient
 #' @param facility_type `<chr>` Type of facility where service was rendered
 #' @param service_type `<chr>` Type of service provided (facility type + service

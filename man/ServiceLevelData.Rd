@@ -20,11 +20,9 @@ service}
 
 \item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
 
-\item{performing_provider_npi}{\verb{<chr>} National Provider Identifier for
-performing provider}
+\item{performing_provider_npi}{\verb{<chr>} NPI for performing provider}
 
-\item{billing_provider_npi}{\verb{<chr>} National Provider Identifier for billing
-provider}
+\item{billing_provider_npi}{\verb{<chr>} NPI for billing provider}
 
 \item{patient_id}{\verb{<chr>} Unique identifier for the patient}
 

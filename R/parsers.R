@@ -61,8 +61,8 @@ payee_loop_820 <- function(x) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_820, index_820)
-#' purrr::map(hcc::x12_820, parse_820)
+#' purrr::map(hcc::x12_820[13:17], index_820)
+#' purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
 parse_820 <- function(text) {
   x <- tilde(text)
@@ -167,8 +167,8 @@ index_820 <- function(text) {
 #' @param text `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_834, index_834)
-#' purrr::map(hcc::x12_834, parse_834)
+#' purrr::map(hcc::x12_834[9:14], index_834)
+#' purrr::map(hcc::x12_834[9:14], parse_834)
 #' @export
 parse_834 <- function(text) {
   tilde(text)
@@ -260,8 +260,11 @@ index_834 <- function(text) {
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_837, index_837)
-#' purrr::map(hcc::x12_837, parse_837)
+#' purrr::map(hcc::x12_837I[8:17], index_837)
+#' purrr::map(hcc::x12_837I[8:17], parse_837)
+#'
+#' purrr::map(hcc::x12_837P[14:16], index_837)
+#' purrr::map(hcc::x12_837P[14:16], parse_837)
 #' @export
 parse_837 <- function(text) {
   x <- tilde(text)

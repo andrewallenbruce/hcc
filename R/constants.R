@@ -1,13 +1,3 @@
-#' CMS Risk Adjustment Domain Constants
-#'
-# References:
-# - CMS Rate Announcement and Call Letter
-# - Medicare Advantage Enrollment and Disenrollment Guidance
-# - `X12-834` Implementation Guides
-#
-# - aged: beneficiaries currently eligible for Medicare by age
-# - disabled: beneficiaries currently eligible for Medicare by disability
-
 #' Dual Eligibility Codes
 #'
 #' @description
@@ -64,6 +54,7 @@ DUAL_CODES = list(
     "5E" = "06", # QI - Aged
     "5F" = "06" # QI - Disabled
   ),
+  # Used in X12-834 `REF*ABB`
   MAP_STATUS = list(
     # QMB Only (Partial)
     "QMB" = "01",
@@ -203,6 +194,23 @@ MAINTENANCE = list(
     "021" = "Addition",
     "024" = "Cancellation/Termination",
     "025" = "Reinstatement"
+  )
+)
+
+#' Type of Bill (TOB)
+#' @noRd
+TOB = list(
+  Inpatient = c("11X", "41X"),
+  Outpatient = c(
+    "12X",
+    "13X",
+    "43X",
+    "71X",
+    "73X",
+    "76X",
+    "77X",
+    "77X",
+    "87X"
   )
 )
 
@@ -354,41 +362,3 @@ KEYWORDS = list(
     "INSTITUTIONALIZED"
   )
 )
-
-# California DHCS Medi-Cal Aid Codes
-# Maps California-specific aid codes to CMS dual eligibility codes
-# Source: California DHCS `834` Implementation Guide
-# MEDI_CAL_AID_CODES = list(
-#   # Full Benefit Dual (QMB Plus, SLMB Plus)
-#   "4N" = "02", # QMB Plus - Aged
-#   "4P" = "02", # QMB Plus - Disabled
-#   "5B" = "04", # SLMB Plus - Aged
-#   "5D" = "04", # SLMB Plus - Disabled
-#
-#   # Partial Benefit Dual (QMB Only, SLMB Only, QI)
-#   "4M" = "01", # QMB Only - Aged
-#   "4O" = "01", # QMB Only - Disabled
-#   "5A" = "03", # SLMB Only - Aged
-#   "5C" = "03", # SLMB Only - Disabled
-#   "5E" = "06", # QI - Aged
-#   "5F" = "06" # QI - Disabled
-# )
-
-# Medicare Status Code Mappings
-# Maps Medicare status codes (from various sources) to CMS dual eligibility
-# codes. Used in X12-834 `REF*ABB` segment and other payer files.
-# MEDICARE_STATUS_CODE_MAPPING = list(
-#   "QMB" = "01", # QMB Only (Partial)
-#   "QMBONLY" = "01",
-#   "QMBPLUS" = "02", # QMB Plus (Full Benefit)
-#   "QMB+" = "02",
-#   "SLMB" = "03", # SLMB Only (Partial)
-#   "SLMBONLY" = "03",
-#   "SLMBPLUS" = "04", # SLMB Plus (Full Benefit)
-#   "SLMB+" = "04",
-#   "QDWI" = "05", # Qualified Disabled and Working Individual
-#   "QI" = "06", # Qualifying Individual
-#   "QI1" = "06",
-#   "FBDE" = "08", # Full Benefit Dual Eligible (Other)
-#   "OTHERFULL" = "08"
-# )
