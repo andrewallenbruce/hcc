@@ -16,7 +16,7 @@ A data frame with 14,764 rows and 5 columns:
 
 - year:
 
-  Year of Release
+  Model Year
 
 - coefficient:
 
@@ -26,10 +26,6 @@ A data frame with 14,764 rows and 5 columns:
 
   Model Weights
 
-- model_domain:
+- model_name:
 
-  Model Domain
-
-- model_version:
-
-  Model Version
+  Model Name

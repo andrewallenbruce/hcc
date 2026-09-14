@@ -16,11 +16,11 @@ A data frame with 783 rows and 5 columns:
 
 - cc:
 
-  Model Weight Categories
+  Condition Code
 
 - label:
 
-  Model Weights
+  Condition Code Label
 
 - model_domain:
 
@@ -32,4 +32,4 @@ A data frame with 783 rows and 5 columns:
 
 - model_fullname:
 
-  Model Version
+  Model Full Name

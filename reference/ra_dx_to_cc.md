@@ -14,17 +14,17 @@ ra_dx_to_cc
 
 A data frame with 112,936 rows and 4 columns:
 
-- Year of Release:
+- year:
 
-  State code
+  Model Year
 
 - diagnosis_code:
 
-  ICD-10-CM diagnostic codes
+  Diagnosis Code
 
 - cc:
 
-  Condition Codes
+  Condition Code
 
 - model_name:
 

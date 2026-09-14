@@ -16,15 +16,15 @@ A data frame with 1,220 rows and 6 columns:
 
 - year:
 
-  Year of Release
+  Model Year
 
 - cc_parent:
 
-  Model Weight Categories
+  Parent Condition Code
 
 - cc_child:
 
-  Model Weights
+  Child Condition Code
 
 - model_domain:
 
@@ -36,4 +36,4 @@ A data frame with 1,220 rows and 6 columns:
 
 - model_fullname:
 
-  Model Version
+  Model Full Name

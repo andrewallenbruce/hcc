@@ -14,10 +14,10 @@ ra_eligible_hcpcs
 
 A list with 2 elements:
 
-- `2026`:
+- y2026:
 
-  Model Weight Categories
+  HCPCS Unique to 2026
 
-- `2025`:
+- all:
 
-  Model Weights
+  HCPCS All Years

@@ -1,51 +1,26 @@
 # Diagnostic Edit Rules
 
-Diagnostic Edit Rules
-
-## Usage
-
-``` r
-ra_dx_edits
-```
-
 ## Format
 
 ### `ra_dx_edits`
 
-A data frame with 107 rows and 9 columns:
+A list with 2 data frames:
 
-- icd10:
+- icd:
 
-  Year of Release
+  ICD Code
 
-- edit_type:
+- age:
 
-  Model Weight Categories
+  Patient Age
+
+- bound:
+
+  Age Boundary
 
 - sex:
 
-  Model Weights
+  Patient Sex actionAction overrideReplacement Condition Code
+  model_nameModel Version rule_descriptionEdit Rule Description ...
 
-- age_min:
-
-  Model Domain
-
-- age_max:
-
-  Model Domain
-
-- action:
-
-  Model Domain
-
-- cc_override:
-
-  Model Domain
-
-- model_name:
-
-  Model Version
-
-- description:
-
-  Model Version
+ra_dx_edits Diagnostic Edit Rules internal
