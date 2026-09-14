@@ -52,21 +52,21 @@ NULL
 #' @export
 RemittanceEntry := S7::new_class(
   properties = list(
-    reference_number = s7x::property_scalar(S7::class_character),
-    payment_amount = s7x::property_scalar(S7::class_double),
-    original_amount = s7x::property_scalar(S7::class_double),
-    rate_code = s7x::property_scalar(S7::class_character),
-    aid_code = s7x::property_scalar(S7::class_character),
-    plan_type = s7x::property_scalar(S7::class_character),
-    payment_description = s7x::property_scalar(S7::class_character),
+    reference_number = S7::class_character,
+    payment_amount = S7::class_double,
+    original_amount = S7::class_double,
+    rate_code = S7::class_character,
+    aid_code = S7::class_character,
+    plan_type = S7::class_character,
+    payment_description = S7::class_character,
     coverage_start = prop_date,
     coverage_end = prop_date,
     coverage_period = S7::new_property(
       S3_ivs_iv,
       default = quote(ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L)))
     ),
-    adjustment_amount = s7x::property_scalar(S7::class_double),
-    adjustment_reason = s7x::property_scalar(S7::class_character)
+    adjustment_amount = S7::class_double,
+    adjustment_reason = S7::class_character
   )
 )
 
