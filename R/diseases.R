@@ -214,9 +214,9 @@ disease_RxHCC_V8 <- function(non_aged, hcc) {
 #' @returns `<list>` containing disease interaction variables
 #' @examples
 #' demo = demographics(age = 64, sex = "F", orec = "1")
-#' cms = diagnostics("v24", c(17L, 85L))
+#' cms = diagnostics("V24", c(17L, 85L))
 #' disease_interactions(cms, demo)
-#' rx = diagnostics("rx8", 130:133)
+#' rx = diagnostics("R08", 130:133)
 #' disease_interactions(rx, demo)
 #' @export
 disease_interactions <- function(diag, demo = NULL) {

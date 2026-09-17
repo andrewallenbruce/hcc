@@ -152,7 +152,7 @@ apply_coefficients <- function(
   interactions,
   coefficients = NULL,
   hcc,
-  model = "v28",
+  model = "V28",
   year = 2026L,
   prefix_override = NULL
 ) {

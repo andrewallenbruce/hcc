@@ -52,7 +52,7 @@ index_820_x218 <- function(x) {
     PER_IC = perl(x, r"(PER\*IC)"), # o
     N1_ = perl(x, N1_REX), # r
     N3_ = perl(x, N1_REX) + 1L, # r
-    N3_ = perl(x, N1_REX) + 2L, # r
+    N4_ = perl(x, N1_REX) + 2L, # r
     ENT = perl(x, "^ENT"),
     ADX = perl(x, "^ADX"),
     RMR = perl(x, "^RMR"),

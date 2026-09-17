@@ -207,16 +207,19 @@ TOB = list(
 
 #' @noRd
 MODEL = list(
-  "v22" = "CMS-HCC Model V22",
-  "v24" = "CMS-HCC Model V24",
-  "v28" = "CMS-HCC Model V28",
-  "e21" = "CMS-HCC ESRD Model V21",
-  "e24" = "CMS-HCC ESRD Model V24",
-  "rx5" = "RxHCC Model V05",
-  "rx8" = "RxHCC Model V08",
-  "rx8_pdp_mapd" = "RxHCC Model V08 PDP_AND_MAPD",
-  "rx8_pdp" = "RxHCC Model V08 PDP_ONLY",
-  "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
+  "V21" = "CMS-HCC Model V21",
+  "V22" = "CMS-HCC Model V22",
+  "V23" = "CMS-HCC Model V23",
+  "V24" = "CMS-HCC Model V24",
+  "V28" = "CMS-HCC Model V28",
+  "D20" = "CMS-HCC ESRD Model V20",
+  "D21" = "CMS-HCC ESRD Model V21",
+  "D24" = "CMS-HCC ESRD Model V24",
+  "R05" = "RxHCC Model V05",
+  "R08" = "RxHCC Model V08"
+  # "rx8_pdp_mapd" = "RxHCC Model V08 PDP_AND_MAPD",
+  # "rx8_pdp" = "RxHCC Model V08 PDP_ONLY",
+  # "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
 )
 
 #' @noRd

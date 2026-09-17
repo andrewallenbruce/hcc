@@ -1,7 +1,7 @@
 test_that("disease_interactions works", {
   expect_setequal(
     disease_interactions(
-      diagnostics("v24", c(17L, 85L)),
+      diagnostics("V24", c(17L, 85L)),
       PatientDemographics(
         age = 65,
         sex = "F",

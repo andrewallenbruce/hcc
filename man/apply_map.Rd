@@ -29,10 +29,10 @@ apply_map(icd = NULL, model = NULL, year = NULL)
 Map ICD-10 Codes to CC
 }
 \examples{
-apply_map("E119", "v28", 2026)
-apply_map("E119", "v24", 2026)
-apply_map("E119", "e21", 2026)
-apply_map("I5022", "v28", 2026)
-apply_map(c("E103213", "I5022", "Z9999"), "v28", 2026)
-apply_map(c("E103213", "I5022", "Z9999"), "v24", 2026)
+apply_map("E119", "V28", 2026)
+apply_map("E119", "V24", 2026)
+apply_map("E119", "D21", 2026)
+apply_map("I5022", "V28", 2026)
+apply_map(c("E103213", "I5022", "Z9999"), "V28", 2026)
+apply_map(c("E103213", "I5022", "Z9999"), "V24", 2026)
 }

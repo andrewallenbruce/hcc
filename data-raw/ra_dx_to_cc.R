@@ -26,9 +26,6 @@ collapse::rsplit(
 )
 
 ra_dx_to_cc |>
-  collapse::roworder(
-    year,
-    diagnosis_code,
-    cc,
-    model_name
+  collapse::roworderv(
+    c("year", "diagnosis_code", "cc", "model_name")
   )

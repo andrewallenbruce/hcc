@@ -12,31 +12,20 @@
 #' @param year `<int>` 2025 (default) or 2026
 #' @returns `<chr>` CCs mapped to diagnosis codes
 #' @examples
-#' apply_map("E119", "v28", 2026)
-#' apply_map("E119", "v24", 2026)
-#' apply_map("E119", "e21", 2026)
-#' apply_map("I5022", "v28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "v28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "v24", 2026)
+#' apply_map("E119", "V28", 2026)
+#' apply_map("E119", "V24", 2026)
+#' apply_map("E119", "D21", 2026)
+#' apply_map("I5022", "V28", 2026)
+#' apply_map(c("E103213", "I5022", "Z9999"), "V28", 2026)
+#' apply_map(c("E103213", "I5022", "Z9999"), "V24", 2026)
 #' @export
 apply_map <- function(
   icd = NULL,
   model = NULL,
   year = NULL
 ) {
-  check_character(icd, allow_na = FALSE)
-
-  if (!is.null(icd)) {
-    icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
-  }
-
-  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
-
-  if (!is.null(model)) {
-    model <- convert_model(model)
-  }
-
   x <- if (!is.null(year)) {
+    rlang::check_number_whole(year, min = 2025, max = 2026)
     collapse::ss(
       hcc::ra_dx_to_cc,
       whichv_(hcc::ra_dx_to_cc[["year"]], year)
@@ -46,12 +35,15 @@ apply_map <- function(
   }
 
   x <- if (!is.null(model)) {
+    model <- convert_model(model)
     collapse::ss(x, whichv_(x[["model_name"]], model))
   } else {
     x
   }
 
   if (!is.null(icd)) {
+    check_character(icd, allow_na = FALSE)
+    icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
     collapse::ss(x, x[["diagnosis_code"]] %iin% icd)
   } else {
     x

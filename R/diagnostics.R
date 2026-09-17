@@ -90,7 +90,7 @@ diagnostic_ESRD_V21 <- function(hcc) {
 #' @param hcc `<int>` hcc
 #' @returns `<DiagnosticCategories>` S7 object
 #' @examples
-#' diagnostics(model = "v24", hcc = c(17:19, 85L))
+#' diagnostics(model = "V24", hcc = c(17:19, 85L))
 #' @export
 diagnostics <- function(model, hcc) {
   model <- convert_model(model)

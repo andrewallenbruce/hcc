@@ -196,7 +196,7 @@ S7::method(interactions, PatientDemographics) <- function(x) {
 #' @returns `<chr>` vector of interactions
 #' @examples
 #' apply_interactions(
-#'   diagnostics(model = "v24", hcc = c(17L, 85L)),
+#'   diagnostics(model = "V24", hcc = c(17L, 85L)),
 #'   demographics(age = 64, sex = "F", orec = "1")
 #' )
 #' @export

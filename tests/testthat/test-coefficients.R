@@ -73,7 +73,7 @@ test_that("apply_coefficients works", {
     ),
     hcc = c(19L, 47L, 85L),
     interactions = "D1",
-    model = "v28",
+    model = "V28",
     coefficients = COEF
   )
 
@@ -122,7 +122,7 @@ test_that("Empty apply_coefficients works", {
     demographics = DEMO,
     hcc = HCC,
     interactions = ACT,
-    model = "CMS-HCC Model V28",
+    model = "V28",
     coefficients = COEF
   )
 
@@ -152,7 +152,7 @@ test_that("FGC coefficients should be looked up without prefix", {
       esrd_months = 6L
     ),
     interactions = "FGC_GE65_DUR4_9_ND_PBD",
-    model = "CMS-HCC ESRD Model V24",
+    model = "D24",
     coefficients = list(
       FGC_GE65_DUR4_9_ND_PBD = list(
         value = 2.529,
