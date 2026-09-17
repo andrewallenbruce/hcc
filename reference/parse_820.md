@@ -61,7 +61,295 @@ Typical loop structure within an 820:
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_820[13:17], index_820)
+purrr::map(hcc::x12_820, index_820)
+#> $`820_EX10_debt_covered_by_affiliate1`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 1078   
+#>   Segments: 34     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 9
+#>  DTM: 9
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX11_debt_covered_by_affiliate2`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 1119   
+#>   Segments: 34     
+#>   Problems: 9      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 9
+#>  DTM: 9
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX12_csr_manual_adj`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 865    
+#>   Segments: 26     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 5
+#>  DTM: 5
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX1_different_types_of_pmt_by_HIX`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 989    
+#>   Segments: 29     
+#>   Problems: 13     
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 4
+#>  NM1: 4
+#>  RMR: 5
+#>  DTM: 5
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX2_payments_exceed_charges1`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 963    
+#>   Segments: 30     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 7
+#>  DTM: 7
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX3_payments_exceed_charges2`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 937    
+#>   Segments: 27     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 2
+#>  NM1: 2
+#>  RMR: 6
+#>  DTM: 6
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX4_charges_exceed_payments1`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 788    
+#>   Segments: 22     
+#>   Problems: 10     
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 3
+#>  DTM: 3
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX5_charges_exceed_payments2`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 792    
+#>   Segments: 22     
+#>   Problems: 10     
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 3
+#>  DTM: 3
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX6_aptc_adjustments1`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 1069   
+#>   Segments: 34     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 9
+#>  DTM: 9
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX7_aptc_adjustments2`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 1043   
+#>   Segments: 31     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 2
+#>  NM1: 2
+#>  RMR: 8
+#>  DTM: 8
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX8_outstanding_debt_owed1`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 960    
+#>   Segments: 30     
+#>   Problems: 8      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 7
+#>  DTM: 7
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
+#> $`820_EX9_outstanding_debt_owed2`
+#> <x12_index>
+#>  
+#>       Type: X12-820
+#> Characters: 1033   
+#>   Segments: 30     
+#>   Problems: 9      
+#>  
+#>  ISA: 1
+#>   GS: 1
+#>   ST: 1
+#>  BPR: 1
+#>  TRN: 1
+#> N1PE: 1
+#> N3PE: 1
+#> N4PE: 1
+#>  ENT: 3
+#>  NM1: 2
+#>  RMR: 7
+#>  DTM: 7
+#>   SE: 1
+#>   GE: 1
+#>  IEA: 1
+#> 
 #> $sample_820_01
 #> <x12_index>
 #>  
@@ -213,6 +501,37 @@ purrr::map(hcc::x12_820[13:17], index_820)
 #>    SE:   1
 #>    GE:   1
 #>   IEA:   1
+#> 
+#> $stedi_820_06
+#> <x12_index>
+#>  
+#>       Type: X12-850
+#> Characters: 390    
+#>   Segments: 6      
+#>   Problems: 7      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $stedi_820_07
+#> <x12_index>
+#>  
+#>       Type: X12-850
+#> Characters: 404    
+#>   Segments: 7      
+#>   Problems: 8      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> DTM: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
 #> 
 purrr::map(hcc::x12_820[13:17], parse_820)
 #> $sample_820_01

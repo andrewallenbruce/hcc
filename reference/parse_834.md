@@ -63,7 +63,186 @@ focus on:
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_834[9:14], index_834)
+purrr::map(hcc::x12_834, index_834)
+#> $`834_EX2_add_dependent`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 528    
+#>   Segments: 19     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 3
+#> DTP: 2
+#>  N1: 2
+#> INS: 1
+#> NM1: 2
+#> DMG: 1
+#>  HD: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX3_enroll_employee_mco`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 614    
+#>   Segments: 22     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 2
+#> DTP: 2
+#>  N1: 2
+#> INS: 1
+#> NM1: 2
+#> PER: 1
+#>  N3: 1
+#>  N4: 1
+#> DMG: 1
+#>  LX: 1
+#>  HD: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX4_add_subscriber_coverage`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 463    
+#>   Segments: 16     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 3
+#> DTP: 1
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#>  HD: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX5_change_subscriber_info`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 490    
+#>   Segments: 16     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 2
+#>  N1: 2
+#> INS: 1
+#> NM1: 2
+#> DMG: 2
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX6_cancel_dependent`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 460    
+#>   Segments: 16     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 3
+#> DTP: 1
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#> DMG: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX7_terminate_subscriber_eligibility`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 428    
+#>   Segments: 14     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 2
+#> DTP: 1
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX8_reinstate_employee`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 446    
+#>   Segments: 15     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 3
+#> DTP: 1
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`834_EX9_reinstate_employee_coverage`
+#> <x12_index>
+#>  
+#>       Type: X12-834
+#> Characters: 460    
+#>   Segments: 16     
+#>   Problems: 0      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BGN: 1
+#> REF: 3
+#> DTP: 1
+#>  N1: 2
+#> INS: 1
+#> NM1: 1
+#>  HD: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
 #> $sample_834_01
 #> <x12_index>
 #>  

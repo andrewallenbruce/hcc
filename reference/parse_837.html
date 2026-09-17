@@ -25,7 +25,7 @@ segment the audience:
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9043</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9044</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +136,210 @@ Waystar, Trizetto), with <code>277CA</code>, <code>999</code>, and ultimately <c
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span><span class="op">[</span><span class="fl">8</span><span class="op">:</span><span class="fl">17</span><span class="op">]</span>, <span class="va">index_837</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span>, <span class="va">index_837</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1234    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 46      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1b_2claims_1provider`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1273    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 50      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 2       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1c_ppo_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1382    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 51      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AMT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HCP: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1d_oon_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1000    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 34      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AMT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HCP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX2_car_accident`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1184    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 46      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ex_837_inpatient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 854   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 36    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 3     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837I</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 386   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 14    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV2: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
@@ -1231,7 +1434,405 @@ Waystar, Trizetto), with <code>277CA</code>, <code>999</code>, and ultimately <c
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span><span class="op">[</span><span class="fl">14</span><span class="op">:</span><span class="fl">16</span><span class="op">]</span>, <span class="va">index_837</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span>, <span class="va">index_837</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX10a_drug_adm_office`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 965     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 33      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 2       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AMT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX11_ppo_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1209    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 41      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HCP: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX12_oon_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1204    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 43      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HCP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX1_commercial-insurance`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1106    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 46      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX2_encounter`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1128    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 45      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX3a_billing_provider_payer_a`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1379    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 56      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL:  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3:  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4:  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF:  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OI:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX:  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1:  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP:  3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA:  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX4_medicare_secondary_cob`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1185    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 46      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AMT: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CAS: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX5_ambulance`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1375    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 55      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 2       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NTE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CR1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CRC: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NTE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX6_chiropractic`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 920     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 33      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CR2: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX7_oxygen`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1501    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 50      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 20      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PWK: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CR3: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX8_wheelchair`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 1086    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 39      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 8       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PAT: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PWK: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CR3: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX9_anesthesia`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 937     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 33      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 0       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BPR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PER: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HL: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N3: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N4: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REF: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SBR: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DMG: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PRV: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837P</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Type: X12-NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Characters: 540   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Segments: 16    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Problems: 1     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ISA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GS: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ST: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NM1: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CLM: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HI: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  LX: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SV1: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DTP: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  SE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  GE: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IEA: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;x12_index&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>

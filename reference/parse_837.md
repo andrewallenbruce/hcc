@@ -93,7 +93,210 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 ## Examples
 
 ``` r
-purrr::map(hcc::x12_837I[8:17], index_837)
+purrr::map(hcc::x12_837I, index_837)
+#> $`837I_EX1a_institutional_claim`
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1234    
+#>   Segments: 46      
+#>   Problems: 1       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 8
+#> PER: 2
+#>  HL: 2
+#>  N3: 3
+#>  N4: 3
+#> REF: 3
+#> SBR: 2
+#> DMG: 1
+#>  OI: 1
+#> CLM: 1
+#>  HI: 5
+#> PRV: 1
+#>  LX: 2
+#> SV2: 2
+#> DTP: 3
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837I_EX1b_2claims_1provider`
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1273    
+#>   Segments: 50      
+#>   Problems: 2       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 9
+#> PER: 1
+#>  HL: 3
+#>  N3: 3
+#>  N4: 3
+#> REF: 2
+#> SBR: 2
+#> DMG: 2
+#> CLM: 2
+#>  HI: 3
+#> PRV: 2
+#>  LX: 3
+#> SV2: 3
+#> DTP: 5
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837I_EX1c_ppo_repriced_claim`
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1382    
+#>   Segments: 51      
+#>   Problems: 1       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 9
+#> PER: 1
+#>  HL: 3
+#>  N3: 3
+#>  N4: 3
+#> REF: 3
+#> SBR: 2
+#> PAT: 1
+#> AMT: 1
+#> HCP: 3
+#> DMG: 2
+#>  OI: 1
+#> CLM: 1
+#>  HI: 3
+#>  LX: 2
+#> SV2: 2
+#> DTP: 4
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837I_EX1d_oon_repriced_claim`
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1000    
+#>   Segments: 34      
+#>   Problems: 1       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 6
+#> PER: 1
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 3
+#> SBR: 1
+#> AMT: 1
+#> HCP: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 1
+#> SV2: 1
+#> DTP: 3
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837I_EX2_car_accident`
+#> <x12_index>
+#>  
+#>       Type: X12-837I
+#> Characters: 1184    
+#>   Segments: 46      
+#>   Problems: 1       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 1
+#>  HL: 3
+#>  N3: 2
+#>  N4: 2
+#> REF: 3
+#> SBR: 1
+#> PAT: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 3
+#> PRV: 1
+#>  LX: 4
+#> SV2: 4
+#> DTP: 5
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $ex_837_inpatient
+#> <x12_index>
+#>  
+#>       Type: X12-41
+#> Characters: 854   
+#>   Segments: 36    
+#>   Problems: 3     
+#>  
+#>  ST: 1
+#> BPR: 1
+#> NM1: 6
+#> PER: 1
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 2
+#> SBR: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 4
+#> PRV: 1
+#>  LX: 3
+#> SV2: 3
+#> DTP: 4
+#>  SE: 1
+#> 
+#> $sample_837I
+#> <x12_index>
+#>  
+#>       Type: X12-NA
+#> Characters: 386   
+#>   Segments: 14    
+#>   Problems: 0     
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> NM1: 3
+#> CLM: 1
+#>  HI: 1
+#>  LX: 1
+#> SV2: 1
+#> DTP: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
 #> $sample_837_1
 #> <x12_index>
 #>  
@@ -1188,7 +1391,405 @@ purrr::map(hcc::x12_837I[8:17], parse_837)
 #> 
 #> 
 
-purrr::map(hcc::x12_837P[14:16], index_837)
+purrr::map(hcc::x12_837P, index_837)
+#> $`837P_EX10a_drug_adm_office`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 965     
+#>   Segments: 33      
+#>   Problems: 2       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 6
+#> PER: 1
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 1
+#> SBR: 1
+#> AMT: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 2
+#> SV1: 2
+#> DTP: 2
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX11_ppo_repriced_claim`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1209    
+#>   Segments: 41      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 8
+#> PER: 2
+#>  HL: 2
+#>  N3: 3
+#>  N4: 3
+#> REF: 3
+#> SBR: 1
+#> HCP: 3
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 2
+#> SV1: 2
+#> DTP: 2
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX12_oon_repriced_claim`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1204    
+#>   Segments: 43      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 9
+#> PER: 1
+#>  HL: 3
+#>  N3: 4
+#>  N4: 4
+#> REF: 3
+#> SBR: 2
+#> PAT: 1
+#> HCP: 1
+#> DMG: 2
+#>  OI: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 1
+#> SV1: 1
+#> DTP: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX1_commercial-insurance`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1106    
+#>   Segments: 46      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 1
+#>  HL: 3
+#>  N3: 3
+#>  N4: 3
+#> REF: 3
+#> SBR: 1
+#> PAT: 1
+#> DMG: 2
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 4
+#> SV1: 4
+#> DTP: 4
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX2_encounter`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1128    
+#>   Segments: 45      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 1
+#>  HL: 2
+#>  N3: 4
+#>  N4: 4
+#> REF: 2
+#> SBR: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 4
+#> SV1: 4
+#> DTP: 5
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX3a_billing_provider_payer_a`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1379    
+#>   Segments: 56      
+#>   Problems: 0       
+#>  
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BPR:  1
+#> NM1: 11
+#> PER:  2
+#>  HL:  3
+#>  N3:  6
+#>  N4:  6
+#> REF:  3
+#> SBR:  2
+#> PAT:  1
+#> DMG:  2
+#>  OI:  1
+#> CLM:  1
+#>  HI:  1
+#> PRV:  1
+#>  LX:  3
+#> SV1:  3
+#> DTP:  3
+#>  SE:  1
+#>  GE:  1
+#> IEA:  1
+#> 
+#> $`837P_EX4_medicare_secondary_cob`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1185    
+#>   Segments: 46      
+#>   Problems: 1       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 9
+#> PER: 1
+#>  HL: 2
+#>  N3: 4
+#>  N4: 4
+#> REF: 4
+#> SBR: 2
+#> AMT: 2
+#> DMG: 1
+#> CAS: 2
+#>  OI: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 1
+#> SV1: 1
+#> DTP: 2
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX5_ambulance`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1375    
+#>   Segments: 55      
+#>   Problems: 2       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 1
+#>  HL: 2
+#>  N3: 5
+#>  N4: 5
+#> REF: 5
+#> SBR: 1
+#> NTE: 1
+#> CR1: 1
+#> CRC: 2
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 4
+#> SV1: 4
+#> DTP: 5
+#>  SE: 1
+#> NTE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX6_chiropractic`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 920     
+#>   Segments: 33      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 5
+#> PER: 2
+#>  HL: 2
+#>  N3: 2
+#>  N4: 2
+#> REF: 2
+#> SBR: 1
+#> CR2: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 1
+#> SV1: 1
+#> DTP: 4
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX7_oxygen`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1501    
+#>   Segments: 50      
+#>   Problems: 20      
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 3
+#>  HL: 2
+#>  N3: 4
+#>  N4: 4
+#> REF: 3
+#> SBR: 1
+#> PWK: 2
+#> CR3: 2
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 2
+#> SV1: 2
+#> DTP: 8
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX8_wheelchair`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 1086    
+#>   Segments: 39      
+#>   Problems: 8       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 6
+#> PER: 2
+#>  HL: 2
+#>  N3: 3
+#>  N4: 3
+#> REF: 3
+#> SBR: 1
+#> PAT: 1
+#> PWK: 1
+#> CR3: 1
+#> DMG: 1
+#> MEA: 1
+#> CLM: 1
+#>  HI: 1
+#>  LX: 1
+#> SV1: 1
+#> DTP: 3
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $`837P_EX9_anesthesia`
+#> <x12_index>
+#>  
+#>       Type: X12-837P
+#> Characters: 937     
+#>   Segments: 33      
+#>   Problems: 0       
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> BPR: 1
+#> NM1: 7
+#> PER: 1
+#>  HL: 2
+#>  N3: 3
+#>  N4: 3
+#> REF: 2
+#> SBR: 1
+#> DMG: 1
+#> CLM: 1
+#>  HI: 1
+#> PRV: 1
+#>  LX: 1
+#> SV1: 1
+#> DTP: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
+#> $sample_837P
+#> <x12_index>
+#>  
+#>       Type: X12-NA
+#> Characters: 540   
+#>   Segments: 16    
+#>   Problems: 1     
+#>  
+#> ISA: 1
+#>  GS: 1
+#>  ST: 1
+#> NM1: 3
+#> CLM: 1
+#>  HI: 1
+#>  LX: 2
+#> SV1: 2
+#> DTP: 1
+#>  SE: 1
+#>  GE: 1
+#> IEA: 1
+#> 
 #> $sample_837_0
 #> <x12_index>
 #>  
