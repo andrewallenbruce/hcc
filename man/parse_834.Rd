@@ -50,6 +50,6 @@ Extracts enrollment and demographic data from 834 transactions with focus on:
 }
 }
 \examples{
-purrr::map(hcc::x12_834[9:14], index_834)
+purrr::map(hcc::x12_834, index_834)
 purrr::map(hcc::x12_834[9:14], parse_834)
 }

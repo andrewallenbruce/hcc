@@ -86,17 +86,16 @@ x12_837_subtype <- function(x) {
     "005010X222A1" ~ "837P",
     "005010X223A2" ~ "837I",
     "005010X224A2" ~ "837D",
-    .default = x
+    .default = NA_character_
   )
 }
 
 #' @examplesIf FALSE
-#' x12_type(x = c(x12_820, x12_834, x12_837))
+#' x12_type(x = c(x12_820, x12_834, x12_837I, x12_837P))
 #' @noRd
 x12_type <- function(x) {
-  x <- rm_newline(x)
-
   if (length(x) == 1L) {
+    x <- rm_newline(x)
     x <- strsplit(x, "~", fixed = TRUE)[[1]]
     x <- strsplit(.subset(x, 3L), "*", fixed = TRUE)[[1]]
     if (x[2] == "837") {
@@ -105,10 +104,13 @@ x12_type <- function(x) {
     return(x[2])
   }
 
-  x <- strsplit(unlist_(x), "~", fixed = TRUE)
-  x <- strsplit(unlist_elem(x, 3L), "*", fixed = TRUE)
+  x <- purrr::map(x, \(x) paste0(unlist_(rm_newline(x)), collapse = ""))
+  x <- strsplit(unlist(x), "~", fixed = TRUE)
+  i <- unname((purrr::map_int(x, \(x) min(perl(x, "^ST")))))
+  x <- unlist_(purrr::map2(x, i, \(x, i) x[i]))
+  x <- strsplit(x, "*", fixed = TRUE)
   st01 <- unlist_elem(x, 2L)
-  st03 <- unlist_elem(x, 4L)
+  st03 <- purrr::map_chr(x, \(x) x[length(x)])
 
   if (collapse::anyv(st01, "837")) {
     i <- collapse::whichv(st01, "837")
