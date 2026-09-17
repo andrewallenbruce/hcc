@@ -3,6 +3,8 @@
 ## All functions
 
 - [`EditRule`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
+  [`AgeEdit`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
+  [`SexEdit`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   : Single Edit Rule
 - [`EnrollmentData`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : X12-834 Transaction Enrollment Data

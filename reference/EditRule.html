@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9046</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9047</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,28 +48,36 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-edit-type">edit_type<a class="anchor" aria-label="anchor" href="#arg-edit-type"></a></dt>
+<dl><dt id="arg-icd">icd<a class="anchor" aria-label="anchor" href="#arg-icd"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> "sex" or "age"</p></dd>
-
-
-<dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For sex edits: 1 (male) or 2 (female)</p></dd>
-
-
-<dt id="arg-age-min">age_min<a class="anchor" aria-label="anchor" href="#arg-age-min"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For age edits: minimum age (inclusive)</p></dd>
-
-
-<dt id="arg-age-max">age_max<a class="anchor" aria-label="anchor" href="#arg-age-max"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For age edits: maximum age (inclusive)</p></dd>
 
 
 <dt id="arg-action">action<a class="anchor" aria-label="anchor" href="#arg-action"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> "invalid" or "override"</p></dd>
 
 
-<dt id="arg-cc-override">cc_override<a class="anchor" aria-label="anchor" href="#arg-cc-override"></a></dt>
+<dt id="arg-override">override<a class="anchor" aria-label="anchor" href="#arg-override"></a></dt>
 <dd><p><code>&lt;int&gt;</code> CC to assign when <code>action = "override"</code></p></dd>
+
+
+<dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
+<dd><p>description</p></dd>
+
+
+<dt id="arg-description">description<a class="anchor" aria-label="anchor" href="#arg-description"></a></dt>
+<dd><p>description</p></dd>
+
+
+<dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
+<dd><p><code>&lt;int&gt;</code> For sex edits: 1 (male) or 2 (female)</p></dd>
+
+
+<dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
+<dd><p><code>&lt;int&gt;</code> For age edits: minimum age (inclusive)</p></dd>
+
+
+<dt id="arg-boundary">boundary<a class="anchor" aria-label="anchor" href="#arg-boundary"></a></dt>
+<dd><p><code>&lt;int&gt;</code> For age edits: maximum age (inclusive)</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -79,21 +87,39 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">EditRule</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  edit_type <span class="op">=</span> <span class="st">"age"</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">SexEdit</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  icd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D66"</span>, <span class="st">"D67"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  sex <span class="op">=</span> <span class="fl">2L</span>,</span></span>
-<span class="r-in"><span>  action <span class="op">=</span> <span class="st">"invalid"</span>,</span></span>
-<span class="r-in"><span>  age_max <span class="op">=</span> <span class="fl">16L</span>,</span></span>
-<span class="r-in"><span>  age_min <span class="op">=</span> <span class="fl">15L</span>,</span></span>
-<span class="r-in"><span>  cc_override <span class="op">=</span> <span class="fl">13L</span></span></span>
+<span class="r-in"><span>  action <span class="op">=</span> <span class="st">"override"</span>,</span></span>
+<span class="r-in"><span>  override <span class="op">=</span> <span class="fl">112L</span>,</span></span>
+<span class="r-in"><span>  model <span class="op">=</span> <span class="st">"C28"</span>,</span></span>
+<span class="r-in"><span>  description <span class="op">=</span> <span class="st">"Hemophilia A/B in female - assign to CC 112"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::EditRule&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ edit_type  : chr "age"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::SexEdit&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ icd        : chr [1:2] "D66" "D67"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ action     : chr "override"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ override   : int 112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ model      : chr "C28"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ description: chr "Hemophilia A/B in female - assign to CC 112"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ sex        : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ age_min    : int 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ age_max    : int 16</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">AgeEdit</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  icd <span class="op">=</span> <span class="st">"J410"</span>,</span></span>
+<span class="r-in"><span>  age <span class="op">=</span> <span class="fl">17L</span>,</span></span>
+<span class="r-in"><span>  boundary <span class="op">=</span> <span class="st">"max"</span>,</span></span>
+<span class="r-in"><span>  action <span class="op">=</span> <span class="st">"invalid"</span>,</span></span>
+<span class="r-in"><span>  override <span class="op">=</span> <span class="cn">NA_integer_</span>,</span></span>
+<span class="r-in"><span>  model <span class="op">=</span> <span class="st">"C28"</span>,</span></span>
+<span class="r-in"><span>  description <span class="op">=</span> <span class="st">"Simple chronic bronchitis - invalid if age &lt; 18"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::AgeEdit&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ icd        : chr "J410"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ action     : chr "invalid"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ cc_override: int 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ override   : int NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ model      : chr "C28"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ description: chr "Simple chronic bronchitis - invalid if age &lt; 18"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ age        : int 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ boundary   : chr "max"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

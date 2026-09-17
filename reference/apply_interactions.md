@@ -26,7 +26,7 @@ apply_interactions(diagnostics, demographics)
 
 ``` r
 apply_interactions(
-  diagnostics(model = "V24", hcc = c(17L, 85L)),
+  diagnostics(model = "C24", hcc = c(17L, 85L)),
   demographics(age = 64, sex = "F", orec = "1")
 )
 #> $demographic_interactions

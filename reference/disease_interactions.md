@@ -26,7 +26,7 @@ disease_interactions(diag, demo = NULL)
 
 ``` r
 demo = demographics(age = 64, sex = "F", orec = "1")
-cms = diagnostics("V24", c(17L, 85L))
+cms = diagnostics("C24", c(17L, 85L))
 disease_interactions(cms, demo)
 #> [1] "DIABETES_CHF"   "DISABLED_HCC85"
 rx = diagnostics("R08", 130:133)
