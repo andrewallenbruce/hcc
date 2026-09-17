@@ -2,12 +2,9 @@
 % Please edit documentation in R/parsers.R
 \name{parse_820}
 \alias{parse_820}
-\alias{index_820}
-\title{X12-820 Payment Order/Remittance Advice Parser}
+\title{X12-820 (X306/X218) Payment Order/Remittance Advice Parser}
 \usage{
 parse_820(text)
-
-index_820(text)
 }
 \arguments{
 \item{text}{\verb{<chr>} string of raw X12-820 text}
@@ -44,6 +41,8 @@ Typical loop structure within an 820:
 }
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 purrr::map(hcc::x12_820, index_820)
 purrr::map(hcc::x12_820[13:17], parse_820)
+\dontshow{\}) # examplesIf}
 }

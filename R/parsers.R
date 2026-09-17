@@ -34,7 +34,7 @@ payee_loop_820 <- function(x) {
   )
 }
 
-#' X12-820 Payment Order/Remittance Advice Parser
+#' X12-820 (X306/X218) Payment Order/Remittance Advice Parser
 #'
 #' Parses X12-820 (005010X218) transactions for Medicaid/Medicare capitation and
 #' premium payments. Designed for California DHCS PACE capitation remittances
@@ -60,7 +60,7 @@ payee_loop_820 <- function(x) {
 #'
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
-#' @examples
+#' @examplesIf FALSE
 #' purrr::map(hcc::x12_820, index_820)
 #' purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
@@ -103,61 +103,7 @@ parse_820 <- function(text) {
     collapse::qTBL()
 }
 
-#' @rdname parse_820
-#' @export
-index_820 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
-  xtype <- x12_type(text)
-
-  if (xtype != "820") {
-    return(paste0("input is X12-", xtype, " not X12-820"))
-  }
-
-  x <- tilde(text)
-
-  i <- list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BPR"),
-    TRN = perl(x, "^TRN"),
-    REF14 = perl(x, r"(REF\*14)"),
-    N1PE = perl(x, r"(N1\*PE)"),
-    N3PE = perl(x, r"(N1\*PE)") + 1L,
-    N4PE = perl(x, r"(N1\*PE)") + 2L,
-    N1PR = perl(x, r"(N1\*PR)"),
-    N3PR = perl(x, r"(N1\*PR)") + 1L,
-    N4PR = perl(x, r"(N1\*PR)") + 2L,
-    REF0F = perl(x, r"(REF\*0F)"),
-    REF0N = perl(x, r"(REF\*0N)"),
-    REF1L = perl(x, r"(REF\*1L)"),
-    REF38 = perl(x, r"(REF\*38)"),
-    REFAZ = perl(x, r"(REF\*AZ)"),
-    REFPOL = perl(x, r"(REF\*POL)"),
-    REFTV = perl(x, r"(REF\*TV)"),
-    REF4A = perl(x, r"(REF\*4A)"),
-    REF23 = perl(x, r"(REF\*23)"),
-    REF60 = perl(x, r"(REF\*60)"),
-    REF1W = perl(x, r"(REF\*1W)"),
-    ENT = perl(x, "^ENT"),
-    NM1 = perl(x, "^NM1"),
-    RMR = perl(x, "^RMR"),
-    REF18 = perl(x, r"(^REF\*18)"),
-    REFZZ = perl(x, r"(^REF\*ZZ)"),
-    DTM = perl(x, "^DTM"),
-    ADX = perl(x, "^ADX"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-
-  new_x12_index(i, x, text, xtype)
-}
-
-#' X12-834 Benefit Enrollment Parser
+#' X12-834 (X220A1) Benefit Enrollment Parser
 #'
 #' The 834 carries *membership events*:
 #'    - new enrollment (qualifier 021)
@@ -185,7 +131,6 @@ index_820 <- function(text) {
 #'    - CA DHCS FAME-specific fields
 #'    - HCP (Health Care Plan) coverage history
 #'
-#' @param text `<chr>` string of raw X12-834 text
 #' @param index `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examplesIf FALSE
@@ -222,59 +167,7 @@ parse_834_index <- function(index) {
   )
 }
 
-#' @rdname parse_834_index
-#' @export
-index_834 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
-  xtype <- x12_type(text)
-
-  if (xtype != "834") {
-    return(paste0("input is X12-", xtype, " not X12-834"))
-  }
-
-  x <- tilde(text)
-
-  i <- list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BGN = perl(x, "^BGN"),
-    QTY = perl(x, "^QTY"),
-    REF = perl(x, "^REF"),
-    DTP = perl(x, "^DTP"),
-    N1 = perl(x, "^N1"),
-    ACT = perl(x, "^ACT"),
-    INS = perl(x, "^INS"),
-    NM1 = perl(x, "^NM1"),
-    PER = perl(x, "^PER"),
-    N3 = perl(x, "^N3"),
-    N4 = perl(x, "^N4"),
-    DMG = perl(x, "^DMG"),
-    EC = perl(x, "^EC"),
-    ICM = perl(x, "^ICM"),
-    AMT = perl(x, "^AMT"),
-    HLH = perl(x, "^HLH"),
-    LUI = perl(x, "^LUI"),
-    DSB = perl(x, "^DSB"),
-    IDC = perl(x, "^IDC"),
-    PLA = perl(x, "^PLA"),
-    COB = perl(x, "^COB"),
-    LS = perl(x, "^LS"),
-    LX = perl(x, "^LX"),
-    LE = perl(x, "^LE"),
-    HD = perl(x, "^HD"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-
-  new_x12_index(i, x, text, xtype)
-}
-
-#' X12-837 Health Care Claim Parser
+#' X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
 #'
 #' The 837 describes the care event: who (rendering provider, supervising
 #' physician, referring), for whom (subscriber, patient), for what (ICD-10
@@ -317,7 +210,7 @@ index_834 <- function(text) {
 #'
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
-#' @examples
+#' @examplesIf FALSE
 #' purrr::map(hcc::x12_837I, index_837)
 #' purrr::map(hcc::x12_837I[8:17], parse_837)
 #'
@@ -347,69 +240,4 @@ parse_837 <- function(text) {
     TRANSACTIONS = transactions,
     TRAILER = unlist_df(trailer)
   )
-}
-
-#' @rdname parse_837
-#' @export
-index_837 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
-  xtype <- x12_type(text)
-
-  if (xtype %!in_% c("837I", "837P")) {
-    return(paste0("input is X12-", xtype, " not X12-837I or X12-837P"))
-  }
-
-  x <- tilde(text)
-
-  i <- list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BHT"),
-    NM1 = perl(x, "^NM1"),
-    PER = perl(x, "^PER"),
-    HL = perl(x, "^HL"),
-    N3 = perl(x, "^N3"),
-    N4 = perl(x, "^N4"),
-    REF = perl(x, "^REF"),
-    SBR = perl(x, "^SBR"),
-    PAT = perl(x, "^PAT"),
-    PWK = perl(x, "^PWK"),
-    AMT = perl(x, "^AMT"),
-    CN1 = perl(x, "^CN1"),
-    K3 = perl(x, "^K3"),
-    NTE = perl(x, "^NTE"),
-    CR1 = perl(x, "^CR1"),
-    CR2 = perl(x, "^CR2"),
-    CR3 = perl(x, "^CR3"),
-    CRC = perl(x, "^CRC"),
-    HCP = perl(x, "^HCP"),
-    DMG = perl(x, "^DMG"),
-    CAS = perl(x, "^CAS"),
-    OI = perl(x, "^OI"),
-    MOA = perl(x, "^MOA"),
-    MEA = perl(x, "^MEA"),
-    CLM = perl(x, "^CLM"),
-    HI = perl(x, "^HI"),
-    PRV = perl(x, "^PRV"),
-    LX = perl(x, "^LX"),
-    SV1 = perl(x, "^SV1"), # 837P (2400 Loop)
-    SV2 = perl(x, "^SV2"), # 837I (2400 Loop)
-    SV5 = perl(x, "^SV5"), # 837I (2400 Loop)
-    DTP = perl(x, "^DTP"),
-    SE = perl(x, "^SE"),
-    NTE = perl(x, "^NTE"),
-    CTP = perl(x, "^CTP"),
-    LIN = perl(x, "^LIN"), # 837I (2410 Loop)
-    LQ = perl(x, "^LQ"), # 837P (2440 Loop)
-    FRM = perl(x, "^FRM"), # 837P (2440 Loop)
-    QTY = perl(x, "^QTY"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-
-  new_x12_index(i, x, text, xtype)
 }

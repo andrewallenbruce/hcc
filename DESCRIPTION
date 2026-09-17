@@ -49,6 +49,7 @@ Collate:
     'hierarchies.R'
     'import-standalone-obj-type.R'
     'import-standalone-types-check.R'
+    'indexers.R'
     'interactions.R'
     'is.R'
     'parsers.R'

@@ -80,12 +80,17 @@ split_n <- function(x, i) {
 }
 
 #' @noRd
+x12_820_subtype <- function(x) {
+  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 12L))
+}
+
+#' @noRd
 x12_837_subtype <- function(x) {
   cheapr::val_match(
     x,
-    "005010X222A1" ~ "837P",
-    "005010X223A2" ~ "837I",
-    "005010X224A2" ~ "837D",
+    "005010X222A1" ~ "837P-X222", # A1
+    "005010X223A2" ~ "837I-X223", # A2
+    # "005010X224A2" ~ "837D-X224A2",
     .default = NA_character_
   )
 }
@@ -95,23 +100,40 @@ x12_837_subtype <- function(x) {
 #' @noRd
 x12_type <- function(x) {
   if (length(x) == 1L) {
-    x <- rm_newline(x)
-    x <- strsplit(x, "~", fixed = TRUE)[[1]]
-    x <- strsplit(.subset(x, 3L), "*", fixed = TRUE)[[1]]
-    if (x[2] == "837") {
-      # TODO
-      return(x12_837_subtype(x[4]))
-    }
-    return(x[2])
+    x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
+    x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
+    return(
+      switch(
+        x[2],
+        "820" = x12_820_subtype(x),
+        "837" = x12_837_subtype(x[length(x)]),
+        "834" = x12_820_subtype(x),
+        x[2]
+      )
+    )
   }
 
   x <- purrr::map(x, \(x) paste0(unlist_(rm_newline(x)), collapse = ""))
   x <- strsplit(unlist(x), "~", fixed = TRUE)
-  i <- unname((purrr::map_int(x, \(x) min(perl(x, "^ST")))))
+  i <- unname(purrr::map_int(x, \(x) min(perl(x, "^ST"))))
   x <- unlist_(purrr::map2(x, i, \(x, i) x[i]))
   x <- strsplit(x, "*", fixed = TRUE)
+
   st01 <- unlist_elem(x, 2L)
   st03 <- purrr::map_chr(x, \(x) x[length(x)])
+  st03[whichv_(startsWith(st03, "005010X"), FALSE)] <- NA_character_
+
+  if (anyv_(st01, "820")) {
+    i <- whichv_(st01, "820")
+    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
+    collapse::setv(st01, i, r)
+  }
+
+  if (anyv_(st01, "834")) {
+    i <- whichv_(st01, "834")
+    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
+    collapse::setv(st01, i, r)
+  }
 
   if (anyv_(st01, "837")) {
     i <- whichv_(st01, "837")
@@ -167,7 +189,7 @@ format.x12_index <- function(x, ...) {
       ": ",
       format(
         c(
-          paste0("X12-", a$type),
+          a$type,
           a$characters,
           sum(unname(a$segments)),
           length(a$problems)
