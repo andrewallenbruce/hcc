@@ -1,4 +1,4 @@
-# X12-834 Benefit Enrollment Parser
+# X12-834 (X220A1) Benefit Enrollment Parser
 
 The 834 carries *membership events*:
 
@@ -14,17 +14,11 @@ The 834 carries *membership events*:
 
 ``` r
 parse_834_index(index)
-
-index_834(text)
 ```
 
 ## Arguments
 
 - index:
-
-  `<chr>` string of raw X12-834 text
-
-- text:
 
   `<chr>` string of raw X12-834 text
 
