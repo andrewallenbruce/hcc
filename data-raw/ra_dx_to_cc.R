@@ -1,19 +1,23 @@
 ## code to prepare `ra_dx_to_cc` dataset goes here
-path = here::here("data-raw", "hccinfhir-main", "src", "hccinfhir", "data")
-files = fs::dir_ls(path, regexp = "ra_dx_to")
+path <- here::here("data-raw", "hccinfhir-main", "src", "hccinfhir", "data")
+files <- fs::dir_ls(path, regexp = "ra_dx_to")
 
-ra_dx_to_cc_2025 = vroom::vroom(files[1], col_types = "ccc")
-ra_dx_to_cc_2026 = vroom::vroom(files[2], col_types = "ccc")
+rm_spec <- function(x) {
+  class(x) <- setdiff(class(x), "spec_tbl_df")
+  x
+}
 
-ra_dx_to_cc_2025$year <- 2025
-collapse::settfmv(ra_dx_to_cc_2025, c("cc", "year"), as.integer)
-ra_dx_to_cc_2025 = collapse::colorderv(ra_dx_to_cc_2025, "year")
+dx_2025 <- vroom::vroom(files[1], col_types = "cic") |> rm_spec()
+dx_2026 <- vroom::vroom(files[2], col_types = "cic") |> rm_spec()
 
-ra_dx_to_cc_2026$year <- 2026
-collapse::settfmv(ra_dx_to_cc_2026, c("cc", "year"), as.integer)
-ra_dx_to_cc_2026 = collapse::colorderv(ra_dx_to_cc_2026, "year")
+dx_2025$year <- 2025L
+dx_2026$year <- 2026L
 
-ra_dx_to_cc = vctrs::vec_rbind(ra_dx_to_cc_2025, ra_dx_to_cc_2026)
+ra_dx_to_cc <- vctrs::vec_rbind(dx_2025, dx_2026) |>
+  vctrs::vec_unique() |>
+  collapse::colorderv("year") |>
+  collapse::rnm("icd_code" = "diagnosis_code") |>
+  collapse::roworderv(c("year", "model_name"))
 
 usethis::use_data(ra_dx_to_cc, overwrite = TRUE)
 
@@ -24,8 +28,3 @@ collapse::rsplit(
   ),
   ~model_name
 )
-
-ra_dx_to_cc |>
-  collapse::roworderv(
-    c("year", "diagnosis_code", "cc", "model_name")
-  )

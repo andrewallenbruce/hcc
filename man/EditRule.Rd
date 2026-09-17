@@ -2,19 +2,25 @@
 % Please edit documentation in R/apply_edits.R
 \name{EditRule}
 \alias{EditRule}
+\alias{AgeEdit}
+\alias{SexEdit}
 \title{Single Edit Rule}
 \arguments{
-\item{edit_type}{\verb{<chr>} "sex" or "age"}
-
-\item{sex}{\verb{<int>} For sex edits: 1 (male) or 2 (female)}
-
-\item{age_min}{\verb{<int>} For age edits: minimum age (inclusive)}
-
-\item{age_max}{\verb{<int>} For age edits: maximum age (inclusive)}
+\item{icd}{\verb{<chr>} "sex" or "age"}
 
 \item{action}{\verb{<chr>} "invalid" or "override"}
 
-\item{cc_override}{\verb{<int>} CC to assign when \code{action = "override"}}
+\item{override}{\verb{<int>} CC to assign when \code{action = "override"}}
+
+\item{model}{description}
+
+\item{description}{description}
+
+\item{sex}{\verb{<int>} For sex edits: 1 (male) or 2 (female)}
+
+\item{age}{\verb{<int>} For age edits: minimum age (inclusive)}
+
+\item{boundary}{\verb{<int>} For age edits: maximum age (inclusive)}
 }
 \value{
 An \verb{<EditRule>} S7 object
@@ -23,12 +29,22 @@ An \verb{<EditRule>} S7 object
 Single Edit Rule
 }
 \examples{
-EditRule(
-  edit_type = "age",
+SexEdit(
+  icd = c("D66", "D67"),
   sex = 2L,
+  action = "override",
+  override = 112L,
+  model = "C28",
+  description = "Hemophilia A/B in female - assign to CC 112"
+)
+
+AgeEdit(
+  icd = "J410",
+  age = 17L,
+  boundary = "max",
   action = "invalid",
-  age_max = 16L,
-  age_min = 15L,
-  cc_override = 13L
+  override = NA_integer_,
+  model = "C28",
+  description = "Simple chronic bronchitis - invalid if age < 18"
 )
 }

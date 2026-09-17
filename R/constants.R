@@ -207,11 +207,11 @@ TOB = list(
 
 #' @noRd
 MODEL = list(
-  "V21" = "CMS-HCC Model V21",
-  "V22" = "CMS-HCC Model V22",
-  "V23" = "CMS-HCC Model V23",
-  "V24" = "CMS-HCC Model V24",
-  "V28" = "CMS-HCC Model V28",
+  "C21" = "CMS-HCC Model V21",
+  "C22" = "CMS-HCC Model V22",
+  "C23" = "CMS-HCC Model V23",
+  "C24" = "CMS-HCC Model V24",
+  "C28" = "CMS-HCC Model V28",
   "D20" = "CMS-HCC ESRD Model V20",
   "D21" = "CMS-HCC ESRD Model V21",
   "D24" = "CMS-HCC ESRD Model V24",

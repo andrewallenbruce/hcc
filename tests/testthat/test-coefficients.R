@@ -73,7 +73,7 @@ test_that("apply_coefficients works", {
     ),
     hcc = c(19L, 47L, 85L),
     interactions = "D1",
-    model = "V28",
+    model = "C28",
     coefficients = COEF
   )
 

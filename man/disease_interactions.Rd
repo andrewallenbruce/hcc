@@ -19,7 +19,7 @@ Model-Based Disease Interaction Variables
 }
 \examples{
 demo = demographics(age = 64, sex = "F", orec = "1")
-cms = diagnostics("V24", c(17L, 85L))
+cms = diagnostics("C24", c(17L, 85L))
 disease_interactions(cms, demo)
 rx = diagnostics("R08", 130:133)
 disease_interactions(rx, demo)

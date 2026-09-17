@@ -12,12 +12,12 @@
 #' @param year `<int>` 2025 (default) or 2026
 #' @returns `<chr>` CCs mapped to diagnosis codes
 #' @examples
-#' apply_map("E119", "V28", 2026)
-#' apply_map("E119", "V24", 2026)
+#' apply_map("E119", "C28", 2026)
+#' apply_map("E119", "C24", 2026)
 #' apply_map("E119", "D21", 2026)
-#' apply_map("I5022", "V28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "V28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "V24", 2026)
+#' apply_map("I5022", "C28", 2026)
+#' apply_map(c("E103213", "I5022", "Z9999"), "C28", 2026)
+#' apply_map(c("E103213", "I5022", "Z9999"), "C24", 2026)
 #' @export
 apply_map <- function(
   icd = NULL,
@@ -44,7 +44,7 @@ apply_map <- function(
   if (!is.null(icd)) {
     check_character(icd, allow_na = FALSE)
     icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
-    collapse::ss(x, x[["diagnosis_code"]] %iin% icd)
+    collapse::ss(x, x[["icd_code"]] %iin% icd)
   } else {
     x
   }
