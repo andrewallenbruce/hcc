@@ -25,11 +25,11 @@ disease_interactions(diag, demo = NULL)
 ## Examples
 
 ``` r
-cms = diagnostics("CMS-HCC Model V24", c(17L, 85L))
-rx = diagnostics("RxHCC Model V08", 130:133)
 demo = demographics(age = 64, sex = "F", orec = "1")
+cms = diagnostics("v24", c(17L, 85L))
 disease_interactions(cms, demo)
 #> [1] "DIABETES_CHF"   "DISABLED_HCC85"
+rx = diagnostics("rx8", 130:133)
 disease_interactions(rx, demo)
 #> [1] "NonAged_RXHCC130" "NonAged_RXHCC131" "NonAged_RXHCC132" "NonAged_RXHCC133"
 ```

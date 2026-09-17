@@ -25,7 +25,7 @@ diagnostics(model, hcc)
 ## Examples
 
 ``` r
-diagnostics(model = "CMS-HCC Model V24", hcc = c(17:19, 85L))
+diagnostics(model = "v24", hcc = c(17:19, 85L))
 #> <hcc::DiagnosticCategories>
 #>  @ model     : chr "CMS-HCC Model V24"
 #>  @ hcc       : int [1:4] 17 18 19 85
