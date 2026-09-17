@@ -191,12 +191,12 @@ S7::method(interactions, PatientDemographics) <- function(x) {
 #'
 #' Handles CMS-HCC, ESRD, and RxHCC models.
 #'
-#' @param diagnostics demographic information for age/sex/disability interactions
-#' @param demographics set of HCCs for direct HCC checks
+#' @param diagnostics `<DiagnosticCategories>` object
+#' @param demographics `<PatientDemographics>` object
 #' @returns `<chr>` vector of interactions
 #' @examples
 #' apply_interactions(
-#'   diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
+#'   diagnostics(model = "v24", hcc = c(17L, 85L)),
 #'   demographics(age = 64, sex = "F", orec = "1")
 #' )
 #' @export

@@ -55,7 +55,7 @@ rxhcc_prefix_ <- function(x) {
 #' @param ... dots
 #' @returns String prefix used to look up coefficients for beneficiary type
 #' @examples
-#' prefix(
+#' get_prefix(
 #'   demographics(
 #'     age = 70,
 #'     sex = "F",
@@ -64,7 +64,7 @@ rxhcc_prefix_ <- function(x) {
 #'     crec = "0"
 #'   )
 #' )
-#' prefix(
+#' get_prefix(
 #'   demographics(
 #'     age = 45,
 #'     sex = "M",
@@ -75,9 +75,9 @@ rxhcc_prefix_ <- function(x) {
 #'   model = "CMS-HCC ESRD Model V24"
 #' )
 #' @export
-prefix <- S7::new_generic("prefix", "x")
+get_prefix <- S7::new_generic("get_prefix", "x")
 
-S7::method(prefix, PatientDemographics) <- function(x, model = "default") {
+S7::method(get_prefix, PatientDemographics) <- function(x, model = "default") {
   if (perl0(model, "ESRD")) {
     p <- esrd_prefix_(x)
     if (!is.null(p)) {
@@ -152,16 +152,16 @@ apply_coefficients <- function(
   interactions,
   coefficients = NULL,
   hcc,
-  model = "CMS-HCC Model V28",
+  model = "v28",
   year = 2026L,
   prefix_override = NULL
 ) {
-  model <- rlang::arg_match0(model, MODEL)
+  model <- convert_model(model)
 
   prefix <- if (!is.null(prefix_override)) {
     prefix_override
   } else {
-    prefix(demographics, model)
+    get_prefix(demographics, model)
   }
 
   # No-prefix lookup for ESRD duration coefficients stored without prefix

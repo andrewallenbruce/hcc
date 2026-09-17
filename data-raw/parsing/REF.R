@@ -32,3 +32,17 @@ list(
   "ABY" = "CMS PlanID",
   "POL" = "Policy Number"
 )
+
+# These are all X12-850
+# BEG00 = perl(x, r"(BEG\*00)"),
+# BEG24 = perl(x, r"(BEG\*24)"),
+# CTT = perl(x, "^CTT"),
+# N12L = perl(x, r"(N1\*2L)"),
+# N1BY = perl(x, r"(N1\*BY)"),
+# N1ST = perl(x, r"(N1\*ST)"),
+# PERBD = perl(x, r"(PER\*BD)"),
+# PERSR = perl(x, r"(PER\*SR)"),
+# PID = perl(x, r"(PID)"),
+# PO1 = perl(x, r"(PO1)"),
+# REFDP = perl(x, r"(REF\*DP)"),
+# REFK6 = perl(x, r"(REF\*K6)"),

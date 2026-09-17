@@ -7,9 +7,9 @@
 apply_interactions(diagnostics, demographics)
 }
 \arguments{
-\item{diagnostics}{demographic information for age/sex/disability interactions}
+\item{diagnostics}{\verb{<DiagnosticCategories>} object}
 
-\item{demographics}{set of HCCs for direct HCC checks}
+\item{demographics}{\verb{<PatientDemographics>} object}
 }
 \value{
 \verb{<chr>} vector of interactions
@@ -19,7 +19,7 @@ Handles CMS-HCC, ESRD, and RxHCC models.
 }
 \examples{
 apply_interactions(
-  diagnostics(model = "CMS-HCC Model V24", hcc = c(17L, 85L)),
+  diagnostics(model = "v24", hcc = c(17L, 85L)),
   demographics(age = 64, sex = "F", orec = "1")
 )
 }

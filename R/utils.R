@@ -150,7 +150,7 @@ categorize_age <- function(age, sex, vers, orec, new, esrd) {
   rlang::check_bool(esrd)
 
   switch(
-    vers,
+    rlang::arg_match0(vers, c("V2", "V4", "V6")),
     "V2" = ,
     "V4" = {
       if (new & !esrd) {
@@ -164,25 +164,30 @@ categorize_age <- function(age, sex, vers, orec, new, esrd) {
 }
 
 #' @noRd
-convert_sex <- function(
-  sex,
-  version,
-  error_arg = rlang::caller_arg(sex),
-  error_call = rlang::caller_env()
-) {
-  sex <- rlang::arg_match0(
-    sex,
-    SEX$VALID,
-    arg_nm = error_arg,
-    error_call = error_call
-  )
+convert_sex <- function(sex, version) {
+  check_string(sex, allow_empty = FALSE)
+  check_string(version, allow_empty = FALSE)
+
+  sex <- rlang::arg_match0(sex, SEX$VALID)
 
   switch(
-    version,
+    rlang::arg_match0(version, c("V2", "V4", "V6")),
     "V2" = ,
     "V4" = unname(SEX$V2[sex]), # CMS format
     "V6" = unname(SEX$V6[sex])
   )
+}
+
+#' @examplesIf FALSE
+#' convert_model("v22")
+#' convert_model("e24")
+#' @noRd
+convert_model <- function(model) {
+  check_string(model, allow_empty = FALSE)
+
+  model <- rlang::arg_match0(model, rlang::names2(MODEL))
+
+  unlist_(MODEL[model])
 }
 
 #' @noRd
@@ -275,7 +280,7 @@ parse_yymmdd <- function(x, ...) {
   as.Date.character(x, format = "%y%m%d", ...)
 }
 
-#' Parse DTM RD8 Date Range (YYYYMMDD-YYYYMMDD)
+#' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
 #' @examplesIf FALSE
 #' parse_date_range("20200202-20200402")
 #' @noRd

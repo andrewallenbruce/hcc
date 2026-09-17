@@ -1,55 +1,43 @@
-test_that("coefficient_prefix works", {
+test_that("get_prefix works", {
   # CMS HCC Community default model
-  x = prefix(
-    demographics(
-      version = "V2",
-      age = 70,
-      sex = "F",
-      dual = "00",
-      orec = "0",
-      crec = "0",
-      new = FALSE,
-      snp = FALSE,
-      low = FALSE
-    )
+  expect_equal(
+    get_prefix(
+      demographics(
+        version = "V2",
+        age = 70,
+        sex = "F",
+        dual = "00",
+        orec = "0",
+        crec = "0",
+        new = FALSE,
+        snp = FALSE,
+        low = FALSE
+      )
+    ),
+    "CNA_"
   )
-  expect_equal(x, "CNA_")
 
   # ESRD Dialysis model
-  x = prefix(
-    demographics(
-      version = "V2",
-      age = 45,
-      sex = "M",
-      dual = "00",
-      orec = "2",
-      crec = "0",
-      new = FALSE,
-      snp = FALSE,
-      low = FALSE
+  expect_equal(
+    get_prefix(
+      demographics(
+        version = "V2",
+        age = 45,
+        sex = "M",
+        dual = "00",
+        orec = "2",
+        crec = "0",
+        new = FALSE,
+        snp = FALSE,
+        low = FALSE
+      ),
+      model = "CMS-HCC ESRD Model V24"
     ),
-    model = "CMS-HCC ESRD Model V24"
+    "DI_"
   )
-  expect_equal(x, "DI_")
 })
 
 test_that("apply_coefficients works", {
-  DEMO = demographics(
-    age = 70,
-    sex = "F",
-    dual = "00",
-    orec = "0",
-    crec = "0",
-    version = "V2",
-    new = FALSE,
-    snp = FALSE,
-    low = FALSE
-  )
-
-  HCC = c(19L, 47L, 85L)
-
-  ACT = "D1"
-
   COEF = collapse::colorderv(
     collapse::rnm(
       collapse::unlist2d(
@@ -72,10 +60,20 @@ test_that("apply_coefficients works", {
   )
 
   result <- apply_coefficients(
-    demographics = DEMO,
-    hcc = HCC,
-    interactions = ACT,
-    model = "CMS-HCC Model V28",
+    demographics = demographics(
+      age = 70,
+      sex = "F",
+      dual = "00",
+      orec = "0",
+      crec = "0",
+      version = "V2",
+      new = FALSE,
+      snp = FALSE,
+      low = FALSE
+    ),
+    hcc = c(19L, 47L, 85L),
+    interactions = "D1",
+    model = "v28",
     coefficients = COEF
   )
 

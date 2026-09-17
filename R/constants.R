@@ -112,18 +112,9 @@ REC_CODES = list(
 PREFIX = list(
   ESRD = c("DI_", "DNE_", "GI_", "GNE_", "GFPA_", "GFPN_", "GNPA_", "GNPN_"),
   NEW_ENROLLEE = c("NE_", "SNPNE_", "DNE_", "GNE_"),
-  COMMUNITY_INSTITUTIONAL = c(
-    "CNA_",
-    "CND_",
-    "CFA_",
-    "CFD_",
-    "CPA_",
-    "CPD_",
-    "INS_",
-    "GI_"
-  ),
+  COMM_LTI = c("CNA_", "CND_", "CFA_", "CFD_", "CPA_", "CPD_", "INS_", "GI_"),
   COMMUNITY = c("CNA_", "CND_", "CFA_", "CFD_", "CPA_", "CPD_"),
-  INSTITUTIONAL = c("INS_", "GI_"),
+  LTI = c("INS_", "GI_"),
   DUAL = list(
     FULL = c("CFA_", "CFD_", "GFPA_", "GFPN_"),
     PARTIAL = c("CPA_", "CPD_"),
@@ -185,11 +176,11 @@ SEX = list(
 #' X12-834 MAINTENANCE TYPE CODES (INS-03)
 #' @noRd
 MAINTENANCE = list(
-  CHANGE = "001",
-  ADD = "021",
-  CANCEL = "024",
-  REINSTATE = "025",
-  DESCRIPTION = list(
+  Change = "001",
+  Add = "021",
+  Cancel = "024",
+  Reinstate = "025",
+  Description = list(
     "001" = "Change",
     "021" = "Addition",
     "024" = "Cancellation/Termination",
@@ -215,17 +206,17 @@ TOB = list(
 )
 
 #' @noRd
-MODEL = c(
-  "CMS-HCC Model V22",
-  "CMS-HCC Model V24",
-  "CMS-HCC Model V28",
-  "CMS-HCC ESRD Model V21",
-  "CMS-HCC ESRD Model V24",
-  # "RxHCC Model V05",???
-  "RxHCC Model V08",
-  "RxHCC Model V08 PDP_AND_MAPD",
-  "RxHCC Model V08 PDP_ONLY",
-  "RxHCC Model V08 MAPD_ONLY"
+MODEL = list(
+  "v22" = "CMS-HCC Model V22",
+  "v24" = "CMS-HCC Model V24",
+  "v28" = "CMS-HCC Model V28",
+  "e21" = "CMS-HCC ESRD Model V21",
+  "e24" = "CMS-HCC ESRD Model V24",
+  "rx5" = "RxHCC Model V05",
+  "rx8" = "RxHCC Model V08",
+  "rx8_pdp_mapd" = "RxHCC Model V08 PDP_AND_MAPD",
+  "rx8_pdp" = "RxHCC Model V08 PDP_ONLY",
+  "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
 )
 
 #' @noRd

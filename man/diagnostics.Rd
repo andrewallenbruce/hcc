@@ -18,5 +18,5 @@ diagnostics(model, hcc)
 Model-Based Disease Categories
 }
 \examples{
-diagnostics(model = "CMS-HCC Model V24", hcc = c(17:19, 85L))
+diagnostics(model = "v24", hcc = c(17:19, 85L))
 }

@@ -4,18 +4,20 @@
 \alias{apply_map}
 \title{Map ICD-10 Codes to CC}
 \usage{
-apply_map(icd, model, year = 2025L)
+apply_map(icd = NULL, model = NULL, year = NULL)
 }
 \arguments{
 \item{icd}{\verb{<chr>} ICD-10 diagnosis code(s)}
 
 \item{model}{\verb{<chr>} HCC model name to use for hierarchy rules; one of:
 \itemize{
-\item CMS-HCC Model V22
-\item CMS-HCC Model V24
-\item CMS-HCC Model V28
-\item RxHCC Model V08
-\item RxHCC Model V05
+\item \code{v22}: CMS-HCC Model V22
+\item \code{v24}: CMS-HCC Model V24
+\item \code{v28}: CMS-HCC Model V28
+\item \code{e21}: CMS-HCC ESRD Model V21
+\item \code{e24}: CMS-HCC ESRD Model V24
+\item \code{rx5}: RxHCC Model V05
+\item \code{rx8}: RxHCC Model V08
 }}
 
 \item{year}{\verb{<int>} 2025 (default) or 2026}
@@ -27,10 +29,10 @@ apply_map(icd, model, year = 2025L)
 Map ICD-10 Codes to CC
 }
 \examples{
-apply_map(icd = "E119", model = "CMS-HCC Model V28")
-apply_map(icd = "E119", model = "CMS-HCC Model V24")
-apply_map(icd = "E119", model = "CMS-HCC ESRD Model V21")
-apply_map(icd = "I5022", model = "CMS-HCC Model V28")
-apply_map(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V28")
-apply_map(icd = c("E103213", "I5022", "Z9999"), model = "CMS-HCC Model V24")
+apply_map("E119", "v28", 2026)
+apply_map("E119", "v24", 2026)
+apply_map("E119", "e21", 2026)
+apply_map("I5022", "v28", 2026)
+apply_map(c("E103213", "I5022", "Z9999"), "v28", 2026)
+apply_map(c("E103213", "I5022", "Z9999"), "v24", 2026)
 }

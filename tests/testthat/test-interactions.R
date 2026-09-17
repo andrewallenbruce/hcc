@@ -39,7 +39,7 @@ test_that("Dual interactions work", {
 
 test_that("apply_interactions works", {
   x <- apply_interactions(
-    diagnostics("CMS-HCC Model V24", c(17:18, 85L)),
+    diagnostics("v24", c(17:18, 85L)),
     PatientDemographics(
       age = 65,
       sex = "F",

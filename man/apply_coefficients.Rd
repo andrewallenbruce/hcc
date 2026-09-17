@@ -9,7 +9,7 @@ apply_coefficients(
   interactions,
   coefficients = NULL,
   hcc,
-  model = "CMS-HCC Model V28",
+  model = "v28",
   year = 2026L,
   prefix_override = NULL
 )

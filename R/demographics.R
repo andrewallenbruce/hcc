@@ -93,7 +93,7 @@ demographics <- function(
 ) {
   rlang::check_number_decimal(age, min = 0, max = 125)
   rlang::check_number_whole(months, min = 0)
-  version <- rlang::arg_match(version, c("V2", "V4", "V6"))
+  version <- rlang::arg_match0(version, c("V2", "V4", "V6"))
 
   if (!cheapr::is_na(dual)) {
     rlang::arg_match(dual, DUAL_CODES$VALID)
@@ -122,7 +122,7 @@ demographics <- function(
 
     if (prefix %in_% PREFIX[["NEW_ENROLLEE"]]) {
       new <- TRUE
-    } else if (prefix %in_% PREFIX[["COMMUNITY_INSTITUTIONAL"]]) {
+    } else if (prefix %in_% PREFIX[["COMM_LTI"]]) {
       new <- FALSE
     }
 
@@ -134,7 +134,7 @@ demographics <- function(
       .c(full, part) %=% c(FALSE, FALSE)
     }
 
-    if (prefix %in_% PREFIX[["INSTITUTIONAL"]]) {
+    if (prefix %in_% PREFIX[["LTI"]]) {
       lti <- TRUE
     }
   }
