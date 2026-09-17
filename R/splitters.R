@@ -204,9 +204,9 @@ format.x12_index <- function(x, ...) {
 
   cat(
     paste0(
-      format(names(a$segments), justify = "right"),
+      format(paste0(names(a$segments), "[", unname(a$segments), "]"), justify = "right"),
       ": ",
-      format(unname(a$segments), justify = "left")
+      format(purrr::map_chr(x[names(a$segments)], \(x) toString(x, width = 70)), justify = "left")
     ),
     sep = "\n"
   )

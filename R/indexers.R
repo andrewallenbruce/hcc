@@ -1,4 +1,6 @@
-#' @noRd
+# purrr::map(hcc::x12_820, index_820)
+#' @rdname parse_820
+#' @export
 index_820 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
@@ -81,7 +83,6 @@ index_820_x306 <- function(x) {
     ST = perl(x, "^ST"), # r
     BPR = perl(x, "^BPR"), # r
     TRN = perl(x, "^TRN"), # r
-    REF_38 = perl(x, r"(REF\*38)"), # o
     REF_TV = perl(x, r"(REF\*TV)"), # o
     REF_18 = perl(x, r"(^REF\*18)"), # o
     REF_ZZ = perl(x, r"(REF\*ZZ)"), # o
@@ -92,6 +93,7 @@ index_820_x306 <- function(x) {
     PER_IC = perl(x, r"(PER\*IC)"), # o
     ENT = perl(x, "^ENT"), # r
     NM1 = perl(x, "^NM1"), # r
+    REF_38 = perl(x, r"(REF\*38)"), # o
     REF_POL = perl(x, r"(REF\*POL)"), # r
     REF_AZ = perl(x, r"(REF\*AZ)"), # o
     REF_4A = perl(x, r"(REF\*4A)"), # o

@@ -60,7 +60,7 @@ payee_loop_820 <- function(x) {
 #'
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
-#' @examplesIf FALSE
+#' @examples
 #' purrr::map(hcc::x12_820, index_820)
 #' purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
