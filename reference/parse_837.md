@@ -251,51 +251,10 @@ purrr::map(hcc::x12_837I, index_837)
 #> IEA: 1
 #> 
 #> $ex_837_inpatient
-#> <x12_index>
-#>  
-#>       Type: X12-41
-#> Characters: 854   
-#>   Segments: 36    
-#>   Problems: 3     
-#>  
-#>  ST: 1
-#> BPR: 1
-#> NM1: 6
-#> PER: 1
-#>  HL: 2
-#>  N3: 2
-#>  N4: 2
-#> REF: 2
-#> SBR: 1
-#> DMG: 1
-#> CLM: 1
-#>  HI: 4
-#> PRV: 1
-#>  LX: 3
-#> SV2: 3
-#> DTP: 4
-#>  SE: 1
+#> [1] "input is X12-41 not X12-837I or X12-837P"
 #> 
 #> $sample_837I
-#> <x12_index>
-#>  
-#>       Type: X12-NA
-#> Characters: 386   
-#>   Segments: 14    
-#>   Problems: 0     
-#>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> NM1: 3
-#> CLM: 1
-#>  HI: 1
-#>  LX: 1
-#> SV2: 1
-#> DTP: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#> [1] "input is X12-NA not X12-837I or X12-837P"
 #> 
 #> $sample_837_1
 #> <x12_index>
@@ -1397,8 +1356,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: X12-837P
 #> Characters: 965     
-#>   Segments: 33      
-#>   Problems: 2       
+#>   Segments: 35      
+#>   Problems: 0       
 #>  
 #> ISA: 1
 #>  GS: 1
@@ -1420,6 +1379,8 @@ purrr::map(hcc::x12_837P, index_837)
 #> SV1: 2
 #> DTP: 2
 #>  SE: 1
+#> CTP: 1
+#> LIN: 1
 #>  GE: 1
 #> IEA: 1
 #> 
@@ -1616,8 +1577,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: X12-837P
 #> Characters: 1375    
-#>   Segments: 55      
-#>   Problems: 2       
+#>   Segments: 57      
+#>   Problems: 0       
 #>  
 #> ISA: 1
 #>  GS: 1
@@ -1642,6 +1603,7 @@ purrr::map(hcc::x12_837P, index_837)
 #> DTP: 5
 #>  SE: 1
 #> NTE: 1
+#> QTY: 2
 #>  GE: 1
 #> IEA: 1
 #> 
@@ -1680,39 +1642,41 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: X12-837P
 #> Characters: 1501    
-#>   Segments: 50      
-#>   Problems: 20      
+#>   Segments: 70      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BPR: 1
-#> NM1: 7
-#> PER: 3
-#>  HL: 2
-#>  N3: 4
-#>  N4: 4
-#> REF: 3
-#> SBR: 1
-#> PWK: 2
-#> CR3: 2
-#> DMG: 1
-#> CLM: 1
-#>  HI: 1
-#>  LX: 2
-#> SV1: 2
-#> DTP: 8
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#> ISA:  1
+#>  GS:  1
+#>  ST:  1
+#> BPR:  1
+#> NM1:  7
+#> PER:  3
+#>  HL:  2
+#>  N3:  4
+#>  N4:  4
+#> REF:  3
+#> SBR:  1
+#> PWK:  2
+#> CR3:  2
+#> DMG:  1
+#> CLM:  1
+#>  HI:  1
+#>  LX:  2
+#> SV1:  2
+#> DTP:  8
+#>  SE:  1
+#>  LQ:  2
+#> FRM: 18
+#>  GE:  1
+#> IEA:  1
 #> 
 #> $`837P_EX8_wheelchair`
 #> <x12_index>
 #>  
 #>       Type: X12-837P
 #> Characters: 1086    
-#>   Segments: 39      
-#>   Problems: 8       
+#>   Segments: 47      
+#>   Problems: 0       
 #>  
 #> ISA: 1
 #>  GS: 1
@@ -1736,6 +1700,8 @@ purrr::map(hcc::x12_837P, index_837)
 #> SV1: 1
 #> DTP: 3
 #>  SE: 1
+#>  LQ: 1
+#> FRM: 7
 #>  GE: 1
 #> IEA: 1
 #> 
@@ -1770,25 +1736,7 @@ purrr::map(hcc::x12_837P, index_837)
 #> IEA: 1
 #> 
 #> $sample_837P
-#> <x12_index>
-#>  
-#>       Type: X12-NA
-#> Characters: 540   
-#>   Segments: 16    
-#>   Problems: 1     
-#>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> NM1: 3
-#> CLM: 1
-#>  HI: 1
-#>  LX: 2
-#> SV1: 2
-#> DTP: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#> [1] "input is X12-NA not X12-837I or X12-837P"
 #> 
 #> $sample_837_0
 #> <x12_index>
@@ -1827,8 +1775,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: X12-837P
 #> Characters: 799     
-#>   Segments: 27      
-#>   Problems: 2       
+#>   Segments: 29      
+#>   Problems: 0       
 #>  
 #> ISA: 1
 #>  GS: 1
@@ -1848,6 +1796,8 @@ purrr::map(hcc::x12_837P, index_837)
 #> SV1: 1
 #> DTP: 1
 #>  SE: 1
+#> CTP: 1
+#> LIN: 1
 #>  GE: 1
 #> IEA: 1
 #> 
@@ -1856,8 +1806,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: X12-837P
 #> Characters: 2807    
-#>   Segments: 111     
-#>   Problems: 2       
+#>   Segments: 113     
+#>   Problems: 0       
 #>  
 #> ISA:  1
 #>  GS:  1
@@ -1878,6 +1828,8 @@ purrr::map(hcc::x12_837P, index_837)
 #> SV1:  8
 #> DTP: 14
 #>  SE:  3
+#> CTP:  1
+#> LIN:  1
 #>  GE:  1
 #> IEA:  1
 #> 
