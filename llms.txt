@@ -56,7 +56,8 @@ pak::pak("andrewallenbruce/hcc")
   : Demographics-Based Coefficient Prefix
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
-- [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
+- [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
+  [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
 - [`parse_834_index()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
   : X12-834 (X220A1) Benefit Enrollment Parser
