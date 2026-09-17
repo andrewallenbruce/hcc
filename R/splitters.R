@@ -28,7 +28,7 @@ set_zchar <- function(x) {
 #' @noRd
 pad_names <- function(x) {
   N <- as.character(seq_along(x))
-  i <- collapse::whichv(nchar(N), 1L)
+  i <- whichv_(nchar(N), 1L)
   collapse::setv(N, i, cheapr::paste_("0", N[i]))
   rlang::set_names(as.list(x), N)
 }
@@ -99,6 +99,7 @@ x12_type <- function(x) {
     x <- strsplit(x, "~", fixed = TRUE)[[1]]
     x <- strsplit(.subset(x, 3L), "*", fixed = TRUE)[[1]]
     if (x[2] == "837") {
+      # TODO
       return(x12_837_subtype(x[4]))
     }
     return(x[2])
@@ -112,8 +113,8 @@ x12_type <- function(x) {
   st01 <- unlist_elem(x, 2L)
   st03 <- purrr::map_chr(x, \(x) x[length(x)])
 
-  if (collapse::anyv(st01, "837")) {
-    i <- collapse::whichv(st01, "837")
+  if (anyv_(st01, "837")) {
+    i <- whichv_(st01, "837")
     collapse::setv(st01, i, x12_837_subtype(st03[i]))
   }
   st01
@@ -128,8 +129,8 @@ parse_problems <- function(x, i) {
 }
 
 #' @noRd
-new_x12_index <- function(i, x, text) {
-  z <- collapse::whichv(collapse::vlengths(i, FALSE), 0L, TRUE)
+new_x12_index <- function(i, x, text, xtype) {
+  z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
   i <- cheapr::sset(i, z)
 
   cheapr::attrs_add(
@@ -138,9 +139,16 @@ new_x12_index <- function(i, x, text) {
     segments = collapse::vlengths(i),
     problems = parse_problems(x, i),
     text = x,
-    type = x12_type(text),
+    type = xtype,
     class = "x12_index"
   )
+}
+
+#' @noRd
+problems <- function(x) {
+  i <- purrr::map_lgl(x, \(x) inherits(x, "x12_index"))
+  x <- .subset(x, unname(i))
+  .subset(attr(x, "text"), attr(x, "problems"))
 }
 
 #' @export

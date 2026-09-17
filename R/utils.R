@@ -24,13 +24,28 @@ mult_ <- function(...) {
 }
 
 #' @noRd
+anyv_ <- function(x, v) {
+  collapse::anyv(x, v)
+}
+
+#' @noRd
 any_ <- function(x) {
-  collapse::anyv(x, TRUE)
+  anyv_(x, TRUE)
+}
+
+#' @noRd
+allv_ <- function(x, v) {
+  collapse::allv(x, v)
 }
 
 #' @noRd
 all_ <- function(x) {
-  collapse::allv(x, TRUE)
+  allv_(x, TRUE)
+}
+
+#' @noRd
+whichv_ <- function(x, v, negate = FALSE) {
+  collapse::whichv(x, v, invert = negate)
 }
 
 #' @noRd

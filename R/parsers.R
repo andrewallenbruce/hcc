@@ -109,6 +109,13 @@ index_820 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
   }
+
+  xtype <- x12_type(text)
+
+  if (xtype != "820") {
+    return(paste0("input is X12-", xtype, " not X12-820"))
+  }
+
   x <- tilde(text)
 
   i <- list(
@@ -124,9 +131,17 @@ index_820 <- function(text) {
     N1PR = perl(x, r"(N1\*PR)"),
     N3PR = perl(x, r"(N1\*PR)") + 1L,
     N4PR = perl(x, r"(N1\*PR)") + 2L,
-    # N1 = perl(x, "^N1"),
-    # N3 = perl(x, "^N3"),
-    # N4 = perl(x, "^N4"),
+    REF0F = perl(x, r"(REF\*0F)"),
+    REF0N = perl(x, r"(REF\*0N)"),
+    REF1L = perl(x, r"(REF\*1L)"),
+    REF38 = perl(x, r"(REF\*38)"),
+    REFAZ = perl(x, r"(REF\*AZ)"),
+    REFPOL = perl(x, r"(REF\*POL)"),
+    REFTV = perl(x, r"(REF\*TV)"),
+    REF4A = perl(x, r"(REF\*4A)"),
+    REF23 = perl(x, r"(REF\*23)"),
+    REF60 = perl(x, r"(REF\*60)"),
+    REF1W = perl(x, r"(REF\*1W)"),
     ENT = perl(x, "^ENT"),
     NM1 = perl(x, "^NM1"),
     RMR = perl(x, "^RMR"),
@@ -139,8 +154,22 @@ index_820 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  new_x12_index(i, x, text)
+  new_x12_index(i, x, text, xtype)
 }
+
+# These are all X12-850
+# BEG00 = perl(x, r"(BEG\*00)"),
+# BEG24 = perl(x, r"(BEG\*24)"),
+# CTT = perl(x, "^CTT"),
+# N12L = perl(x, r"(N1\*2L)"),
+# N1BY = perl(x, r"(N1\*BY)"),
+# N1ST = perl(x, r"(N1\*ST)"),
+# PERBD = perl(x, r"(PER\*BD)"),
+# PERSR = perl(x, r"(PER\*SR)"),
+# PID = perl(x, r"(PID)"),
+# PO1 = perl(x, r"(PO1)"),
+# REFDP = perl(x, r"(REF\*DP)"),
+# REFK6 = perl(x, r"(REF\*K6)"),
 
 #' X12-834 Benefit Enrollment Parser
 #'
@@ -180,6 +209,7 @@ parse_834 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
   }
+
   tilde(text)
 }
 
@@ -189,6 +219,13 @@ index_834 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
   }
+
+  xtype <- x12_type(text)
+
+  if (xtype != "834") {
+    return(paste0("input is X12-", xtype, " not X12-834"))
+  }
+
   x <- tilde(text)
 
   i <- list(
@@ -225,7 +262,7 @@ index_834 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  new_x12_index(i, x, text)
+  new_x12_index(i, x, text, xtype)
 }
 
 #' X12-837 Health Care Claim Parser
@@ -309,6 +346,13 @@ index_837 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
   }
+
+  xtype <- x12_type(text)
+
+  if (xtype %!in_% c("837I", "837P")) {
+    return(paste0("input is X12-", xtype, " not X12-837I or X12-837P"))
+  }
+
   x <- tilde(text)
 
   i <- list(
@@ -343,15 +387,20 @@ index_837 <- function(text) {
     HI = perl(x, "^HI"),
     PRV = perl(x, "^PRV"),
     LX = perl(x, "^LX"),
-    SV1 = perl(x, "^SV1"),
-    SV2 = perl(x, "^SV2"),
-    SV5 = perl(x, "^SV5"),
+    SV1 = perl(x, "^SV1"), # 837P (2400 Loop)
+    SV2 = perl(x, "^SV2"), # 837I (2400 Loop)
+    SV5 = perl(x, "^SV5"), # 837I (2400 Loop)
     DTP = perl(x, "^DTP"),
     SE = perl(x, "^SE"),
     NTE = perl(x, "^NTE"),
+    CTP = perl(x, "^CTP"),
+    LIN = perl(x, "^LIN"), # 837I (2410 Loop)
+    LQ = perl(x, "^LQ"), # 837P (2440 Loop)
+    FRM = perl(x, "^FRM"), # 837P (2440 Loop)
+    QTY = perl(x, "^QTY"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")
   )
 
-  new_x12_index(i, x, text)
+  new_x12_index(i, x, text, xtype)
 }
