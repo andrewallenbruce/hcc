@@ -161,7 +161,7 @@ new_x12_index <- function(i, x, text, xtype) {
   i <- i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
 
   cheapr::attrs_add(
-    text,
+    x,
     index = i,
     characters = nchar(text),
     segments = collapse::vlengths(i),
@@ -175,7 +175,7 @@ new_x12_index <- function(i, x, text, xtype) {
 problems <- function(x) {
   i <- purrr::map_lgl(x, \(x) inherits(x, "x12_index"))
   x <- .subset(x, unname(i))
-  .subset(attr(x, "text"), attr(x, "problems"))
+  .subset(x, attr(x, "problems"))
 }
 
 #' @export

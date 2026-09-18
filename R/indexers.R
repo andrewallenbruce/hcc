@@ -184,33 +184,33 @@ index_834 <- function(text) {
     ST = perl(x, "^ST"),
     BGN = perl(x, "^BGN"),
     QTY = perl(x, "^QTY"),
-    REF_38 = perl(x, r"(REF\*38)"),
-    REF_0F = perl(x, r"(REF\*0F)"),
-    REF_1D = perl(x, r"(REF\*1D)"),
-    REF_1L = perl(x, r"(REF\*1L)"),
-    REF_17 = perl(x, r"(REF\*17)"),
-    REF_23 = perl(x, r"(REF\*23)"),
-    REF_3H = perl(x, r"(REF\*3H)"),
-    REF_6O = perl(x, r"(REF\*6O)"),
-    REF_6P = perl(x, r"(REF\*6P)"),
-    REF_Q4 = perl(x, r"(REF\*Q4)"),
-    REF_ZZ = perl(x, r"(REF\*ZZ)"),
-    REF_ZX = perl(x, r"(REF\*ZX)"),
-    REF_CE = perl(x, r"(REF\*CE)"),
-    REF_RB = perl(x, r"(REF\*RB)"),
-    REF_DX = perl(x, r"(REF\*DX)"),
-    REF_F6 = perl(x, r"(REF\*F6)"),
-    REF_QQ = perl(x, r"(REF\*QQ)"),
-    REF_AB = perl(x, r"(REF\*AB\*)"),
-    REF_ABB = perl(x, r"(REF\*ABB)"),
-    REF_9V = perl(x, r"(REF\*(9V))"),
-    DTP_007 = perl(x, r"(DTP\*007)"),
-    DTP_303 = perl(x, r"(DTP\*303)"),
-    DTP_348 = perl(x, r"(DTP\*348)"),
-    DTP_349 = perl(x, r"(DTP\*349)"),
-    DTP_351 = perl(x, r"(DTP\*351)"),
-    DTP_356 = perl(x, r"(DTP\*356)"),
-    DTP_357 = perl(x, r"(DTP\*357)"),
+    REF38 = perl(x, r"(^REF\*38)"),
+    REF0F = perl(x, r"(^REF\*0F)"),
+    REF1D = perl(x, r"(^REF\*1D)"),
+    REF1L = perl(x, r"(^REF\*1L)"),
+    REF17 = perl(x, r"(^REF\*17)"),
+    REF23 = perl(x, r"(^REF\*23)"),
+    REF3H = perl(x, r"(^REF\*3H)"),
+    REF6O = perl(x, r"(^REF\*6O)"),
+    REF6P = perl(x, r"(^REF\*6P)"),
+    REFQ4 = perl(x, r"(^REF\*Q4)"),
+    REFZZ = perl(x, r"(^REF\*ZZ)"),
+    REFZX = perl(x, r"(^REF\*ZX)"),
+    REFCE = perl(x, r"(^REF\*CE)"),
+    REFRB = perl(x, r"(^REF\*RB)"),
+    REFDX = perl(x, r"(^REF\*DX)"),
+    REFF6 = perl(x, r"(^REF\*F6)"),
+    REFQQ = perl(x, r"(^REF\*QQ)"),
+    REFAB = perl(x, r"(^REF\*AB\*)"),
+    REFABB = perl(x, r"(^REF\*ABB)"),
+    REF9V = perl(x, r"(^REF\*(9V))"),
+    DTP007 = perl(x, r"(^DTP\*007)"),
+    DTP303 = perl(x, r"(^DTP\*303)"),
+    DTP348 = perl(x, r"(^DTP\*348)"),
+    DTP349 = perl(x, r"(^DTP\*349)"),
+    DTP351 = perl(x, r"(^DTP\*351)"),
+    DTP356 = perl(x, r"(^DTP\*356)"),
+    DTP357 = perl(x, r"(^DTP\*357)"),
     N1 = perl(x, "^N1"),
     ACT = perl(x, "^ACT"),
     INS = perl(x, "^INS"),
@@ -255,11 +255,103 @@ index_837 <- function(text) {
 
   x <- tilde(text)
 
-  i <- list(
+  i <- switch(
+    xtype,
+    `837I-X223` = index_837I_x223(x),
+    `837P-X222` = index_837P_x222(x)
+  )
+
+  new_x12_index(i, x, text, xtype)
+}
+
+#' @noRd
+index_837I_x223 <- function(x) {
+  list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
     ST = perl(x, "^ST"),
-    BPR = perl(x, "^BHT"),
+    BHT = perl(x, "^BHT"),
+    NM140 = perl(x, r"(^NM1\*40)"),
+    NM141 = perl(x, r"(^NM1\*41)"),
+    NM185 = perl(x, r"(^NM1\*85)"),
+    NM1IL = perl(x, r"(^NM1\*IL)"),
+    NM1PR = perl(x, r"(^NM1\*PR)"),
+    NM171 = perl(x, r"(^NM1\*71)"),
+    NM1QC = perl(x, r"(^NM1\*QC)"),
+    PERIC = perl(x, r"(^PER\*IC)"),
+    HL = perl(x, "^HL"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    REFEI = perl(x, r"(^REF\*EI)"),
+    REFG2 = perl(x, r"(^REF\*G2)"),
+    REF1G = perl(x, r"(^REF\*1G)"),
+    REF6R = perl(x, r"(^REF\*6R)"),
+    REF9A = perl(x, r"(^REF\*9A)"),
+    REFD9 = perl(x, r"(^REF\*D9)"),
+    REFY4 = perl(x, r"(^REF\*Y4)"),
+    REF2U = perl(x, r"(^REF\*2U)"),
+    SBRP = perl(x, r"(^SBR\*P\*)"),
+    SBRS = perl(x, r"(^SBR\*S\*)"),
+    PAT = perl(x, "^PAT"),
+    PWK = perl(x, "^PWK"),
+    AMT = perl(x, "^AMT"),
+    CN1 = perl(x, "^CN1"),
+    K3 = perl(x, "^K3"),
+    NTE = perl(x, "^NTE"),
+    CR1 = perl(x, "^CR1"),
+    CR2 = perl(x, "^CR2"),
+    CR3 = perl(x, "^CR3"),
+    CRC = perl(x, "^CRC"),
+    HCP = perl(x, "^HCP"),
+    DMG = perl(x, "^DMG"),
+    DMH = perl(x, "^DMH"),
+    CAS = perl(x, "^CAS"),
+    OI = perl(x, "^OI"),
+    MOA = perl(x, "^MOA"),
+    MEA = perl(x, "^MEA"),
+    CLM = perl(x, "^CLM"),
+    HIABK = perl(x, r"(^HI\*ABK)"),
+    HIABJ = perl(x, r"(^HI\*ABJ)"),
+    HIBK = perl(x, r"(^HI\*BK)"),
+    HIBF = perl(x, r"(^HI\*BF)"),
+    HIBH = perl(x, r"(^HI\*BH)"),
+    HIBE = perl(x, r"(^HI\*BE)"),
+    HIBG = perl(x, r"(^HI\*BG)"),
+    HIBN = perl(x, r"(^HI\*BN)"),
+    HIPR = perl(x, r"(^HI\*PR)"),
+    PRVBI = perl(x, r"(^PRV\*BI)"),
+    PRVAT = perl(x, r"(^PRV\*AT)"),
+    LX = perl(x, "^LX"),
+    SV1 = perl(x, "^SV1"),
+    SV2 = perl(x, "^SV2"), # 837I (2400 Loop)
+    SV5 = perl(x, "^SV5"), # 837I (2400 Loop)
+    DTP096 = perl(x, r"(^DTP\*096)"),
+    DTP434 = perl(x, r"(^DTP\*434)"),
+    DTP435 = perl(x, r"(^DTP\*435)"),
+    DTP472 = perl(x, r"(^DTP\*472)"),
+    DTP523 = perl(x, r"(^DTP\*523)"),
+    CR8 = perl(x, r"(^CR8)"),
+    CL1 = perl(x, "^CL1"),
+    NTE = perl(x, "^NTE"),
+    CTP = perl(x, "^CTP"),
+    LIN = perl(x, "^LIN"), # 837I (2410 Loop)
+    LU = perl(x, "^LU"),
+    LQ = perl(x, "^LQ"), # 837P (2440 Loop)
+    FRM = perl(x, "^FRM"), # 837P (2440 Loop)
+    QTY = perl(x, "^QTY"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+}
+
+#' @noRd
+index_837P_x222 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BHT = perl(x, "^BHT"),
     NM1 = perl(x, "^NM1"),
     PER = perl(x, "^PER"),
     HL = perl(x, "^HL"),
@@ -291,16 +383,15 @@ index_837 <- function(text) {
     SV2 = perl(x, "^SV2"), # 837I (2400 Loop)
     SV5 = perl(x, "^SV5"), # 837I (2400 Loop)
     DTP = perl(x, "^DTP"),
-    SE = perl(x, "^SE"),
+    CL1 = perl(x, "^CL1"),
     NTE = perl(x, "^NTE"),
     CTP = perl(x, "^CTP"),
     LIN = perl(x, "^LIN"), # 837I (2410 Loop)
     LQ = perl(x, "^LQ"), # 837P (2440 Loop)
     FRM = perl(x, "^FRM"), # 837P (2440 Loop)
     QTY = perl(x, "^QTY"),
+    SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")
   )
-
-  new_x12_index(i, x, text, xtype)
 }
