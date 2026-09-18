@@ -1,28 +1,30 @@
-#'  Map ICD-10 Codes to CC
+#' Map ICD-10 Codes to CC
 #'
 #' @param icd `<chr>` ICD-10 diagnosis code(s)
 #' @param model `<chr>` HCC model name to use for hierarchy rules; one of:
-#'    - `v22`: CMS-HCC Model V22
-#'    - `v24`: CMS-HCC Model V24
-#'    - `v28`: CMS-HCC Model V28
-#'    - `e21`: CMS-HCC ESRD Model V21
-#'    - `e24`: CMS-HCC ESRD Model V24
-#'    - `rx5`: RxHCC Model V05
-#'    - `rx8`: RxHCC Model V08
-#' @param year `<int>` 2025 (default) or 2026
+#'    - `C22`: CMS-HCC Model V22
+#'    - `C24`: CMS-HCC Model V24
+#'    - `C28`: CMS-HCC Model V28
+#'    - `D21`: CMS-HCC ESRD Model V21
+#'    - `D24`: CMS-HCC ESRD Model V24
+#'    - `R05`: RxHCC Model V05
+#'    - `R08`: RxHCC Model V08
+#' @param year `<int>` 2025, 2026
+#' @param simplify `<lgl>` Return a named list; default is FALSE
 #' @returns `<chr>` CCs mapped to diagnosis codes
 #' @examples
-#' apply_map("E119", "C28", 2026)
-#' apply_map("E119", "C24", 2026)
-#' apply_map("E119", "D21", 2026)
-#' apply_map("I5022", "C28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "C28", 2026)
-#' apply_map(c("E103213", "I5022", "Z9999"), "C24", 2026)
+#' icd_to_cc(icd = "E119", model = "C28", year = 2026)
+#' icd_to_cc("E119", "C24", 2026)
+#' icd_to_cc("E119", "D21", 2026)
+#' icd_to_cc("I5022", "C28", 2026)
+#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
+#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C24", 2026)
 #' @export
-apply_map <- function(
+icd_to_cc <- function(
   icd = NULL,
   model = NULL,
-  year = NULL
+  year = NULL,
+  simplify = FALSE
 ) {
   x <- if (!is.null(year)) {
     rlang::check_number_whole(year, min = 2025, max = 2026)
@@ -36,20 +38,23 @@ apply_map <- function(
 
   x <- if (!is.null(model)) {
     model <- convert_model(model)
-    collapse::ss(x, whichv_(x[["model_name"]], model))
+    collapse::ss(x, x[["model_name"]] %iin% model)
   } else {
     x
   }
 
-  if (!is.null(icd)) {
+  x <- if (!is.null(icd)) {
     check_character(icd, allow_na = FALSE)
     icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
     collapse::ss(x, x[["icd_code"]] %iin% icd)
   } else {
     x
   }
-}
 
-# apply_map(c("E103213", "I5022", "Z9999"), "v28", 2026) |>
-#   collapse::rsplit(~diagnosis_code) |>
-#   purrr::map(\(x) x[["cc"]])
+  x <- collapse::roworderv(x, c("icd_code", "cc", "model_name"))
+
+  if (simplify) {
+    return(collapse::rsplit(x$cc, x$icd_code))
+  }
+  return(x)
+}
