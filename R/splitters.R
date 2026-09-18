@@ -85,6 +85,11 @@ x12_820_subtype <- function(x) {
 }
 
 #' @noRd
+x12_834_subtype <- function(x) {
+  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 10L))
+}
+
+#' @noRd
 x12_837_subtype <- function(x) {
   cheapr::val_match(
     x,
@@ -107,8 +112,8 @@ x12_type <- function(x) {
         x[2],
         "820" = x12_820_subtype(x),
         "837" = x12_837_subtype(x[length(x)]),
-        "834" = x12_820_subtype(x),
-        x[2]
+        "834" = x12_834_subtype(x),
+        NA_character_
       )
     )
   }
@@ -204,9 +209,15 @@ format.x12_index <- function(x, ...) {
 
   cat(
     paste0(
-      format(paste0(names(a$segments), "[", unname(a$segments), "]"), justify = "right"),
+      format(
+        paste0(names(a$segments), "[", unname(a$segments), "]"),
+        justify = "right"
+      ),
       ": ",
-      format(purrr::map_chr(x[names(a$segments)], \(x) toString(x, width = 70)), justify = "left")
+      format(
+        purrr::map_chr(x[names(a$segments)], \(x) toString(x, width = 70)),
+        justify = "left"
+      )
     ),
     sep = "\n"
   )
