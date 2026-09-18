@@ -58,6 +58,27 @@ test_that("apply_interactions works", {
   )
 })
 
+test_that("disease_interactions works", {
+  expect_setequal(
+    interactions(
+      PatientDemographics(
+        age = 65,
+        sex = "F",
+        category = "F65",
+        dis_curr = TRUE,
+        dis_orig = FALSE,
+        non_aged = FALSE,
+        dual_full = FALSE,
+        dual_part = FALSE,
+        is_lti = FALSE
+      ),
+      diagnostics("C24", c(17L, 85L))
+    ),
+    c("DIABETES_CHF", "DISABLED_HCC85")
+  )
+})
+
+
 # =============================================================================
 # ESRD V21 Duration Interactions
 # =============================================================================

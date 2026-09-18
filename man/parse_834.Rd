@@ -2,12 +2,12 @@
 % Please edit documentation in R/indexers.R, R/parsers.R
 \name{index_834}
 \alias{index_834}
-\alias{parse_834_index}
+\alias{parse_834}
 \title{X12-834 (X220A1) Benefit Enrollment Parser}
 \usage{
 index_834(text)
 
-parse_834_index(index)
+parse_834(index)
 }
 \arguments{
 \item{text}{\verb{<chr>} string of raw X12-834 text}

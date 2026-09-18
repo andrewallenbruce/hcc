@@ -137,7 +137,7 @@ parse_820 <- function(text) {
 #' @examples
 #' purrr::map(hcc::x12_834, index_834)
 #' @export
-parse_834_index <- function(index) {
+parse_834 <- function(index) {
   if (!inherits(index, "x12_index")) {
     return(NA)
   }

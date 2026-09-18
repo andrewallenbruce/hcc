@@ -59,3 +59,41 @@ EditRule := S7::new_class(
     }
   }
 )
+
+#' Model-Based Disease Interaction Variables
+#'
+#' @param diag `<DiagnosticCategories>` object
+#' @param demo `<PatientDemographics>` object
+#' @returns `<list>` containing disease interaction variables
+#' @examples
+#' demo = demographics(age = 64, sex = "F", orec = "1")
+#' cms = diagnostics("C24", c(17L, 85L))
+#' disease_interactions(cms, demo)
+#' rx = diagnostics("R08", 130:133)
+#' disease_interactions(rx, demo)
+#' @export
+disease_interactions <- function(diag, demo = NULL) {
+  if (is.null(demo)) {
+    demo <- PatientDemographics(dis_curr = FALSE, non_aged = FALSE)
+  }
+
+  x <- switch(
+    diag@model,
+    "CMS-HCC Model V28" = disease_V28(diag@categories, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V24" = disease_V24(diag@categories, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V22" = disease_V22(diag@categories, demo@dis_curr, diag@hcc),
+    "CMS-HCC ESRD Model V24" = disease_ESRD_V24(
+      diag@categories,
+      demo@non_aged,
+      diag@hcc
+    ),
+    "CMS-HCC ESRD Model V21" = disease_ESRD_V21(
+      diag@categories,
+      demo@non_aged,
+      diag@hcc
+    ),
+    "RxHCC Model V08" = disease_RxHCC_V8(demo@non_aged, diag@hcc)
+  )
+
+  names(x)[unlist_(x) == 1L]
+}

@@ -3,16 +3,15 @@
 \name{interactions}
 \alias{interactions}
 \title{Create Interactions}
-\usage{
-interactions(x, ...)
-}
 \arguments{
-\item{x}{Demographics object}
+\item{x}{\verb{<PatientDemographics>} S7 object}
+
+\item{y}{\verb{<DiagnosticCategories>} S7 object}
 
 \item{...}{dots}
 }
 \value{
-a list of interactions
+a character vector of interactions
 }
 \description{
 Creates interaction variables that are model-agnostic. The coefficient
@@ -20,14 +19,19 @@ look-up will match only the relevant coefficients for each model.
 }
 \examples{
 interactions(
- demographics(
-   age = 65,
-   sex = "M",
-   orec = "2",
-   dual = "02",
-   new = TRUE,
-   lti = TRUE,
-   months = 10L
- )
+  demographics(
+    age = 64,
+    sex = "F",
+    orec = "1"
+  )
+)
+
+interactions(
+  demographics(age = 64, sex = "F", orec = "1"),
+  diagnostics("C24", c(17L, 85L))
+)
+interactions(
+  demographics(age = 64, sex = "F", orec = "1"),
+  diagnostics("R08", 130:133)
 )
 }

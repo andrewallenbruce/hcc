@@ -163,7 +163,7 @@ index_820_x306 <- function(x) {
   )
 }
 
-#' @rdname parse_834_index
+#' @rdname parse_834
 #' @export
 index_834 <- function(text) {
   if (length(text) > 1L || is.list(text)) {

@@ -95,7 +95,6 @@ x12_837_subtype <- function(x) {
     x,
     "005010X222A1" ~ "837P-X222", # A1
     "005010X223A2" ~ "837I-X223", # A2
-    # "005010X224A2" ~ "837D-X224A2",
     .default = NA_character_
   )
 }
