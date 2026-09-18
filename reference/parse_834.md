@@ -1,4 +1,4 @@
-# X12-834 Benefit Enrollment Parser
+# X12-834 (X220A1) Benefit Enrollment Parser
 
 The 834 carries *membership events*:
 
@@ -13,14 +13,18 @@ The 834 carries *membership events*:
 ## Usage
 
 ``` r
-parse_834(text)
-
 index_834(text)
+
+parse_834(index)
 ```
 
 ## Arguments
 
 - text:
+
+  `<chr>` string of raw X12-834 text
+
+- index:
 
   `<chr>` string of raw X12-834 text
 
@@ -67,635 +71,433 @@ purrr::map(hcc::x12_834, index_834)
 #> $`834_EX2_add_dependent`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 528    
-#>   Segments: 19     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 528     
+#>   Segments: 19      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 3
-#> DTP: 2
-#>  N1: 2
-#> INS: 1
-#> NM1: 2
-#> DMG: 1
-#>  HD: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>  REF_38[1]: 5     
+#>  REF_0F[1]: 9     
+#>  REF_1L[1]: 10    
+#> DTP_348[1]: 16    
+#> DTP_351[1]: 11    
+#>      N1[2]: 6, 7  
+#>     INS[1]: 8     
+#>     NM1[2]: 12, 14
+#>     DMG[1]: 13    
+#>      HD[1]: 15    
+#>      SE[1]: 17    
+#>      GE[1]: 18    
+#>     IEA[1]: 19    
 #> 
 #> $`834_EX3_enroll_employee_mco`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 614    
-#>   Segments: 22     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 614     
+#>   Segments: 22      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 2
-#> DTP: 2
-#>  N1: 2
-#> INS: 1
-#> NM1: 2
-#> PER: 1
-#>  N3: 1
-#>  N4: 1
-#> DMG: 1
-#>  LX: 1
-#>  HD: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>  REF_0F[1]: 8     
+#>  REF_1L[1]: 9     
+#> DTP_348[1]: 17    
+#> DTP_356[1]: 10    
+#>      N1[2]: 5, 6  
+#>     INS[1]: 7     
+#>     NM1[2]: 11, 19
+#>     PER[1]: 12    
+#>      N3[1]: 13    
+#>      N4[1]: 14    
+#>     DMG[1]: 15    
+#>      LX[1]: 18    
+#>      HD[1]: 16    
+#>      SE[1]: 20    
+#>      GE[1]: 21    
+#>     IEA[1]: 22    
 #> 
 #> $`834_EX4_add_subscriber_coverage`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 463    
-#>   Segments: 16     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 463     
+#>   Segments: 16      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 3
-#> DTP: 1
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#>  HD: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1   
+#>      GS[1]: 2   
+#>      ST[1]: 3   
+#>     BGN[1]: 4   
+#>  REF_38[1]: 5   
+#>  REF_0F[1]: 9   
+#>  REF_1L[1]: 10  
+#> DTP_348[1]: 13  
+#>      N1[2]: 6, 7
+#>     INS[1]: 8   
+#>     NM1[1]: 11  
+#>      HD[1]: 12  
+#>      SE[1]: 14  
+#>      GE[1]: 15  
+#>     IEA[1]: 16  
 #> 
 #> $`834_EX5_change_subscriber_info`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 490    
-#>   Segments: 16     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 490     
+#>   Segments: 16      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 2
-#>  N1: 2
-#> INS: 1
-#> NM1: 2
-#> DMG: 2
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>    ISA[1]: 1     
+#>     GS[1]: 2     
+#>     ST[1]: 3     
+#>    BGN[1]: 4     
+#> REF_0F[1]: 8     
+#> REF_1L[1]: 9     
+#>     N1[2]: 5, 6  
+#>    INS[1]: 7     
+#>    NM1[2]: 10, 12
+#>    DMG[2]: 11, 13
+#>     SE[1]: 14    
+#>     GE[1]: 15    
+#>    IEA[1]: 16    
 #> 
 #> $`834_EX6_cancel_dependent`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 460    
-#>   Segments: 16     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 460     
+#>   Segments: 16      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 3
-#> DTP: 1
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#> DMG: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1   
+#>      GS[1]: 2   
+#>      ST[1]: 3   
+#>     BGN[1]: 4   
+#>  REF_38[1]: 5   
+#>  REF_0F[1]: 9   
+#>  REF_1L[1]: 10  
+#> DTP_357[1]: 11  
+#>      N1[2]: 6, 7
+#>     INS[1]: 8   
+#>     NM1[1]: 12  
+#>     DMG[1]: 13  
+#>      SE[1]: 14  
+#>      GE[1]: 15  
+#>     IEA[1]: 16  
 #> 
 #> $`834_EX7_terminate_subscriber_eligibility`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 428    
-#>   Segments: 14     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 428     
+#>   Segments: 14      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 2
-#> DTP: 1
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1   
+#>      GS[1]: 2   
+#>      ST[1]: 3   
+#>     BGN[1]: 4   
+#>  REF_0F[1]: 8   
+#>  REF_1L[1]: 9   
+#> DTP_357[1]: 10  
+#>      N1[2]: 5, 6
+#>     INS[1]: 7   
+#>     NM1[1]: 11  
+#>      SE[1]: 12  
+#>      GE[1]: 13  
+#>     IEA[1]: 14  
 #> 
 #> $`834_EX8_reinstate_employee`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 446    
-#>   Segments: 15     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 446     
+#>   Segments: 15      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 3
-#> DTP: 1
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1   
+#>      GS[1]: 2   
+#>      ST[1]: 3   
+#>     BGN[1]: 4   
+#>  REF_38[1]: 5   
+#>  REF_0F[1]: 9   
+#>  REF_1L[1]: 10  
+#> DTP_303[1]: 11  
+#>      N1[2]: 6, 7
+#>     INS[1]: 8   
+#>     NM1[1]: 12  
+#>      SE[1]: 13  
+#>      GE[1]: 14  
+#>     IEA[1]: 15  
 #> 
 #> $`834_EX9_reinstate_employee_coverage`
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 460    
-#>   Segments: 16     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 460     
+#>   Segments: 16      
+#>   Problems: 0       
 #>  
-#> ISA: 1
-#>  GS: 1
-#>  ST: 1
-#> BGN: 1
-#> REF: 3
-#> DTP: 1
-#>  N1: 2
-#> INS: 1
-#> NM1: 1
-#>  HD: 1
-#>  SE: 1
-#>  GE: 1
-#> IEA: 1
+#>     ISA[1]: 1   
+#>      GS[1]: 2   
+#>      ST[1]: 3   
+#>     BGN[1]: 4   
+#>  REF_38[1]: 5   
+#>  REF_0F[1]: 9   
+#>  REF_1L[1]: 10  
+#> DTP_348[1]: 13  
+#>      N1[2]: 6, 7
+#>     INS[1]: 8   
+#>     NM1[1]: 11  
+#>      HD[1]: 12  
+#>      SE[1]: 14  
+#>      GE[1]: 15  
+#>     IEA[1]: 16  
 #> 
 #> $sample_834_01
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 1769   
-#>   Segments: 71     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 1769    
+#>   Segments: 71      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> REF: 17
-#> DTP: 11
-#>  N1:  2
-#> INS:  5
-#> NM1:  5
-#> PER:  1
-#>  N3:  5
-#>  N4:  5
-#> DMG:  5
-#>  HD:  8
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
+#>     ISA[1]: 1                             
+#>      GS[1]: 2                             
+#>      ST[1]: 3                             
+#>     BGN[1]: 4                             
+#>  REF_38[1]: 5                             
+#>  REF_0F[5]: 10, 24, 37, 52, 61            
+#>  REF_1D[4]: 12, 26, 39, 53                
+#>  REF_6P[4]: 11, 25, 38, 62                
+#>  REF_AB[1]: 27                            
+#> REF_ABB[2]: 13, 40                        
+#> DTP_007[1]: 6                             
+#> DTP_348[8]: 20, 22, 33, 35, 46, 49, 59, 68
+#> DTP_349[2]: 47, 50                        
+#>      N1[2]: 7, 8                          
+#>     INS[5]: 9, 23, 36, 51, 60             
+#>     NM1[5]: 14, 28, 41, 54, 63            
+#>     PER[1]: 15                            
+#>      N3[5]: 16, 29, 42, 55, 64            
+#>      N4[5]: 17, 30, 43, 56, 65            
+#>     DMG[5]: 18, 31, 44, 57, 66            
+#>      HD[8]: 19, 21, 32, 34, 45, 48, 58, 67
+#>      SE[1]: 69                            
+#>      GE[1]: 70                            
+#>     IEA[1]: 71                            
 #> 
 #> $sample_834_02
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 925    
-#>   Segments: 33     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 925     
+#>   Segments: 33      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> QTY:  1
-#> REF: 13
-#> DTP:  2
-#>  N1:  2
-#> INS:  1
-#> NM1:  1
-#> PER:  1
-#>  N3:  1
-#>  N4:  1
-#> DMG:  1
-#> LUI:  1
-#>  HD:  1
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>     QTY[1]: 5     
+#>  REF_0F[1]: 9     
+#>  REF_1L[1]: 10    
+#>  REF_17[2]: 11, 25
+#>  REF_23[1]: 12    
+#>  REF_3H[1]: 13    
+#>  REF_6O[1]: 14    
+#>  REF_ZZ[2]: 15, 30
+#>  REF_ZX[1]: 29    
+#>  REF_CE[1]: 27    
+#>  REF_RB[1]: 28    
+#>  REF_9V[1]: 26    
+#> DTP_348[1]: 23    
+#> DTP_349[1]: 24    
+#>      N1[2]: 6, 7  
+#>     INS[1]: 8     
+#>     NM1[1]: 16    
+#>     PER[1]: 17    
+#>      N3[1]: 18    
+#>      N4[1]: 19    
+#>     DMG[1]: 20    
+#>     LUI[1]: 21    
+#>      HD[1]: 22    
+#>      SE[1]: 31    
+#>      GE[1]: 32    
+#>     IEA[1]: 33    
 #> 
 #> $sample_834_03
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 998    
-#>   Segments: 36     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 998     
+#>   Segments: 36      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> QTY:  1
-#> REF: 16
-#> DTP:  2
-#>  N1:  2
-#> INS:  1
-#> NM1:  1
-#> PER:  1
-#>  N3:  1
-#>  N4:  1
-#> DMG:  1
-#> LUI:  1
-#>  HD:  1
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>     QTY[1]: 5     
+#>  REF_0F[1]: 9     
+#>  REF_1L[1]: 10    
+#>  REF_17[2]: 11, 28
+#>  REF_23[1]: 12    
+#>  REF_3H[1]: 13    
+#>  REF_6O[1]: 14    
+#>  REF_ZZ[2]: 18, 33
+#>  REF_ZX[1]: 32    
+#>  REF_CE[1]: 30    
+#>  REF_RB[1]: 31    
+#>  REF_DX[1]: 15    
+#>  REF_F6[1]: 16    
+#>  REF_QQ[1]: 17    
+#>  REF_9V[1]: 29    
+#> DTP_348[1]: 26    
+#> DTP_349[1]: 27    
+#>      N1[2]: 6, 7  
+#>     INS[1]: 8     
+#>     NM1[1]: 19    
+#>     PER[1]: 20    
+#>      N3[1]: 21    
+#>      N4[1]: 22    
+#>     DMG[1]: 23    
+#>     LUI[1]: 24    
+#>      HD[1]: 25    
+#>      SE[1]: 34    
+#>      GE[1]: 35    
+#>     IEA[1]: 36    
 #> 
 #> $sample_834_04
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 990    
-#>   Segments: 35     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 990     
+#>   Segments: 35      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> QTY:  1
-#> REF: 16
-#> DTP:  2
-#>  N1:  2
-#> INS:  1
-#> NM1:  1
-#> PER:  1
-#>  N3:  1
-#>  N4:  1
-#> DMG:  1
-#>  HD:  1
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>     QTY[1]: 5     
+#>  REF_0F[1]: 9     
+#>  REF_1L[1]: 10    
+#>  REF_17[2]: 11, 27
+#>  REF_23[1]: 12    
+#>  REF_3H[1]: 13    
+#>  REF_6O[1]: 14    
+#>  REF_ZZ[2]: 18, 32
+#>  REF_ZX[1]: 31    
+#>  REF_CE[1]: 29    
+#>  REF_RB[1]: 30    
+#>  REF_DX[1]: 15    
+#>  REF_F6[1]: 16    
+#>  REF_QQ[1]: 17    
+#>  REF_9V[1]: 28    
+#> DTP_348[1]: 25    
+#> DTP_349[1]: 26    
+#>      N1[2]: 6, 7  
+#>     INS[1]: 8     
+#>     NM1[1]: 19    
+#>     PER[1]: 20    
+#>      N3[1]: 21    
+#>      N4[1]: 22    
+#>     DMG[1]: 23    
+#>      HD[1]: 24    
+#>      SE[1]: 33    
+#>      GE[1]: 34    
+#>     IEA[1]: 35    
 #> 
 #> $sample_834_05
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 992    
-#>   Segments: 35     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 992     
+#>   Segments: 35      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> QTY:  1
-#> REF: 15
-#> DTP:  2
-#>  N1:  2
-#> INS:  1
-#> NM1:  1
-#> PER:  1
-#>  N3:  1
-#>  N4:  1
-#> DMG:  1
-#> AMT:  1
-#>  HD:  1
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
+#>     ISA[1]: 1     
+#>      GS[1]: 2     
+#>      ST[1]: 3     
+#>     BGN[1]: 4     
+#>     QTY[1]: 5     
+#>  REF_0F[1]: 9     
+#>  REF_1L[1]: 10    
+#>  REF_17[2]: 11, 28
+#>  REF_23[1]: 12    
+#>  REF_3H[1]: 13    
+#>  REF_6O[1]: 14    
+#>  REF_ZZ[2]: 18, 32
+#>  REF_ZX[1]: 31    
+#>  REF_CE[1]: 30    
+#>  REF_DX[1]: 15    
+#>  REF_F6[1]: 16    
+#>  REF_QQ[1]: 17    
+#>  REF_9V[1]: 29    
+#> DTP_348[1]: 25    
+#> DTP_349[1]: 26    
+#>      N1[2]: 6, 7  
+#>     INS[1]: 8     
+#>     NM1[1]: 19    
+#>     PER[1]: 20    
+#>      N3[1]: 21    
+#>      N4[1]: 22    
+#>     DMG[1]: 23    
+#>     AMT[1]: 27    
+#>      HD[1]: 24    
+#>      SE[1]: 33    
+#>      GE[1]: 34    
+#>     IEA[1]: 35    
 #> 
 #> $sample_834_06
 #> <x12_index>
 #>  
-#>       Type: X12-834
-#> Characters: 1658   
-#>   Segments: 68     
-#>   Problems: 0      
+#>       Type: 834-X220
+#> Characters: 1658    
+#>   Segments: 68      
+#>   Problems: 0       
 #>  
-#> ISA:  1
-#>  GS:  1
-#>  ST:  1
-#> BGN:  1
-#> QTY:  1
-#> REF: 34
-#> DTP:  6
-#>  N1:  2
-#> INS:  2
-#> NM1:  3
-#> PER:  2
-#>  N3:  3
-#>  N4:  3
-#> DMG:  2
-#>  HD:  3
-#>  SE:  1
-#>  GE:  1
-#> IEA:  1
-#> 
-purrr::map(hcc::x12_834[9:14], parse_834)
-#> $sample_834_01
-#>  [1] "ISA*00*          *00*          *ZZ*DHCS           *ZZ*HEALTHPLAN     *250108*1430*^*00501*000000001*0*P*:"
-#>  [2] "GS*BE*DHCS*HEALTHPLAN*20250108*1430*1*X*005010X220A1"                                                     
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*12345*20250108*1430****2"                                                                          
-#>  [5] "REF*38*MEDI-CAL"                                                                                          
-#>  [6] "DTP*007*D8*20250108"                                                                                      
-#>  [7] "N1*P5*CALIFORNIA DHCS*FI*953654321"                                                                       
-#>  [8] "N1*IN*HEALTH PLAN NAME*FI*987654321"                                                                      
-#>  [9] "INS*Y*18*021***FT***AC"                                                                                   
-#> [10] "REF*0F*MBR001"                                                                                            
-#> [11] "REF*6P*TESTMBI000000001"                                                                                  
-#> [12] "REF*1D*TESTMCD000000001"                                                                                  
-#> [13] "REF*ABB*QMBPLUS"                                                                                          
-#> [14] "NM1*IL*1*TESTLAST01*TESTFIRST01****MI*TESTMBR000000001"                                                   
-#> [15] "PER*IP**HP*5555550000"                                                                                    
-#> [16] "N3*123 TEST STREET"                                                                                       
-#> [17] "N4*TESTCITY*CA*00000"                                                                                     
-#> [18] "DMG*D8*19000101*F"                                                                                        
-#> [19] "HD*021**HLT*MEDICARE ADVANTAGE D-SNP"                                                                     
-#> [20] "DTP*348*D8*20240101"                                                                                      
-#> [21] "HD*021**HLT*MEDI-CAL"                                                                                     
-#> [22] "DTP*348*D8*20240101"                                                                                      
-#> [23] "INS*Y*18*001***FT***AC"                                                                                   
-#> [24] "REF*0F*MBR002"                                                                                            
-#> [25] "REF*6P*TESTMBI000000002"                                                                                  
-#> [26] "REF*1D*TESTMCD000000002"                                                                                  
-#> [27] "REF*AB*4M"                                                                                                
-#> [28] "NM1*IL*1*TESTLAST02*TESTFIRST02****MI*TESTMBR000000002"                                                   
-#> [29] "N3*123 TEST STREET"                                                                                       
-#> [30] "N4*TESTCITY*CA*00000"                                                                                     
-#> [31] "DMG*D8*19000101*M"                                                                                        
-#> [32] "HD*001**HLT*MEDICARE PART C"                                                                              
-#> [33] "DTP*348*D8*20230515"                                                                                      
-#> [34] "HD*001**HLT*MEDI-CAL"                                                                                     
-#> [35] "DTP*348*D8*20240101"                                                                                      
-#> [36] "INS*Y*18*024***FT***TE"                                                                                   
-#> [37] "REF*0F*MBR003"                                                                                            
-#> [38] "REF*6P*TESTMBI000000003"                                                                                  
-#> [39] "REF*1D*TESTMCD000000003"                                                                                  
-#> [40] "REF*ABB*SLMBPLUS"                                                                                         
-#> [41] "NM1*IL*1*TESTLAST03*TESTFIRST03****MI*TESTMBR000000003"                                                   
-#> [42] "N3*123 TEST STREET"                                                                                       
-#> [43] "N4*TESTCITY*CA*00000"                                                                                     
-#> [44] "DMG*D8*19000101*F"                                                                                        
-#> [45] "HD*024**HLT*MEDICARE PART A"                                                                              
-#> [46] "DTP*348*D8*20220101"                                                                                      
-#> [47] "DTP*349*D8*20250228"                                                                                      
-#> [48] "HD*024**HLT*MEDI-CAL"                                                                                     
-#> [49] "DTP*348*D8*20220101"                                                                                      
-#> [50] "DTP*349*D8*20250228"                                                                                      
-#> [51] "INS*Y*18*021***FT***AC"                                                                                   
-#> [52] "REF*0F*MBR004"                                                                                            
-#> [53] "REF*1D*TESTMCD000000004"                                                                                  
-#> [54] "NM1*IL*1*TESTLAST04*TESTFIRST04****MI*TESTMBR000000004"                                                   
-#> [55] "N3*123 TEST STREET"                                                                                       
-#> [56] "N4*TESTCITY*CA*00000"                                                                                     
-#> [57] "DMG*D8*19000101*M"                                                                                        
-#> [58] "HD*021**HLT*MEDI-CAL"                                                                                     
-#> [59] "DTP*348*D8*20250101"                                                                                      
-#> [60] "INS*Y*18*021***FT***AC"                                                                                   
-#> [61] "REF*0F*MBR005"                                                                                            
-#> [62] "REF*6P*TESTMBI000000005"                                                                                  
-#> [63] "NM1*IL*1*TESTLAST05*TESTFIRST05****MI*TESTMBR000000005"                                                   
-#> [64] "N3*123 TEST STREET"                                                                                       
-#> [65] "N4*TESTCITY*CA*00000"                                                                                     
-#> [66] "DMG*D8*19000101*M"                                                                                        
-#> [67] "HD*021**HLT*MEDICARE PART C"                                                                              
-#> [68] "DTP*348*D8*20250901"                                                                                      
-#> [69] "SE*68*0001"                                                                                               
-#> [70] "GE*1*1"                                                                                                   
-#> [71] "IEA*1*000000001"                                                                                          
-#> 
-#> $sample_834_02
-#>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999991      *250124*1927*^*00501*000000001*0*P*:"
-#>  [2] "GS*BE*CADHCS_5010_834*999999991*20250124*192730*10000001*X*005010X220A1"                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*DHCS834-DA-20250124-Sample PACE-001*20250124*19273000****2"                                        
-#>  [5] "QTY*TO*1"                                                                                                 
-#>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                
-#>  [7] "N1*IN*Sample PACE Inc.*FI*999999991"                                                                      
-#>  [8] "INS*Y*18*001*AI*A*E**AC"                                                                                  
-#>  [9] "REF*0F*randomParticipantID"                                                                               
-#> [10] "REF*1L*randomCIN1"                                                                                        
-#> [11] "REF*17*;;202501;"                                                                                         
-#> [12] "REF*23*4;20200101;;"                                                                                      
-#> [13] "REF*3H*19;10;randomCaseNum1;;"                                                                            
-#> [14] "REF*6O*;W;Y;;60;"                                                                                         
-#> [15] "REF*ZZ*01051;41609;;;;30451;41651;;;"                                                                     
-#> [16] "NM1*IL*1*randomLastName*randomFirstName*A"                                                                
-#> [17] "PER*IP**TE*randomPhone"                                                                                   
-#> [18] "N3*randomStreetAddress1"                                                                                  
-#> [19] "N4*LOS ANGELES CA*CA*90019**CY*19"                                                                        
-#> [20] "DMG*D8*randomDoB*F**7"                                                                                    
-#> [21] "LUI*LD*SPA**7"                                                                                            
-#> [22] "HD*021**LTC*010;51"                                                                                       
-#> [23] "DTP*348*D8*20250101"                                                                                      
-#> [24] "DTP*349*D8*20250131"                                                                                      
-#> [25] "REF*17*N;;;;;;;;;;;;;1"                                                                                   
-#> [26] "REF*9V*9;9;0"                                                                                             
-#> [27] "REF*CE*10;401;;;;;;"                                                                                      
-#> [28] "REF*RB*10"                                                                                                
-#> [29] "REF*ZX*19"                                                                                                
-#> [30] "REF*ZZ*;;10"                                                                                              
-#> [31] "SE*29*0001"                                                                                               
-#> [32] "GE*1*10000001"                                                                                            
-#> [33] "IEA*1*000000001"                                                                                          
-#> 
-#> $sample_834_03
-#>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *250812*1936*^*00501*000000002*0*P*:"
-#>  [2] "GS*BE*CADHCS_5010_834*999999992*20250812*193641*10000002*X*005010X220A1"                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*DHCS834-DA-20250812-Sample South LA PACE-957-001*20250812*19364100****2"                           
-#>  [5] "QTY*TO*1"                                                                                                 
-#>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                
-#>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             
-#>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  
-#>  [9] "REF*0F*randomMemberId"                                                                                    
-#> [10] "REF*1L*randomCIN2"                                                                                        
-#> [11] "REF*17*;;202508;"                                                                                         
-#> [12] "REF*23*2;20200201;;;"                                                                                     
-#> [13] "REF*3H*19;60;randomCaseNum2;;"                                                                            
-#> [14] "REF*6O*;W;Y;;08;"                                                                                         
-#> [15] "REF*DX*H9999;006;20250201;;;"                                                                             
-#> [16] "REF*F6*randomMbi"                                                                                         
-#> [17] "REF*QQ*;;202001;202001"                                                                                   
-#> [18] "REF*ZZ*95701;;;;;35201;;;;"                                                                               
-#> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  
-#> [20] "PER*IP**TE*randomPhone"                                                                                   
-#> [21] "N3*randomAddress1"                                                                                        
-#> [22] "N4*LONG BEACH CA*CA*90813**CY*19"                                                                         
-#> [23] "DMG*D8*randomDoB*F**7"                                                                                    
-#> [24] "LUI*LD*SPA**7"                                                                                            
-#> [25] "HD*021**LTC*957;01"                                                                                       
-#> [26] "DTP*348*D8*20250801"                                                                                      
-#> [27] "DTP*349*D8*20250831"                                                                                      
-#> [28] "REF*17*F;;;;;;;;;;;;;1"                                                                                   
-#> [29] "REF*9V*2;2;2"                                                                                             
-#> [30] "REF*CE*60;401;80;401;;;;"                                                                                 
-#> [31] "REF*RB*60"                                                                                                
-#> [32] "REF*ZX*19"                                                                                                
-#> [33] "REF*ZZ*;;10"                                                                                              
-#> [34] "SE*32*0001"                                                                                               
-#> [35] "GE*1*10000002"                                                                                            
-#> [36] "IEA*1*000000002"                                                                                          
-#> 
-#> $sample_834_04
-#>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *251022*2000*^*00501*000000003*0*P*:"
-#>  [2] "GS*BE*CADHCS_5010_834*999999992*20251022*200019*10000003*X*005010X220A1"                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*DHCS834-DA-20251022-Sample South LA PACE-957-001*20251022*20001900****2"                           
-#>  [5] "QTY*TO*1"                                                                                                 
-#>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                
-#>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             
-#>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  
-#>  [9] "REF*0F*randomMemberId"                                                                                    
-#> [10] "REF*1L*randomCIN3"                                                                                        
-#> [11] "REF*17*202605;;202510;"                                                                                   
-#> [12] "REF*23*2;20200301;;;"                                                                                     
-#> [13] "REF*3H*19;16;randomCode;;08"                                                                              
-#> [14] "REF*6O*;A;Y;;29;"                                                                                         
-#> [15] "REF*DX*H9999;001;20251101;;;"                                                                             
-#> [16] "REF*F6*randomMbi"                                                                                         
-#> [17] "REF*QQ*;;202002;202002"                                                                                   
-#> [18] "REF*ZZ*95701;;;;;20101;;;;"                                                                               
-#> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  
-#> [20] "PER*IP**TE*randomPhone"                                                                                   
-#> [21] "N3*randomAddress1"                                                                                        
-#> [22] "N4*LOS ANGELES CA*CA*90044**CY*19"                                                                        
-#> [23] "DMG*D8*randomDoB*F**:RET:2054-5"                                                                          
-#> [24] "HD*021**LTC*957;01"                                                                                       
-#> [25] "DTP*348*D8*20251001"                                                                                      
-#> [26] "DTP*349*D8*20251031"                                                                                      
-#> [27] "REF*17*F;;;;1"                                                                                            
-#> [28] "REF*9V*3;2;2"                                                                                             
-#> [29] "REF*CE*16;401;80;401;;;;"                                                                                 
-#> [30] "REF*RB*16"                                                                                                
-#> [31] "REF*ZX*19"                                                                                                
-#> [32] "REF*ZZ*;;10"                                                                                              
-#> [33] "SE*31*0001"                                                                                               
-#> [34] "GE*1*10000003"                                                                                            
-#> [35] "IEA*1*000000003"                                                                                          
-#> 
-#> $sample_834_05
-#>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999992      *251023*1959*^*00501*000000004*0*P*:"
-#>  [2] "GS*BE*CADHCS_5010_834*999999992*20251023*195928*10000004*X*005010X220A1"                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*DHCS834-DA-20251023-Sample South LA PACE-957-001*20251023*19592800****2"                           
-#>  [5] "QTY*TO*1"                                                                                                 
-#>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                
-#>  [7] "N1*IN*Sample South LA PACE Inc.*FI*999999992"                                                             
-#>  [8] "INS*Y*18*001*AI*A*C**AC"                                                                                  
-#>  [9] "REF*0F*randomMemberId"                                                                                    
-#> [10] "REF*1L*randomCIN4"                                                                                        
-#> [11] "REF*17*202601;;202510;"                                                                                   
-#> [12] "REF*23*6;20200401;20200101;;"                                                                             
-#> [13] "REF*3H*19;17;randomId1;;07"                                                                               
-#> [14] "REF*6O*;W;Y;;19;"                                                                                         
-#> [15] "REF*DX*H9999;006;20230401;;;"                                                                             
-#> [16] "REF*F6*randomId2"                                                                                         
-#> [17] "REF*QQ*;;202003;202003"                                                                                   
-#> [18] "REF*ZZ*957P4;;;;;;;;;"                                                                                    
-#> [19] "NM1*IL*1*randomLastName*randomFirstName"                                                                  
-#> [20] "PER*IP**TE*randomPhone"                                                                                   
-#> [21] "N3*randomAddress1"                                                                                        
-#> [22] "N4*LONG BEACH CA*CA*90810**CY*19"                                                                         
-#> [23] "DMG*D8*randomDoB*F**:RET:2135-2"                                                                          
-#> [24] "HD*001**LTC*957;P4"                                                                                       
-#> [25] "DTP*348*D8*20251001"                                                                                      
-#> [26] "DTP*349*D8*20250930"                                                                                      
-#> [27] "AMT*R*1237"                                                                                               
-#> [28] "REF*17*F;;;;1"                                                                                            
-#> [29] "REF*9V*3;1;0"                                                                                             
-#> [30] "REF*CE*17;501;2K;691;;;;"                                                                                 
-#> [31] "REF*ZX*19"                                                                                                
-#> [32] "REF*ZZ*;;10"                                                                                              
-#> [33] "SE*31*0001"                                                                                               
-#> [34] "GE*1*10000004"                                                                                            
-#> [35] "IEA*1*000000004"                                                                                          
-#> 
-#> $sample_834_06
-#>  [1] "ISA*00*          *00*          *ZZ*CADHCS_5010_834*30*999999991      *250206*2008*^*00501*000000005*0*P*:"
-#>  [2] "GS*BE*CADHCS_5010_834*999999991*20250206*200823*10000005*X*005010X220A1"                                  
-#>  [3] "ST*834*0001*005010X220A1"                                                                                 
-#>  [4] "BGN*00*DHCS834-DA-20250206-Sample PACE-001*20250206*20082300****2"                                        
-#>  [5] "QTY*TO*2"                                                                                                 
-#>  [6] "N1*P5*California Department of Health Care Services.........*FI*999999990"                                
-#>  [7] "N1*IN*Sample PACE Inc.*FI*999999991"                                                                      
-#>  [8] "INS*Y*18*001*AI*A*E**AC"                                                                                  
-#>  [9] "REF*0F*randomMemberId"                                                                                    
-#> [10] "REF*1L*randomCIN5"                                                                                        
-#> [11] "REF*17*;;202502;"                                                                                         
-#> [12] "REF*23*3;20200501;;"                                                                                      
-#> [13] "REF*3H*19;60;randomCaseNum1;;"                                                                            
-#> [14] "REF*6O*;A;Y;D;67;"                                                                                        
-#> [15] "REF*Q4*randomProviderId;"                                                                                 
-#> [16] "REF*ZZ*01059;;;;;010S1;;;;"                                                                               
-#> [17] "NM1*IL*1*randomLName1*randomFName1"                                                                       
-#> [18] "PER*IP**TE*randomPhone1"                                                                                  
-#> [19] "N3*randomFullAddress1"                                                                                    
-#> [20] "N4*LOS ANGELES CA*CA*90037**CY*19"                                                                        
-#> [21] "DMG*D8*randomDoB1*F**:RET:2054-5"                                                                         
-#> [22] "NM1*31*1"                                                                                                 
-#> [23] "N3*randomAddress"                                                                                         
-#> [24] "N4*LOS ANGELES CA*CA*90037"                                                                               
-#> [25] "HD*001**LTC*010;59"                                                                                       
-#> [26] "DTP*348*D8*20250201"                                                                                      
-#> [27] "DTP*349*D8*20250131"                                                                                      
-#> [28] "REF*17*N;;;;;;;;;;;;;1"                                                                                   
-#> [29] "REF*CE*60;001;80;891;;;;"                                                                                 
-#> [30] "REF*RB*60"                                                                                                
-#> [31] "REF*ZX*19"                                                                                                
-#> [32] "REF*ZZ*;;10"                                                                                              
-#> [33] "HD*021**LTC*010;S1"                                                                                       
-#> [34] "DTP*348*D8*20250101"                                                                                      
-#> [35] "DTP*349*D8*20250131"                                                                                      
-#> [36] "REF*17*N;;;;;;;;;;;;;1"                                                                                   
-#> [37] "REF*CE*60;401;80;891;;;;"                                                                                 
-#> [38] "REF*RB*60"                                                                                                
-#> [39] "REF*ZX*19"                                                                                                
-#> [40] "REF*ZZ*;;11"                                                                                              
-#> [41] "INS*Y*18*001*AI*A*C**AC"                                                                                  
-#> [42] "REF*0F*randomMemberId2"                                                                                   
-#> [43] "REF*1L*randomCIN6"                                                                                        
-#> [44] "REF*17*;;202502;"                                                                                         
-#> [45] "REF*23*9;20200601;;"                                                                                      
-#> [46] "REF*3H*19;10;randomCaseNum2;;"                                                                            
-#> [47] "REF*6O*;A;Y;;25;"                                                                                         
-#> [48] "REF*DX*;;;S5617;D635;20240901"                                                                            
-#> [49] "REF*F6*randomId1"                                                                                         
-#> [50] "REF*QQ*;;202004;202004"                                                                                   
-#> [51] "REF*ZZ*01001;;;;;30401;;;;"                                                                               
-#> [52] "NM1*IL*1*randomLName2*randomFName2*M"                                                                     
-#> [53] "PER*IP**TE*randomPhone2"                                                                                  
-#> [54] "N3*randomAddress2"                                                                                        
-#> [55] "N4*LOS ANGELES CA*CA*90029**CY*19"                                                                        
-#> [56] "DMG*D8*randomDoB2*M**:RET:2135-2"                                                                         
-#> [57] "HD*021**LTC*010;01"                                                                                       
-#> [58] "DTP*348*D8*20250201"                                                                                      
-#> [59] "DTP*349*D8*20250228"                                                                                      
-#> [60] "REF*17*D;;;;;;;;;;;;;1"                                                                                   
-#> [61] "REF*9V*2;2;2"                                                                                             
-#> [62] "REF*CE*10;401;9G;999;80;401;;"                                                                            
-#> [63] "REF*RB*10"                                                                                                
-#> [64] "REF*ZX*19"                                                                                                
-#> [65] "REF*ZZ*;;10"                                                                                              
-#> [66] "SE*64*0001"                                                                                               
-#> [67] "GE*1*10000005"                                                                                            
-#> [68] "IEA*1*000000005"                                                                                          
+#>     ISA[1]: 1                 
+#>      GS[1]: 2                 
+#>      ST[1]: 3                 
+#>     BGN[1]: 4                 
+#>     QTY[1]: 5                 
+#>  REF_0F[2]: 9, 42             
+#>  REF_1L[2]: 10, 43            
+#>  REF_17[5]: 11, 28, 36, 44, 60
+#>  REF_23[2]: 12, 45            
+#>  REF_3H[2]: 13, 46            
+#>  REF_6O[2]: 14, 47            
+#>  REF_Q4[1]: 15                
+#>  REF_ZZ[5]: 16, 32, 40, 51, 65
+#>  REF_ZX[3]: 31, 39, 64        
+#>  REF_CE[3]: 29, 37, 62        
+#>  REF_RB[3]: 30, 38, 63        
+#>  REF_DX[1]: 48                
+#>  REF_F6[1]: 49                
+#>  REF_QQ[1]: 50                
+#>  REF_9V[1]: 61                
+#> DTP_348[3]: 26, 34, 58        
+#> DTP_349[3]: 27, 35, 59        
+#>      N1[2]: 6, 7              
+#>     INS[2]: 8, 41             
+#>     NM1[3]: 17, 22, 52        
+#>     PER[2]: 18, 53            
+#>      N3[3]: 19, 23, 54        
+#>      N4[3]: 20, 24, 55        
+#>     DMG[2]: 21, 56            
+#>      HD[3]: 25, 33, 57        
+#>      SE[1]: 66                
+#>      GE[1]: 67                
+#>     IEA[1]: 68                
 #> 
 ```

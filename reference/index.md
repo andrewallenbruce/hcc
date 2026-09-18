@@ -35,17 +35,15 @@
   categories.
 - [`diagnostics()`](https://andrewallenbruce.github.io/hcc/reference/diagnostics.md)
   : Model-Based Disease Categories
-- [`disease_interactions()`](https://andrewallenbruce.github.io/hcc/reference/disease_interactions.md)
-  : Model-Based Disease Interaction Variables
 - [`get_prefix()`](https://andrewallenbruce.github.io/hcc/reference/get_prefix.md)
   : Demographics-Based Coefficient Prefix
-- [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
+- [`interactions`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
 - [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
-- [`index_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
-  [`parse_834_index()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
+- [`index_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
+  [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
   : X12-834 (X220A1) Benefit Enrollment Parser
 - [`index_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
