@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9048 (2026-09-17)
+
+* 834 indexer
+
+
 # hcc 0.0.0.9047 (2026-09-17)
 
 * `EditRule` updates
