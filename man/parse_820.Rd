@@ -45,5 +45,5 @@ Typical loop structure within an 820:
 }
 \examples{
 purrr::map(hcc::x12_820, index_820)
-purrr::map(hcc::x12_820[13:17], parse_820)
+# purrr::map(hcc::x12_820[13:17], parse_820)
 }

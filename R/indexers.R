@@ -31,7 +31,7 @@ index_820 <- function(text) {
 index_820_x218 <- function(x) {
   N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
 
-  i <- list(
+  list(
     ISA = perl(x, "^ISA"), # r
     GS = perl(x, "^GS"), # r
     ST = perl(x, "^ST"), # r
@@ -39,10 +39,8 @@ index_820_x218 <- function(x) {
     TRN = perl(x, "^TRN"), # r
     CUR = perl(x, "^CUR"), # o
     REF_14 = perl(x, r"(REF\*14)"),
-    REF_18 = perl(x, r"(^REF\*18)"), # o
     DTM_009 = perl(x, r"(^DTM\*009)"), # o
     DTM_035 = perl(x, r"(^DTM\*035)"), # o
-    DTM_582 = perl(x, r"(^DTM\*582)"), # o
     DTM_AAG = perl(x, r"(^DTM\*AAG)"), # o
     DTM_097 = perl(x, r"(^DTM\*097)"), # r
     N1_PE = perl(x, r"(N1\*PE)"), # r
@@ -56,15 +54,17 @@ index_820_x218 <- function(x) {
     N3_ = perl(x, N1_REX) + 1L, # r
     N4_ = perl(x, N1_REX) + 2L, # r
     ENT = perl(x, "^ENT"),
-    ADX = perl(x, "^ADX"),
-    RMR = perl(x, "^RMR"),
-    REF_38 = perl(x, r"(REF\*38)"), # o
     NM1_ = perl(x, r"(NM1\*(DO|EY|IL|QE))"),
+    RMR = perl(x, "^RMR"),
+    REF_18 = perl(x, r"(^REF\*18)"), # o
+    REF_38 = perl(x, r"(REF\*38)"), # o
     REF_TV = perl(x, r"(REF\*TV)"), # o
     REF_1L = perl(x, r"(REF\*1L)"), # o
     REF_ABY = perl(x, r"(REF\*ABY)"), # o
     REF_ZZ = perl(x, r"(^REF\*ZZ)"),
-    DTM = perl(x, "^DTM"),
+    DTM_582 = perl(x, r"(^DTM\*582)"), # o
+    ADX = perl(x, "^ADX"),
+    # DTM = perl(x, "^DTM"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")
@@ -77,7 +77,7 @@ index_820_x218 <- function(x) {
 # https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
 #' @noRd
 index_820_x306 <- function(x) {
-  i <- list(
+  list(
     ISA = perl(x, "^ISA"), # r
     GS = perl(x, "^GS"), # r
     ST = perl(x, "^ST"), # r
@@ -86,7 +86,6 @@ index_820_x306 <- function(x) {
     REF_TV = perl(x, r"(REF\*TV)"), # o
     REF_18 = perl(x, r"(^REF\*18)"), # o
     REF_ZZ = perl(x, r"(REF\*ZZ)"), # o
-    REF_1L = perl(x, r"(REF\*1L)"), # o
     N1_PE = perl(x, r"(N1\*PE)"), # r
     REF_ABY = perl(x, r"(REF\*ABY)"), # o
     N1_RM = perl(x, r"(N1\*RM)"), # r
@@ -95,6 +94,7 @@ index_820_x306 <- function(x) {
     NM1 = perl(x, "^NM1"), # r
     REF_38 = perl(x, r"(REF\*38)"), # o
     REF_POL = perl(x, r"(REF\*POL)"), # r
+    REF_1L = perl(x, r"(REF\*1L)"), # o
     REF_AZ = perl(x, r"(REF\*AZ)"), # o
     REF_4A = perl(x, r"(REF\*4A)"), # o
     REF_23 = perl(x, r"(REF\*23)"), # o
@@ -102,15 +102,16 @@ index_820_x306 <- function(x) {
     REF_1W = perl(x, r"(REF\*1W)"), # o
     REF_0F = perl(x, r"(REF\*0F)"), # o
     RMR = perl(x, "^RMR"), # r
-    REF_0N = perl(x, r"(REF\*0N)"), # o
     DTM_582 = perl(x, r"(^DTM\*582)"), # r
+    REF_0N = perl(x, r"(REF\*0N)"), # o
     SE = perl(x, "^SE"), # r
     GE = perl(x, "^GE"), # r
     IEA = perl(x, "^IEA") # r
   )
 }
 
-#' @noRd
+#' @rdname parse_834_index
+#' @export
 index_834 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
@@ -118,8 +119,8 @@ index_834 <- function(text) {
 
   xtype <- x12_type(text)
 
-  if (xtype != "834") {
-    return(paste0("input is X12-", xtype, " not X12-834"))
+  if (xtype != "834-X220" || cheapr::is_na(xtype)) {
+    return(NA)
   }
 
   x <- tilde(text)
@@ -161,7 +162,8 @@ index_834 <- function(text) {
   new_x12_index(i, x, text, xtype)
 }
 
-#' @noRd
+#' @rdname parse_837
+#' @export
 index_837 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
     text <- paste0(unlist_(text), collapse = "")
@@ -169,8 +171,8 @@ index_837 <- function(text) {
 
   xtype <- x12_type(text)
 
-  if (xtype %!in_% c("837I", "837P")) {
-    return(paste0("input is X12-", xtype, " not X12-837I or X12-837P"))
+  if (xtype %!in_% c("837I-X223", "837P-X222") || cheapr::is_na(xtype)) {
+    return(NA)
   }
 
   x <- tilde(text)

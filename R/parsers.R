@@ -62,7 +62,7 @@ payee_loop_820 <- function(x) {
 #' @returns list
 #' @examples
 #' purrr::map(hcc::x12_820, index_820)
-#' purrr::map(hcc::x12_820[13:17], parse_820)
+#' # purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
 parse_820 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
@@ -132,10 +132,10 @@ parse_820 <- function(text) {
 #'    - HCP (Health Care Plan) coverage history
 #'
 #' @param index `<chr>` string of raw X12-834 text
+#' @param text `<chr>` string of raw X12-834 text
 #' @returns list
-#' @examplesIf FALSE
-#' idx = purrr::map(hcc::x12_834, index_834)
-#' purrr::map(idx, parse_834_index)
+#' @examples
+#' purrr::map(hcc::x12_834, index_834)
 #' @export
 parse_834_index <- function(index) {
   if (!inherits(index, "x12_index")) {
@@ -210,12 +210,12 @@ parse_834_index <- function(index) {
 #'
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
-#' @examplesIf FALSE
+#' @examples
 #' purrr::map(hcc::x12_837I, index_837)
-#' purrr::map(hcc::x12_837I[8:17], parse_837)
+#' # purrr::map(hcc::x12_837I[8:17], parse_837)
 #'
 #' purrr::map(hcc::x12_837P, index_837)
-#' purrr::map(hcc::x12_837P[14:16], parse_837)
+#' # purrr::map(hcc::x12_837P[14:16], parse_837)
 #' @export
 parse_837 <- function(text) {
   if (length(text) > 1L || is.list(text)) {
