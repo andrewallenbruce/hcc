@@ -105,8 +105,7 @@
 - added possible dual interactions to
   [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
 - 837 parser
-- `get_cc()` -\>
-  [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
+- `get_cc()` -\> `apply_map()`
 
 ## hcc 0.0.0.9025 (2026-08-23)
 

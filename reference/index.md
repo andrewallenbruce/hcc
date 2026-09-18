@@ -28,8 +28,6 @@
   : Apply risk adjustment coefficients to HCCs and interactions.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
   : Calculate HCC interactions across CMS models.
-- [`apply_map()`](https://andrewallenbruce.github.io/hcc/reference/apply_map.md)
-  : Map ICD-10 Codes to CC
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
@@ -37,6 +35,8 @@
   : Model-Based Disease Categories
 - [`get_prefix()`](https://andrewallenbruce.github.io/hcc/reference/get_prefix.md)
   : Demographics-Based Coefficient Prefix
+- [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
+  : Map ICD-10 Codes to CC
 - [`interactions`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
 - [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
