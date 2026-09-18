@@ -158,13 +158,14 @@ parse_problems <- function(x, i) {
 new_x12_index <- function(i, x, text, xtype) {
   z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
   i <- cheapr::sset(i, z)
+  i <- i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
 
   cheapr::attrs_add(
-    i,
+    text,
+    index = i,
     characters = nchar(text),
     segments = collapse::vlengths(i),
     problems = parse_problems(x, i),
-    text = x,
     type = xtype,
     class = "x12_index"
   )
@@ -214,7 +215,12 @@ format.x12_index <- function(x, ...) {
       ),
       ": ",
       format(
-        purrr::map_chr(x[names(a$segments)], \(x) toString(x, width = 70)),
+        purrr::map_chr(
+          a$index[names(a$segments)],
+          \(x) {
+            toString(x, width = 60)
+          }
+        ),
         justify = "left"
       )
     ),
