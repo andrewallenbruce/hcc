@@ -13,10 +13,16 @@ The 834 carries *membership events*:
 ## Usage
 
 ``` r
+index_834(text)
+
 parse_834_index(index)
 ```
 
 ## Arguments
+
+- text:
+
+  `<chr>` string of raw X12-834 text
 
 - index:
 
@@ -61,8 +67,47 @@ focus on:
 ## Examples
 
 ``` r
-if (FALSE) {
-idx = purrr::map(hcc::x12_834, index_834)
-purrr::map(idx, parse_834_index)
-}
+purrr::map(hcc::x12_834, index_834)
+#> $`834_EX2_add_dependent`
+#> [1] NA
+#> 
+#> $`834_EX3_enroll_employee_mco`
+#> [1] NA
+#> 
+#> $`834_EX4_add_subscriber_coverage`
+#> [1] NA
+#> 
+#> $`834_EX5_change_subscriber_info`
+#> [1] NA
+#> 
+#> $`834_EX6_cancel_dependent`
+#> [1] NA
+#> 
+#> $`834_EX7_terminate_subscriber_eligibility`
+#> [1] NA
+#> 
+#> $`834_EX8_reinstate_employee`
+#> [1] NA
+#> 
+#> $`834_EX9_reinstate_employee_coverage`
+#> [1] NA
+#> 
+#> $sample_834_01
+#> [1] NA
+#> 
+#> $sample_834_02
+#> [1] NA
+#> 
+#> $sample_834_03
+#> [1] NA
+#> 
+#> $sample_834_04
+#> [1] NA
+#> 
+#> $sample_834_05
+#> [1] NA
+#> 
+#> $sample_834_06
+#> [1] NA
+#> 
 ```

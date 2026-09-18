@@ -59,8 +59,10 @@ pak::pak("andrewallenbruce/hcc")
 - [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
-- [`parse_834_index()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
+- [`index_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
+  [`parse_834_index()`](https://andrewallenbruce.github.io/hcc/reference/parse_834_index.md)
   : X12-834 (X220A1) Benefit Enrollment Parser
-- [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
+- [`index_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
+  [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
 
