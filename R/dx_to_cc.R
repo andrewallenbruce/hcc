@@ -26,35 +26,28 @@ icd_to_cc <- function(
   year = NULL,
   simplify = FALSE
 ) {
-  x <- if (!is.null(year)) {
-    rlang::check_number_whole(year, min = 2025, max = 2026)
-    collapse::ss(
-      hcc::ra_dx_to_cc,
-      whichv_(hcc::ra_dx_to_cc[["year"]], year)
-    )
-  } else {
+  check_character(icd, allow_na = FALSE)
+  rlang::check_number_whole(year, min = 2025, max = 2026)
+
+  x <- if (is.null(year)) {
     hcc::ra_dx_to_cc
-  }
-
-  x <- if (!is.null(model)) {
-    model <- convert_model(model)
-    collapse::ss(x, x[["model_name"]] %iin% model)
   } else {
-    x
+    collapse::ss(hcc::ra_dx_to_cc, whichv_(hcc::ra_dx_to_cc[["year"]], year))
   }
 
-  x <- if (!is.null(icd)) {
-    check_character(icd, allow_na = FALSE)
-    icd <- toupper(gsub("\\.", "", icd, perl = TRUE))
-    collapse::ss(x, x[["icd_code"]] %iin% icd)
-  } else {
-    x
+  if (!is.null(model)) {
+    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
   }
 
-  x <- collapse::roworderv(x, c("icd_code", "cc", "model_name"))
+  if (!is.null(icd)) {
+    x <- collapse::ss(
+      x,
+      x[["icd_code"]] %iin% toupper(gsub("\\.", "", icd, perl = TRUE))
+    )
+  }
 
   if (simplify) {
     return(collapse::rsplit(x$cc, x$icd_code))
   }
-  return(x)
+  collapse::roworderv(x, c("icd_code", "cc", "model_name"))
 }
