@@ -712,8 +712,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: 837P-X222
 #> Characters: 1209     
-#>   Segments: 40       
-#>   Problems: 1        
+#>   Segments: 41       
+#>   Problems: 0        
 #>  
 #>    ISA[1]: 1         
 #>     GS[1]: 2         
@@ -732,6 +732,7 @@ purrr::map(hcc::x12_837P, index_837)
 #>    DMG[1]: 19        
 #>  NM1PR[1]: 20        
 #>    CLM[1]: 21        
+#>  REF9A[1]: 22        
 #>  REFD9[1]: 23        
 #>   HIBK[1]: 24        
 #>    HCP[3]: 25, 34, 38
@@ -750,8 +751,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: 837P-X222
 #> Characters: 1204     
-#>   Segments: 42       
-#>   Problems: 1        
+#>   Segments: 43       
+#>   Problems: 0        
 #>  
 #>    ISA[1]: 1             
 #>     GS[1]: 2             
@@ -772,6 +773,7 @@ purrr::map(hcc::x12_837P, index_837)
 #>    PAT[1]: 21            
 #>  NM1QC[1]: 22            
 #>    CLM[1]: 26            
+#>  REF9A[1]: 27            
 #>  REFD9[1]: 28            
 #>   HIBK[1]: 29            
 #>    HCP[1]: 30            
@@ -909,8 +911,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: 837P-X222
 #> Characters: 1185     
-#>   Segments: 46       
-#>   Problems: 1        
+#>   Segments: 47       
+#>   Problems: 0        
 #>  
 #>    ISA[1]: 1             
 #>     GS[1]: 2             
@@ -941,6 +943,7 @@ purrr::map(hcc::x12_837P, index_837)
 #>     LX[1]: 38            
 #>    SV1[1]: 39            
 #> DTP472[1]: 40            
+#>    SVD[1]: 41            
 #>    CAS[2]: 42, 43        
 #> DTP573[1]: 44            
 #>     SE[1]: 45            
@@ -1032,8 +1035,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: 837P-X222
 #> Characters: 1501     
-#>   Segments: 66       
-#>   Problems: 4        
+#>   Segments: 70       
+#>   Problems: 0        
 #>  
 #>    ISA[1]: 1                                                           
 #>     GS[1]: 2                                                           
@@ -1058,8 +1061,10 @@ purrr::map(hcc::x12_837P, index_837)
 #>    PWK[2]: 24, 47                                                      
 #>    CR3[2]: 25, 48                                                      
 #> DTP472[2]: 26, 49                                                      
+#> DTP607[2]: 27, 50                                                      
 #> DTP463[2]: 28, 51                                                      
 #> DTP461[2]: 29, 52                                                      
+#>  NM1DK[2]: 30, 53                                                      
 #>  REF1G[2]: 33, 56                                                      
 #>   LQUT[2]: 35, 58                                                      
 #>   FRM[18]: 36, 37, 38, 39, 40, 41, 42, 43, 44, 59, 60, 61, 62, 63, ....
@@ -1072,8 +1077,8 @@ purrr::map(hcc::x12_837P, index_837)
 #>  
 #>       Type: 837P-X222
 #> Characters: 1086     
-#>   Segments: 46       
-#>   Problems: 1        
+#>   Segments: 47       
+#>   Problems: 0        
 #>  
 #>    ISA[1]: 1                         
 #>     GS[1]: 2                         
@@ -1103,6 +1108,7 @@ purrr::map(hcc::x12_837P, index_837)
 #> DTP463[1]: 29                        
 #> DTP461[1]: 30                        
 #>    MEA[1]: 31                        
+#>  NM1DK[1]: 32                        
 #>   LQUT[1]: 37                        
 #>    FRM[7]: 38, 39, 40, 41, 42, 43, 44
 #>     SE[1]: 45                        

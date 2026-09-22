@@ -1,5 +1,13 @@
 # Changelog
 
+## hcc 0.0.0.9049 (2026-09-22)
+
+- fixed problems in 837 indexer
+- `icd_to_cc`
+- indexers
+- sort indices in order of first integer
+- fleshed out `interactions` generic
+
 ## hcc 0.0.0.9048 (2026-09-17)
 
 - 834 indexer
