@@ -203,7 +203,7 @@ index_834 <- function(text) {
     REFQQ = perl(x, r"(^REF\*QQ)"),
     REFAB = perl(x, r"(^REF\*AB\*)"),
     REFABB = perl(x, r"(^REF\*ABB)"),
-    REF9V = perl(x, r"(^REF\*(9V))"),
+    REF9V = perl(x, r"(^REF\*9V)"),
     DTP007 = perl(x, r"(^DTP\*007)"),
     DTP303 = perl(x, r"(^DTP\*303)"),
     DTP348 = perl(x, r"(^DTP\*348)"),
