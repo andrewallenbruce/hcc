@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9050 (2026-09-24)
+
+* S7 index class
+* `check_text_` helper
+
+
 # hcc 0.0.0.9049 (2026-09-22)
 
 * fixed problems in 837 indexer
