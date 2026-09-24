@@ -9,6 +9,15 @@ unlist_df <- function(x) {
 }
 
 #' @noRd
+check_text_ <- function(x) {
+  if (length(x) > 1L || is.list(x)) {
+    paste0(unlist_(x), collapse = "")
+  } else {
+    x
+  }
+}
+
+#' @noRd
 fill_sequence <- function(start, end) {
   purrr::map2(start, end, \(a, b) seq.int(from = a, to = b))
 }

@@ -54,10 +54,7 @@ I820_X218 := S7::new_class(
 #' @rdname parse_820
 #' @export
 index_820 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
+  text <- check_text_(text)
   xtype <- x12_type(text)
 
   if (xtype %!in_% c("820-X306", "820-X218") || cheapr::is_na(xtype)) {
@@ -83,40 +80,38 @@ index_820 <- function(text) {
 index_820_x218 <- function(x) {
   # N1_TST <- paste0("N1*", c("Z6", "0B", "04", "8W", "AK", "BE", "BK", "C1", "C2", "IAT", "MJ", "RB", "Z6", "ZB", "ZL"))
   # perl(N1_TST, N1_REX)
-  N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
+  # N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
 
   list(
-    ISA = perl(x, "^ISA"), # r
-    GS = perl(x, "^GS"), # r
-    ST = perl(x, "^ST"), # r
-    BPR = perl(x, "^BPR"), # r
-    TRN = perl(x, "^TRN"), # r
-    CUR = perl(x, "^CUR"), # o
-    REF_14 = perl(x, r"(REF\*14)"),
-    N1_PE = perl(x, r"(N1\*PE)"),
-    N3_PE = perl(x, r"(N1\*PE)") + 1L,
-    N4_PE = perl(x, r"(N1\*PE)") + 2L,
-    N1_PR = perl(x, r"(N1\*PR)"),
-    N3_PR = perl(x, r"(N1\*PR)") + 1L,
-    N4_PR = perl(x, r"(N1\*PR)") + 2L,
-    PER_IC = perl(x, r"(PER\*IC)"),
-    N1__ = perl(x, N1_REX),
-    # N3_ = perl(x, N1_REX) + 1L,
-    # N4_ = perl(x, N1_REX) + 2L,
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    TRN = perl(x, "^TRN"),
+    CUR = perl(x, "^CUR"),
+    REF14 = perl(x, r"(REF\*14)"),
+    N1PE = perl(x, r"(N1\*PE)"),
+    N3PE = perl(x, r"(N1\*PE)") + 1L,
+    N4PE = perl(x, r"(N1\*PE)") + 2L,
+    N1PR = perl(x, r"(N1\*PR)"),
+    N3PR = perl(x, r"(N1\*PR)") + 1L,
+    N4PR = perl(x, r"(N1\*PR)") + 2L,
+    PERIC = perl(x, r"(PER\*IC)"),
+    # N1__ = perl(x, N1_REX),
     ENT = perl(x, "^ENT"),
     NM1 = perl(x, r"(NM1\*(DO|EY|IL|QE))"),
     RMR = perl(x, "^RMR"),
-    REF_18 = perl(x, r"(^REF\*18)"),
-    REF_38 = perl(x, r"(REF\*38)"),
-    REF_TV = perl(x, r"(REF\*TV)"),
-    REF_1L = perl(x, r"(REF\*1L)"),
-    REF_ABY = perl(x, r"(REF\*ABY)"),
-    REF_ZZ = perl(x, r"(^REF\*ZZ)"),
-    DTM_582 = perl(x, r"(^DTM\*582)"),
-    DTM_009 = perl(x, r"(^DTM\*009)"),
-    DTM_035 = perl(x, r"(^DTM\*035)"),
-    DTM_AAG = perl(x, r"(^DTM\*AAG)"),
-    DTM_097 = perl(x, r"(^DTM\*097)"),
+    REF18 = perl(x, r"(^REF\*18)"),
+    REF38 = perl(x, r"(REF\*38)"),
+    REFTV = perl(x, r"(REF\*TV)"),
+    REF1L = perl(x, r"(REF\*1L)"),
+    REFABY = perl(x, r"(REF\*ABY)"),
+    REFZZ = perl(x, r"(^REF\*ZZ)"),
+    DTM582 = perl(x, r"(^DTM\*582)"),
+    DTM009 = perl(x, r"(^DTM\*009)"),
+    DTM035 = perl(x, r"(^DTM\*035)"),
+    DTMAAG = perl(x, r"(^DTM\*AAG)"),
+    DTM097 = perl(x, r"(^DTM\*097)"),
     ADX = perl(x, "^ADX"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
@@ -131,45 +126,42 @@ index_820_x218 <- function(x) {
 #' @noRd
 index_820_x306 <- function(x) {
   list(
-    ISA = perl(x, "^ISA"), # r
-    GS = perl(x, "^GS"), # r
-    ST = perl(x, "^ST"), # r
-    BPR = perl(x, "^BPR"), # r
-    TRN = perl(x, "^TRN"), # r
-    REF_TV = perl(x, r"(REF\*TV)"), # o
-    REF_18 = perl(x, r"(^REF\*18)"), # o
-    REF_ZZ = perl(x, r"(REF\*ZZ)"), # o
-    N1_PE = perl(x, r"(N1\*PE)"), # r
-    REF_ABY = perl(x, r"(REF\*ABY)"), # o
-    N1_RM = perl(x, r"(N1\*RM)"), # r
-    PER_IC = perl(x, r"(PER\*IC)"), # o
-    ENT = perl(x, "^ENT"), # r
-    NM1 = perl(x, "^NM1"), # r
-    REF_38 = perl(x, r"(REF\*38)"), # o
-    REF_POL = perl(x, r"(REF\*POL)"), # r
-    REF_1L = perl(x, r"(REF\*1L)"), # o
-    REF_AZ = perl(x, r"(REF\*AZ)"), # o
-    REF_4A = perl(x, r"(REF\*4A)"), # o
-    REF_23 = perl(x, r"(REF\*23)"), # o
-    REF_60 = perl(x, r"(REF\*60)"), # o
-    REF_1W = perl(x, r"(REF\*1W)"), # o
-    REF_0F = perl(x, r"(REF\*0F)"), # o
-    RMR = perl(x, "^RMR"), # r
-    DTM_582 = perl(x, r"(^DTM\*582)"), # r
-    REF_0N = perl(x, r"(REF\*0N)"), # o
-    SE = perl(x, "^SE"), # r
-    GE = perl(x, "^GE"), # r
-    IEA = perl(x, "^IEA") # r
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    TRN = perl(x, "^TRN"),
+    REFTV = perl(x, r"(REF\*TV)"),
+    REF18 = perl(x, r"(^REF\*18)"),
+    REFZZ = perl(x, r"(REF\*ZZ)"),
+    N1PE = perl(x, r"(N1\*PE)"),
+    REFABY = perl(x, r"(REF\*ABY)"),
+    N1RM = perl(x, r"(N1\*RM)"),
+    PERIC = perl(x, r"(PER\*IC)"),
+    ENT = perl(x, "^ENT"),
+    NM1 = perl(x, "^NM1"),
+    REF38 = perl(x, r"(REF\*38)"),
+    REFPOL = perl(x, r"(REF\*POL)"),
+    REF1L = perl(x, r"(REF\*1L)"),
+    REFAZ = perl(x, r"(REF\*AZ)"),
+    REF4A = perl(x, r"(REF\*4A)"),
+    REF23 = perl(x, r"(REF\*23)"),
+    REF60 = perl(x, r"(REF\*60)"),
+    REF1W = perl(x, r"(REF\*1W)"),
+    REF0F = perl(x, r"(REF\*0F)"),
+    RMR = perl(x, "^RMR"),
+    DTM582 = perl(x, r"(^DTM\*582)"),
+    REF0N = perl(x, r"(REF\*0N)"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
   )
 }
 
 #' @rdname parse_834
 #' @export
 index_834 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
+  text <- check_text_(text)
   xtype <- x12_type(text)
 
   if (xtype != "834-X220" || cheapr::is_na(xtype)) {
@@ -243,10 +235,7 @@ index_834 <- function(text) {
 #' @rdname parse_837
 #' @export
 index_837 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
-
+  text <- check_text_(text)
   xtype <- x12_type(text)
 
   if (xtype %!in_% c("837I-X223", "837P-X222") || cheapr::is_na(xtype)) {
