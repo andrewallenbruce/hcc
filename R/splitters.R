@@ -156,31 +156,6 @@ x12_type <- function(x) {
 }
 
 #' @noRd
-parse_problems <- function(x, i) {
-  if (length(x) != cheapr::unlisted_length(i)) {
-    return(cheapr::setdiff_(seq_along(x), unlist_(i)))
-  }
-  return(integer(0L))
-}
-
-#' @noRd
-new_x12_index <- function(i, x, text, xtype) {
-  z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
-  i <- cheapr::sset(i, z)
-  i <- i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
-
-  cheapr::attrs_add(
-    x,
-    index = i,
-    characters = nchar(text),
-    segments = collapse::vlengths(i),
-    problems = parse_problems(x, i),
-    type = xtype,
-    class = "x12_index"
-  )
-}
-
-#' @noRd
 problems <- function(x) {
   i <- purrr::map_lgl(x, \(x) inherits(x, "x12_index"))
   x <- .subset(x, unname(i))

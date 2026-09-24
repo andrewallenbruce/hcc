@@ -1,54 +1,71 @@
 #' @noRd
-X12Header := S7::new_class(
+parse_problems <- function(x, i) {
+  if (length(x) != cheapr::unlisted_length(i)) {
+    return(cheapr::setdiff_(seq_along(x), unlist_(i)))
+  }
+  return(integer(0L))
+}
+
+#' @noRd
+new_x12_index <- function(i, x, text, xtype) {
+  z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
+  i <- cheapr::sset(i, z)
+  i <- i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
+
+  cheapr::attrs_add(
+    x,
+    index = i,
+    characters = nchar(text),
+    segments = collapse::vlengths(i),
+    problems = parse_problems(x, i),
+    type = xtype,
+    class = "x12_index"
+  )
+}
+
+#' @noRd
+X12Index := S7::new_class(
   properties = list(
-    ISA = S7::class_integer,
-    GS = S7::class_integer,
-    ST = S7::class_integer
+    text = S7::class_character,
+    index = S7::class_list,
+    characters = S7::new_property(
+      S7::class_integer,
+      getter = function(self) {
+        nchar(self@text)
+      }
+    ),
+    segments = S7::new_property(
+      S7::class_integer,
+      getter = function(self) {
+        collapse::vlengths(self@index)
+      }
+    ),
+    problems = S7::new_property(
+      S7::class_integer,
+      getter = function(self) {
+        if (length(self@text) != cheapr::unlisted_length(self@index)) {
+          cheapr::setdiff_(seq_along(self@text), unlist_(self@index))
+        } else {
+          0L
+        }
+      }
+    ),
+    type = S7::class_character
   )
 )
 
 #' @noRd
-X218Header := S7::new_class(
-  parent = X12Header,
-  properties = list(
-    BPR = S7::class_integer,
-    TRN = S7::class_integer,
-    REF14 = S7::class_integer,
-    N1PE = S7::class_integer,
-    N3PE = S7::class_integer,
-    N4PE = S7::class_integer,
-    N1PR = S7::class_integer,
-    N3PR = S7::class_integer,
-    N4PR = S7::class_integer
-  )
-)
+x12_index <- function(text, index, type) {
+  z <- whichv_(collapse::vlengths(index, FALSE), 0L, TRUE)
+  index <- cheapr::sset(index, z)
+  index <- index[names(sort.int(purrr::map_int(index, \(x) x[1])))]
 
-#' @noRd
-X12Trailer := S7::new_class(
-  properties = list(
-    SE = S7::class_integer,
-    GE = S7::class_integer,
-    IEA = S7::class_integer
+  X12Index(
+    text = text,
+    index = index,
+    type = type
   )
-)
-
-#' 2300B Remittance Detail Loop
-#' 2000B Per-Member Entity Loop
-
-#' @noRd
-I820_X218 := S7::new_class(
-  properties = list(
-    Header = X218Header,
-    ENT = S7::class_integer,
-    NM1 = S7::class_integer,
-    RMR = S7::class_integer,
-    REF18 = S7::class_integer,
-    REFZZ = S7::class_integer,
-    DTM = S7::class_integer,
-    ADX = S7::class_integer,
-    Trailer = X12Trailer
-  )
-)
+}
 
 # purrr::map(hcc::x12_820, index_820)
 #' @rdname parse_820
@@ -69,19 +86,20 @@ index_820 <- function(text) {
     `820-X218` = index_820_x218(x)
   )
 
-  new_x12_index(i, x, text, xtype = paste0("X12-", xtype))
+  x12_index(text = x, index = i, type = paste0("X12-", xtype))
+
+  # new_x12_index(i, x, text, xtype = paste0("X12-", xtype))
 }
 
+# N1_TST <- paste0("N1*", c("Z6", "0B", "04", "8W", "AK", "BE", "BK", "C1", "C2", "IAT", "MJ", "RB", "Z6", "ZB", "ZL"))
+# perl(N1_TST, N1_REX)
+# N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
 # ST-01 = 820
 # ST-03 = 005010X218
 # GS-08 = 005010X218
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
 #' @noRd
 index_820_x218 <- function(x) {
-  # N1_TST <- paste0("N1*", c("Z6", "0B", "04", "8W", "AK", "BE", "BK", "C1", "C2", "IAT", "MJ", "RB", "Z6", "ZB", "ZL"))
-  # perl(N1_TST, N1_REX)
-  # N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
-
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -97,7 +115,6 @@ index_820_x218 <- function(x) {
     N3PR = perl(x, r"(N1\*PR)") + 1L,
     N4PR = perl(x, r"(N1\*PR)") + 2L,
     PERIC = perl(x, r"(PER\*IC)"),
-    # N1__ = perl(x, N1_REX),
     ENT = perl(x, "^ENT"),
     NM1 = perl(x, r"(NM1\*(DO|EY|IL|QE))"),
     RMR = perl(x, "^RMR"),
@@ -229,7 +246,9 @@ index_834 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  new_x12_index(i, x, text, xtype)
+  x12_index(text = x, index = i, type = xtype)
+
+  # new_x12_index(i, x, text, xtype)
 }
 
 #' @rdname parse_837
@@ -250,7 +269,9 @@ index_837 <- function(text) {
     `837P-X222` = index_837P_x222(x)
   )
 
-  new_x12_index(i, x, text, xtype)
+  x12_index(text = x, index = i, type = xtype)
+
+  # new_x12_index(i, x, text, xtype)
 }
 
 #' @noRd

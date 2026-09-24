@@ -65,9 +65,7 @@ payee_loop_820 <- function(x) {
 #' # purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
 parse_820 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
+  text <- check_text_(text)
   x <- tilde(text)
 
   header <- list(
@@ -218,9 +216,7 @@ parse_834 <- function(index) {
 #' # purrr::map(hcc::x12_837P[14:16], parse_837)
 #' @export
 parse_837 <- function(text) {
-  if (length(text) > 1L || is.list(text)) {
-    text <- paste0(unlist_(text), collapse = "")
-  }
+  text <- check_text_(text)
   x <- tilde(text)
 
   header <- list(
