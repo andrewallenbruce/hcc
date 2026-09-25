@@ -90,55 +90,1062 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-in"><span><span class="va">unlist_</span> <span class="op">&lt;-</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="va">unlist_</span></span></span>
 <span class="r-in"><span><span class="va">whichv_</span> <span class="op">&lt;-</span> <span class="fu">collapse</span><span class="fu">::</span><span class="va"><a href="https://fastverse.org/collapse/reference/efficient-programming.html" class="external-link">whichv</a></span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fu">whichv_</span><span class="op">(</span><span class="fu">x12_type</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"820-X218"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span><span class="op">[</span><span class="fu">whichv_</span><span class="op">(</span><span class="fu">x12_type</span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span><span class="op">)</span>, <span class="st">"820-X218"</span><span class="op">)</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">i</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">i</span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">p</span> <span class="op">=</span> <span class="va">p</span><span class="op">$</span><span class="va">sample_820_01</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  ISA <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">ISA</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  GS <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">GS</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  ST <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">ST</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  BPR <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">BPR</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  TRN <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">TRN</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  REF14 <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">REF14</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  SE <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Trailer</span><span class="op">$</span><span class="va">SE</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  GE <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Trailer</span><span class="op">$</span><span class="va">GE</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  IEA <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Trailer</span><span class="op">$</span><span class="va">IEA</span><span class="op">)</span></span></span>
-<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p</span><span class="op">$</span><span class="va">sample_820_01</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ISA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "00"         NA           "00"         NA           "ZZ"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "TEST-PAYER" "30"         "TEST-PAYEE" "260118"     "0831"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "+"          "00501"      "000058691"  "0"          "P"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] ":"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA"        "00"         NA           "00"         NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "ZZ"         "TEST-PAYER" "30"         "TEST-PAYEE" "260118"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "0831"       "+"          "00501"      "000058691"  "0"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "P"          ":"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $GS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RA"         "TEST-PAYER" "TEST-PAYEE" "20260118"   "083122"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "43304"      "X"          "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GS"         "RA"         "TEST-PAYER" "TEST-PAYEE" "20260118"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "083122"     "43304"      "X"          "005010X218"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ST</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "820"        "0001"       "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ST"         "820"        "0001"       "005010X218"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $BPR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "I"          "102139.46"  "C"          "NON"        NA          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] NA           NA           NA           NA           "68-0317191"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] NA           NA           NA           NA           NA          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "20260115"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "BPR"        "I"          "102139.46"  "C"          "NON"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] NA           NA           NA           NA           NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "68-0317191" NA           NA           NA           NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] NA           "20260115"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TRN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "3"               "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TRN"             "3"               "TESTTRN01000001"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $REF14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "14"         "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"        "14"         "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N1PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N1"                      "PE"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N3PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N3"              "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N4PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N4"       "TESTCITY" "CA"       "00000"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N1PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N1"                "PR"                "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N3PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N3"              "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N4PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N4"       "TESTCITY" "CA"       "00000"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "1"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME01"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME01"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "2"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME02"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME02"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "3"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME03"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME03"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "4"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME04"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME04"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "5"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME05"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME05"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "6"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME06"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME06"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000006"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "7"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME07"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME07"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000007"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251101-20251130"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "8"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME08"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME08"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000008"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "9"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME09"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME09"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000009"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "10"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME10"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME10"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000010"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "11"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME11"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME11"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000011"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8086.53"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "12"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME12"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME12"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000012"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2512150225000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "5101.10"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "17;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"             "ZZ"              "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20251101-20251130"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"  "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SE"   "100"  "0001"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $GE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"     "43304"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GE"    "1"     "43304"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $IEA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"         "000058691"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IEA"       "1"         "000058691"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="va">p</span><span class="op">$</span><span class="va">sample_820_02</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ISA"        "00"         NA           "00"         NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "ZZ"         "TEST-PAYER" "30"         "TEST-PAYEE" "260316"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "0855"       "+"          "00501"      "000059660"  "0"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "P"          ":"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GS"         "RA"         "TEST-PAYER" "TEST-PAYEE" "20260316"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "085500"     "44273"      "X"          "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ST"         "820"        "0001"       "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "BPR"        "I"          "91977.81"   "C"          "NON"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] NA           NA           NA           NA           NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "68-0317191" NA           NA           NA           NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] NA           "20260312"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TRN"             "3"               "TESTTRN02000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"        "14"         "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N1PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N1"                      "PE"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N3PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N3"              "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N4PE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N4"       "TESTCITY" "CA"       "00000"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N1PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N1"                "PR"                "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N3PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N3"              "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $N4PR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "N4"       "TESTCITY" "CA"       "00000"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "1"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME01"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME01"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "5555.82"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"             "ZZ"              "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "454.72"                         "5555.82"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"             "ZZ"              "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_1_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-5101.10" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "2"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME02"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME02"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_2_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "3"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME03"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME03"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_3_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "4"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME13"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME13"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000013"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_4_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "5"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME04"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME04"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_5_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "6"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME05"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME05"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_6_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "7"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME06"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME06"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000006"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "-8086.53"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_7_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "8"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME07"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME07"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000007"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_8_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "9"         "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME08"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME08"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000008"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_9_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "10"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME09"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME09"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000009"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_10_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "11"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME10"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME10"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000010"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "1H;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_11_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "12"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME11"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME11"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000011"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "401.72"                         "8488.25"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "M1;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"                      "ZZ"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_12_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ADX"      "-8086.53" "53"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ENT"       "13"        "2J"        "EI"        "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "NM1"              "IL"               "1"                "LASTNAME12"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "FIRSTNAME12"      NA                 NA                 NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "N"                "TESTMBR000000012"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RMR"                            "IK"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "TESTPLAN-SREGLR-2602200043000P" NA                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "5555.82"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF" "18"  "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"  "ZZ"   "17;2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REF"             "ZZ"              "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ENT_13_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DTM"               "582"               NA                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] NA                  NA                  "RD8"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SE"   "162"  "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GE"    "1"     "44273"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IEA"       "1"         "000059660"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
