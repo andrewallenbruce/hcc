@@ -147,7 +147,7 @@ a managed care plan.</p>
 <span class="r-in"><span>      member_id <span class="op">=</span> <span class="st">"TESTMBR000000001"</span>,</span></span>
 <span class="r-in"><span>      last_name <span class="op">=</span> <span class="st">"LASTNAME01"</span>,</span></span>
 <span class="r-in"><span>      first_name <span class="op">=</span> <span class="st">"FIRSTNAME01"</span>,</span></span>
-<span class="r-in"><span>      remittance_entries <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      remittances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>        <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>          reference_number <span class="op">=</span> <span class="st">"TESTPLAN-SREGLR-2602200043000P"</span>,</span></span>
 <span class="r-in"><span>          payment_amount <span class="op">=</span> <span class="fl">401.72</span>,</span></span>
@@ -184,16 +184,18 @@ a managed care plan.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_zip      : chr "00000"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_details:List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number     : chr "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member_id         : chr "TESTMBR000000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ last_name         : chr "LASTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ first_name        : chr "FIRSTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ middle_name       : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remittance_entries:List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member_id    : chr "TESTMBR000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ last_name    : chr "LASTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ first_name   : chr "FIRSTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ middle_name  : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remittances  :List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::RemittanceEntry&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment_amount     : num 402</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original_amount    : num 8488</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment_amount  : num -8087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment_amount     : num 402</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment_reason  : chr "53"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ rate_code          : chr "957"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ aid_code           : chr "17"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ plan_type          : chr "2"</span>
@@ -201,8 +203,6 @@ a managed care plan.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage_start     : Date[1:1], format: "2026-01-01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage_end       : Date[1:1], format: "2026-01-31"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage_period    : iv&lt;date&gt; [1:1] [2026-01-01, 2026-02-01)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment_amount  : num -8087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment_reason  : chr "53"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -92,7 +92,7 @@ PatientDemographics(
 )
 #> <hcc::PatientDemographics>
 #>  @ version     : chr "V2"
-#>  @ age         : num 75
+#>  @ age         : int 75
 #>  @ sex         : chr "2"
 #>  @ dual_code   : chr(0) 
 #>  @ orec_code   : chr "0"

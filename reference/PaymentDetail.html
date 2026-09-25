@@ -74,7 +74,7 @@ appear in multiple ENT entries within the same transaction
 <dd><p><code>&lt;chr&gt;</code> <code>NM1-05</code> Member middle name</p></dd>
 
 
-<dt id="arg-remittance-entries">remittance_entries<a class="anchor" aria-label="anchor" href="#arg-remittance-entries"></a></dt>
+<dt id="arg-remittances">remittances<a class="anchor" aria-label="anchor" href="#arg-remittances"></a></dt>
 <dd><p>List of <code>&lt;RemittanceEntry&gt;</code> line items (one per
 RMR/DTM set)</p></dd>
 
@@ -91,7 +91,21 @@ RMR/DTM set)</p></dd>
 <span class="r-in"><span>  member_id <span class="op">=</span> <span class="st">"TESTMBR000000001"</span>,</span></span>
 <span class="r-in"><span>  last_name <span class="op">=</span> <span class="st">"LASTNAME01"</span>,</span></span>
 <span class="r-in"><span>  first_name <span class="op">=</span> <span class="st">"FIRSTNAME01"</span>,</span></span>
-<span class="r-in"><span>  remittance_entries <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  remittances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      reference_number <span class="op">=</span> <span class="st">"TESTPLAN-SREGLR-2602200043000P"</span>,</span></span>
+<span class="r-in"><span>      payment_amount <span class="op">=</span> <span class="fl">401.72</span>,</span></span>
+<span class="r-in"><span>      original_amount <span class="op">=</span> <span class="fl">8488.25</span>,</span></span>
+<span class="r-in"><span>      rate_code <span class="op">=</span> <span class="st">"957"</span>,</span></span>
+<span class="r-in"><span>      aid_code <span class="op">=</span> <span class="st">"17"</span>,</span></span>
+<span class="r-in"><span>      plan_type <span class="op">=</span> <span class="st">"2"</span>,</span></span>
+<span class="r-in"><span>      payment_description <span class="op">=</span> <span class="st">"Dual-State Only"</span>,</span></span>
+<span class="r-in"><span>      coverage_start <span class="op">=</span> <span class="st">"2026-01-01"</span>,</span></span>
+<span class="r-in"><span>      coverage_end <span class="op">=</span> <span class="st">"2026-01-31"</span>,</span></span>
+<span class="r-in"><span>      coverage_period <span class="op">=</span> <span class="fu">ivs</span><span class="fu">::</span><span class="fu"><a href="https://davisvaughan.github.io/ivs/reference/iv.html" class="external-link">iv_pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-01"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-31"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      adjustment_amount <span class="op">=</span> <span class="op">-</span><span class="fl">8086.53</span>,</span></span>
+<span class="r-in"><span>      adjustment_reason <span class="op">=</span> <span class="st">"53"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
 <span class="r-in"><span>    <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>      reference_number <span class="op">=</span> <span class="st">"TESTPLAN-SREGLR-2602200043000P"</span>,</span></span>
 <span class="r-in"><span>      payment_amount <span class="op">=</span> <span class="fl">401.72</span>,</span></span>
@@ -109,16 +123,18 @@ RMR/DTM set)</p></dd>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ entity_number     : chr "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ member_id         : chr "TESTMBR000000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ last_name         : chr "LASTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ first_name        : chr "FIRSTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ middle_name       : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ remittance_entries:List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ entity_number: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ member_id    : chr "TESTMBR000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ last_name    : chr "LASTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ first_name   : chr "FIRSTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ middle_name  : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ remittances  :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::RemittanceEntry&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ payment_amount     : num 402</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ original_amount    : num 8488</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ adjustment_amount  : num -8087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ payment_amount     : num 402</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ adjustment_reason  : chr "53"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ rate_code          : chr "957"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ aid_code           : chr "17"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ plan_type          : chr "2"</span>
@@ -126,8 +142,19 @@ RMR/DTM set)</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_start     : Date[1:1], format: "2026-01-01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_end       : Date[1:1], format: "2026-01-31"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_period    : iv&lt;date&gt; [1:1] [2026-01-01, 2026-02-01)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::RemittanceEntry&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ original_amount    : num 8488</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ adjustment_amount  : num -8087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ payment_amount     : num 402</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ adjustment_reason  : chr "53"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ rate_code          : chr "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ aid_code           : chr "17"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ plan_type          : chr "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ payment_description: chr "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_start     : Date[1:1], format: "2026-01-01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_end       : Date[1:1], format: "2026-01-31"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ coverage_period    : iv&lt;date&gt; [1:1] [2026-01-01, 2026-02-01)</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

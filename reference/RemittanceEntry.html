@@ -120,22 +120,24 @@ DTM, and ADX segments within an ENT loop of an 820 transaction.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">RemittanceEntry</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  reference_number <span class="op">=</span> <span class="st">"TESTPLAN-SREGLR-2602200043000P"</span>,</span></span>
-<span class="r-in"><span>  payment_amount <span class="op">=</span> <span class="fl">401.72</span>,</span></span>
 <span class="r-in"><span>  original_amount <span class="op">=</span> <span class="fl">8488.25</span>,</span></span>
+<span class="r-in"><span>  adjustment_amount <span class="op">=</span> <span class="op">-</span><span class="fl">8086.53</span>,</span></span>
+<span class="r-in"><span>  payment_amount <span class="op">=</span> <span class="fl">401.72</span>,</span></span>
+<span class="r-in"><span>  adjustment_reason <span class="op">=</span> <span class="st">"53"</span>,</span></span>
 <span class="r-in"><span>  rate_code <span class="op">=</span> <span class="st">"957"</span>,</span></span>
 <span class="r-in"><span>  aid_code <span class="op">=</span> <span class="st">"17"</span>,</span></span>
 <span class="r-in"><span>  plan_type <span class="op">=</span> <span class="st">"2"</span>,</span></span>
 <span class="r-in"><span>  payment_description <span class="op">=</span> <span class="st">"Dual-State Only"</span>,</span></span>
 <span class="r-in"><span>  coverage_start <span class="op">=</span> <span class="st">"2026-01-01"</span>,</span></span>
 <span class="r-in"><span>  coverage_end <span class="op">=</span> <span class="st">"2026-01-31"</span>,</span></span>
-<span class="r-in"><span>  coverage_period <span class="op">=</span> <span class="fu">ivs</span><span class="fu">::</span><span class="fu"><a href="https://davisvaughan.github.io/ivs/reference/iv.html" class="external-link">iv_pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-01"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-31"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span><span class="op">)</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  adjustment_amount <span class="op">=</span> <span class="op">-</span><span class="fl">8086.53</span>,</span></span>
-<span class="r-in"><span>  adjustment_reason <span class="op">=</span> <span class="st">"53"</span></span></span>
+<span class="r-in"><span>  coverage_period <span class="op">=</span> <span class="fu">ivs</span><span class="fu">::</span><span class="fu"><a href="https://davisvaughan.github.io/ivs/reference/iv.html" class="external-link">iv_pairs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-01"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2026-01-31"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::RemittanceEntry&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_amount     : num 402</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ original_amount    : num 8488</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ adjustment_amount  : num -8087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_amount     : num 402</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ adjustment_reason  : chr "53"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ rate_code          : chr "957"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ aid_code           : chr "17"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ plan_type          : chr "2"</span>
@@ -143,8 +145,6 @@ DTM, and ADX segments within an ENT loop of an 820 transaction.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ coverage_start     : Date[1:1], format: "2026-01-01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ coverage_end       : Date[1:1], format: "2026-01-31"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ coverage_period    : iv&lt;date&gt; [1:1] [2026-01-01, 2026-02-01)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ adjustment_amount  : num -8087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ adjustment_reason  : chr "53"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

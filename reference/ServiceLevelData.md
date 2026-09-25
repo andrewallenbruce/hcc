@@ -34,11 +34,11 @@ Healthcare Claim Service Level Data
 
 - performing_provider_npi:
 
-  `<chr>` NPI for performing provider
+  `<int>` NPI for performing provider
 
 - billing_provider_npi:
 
-  `<chr>` NPI for billing provider
+  `<int>` NPI for billing provider
 
 - patient_id:
 
@@ -65,7 +65,7 @@ Healthcare Claim Service Level Data
 
   `<num>` Number of units provided
 
-- quantity_unit:
+- unit:
 
   `<chr>` Unit of measure for quantity
 
@@ -86,35 +86,41 @@ A `<ServiceLevelData>` S7 object
 ``` r
 ServiceLevelData(
   claim_id = "756048Q",
-  procedure_code = c("85025", "93005"),
+  procedure_code = "93005",
+  ndc = "85972-161",
+  linked_diagnosis_codes = c("3669", "4019", "79431"),
   claim_diagnosis_codes = c("3669", "4019", "79431"),
   claim_type = "837I",
   provider_specialty = "203BA0200N",
-  billing_provider_npi = "9876540809",
+  performing_provider_npi = "1876540809",
+  billing_provider_npi = "1234567891",
   patient_id = "030005074A",
   facility_type = "14",
+  service_type = "03",
   service_date = "1996-09-11",
-  quantity = c(1L, 3L),
-  quantity_unit = "UN",
+  place_of_service = "11",
+  quantity = "4",
+  unit = "UN",
+  modifiers = c("F1", "QQ"),
   allowed_amount = 89.93
 )
 #> <hcc::ServiceLevelData>
-#>  @ claim_id               : chr "756048Q"
-#>  @ procedure_code         : chr [1:2] "85025" "93005"
-#>  @ ndc                    : chr(0) 
-#>  @ linked_diagnosis_codes : chr(0) 
-#>  @ claim_diagnosis_codes  : chr [1:3] "3669" "4019" "79431"
-#>  @ claim_type             : chr "837I"
-#>  @ provider_specialty     : chr "203BA0200N"
-#>  @ performing_provider_npi: chr(0) 
-#>  @ billing_provider_npi   : chr "9876540809"
-#>  @ patient_id             : chr "030005074A"
-#>  @ facility_type          : chr "14"
-#>  @ service_type           : chr(0) 
 #>  @ service_date           : Date[1:1], format: "1996-09-11"
-#>  @ place_of_service       : chr(0) 
-#>  @ quantity               : int [1:2] 1 3
-#>  @ quantity_unit          : chr "UN"
-#>  @ modifiers              : chr(0) 
+#>  @ claim_id               : chr "756048Q"
+#>  @ patient_id             : chr "030005074A"
+#>  @ claim_type             : chr "837I"
+#>  @ place_of_service       : chr "11"
+#>  @ facility_type          : chr "14"
+#>  @ service_type           : chr "03"
+#>  @ linked_diagnosis_codes : chr [1:3] "3669" "4019" "79431"
+#>  @ claim_diagnosis_codes  : chr [1:3] "3669" "4019" "79431"
+#>  @ provider_specialty     : chr "203BA0200N"
+#>  @ performing_provider_npi: int 1876540809
+#>  @ billing_provider_npi   : int 1234567891
+#>  @ procedure_code         : chr "93005"
+#>  @ modifiers              : chr [1:2] "F1" "QQ"
+#>  @ ndc                    : chr "85972-161"
+#>  @ quantity               : int 4
+#>  @ unit                   : chr "UN"
 #>  @ allowed_amount         : num 89.9
 ```
