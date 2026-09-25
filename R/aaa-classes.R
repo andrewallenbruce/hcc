@@ -1,5 +1,48 @@
+#' @export
+X12Index := S7::new_class(
+  properties = list(
+    type = S7::class_character,
+    characters = S7::class_integer,
+    segments = S7::class_integer,
+    problems = S7::class_integer,
+    index = S7::class_list,
+    text = S7::class_character
+  )
+)
+
+S7::method(format, X12Index) <- function(x) {
+  cli::cli_h1("<hcc::X12Index>")
+  names_ <- format(
+    c("Type", "Characters", "Segments", "Problems"),
+    justify = "right"
+  )
+  numbs_ <- format(unlist_(S7::props(x)[1:4]), justify = "left")
+
+  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
+  cli::cat_rule()
+
+  idx <- S7::prop(x, "index")
+  seg <- collapse::vlengths(idx)
+
+  snames_ <- format(
+    cheapr::paste_(names(seg), "[", unname(seg), "]"),
+    justify = "right"
+  )
+  snumbs_ <- format(
+    purrr::map_chr(unname(idx), \(x) toString(x, width = 60)),
+    justify = "left"
+  )
+
+  cli::cat_line(cheapr::paste_(cli::style_bold(snames_), ": ", snumbs_))
+}
+
+S7::method(print, X12Index) <- function(x) {
+  format(x)
+  invisible(x)
+}
+
 #' @noRd
-S3_ivs_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
+class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
 
 #' @noRd
 prop_date <- S7::new_property(

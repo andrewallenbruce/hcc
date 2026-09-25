@@ -32,7 +32,7 @@ Capitation Dual", "Medi-Cal Only-State Only")}
 \item{coverage_end}{\verb{<Date>} \code{DTM*582} Coverage period end date
 (YYYY-MM-DD) from DTM*582}
 
-\item{coverage_period}{\verb{<iv>} Coverage period start and end date}
+\item{coverage_period}{\verb{<class_iv>} Coverage period start and end date}
 
 \item{adjustment_amount}{\verb{<chr>} \code{ADX-01} Adjustment amount; If negative, it
 is a recoupment}

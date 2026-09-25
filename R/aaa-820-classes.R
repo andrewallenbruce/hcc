@@ -26,7 +26,7 @@ NULL
 #'   (YYYY-MM-DD)
 #' @param coverage_end `<Date>` `DTM*582` Coverage period end date
 #'   (YYYY-MM-DD) from DTM*582
-#' @param coverage_period `<iv>` Coverage period start and end date
+#' @param coverage_period `<class_iv>` Coverage period start and end date
 #' @param adjustment_amount `<chr>` `ADX-01` Adjustment amount; If negative, it
 #'   is a recoupment
 #' @param adjustment_reason `<chr>` `ADX-02` Adjustment reason code ("53" =
@@ -62,7 +62,7 @@ RemittanceEntry := S7::new_class(
     coverage_start = prop_date,
     coverage_end = prop_date,
     coverage_period = S7::new_property(
-      S3_ivs_iv,
+      class_iv,
       default = quote(ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L)))
     ),
     adjustment_amount = S7::class_double,

@@ -1,133 +1,11 @@
 #' @noRd
-x12_820_subtype <- function(x) {
-  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 12L))
-}
-
-#' @noRd
-x12_834_subtype <- function(x) {
-  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 10L))
-}
-
-#' @noRd
-x12_837_subtype <- function(x) {
-  cheapr::val_match(
-    x,
-    "005010X222A1" ~ "837P-X222",
-    "005010X223A2" ~ "837I-X223",
-    .default = NA_character_
-  )
-}
-
-# x12_type_1(x12_820[1])
-#' @noRd
-x12_type_1 <- function(x) {
-  x <- check_text_(x)
-  x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
-  x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
-  return(
-    switch(
-      x[2],
-      "820" = x12_820_subtype(x),
-      "837" = x12_837_subtype(.subset(x, length(x))),
-      "834" = x12_834_subtype(x),
-      NA_character_
-    )
-  )
-}
-
-# x12_type_2(c(x12_820, x12_834, x12_837I, x12_837P))
-#' @noRd
-x12_type_2 <- function(x) {
-  x <- purrr::map(x, \(x) paste0(unlist_(rm_newline(x)), collapse = ""))
-  x <- strsplit(unlist(x), "~", fixed = TRUE)
-  i <- unname(purrr::map_int(x, \(x) collapse::fmin(perl(x, "^ST"))))
-  x <- unlist_(purrr::map2(x, i, \(x, i) .subset(x, i)))
-  x <- strsplit(x, "*", fixed = TRUE)
-
-  st01 <- unlist_elem(x, 2L)
-  st03 <- purrr::map_chr(x, \(x) .subset(x, length(x)))
-  st03[whichv_(startsWith(st03, "005010X"), FALSE)] <- NA_character_
-
-  if (anyv_(st01, "820")) {
-    i <- whichv_(st01, "820")
-    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 12L))
-    collapse::setv(st01, i, r)
-  }
-
-  if (anyv_(st01, "834")) {
-    i <- whichv_(st01, "834")
-    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
-    collapse::setv(st01, i, r)
-  }
-
-  if (anyv_(st01, "837")) {
-    i <- whichv_(st01, "837")
-    collapse::setv(st01, i, x12_837_subtype(st03[i]))
-  }
-  st01
-}
-
-#' @examplesIf FALSE
-#' x12_type(x = c(x12_820, x12_834, x12_837I, x12_837P))
-#' @noRd
-x12_type <- function(x) {
-  if (length(x) == 1L) {
-    return(x12_type_1(x))
-  }
-  x12_type_2(x)
-}
-
-#' @export
-X12Index := S7::new_class(
-  properties = list(
-    type = S7::class_character,
-    characters = S7::class_integer,
-    segments = S7::class_integer,
-    problems = S7::class_integer,
-    index = S7::class_list,
-    text = S7::class_character
-  )
-)
-
-S7::method(format, X12Index) <- function(x) {
-  cli::cli_h1("<hcc::X12Index>")
-  names_ <- format(
-    c("Type", "Characters", "Segments", "Problems"),
-    justify = "right"
-  )
-  numbs_ <- format(unlist_(S7::props(x)[1:4]), justify = "left")
-
-  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
-  cli::cat_rule()
-
-  idx <- S7::prop(x, "index")
-  seg <- collapse::vlengths(idx)
-
-  snames_ <- format(
-    cheapr::paste_(names(seg), "[", unname(seg), "]"),
-    justify = "right"
-  )
-  snumbs_ <- format(
-    purrr::map_chr(unname(idx), \(x) toString(x, width = 60)),
-    justify = "left"
-  )
-
-  cli::cat_line(cheapr::paste_(cli::style_bold(snames_), ": ", snumbs_))
-}
-
-S7::method(print, X12Index) <- function(x) {
-  format(x)
-  invisible(x)
-}
-
-#' @noRd
 sort_index <- function(i) {
   i <- cheapr::sset(i, whichv_(collapse::vlengths(i, FALSE), 0L, TRUE))
   i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
 }
 
 #' @noRd
-parse_problems <- function(x, i) {
+parsing_problems <- function(x, i) {
   if (length(x) != cheapr::unlisted_length(i)) {
     cheapr::setdiff_(seq_along(x), unlist_(i))
   } else {
@@ -136,34 +14,44 @@ parse_problems <- function(x, i) {
 }
 
 #' @noRd
-x12_index <- function(x, text, index, type) {
+new_x12_index <- function(x, text, index, type) {
   index <- sort_index(index)
 
   X12Index(
     type = type,
     characters = nchar(text),
     segments = cheapr::unlisted_length(index),
-    problems = parse_problems(x, index),
+    problems = parsing_problems(x, index),
     index = index,
-    text = text
+    text = x
   )
 }
 
 #' X12 Indexer
 #'
 #' @param text `<chr>` string of raw X12-820 text
-#' @returns `hcc::X12Index` S7 object
+#' @returns `<hcc::X12Index>` S7 object
 #' @examples
-#' purrr::map(hcc::x12_820, index_x12)
-#' purrr::map(hcc::x12_834, index_x12)
-#' purrr::map(hcc::x12_837I, index_x12)
-#' purrr::map(hcc::x12_837P, index_x12)
+#' purrr::map(
+#'   c(hcc::x12_820,
+#'     hcc::x12_834,
+#'     hcc::x12_837I,
+#'     hcc::x12_837P
+#'    ),
+#'    index_x12
+#'  )
 #' @export
 index_x12 <- function(text) {
   text <- check_text_(text)
   xtype <- x12_type(text)
 
-  VALID_TYPES <- c("820-X306", "820-X218", "834-X220", "837I-X223", "837P-X222")
+  VALID_TYPES <- c(
+    "820-X306",
+    "820-X218",
+    "834-X220",
+    "837I-X223",
+    "837P-X222"
+  )
 
   if (xtype %!in_% VALID_TYPES || cheapr::is_na(xtype)) {
     return(NA)
@@ -180,316 +68,10 @@ index_x12 <- function(text) {
     `837P-X222` = index_837P_x222(x)
   )
 
-  if (xtype %in_% c("820-X306", "820-X218")) {
-    xtype <- paste0("X12-", xtype)
-  }
-
-  x12_index(
+  new_x12_index(
     x = x,
     text = text,
     index = i,
     type = xtype
-  )
-}
-
-# ST-01 = 820
-# ST-03 = 005010X218
-# GS-08 = 005010X218
-# https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
-#' @noRd
-index_820_x218 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BPR"),
-    TRN = perl(x, "^TRN"),
-    CUR = perl(x, "^CUR"),
-    REF14 = perl(x, r"(REF\*14)"),
-    N1PE = perl(x, r"(N1\*PE)"),
-    N3PE = perl(x, r"(N1\*PE)") + 1L,
-    N4PE = perl(x, r"(N1\*PE)") + 2L,
-    N1PR = perl(x, r"(N1\*PR)"),
-    N3PR = perl(x, r"(N1\*PR)") + 1L,
-    N4PR = perl(x, r"(N1\*PR)") + 2L,
-    PERIC = perl(x, r"(PER\*IC)"),
-    ENT = perl(x, "^ENT"),
-    NM1 = perl(x, r"(NM1\*(DO|EY|IL|QE))"),
-    RMR = perl(x, "^RMR"),
-    REF18 = perl(x, r"(^REF\*18)"),
-    REF38 = perl(x, r"(REF\*38)"),
-    REFTV = perl(x, r"(REF\*TV)"),
-    REF1L = perl(x, r"(REF\*1L)"),
-    REFABY = perl(x, r"(REF\*ABY)"),
-    REFZZ = perl(x, r"(^REF\*ZZ)"),
-    DTM582 = perl(x, r"(^DTM\*582)"),
-    DTM009 = perl(x, r"(^DTM\*009)"),
-    DTM035 = perl(x, r"(^DTM\*035)"),
-    DTMAAG = perl(x, r"(^DTM\*AAG)"),
-    DTM097 = perl(x, r"(^DTM\*097)"),
-    ADX = perl(x, "^ADX"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-}
-
-# ST-01 = 820
-# ST-03 = 005010X306
-# GS-08 = 005010X306
-# https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
-#' @noRd
-index_820_x306 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BPR"),
-    TRN = perl(x, "^TRN"),
-    REFTV = perl(x, r"(REF\*TV)"),
-    REF18 = perl(x, r"(^REF\*18)"),
-    REFZZ = perl(x, r"(REF\*ZZ)"),
-    N1PE = perl(x, r"(N1\*PE)"),
-    REFABY = perl(x, r"(REF\*ABY)"),
-    N1RM = perl(x, r"(N1\*RM)"),
-    PERIC = perl(x, r"(PER\*IC)"),
-    ENT = perl(x, "^ENT"),
-    NM1 = perl(x, "^NM1"),
-    REF38 = perl(x, r"(REF\*38)"),
-    REFPOL = perl(x, r"(REF\*POL)"),
-    REF1L = perl(x, r"(REF\*1L)"),
-    REFAZ = perl(x, r"(REF\*AZ)"),
-    REF4A = perl(x, r"(REF\*4A)"),
-    REF23 = perl(x, r"(REF\*23)"),
-    REF60 = perl(x, r"(REF\*60)"),
-    REF1W = perl(x, r"(REF\*1W)"),
-    REF0F = perl(x, r"(REF\*0F)"),
-    RMR = perl(x, "^RMR"),
-    DTM582 = perl(x, r"(^DTM\*582)"),
-    REF0N = perl(x, r"(REF\*0N)"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-}
-
-#' @noRd
-index_834_x220 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BGN = perl(x, "^BGN"),
-    QTY = perl(x, "^QTY"),
-    REF38 = perl(x, r"(^REF\*38)"),
-    REF0F = perl(x, r"(^REF\*0F)"),
-    REF1D = perl(x, r"(^REF\*1D)"),
-    REF1L = perl(x, r"(^REF\*1L)"),
-    REF17 = perl(x, r"(^REF\*17)"),
-    REF23 = perl(x, r"(^REF\*23)"),
-    REF3H = perl(x, r"(^REF\*3H)"),
-    REF6O = perl(x, r"(^REF\*6O)"),
-    REF6P = perl(x, r"(^REF\*6P)"),
-    REFQ4 = perl(x, r"(^REF\*Q4)"),
-    REFZZ = perl(x, r"(^REF\*ZZ)"),
-    REFZX = perl(x, r"(^REF\*ZX)"),
-    REFCE = perl(x, r"(^REF\*CE)"),
-    REFRB = perl(x, r"(^REF\*RB)"),
-    REFDX = perl(x, r"(^REF\*DX)"),
-    REFF6 = perl(x, r"(^REF\*F6)"),
-    REFQQ = perl(x, r"(^REF\*QQ)"),
-    REFAB = perl(x, r"(^REF\*AB\*)"),
-    REFABB = perl(x, r"(^REF\*ABB)"),
-    REF9V = perl(x, r"(^REF\*9V)"),
-    DTP007 = perl(x, r"(^DTP\*007)"),
-    DTP303 = perl(x, r"(^DTP\*303)"),
-    DTP348 = perl(x, r"(^DTP\*348)"),
-    DTP349 = perl(x, r"(^DTP\*349)"),
-    DTP351 = perl(x, r"(^DTP\*351)"),
-    DTP356 = perl(x, r"(^DTP\*356)"),
-    DTP357 = perl(x, r"(^DTP\*357)"),
-    N1 = perl(x, "^N1"),
-    ACT = perl(x, "^ACT"),
-    INS = perl(x, "^INS"),
-    NM1 = perl(x, "^NM1"),
-    PER = perl(x, "^PER"),
-    N3 = perl(x, "^N3"),
-    N4 = perl(x, "^N4"),
-    DMG = perl(x, "^DMG"),
-    EC = perl(x, "^EC"),
-    ICM = perl(x, "^ICM"),
-    AMT = perl(x, "^AMT"),
-    HLH = perl(x, "^HLH"),
-    LUI = perl(x, "^LUI"),
-    DSB = perl(x, "^DSB"),
-    IDC = perl(x, "^IDC"),
-    PLA = perl(x, "^PLA"),
-    COB = perl(x, "^COB"),
-    LS = perl(x, "^LS"),
-    LX = perl(x, "^LX"),
-    LE = perl(x, "^LE"),
-    HD = perl(x, "^HD"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-}
-
-#' @noRd
-index_837I_x223 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BHT = perl(x, "^BHT"),
-    NM140 = perl(x, r"(^NM1\*40)"),
-    NM141 = perl(x, r"(^NM1\*41)"),
-    NM171 = perl(x, r"(^NM1\*71)"),
-    NM185 = perl(x, r"(^NM1\*85)"),
-    NM1IL = perl(x, r"(^NM1\*IL)"),
-    NM1PR = perl(x, r"(^NM1\*PR)"),
-    NM1QC = perl(x, r"(^NM1\*QC)"),
-    PERIC = perl(x, r"(^PER\*IC)"),
-    HL = perl(x, "^HL"),
-    N3 = perl(x, "^N3"),
-    N4 = perl(x, "^N4"),
-    REF1G = perl(x, r"(^REF\*1G)"),
-    REF2U = perl(x, r"(^REF\*2U)"),
-    REF6R = perl(x, r"(^REF\*6R)"),
-    REF9A = perl(x, r"(^REF\*9A)"),
-    REFD9 = perl(x, r"(^REF\*D9)"),
-    REFEI = perl(x, r"(^REF\*EI)"),
-    REFG2 = perl(x, r"(^REF\*G2)"),
-    REFLU = perl(x, r"(^REF\*LU)"),
-    REFY4 = perl(x, r"(^REF\*Y4)"),
-    SBRP = perl(x, r"(^SBR\*P\*)"),
-    SBRS = perl(x, r"(^SBR\*S\*)"),
-    PAT = perl(x, "^PAT"),
-    PWK = perl(x, "^PWK"),
-    AMT = perl(x, "^AMT"),
-    CN1 = perl(x, "^CN1"),
-    K3 = perl(x, "^K3"),
-    NTE = perl(x, "^NTE"),
-    CR1 = perl(x, "^CR1"),
-    CR2 = perl(x, "^CR2"),
-    CR3 = perl(x, "^CR3"),
-    CRC = perl(x, "^CRC"),
-    HCP = perl(x, "^HCP"),
-    DMG = perl(x, "^DMG"),
-    DMH = perl(x, "^DMH"),
-    CAS = perl(x, "^CAS"),
-    OI = perl(x, "^OI"),
-    MOA = perl(x, "^MOA"),
-    MEA = perl(x, "^MEA"),
-    CLM = perl(x, "^CLM"),
-    HIABJ = perl(x, r"(^HI\*ABJ)"),
-    HIABK = perl(x, r"(^HI\*ABK)"),
-    HIBE = perl(x, r"(^HI\*BE)"),
-    HIBF = perl(x, r"(^HI\*BF)"),
-    HIBG = perl(x, r"(^HI\*BG)"),
-    HIBH = perl(x, r"(^HI\*BH)"),
-    HIBK = perl(x, r"(^HI\*BK)"),
-    HIBN = perl(x, r"(^HI\*BN)"),
-    HIPR = perl(x, r"(^HI\*PR)"),
-    PRVBI = perl(x, r"(^PRV\*BI)"),
-    PRVAT = perl(x, r"(^PRV\*AT)"),
-    LX = perl(x, "^LX"),
-    SV1 = perl(x, "^SV1"),
-    SV2 = perl(x, "^SV2"),
-    SV5 = perl(x, "^SV5"),
-    DTP096 = perl(x, r"(^DTP\*096)"),
-    DTP434 = perl(x, r"(^DTP\*434)"),
-    DTP435 = perl(x, r"(^DTP\*435)"),
-    DTP472 = perl(x, r"(^DTP\*472)"),
-    DTP523 = perl(x, r"(^DTP\*523)"),
-    CR8 = perl(x, r"(^CR8)"),
-    CL1 = perl(x, "^CL1"),
-    NTE = perl(x, "^NTE"),
-    CTP = perl(x, "^CTP"),
-    LIN = perl(x, "^LIN"),
-    LU = perl(x, "^LU"),
-    LQ = perl(x, "^LQ"),
-    FRM = perl(x, "^FRM"),
-    QTY = perl(x, "^QTY"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-}
-
-#' @noRd
-index_837P_x222 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    HCP = perl(x, "^HCP"),
-    AMT = perl(x, "^AMT"),
-    OI = perl(x, "^OI"),
-    CAS = perl(x, "^CAS"),
-    CR1 = perl(x, "^CR1"),
-    CRC = perl(x, "^CRC"),
-    QTYPT = perl(x, r"(^QTY\*PT)"),
-    CR2 = perl(x, "^CR2"),
-    PAT = perl(x, "^PAT"),
-    PWK = perl(x, "^PWK"),
-    CR3 = perl(x, "^CR3"),
-    LQUT = perl(x, r"(^LQ\*UT)"),
-    FRM = perl(x, "^FRM"),
-    MEA = perl(x, "^MEA"),
-    NTE = perl(x, "^NTE"),
-    DMG = perl(x, "^DMG"),
-    PRVBI = perl(x, r"(^PRV\*BI)"),
-    PRVPE = perl(x, r"(^PRV\*PE)"),
-    LIN = perl(x, "^LIN"),
-    CTP = perl(x, "^CTP"),
-    N3 = perl(x, "^N3"),
-    N4 = perl(x, "^N4"),
-    BHT = perl(x, "^BHT"),
-    CLM = perl(x, "^CLM"),
-    PERIC = perl(x, r"(^PER\*IC)"),
-    HL = perl(x, "^HL"),
-    LX = perl(x, "^LX"),
-    SV1 = perl(x, "^SV1"),
-    SVD = perl(x, "^SVD"),
-    SBRP = perl(x, r"(^SBR\*P\*)"),
-    SBRS = perl(x, r"(^SBR\*S\*)"),
-    HIABK = perl(x, r"(^HI\*ABK)"),
-    HIBK = perl(x, r"(^HI\*BK)"),
-    NM140 = perl(x, r"(^NM1\*40)"),
-    NM141 = perl(x, r"(^NM1\*41)"),
-    NM145 = perl(x, r"(^NM1\*45)"),
-    NM177 = perl(x, r"(^NM1\*77)"),
-    NM182 = perl(x, r"(^NM1\*82)"),
-    NM185 = perl(x, r"(^NM1\*85)"),
-    NM187 = perl(x, r"(^NM1\*87)"),
-    NM1DN = perl(x, r"(^NM1\*DN)"),
-    NM1DK = perl(x, r"(^NM1\*DK)"),
-    NM1IL = perl(x, r"(^NM1\*IL)"),
-    NM1PR = perl(x, r"(^NM1\*PR)"),
-    NM1PW = perl(x, r"(^NM1\*PW)"),
-    NM1QC = perl(x, r"(^NM1\*QC)"),
-    REF1G = perl(x, r"(^REF\*1G)"),
-    REF6R = perl(x, r"(^REF\*6R)"),
-    REF9A = perl(x, r"(^REF\*9A)"),
-    REFD9 = perl(x, r"(^REF\*D9)"),
-    REFEI = perl(x, r"(^REF\*EI)"),
-    REFG2 = perl(x, r"(^REF\*G2)"),
-    DTP096 = perl(x, r"(^DTP\*096)"),
-    DTP431 = perl(x, r"(^DTP\*431)"),
-    DTP434 = perl(x, r"(^DTP\*434)"),
-    DTP435 = perl(x, r"(^DTP\*435)"),
-    DTP439 = perl(x, r"(^DTP\*439)"),
-    DTP453 = perl(x, r"(^DTP\*453)"),
-    DTP454 = perl(x, r"(^DTP\*454)"),
-    DTP455 = perl(x, r"(^DTP\*455)"),
-    DTP461 = perl(x, r"(^DTP\*461)"),
-    DTP463 = perl(x, r"(^DTP\*463)"),
-    DTP472 = perl(x, r"(^DTP\*472)"),
-    DTP573 = perl(x, r"(^DTP\*573)"),
-    DTP607 = perl(x, r"(^DTP\*607)"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
   )
 }

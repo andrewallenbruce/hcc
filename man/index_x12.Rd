@@ -10,14 +10,18 @@ index_x12(text)
 \item{text}{\verb{<chr>} string of raw X12-820 text}
 }
 \value{
-\code{hcc::X12Index} S7 object
+\verb{<hcc::X12Index>} S7 object
 }
 \description{
 X12 Indexer
 }
 \examples{
-purrr::map(hcc::x12_820, index_x12)
-purrr::map(hcc::x12_834, index_x12)
-purrr::map(hcc::x12_837I, index_x12)
-purrr::map(hcc::x12_837P, index_x12)
+purrr::map(
+  c(hcc::x12_820,
+    hcc::x12_834,
+    hcc::x12_837I,
+    hcc::x12_837P
+   ),
+   index_x12
+ )
 }
