@@ -100,22 +100,11 @@ payee_payer_820_218 <- function(x) {
 #' unlist_ <- hcc:::unlist_
 #' whichv_ <- collapse::whichv
 #'
-#' x = hcc::x12_820
-#' x = x[whichv_(x12_type(x), "820-X218")]
+#' x = hcc::x12_820[whichv_(x12_type(hcc::x12_820), "820-X218")]
 #' i = purrr::map(x, index_x12)
 #' p = purrr::map(i, parse_820)
-#' p = p$sample_820_01
-#' list(
-#'   ISA = unlist_(p$Header$ISA),
-#'   GS = unlist_(p$Header$GS),
-#'   ST = unlist_(p$Header$ST),
-#'   BPR = unlist_(p$Header$BPR),
-#'   TRN = unlist_(p$Header$TRN),
-#'   REF14 = unlist_(p$Header$REF14),
-#'   SE = unlist_(p$Trailer$SE),
-#'   GE = unlist_(p$Trailer$GE),
-#'   IEA = unlist_(p$Trailer$IEA)
-#'  )
+#' p$sample_820_01
+#' p$sample_820_02
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -123,52 +112,75 @@ parse_820 <- function(x) {
   }
 
   header <- list(
-    ISA = split_i(x@text, x@index$ISA),
-    GS = split_i(x@text, x@index$GS),
-    ST = split_i(x@text, x@index$ST),
-    BPR = split_i(x@text, x@index$BPR),
-    TRN = split_i(x@text, x@index$TRN),
-    REF14 = split_i(x@text, x@index$REF14)
+    ISA = split_1(x@text, x@index$ISA),
+    GS = split_1(x@text, x@index$GS),
+    ST = split_1(x@text, x@index$ST),
+    BPR = split_1(x@text, x@index$BPR),
+    TRN = split_1(x@text, x@index$TRN),
+    REF14 = split_1(x@text, x@index$REF14)
   )
 
   trailer <- list(
-    SE = split_i(x@text, x@index$SE),
-    GE = split_i(x@text, x@index$GE),
-    IEA = split_i(x@text, x@index$IEA)
+    SE = split_1(x@text, x@index$SE),
+    GE = split_1(x@text, x@index$GE),
+    IEA = split_1(x@text, x@index$IEA)
   )
 
-  entity <- payee <- payer <- NULL
+  payee <- list(
+    N1PE = split_1(x@text, x@index$N1PE),
+    N3PE = split_1(x@text, x@index$N1PE + 1L),
+    N4PE = split_1(x@text, x@index$N1PE + 2L)
+  )
+
+  entity <- payer <- NULL
 
   if (x@type == "820-X218") {
-    payee <- split_n(x@text, seq.int(x@index$N1PE, x@index$N1PE + 2L))
-    payer <- split_n(x@text, seq.int(x@index$N1PR, x@index$N1PR + 2L))
+    payer <- list(
+      N1PR = split_1(x@text, x@index$N1PR),
+      N3PR = split_1(x@text, x@index$N1PR + 1L),
+      N4PR = split_1(x@text, x@index$N1PR + 2L)
+    )
 
-    entity <- purrr::map(
-      subset_(
-        x@text,
-        x@index$ENT,
-        c(x@index$ENT[-1L], x@index$SE) - 1L
-      ),
-      function(x) {
-        rlang::list2(
-          ENT = split_i(x, perl(x, "^ENT")),
-          NM1 = split_i(x, perl(x, "^NM1")),
-          !!!split_i(x, perl(x, "^REF")),
-          DTM = split_i(x, perl(x, "^DTM")),
-        )
-      }
-    ) |>
-      purrr::list_flatten()
+    ent <- fill_sequence(
+      x@index$ENT,
+      c(x@index$ENT[-1L], x@index$SE) - 1L
+    )
+
+    entity <- purrr::map(ent, function(idx) {
+      .subset(x@text, idx) |>
+        strsplit("*", fixed = TRUE)
+    }) |>
+      rlang::set_names(cheapr::paste_("ENT_", seq_along(ent))) |>
+      purrr::list_flatten() |>
+      purrr::map(set_zchar)
   }
 
-  list(
-    Header = header,
-    Payee = payee,
-    Payer = payer,
-    Entity = entity,
-    Trailer = trailer
-  ) |>
-    purrr::compact()
+  purrr::compact(c(header, payee, payer, entity, trailer))
+}
+
+#' @noRd
+split_1 <- function(
+  x,
+  i,
+  arg = rlang::caller_arg(i),
+  call = rlang::caller_env()
+) {
+  if (is.null(i)) {
+    cli::cli_abort("{.arg {arg}} is NULL", arg = arg, call = call)
+  }
+
+  set_zchar(
+    trimws(
+      .subset2(
+        strsplit(
+          .subset(x, i),
+          "*",
+          fixed = TRUE
+        ),
+        1L
+      )
+    )
+  )
 }
 
 # ST-01 = 820

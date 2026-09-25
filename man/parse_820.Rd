@@ -45,20 +45,9 @@ x12_type <- hcc:::x12_type
 unlist_ <- hcc:::unlist_
 whichv_ <- collapse::whichv
 
-x = hcc::x12_820
-x = x[whichv_(x12_type(x), "820-X218")]
+x = hcc::x12_820[whichv_(x12_type(hcc::x12_820), "820-X218")]
 i = purrr::map(x, index_x12)
 p = purrr::map(i, parse_820)
-p = p$sample_820_01
-list(
-  ISA = unlist_(p$Header$ISA),
-  GS = unlist_(p$Header$GS),
-  ST = unlist_(p$Header$ST),
-  BPR = unlist_(p$Header$BPR),
-  TRN = unlist_(p$Header$TRN),
-  REF14 = unlist_(p$Header$REF14),
-  SE = unlist_(p$Trailer$SE),
-  GE = unlist_(p$Trailer$GE),
-  IEA = unlist_(p$Trailer$IEA)
- )
+p$sample_820_01
+p$sample_820_02
 }
