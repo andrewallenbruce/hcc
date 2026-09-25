@@ -49,7 +49,7 @@ A single remittance line item within a member's payment record.
 
 - coverage_period:
 
-  `<iv>` Coverage period start and end date
+  `<class_iv>` Coverage period start and end date
 
 - adjustment_amount:
 

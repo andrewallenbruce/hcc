@@ -19,7 +19,7 @@ audit/reconciliation (030)
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9052</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9053</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@ audit/reconciliation (030)
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>X12-834 (X220A1) Benefit Enrollment Parser</h1>
-      <small class="dont-index">Source: <a href="https://github.com/andrewallenbruce/hcc/blob/master/R/parsers.R" class="external-link"><code>R/parsers.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/andrewallenbruce/hcc/blob/master/R/parser_834.R" class="external-link"><code>R/parser_834.R</code></a></small>
       <div class="d-none name"><code>parse_834.Rd</code></div>
     </div>
 
@@ -60,14 +60,14 @@ audit/reconciliation (030)
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">parse_834</span><span class="op">(</span><span class="va">index</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">parse_834</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-index">index<a class="anchor" aria-label="anchor" href="#arg-index"></a></dt>
+<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> string of raw X12-834 text</p></dd>
 
 </dl></div>
@@ -95,7 +95,2077 @@ spikes that stress overnight batch jobs.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># purrr::map(hcc::x12_834, index_x12)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">idx</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">idx</span>, <span class="va">parse_834</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "15"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "18"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20020601"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19980520"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "11"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&gt;"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SENDERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RECEIVERNAME"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20041227"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1324"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20020601"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1200"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000103"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "HEALTHPLAN"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "250108"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1430"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "HEALTHPLAN"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250108"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1430"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250108"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1430"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "68"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_01$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999991"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "250124"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1927"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999991"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250124"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "192730"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS834-DA-20250124-Sample PACE-001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250124"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19273000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$QTY$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Header$QTY$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "29"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_02$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "250812"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1936"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250812"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "193641"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS834-DA-20250812-Sample South LA PACE-957-001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250812"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19364100"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$QTY$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Header$QTY$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "32"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_03$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "251022"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20251022"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "200019"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS834-DA-20251022-Sample South LA PACE-957-001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20251022"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20001900"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$QTY$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Header$QTY$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "31"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_04$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000003"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "251023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1959"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999992"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20251023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "195928"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS834-DA-20251023-Sample South LA PACE-957-001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20251023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "19592800"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$QTY$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Header$QTY$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "31"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_05$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000004"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ZZ"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999991"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`09`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "250206"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`10`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2008"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`11`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "^"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`12`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00501"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`13`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`14`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`15`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "P"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ISA$`16`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CADHCS_5010_834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "999999991"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250206"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "200823"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$GS$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ST$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "834"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ST$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$ST$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "005010X220A1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DHCS834-DA-20250206-Sample PACE-001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`03`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20250206"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`04`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "20082300"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`05`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`06`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`07`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$BGN$`08`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$QTY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$QTY$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Header$QTY$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$SE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "64"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$SE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$GE$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$GE$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$IEA$`01`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_834_06$Trailer$IEA$`02`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "000000005"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

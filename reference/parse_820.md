@@ -8,12 +8,12 @@ Medicaid agencies.
 ## Usage
 
 ``` r
-parse_820(text)
+parse_820(x)
 ```
 
 ## Arguments
 
-- text:
+- x:
 
   `<chr>` string of raw X12-820 text
 
@@ -59,5 +59,6 @@ Typical loop structure within an 820:
 ## Examples
 
 ``` r
-# purrr::map(hcc::x12_820[13:17], parse_820)
+# idx = purrr::map(hcc::x12_820, index_x12)
+# purrr::map(idx, parse_820)
 ```

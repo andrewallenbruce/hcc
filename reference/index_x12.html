@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9052</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9053</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,19 +58,26 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>hcc::X12Index</code> S7 object</p>
+    <p><code>&lt;hcc::X12Index&gt;</code> S7 object</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>,</span></span>
+<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>,</span></span>
+<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span>,</span></span>
+<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="va">index_x12</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX10_debt_covered_by_affiliate1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1078        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 42          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1078    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 42      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                                 </span>
@@ -95,10 +102,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX11_debt_covered_by_affiliate2`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1119        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 43          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1119    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 43      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                                 </span>
@@ -124,10 +131,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX12_csr_manual_adj`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 865         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 34          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 865     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 34      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                 </span>
@@ -152,10 +159,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX1_different_types_of_pmt_by_HIX`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 989         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 41          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 989     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 41      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                 </span>
@@ -180,10 +187,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX2_payments_exceed_charges1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 963         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 38          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 963     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 38      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                         </span>
@@ -208,10 +215,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX3_payments_exceed_charges2`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 937         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 35          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 937     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 35      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                     </span>
@@ -236,10 +243,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX4_charges_exceed_payments1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 788         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 32          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 788     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 32      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2         </span>
@@ -265,10 +272,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX5_charges_exceed_payments2`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 792         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 32          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 792     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 32      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2         </span>
@@ -294,10 +301,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX6_aptc_adjustments1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1069        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 42          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1069    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 42      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                                 </span>
@@ -322,10 +329,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX7_aptc_adjustments2`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1043        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 39          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1043    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 39      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                             </span>
@@ -350,10 +357,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX8_outstanding_debt_owed1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 960         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 38          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 960     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 38      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                         </span>
@@ -378,10 +385,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX9_outstanding_debt_owed2`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1033        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 39          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 1033    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 39      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                         </span>
@@ -407,10 +414,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 3118        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 104         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 3118    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 104     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ISA[1]</span>: 1                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GS[1]</span>: 2                                                           </span>
@@ -437,10 +444,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 4757        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 166         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 4757    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 166     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ISA[1]</span>: 1                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GS[1]</span>: 2                                                           </span>
@@ -468,10 +475,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 33189       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 1146        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 33189   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 1146    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     ISA[1]</span>: 1                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      GS[1]</span>: 2                                                           </span>
@@ -499,10 +506,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 2819        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 95          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 2819    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 95      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ISA[1]</span>: 1                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GS[1]</span>: 2                                                           </span>
@@ -529,10 +536,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: X12-820-X218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 19564       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 647         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">      Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Characters</span>: 19564   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Segments</span>: 647     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  Problems</span>: 0       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ISA[1]</span>: 1                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GS[1]</span>: 2                                                           </span>
@@ -562,7 +569,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $stedi_820_07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
@@ -995,7 +1001,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 67                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 68                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
@@ -1568,7 +1573,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 49                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 50                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX10a_drug_adm_office`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>

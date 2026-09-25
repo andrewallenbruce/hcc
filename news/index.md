@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9053 (2026-09-25)
+
+- Convert parsers to accept S7 indices
+
 ## hcc 0.0.0.9052 (2026-09-24)
 
 - [`index_x12()`](https://andrewallenbruce.github.io/hcc/reference/index_x12.md)
