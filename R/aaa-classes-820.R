@@ -33,25 +33,27 @@
 #' @examples
 #' RemittanceEntry(
 #'   reference_number = "TESTPLAN-SREGLR-2602200043000P",
-#'   payment_amount = 401.72,
 #'   original_amount = 8488.25,
+#'   adjustment_amount = -8086.53,
+#'   payment_amount = 401.72,
+#'   adjustment_reason = "53",
 #'   rate_code = "957",
 #'   aid_code = "17",
 #'   plan_type = "2",
 #'   payment_description = "Dual-State Only",
 #'   coverage_start = "2026-01-01",
 #'   coverage_end = "2026-01-31",
-#'   coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
-#'   adjustment_amount = -8086.53,
-#'   adjustment_reason = "53"
+#'   coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L))
 #' )
 #' @name RemittanceEntry
 #' @export
 RemittanceEntry := S7::new_class(
   properties = list(
     reference_number = S7::class_character,
-    payment_amount = S7::class_double,
     original_amount = S7::class_double,
+    adjustment_amount = S7::class_double,
+    payment_amount = S7::class_double,
+    adjustment_reason = S7::class_character,
     rate_code = S7::class_character,
     aid_code = S7::class_character,
     plan_type = S7::class_character,
@@ -61,9 +63,7 @@ RemittanceEntry := S7::new_class(
     coverage_period = S7::new_property(
       class_iv,
       default = quote(ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L)))
-    ),
-    adjustment_amount = S7::class_double,
-    adjustment_reason = S7::class_character
+    )
   )
 )
 
@@ -78,7 +78,7 @@ RemittanceEntry := S7::new_class(
 #' @param last_name `<chr>` `NM1-03` Member last name
 #' @param first_name `<chr>` `NM1-04` Member first name
 #' @param middle_name `<chr>` `NM1-05` Member middle name
-#' @param remittance_entries List of `<RemittanceEntry>` line items (one per
+#' @param remittances List of `<RemittanceEntry>` line items (one per
 #'   RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
 #' @usage NULL
@@ -88,7 +88,21 @@ RemittanceEntry := S7::new_class(
 #'   member_id = "TESTMBR000000001",
 #'   last_name = "LASTNAME01",
 #'   first_name = "FIRSTNAME01",
-#'   remittance_entries = list(
+#'   remittances = list(
+#'     RemittanceEntry(
+#'       reference_number = "TESTPLAN-SREGLR-2602200043000P",
+#'       payment_amount = 401.72,
+#'       original_amount = 8488.25,
+#'       rate_code = "957",
+#'       aid_code = "17",
+#'       plan_type = "2",
+#'       payment_description = "Dual-State Only",
+#'       coverage_start = "2026-01-01",
+#'       coverage_end = "2026-01-31",
+#'       coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+#'       adjustment_amount = -8086.53,
+#'       adjustment_reason = "53"
+#'     ),
 #'     RemittanceEntry(
 #'       reference_number = "TESTPLAN-SREGLR-2602200043000P",
 #'       payment_amount = 401.72,
@@ -114,7 +128,7 @@ PaymentDetail := S7::new_class(
     last_name = S7::class_character,
     first_name = S7::class_character,
     middle_name = S7::class_character,
-    remittance_entries = S7::class_list
+    remittances = S7::class_list
   )
 )
 
@@ -165,7 +179,7 @@ PaymentDetail := S7::new_class(
 #'       member_id = "TESTMBR000000001",
 #'       last_name = "LASTNAME01",
 #'       first_name = "FIRSTNAME01",
-#'       remittance_entries = list(
+#'       remittances = list(
 #'         RemittanceEntry(
 #'           reference_number = "TESTPLAN-SREGLR-2602200043000P",
 #'           payment_amount = 401.72,

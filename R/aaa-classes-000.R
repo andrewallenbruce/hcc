@@ -37,7 +37,10 @@ S7::method(format, X12Index) <- function(x) {
   names_ <- format(
     cheapr::paste_(
       names(seg),
-      "[", unname(seg), "]"),
+      "[",
+      unname(seg),
+      "]"
+    ),
     justify = "right"
   )
 
@@ -60,8 +63,18 @@ class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
 #' @noRd
 prop_date <- S7::new_property(
   S7::class_Date,
+  default = quote(Sys.Date()),
   setter = function(self, name, value) {
     S7::prop(self, name) <- parse_date(value)
+    self
+  }
+)
+
+#' @noRd
+prop_integer <- S7::new_property(
+  S7::class_integer,
+  setter = function(self, name, value) {
+    S7::prop(self, name) <- as.integer(value)
     self
   }
 )
@@ -70,7 +83,7 @@ prop_date <- S7::new_property(
 DiagnosticCategories := S7::new_class(
   properties = list(
     model = S7::class_character,
-    hcc = S7::class_integer,
+    hcc = prop_integer,
     categories = S7::class_list
   )
 )
@@ -111,7 +124,7 @@ DiagnosticCategories := S7::new_class(
 PatientDemographics := S7::new_class(
   properties = list(
     version = S7::class_character,
-    age = S7::class_numeric,
+    age = prop_integer,
     sex = S7::class_character,
     dual_code = S7::class_character,
     orec_code = S7::class_character,
@@ -126,7 +139,7 @@ PatientDemographics := S7::new_class(
     has_esrd = S7::class_logical,
     is_lti = S7::class_logical,
     low_income = S7::class_logical,
-    esrd_months = S7::class_integer,
+    esrd_months = prop_integer,
     category = S7::class_character
   )
 )
@@ -142,8 +155,8 @@ PatientDemographics := S7::new_class(
 #' @returns An `<HCCDetail>` S7 object
 #' @usage NULL
 #' @examples
-#' HCCDetail( # HCC203
-#'  hcc = 203L,
+#' HCCDetail(
+#'  hcc = "203",
 #'  label = "Coma, Brain Compression/Anoxic Damage",
 #'  is_chronic = TRUE,
 #'  coefficient = 0.486
@@ -152,7 +165,7 @@ PatientDemographics := S7::new_class(
 #' @export
 HCCDetail := S7::new_class(
   properties = list(
-    hcc = S7::class_integer,
+    hcc = prop_integer,
     label = S7::class_character,
     is_chronic = S7::class_logical,
     coefficient = S7::class_double

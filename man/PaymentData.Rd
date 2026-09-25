@@ -67,7 +67,7 @@ PaymentData(
       member_id = "TESTMBR000000001",
       last_name = "LASTNAME01",
       first_name = "FIRSTNAME01",
-      remittance_entries = list(
+      remittances = list(
         RemittanceEntry(
           reference_number = "TESTPLAN-SREGLR-2602200043000P",
           payment_amount = 401.72,

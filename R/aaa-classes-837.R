@@ -9,8 +9,8 @@
 #' @param claim_type `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I,
 #'   837P)
 #' @param provider_specialty `<chr>` Provider taxonomy or specialty code
-#' @param performing_provider_npi `<chr>` NPI for performing provider
-#' @param billing_provider_npi `<chr>` NPI for billing provider
+#' @param performing_provider_npi `<int>` NPI for performing provider
+#' @param billing_provider_npi `<int>` NPI for billing provider
 #' @param patient_id `<chr>` Unique identifier for the patient
 #' @param facility_type `<chr>` Type of facility where service was rendered
 #' @param service_type `<chr>` Type of service provided (facility type + service
@@ -18,7 +18,7 @@
 #' @param service_date `<Date>` Date service was performed (YYYY-MM-DD)
 #' @param place_of_service `<chr>` Place of service code
 #' @param quantity `<num>` Number of units provided
-#' @param quantity_unit `<chr>` Unit of measure for quantity
+#' @param unit `<chr>` Unit of measure for quantity
 #' @param modifiers `<chr>` List of procedure code modifiers
 #' @param allowed_amount `<num>` Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
@@ -26,40 +26,46 @@
 #' @examples
 #' ServiceLevelData(
 #'   claim_id = "756048Q",
-#'   procedure_code = c("85025", "93005"),
+#'   procedure_code = "93005",
+#'   ndc = "85972-161",
+#'   linked_diagnosis_codes = c("3669", "4019", "79431"),
 #'   claim_diagnosis_codes = c("3669", "4019", "79431"),
 #'   claim_type = "837I",
 #'   provider_specialty = "203BA0200N",
-#'   billing_provider_npi = "9876540809",
+#'   performing_provider_npi = "1876540809",
+#'   billing_provider_npi = "1234567891",
 #'   patient_id = "030005074A",
 #'   facility_type = "14",
+#'   service_type = "03",
 #'   service_date = "1996-09-11",
-#'   quantity = c(1L, 3L),
-#'   quantity_unit = "UN",
+#'   place_of_service = "11",
+#'   quantity = "4",
+#'   unit = "UN",
+#'   modifiers = c("F1", "QQ"),
 #'   allowed_amount = 89.93
 #' )
 #' @name ServiceLevelData
 #' @export
 ServiceLevelData := S7::new_class(
   properties = list(
+    service_date = prop_date,
     claim_id = S7::class_character,
-    procedure_code = S7::class_character,
-    ndc = S7::class_character,
-    linked_diagnosis_codes = S7::class_character,
-    claim_diagnosis_codes = S7::class_character,
-    claim_type = S7::class_character,
-    provider_specialty = S7::class_character,
-    performing_provider_npi = S7::class_character,
-    billing_provider_npi = S7::class_character,
     patient_id = S7::class_character,
+    claim_type = S7::class_character,
+    place_of_service = S7::class_character,
     facility_type = S7::class_character,
     service_type = S7::class_character,
-    service_date = prop_date,
-    place_of_service = S7::class_character,
-    quantity = S7::class_numeric,
-    quantity_unit = S7::class_character,
+    linked_diagnosis_codes = S7::class_character,
+    claim_diagnosis_codes = S7::class_character,
+    provider_specialty = S7::class_character,
+    performing_provider_npi = prop_integer,
+    billing_provider_npi = prop_integer,
+    procedure_code = S7::class_character,
     modifiers = S7::class_character,
-    allowed_amount = S7::class_numeric
+    ndc = S7::class_character,
+    quantity = prop_integer,
+    unit = S7::class_character,
+    allowed_amount = S7::class_double
   )
 )
 
@@ -85,8 +91,8 @@ ServiceLevelData := S7::new_class(
 #'   records
 #' @returns A `<RAFResult>` S7 object
 #' @usage NULL
-#' @examplesIf FALSE
-#' RAFResult()
+#' @examples
+#' RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
 #' @name RAFResult
 #' @export
 RAFResult := S7::new_class(
@@ -105,6 +111,6 @@ RAFResult := S7::new_class(
     model_name = S7::class_character,
     version = S7::class_character,
     diagnosis_codes = S7::class_character,
-    service_level_data = ServiceLevelData
+    service_level_data = S7::class_list
   )
 )

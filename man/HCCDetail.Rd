@@ -21,8 +21,8 @@ An \verb{<HCCDetail>} S7 object
 HCC Category Detail
 }
 \examples{
-HCCDetail( # HCC203
- hcc = 203L,
+HCCDetail(
+ hcc = "203",
  label = "Coma, Brain Compression/Anoxic Damage",
  is_chronic = TRUE,
  coefficient = 0.486

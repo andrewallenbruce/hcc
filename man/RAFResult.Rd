@@ -44,7 +44,5 @@ A \verb{<RAFResult>} S7 object
 Risk Adjustment Factor score results
 }
 \examples{
-\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
-RAFResult()
-\dontshow{\}) # examplesIf}
+RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
 }

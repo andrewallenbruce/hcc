@@ -14,7 +14,7 @@
 
 \item{middle_name}{\verb{<chr>} \code{NM1-05} Member middle name}
 
-\item{remittance_entries}{List of \verb{<RemittanceEntry>} line items (one per
+\item{remittances}{List of \verb{<RemittanceEntry>} line items (one per
 RMR/DTM set)}
 }
 \value{
@@ -31,7 +31,21 @@ PaymentDetail(
   member_id = "TESTMBR000000001",
   last_name = "LASTNAME01",
   first_name = "FIRSTNAME01",
-  remittance_entries = list(
+  remittances = list(
+    RemittanceEntry(
+      reference_number = "TESTPLAN-SREGLR-2602200043000P",
+      payment_amount = 401.72,
+      original_amount = 8488.25,
+      rate_code = "957",
+      aid_code = "17",
+      plan_type = "2",
+      payment_description = "Dual-State Only",
+      coverage_start = "2026-01-01",
+      coverage_end = "2026-01-31",
+      coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+      adjustment_amount = -8086.53,
+      adjustment_reason = "53"
+    ),
     RemittanceEntry(
       reference_number = "TESTPLAN-SREGLR-2602200043000P",
       payment_amount = 401.72,

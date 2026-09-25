@@ -20,9 +20,9 @@ service}
 
 \item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
 
-\item{performing_provider_npi}{\verb{<chr>} NPI for performing provider}
+\item{performing_provider_npi}{\verb{<int>} NPI for performing provider}
 
-\item{billing_provider_npi}{\verb{<chr>} NPI for billing provider}
+\item{billing_provider_npi}{\verb{<int>} NPI for billing provider}
 
 \item{patient_id}{\verb{<chr>} Unique identifier for the patient}
 
@@ -37,7 +37,7 @@ type = Type of Bill)}
 
 \item{quantity}{\verb{<num>} Number of units provided}
 
-\item{quantity_unit}{\verb{<chr>} Unit of measure for quantity}
+\item{unit}{\verb{<chr>} Unit of measure for quantity}
 
 \item{modifiers}{\verb{<chr>} List of procedure code modifiers}
 
@@ -52,16 +52,22 @@ Healthcare Claim Service Level Data
 \examples{
 ServiceLevelData(
   claim_id = "756048Q",
-  procedure_code = c("85025", "93005"),
+  procedure_code = "93005",
+  ndc = "85972-161",
+  linked_diagnosis_codes = c("3669", "4019", "79431"),
   claim_diagnosis_codes = c("3669", "4019", "79431"),
   claim_type = "837I",
   provider_specialty = "203BA0200N",
-  billing_provider_npi = "9876540809",
+  performing_provider_npi = "1876540809",
+  billing_provider_npi = "1234567891",
   patient_id = "030005074A",
   facility_type = "14",
+  service_type = "03",
   service_date = "1996-09-11",
-  quantity = c(1L, 3L),
-  quantity_unit = "UN",
+  place_of_service = "11",
+  quantity = "4",
+  unit = "UN",
+  modifiers = c("F1", "QQ"),
   allowed_amount = 89.93
 )
 }
