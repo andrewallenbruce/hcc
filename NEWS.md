@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9055 (2026-09-25)
+
+* 834 indexer/parser mvp
+
+
 # hcc 0.0.0.9054 (2026-09-25)
 
 * 820 indexer/parser mvp impl
