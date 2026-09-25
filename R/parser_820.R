@@ -26,7 +26,7 @@
 #' @returns list
 #' @examples
 #' idx = purrr::map(hcc::x12_820, index_x12)
-#' purrr::map(idx[c(10:12, 16:17)], parse_820)
+#' purrr::map(idx[c(10:11, 16L)], parse_820)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -85,13 +85,13 @@ parse_820_218 <- function(x) {
 
   payee <- list(
     N1PE = split_1(x@text, x@index$N1PE),
-    N3PE = split_1(x@text, x@index$N1PE + 1L),
-    N4PE = split_1(x@text, x@index$N1PE + 2L)
+    N3PE = split_1(x@text, x@index$N3PE),
+    N4PE = split_1(x@text, x@index$N4PE)
   )
   payer <- list(
     N1PR = split_1(x@text, x@index$N1PR),
-    N3PR = split_1(x@text, x@index$N1PR + 1L),
-    N4PR = split_1(x@text, x@index$N1PR + 2L)
+    N3PR = split_1(x@text, x@index$N3PR),
+    N4PR = split_1(x@text, x@index$N4PR)
   )
 
   entity <- parse_820_ENT(x)
@@ -135,28 +135,28 @@ index_820_x218 <- function(x) {
     BPR = perl(x, "^BPR"),
     TRN = perl(x, "^TRN"),
     CUR = perl(x, "^CUR"),
-    REF14 = perl(x, r"(REF\*14)"),
-    N1PE = perl(x, r"(N1\*PE)"),
-    N3PE = perl(x, r"(N1\*PE)") + 1L,
-    N4PE = perl(x, r"(N1\*PE)") + 2L,
-    N1PR = perl(x, r"(N1\*PR)"),
-    N3PR = perl(x, r"(N1\*PR)") + 1L,
-    N4PR = perl(x, r"(N1\*PR)") + 2L,
-    PERIC = perl(x, r"(PER\*IC)"),
+    REF14 = perl(x, "^REF\\*14"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N3PE = perl(x, "^N1\\*PE") + 1L,
+    N4PE = perl(x, "^N1\\*PE") + 2L,
+    N1PR = perl(x, "^N1\\*PR"),
+    N3PR = perl(x, "^N1\\*PR") + 1L,
+    N4PR = perl(x, "^N1\\*PR") + 2L,
+    PERIC = perl(x, "^PER\\*IC"),
     ENT = perl(x, "^ENT"),
-    NM1 = perl(x, r"(NM1\*(DO|EY|IL|QE))"),
+    NM1 = perl(x, "^NM1\\*(DO|EY|IL|QE)"),
     RMR = perl(x, "^RMR"),
-    REF18 = perl(x, r"(^REF\*18)"),
-    REF38 = perl(x, r"(REF\*38)"),
-    REFTV = perl(x, r"(REF\*TV)"),
-    REF1L = perl(x, r"(REF\*1L)"),
-    REFABY = perl(x, r"(REF\*ABY)"),
-    REFZZ = perl(x, r"(^REF\*ZZ)"),
-    DTM582 = perl(x, r"(^DTM\*582)"),
-    DTM009 = perl(x, r"(^DTM\*009)"),
-    DTM035 = perl(x, r"(^DTM\*035)"),
-    DTMAAG = perl(x, r"(^DTM\*AAG)"),
-    DTM097 = perl(x, r"(^DTM\*097)"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF38 = perl(x, "^REF\\*38"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    DTM009 = perl(x, "^DTM\\*009"),
+    DTM035 = perl(x, "^DTM\\*035"),
+    DTMAAG = perl(x, "^DTM\\*AAG"),
+    DTM097 = perl(x, "^DTM\\*097"),
     ADX = perl(x, "^ADX"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
@@ -176,27 +176,27 @@ index_820_x306 <- function(x) {
     ST = perl(x, "^ST"),
     BPR = perl(x, "^BPR"),
     TRN = perl(x, "^TRN"),
-    REFTV = perl(x, r"(REF\*TV)"),
-    REF18 = perl(x, r"(^REF\*18)"),
-    REFZZ = perl(x, r"(REF\*ZZ)"),
-    N1PE = perl(x, r"(N1\*PE)"),
-    REFABY = perl(x, r"(REF\*ABY)"),
-    N1RM = perl(x, r"(N1\*RM)"),
-    PERIC = perl(x, r"(PER\*IC)"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REF18 = perl(x, "^REF\\*18"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    N1PE = perl(x, "^N1\\*PE"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    N1RM = perl(x, "^N1\\*RM"),
+    PERIC = perl(x, "^PER\\*IC"),
     ENT = perl(x, "^ENT"),
     NM1 = perl(x, "^NM1"),
-    REF38 = perl(x, r"(REF\*38)"),
-    REFPOL = perl(x, r"(REF\*POL)"),
-    REF1L = perl(x, r"(REF\*1L)"),
-    REFAZ = perl(x, r"(REF\*AZ)"),
-    REF4A = perl(x, r"(REF\*4A)"),
-    REF23 = perl(x, r"(REF\*23)"),
-    REF60 = perl(x, r"(REF\*60)"),
-    REF1W = perl(x, r"(REF\*1W)"),
-    REF0F = perl(x, r"(REF\*0F)"),
+    REF38 = perl(x, "^REF\\*38"),
+    REFPOL = perl(x, "^REF\\*POL"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REFAZ = perl(x, "^REF\\*AZ"),
+    REF4A = perl(x, "^REF\\*4A"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF60 = perl(x, "^REF\\*60"),
+    REF1W = perl(x, "^REF\\*1W"),
+    REF0F = perl(x, "^REF\\*0F"),
     RMR = perl(x, "^RMR"),
-    DTM582 = perl(x, r"(^DTM\*582)"),
-    REF0N = perl(x, r"(REF\*0N)"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    REF0N = perl(x, "^REF\\*0N"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")

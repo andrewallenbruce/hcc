@@ -42,5 +42,5 @@ Typical loop structure within an \code{820-X218}:
 }
 \examples{
 idx = purrr::map(hcc::x12_820, index_x12)
-purrr::map(idx[c(10:12, 16:17)], parse_820)
+purrr::map(idx[c(10:11, 16L)], parse_820)
 }
