@@ -18,37 +18,39 @@ x12_837_subtype <- function(x) {
   )
 }
 
-#' @examplesIf FALSE
-#' x12_type(x = c(x12_820, x12_834, x12_837I, x12_837P))
+# x12_type_1(x12_820[1])
 #' @noRd
-x12_type <- function(x) {
-  if (length(x) == 1L) {
-    x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
-    x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
-    return(
-      switch(
-        x[2],
-        "820" = x12_820_subtype(x),
-        "837" = x12_837_subtype(x[length(x)]),
-        "834" = x12_834_subtype(x),
-        NA_character_
-      )
+x12_type_1 <- function(x) {
+  x <- check_text_(x)
+  x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
+  x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
+  return(
+    switch(
+      x[2],
+      "820" = x12_820_subtype(x),
+      "837" = x12_837_subtype(.subset(x, length(x))),
+      "834" = x12_834_subtype(x),
+      NA_character_
     )
-  }
+  )
+}
 
+# x12_type_2(c(x12_820, x12_834, x12_837I, x12_837P))
+#' @noRd
+x12_type_2 <- function(x) {
   x <- purrr::map(x, \(x) paste0(unlist_(rm_newline(x)), collapse = ""))
   x <- strsplit(unlist(x), "~", fixed = TRUE)
-  i <- unname(purrr::map_int(x, \(x) min(perl(x, "^ST"))))
-  x <- unlist_(purrr::map2(x, i, \(x, i) x[i]))
+  i <- unname(purrr::map_int(x, \(x) collapse::fmin(perl(x, "^ST"))))
+  x <- unlist_(purrr::map2(x, i, \(x, i) .subset(x, i)))
   x <- strsplit(x, "*", fixed = TRUE)
 
   st01 <- unlist_elem(x, 2L)
-  st03 <- purrr::map_chr(x, \(x) x[length(x)])
+  st03 <- purrr::map_chr(x, \(x) .subset(x, length(x)))
   st03[whichv_(startsWith(st03, "005010X"), FALSE)] <- NA_character_
 
   if (anyv_(st01, "820")) {
     i <- whichv_(st01, "820")
-    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
+    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 12L))
     collapse::setv(st01, i, r)
   }
 
@@ -65,6 +67,16 @@ x12_type <- function(x) {
   st01
 }
 
+#' @examplesIf FALSE
+#' x12_type(x = c(x12_820, x12_834, x12_837I, x12_837P))
+#' @noRd
+x12_type <- function(x) {
+  if (length(x) == 1L) {
+    return(x12_type_1(x))
+  }
+  x12_type_2(x)
+}
+
 #' @export
 X12Index := S7::new_class(
   properties = list(
@@ -78,47 +90,29 @@ X12Index := S7::new_class(
 )
 
 S7::method(format, X12Index) <- function(x) {
-  cat("<hcc::X12Index>", sep = "\n")
-  cat(" ", sep = "\n")
+  cli::cli_h1("<hcc::X12Index>")
+  names_ <- format(
+    c("Type", "Characters", "Segments", "Problems"),
+    justify = "right"
+  )
+  numbs_ <- format(unlist_(S7::props(x)[1:4]), justify = "left")
 
-  cat(
-    paste0(
-      format(
-        c("Type", "Characters", "Segments", "Problems"),
-        justify = "right"
-      ),
-      ": ",
-      format(
-        c(
-          x@type,
-          x@characters,
-          x@segments,
-          x@problems
-        ),
-        justify = "left"
-      )
-    ),
-    sep = "\n"
+  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
+  cli::cat_rule()
+
+  idx <- S7::prop(x, "index")
+  seg <- collapse::vlengths(idx)
+
+  snames_ <- format(
+    cheapr::paste_(names(seg), "[", unname(seg), "]"),
+    justify = "right"
+  )
+  snumbs_ <- format(
+    purrr::map_chr(unname(idx), \(x) toString(x, width = 60)),
+    justify = "left"
   )
 
-  cat(" ", sep = "\n")
-
-  i <- collapse::vlengths(x@index)
-
-  cat(
-    paste0(
-      format(
-        paste0(names(i), "[", unname(i), "]"),
-        justify = "right"
-      ),
-      ": ",
-      format(
-        purrr::map_chr(unname(x@index), \(x) toString(x, width = 60)),
-        justify = "left"
-      )
-    ),
-    sep = "\n"
-  )
+  cli::cat_line(cheapr::paste_(cli::style_bold(snames_), ": ", snumbs_))
 }
 
 S7::method(print, X12Index) <- function(x) {
