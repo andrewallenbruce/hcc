@@ -1,4 +1,33 @@
 #' @noRd
+split_1 <- function(
+  x,
+  i,
+  arg = rlang::caller_arg(i),
+  call = rlang::caller_env()
+) {
+  if (is.null(i)) {
+    cli::cli_abort(
+      "{.arg {arg}} is NULL",
+      arg = arg,
+      call = call
+    )
+  }
+
+  set_zchar(
+    trimws(
+      .subset2(
+        strsplit(
+          .subset(x, i),
+          "*",
+          fixed = TRUE
+        ),
+        1L
+      )
+    )
+  )
+}
+
+#' @noRd
 check_text_ <- function(x) {
   if (length(x) > 1L || is.list(x)) {
     paste0(unlist_(x), collapse = "")

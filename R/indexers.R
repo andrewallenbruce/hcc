@@ -14,7 +14,7 @@ parsing_problems <- function(x, i) {
 }
 
 #' @noRd
-new_x12_index <- function(x, text, index, type) {
+new_X12Index <- function(x, text, index, type) {
   index <- sort_index(index)
 
   X12Index(
@@ -68,7 +68,7 @@ index_x12 <- function(text) {
     `837P-X222` = index_837P_x222(x)
   )
 
-  new_x12_index(
+  new_X12Index(
     x = x,
     text = text,
     index = i,

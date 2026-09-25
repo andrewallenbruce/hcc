@@ -1,74 +1,3 @@
-#' 2300B Remittance Detail Loop
-#' 2000B Per-Member Entity Loop
-#' @noRd
-entity_820_218 <- function(x) {
-  fill_sequence(x@index$RMR, x@index$DTM582)
-  RMR <- subset_(x@text, x@index$RMR, x@index$DTM582)
-
-  RA <- purrr::map(RMR, function(x) {
-    rlang::list2(
-      RMR = split_p(x, "^RMR"),
-      !!!split_n(x, "^REF"),
-      DTM = split_p(x, "^DTM\\*582")
-    )
-  }) |>
-    purrr::list_flatten()
-
-  ent <- subset_(
-    x@text,
-    x@index$ENT,
-    c(x@index$ENT[-1L], x@index$SE) - 1L
-  )
-
-  rlang::list2(
-    ENT = split_i(x@text, x@index$ENT),
-    !!!split_n(x@text, c(x@index$REF18, x@index$REFZZ)),
-    NM1 = split_i(x@text, x@index$NM1),
-    !!!RA,
-    ADX = if (!is.null(x@index$ADX)) split_i(x@text, x@index$ADX) else NULL
-  ) |>
-    purrr::compact()
-}
-
-#' @noRd
-entity_820_306 <- function(x) {
-  ent <- subset_(
-    x@text,
-    x@index$ENT,
-    c(x@index$ENT[-1L], x@index$SE) - 1L
-  )
-  rmr <- subset_(x@text, x@index$RMR, x@index$DTM582)
-
-  remits <- purrr::map(rmr, function(x) {
-    rlang::list2(
-      RMR = split_p(x, "^RMR"),
-      !!!split_n(x, perl(x, "^REF")),
-      DTM = split_p(x, "^DTM\\*582")
-    )
-  }) |>
-    purrr::list_flatten()
-
-  rlang::list2(
-    ENT = split_i(x@text, x@index$ENT),
-    NM1 = split_i(x@text, x@index$NM1),
-    !!!remits,
-    ADX = if (!is.null(x@index$ADX)) split_i(x@text, x@index$ADX) else NULL
-  ) |>
-    purrr::compact()
-}
-
-#' 1000A Payee Name Loop
-#' 1000B Payer Name Loop
-#' @noRd
-payee_payer_820_218 <- function(x) {
-  PR <- x@index$N1PR
-  PE <- x@index$N1PE
-  c(
-    split_n(x@text, seq.int(PE, PE + 2L)),
-    split_n(x@text, seq.int(PR, PR + 2L)),
-  )
-}
-
 #' X12-820 (X306/X218) Payment Order/Remittance Advice Parser
 #'
 #' Parses X12-820 (005010X218) transactions for Medicaid/Medicare capitation and
@@ -83,12 +12,12 @@ payee_payer_820_218 <- function(x) {
 #'    - `ENT`: Per-member entity loop start
 #'    - `NM1`: Member name and ID
 #'    - `RMR`: Remittance line item (reference number, payment amount)
-#'    - `REF*18`: Rate code (e.g., "957" = PACE rate)
+#'    - `REF*18`: Rate code (e.g., `957` = PACE rate)
 #'    - `REF*ZZ`: Aid code/plan type composite and description
 #'    - `DTM*582`: Coverage period date range
 #'    - `ADX`: Adjustment amount and reason code
 #'
-#' Typical loop structure within an 820:
+#' Typical loop structure within an `820-X218`:
 #'    - Header: `ISA` > `GS` > `ST` > `BPR` > `TRN` > `N1*PE` > `N1*PR`
 #'    - Per-member: `ENT` > `NM1` > (`RMR` > `REF*18` > `REF*ZZ` > `REF*ZZ` > `DTM*582` > `ADX`)
 #'    - Trailer: `SE` > `GE` > `IEA`
@@ -96,17 +25,51 @@ payee_payer_820_218 <- function(x) {
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' purrr::map(purrr::map(hcc::x12_820, index_x12), parse_820)
+#' idx = purrr::map(hcc::x12_820, index_x12)
+#' purrr::map(idx[c(10:12, 16:17)], parse_820)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
     return(NA_character_)
   }
-  switch(
-    x@type,
-    "820-X306" = parse_820_306(x),
-    "820-X218" = parse_820_218(x)
+  purrr::compact(
+    switch(
+      x@type,
+      "820-X306" = parse_820_306(x),
+      "820-X218" = parse_820_218(x)
+    )
   )
+}
+
+#' @noRd
+parse_TRAILER <- function(x) {
+  list(
+    SE = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "SE")),
+    GE = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "GE")),
+    IEA = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "IEA"))
+  )
+}
+
+#' @noRd
+parse_820_ENT <- function(x) {
+  ent <- .subset2(S7::prop(x, "index"), "ENT")
+  purrr::map(
+    fill_sequence(
+      ent,
+      c(.subset(ent, -1L), .subset2(S7::prop(x, "index"), "SE")) - 1L
+    ),
+    function(idx) {
+      strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
+    }
+  ) |>
+    rlang::set_names(
+      ~ cheapr::paste_(
+        "ENT_",
+        seq_along(.)
+      )
+    ) |>
+    purrr::list_flatten() |>
+    purrr::map(set_zchar)
 }
 
 #' @noRd
@@ -120,12 +83,6 @@ parse_820_218 <- function(x) {
     REF14 = split_1(x@text, x@index$REF14)
   )
 
-  trailer <- list(
-    SE = split_1(x@text, x@index$SE),
-    GE = split_1(x@text, x@index$GE),
-    IEA = split_1(x@text, x@index$IEA)
-  )
-
   payee <- list(
     N1PE = split_1(x@text, x@index$N1PE),
     N3PE = split_1(x@text, x@index$N1PE + 1L),
@@ -137,25 +94,10 @@ parse_820_218 <- function(x) {
     N4PR = split_1(x@text, x@index$N1PR + 2L)
   )
 
-  entity <- purrr::map(
-    fill_sequence(
-      x@index$ENT,
-      c(x@index$ENT[-1L], x@index$SE) - 1L
-    ),
-    function(idx) {
-      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
-    }
-  ) |>
-    rlang::set_names(
-      ~ cheapr::paste_(
-        "ENT_",
-        seq_along(.)
-      )
-    ) |>
-    purrr::list_flatten() |>
-    purrr::map(set_zchar)
+  entity <- parse_820_ENT(x)
+  trailer <- parse_TRAILER(x)
 
-  purrr::compact(c(header, payee, payer, entity, trailer))
+  c(header, payee, payer, entity, trailer)
 }
 
 #' @noRd
@@ -174,60 +116,10 @@ parse_820_306 <- function(x) {
     }
   )
 
-  trailer <- list(
-    SE = split_1(x@text, x@index$SE),
-    GE = split_1(x@text, x@index$GE),
-    IEA = split_1(x@text, x@index$IEA)
-  )
+  entity <- parse_820_ENT(x)
+  trailer <- parse_TRAILER(x)
 
-  entity <- purrr::map(
-    fill_sequence(
-      x@index$ENT,
-      c(x@index$ENT[-1L], x@index$SE) - 1L
-    ),
-    function(idx) {
-      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
-    }
-  ) |>
-    rlang::set_names(
-      ~ cheapr::paste_(
-        "ENT_",
-        seq_along(.)
-      )
-    ) |>
-    purrr::list_flatten() |>
-    purrr::map(set_zchar)
-
-  purrr::compact(c(header, entity, trailer))
-}
-
-#' @noRd
-split_1 <- function(
-  x,
-  i,
-  arg = rlang::caller_arg(i),
-  call = rlang::caller_env()
-) {
-  if (is.null(i)) {
-    cli::cli_abort(
-      "{.arg {arg}} is NULL",
-      arg = arg,
-      call = call
-    )
-  }
-
-  set_zchar(
-    trimws(
-      .subset2(
-        strsplit(
-          .subset(x, i),
-          "*",
-          fixed = TRUE
-        ),
-        1L
-      )
-    )
-  )
+  c(header, entity, trailer)
 }
 
 # ST-01 = 820

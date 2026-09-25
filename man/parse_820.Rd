@@ -27,13 +27,13 @@ Key segments parsed:
 \item \code{ENT}: Per-member entity loop start
 \item \code{NM1}: Member name and ID
 \item \code{RMR}: Remittance line item (reference number, payment amount)
-\item \code{REF*18}: Rate code (e.g., "957" = PACE rate)
+\item \code{REF*18}: Rate code (e.g., \code{957} = PACE rate)
 \item \code{REF*ZZ}: Aid code/plan type composite and description
 \item \code{DTM*582}: Coverage period date range
 \item \code{ADX}: Adjustment amount and reason code
 }
 
-Typical loop structure within an 820:
+Typical loop structure within an \code{820-X218}:
 \itemize{
 \item Header: \code{ISA} > \code{GS} > \code{ST} > \code{BPR} > \code{TRN} > \code{N1*PE} > \code{N1*PR}
 \item Per-member: \code{ENT} > \code{NM1} > (\code{RMR} > \code{REF*18} > \code{REF*ZZ} > \code{REF*ZZ} > \code{DTM*582} > \code{ADX})
@@ -41,5 +41,6 @@ Typical loop structure within an 820:
 }
 }
 \examples{
-purrr::map(purrr::map(hcc::x12_820, index_x12), parse_820)
+idx = purrr::map(hcc::x12_820, index_x12)
+purrr::map(idx[c(10:12, 16:17)], parse_820)
 }
