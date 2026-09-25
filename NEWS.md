@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9054 (2026-09-25)
+
+* 820 indexer/parser mvp impl
+
+
 # hcc 0.0.0.9053 (2026-09-25)
 
 * Convert parsers to accept S7 indices
