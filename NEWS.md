@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9053 (2026-09-25)
+
+* Convert parsers to accept S7 indices
+
+
 # hcc 0.0.0.9052 (2026-09-24)
 
 * `index_x12()` centralized function
