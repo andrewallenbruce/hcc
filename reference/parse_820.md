@@ -59,6 +59,27 @@ Typical loop structure within an 820:
 ## Examples
 
 ``` r
-# idx = purrr::map(hcc::x12_820, index_x12)
-# purrr::map(idx, parse_820)
+x = hcc::x12_820
+x = x[collapse::whichv(x12_type(x), "820-X218")]
+#> Error in x12_type(x): could not find function "x12_type"
+i = purrr::map(x, index_x12)
+p = purrr::map(i, parse_820)
+#> Error in purrr::map(i, parse_820): ℹ In index: 1.
+#> ℹ With name: 820_EX10_debt_covered_by_affiliate1.
+#> Caused by error in `star(x, i)[[1]]`:
+#> ! subscript out of bounds
+p = p$sample_820_01
+#> Error: object 'p' not found
+list(
+  ISA = unlist_(p$Header$ISA),
+  GS = unlist_(p$Header$GS),
+  ST = unlist_(p$Header$ST),
+  BPR = unlist_(p$Header$BPR),
+  TRN = unlist_(p$Header$TRN),
+  REF14 = unlist_(p$Header$REF14),
+  SE = unlist_(p$Trailer$SE),
+  GE = unlist_(p$Trailer$GE),
+  IEA = unlist_(p$Trailer$IEA)
+ )
+#> Error in unlist_(p$Header$ISA): could not find function "unlist_"
 ```
