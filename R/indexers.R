@@ -1,18 +1,68 @@
 #' @noRd
-new_x12_index <- function(i, x, text, xtype) {
-  z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
-  i <- cheapr::sset(i, z)
-  i <- i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
+x12_820_subtype <- function(x) {
+  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 12L))
+}
 
-  cheapr::attrs_add(
+#' @noRd
+x12_834_subtype <- function(x) {
+  paste0(x[2], "-", substr(x[length(x)], start = 7L, stop = 10L))
+}
+
+#' @noRd
+x12_837_subtype <- function(x) {
+  cheapr::val_match(
     x,
-    index = i,
-    characters = nchar(text),
-    segments = collapse::vlengths(i),
-    problems = parse_problems(x, i),
-    type = xtype,
-    class = "x12_index"
+    "005010X222A1" ~ "837P-X222",
+    "005010X223A2" ~ "837I-X223",
+    .default = NA_character_
   )
+}
+
+#' @examplesIf FALSE
+#' x12_type(x = c(x12_820, x12_834, x12_837I, x12_837P))
+#' @noRd
+x12_type <- function(x) {
+  if (length(x) == 1L) {
+    x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
+    x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
+    return(
+      switch(
+        x[2],
+        "820" = x12_820_subtype(x),
+        "837" = x12_837_subtype(x[length(x)]),
+        "834" = x12_834_subtype(x),
+        NA_character_
+      )
+    )
+  }
+
+  x <- purrr::map(x, \(x) paste0(unlist_(rm_newline(x)), collapse = ""))
+  x <- strsplit(unlist(x), "~", fixed = TRUE)
+  i <- unname(purrr::map_int(x, \(x) min(perl(x, "^ST"))))
+  x <- unlist_(purrr::map2(x, i, \(x, i) x[i]))
+  x <- strsplit(x, "*", fixed = TRUE)
+
+  st01 <- unlist_elem(x, 2L)
+  st03 <- purrr::map_chr(x, \(x) x[length(x)])
+  st03[whichv_(startsWith(st03, "005010X"), FALSE)] <- NA_character_
+
+  if (anyv_(st01, "820")) {
+    i <- whichv_(st01, "820")
+    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
+    collapse::setv(st01, i, r)
+  }
+
+  if (anyv_(st01, "834")) {
+    i <- whichv_(st01, "834")
+    r <- paste0(st01[i], "-", substr(st03[i], start = 7L, stop = 10L))
+    collapse::setv(st01, i, r)
+  }
+
+  if (anyv_(st01, "837")) {
+    i <- whichv_(st01, "837")
+    collapse::setv(st01, i, x12_837_subtype(st03[i]))
+  }
+  st01
 }
 
 #' @export
@@ -105,14 +155,23 @@ x12_index <- function(x, text, index, type) {
   )
 }
 
-# purrr::map(hcc::x12_820, index_820)
-#' @rdname parse_820
+#' X12 Indexer
+#'
+#' @param text `<chr>` string of raw X12-820 text
+#' @returns `hcc::X12Index` S7 object
+#' @examples
+#' purrr::map(hcc::x12_820, index_x12)
+#' purrr::map(hcc::x12_834, index_x12)
+#' purrr::map(hcc::x12_837I, index_x12)
+#' purrr::map(hcc::x12_837P, index_x12)
 #' @export
-index_820 <- function(text) {
+index_x12 <- function(text) {
   text <- check_text_(text)
   xtype <- x12_type(text)
 
-  if (xtype %!in_% c("820-X306", "820-X218") || cheapr::is_na(xtype)) {
+  VALID_TYPES <- c("820-X306", "820-X218", "834-X220", "837I-X223", "837P-X222")
+
+  if (xtype %!in_% VALID_TYPES || cheapr::is_na(xtype)) {
     return(NA)
   }
 
@@ -121,14 +180,21 @@ index_820 <- function(text) {
   i <- switch(
     xtype,
     `820-X306` = index_820_x306(x),
-    `820-X218` = index_820_x218(x)
+    `820-X218` = index_820_x218(x),
+    `834-X220` = index_834_x220(x),
+    `837I-X223` = index_837I_x223(x),
+    `837P-X222` = index_837P_x222(x)
   )
+
+  if (xtype %in_% c("820-X306", "820-X218")) {
+    xtype <- paste0("X12-", xtype)
+  }
 
   x12_index(
     x = x,
     text = text,
     index = i,
-    type = paste0("X12-", xtype)
+    type = xtype
   )
 }
 
@@ -213,19 +279,9 @@ index_820_x306 <- function(x) {
   )
 }
 
-#' @rdname parse_834
-#' @export
-index_834 <- function(text) {
-  text <- check_text_(text)
-  xtype <- x12_type(text)
-
-  if (xtype != "834-X220" || cheapr::is_na(xtype)) {
-    return(NA)
-  }
-
-  x <- tilde(text)
-
-  i <- list(
+#' @noRd
+index_834_x220 <- function(x) {
+  list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
     ST = perl(x, "^ST"),
@@ -282,41 +338,6 @@ index_834 <- function(text) {
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")
-  )
-
-  x12_index(
-    x = x,
-    text = text,
-    index = i,
-    type = xtype
-  )
-
-  # new_x12_index(i, x, text, xtype)
-}
-
-#' @rdname parse_837
-#' @export
-index_837 <- function(text) {
-  text <- check_text_(text)
-  xtype <- x12_type(text)
-
-  if (xtype %!in_% c("837I-X223", "837P-X222") || cheapr::is_na(xtype)) {
-    return(NA)
-  }
-
-  x <- tilde(text)
-
-  i <- switch(
-    xtype,
-    `837I-X223` = index_837I_x223(x),
-    `837P-X222` = index_837P_x222(x)
-  )
-
-  x12_index(
-    x = x,
-    text = text,
-    index = i,
-    type = xtype
   )
 }
 

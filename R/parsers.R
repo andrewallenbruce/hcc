@@ -61,7 +61,6 @@ payee_loop_820 <- function(x) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_820, index_820)
 #' # purrr::map(hcc::x12_820[13:17], parse_820)
 #' @export
 parse_820 <- function(text) {
@@ -130,10 +129,9 @@ parse_820 <- function(text) {
 #'    - HCP (Health Care Plan) coverage history
 #'
 #' @param index `<chr>` string of raw X12-834 text
-#' @param text `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_834, index_834)
+#' # purrr::map(hcc::x12_834, index_x12)
 #' @export
 parse_834 <- function(index) {
   if (!inherits(index, "x12_index")) {
@@ -204,15 +202,12 @@ parse_834 <- function(index) {
 #'       - `HI` Health Care Information Codes carries ICD-10 diagnoses (qualifier `ABK` Principal Diagnosis, `ABF` Other Diagnosis).
 #'       - The service section groups `LX` + `SV1` (Professional) / `SV2` (Institutional) / `SV3` (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via `DTP`.
 #' ### Summary
-#'    — a single `SE`
+#'    - a single `SE`
 #'
 #' @param text `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
-#' purrr::map(hcc::x12_837I, index_837)
 #' # purrr::map(hcc::x12_837I[8:17], parse_837)
-#'
-#' purrr::map(hcc::x12_837P, index_837)
 #' # purrr::map(hcc::x12_837P[14:16], parse_837)
 #' @export
 parse_837 <- function(text) {
