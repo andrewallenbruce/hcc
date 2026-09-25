@@ -1,6 +1,3 @@
-#' @include aaa-classes.R
-NULL
-
 #' Remittance Line Item
 #'
 #' A single remittance line item within a member's payment record.

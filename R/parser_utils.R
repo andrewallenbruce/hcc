@@ -1,14 +1,4 @@
 #' @noRd
-unlist_df <- function(x) {
-  collapse::unlist2d(x, idcols = "id") |>
-    collapse::rnm(
-      "id.1" = "SEG",
-      "id.2" = "PT",
-      "V1" = "VALUE"
-    )
-}
-
-#' @noRd
 check_text_ <- function(x) {
   if (length(x) > 1L || is.list(x)) {
     paste0(unlist_(x), collapse = "")

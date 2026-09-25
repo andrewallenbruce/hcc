@@ -60,6 +60,16 @@ normalize_ <- function(x) {
   )
 }
 
+#' @noRd
+unlist_df <- function(x) {
+  collapse::unlist2d(x, idcols = "id") |>
+    collapse::rnm(
+      "id.1" = "SEG",
+      "id.2" = "PT",
+      "V1" = "VALUE"
+    )
+}
+
 #' Is x Between a Minimum and a Maximum?
 #'
 #' @param x `<int>` vector of candidates
