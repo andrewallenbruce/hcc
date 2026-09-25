@@ -1,12 +1,4 @@
 #' @noRd
-parse_problems <- function(x, i) {
-  if (length(x) != cheapr::unlisted_length(i)) {
-    return(cheapr::setdiff_(seq_along(x), unlist_(i)))
-  }
-  return(integer(0L))
-}
-
-#' @noRd
 new_x12_index <- function(i, x, text, xtype) {
   z <- whichv_(collapse::vlengths(i, FALSE), 0L, TRUE)
   i <- cheapr::sset(i, z)
@@ -23,47 +15,93 @@ new_x12_index <- function(i, x, text, xtype) {
   )
 }
 
-#' @noRd
+#' @export
 X12Index := S7::new_class(
   properties = list(
-    text = S7::class_character,
+    type = S7::class_character,
+    characters = S7::class_integer,
+    segments = S7::class_integer,
+    problems = S7::class_integer,
     index = S7::class_list,
-    characters = S7::new_property(
-      S7::class_integer,
-      getter = function(self) {
-        nchar(self@text)
-      }
-    ),
-    segments = S7::new_property(
-      S7::class_integer,
-      getter = function(self) {
-        collapse::vlengths(self@index)
-      }
-    ),
-    problems = S7::new_property(
-      S7::class_integer,
-      getter = function(self) {
-        if (length(self@text) != cheapr::unlisted_length(self@index)) {
-          cheapr::setdiff_(seq_along(self@text), unlist_(self@index))
-        } else {
-          0L
-        }
-      }
-    ),
-    type = S7::class_character
+    text = S7::class_character
   )
 )
 
+S7::method(format, X12Index) <- function(x) {
+  cat("<hcc::X12Index>", sep = "\n")
+  cat(" ", sep = "\n")
+
+  cat(
+    paste0(
+      format(
+        c("Type", "Characters", "Segments", "Problems"),
+        justify = "right"
+      ),
+      ": ",
+      format(
+        c(
+          x@type,
+          x@characters,
+          x@segments,
+          x@problems
+        ),
+        justify = "left"
+      )
+    ),
+    sep = "\n"
+  )
+
+  cat(" ", sep = "\n")
+
+  i <- collapse::vlengths(x@index)
+
+  cat(
+    paste0(
+      format(
+        paste0(names(i), "[", unname(i), "]"),
+        justify = "right"
+      ),
+      ": ",
+      format(
+        purrr::map_chr(unname(x@index), \(x) toString(x, width = 60)),
+        justify = "left"
+      )
+    ),
+    sep = "\n"
+  )
+}
+
+S7::method(print, X12Index) <- function(x) {
+  format(x)
+  invisible(x)
+}
+
 #' @noRd
-x12_index <- function(text, index, type) {
-  z <- whichv_(collapse::vlengths(index, FALSE), 0L, TRUE)
-  index <- cheapr::sset(index, z)
-  index <- index[names(sort.int(purrr::map_int(index, \(x) x[1])))]
+sort_index <- function(i) {
+  i <- cheapr::sset(i, whichv_(collapse::vlengths(i, FALSE), 0L, TRUE))
+  i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
+}
+
+#' @noRd
+parse_problems <- function(x, i) {
+  if (length(x) != cheapr::unlisted_length(i)) {
+    cheapr::setdiff_(seq_along(x), unlist_(i))
+  } else {
+    0L
+  }
+}
+
+#' @noRd
+x12_index <- function(x, text, index, type) {
+  index <- sort_index(index)
 
   X12Index(
-    text = text,
+    type = type,
+    characters = nchar(text),
+    segments = cheapr::unlisted_length(index),
+    problems = parse_problems(x, index),
     index = index,
-    type = type
+    text = text
   )
 }
 
@@ -86,14 +124,14 @@ index_820 <- function(text) {
     `820-X218` = index_820_x218(x)
   )
 
-  x12_index(text = x, index = i, type = paste0("X12-", xtype))
-
-  # new_x12_index(i, x, text, xtype = paste0("X12-", xtype))
+  x12_index(
+    x = x,
+    text = text,
+    index = i,
+    type = paste0("X12-", xtype)
+  )
 }
 
-# N1_TST <- paste0("N1*", c("Z6", "0B", "04", "8W", "AK", "BE", "BK", "C1", "C2", "IAT", "MJ", "RB", "Z6", "ZB", "ZL"))
-# perl(N1_TST, N1_REX)
-# N1_REX <- r"(N1\*(Z6|0B|04|8W|AK|BE|BK|C1|C2|IAT|MJ|RB|Z6|ZB|ZL))"
 # ST-01 = 820
 # ST-03 = 005010X218
 # GS-08 = 005010X218
@@ -246,7 +284,12 @@ index_834 <- function(text) {
     IEA = perl(x, "^IEA")
   )
 
-  x12_index(text = x, index = i, type = xtype)
+  x12_index(
+    x = x,
+    text = text,
+    index = i,
+    type = xtype
+  )
 
   # new_x12_index(i, x, text, xtype)
 }
@@ -269,9 +312,12 @@ index_837 <- function(text) {
     `837P-X222` = index_837P_x222(x)
   )
 
-  x12_index(text = x, index = i, type = xtype)
-
-  # new_x12_index(i, x, text, xtype)
+  x12_index(
+    x = x,
+    text = text,
+    index = i,
+    type = xtype
+  )
 }
 
 #' @noRd
