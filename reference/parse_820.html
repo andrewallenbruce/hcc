@@ -86,17 +86,15 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fu">collapse</span><span class="fu">::</span><span class="fu"><a href="https://fastverse.org/collapse/reference/efficient-programming.html" class="external-link">whichv</a></span><span class="op">(</span><span class="fu">x12_type</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"820-X218"</span><span class="op">)</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in x12_type(x):</span> could not find function "x12_type"</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x12_type</span> <span class="op">&lt;-</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="va">x12_type</span></span></span>
+<span class="r-in"><span><span class="va">unlist_</span> <span class="op">&lt;-</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="va">unlist_</span></span></span>
+<span class="r-in"><span><span class="va">whichv_</span> <span class="op">&lt;-</span> <span class="fu">collapse</span><span class="fu">::</span><span class="va"><a href="https://fastverse.org/collapse/reference/efficient-programming.html" class="external-link">whichv</a></span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fu">whichv_</span><span class="op">(</span><span class="fu">x12_type</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"820-X218"</span><span class="op">)</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">i</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">i</span>, <span class="va">parse_820</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in purrr::map(i, parse_820):</span> <span style="color: #00BBBB;">ℹ</span> In index: 1.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> With name: 820_EX10_debt_covered_by_affiliate1.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `star(x, i)[[1]]`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> subscript out of bounds</span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">=</span> <span class="va">p</span><span class="op">$</span><span class="va">sample_820_01</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'p' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  ISA <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">ISA</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  GS <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Header</span><span class="op">$</span><span class="va">GS</span><span class="op">)</span>,</span></span>
@@ -108,7 +106,40 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 <span class="r-in"><span>  GE <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Trailer</span><span class="op">$</span><span class="va">GE</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  IEA <span class="op">=</span> <span class="fu">unlist_</span><span class="op">(</span><span class="va">p</span><span class="op">$</span><span class="va">Trailer</span><span class="op">$</span><span class="va">IEA</span><span class="op">)</span></span></span>
 <span class="r-in"><span> <span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in unlist_(p$Header$ISA):</span> could not find function "unlist_"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ISA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "00"         NA           "00"         NA           "ZZ"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "TEST-PAYER" "30"         "TEST-PAYEE" "260118"     "0831"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "+"          "00501"      "000058691"  "0"          "P"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] ":"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $GS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RA"         "TEST-PAYER" "TEST-PAYEE" "20260118"   "083122"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "43304"      "X"          "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "820"        "0001"       "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $BPR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "I"          "102139.46"  "C"          "NON"        NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] NA           NA           NA           NA           "68-0317191"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] NA           NA           NA           NA           NA          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "20260115"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TRN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "3"               "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $REF14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "14"         "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"  "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $GE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"     "43304"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $IEA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"         "000058691"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
