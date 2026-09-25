@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9057 (2026-09-25)
+
+* `problems()` generic
+* prop_integer
+
+
 # hcc 0.0.0.9056 (2026-09-25)
 
 * fixed bug in index print method
