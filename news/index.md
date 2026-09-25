@@ -1,5 +1,11 @@
 # Changelog
 
+## hcc 0.0.0.9057 (2026-09-25)
+
+- [`problems()`](https://andrewallenbruce.github.io/hcc/reference/problems.md)
+  generic
+- prop_integer
+
 ## hcc 0.0.0.9056 (2026-09-25)
 
 - fixed bug in index print method

@@ -47,3 +47,5 @@
   : X12-834 (X220A1) Benefit Enrollment Parser
 - [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
+- [`problems`](https://andrewallenbruce.github.io/hcc/reference/problems.md)
+  : Extract Problems from X12 Indices
