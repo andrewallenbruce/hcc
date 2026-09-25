@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9051 (2026-09-24)
+
+- S3 to S7 index class conversion completed
+
 ## hcc 0.0.0.9050 (2026-09-24)
 
 - S7 index class
