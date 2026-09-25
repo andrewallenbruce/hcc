@@ -2,26 +2,29 @@
 #' 2000B Per-Member Entity Loop
 #' @noRd
 entity_820_218 <- function(x) {
-  ent <- subset_(
-    x@text,
-    x@index$ENT,
-    c(x@index$ENT[-1L], x@index$SE) - 1L
-  )
-  rmr <- subset_(x@text, x@index$RMR, x@index$DTM582)
+  fill_sequence(x@index$RMR, x@index$DTM582)
+  RMR <- subset_(x@text, x@index$RMR, x@index$DTM582)
 
-  remits <- purrr::map(rmr, function(x) {
+  RA <- purrr::map(RMR, function(x) {
     rlang::list2(
       RMR = split_p(x, "^RMR"),
+      !!!split_n(x, "^REF"),
       DTM = split_p(x, "^DTM\\*582")
     )
   }) |>
     purrr::list_flatten()
 
+  ent <- subset_(
+    x@text,
+    x@index$ENT,
+    c(x@index$ENT[-1L], x@index$SE) - 1L
+  )
+
   rlang::list2(
     ENT = split_i(x@text, x@index$ENT),
-    !!!split_n(x, perl(x, "^REF")),
+    !!!split_n(x@text, c(x@index$REF18, x@index$REFZZ)),
     NM1 = split_i(x@text, x@index$NM1),
-    !!!remits,
+    !!!RA,
     ADX = if (!is.null(x@index$ADX)) split_i(x@text, x@index$ADX) else NULL
   ) |>
     purrr::compact()
@@ -57,12 +60,12 @@ entity_820_306 <- function(x) {
 #' 1000A Payee Name Loop
 #' 1000B Payer Name Loop
 #' @noRd
-payee_loop_820 <- function(x) {
+payee_payer_820_218 <- function(x) {
   PR <- x@index$N1PR
   PE <- x@index$N1PE
   c(
-    split_n(x@text, seq.int(PE, PR - 1L)),
-    split_n(x@text, seq.int(PR, collapse::fmin(x@index$ENT) - 1L))
+    split_n(x@text, seq.int(PE, PE + 2L)),
+    split_n(x@text, seq.int(PR, PR + 2L)),
   )
 }
 
@@ -93,8 +96,22 @@ payee_loop_820 <- function(x) {
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' # idx = purrr::map(hcc::x12_820, index_x12)
-#' # purrr::map(idx, parse_820)
+#' x = hcc::x12_820
+#' x = x[collapse::whichv(x12_type(x), "820-X218")]
+#' i = purrr::map(x, index_x12)
+#' p = purrr::map(i, parse_820)
+#' p = p$sample_820_01
+#' list(
+#'   ISA = unlist_(p$Header$ISA),
+#'   GS = unlist_(p$Header$GS),
+#'   ST = unlist_(p$Header$ST),
+#'   BPR = unlist_(p$Header$BPR),
+#'   TRN = unlist_(p$Header$TRN),
+#'   REF14 = unlist_(p$Header$REF14),
+#'   SE = unlist_(p$Trailer$SE),
+#'   GE = unlist_(p$Trailer$GE),
+#'   IEA = unlist_(p$Trailer$IEA)
+#'  )
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -107,7 +124,7 @@ parse_820 <- function(x) {
     ST = split_i(x@text, x@index$ST),
     BPR = split_i(x@text, x@index$BPR),
     TRN = split_i(x@text, x@index$TRN),
-    REF = split_i(x@text, x@index$TRN + 1L)
+    REF14 = split_i(x@text, x@index$REF14)
   )
 
   trailer <- list(
@@ -116,29 +133,35 @@ parse_820 <- function(x) {
     IEA = split_i(x@text, x@index$IEA)
   )
 
-  payee <- payer <- NULL
+  entity <- payee <- payer <- NULL
 
   if (x@type == "820-X218") {
-    payee <- split_n(x@text, seq.int(x@index$N1PE, x@index$N1PR - 1L))
-    payer <- split_n(
-      x@text,
-      seq.int(x@index$N1PR, collapse::fmin(x@index$ENT) - 1L)
-    )
+    payee <- split_n(x@text, seq.int(x@index$N1PE, x@index$N1PE + 2L))
+    payer <- split_n(x@text, seq.int(x@index$N1PR, x@index$N1PR + 2L))
+
+    entity <- purrr::map(
+      subset_(
+        x@text,
+        x@index$ENT,
+        c(x@index$ENT[-1L], x@index$SE) - 1L
+      ),
+      function(x) {
+        rlang::list2(
+          ENT = split_i(x, perl(x, "^ENT")),
+          NM1 = split_i(x, perl(x, "^NM1")),
+          !!!split_i(x, perl(x, "^REF")),
+          DTM = split_i(x, perl(x, "^DTM")),
+        )
+      }
+    ) |>
+      purrr::list_flatten()
   }
-
-  ent_idx <- subset_(
-    x@text,
-    x@index$ENT,
-    c(x@index$ENT[-1L], x@index$SE) - 1L
-  )
-
-  # entity <- entity_loop_820(ent_idx)
 
   list(
     Header = header,
     Payee = payee,
     Payer = payer,
-    # Entity = entity,
+    Entity = entity,
     Trailer = trailer
   ) |>
     purrr::compact()
