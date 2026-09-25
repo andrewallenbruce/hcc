@@ -30,7 +30,7 @@
 #' @returns list
 #' @examples
 #' idx = purrr::map(hcc::x12_834, index_x12)
-#' purrr::map(idx, parse_834)
+#' purrr::map(idx[c(1L, 14L)], parse_834)
 #' @export
 parse_834 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -38,23 +38,52 @@ parse_834 <- function(x) {
   }
 
   header <- list(
-    ISA = split_i(x@text, x@index$ISA),
-    GS = split_i(x@text, x@index$GS),
-    ST = split_i(x@text, x@index$ST),
-    BGN = split_i(x@text, x@index$BGN),
-    QTY = if (!is.null(x@index$QTY)) split_i(x@text, x@index$QTY) else NULL
+    ISA = split_1(x@text, x@index$ISA),
+    GS = split_1(x@text, x@index$GS),
+    ST = split_1(x@text, x@index$ST),
+    BGN = split_1(x@text, x@index$BGN)
   )
 
-  trailer <- list(
-    SE = split_i(x@text, x@index$SE),
-    GE = split_i(x@text, x@index$GE),
-    IEA = split_i(x@text, x@index$IEA)
+  middle <- purrr::map(
+    fill_sequence(x@index$BGN + 1L, max(x@index$N1)),
+    function(idx) {
+      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
+    }
+  ) |>
+    purrr::list_flatten() |>
+    purrr::map(set_zchar)
+
+  middle <- rlang::set_names(
+    middle,
+    purrr::map_chr(middle, \(x) paste0(x[1], x[2]))
   )
 
-  list(
-    Header = header,
-    Trailer = trailer
-  )
+  entity <- parse_834_INS(x)
+  trailer <- parse_TRAILER(x)
+
+  purrr::compact(c(header, entity, trailer))
+}
+
+#' @noRd
+parse_834_INS <- function(x) {
+  ins <- .subset2(S7::prop(x, "index"), "INS")
+  purrr::map(
+    fill_sequence(
+      ins,
+      c(.subset(ins, -1L), .subset2(S7::prop(x, "index"), "SE")) - 1L
+    ),
+    function(idx) {
+      strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
+    }
+  ) |>
+    rlang::set_names(
+      ~ cheapr::paste_(
+        "INS_",
+        seq_along(.)
+      )
+    ) |>
+    purrr::list_flatten() |>
+    purrr::map(set_zchar)
 }
 
 #' @noRd
@@ -65,33 +94,33 @@ index_834_x220 <- function(x) {
     ST = perl(x, "^ST"),
     BGN = perl(x, "^BGN"),
     QTY = perl(x, "^QTY"),
-    REF38 = perl(x, r"(^REF\*38)"),
-    REF0F = perl(x, r"(^REF\*0F)"),
-    REF1D = perl(x, r"(^REF\*1D)"),
-    REF1L = perl(x, r"(^REF\*1L)"),
-    REF17 = perl(x, r"(^REF\*17)"),
-    REF23 = perl(x, r"(^REF\*23)"),
-    REF3H = perl(x, r"(^REF\*3H)"),
-    REF6O = perl(x, r"(^REF\*6O)"),
-    REF6P = perl(x, r"(^REF\*6P)"),
-    REFQ4 = perl(x, r"(^REF\*Q4)"),
-    REFZZ = perl(x, r"(^REF\*ZZ)"),
-    REFZX = perl(x, r"(^REF\*ZX)"),
-    REFCE = perl(x, r"(^REF\*CE)"),
-    REFRB = perl(x, r"(^REF\*RB)"),
-    REFDX = perl(x, r"(^REF\*DX)"),
-    REFF6 = perl(x, r"(^REF\*F6)"),
-    REFQQ = perl(x, r"(^REF\*QQ)"),
-    REFAB = perl(x, r"(^REF\*AB\*)"),
-    REFABB = perl(x, r"(^REF\*ABB)"),
-    REF9V = perl(x, r"(^REF\*9V)"),
-    DTP007 = perl(x, r"(^DTP\*007)"),
-    DTP303 = perl(x, r"(^DTP\*303)"),
-    DTP348 = perl(x, r"(^DTP\*348)"),
-    DTP349 = perl(x, r"(^DTP\*349)"),
-    DTP351 = perl(x, r"(^DTP\*351)"),
-    DTP356 = perl(x, r"(^DTP\*356)"),
-    DTP357 = perl(x, r"(^DTP\*357)"),
+    REF38 = perl(x, "^REF\\*38"),
+    REF0F = perl(x, "^REF\\*0F"),
+    REF1D = perl(x, "^REF\\*1D"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REF17 = perl(x, "^REF\\*17"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF3H = perl(x, "^REF\\*3H"),
+    REF6O = perl(x, "^REF\\*6O"),
+    REF6P = perl(x, "^REF\\*6P"),
+    REFQ4 = perl(x, "^REF\\*Q4"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    REFZX = perl(x, "^REF\\*ZX"),
+    REFCE = perl(x, "^REF\\*CE"),
+    REFRB = perl(x, "^REF\\*RB"),
+    REFDX = perl(x, "^REF\\*DX"),
+    REFF6 = perl(x, "^REF\\*F6"),
+    REFQQ = perl(x, "^REF\\*QQ"),
+    REFAB = perl(x, "^REF\\*AB\\*"),
+    REFABB = perl(x, "^REF\\*ABB\\*"),
+    REF9V = perl(x, "^REF\\*9V"),
+    DTM007 = perl(x, "^DTM\\*007"),
+    DTM303 = perl(x, "^DTM\\*303"),
+    DTM348 = perl(x, "^DTM\\*348"),
+    DTM349 = perl(x, "^DTM\\*349"),
+    DTM351 = perl(x, "^DTM\\*351"),
+    DTM356 = perl(x, "^DTM\\*356"),
+    DTM357 = perl(x, "^DTM\\*357"),
     N1 = perl(x, "^N1"),
     ACT = perl(x, "^ACT"),
     INS = perl(x, "^INS"),

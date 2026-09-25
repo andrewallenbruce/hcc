@@ -1,16 +1,7 @@
 #' @noRd
-split_1 <- function(
-  x,
-  i,
-  arg = rlang::caller_arg(i),
-  call = rlang::caller_env()
-) {
+split_1 <- function(x, i) {
   if (is.null(i)) {
-    cli::cli_abort(
-      "{.arg {arg}} is NULL",
-      arg = arg,
-      call = call
-    )
+    return(NULL)
   }
 
   set_zchar(

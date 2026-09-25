@@ -48,7 +48,7 @@ class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
 prop_date <- S7::new_property(
   S7::class_Date,
   setter = function(self, name, value) {
-    S7::prop(self, name) <- as.Date(value)
+    S7::prop(self, name) <- parse_date(value)
     self
   }
 )

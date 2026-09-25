@@ -109,11 +109,7 @@ parse_820_306 <- function(x) {
     BPR = split_1(x@text, x@index$BPR),
     N1PE = split_1(x@text, x@index$N1PE),
     N1RM = split_1(x@text, x@index$N1RM),
-    PERIC = if (!is.null(x@index$PERIC)) {
-      split_1(x@text, x@index$PERIC)
-    } else {
-      NULL
-    }
+    PERIC = split_1(x@text, x@index$PERIC)
   )
 
   entity <- parse_820_ENT(x)

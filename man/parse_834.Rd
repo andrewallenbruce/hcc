@@ -48,5 +48,5 @@ Extracts enrollment and demographic data from 834 transactions with focus on:
 }
 \examples{
 idx = purrr::map(hcc::x12_834, index_x12)
-purrr::map(idx, parse_834)
+purrr::map(idx[c(1L, 14L)], parse_834)
 }
