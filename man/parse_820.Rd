@@ -41,8 +41,12 @@ Typical loop structure within an 820:
 }
 }
 \examples{
+x12_type <- hcc:::x12_type
+unlist_ <- hcc:::unlist_
+whichv_ <- collapse::whichv
+
 x = hcc::x12_820
-x = x[collapse::whichv(x12_type(x), "820-X218")]
+x = x[whichv_(x12_type(x), "820-X218")]
 i = purrr::map(x, index_x12)
 p = purrr::map(i, parse_820)
 p = p$sample_820_01
