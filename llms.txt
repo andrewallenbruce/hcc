@@ -52,15 +52,14 @@ pak::pak("andrewallenbruce/hcc")
   : Demographics-Based Coefficient Prefix
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
   : Map ICD-10 Codes to CC
+- [`index_x12()`](https://andrewallenbruce.github.io/hcc/reference/index_x12.md)
+  : X12 Indexer
 - [`interactions`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
-- [`index_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
-  [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
+- [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
-- [`index_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
-  [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
+- [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
   : X12-834 (X220A1) Benefit Enrollment Parser
-- [`index_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
-  [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
+- [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
 

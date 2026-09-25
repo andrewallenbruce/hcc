@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9052 (2026-09-24)
+
+- [`index_x12()`](https://andrewallenbruce.github.io/hcc/reference/index_x12.md)
+  centralized function
+
 ## hcc 0.0.0.9051 (2026-09-24)
 
 - S3 to S7 index class conversion completed
