@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9052 (2026-09-24)
+
+* `index_x12()` centralized function
+
+
 # hcc 0.0.0.9051 (2026-09-24)
 
 * S3 to S7 index class conversion completed
