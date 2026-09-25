@@ -1,4 +1,25 @@
 #' @noRd
+parse_TRAILER <- function(x) {
+  list(
+    SE = split_7(x, "SE"),
+    GE = split_7(x, "GE"),
+    IEA = split_7(x, "IEA")
+  )
+}
+
+#' @noRd
+split_7 <- function(x, name) {
+  split_1(
+    S7::prop(x, "text"),
+    .subset2(
+      S7::prop(x, "index"),
+      name
+    )
+  )
+}
+
+
+#' @noRd
 split_1 <- function(x, i) {
   if (is.null(i)) {
     return(NULL)
@@ -67,12 +88,12 @@ rm_newline <- function(x) {
 
 #' @noRd
 tilde <- function(x) {
-  strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
+  .subset2(strsplit(rm_newline(x), "~", fixed = TRUE), 1L)
 }
 
 #' @noRd
 semicolon <- function(x) {
-  strsplit(x, ";", fixed = TRUE)[[1]]
+  .subset2(strsplit(x, ";", fixed = TRUE), 1L)
 }
 
 #' @noRd

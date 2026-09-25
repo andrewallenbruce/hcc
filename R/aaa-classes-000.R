@@ -16,7 +16,17 @@ S7::method(format, X12Index) <- function(x) {
     c("Type", "Characters", "Segments", "Problems"),
     justify = "right"
   )
-  numbs_ <- format(unlist_(S7::props(x)[1:4]), justify = "left")
+  p <- S7::prop(x, "problems")
+  probs_ <- if (length(p) == 1L && all(p == 0L)) p else length(p)
+  numbs_ <- format(
+    c(
+      S7::prop(x, "type"),
+      S7::prop(x, "characters"),
+      S7::prop(x, "segments"),
+      probs_
+    ),
+    justify = "left"
+  )
 
   cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
   cli::cat_rule()
@@ -24,16 +34,19 @@ S7::method(format, X12Index) <- function(x) {
   idx <- S7::prop(x, "index")
   seg <- collapse::vlengths(idx)
 
-  snames_ <- format(
-    cheapr::paste_(names(seg), "[", unname(seg), "]"),
+  names_ <- format(
+    cheapr::paste_(
+      names(seg),
+      "[", unname(seg), "]"),
     justify = "right"
   )
-  snumbs_ <- format(
+
+  numbs_ <- format(
     purrr::map_chr(unname(idx), \(x) toString(x, width = 60)),
     justify = "left"
   )
 
-  cli::cat_line(cheapr::paste_(cli::style_bold(snames_), ": ", snumbs_))
+  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
 }
 
 S7::method(print, X12Index) <- function(x) {

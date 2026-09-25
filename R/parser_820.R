@@ -42,15 +42,6 @@ parse_820 <- function(x) {
 }
 
 #' @noRd
-parse_TRAILER <- function(x) {
-  list(
-    SE = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "SE")),
-    GE = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "GE")),
-    IEA = split_1(S7::prop(x, "text"), .subset2(S7::prop(x, "index"), "IEA"))
-  )
-}
-
-#' @noRd
 parse_820_ENT <- function(x) {
   ent <- .subset2(S7::prop(x, "index"), "ENT")
   purrr::map(
@@ -75,41 +66,39 @@ parse_820_ENT <- function(x) {
 #' @noRd
 parse_820_218 <- function(x) {
   header <- list(
-    ISA = split_1(x@text, x@index$ISA),
-    GS = split_1(x@text, x@index$GS),
-    ST = split_1(x@text, x@index$ST),
-    BPR = split_1(x@text, x@index$BPR),
-    TRN = split_1(x@text, x@index$TRN),
-    REF14 = split_1(x@text, x@index$REF14)
+    ISA = split_7(x, "ISA"),
+    GS = split_7(x, "GS"),
+    ST = split_7(x, "ST"),
+    BPR = split_7(x, "BPR"),
+    TRN = split_7(x, "TRN"),
+    REF14 = split_7(x, "REF14")
   )
 
-  payee <- list(
-    N1PE = split_1(x@text, x@index$N1PE),
-    N3PE = split_1(x@text, x@index$N3PE),
-    N4PE = split_1(x@text, x@index$N4PE)
-  )
-  payer <- list(
-    N1PR = split_1(x@text, x@index$N1PR),
-    N3PR = split_1(x@text, x@index$N3PR),
-    N4PR = split_1(x@text, x@index$N4PR)
+  payment <- list(
+    N1PE = split_7(x, "N1PE"),
+    N3PE = split_7(x, "N3PE"),
+    N4PE = split_7(x, "N4PE"),
+    N1PR = split_7(x, "N1PR"),
+    N3PR = split_7(x, "N3PR"),
+    N4PR = split_7(x, "N4PR")
   )
 
   entity <- parse_820_ENT(x)
   trailer <- parse_TRAILER(x)
 
-  c(header, payee, payer, entity, trailer)
+  c(header, payment, entity, trailer)
 }
 
 #' @noRd
 parse_820_306 <- function(x) {
   header <- list(
-    ISA = split_1(x@text, x@index$ISA),
-    GS = split_1(x@text, x@index$GS),
-    ST = split_1(x@text, x@index$ST),
-    BPR = split_1(x@text, x@index$BPR),
-    N1PE = split_1(x@text, x@index$N1PE),
-    N1RM = split_1(x@text, x@index$N1RM),
-    PERIC = split_1(x@text, x@index$PERIC)
+    ISA = split_7(x, "ISA"),
+    GS = split_7(x, "GS"),
+    ST = split_7(x, "ST"),
+    BPR = split_7(x, "BPR"),
+    N1PE = split_7(x, "N1PE"),
+    N1RM = split_7(x, "N1RM"),
+    PERIC = split_7(x, "PERIC")
   )
 
   entity <- parse_820_ENT(x)
@@ -171,28 +160,28 @@ index_820_x306 <- function(x) {
     GS = perl(x, "^GS"),
     ST = perl(x, "^ST"),
     BPR = perl(x, "^BPR"),
-    TRN = perl(x, "^TRN"),
-    REFTV = perl(x, "^REF\\*TV"),
-    REF18 = perl(x, "^REF\\*18"),
-    REFZZ = perl(x, "^REF\\*ZZ"),
-    N1PE = perl(x, "^N1\\*PE"),
-    REFABY = perl(x, "^REF\\*ABY"),
-    N1RM = perl(x, "^N1\\*RM"),
-    PERIC = perl(x, "^PER\\*IC"),
-    ENT = perl(x, "^ENT"),
-    NM1 = perl(x, "^NM1"),
-    REF38 = perl(x, "^REF\\*38"),
-    REFPOL = perl(x, "^REF\\*POL"),
-    REF1L = perl(x, "^REF\\*1L"),
-    REFAZ = perl(x, "^REF\\*AZ"),
-    REF4A = perl(x, "^REF\\*4A"),
-    REF23 = perl(x, "^REF\\*23"),
-    REF60 = perl(x, "^REF\\*60"),
-    REF1W = perl(x, "^REF\\*1W"),
-    REF0F = perl(x, "^REF\\*0F"),
-    RMR = perl(x, "^RMR"),
     DTM582 = perl(x, "^DTM\\*582"),
+    ENT = perl(x, "^ENT"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N1RM = perl(x, "^N1\\*RM"),
+    NM1 = perl(x, "^NM1"),
+    PERIC = perl(x, "^PER\\*IC"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF38 = perl(x, "^REF\\*38"),
+    REF0F = perl(x, "^REF\\*0F"),
     REF0N = perl(x, "^REF\\*0N"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REF1W = perl(x, "^REF\\*1W"),
+    REF4A = perl(x, "^REF\\*4A"),
+    REF60 = perl(x, "^REF\\*60"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFAZ = perl(x, "^REF\\*AZ"),
+    REFPOL = perl(x, "^REF\\*POL"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    RMR = perl(x, "^RMR"),
+    TRN = perl(x, "^TRN"),
     SE = perl(x, "^SE"),
     GE = perl(x, "^GE"),
     IEA = perl(x, "^IEA")

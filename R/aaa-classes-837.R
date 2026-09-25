@@ -85,7 +85,7 @@ ServiceLevelData := S7::new_class(
 #'   records
 #' @returns A `<RAFResult>` S7 object
 #' @usage NULL
-#' @examples
+#' @examplesIf FALSE
 #' RAFResult()
 #' @name RAFResult
 #' @export
