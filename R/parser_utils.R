@@ -1,4 +1,9 @@
 #' @noRd
+semi_count <- function(x) {
+  length(.subset2(gregexpr(";", text = x, fixed = TRUE), 1L))
+}
+
+#' @noRd
 parse_TRAILER <- function(x) {
   list(
     SE = split_7(x, "SE"),

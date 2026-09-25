@@ -38,14 +38,26 @@ parse_834 <- function(x) {
   }
 
   header <- list(
-    ISA = split_1(x@text, x@index$ISA),
-    GS = split_1(x@text, x@index$GS),
-    ST = split_1(x@text, x@index$ST),
-    BGN = split_1(x@text, x@index$BGN)
+    ISA = split_7(x, "ISA"),
+    GS = split_7(x, "GS"),
+    ST = split_7(x, "ST"),
+    BGN = split_7(x, "BGN")
   )
 
+  middle <- parse_834_MID(x)
+  entity <- parse_834_INS(x)
+  trailer <- parse_TRAILER(x)
+
+  purrr::compact(c(header, middle, entity, trailer))
+}
+
+#' @noRd
+parse_834_MID <- function(x) {
   middle <- purrr::map(
-    fill_sequence(x@index$BGN + 1L, max(x@index$N1)),
+    fill_sequence(
+      x@index$BGN + 1L,
+      collapse::fmax(x@index$N1)
+    ),
     function(idx) {
       strsplit(.subset(x@text, idx), "*", fixed = TRUE)
     }
@@ -53,15 +65,10 @@ parse_834 <- function(x) {
     purrr::list_flatten() |>
     purrr::map(set_zchar)
 
-  middle <- rlang::set_names(
+  rlang::set_names(
     middle,
     purrr::map_chr(middle, \(x) paste0(x[1], x[2]))
   )
-
-  entity <- parse_834_INS(x)
-  trailer <- parse_TRAILER(x)
-
-  purrr::compact(c(header, entity, trailer))
 }
 
 #' @noRd
@@ -73,7 +80,8 @@ parse_834_INS <- function(x) {
       c(.subset(ins, -1L), .subset2(S7::prop(x, "index"), "SE")) - 1L
     ),
     function(idx) {
-      strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
+      strsplit(.subset(S7::prop(x, "text"), idx), "[;*]", perl = TRUE)
+      # strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
     }
   ) |>
     rlang::set_names(
