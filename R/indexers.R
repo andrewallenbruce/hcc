@@ -19,7 +19,6 @@ new_X12Index <- function(x, text, index, type) {
 
   X12Index(
     type = type,
-    characters = nchar(text),
     segments = cheapr::unlisted_length(index),
     problems = parsing_problems(x, index),
     index = index,

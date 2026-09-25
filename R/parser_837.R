@@ -135,6 +135,7 @@ index_837I_x223 <- function(x) {
     REFY4 = perl(x, "^REF\\*Y4"),
     SBRP = perl(x, "^SBR\\*P\\*"),
     SBRS = perl(x, "^SBR\\*S\\*"),
+    SV1 = perl(x, "^SV1"),
     SV2 = perl(x, "^SV2"),
     SV5 = perl(x, "^SV5"),
     SE = perl(x, "^SE"),

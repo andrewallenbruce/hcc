@@ -23,6 +23,7 @@ export(interactions)
 export(parse_820)
 export(parse_834)
 export(parse_837)
+export(problems)
 import(S7)
 import(rlang, except = ":=")
 importFrom(cheapr,

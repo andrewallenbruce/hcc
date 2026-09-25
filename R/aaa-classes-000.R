@@ -2,7 +2,6 @@
 X12Index := S7::new_class(
   properties = list(
     type = S7::class_character,
-    characters = S7::class_integer,
     segments = S7::class_integer,
     problems = S7::class_integer,
     index = S7::class_list,
@@ -13,7 +12,7 @@ X12Index := S7::new_class(
 S7::method(format, X12Index) <- function(x) {
   cli::cli_h1("<hcc::X12Index>")
   names_ <- format(
-    c("Type", "Characters", "Segments", "Problems"),
+    c("Type", "Segments", "Problems"),
     justify = "right"
   )
   p <- S7::prop(x, "problems")
@@ -21,7 +20,6 @@ S7::method(format, X12Index) <- function(x) {
   numbs_ <- format(
     c(
       S7::prop(x, "type"),
-      S7::prop(x, "characters"),
       S7::prop(x, "segments"),
       probs_
     ),
@@ -55,6 +53,32 @@ S7::method(format, X12Index) <- function(x) {
 S7::method(print, X12Index) <- function(x) {
   format(x)
   invisible(x)
+}
+
+#' Extract Problems from X12 Indices
+#' @param x `<X12Index>` S7 object
+#' @param ... dots
+#' @returns a character vector of interactions
+#' @examples
+#' idx9 = index_x12(hcc::x12_837I$sample_837_9)
+#' problems(idx9)
+#' @export
+#' @name problems
+problems := S7::new_generic("x")
+
+S7::method(problems, S7::class_any) <- function(x) {
+  return(NA)
+}
+
+S7::method(problems, S7::class_list) <- function(x) {
+  purrr::map(x, problems)
+  # p <- problems(i)
+  # p <- p[cheapr::which_(purrr::map_lgl(p, rlang::is_empty), TRUE)]
+  # p[cheapr::which_(purrr::map_lgl(p, anyNA), TRUE)]
+}
+
+S7::method(problems, X12Index) <- function(x) {
+  .subset(x@text, x@problems)
 }
 
 #' @noRd
