@@ -94,86 +94,19 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 idx = purrr::map(c(hcc::x12_837I, hcc::x12_837P), index_x12)
 purrr::map(idx, parse_837)
 #> $`837I_EX1a_institutional_claim`
-#> $`837I_EX1a_institutional_claim`$Header
-#> $`837I_EX1a_institutional_claim`$Header$ISA
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`01`
-#> [1] "00"
+#> $`837I_EX1a_institutional_claim`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1408"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`02`
-#> [1] NA
+#> $`837I_EX1a_institutional_claim`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "140822"       "000000001"    "X"            "005010X223A2"
 #> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`03`
-#> [1] "00"
+#> $`837I_EX1a_institutional_claim`$ST
+#> [1] "ST"           "837"          "987654"       "005010X223A2"
 #> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`10`
-#> [1] "1408"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS
-#> $`837I_EX1a_institutional_claim`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`05`
-#> [1] "140822"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837I_EX1a_institutional_claim`$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $`837I_EX1a_institutional_claim`$Transactions
-#> $`837I_EX1a_institutional_claim`$Transactions[[1]]
+#> $`837I_EX1a_institutional_claim`[[4]]
 #>  [1] "ST*837*987654*005010X223A2"                                                
 #>  [2] "BHT*0019*00*0123*19960918*0932*CH"                                         
 #>  [3] "NM1*41*2*JONES HOSPITAL*****46*12345"                                      
@@ -217,115 +150,30 @@ purrr::map(idx, parse_837)
 #> [41] "SV2*0730*HC>93005*76.54*UN*3"                                              
 #> [42] "DTP*472*D8*19960911"                                                       
 #> 
+#> $`837I_EX1a_institutional_claim`$SE
+#> [1] "SE"     "43"     "987654"
 #> 
-#> $`837I_EX1a_institutional_claim`$Trailer
-#> $`837I_EX1a_institutional_claim`$Trailer$SE
-#> $`837I_EX1a_institutional_claim`$Trailer$SE$`01`
-#> [1] "43"
+#> $`837I_EX1a_institutional_claim`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837I_EX1a_institutional_claim`$Trailer$SE$`02`
-#> [1] "987654"
-#> 
-#> 
-#> $`837I_EX1a_institutional_claim`$Trailer$GE
-#> $`837I_EX1a_institutional_claim`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1a_institutional_claim`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837I_EX1a_institutional_claim`$Trailer$IEA
-#> $`837I_EX1a_institutional_claim`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1a_institutional_claim`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837I_EX1a_institutional_claim`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837I_EX1b_2claims_1provider`
-#> $`837I_EX1b_2claims_1provider`$Header
-#> $`837I_EX1b_2claims_1provider`$Header$ISA
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`01`
-#> [1] "00"
+#> $`837I_EX1b_2claims_1provider`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1410"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`02`
-#> [1] NA
+#> $`837I_EX1b_2claims_1provider`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141054"       "000000001"    "X"            "005010X223A2"
 #> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`03`
-#> [1] "00"
+#> $`837I_EX1b_2claims_1provider`$ST
+#> [1] "ST"           "837"          "987654"       "005010X223A2"
 #> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`10`
-#> [1] "1410"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`05`
-#> [1] "141054"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $`837I_EX1b_2claims_1provider`$Transactions
-#> $`837I_EX1b_2claims_1provider`$Transactions[[1]]
+#> $`837I_EX1b_2claims_1provider`[[4]]
 #>  [1] "ST*837*987654*005010X223A2"               
 #>  [2] "BHT*0019*00*0123*20050630*0932*CH"        
 #>  [3] "NM1*41*2*JONES HOSPITAL*****46*12345"     
@@ -374,115 +222,30 @@ purrr::map(idx, parse_837)
 #> [46] "SV2*0300*HC>85087*50*UN*1"                
 #> [47] "DTP*472*D8*20050401"                      
 #> 
+#> $`837I_EX1b_2claims_1provider`$SE
+#> [1] "SE"     "48"     "987654"
 #> 
-#> $`837I_EX1b_2claims_1provider`$Trailer
-#> $`837I_EX1b_2claims_1provider`$Trailer$SE
-#> $`837I_EX1b_2claims_1provider`$Trailer$SE$`01`
-#> [1] "48"
+#> $`837I_EX1b_2claims_1provider`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837I_EX1b_2claims_1provider`$Trailer$SE$`02`
-#> [1] "987654"
-#> 
-#> 
-#> $`837I_EX1b_2claims_1provider`$Trailer$GE
-#> $`837I_EX1b_2claims_1provider`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837I_EX1b_2claims_1provider`$Trailer$IEA
-#> $`837I_EX1b_2claims_1provider`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1b_2claims_1provider`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837I_EX1b_2claims_1provider`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837I_EX1c_ppo_repriced_claim`
-#> $`837I_EX1c_ppo_repriced_claim`$Header
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`01`
-#> [1] "00"
+#> $`837I_EX1c_ppo_repriced_claim`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1415"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`02`
-#> [1] NA
+#> $`837I_EX1c_ppo_repriced_claim`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141512"       "000000001"    "X"            "005010X223A2"
 #> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`03`
-#> [1] "00"
+#> $`837I_EX1c_ppo_repriced_claim`$ST
+#> [1] "ST"           "837"          "1002"         "005010X223A2"
 #> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`10`
-#> [1] "1415"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`05`
-#> [1] "141512"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Transactions
-#> $`837I_EX1c_ppo_repriced_claim`$Transactions[[1]]
+#> $`837I_EX1c_ppo_repriced_claim`[[4]]
 #>  [1] "ST*837*1002*005010X223A2"                        
 #>  [2] "BHT*0019*00*1002*20050721*09460000*CH"           
 #>  [3] "NM1*41*2*REGIONAL PPO NETWORK*****46*123456789"  
@@ -531,115 +294,30 @@ purrr::map(idx, parse_837)
 #> [46] "DTP*472*D8*20050706"                             
 #> [47] "HCP*03*45.82*13.68"                              
 #> 
+#> $`837I_EX1c_ppo_repriced_claim`$SE
+#> [1] "SE"   "48"   "1002"
 #> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$SE
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$SE$`01`
-#> [1] "48"
+#> $`837I_EX1c_ppo_repriced_claim`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$SE$`02`
-#> [1] "1002"
-#> 
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$GE
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$IEA
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1c_ppo_repriced_claim`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837I_EX1c_ppo_repriced_claim`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837I_EX1d_oon_repriced_claim`
-#> $`837I_EX1d_oon_repriced_claim`$Header
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`01`
-#> [1] "00"
+#> $`837I_EX1d_oon_repriced_claim`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1415"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`02`
-#> [1] NA
+#> $`837I_EX1d_oon_repriced_claim`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141557"       "000000001"    "X"            "005010X223A2"
 #> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`03`
-#> [1] "00"
+#> $`837I_EX1d_oon_repriced_claim`$ST
+#> [1] "ST"           "837"          "1024"         "005010X223A2"
 #> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`10`
-#> [1] "1415"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`05`
-#> [1] "141557"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Transactions
-#> $`837I_EX1d_oon_repriced_claim`$Transactions[[1]]
+#> $`837I_EX1d_oon_repriced_claim`[[4]]
 #>  [1] "ST*837*1024*005010X223A2"                        
 #>  [2] "BHT*0019*00*1024*20050711*1335*CH"               
 #>  [3] "NM1*41*2*REGIONAL PPO NETWORK*****46*123456789"  
@@ -671,115 +349,30 @@ purrr::map(idx, parse_837)
 #> [29] "SV2*0301*HC>82270*14.84*UN*1"                    
 #> [30] "DTP*472*D8*20050617"                             
 #> 
+#> $`837I_EX1d_oon_repriced_claim`$SE
+#> [1] "SE"   "31"   "1024"
 #> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$SE
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$SE$`01`
-#> [1] "31"
+#> $`837I_EX1d_oon_repriced_claim`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$SE$`02`
-#> [1] "1024"
-#> 
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$GE
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$IEA
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX1d_oon_repriced_claim`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837I_EX1d_oon_repriced_claim`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837I_EX2_car_accident`
-#> $`837I_EX2_car_accident`$Header
-#> $`837I_EX2_car_accident`$Header$ISA
-#> $`837I_EX2_car_accident`$Header$ISA$`01`
-#> [1] "00"
+#> $`837I_EX2_car_accident`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1416"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837I_EX2_car_accident`$Header$ISA$`02`
-#> [1] NA
+#> $`837I_EX2_car_accident`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141625"       "000000001"    "X"            "005010X223A2"
 #> 
-#> $`837I_EX2_car_accident`$Header$ISA$`03`
-#> [1] "00"
+#> $`837I_EX2_car_accident`$ST
+#> [1] "ST"           "837"          "557766"       "005010X223A2"
 #> 
-#> $`837I_EX2_car_accident`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`10`
-#> [1] "1416"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837I_EX2_car_accident`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837I_EX2_car_accident`$Header$GS
-#> $`837I_EX2_car_accident`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`05`
-#> [1] "141625"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837I_EX2_car_accident`$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $`837I_EX2_car_accident`$Transactions
-#> $`837I_EX2_car_accident`$Transactions[[1]]
+#> $`837I_EX2_car_accident`[[4]]
 #>  [1] "ST*837*557766*005010X223A2"                               
 #>  [2] "BHT*0019*00*0324*20051111*1800*CH"                        
 #>  [3] "NM1*41*2*HALL OF FAME MEMORIAL HOSPITAL*****46*737373737" 
@@ -823,32 +416,14 @@ purrr::map(idx, parse_837)
 #> [41] "SV2*0360*HC>99283*220*UN*1"                               
 #> [42] "DTP*472*D8*20051031"                                      
 #> 
+#> $`837I_EX2_car_accident`$SE
+#> [1] "SE"     "43"     "557766"
 #> 
-#> $`837I_EX2_car_accident`$Trailer
-#> $`837I_EX2_car_accident`$Trailer$SE
-#> $`837I_EX2_car_accident`$Trailer$SE$`01`
-#> [1] "43"
+#> $`837I_EX2_car_accident`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837I_EX2_car_accident`$Trailer$SE$`02`
-#> [1] "557766"
-#> 
-#> 
-#> $`837I_EX2_car_accident`$Trailer$GE
-#> $`837I_EX2_car_accident`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX2_car_accident`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837I_EX2_car_accident`$Trailer$IEA
-#> $`837I_EX2_car_accident`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837I_EX2_car_accident`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837I_EX2_car_accident`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $ex_837_inpatient
@@ -858,86 +433,22 @@ purrr::map(idx, parse_837)
 #> [1] NA
 #> 
 #> $sample_837_1
-#> $sample_837_1$Header
-#> $sample_837_1$Header$ISA
-#> $sample_837_1$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_1$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "589155000448185" "ZZ"             
+#>  [9] "RegenceBluePoin" "241205"          "2042"            "U"              
+#> [13] "00401"           "566609694"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_1$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_1$GS
+#> [1] "GS"              "HC"              "589155000448185" "RegenceBluePoin"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_1$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_1$ST
+#> [1] "ST"           "837"          "0105"         "005010X223A2"
 #> 
-#> $sample_837_1$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_1$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_1$Header$ISA$`06`
-#> [1] "589155000448185"
-#> 
-#> $sample_837_1$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_1$Header$ISA$`08`
-#> [1] "RegenceBluePoin"
-#> 
-#> $sample_837_1$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_1$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_1$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_1$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_1$Header$ISA$`13`
-#> [1] "566609694"
-#> 
-#> $sample_837_1$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_1$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_1$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_1$Header$GS
-#> $sample_837_1$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_1$Header$GS$`02`
-#> [1] "589155000448185"
-#> 
-#> $sample_837_1$Header$GS$`03`
-#> [1] "RegenceBluePoin"
-#> 
-#> $sample_837_1$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_1$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_1$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_1$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_1$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_1$Transactions
-#> $sample_837_1$Transactions[[1]]
+#> $sample_837_1[[4]]
 #>  [1] "ST*837*0105*005010X223A2"                                                         
 #>  [2] "BHT*0019*00*241205204217*20241205*2042*CH"                                        
 #>  [3] "NM1*41*2*NATIONAL BIRTH CENTERS INC*****XX*1578387320"                            
@@ -983,115 +494,33 @@ purrr::map(idx, parse_837)
 #> [43] "DTP*472*D8*20180428"                                                              
 #> [44] "REF*6R*142671"                                                                    
 #> 
+#> $sample_837_1$SE
+#> [1] "SE"   "45"   "0105"
 #> 
-#> $sample_837_1$Trailer
-#> $sample_837_1$Trailer$SE
-#> $sample_837_1$Trailer$SE$`01`
-#> [1] "45"
+#> $sample_837_1$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_1$Trailer$SE$`02`
-#> [1] "0105"
-#> 
-#> 
-#> $sample_837_1$Trailer$GE
-#> $sample_837_1$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_1$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_1$Trailer$IEA
-#> $sample_837_1$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_1$Trailer$IEA$`02`
-#> [1] "566609694"
-#> 
-#> 
+#> $sample_837_1$IEA
+#> [1] "IEA"       "1"         "566609694"
 #> 
 #> 
 #> $sample_837_10
-#> $sample_837_10$Header
-#> $sample_837_10$Header$ISA
-#> $sample_837_10$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_10$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "765613337801994" "ZZ"             
+#>  [9] "OptimaFourSight" "241205"          "2042"            "U"              
+#> [13] "00401"           "351175143"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_10$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_10$GS
+#> [1] "GS"              "HC"              "765613337801994" "OptimaFourSight"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_10$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_10$ST
+#> [1] "ST"           "837"          "5856"         "005010X223A2"
 #> 
-#> $sample_837_10$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_10$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_10$Header$ISA$`06`
-#> [1] "765613337801994"
-#> 
-#> $sample_837_10$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_10$Header$ISA$`08`
-#> [1] "OptimaFourSight"
-#> 
-#> $sample_837_10$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_10$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_10$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_10$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_10$Header$ISA$`13`
-#> [1] "351175143"
-#> 
-#> $sample_837_10$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_10$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_10$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_10$Header$GS
-#> $sample_837_10$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_10$Header$GS$`02`
-#> [1] "765613337801994"
-#> 
-#> $sample_837_10$Header$GS$`03`
-#> [1] "OptimaFourSight"
-#> 
-#> $sample_837_10$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_10$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_10$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_10$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_10$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_10$Transactions
-#> $sample_837_10$Transactions[[1]]
+#> $sample_837_10[[4]]
 #>  [1] "ST*837*5856*005010X223A2"                              
 #>  [2] "BHT*0019*00*241205204222*20241205*2042*CH"             
 #>  [3] "NM1*41*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
@@ -1130,115 +559,33 @@ purrr::map(idx, parse_837)
 #> [36] "DTP*472*D8*20180428"                                   
 #> [37] "REF*6R*142671"                                         
 #> 
+#> $sample_837_10$SE
+#> [1] "SE"   "38"   "5856"
 #> 
-#> $sample_837_10$Trailer
-#> $sample_837_10$Trailer$SE
-#> $sample_837_10$Trailer$SE$`01`
-#> [1] "38"
+#> $sample_837_10$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_10$Trailer$SE$`02`
-#> [1] "5856"
-#> 
-#> 
-#> $sample_837_10$Trailer$GE
-#> $sample_837_10$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_10$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_10$Trailer$IEA
-#> $sample_837_10$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_10$Trailer$IEA$`02`
-#> [1] "351175143"
-#> 
-#> 
+#> $sample_837_10$IEA
+#> [1] "IEA"       "1"         "351175143"
 #> 
 #> 
 #> $sample_837_2
-#> $sample_837_2$Header
-#> $sample_837_2$Header$ISA
-#> $sample_837_2$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_2$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "961285082616691" "ZZ"             
+#>  [9] "AntidoteGoldSaf" "241205"          "2042"            "U"              
+#> [13] "00401"           "030077084"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_2$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_2$GS
+#> [1] "GS"              "HC"              "961285082616691" "AntidoteGoldSaf"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_2$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_2$ST
+#> [1] "ST"           "837"          "1462077"      "005010X223A2"
 #> 
-#> $sample_837_2$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_2$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_2$Header$ISA$`06`
-#> [1] "961285082616691"
-#> 
-#> $sample_837_2$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_2$Header$ISA$`08`
-#> [1] "AntidoteGoldSaf"
-#> 
-#> $sample_837_2$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_2$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_2$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_2$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_2$Header$ISA$`13`
-#> [1] "030077084"
-#> 
-#> $sample_837_2$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_2$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_2$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_2$Header$GS
-#> $sample_837_2$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_2$Header$GS$`02`
-#> [1] "961285082616691"
-#> 
-#> $sample_837_2$Header$GS$`03`
-#> [1] "AntidoteGoldSaf"
-#> 
-#> $sample_837_2$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_2$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_2$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_2$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_2$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_2$Transactions
-#> $sample_837_2$Transactions[[1]]
+#> $sample_837_2[[4]]
 #>  [1] "ST*837*1462077*005010X223A2"                           
 #>  [2] "BHT*0019*00*241205204218*20241205*2042*CH"             
 #>  [3] "NM1*41*2*COMMUNITY BIRTH GROUP*****XX*1942024799"      
@@ -1276,115 +623,33 @@ purrr::map(idx, parse_837)
 #> [35] "DTP*472*D8*20180428"                                   
 #> [36] "REF*6R*142671"                                         
 #> 
+#> $sample_837_2$SE
+#> [1] "SE"      "37"      "1462077"
 #> 
-#> $sample_837_2$Trailer
-#> $sample_837_2$Trailer$SE
-#> $sample_837_2$Trailer$SE$`01`
-#> [1] "37"
+#> $sample_837_2$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_2$Trailer$SE$`02`
-#> [1] "1462077"
-#> 
-#> 
-#> $sample_837_2$Trailer$GE
-#> $sample_837_2$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_2$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_2$Trailer$IEA
-#> $sample_837_2$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_2$Trailer$IEA$`02`
-#> [1] "030077084"
-#> 
-#> 
+#> $sample_837_2$IEA
+#> [1] "IEA"       "1"         "030077084"
 #> 
 #> 
 #> $sample_837_3
-#> $sample_837_3$Header
-#> $sample_837_3$Header$ISA
-#> $sample_837_3$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_3$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "657631015478465" "ZZ"             
+#>  [9] "MOLINAHEALTHCAR" "241205"          "2042"            "U"              
+#> [13] "00401"           "828442319"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_3$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_3$GS
+#> [1] "GS"              "HC"              "657631015478465" "MOLINAHEALTHCAR"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_3$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_3$ST
+#> [1] "ST"           "837"          "93687"        "005010X223A2"
 #> 
-#> $sample_837_3$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_3$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_3$Header$ISA$`06`
-#> [1] "657631015478465"
-#> 
-#> $sample_837_3$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_3$Header$ISA$`08`
-#> [1] "MOLINAHEALTHCAR"
-#> 
-#> $sample_837_3$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_3$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_3$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_3$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_3$Header$ISA$`13`
-#> [1] "828442319"
-#> 
-#> $sample_837_3$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_3$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_3$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_3$Header$GS
-#> $sample_837_3$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_3$Header$GS$`02`
-#> [1] "657631015478465"
-#> 
-#> $sample_837_3$Header$GS$`03`
-#> [1] "MOLINAHEALTHCAR"
-#> 
-#> $sample_837_3$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_3$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_3$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_3$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_3$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_3$Transactions
-#> $sample_837_3$Transactions[[1]]
+#> $sample_837_3[[4]]
 #>  [1] "ST*837*93687*005010X223A2"                             
 #>  [2] "BHT*0019*00*241205204218*20241205*2042*CH"             
 #>  [3] "NM1*41*2*MARYVIEW HOSPITAL LLC*****XX*1316313414"      
@@ -1421,115 +686,33 @@ purrr::map(idx, parse_837)
 #> [34] "DTP*472*D8*20180428"                                   
 #> [35] "REF*6R*142671"                                         
 #> 
+#> $sample_837_3$SE
+#> [1] "SE"    "36"    "93687"
 #> 
-#> $sample_837_3$Trailer
-#> $sample_837_3$Trailer$SE
-#> $sample_837_3$Trailer$SE$`01`
-#> [1] "36"
+#> $sample_837_3$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_3$Trailer$SE$`02`
-#> [1] "93687"
-#> 
-#> 
-#> $sample_837_3$Trailer$GE
-#> $sample_837_3$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_3$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_3$Trailer$IEA
-#> $sample_837_3$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_3$Trailer$IEA$`02`
-#> [1] "828442319"
-#> 
-#> 
+#> $sample_837_3$IEA
+#> [1] "IEA"       "1"         "828442319"
 #> 
 #> 
 #> $sample_837_4
-#> $sample_837_4$Header
-#> $sample_837_4$Header$ISA
-#> $sample_837_4$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_4$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "816055286149740" "ZZ"             
+#>  [9] "HighDeductibleH" "241205"          "2042"            "U"              
+#> [13] "00401"           "621402678"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_4$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_4$GS
+#> [1] "GS"              "HC"              "816055286149740" "HighDeductibleH"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_4$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_4$ST
+#> [1] "ST"           "837"          "91529"        "005010X223A2"
 #> 
-#> $sample_837_4$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_4$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_4$Header$ISA$`06`
-#> [1] "816055286149740"
-#> 
-#> $sample_837_4$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_4$Header$ISA$`08`
-#> [1] "HighDeductibleH"
-#> 
-#> $sample_837_4$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_4$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_4$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_4$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_4$Header$ISA$`13`
-#> [1] "621402678"
-#> 
-#> $sample_837_4$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_4$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_4$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_4$Header$GS
-#> $sample_837_4$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_4$Header$GS$`02`
-#> [1] "816055286149740"
-#> 
-#> $sample_837_4$Header$GS$`03`
-#> [1] "HighDeductibleH"
-#> 
-#> $sample_837_4$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_4$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_4$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_4$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_4$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_4$Transactions
-#> $sample_837_4$Transactions[[1]]
+#> $sample_837_4[[4]]
 #>  [1] "ST*837*91529*005010X223A2"                               
 #>  [2] "BHT*0019*00*241205204219*20241205*2042*CH"               
 #>  [3] "NM1*41*2*HSA ST. JOSEPH, LLC*****XX*1639992514"          
@@ -1564,115 +747,33 @@ purrr::map(idx, parse_837)
 #> [32] "DTP*472*D8*20180428"                                     
 #> [33] "REF*6R*142671"                                           
 #> 
+#> $sample_837_4$SE
+#> [1] "SE"    "34"    "91529"
 #> 
-#> $sample_837_4$Trailer
-#> $sample_837_4$Trailer$SE
-#> $sample_837_4$Trailer$SE$`01`
-#> [1] "34"
+#> $sample_837_4$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_4$Trailer$SE$`02`
-#> [1] "91529"
-#> 
-#> 
-#> $sample_837_4$Trailer$GE
-#> $sample_837_4$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_4$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_4$Trailer$IEA
-#> $sample_837_4$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_4$Trailer$IEA$`02`
-#> [1] "621402678"
-#> 
-#> 
+#> $sample_837_4$IEA
+#> [1] "IEA"       "1"         "621402678"
 #> 
 #> 
 #> $sample_837_5
-#> $sample_837_5$Header
-#> $sample_837_5$Header$ISA
-#> $sample_837_5$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_5$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "051153619573476" "ZZ"             
+#>  [9] "BlanketStudentA" "241205"          "2042"            "U"              
+#> [13] "00401"           "518159636"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_5$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_5$GS
+#> [1] "GS"              "HC"              "051153619573476" "BlanketStudentA"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_5$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_5$ST
+#> [1] "ST"           "837"          "46086"        "005010X223A2"
 #> 
-#> $sample_837_5$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_5$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_5$Header$ISA$`06`
-#> [1] "051153619573476"
-#> 
-#> $sample_837_5$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_5$Header$ISA$`08`
-#> [1] "BlanketStudentA"
-#> 
-#> $sample_837_5$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_5$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_5$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_5$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_5$Header$ISA$`13`
-#> [1] "518159636"
-#> 
-#> $sample_837_5$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_5$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_5$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_5$Header$GS
-#> $sample_837_5$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_5$Header$GS$`02`
-#> [1] "051153619573476"
-#> 
-#> $sample_837_5$Header$GS$`03`
-#> [1] "BlanketStudentA"
-#> 
-#> $sample_837_5$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_5$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_5$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_5$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_5$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_5$Transactions
-#> $sample_837_5$Transactions[[1]]
+#> $sample_837_5[[4]]
 #>  [1] "ST*837*46086*005010X223A2"                                                
 #>  [2] "BHT*0019*00*241205204219*20241205*2042*CH"                                
 #>  [3] "NM1*41*2*NATIONAL BIRTH CENTERS INC*****XX*1578387320"                    
@@ -1717,115 +818,33 @@ purrr::map(idx, parse_837)
 #> [42] "DTP*472*D8*20180428"                                                      
 #> [43] "REF*6R*142671"                                                            
 #> 
+#> $sample_837_5$SE
+#> [1] "SE"    "44"    "46086"
 #> 
-#> $sample_837_5$Trailer
-#> $sample_837_5$Trailer$SE
-#> $sample_837_5$Trailer$SE$`01`
-#> [1] "44"
+#> $sample_837_5$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_5$Trailer$SE$`02`
-#> [1] "46086"
-#> 
-#> 
-#> $sample_837_5$Trailer$GE
-#> $sample_837_5$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_5$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_5$Trailer$IEA
-#> $sample_837_5$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_5$Trailer$IEA$`02`
-#> [1] "518159636"
-#> 
-#> 
+#> $sample_837_5$IEA
+#> [1] "IEA"       "1"         "518159636"
 #> 
 #> 
 #> $sample_837_6
-#> $sample_837_6$Header
-#> $sample_837_6$Header$ISA
-#> $sample_837_6$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_6$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "336342583485277" "ZZ"             
+#>  [9] "EHB2015IPLAELIC" "241205"          "2042"            "U"              
+#> [13] "00401"           "115983591"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_6$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_6$GS
+#> [1] "GS"              "HC"              "336342583485277" "EHB2015IPLAELIC"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_6$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_6$ST
+#> [1] "ST"           "837"          "76134698"     "005010X223A2"
 #> 
-#> $sample_837_6$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_6$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_6$Header$ISA$`06`
-#> [1] "336342583485277"
-#> 
-#> $sample_837_6$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_6$Header$ISA$`08`
-#> [1] "EHB2015IPLAELIC"
-#> 
-#> $sample_837_6$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_6$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_6$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_6$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_6$Header$ISA$`13`
-#> [1] "115983591"
-#> 
-#> $sample_837_6$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_6$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_6$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_6$Header$GS
-#> $sample_837_6$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_6$Header$GS$`02`
-#> [1] "336342583485277"
-#> 
-#> $sample_837_6$Header$GS$`03`
-#> [1] "EHB2015IPLAELIC"
-#> 
-#> $sample_837_6$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_6$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_6$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_6$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_6$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_6$Transactions
-#> $sample_837_6$Transactions[[1]]
+#> $sample_837_6[[4]]
 #>  [1] "ST*837*76134698*005010X223A2"                          
 #>  [2] "BHT*0019*00*241205204220*20241205*2042*CH"             
 #>  [3] "NM1*41*2*OKEECHOBEE HOSPITAL, INC.*****XX*1215974134"  
@@ -1874,115 +893,33 @@ purrr::map(idx, parse_837)
 #> [46] "DTP*472*D8*20180428"                                   
 #> [47] "REF*6R*142671"                                         
 #> 
+#> $sample_837_6$SE
+#> [1] "SE"       "48"       "76134698"
 #> 
-#> $sample_837_6$Trailer
-#> $sample_837_6$Trailer$SE
-#> $sample_837_6$Trailer$SE$`01`
-#> [1] "48"
+#> $sample_837_6$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_6$Trailer$SE$`02`
-#> [1] "76134698"
-#> 
-#> 
-#> $sample_837_6$Trailer$GE
-#> $sample_837_6$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_6$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_6$Trailer$IEA
-#> $sample_837_6$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_6$Trailer$IEA$`02`
-#> [1] "115983591"
-#> 
-#> 
+#> $sample_837_6$IEA
+#> [1] "IEA"       "1"         "115983591"
 #> 
 #> 
 #> $sample_837_7
-#> $sample_837_7$Header
-#> $sample_837_7$Header$ISA
-#> $sample_837_7$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_7$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "879679616399691" "ZZ"             
+#>  [9] "HSA2000_10A1189" "241205"          "2042"            "U"              
+#> [13] "00401"           "871936722"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_7$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_7$GS
+#> [1] "GS"              "HC"              "879679616399691" "HSA2000_10A1189"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_7$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_7$ST
+#> [1] "ST"           "837"          "7869171"      "005010X223A2"
 #> 
-#> $sample_837_7$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_7$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_7$Header$ISA$`06`
-#> [1] "879679616399691"
-#> 
-#> $sample_837_7$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_7$Header$ISA$`08`
-#> [1] "HSA2000_10A1189"
-#> 
-#> $sample_837_7$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_7$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_7$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_7$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_7$Header$ISA$`13`
-#> [1] "871936722"
-#> 
-#> $sample_837_7$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_7$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_7$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_7$Header$GS
-#> $sample_837_7$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_7$Header$GS$`02`
-#> [1] "879679616399691"
-#> 
-#> $sample_837_7$Header$GS$`03`
-#> [1] "HSA2000_10A1189"
-#> 
-#> $sample_837_7$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_7$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_7$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_7$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_7$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_7$Transactions
-#> $sample_837_7$Transactions[[1]]
+#> $sample_837_7[[4]]
 #>  [1] "ST*837*7869171*005010X223A2"                           
 #>  [2] "BHT*0019*00*241205204220*20241205*2042*CH"             
 #>  [3] "NM1*41*2*ELMHURST MEMORIAL HOSPITAL*****XX*1548306343" 
@@ -2026,115 +963,33 @@ purrr::map(idx, parse_837)
 #> [41] "DTP*472*D8*20180428"                                   
 #> [42] "REF*6R*142671"                                         
 #> 
+#> $sample_837_7$SE
+#> [1] "SE"      "43"      "7869171"
 #> 
-#> $sample_837_7$Trailer
-#> $sample_837_7$Trailer$SE
-#> $sample_837_7$Trailer$SE$`01`
-#> [1] "43"
+#> $sample_837_7$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_7$Trailer$SE$`02`
-#> [1] "7869171"
-#> 
-#> 
-#> $sample_837_7$Trailer$GE
-#> $sample_837_7$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_7$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_7$Trailer$IEA
-#> $sample_837_7$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_7$Trailer$IEA$`02`
-#> [1] "871936722"
-#> 
-#> 
+#> $sample_837_7$IEA
+#> [1] "IEA"       "1"         "871936722"
 #> 
 #> 
 #> $sample_837_8
-#> $sample_837_8$Header
-#> $sample_837_8$Header$ISA
-#> $sample_837_8$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_8$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "719189088449132" "ZZ"             
+#>  [9] "SimplyBluePPOwi" "241205"          "2042"            "U"              
+#> [13] "00401"           "464860572"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_8$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_8$GS
+#> [1] "GS"              "HC"              "719189088449132" "SimplyBluePPOwi"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_8$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_8$ST
+#> [1] "ST"           "837"          "57975326"     "005010X223A2"
 #> 
-#> $sample_837_8$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_8$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_8$Header$ISA$`06`
-#> [1] "719189088449132"
-#> 
-#> $sample_837_8$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_8$Header$ISA$`08`
-#> [1] "SimplyBluePPOwi"
-#> 
-#> $sample_837_8$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_8$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_8$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_8$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_8$Header$ISA$`13`
-#> [1] "464860572"
-#> 
-#> $sample_837_8$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_8$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_8$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_8$Header$GS
-#> $sample_837_8$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_8$Header$GS$`02`
-#> [1] "719189088449132"
-#> 
-#> $sample_837_8$Header$GS$`03`
-#> [1] "SimplyBluePPOwi"
-#> 
-#> $sample_837_8$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_8$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_8$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_8$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_8$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_8$Transactions
-#> $sample_837_8$Transactions[[1]]
+#> $sample_837_8[[4]]
 #>  [1] "ST*837*57975326*005010X223A2"                                
 #>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                   
 #>  [3] "NM1*41*2*GUTHRIE CORTLAND MEDICAL CENTER*****XX*1740287531"  
@@ -2176,115 +1031,33 @@ purrr::map(idx, parse_837)
 #> [39] "DTP*472*D8*20180428"                                         
 #> [40] "REF*6R*142671"                                               
 #> 
+#> $sample_837_8$SE
+#> [1] "SE"       "41"       "57975326"
 #> 
-#> $sample_837_8$Trailer
-#> $sample_837_8$Trailer$SE
-#> $sample_837_8$Trailer$SE$`01`
-#> [1] "41"
+#> $sample_837_8$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_8$Trailer$SE$`02`
-#> [1] "57975326"
-#> 
-#> 
-#> $sample_837_8$Trailer$GE
-#> $sample_837_8$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_8$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_8$Trailer$IEA
-#> $sample_837_8$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_8$Trailer$IEA$`02`
-#> [1] "464860572"
-#> 
-#> 
+#> $sample_837_8$IEA
+#> [1] "IEA"       "1"         "464860572"
 #> 
 #> 
 #> $sample_837_9
-#> $sample_837_9$Header
-#> $sample_837_9$Header$ISA
-#> $sample_837_9$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_9$ISA
+#>  [1] "ISA"             "00"              NA                "00"             
+#>  [5] NA                "ZZ"              "913673479406110" "ZZ"             
+#>  [9] "HMOOffExchangeR" "241205"          "2042"            "U"              
+#> [13] "00401"           "253034665"       "0"               "P"              
+#> [17] ":"              
 #> 
-#> $sample_837_9$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_9$GS
+#> [1] "GS"              "HC"              "913673479406110" "HMOOffExchangeR"
+#> [5] "20241205"        "2042"            "1"               "X"              
+#> [9] "005010X223A2"   
 #> 
-#> $sample_837_9$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_9$ST
+#> [1] "ST"           "837"          "4763033"      "005010X223A2"
 #> 
-#> $sample_837_9$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_9$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_9$Header$ISA$`06`
-#> [1] "913673479406110"
-#> 
-#> $sample_837_9$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_9$Header$ISA$`08`
-#> [1] "HMOOffExchangeR"
-#> 
-#> $sample_837_9$Header$ISA$`09`
-#> [1] "241205"
-#> 
-#> $sample_837_9$Header$ISA$`10`
-#> [1] "2042"
-#> 
-#> $sample_837_9$Header$ISA$`11`
-#> [1] "U"
-#> 
-#> $sample_837_9$Header$ISA$`12`
-#> [1] "00401"
-#> 
-#> $sample_837_9$Header$ISA$`13`
-#> [1] "253034665"
-#> 
-#> $sample_837_9$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_9$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_9$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_9$Header$GS
-#> $sample_837_9$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_9$Header$GS$`02`
-#> [1] "913673479406110"
-#> 
-#> $sample_837_9$Header$GS$`03`
-#> [1] "HMOOffExchangeR"
-#> 
-#> $sample_837_9$Header$GS$`04`
-#> [1] "20241205"
-#> 
-#> $sample_837_9$Header$GS$`05`
-#> [1] "2042"
-#> 
-#> $sample_837_9$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_9$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_9$Header$GS$`08`
-#> [1] "005010X223A2"
-#> 
-#> 
-#> 
-#> $sample_837_9$Transactions
-#> $sample_837_9$Transactions[[1]]
+#> $sample_837_9[[4]]
 #>  [1] "ST*837*4763033*005010X223A2"                                      
 #>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                        
 #>  [3] "NM1*41*2*HCA HEALTH SERVICES OF TENNESSEE, INC.*****XX*1265487193"
@@ -2331,115 +1104,30 @@ purrr::map(idx, parse_837)
 #> [44] "DTP*472*D8*20180428"                                              
 #> [45] "REF*6R*142671"                                                    
 #> 
+#> $sample_837_9$SE
+#> [1] "SE"      "46"      "4763033"
 #> 
-#> $sample_837_9$Trailer
-#> $sample_837_9$Trailer$SE
-#> $sample_837_9$Trailer$SE$`01`
-#> [1] "46"
+#> $sample_837_9$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_9$Trailer$SE$`02`
-#> [1] "4763033"
-#> 
-#> 
-#> $sample_837_9$Trailer$GE
-#> $sample_837_9$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_9$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_9$Trailer$IEA
-#> $sample_837_9$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_9$Trailer$IEA$`02`
-#> [1] "253034665"
-#> 
-#> 
+#> $sample_837_9$IEA
+#> [1] "IEA"       "1"         "253034665"
 #> 
 #> 
 #> $`837P_EX10a_drug_adm_office`
-#> $`837P_EX10a_drug_adm_office`$Header
-#> $`837P_EX10a_drug_adm_office`$Header$ISA
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX10a_drug_adm_office`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1411"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX10a_drug_adm_office`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141104"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX10a_drug_adm_office`$ST
+#> [1] "ST"           "837"          "0711"         "005010X222A1"
 #> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`10`
-#> [1] "1411"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`05`
-#> [1] "141104"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX10a_drug_adm_office`$Transactions
-#> $`837P_EX10a_drug_adm_office`$Transactions[[1]]
+#> $`837P_EX10a_drug_adm_office`[[4]]
 #>  [1] "ST*837*0711*005010X222A1"                        
 #>  [2] "BHT*0019*00*0013*20040801*1200*CH"               
 #>  [3] "NM1*41*2*Associates in Medicine*****46*587654321"
@@ -2471,115 +1159,30 @@ purrr::map(idx, parse_837)
 #> [29] "LIN**N4*00026063512"                             
 #> [30] "CTP****10*ML"                                    
 #> 
+#> $`837P_EX10a_drug_adm_office`$SE
+#> [1] "SE"   "31"   "0711"
 #> 
-#> $`837P_EX10a_drug_adm_office`$Trailer
-#> $`837P_EX10a_drug_adm_office`$Trailer$SE
-#> $`837P_EX10a_drug_adm_office`$Trailer$SE$`01`
-#> [1] "31"
+#> $`837P_EX10a_drug_adm_office`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX10a_drug_adm_office`$Trailer$SE$`02`
-#> [1] "0711"
-#> 
-#> 
-#> $`837P_EX10a_drug_adm_office`$Trailer$GE
-#> $`837P_EX10a_drug_adm_office`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX10a_drug_adm_office`$Trailer$IEA
-#> $`837P_EX10a_drug_adm_office`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX10a_drug_adm_office`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX10a_drug_adm_office`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX11_ppo_repriced_claim`
-#> $`837P_EX11_ppo_repriced_claim`$Header
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX11_ppo_repriced_claim`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1415"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX11_ppo_repriced_claim`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141535"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX11_ppo_repriced_claim`$ST
+#> [1] "ST"           "837"          "1002"         "005010X222A1"
 #> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`10`
-#> [1] "1415"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`05`
-#> [1] "141535"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Transactions
-#> $`837P_EX11_ppo_repriced_claim`$Transactions[[1]]
+#> $`837P_EX11_ppo_repriced_claim`[[4]]
 #>  [1] "ST*837*1002*005010X222A1"                               
 #>  [2] "BHT*0019*00*1002*20050620*09460000*CH"                  
 #>  [3] "NM1*41*2*REGIONAL PPO NETWORK*****46*123456789"         
@@ -2617,115 +1220,30 @@ purrr::map(idx, parse_837)
 #> [35] "DTP*472*D8*20050514"                                    
 #> [36] "HCP*03*3*.75*908231234"                                 
 #> 
+#> $`837P_EX11_ppo_repriced_claim`$SE
+#> [1] "SE"   "37"   "1002"
 #> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$SE
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$SE$`01`
-#> [1] "37"
+#> $`837P_EX11_ppo_repriced_claim`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$SE$`02`
-#> [1] "1002"
-#> 
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$GE
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$IEA
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX11_ppo_repriced_claim`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX11_ppo_repriced_claim`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX12_oon_repriced_claim`
-#> $`837P_EX12_oon_repriced_claim`$Header
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX12_oon_repriced_claim`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1416"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX12_oon_repriced_claim`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141631"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX12_oon_repriced_claim`$ST
+#> [1] "ST"           "837"          "1024"         "005010X222A1"
 #> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`10`
-#> [1] "1416"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`05`
-#> [1] "141631"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Transactions
-#> $`837P_EX12_oon_repriced_claim`$Transactions[[1]]
+#> $`837P_EX12_oon_repriced_claim`[[4]]
 #>  [1] "ST*837*1024*005010X222A1"                             
 #>  [2] "BHT*0019*00*1024*20050711*1335*CH"                    
 #>  [3] "NM1*41*2*REGIONAL PPO NETWORK*****46*123456789"       
@@ -2765,115 +1283,30 @@ purrr::map(idx, parse_837)
 #> [37] "SV1*HC>99284*252.71*UN*1***1"                         
 #> [38] "DTP*472*D8*20050506"                                  
 #> 
+#> $`837P_EX12_oon_repriced_claim`$SE
+#> [1] "SE"   "39"   "1024"
 #> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer
-#> $`837P_EX12_oon_repriced_claim`$Trailer$SE
-#> $`837P_EX12_oon_repriced_claim`$Trailer$SE$`01`
-#> [1] "39"
+#> $`837P_EX12_oon_repriced_claim`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer$SE$`02`
-#> [1] "1024"
-#> 
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer$GE
-#> $`837P_EX12_oon_repriced_claim`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer$IEA
-#> $`837P_EX12_oon_repriced_claim`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX12_oon_repriced_claim`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX12_oon_repriced_claim`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX1_commercial-insurance`
-#> $`837P_EX1_commercial-insurance`$Header
-#> $`837P_EX1_commercial-insurance`$Header$ISA
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX1_commercial-insurance`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1408"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX1_commercial-insurance`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "140840"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX1_commercial-insurance`$ST
+#> [1] "ST"           "837"          "0021"         "005010X222A1"
 #> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`10`
-#> [1] "1408"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS
-#> $`837P_EX1_commercial-insurance`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`05`
-#> [1] "140840"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX1_commercial-insurance`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX1_commercial-insurance`$Transactions
-#> $`837P_EX1_commercial-insurance`$Transactions[[1]]
+#> $`837P_EX1_commercial-insurance`[[4]]
 #>  [1] "ST*837*0021*005010X222A1"                       
 #>  [2] "BHT*0019*00*244579*20061015*1023*CH"            
 #>  [3] "NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23"  
@@ -2916,115 +1349,30 @@ purrr::map(idx, parse_837)
 #> [40] "SV1*HC>86663*10*UN*1***2"                       
 #> [41] "DTP*472*D8*20061010"                            
 #> 
+#> $`837P_EX1_commercial-insurance`$SE
+#> [1] "SE"   "42"   "0021"
 #> 
-#> $`837P_EX1_commercial-insurance`$Trailer
-#> $`837P_EX1_commercial-insurance`$Trailer$SE
-#> $`837P_EX1_commercial-insurance`$Trailer$SE$`01`
-#> [1] "42"
+#> $`837P_EX1_commercial-insurance`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX1_commercial-insurance`$Trailer$SE$`02`
-#> [1] "0021"
-#> 
-#> 
-#> $`837P_EX1_commercial-insurance`$Trailer$GE
-#> $`837P_EX1_commercial-insurance`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX1_commercial-insurance`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX1_commercial-insurance`$Trailer$IEA
-#> $`837P_EX1_commercial-insurance`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX1_commercial-insurance`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX1_commercial-insurance`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX2_encounter`
-#> $`837P_EX2_encounter`$Header
-#> $`837P_EX2_encounter`$Header$ISA
-#> $`837P_EX2_encounter`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX2_encounter`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1418"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX2_encounter`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX2_encounter`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "141815"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX2_encounter`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX2_encounter`$ST
+#> [1] "ST"           "837"          "0021"         "005010X222A1"
 #> 
-#> $`837P_EX2_encounter`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`10`
-#> [1] "1418"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX2_encounter`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX2_encounter`$Header$GS
-#> $`837P_EX2_encounter`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`05`
-#> [1] "141815"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX2_encounter`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX2_encounter`$Transactions
-#> $`837P_EX2_encounter`$Transactions[[1]]
+#> $`837P_EX2_encounter`[[4]]
 #>  [1] "ST*837*0021*005010X222A1"                                 
 #>  [2] "BHT*0019*00*0123*20061015*1023*RP"                        
 #>  [3] "NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23"            
@@ -3066,115 +1414,30 @@ purrr::map(idx, parse_837)
 #> [39] "SV1*HC>86663*10*UN*1***2"                                 
 #> [40] "DTP*472*D8*20061010"                                      
 #> 
+#> $`837P_EX2_encounter`$SE
+#> [1] "SE"   "41"   "0021"
 #> 
-#> $`837P_EX2_encounter`$Trailer
-#> $`837P_EX2_encounter`$Trailer$SE
-#> $`837P_EX2_encounter`$Trailer$SE$`01`
-#> [1] "41"
+#> $`837P_EX2_encounter`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX2_encounter`$Trailer$SE$`02`
-#> [1] "0021"
-#> 
-#> 
-#> $`837P_EX2_encounter`$Trailer$GE
-#> $`837P_EX2_encounter`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX2_encounter`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX2_encounter`$Trailer$IEA
-#> $`837P_EX2_encounter`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX2_encounter`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX2_encounter`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX3a_billing_provider_payer_a`
-#> $`837P_EX3a_billing_provider_payer_a`$Header
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX3a_billing_provider_payer_a`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1420"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX3a_billing_provider_payer_a`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142058"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX3a_billing_provider_payer_a`$ST
+#> [1] "ST"           "837"          "0021"         "005010X222A1"
 #> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`10`
-#> [1] "1420"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`05`
-#> [1] "142058"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Transactions
-#> $`837P_EX3a_billing_provider_payer_a`$Transactions[[1]]
+#> $`837P_EX3a_billing_provider_payer_a`[[4]]
 #>  [1] "ST*837*0021*005010X222A1"                       
 #>  [2] "BHT*0019*00*0123*20051015*1023*CH"              
 #>  [3] "NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23"  
@@ -3227,115 +1490,30 @@ purrr::map(idx, parse_837)
 #> [50] "SV1*HC>J3301*21.04*UN*1***1>2"                  
 #> [51] "DTP*472*D8*20051003"                            
 #> 
+#> $`837P_EX3a_billing_provider_payer_a`$SE
+#> [1] "SE"   "52"   "0021"
 #> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$SE
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$SE$`01`
-#> [1] "52"
+#> $`837P_EX3a_billing_provider_payer_a`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$SE$`02`
-#> [1] "0021"
-#> 
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$GE
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$IEA
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX3a_billing_provider_payer_a`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX3a_billing_provider_payer_a`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX4_medicare_secondary_cob`
-#> $`837P_EX4_medicare_secondary_cob`$Header
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX4_medicare_secondary_cob`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1421"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX4_medicare_secondary_cob`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142142"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX4_medicare_secondary_cob`$ST
+#> [1] "ST"           "837"          "0002"         "005010X222A1"
 #> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`10`
-#> [1] "1421"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`05`
-#> [1] "142142"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Transactions
-#> $`837P_EX4_medicare_secondary_cob`$Transactions[[1]]
+#> $`837P_EX4_medicare_secondary_cob`[[4]]
 #>  [1] "ST*837*0002*005010X222A1"                   
 #>  [2] "BHT*0019*00*000001142*20050214*115101*CH"   
 #>  [3] "NM1*41*2*SPECIALISTS*****46*1111111"        
@@ -3379,115 +1557,30 @@ purrr::map(idx, parse_837)
 #> [41] "CAS*PR*2*15"                                
 #> [42] "DTP*573*D8*20050128"                        
 #> 
+#> $`837P_EX4_medicare_secondary_cob`$SE
+#> [1] "SE"   "43"   "0002"
 #> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$SE
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$SE$`01`
-#> [1] "43"
+#> $`837P_EX4_medicare_secondary_cob`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$SE$`02`
-#> [1] "0002"
-#> 
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$GE
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$IEA
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX4_medicare_secondary_cob`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX4_medicare_secondary_cob`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX5_ambulance`
-#> $`837P_EX5_ambulance`$Header
-#> $`837P_EX5_ambulance`$Header$ISA
-#> $`837P_EX5_ambulance`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX5_ambulance`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1422"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX5_ambulance`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX5_ambulance`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142212"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX5_ambulance`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX5_ambulance`$ST
+#> [1] "ST"           "837"          "000017712"    "005010X222A1"
 #> 
-#> $`837P_EX5_ambulance`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`10`
-#> [1] "1422"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX5_ambulance`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX5_ambulance`$Header$GS
-#> $`837P_EX5_ambulance`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`05`
-#> [1] "142212"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX5_ambulance`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX5_ambulance`$Transactions
-#> $`837P_EX5_ambulance`$Transactions[[1]]
+#> $`837P_EX5_ambulance`[[4]]
 #>  [1] "ST*837*000017712*005010X222A1"                   
 #>  [2] "BHT*0019*00*000017712*20050208*1112*CH"          
 #>  [3] "NM1*41*2*AAA AMBULANCE SERVICE*****46*376985369" 
@@ -3540,115 +1633,30 @@ purrr::map(idx, parse_837)
 #> [50] "DTP*472*D8*20050208"                             
 #> [51] "REF*6R*1004"                                     
 #> 
+#> $`837P_EX5_ambulance`$SE
+#> [1] "SE"        "52"        "000017712"
 #> 
-#> $`837P_EX5_ambulance`$Trailer
-#> $`837P_EX5_ambulance`$Trailer$SE
-#> $`837P_EX5_ambulance`$Trailer$SE$`01`
-#> [1] "52"
+#> $`837P_EX5_ambulance`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX5_ambulance`$Trailer$SE$`02`
-#> [1] "000017712"
-#> 
-#> 
-#> $`837P_EX5_ambulance`$Trailer$GE
-#> $`837P_EX5_ambulance`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX5_ambulance`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX5_ambulance`$Trailer$IEA
-#> $`837P_EX5_ambulance`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX5_ambulance`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX5_ambulance`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX6_chiropractic`
-#> $`837P_EX6_chiropractic`$Header
-#> $`837P_EX6_chiropractic`$Header$ISA
-#> $`837P_EX6_chiropractic`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX6_chiropractic`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1422"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX6_chiropractic`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142242"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX6_chiropractic`$ST
+#> [1] "ST"           "837"          "3701"         "005010X222A1"
 #> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`10`
-#> [1] "1422"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX6_chiropractic`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS
-#> $`837P_EX6_chiropractic`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`05`
-#> [1] "142242"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX6_chiropractic`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX6_chiropractic`$Transactions
-#> $`837P_EX6_chiropractic`$Transactions[[1]]
+#> $`837P_EX6_chiropractic`[[4]]
 #>  [1] "ST*837*3701*005010X222A1"                       
 #>  [2] "BHT*0019*00*007227*20050215*075420*CH"          
 #>  [3] "NM1*41*2*DAVID GREEN*****46*S01057"             
@@ -3678,115 +1686,30 @@ purrr::map(idx, parse_837)
 #> [27] "DTP*472*D8*20050215"                            
 #> [28] "REF*6R*01"                                      
 #> 
+#> $`837P_EX6_chiropractic`$SE
+#> [1] "SE"   "29"   "3701"
 #> 
-#> $`837P_EX6_chiropractic`$Trailer
-#> $`837P_EX6_chiropractic`$Trailer$SE
-#> $`837P_EX6_chiropractic`$Trailer$SE$`01`
-#> [1] "29"
+#> $`837P_EX6_chiropractic`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX6_chiropractic`$Trailer$SE$`02`
-#> [1] "3701"
-#> 
-#> 
-#> $`837P_EX6_chiropractic`$Trailer$GE
-#> $`837P_EX6_chiropractic`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX6_chiropractic`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX6_chiropractic`$Trailer$IEA
-#> $`837P_EX6_chiropractic`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX6_chiropractic`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX6_chiropractic`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX7_oxygen`
-#> $`837P_EX7_oxygen`$Header
-#> $`837P_EX7_oxygen`$Header$ISA
-#> $`837P_EX7_oxygen`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX7_oxygen`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1423"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX7_oxygen`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX7_oxygen`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142340"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX7_oxygen`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX7_oxygen`$ST
+#> [1] "ST"           "837"          "0001"         "005010X222A1"
 #> 
-#> $`837P_EX7_oxygen`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`10`
-#> [1] "1423"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX7_oxygen`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX7_oxygen`$Header$GS
-#> $`837P_EX7_oxygen`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`05`
-#> [1] "142340"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX7_oxygen`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX7_oxygen`$Transactions
-#> $`837P_EX7_oxygen`$Transactions[[1]]
+#> $`837P_EX7_oxygen`[[4]]
 #>  [1] "ST*837*0001*005010X222A1"                          
 #>  [2] "BHT*0019*00*16*20050326*1036*CH"                   
 #>  [3] "NM1*41*2*OXYGEN SUPPLY COMPANY*****46*ABC11111"    
@@ -3853,115 +1776,30 @@ purrr::map(idx, parse_837)
 #> [64] "FRM*8*N"                                           
 #> [65] "FRM*9*Y"                                           
 #> 
+#> $`837P_EX7_oxygen`$SE
+#> [1] "SE"   "66"   "0001"
 #> 
-#> $`837P_EX7_oxygen`$Trailer
-#> $`837P_EX7_oxygen`$Trailer$SE
-#> $`837P_EX7_oxygen`$Trailer$SE$`01`
-#> [1] "66"
+#> $`837P_EX7_oxygen`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX7_oxygen`$Trailer$SE$`02`
-#> [1] "0001"
-#> 
-#> 
-#> $`837P_EX7_oxygen`$Trailer$GE
-#> $`837P_EX7_oxygen`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX7_oxygen`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX7_oxygen`$Trailer$IEA
-#> $`837P_EX7_oxygen`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX7_oxygen`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX7_oxygen`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX8_wheelchair`
-#> $`837P_EX8_wheelchair`$Header
-#> $`837P_EX8_wheelchair`$Header$ISA
-#> $`837P_EX8_wheelchair`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX8_wheelchair`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1424"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX8_wheelchair`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142406"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX8_wheelchair`$ST
+#> [1] "ST"           "837"          "112233"       "005010X222A1"
 #> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`10`
-#> [1] "1424"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX8_wheelchair`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS
-#> $`837P_EX8_wheelchair`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`05`
-#> [1] "142406"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX8_wheelchair`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX8_wheelchair`$Transactions
-#> $`837P_EX8_wheelchair`$Transactions[[1]]
+#> $`837P_EX8_wheelchair`[[4]]
 #>  [1] "ST*837*112233*005010X222A1"                   
 #>  [2] "BHT*0019*00*16*20050326*1036*CH"              
 #>  [3] "NM1*41*2*XYZ WHEELCHAIRS INC*****46*ABC55"    
@@ -4005,115 +1843,30 @@ purrr::map(idx, parse_837)
 #> [41] "FRM*8*N"                                      
 #> [42] "FRM*9*Y"                                      
 #> 
+#> $`837P_EX8_wheelchair`$SE
+#> [1] "SE"     "43"     "112233"
 #> 
-#> $`837P_EX8_wheelchair`$Trailer
-#> $`837P_EX8_wheelchair`$Trailer$SE
-#> $`837P_EX8_wheelchair`$Trailer$SE$`01`
-#> [1] "43"
+#> $`837P_EX8_wheelchair`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX8_wheelchair`$Trailer$SE$`02`
-#> [1] "112233"
-#> 
-#> 
-#> $`837P_EX8_wheelchair`$Trailer$GE
-#> $`837P_EX8_wheelchair`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX8_wheelchair`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX8_wheelchair`$Trailer$IEA
-#> $`837P_EX8_wheelchair`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX8_wheelchair`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX8_wheelchair`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $`837P_EX9_anesthesia`
-#> $`837P_EX9_anesthesia`$Header
-#> $`837P_EX9_anesthesia`$Header$ISA
-#> $`837P_EX9_anesthesia`$Header$ISA$`01`
-#> [1] "00"
+#> $`837P_EX9_anesthesia`$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
+#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "231106"    "1424"      "^"        
+#> [13] "00501"     "000000001" "0"         "T"         ">"        
 #> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`02`
-#> [1] NA
+#> $`837P_EX9_anesthesia`$GS
+#> [1] "GS"           "HC"           "SENDERGS"     "RECEIVERGS"   "20231106"    
+#> [6] "142432"       "000000001"    "X"            "005010X222A1"
 #> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`03`
-#> [1] "00"
+#> $`837P_EX9_anesthesia`$ST
+#> [1] "ST"           "837"          "0001"         "005010X222A1"
 #> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`06`
-#> [1] "SENDER"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`08`
-#> [1] "RECEIVER"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`09`
-#> [1] "231106"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`10`
-#> [1] "1424"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`15`
-#> [1] "T"
-#> 
-#> $`837P_EX9_anesthesia`$Header$ISA$`16`
-#> [1] ">"
-#> 
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS
-#> $`837P_EX9_anesthesia`$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`02`
-#> [1] "SENDERGS"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`03`
-#> [1] "RECEIVERGS"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`04`
-#> [1] "20231106"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`05`
-#> [1] "142432"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`06`
-#> [1] "000000001"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $`837P_EX9_anesthesia`$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $`837P_EX9_anesthesia`$Transactions
-#> $`837P_EX9_anesthesia`$Transactions[[1]]
+#> $`837P_EX9_anesthesia`[[4]]
 #>  [1] "ST*837*0001*005010X222A1"                         
 #>  [2] "BHT*0019*00*0123*20050117*1023*CH"                
 #>  [3] "NM1*41*2*PROVIDER MEDICAL GROUP*****46*N305"      
@@ -4143,118 +1896,34 @@ purrr::map(idx, parse_837)
 #> [27] "SV1*HC>00142>QK>QS>P1*827*MJ*61***1"              
 #> [28] "DTP*472*D8*20050112"                              
 #> 
+#> $`837P_EX9_anesthesia`$SE
+#> [1] "SE"   "29"   "0001"
 #> 
-#> $`837P_EX9_anesthesia`$Trailer
-#> $`837P_EX9_anesthesia`$Trailer$SE
-#> $`837P_EX9_anesthesia`$Trailer$SE$`01`
-#> [1] "29"
+#> $`837P_EX9_anesthesia`$GE
+#> [1] "GE"        "1"         "000000001"
 #> 
-#> $`837P_EX9_anesthesia`$Trailer$SE$`02`
-#> [1] "0001"
-#> 
-#> 
-#> $`837P_EX9_anesthesia`$Trailer$GE
-#> $`837P_EX9_anesthesia`$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX9_anesthesia`$Trailer$GE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $`837P_EX9_anesthesia`$Trailer$IEA
-#> $`837P_EX9_anesthesia`$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $`837P_EX9_anesthesia`$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $`837P_EX9_anesthesia`$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $sample_837P
 #> [1] NA
 #> 
 #> $sample_837_0
-#> $sample_837_0$Header
-#> $sample_837_0$Header$ISA
-#> $sample_837_0$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_0$ISA
+#>  [1] "ISA"       "00"        NA          "00"        NA          "01"       
+#>  [7] "987654321" "ZZ"        "123456789" "180508"    "0833"      "^"        
+#> [13] "00501"     "697773230" "1"         "P"         ":"        
 #> 
-#> $sample_837_0$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_0$GS
+#> [1] "GS"            "HC"            "CLEARINGHOUSE" "123456789"    
+#> [5] "20180508"      "0833"          "212950697"     "X"            
+#> [9] "005010X222A1" 
 #> 
-#> $sample_837_0$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_0$ST
+#> [1] "ST"           "837"          "000000001"    "005010X222A1"
 #> 
-#> $sample_837_0$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_0$Header$ISA$`05`
-#> [1] "01"
-#> 
-#> $sample_837_0$Header$ISA$`06`
-#> [1] "987654321"
-#> 
-#> $sample_837_0$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_0$Header$ISA$`08`
-#> [1] "123456789"
-#> 
-#> $sample_837_0$Header$ISA$`09`
-#> [1] "180508"
-#> 
-#> $sample_837_0$Header$ISA$`10`
-#> [1] "0833"
-#> 
-#> $sample_837_0$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $sample_837_0$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $sample_837_0$Header$ISA$`13`
-#> [1] "697773230"
-#> 
-#> $sample_837_0$Header$ISA$`14`
-#> [1] "1"
-#> 
-#> $sample_837_0$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_0$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_0$Header$GS
-#> $sample_837_0$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_0$Header$GS$`02`
-#> [1] "CLEARINGHOUSE"
-#> 
-#> $sample_837_0$Header$GS$`03`
-#> [1] "123456789"
-#> 
-#> $sample_837_0$Header$GS$`04`
-#> [1] "20180508"
-#> 
-#> $sample_837_0$Header$GS$`05`
-#> [1] "0833"
-#> 
-#> $sample_837_0$Header$GS$`06`
-#> [1] "212950697"
-#> 
-#> $sample_837_0$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_0$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $sample_837_0$Transactions
-#> $sample_837_0$Transactions[[1]]
+#> $sample_837_0[[4]]
 #>  [1] "ST*837*000000001*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -4289,7 +1958,7 @@ purrr::map(idx, parse_837)
 #> [32] "DTP*472*D8*20180428"                                             
 #> [33] "REF*6R*142671"                                                   
 #> 
-#> $sample_837_0$Transactions[[2]]
+#> $sample_837_0[[5]]
 #>  [1] "ST*837*000000002*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -4324,7 +1993,7 @@ purrr::map(idx, parse_837)
 #> [32] "DTP*472*D8*20180426"                                             
 #> [33] "REF*6R*143792"                                                   
 #> 
-#> $sample_837_0$Transactions[[3]]
+#> $sample_837_0[[6]]
 #>  [1] "ST*837*000000003*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -4359,7 +2028,7 @@ purrr::map(idx, parse_837)
 #> [32] "DTP*472*D8*20180427"                                             
 #> [33] "REF*6R*140976"                                                   
 #> 
-#> $sample_837_0$Transactions[[4]]
+#> $sample_837_0[[7]]
 #>  [1] "ST*837*000000004*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -4395,7 +2064,7 @@ purrr::map(idx, parse_837)
 #> [33] "REF*6R*140787"                                                   
 #> [34] "NTE*ADD*05"                                                      
 #> 
-#> $sample_837_0$Transactions[[5]]
+#> $sample_837_0[[8]]
 #>  [1] "ST*837*000000005*005010X222A1"                                   
 #>  [2] "BHT*0019*00*7349063984*20180508*0833*CH"                         
 #>  [3] "NM1*41*2*CLEARINGHOUSE LLC*****46*987654321"                     
@@ -4430,115 +2099,31 @@ purrr::map(idx, parse_837)
 #> [32] "DTP*472*D8*20180427"                                             
 #> [33] "REF*6R*143907"                                                   
 #> 
+#> $sample_837_0$SE
+#> [1] "SE"        "34"        "000000001"
 #> 
-#> $sample_837_0$Trailer
-#> $sample_837_0$Trailer$SE
-#> $sample_837_0$Trailer$SE$`01`
-#> [1] "34"
+#> $sample_837_0$GE
+#> [1] "GE"        "5"         "212950697"
 #> 
-#> $sample_837_0$Trailer$SE$`02`
-#> [1] "000000001"
-#> 
-#> 
-#> $sample_837_0$Trailer$GE
-#> $sample_837_0$Trailer$GE$`01`
-#> [1] "5"
-#> 
-#> $sample_837_0$Trailer$GE$`02`
-#> [1] "212950697"
-#> 
-#> 
-#> $sample_837_0$Trailer$IEA
-#> $sample_837_0$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_0$Trailer$IEA$`02`
-#> [1] "697773230"
-#> 
-#> 
+#> $sample_837_0$IEA
+#> [1] "IEA"       "1"         "697773230"
 #> 
 #> 
 #> $sample_837_11
-#> $sample_837_11$Header
-#> $sample_837_11$Header$ISA
-#> $sample_837_11$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_11$ISA
+#>  [1] "ISA"          "00"           NA             "00"           NA            
+#>  [6] "ZZ"           "SUBMITTER ID" "ZZ"           "RECEIVER ID"  "230516"      
+#> [11] "1145"         "^"            "00501"        "000000001"    "0"           
+#> [16] "P"            ":"           
 #> 
-#> $sample_837_11$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_11$GS
+#> [1] "GS"           "HC"           "SUBMITTER ID" "RECEIVER ID"  "20230516"    
+#> [6] "1145"         "1"            "X"            "005010X222A1"
 #> 
-#> $sample_837_11$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_11$ST
+#> [1] "ST"           "837"          "0001"         "005010X222A1"
 #> 
-#> $sample_837_11$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_11$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_11$Header$ISA$`06`
-#> [1] "SUBMITTER ID"
-#> 
-#> $sample_837_11$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_11$Header$ISA$`08`
-#> [1] "RECEIVER ID"
-#> 
-#> $sample_837_11$Header$ISA$`09`
-#> [1] "230516"
-#> 
-#> $sample_837_11$Header$ISA$`10`
-#> [1] "1145"
-#> 
-#> $sample_837_11$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $sample_837_11$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $sample_837_11$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $sample_837_11$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_11$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_11$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_11$Header$GS
-#> $sample_837_11$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_11$Header$GS$`02`
-#> [1] "SUBMITTER ID"
-#> 
-#> $sample_837_11$Header$GS$`03`
-#> [1] "RECEIVER ID"
-#> 
-#> $sample_837_11$Header$GS$`04`
-#> [1] "20230516"
-#> 
-#> $sample_837_11$Header$GS$`05`
-#> [1] "1145"
-#> 
-#> $sample_837_11$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_11$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_11$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $sample_837_11$Transactions
-#> $sample_837_11$Transactions[[1]]
+#> $sample_837_11[[4]]
 #>  [1] "ST*837*0001*005010X222A1"                   
 #>  [2] "BHT*0019*00*244579*20230516*1145*CH"        
 #>  [3] "NM1*41*2*SUBMIT CLINIC*****46*12345"        
@@ -4564,115 +2149,31 @@ purrr::map(idx, parse_837)
 #> [23] "LIN**N4*50242004001"                        
 #> [24] "CTP***2*150.00"                             
 #> 
+#> $sample_837_11$SE
+#> [1] "SE"   "24"   "0001"
 #> 
-#> $sample_837_11$Trailer
-#> $sample_837_11$Trailer$SE
-#> $sample_837_11$Trailer$SE$`01`
-#> [1] "24"
+#> $sample_837_11$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_11$Trailer$SE$`02`
-#> [1] "0001"
-#> 
-#> 
-#> $sample_837_11$Trailer$GE
-#> $sample_837_11$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_11$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_11$Trailer$IEA
-#> $sample_837_11$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_11$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $sample_837_11$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 #> $sample_837_12
-#> $sample_837_12$Header
-#> $sample_837_12$Header$ISA
-#> $sample_837_12$Header$ISA$`01`
-#> [1] "00"
+#> $sample_837_12$ISA
+#>  [1] "ISA"          "00"           NA             "00"           NA            
+#>  [6] "ZZ"           "SUBMITTER ID" "ZZ"           "RECEIVER ID"  "230516"      
+#> [11] "1145"         "^"            "00501"        "000000001"    "0"           
+#> [16] "P"            ":"           
 #> 
-#> $sample_837_12$Header$ISA$`02`
-#> [1] NA
+#> $sample_837_12$GS
+#> [1] "GS"           "HC"           "SUBMITTER ID" "RECEIVER ID"  "20230516"    
+#> [6] "1145"         "1"            "X"            "005010X222A1"
 #> 
-#> $sample_837_12$Header$ISA$`03`
-#> [1] "00"
+#> $sample_837_12$ST
+#> [1] "ST"           "837"          "0001"         "005010X222A1"
 #> 
-#> $sample_837_12$Header$ISA$`04`
-#> [1] NA
-#> 
-#> $sample_837_12$Header$ISA$`05`
-#> [1] "ZZ"
-#> 
-#> $sample_837_12$Header$ISA$`06`
-#> [1] "SUBMITTER ID"
-#> 
-#> $sample_837_12$Header$ISA$`07`
-#> [1] "ZZ"
-#> 
-#> $sample_837_12$Header$ISA$`08`
-#> [1] "RECEIVER ID"
-#> 
-#> $sample_837_12$Header$ISA$`09`
-#> [1] "230516"
-#> 
-#> $sample_837_12$Header$ISA$`10`
-#> [1] "1145"
-#> 
-#> $sample_837_12$Header$ISA$`11`
-#> [1] "^"
-#> 
-#> $sample_837_12$Header$ISA$`12`
-#> [1] "00501"
-#> 
-#> $sample_837_12$Header$ISA$`13`
-#> [1] "000000001"
-#> 
-#> $sample_837_12$Header$ISA$`14`
-#> [1] "0"
-#> 
-#> $sample_837_12$Header$ISA$`15`
-#> [1] "P"
-#> 
-#> $sample_837_12$Header$ISA$`16`
-#> [1] ":"
-#> 
-#> 
-#> $sample_837_12$Header$GS
-#> $sample_837_12$Header$GS$`01`
-#> [1] "HC"
-#> 
-#> $sample_837_12$Header$GS$`02`
-#> [1] "SUBMITTER ID"
-#> 
-#> $sample_837_12$Header$GS$`03`
-#> [1] "RECEIVER ID"
-#> 
-#> $sample_837_12$Header$GS$`04`
-#> [1] "20230516"
-#> 
-#> $sample_837_12$Header$GS$`05`
-#> [1] "1145"
-#> 
-#> $sample_837_12$Header$GS$`06`
-#> [1] "1"
-#> 
-#> $sample_837_12$Header$GS$`07`
-#> [1] "X"
-#> 
-#> $sample_837_12$Header$GS$`08`
-#> [1] "005010X222A1"
-#> 
-#> 
-#> 
-#> $sample_837_12$Transactions
-#> $sample_837_12$Transactions[[1]]
+#> $sample_837_12[[4]]
 #>  [1] "ST*837*0001*005010X222A1"                              
 #>  [2] "BHT*0019*00*244579*20230516*1145*CH"                   
 #>  [3] "NM1*41*2*SUBMIT CLINIC*****46*12345"                   
@@ -4698,7 +2199,7 @@ purrr::map(idx, parse_837)
 #> [23] "LIN**N4*50242004001"                                   
 #> [24] "CTP***2*150.00"                                        
 #> 
-#> $sample_837_12$Transactions[[2]]
+#> $sample_837_12[[5]]
 #>  [1] "ST*837*5856*005010X223A2"                              
 #>  [2] "BHT*0019*00*241205204222*20241205*2042*CH"             
 #>  [3] "NM1*41*2*HSA PORT ARTHUR, LLC*****XX*1194548073"       
@@ -4737,7 +2238,7 @@ purrr::map(idx, parse_837)
 #> [36] "DTP*472*D8*20180428"                                   
 #> [37] "REF*6R*142671"                                         
 #> 
-#> $sample_837_12$Transactions[[3]]
+#> $sample_837_12[[6]]
 #>  [1] "ST*837*4763033*005010X223A2"                                      
 #>  [2] "BHT*0019*00*241205204221*20241205*2042*CH"                        
 #>  [3] "NM1*41*2*HCA HEALTH SERVICES OF TENNESSEE, INC.*****XX*1265487193"
@@ -4784,32 +2285,14 @@ purrr::map(idx, parse_837)
 #> [44] "DTP*472*D8*20180428"                                              
 #> [45] "REF*6R*142671"                                                    
 #> 
+#> $sample_837_12$SE
+#> [1] "SE"   "24"   "0001"
 #> 
-#> $sample_837_12$Trailer
-#> $sample_837_12$Trailer$SE
-#> $sample_837_12$Trailer$SE$`01`
-#> [1] "24"
+#> $sample_837_12$GE
+#> [1] "GE" "1"  "1" 
 #> 
-#> $sample_837_12$Trailer$SE$`02`
-#> [1] "0001"
-#> 
-#> 
-#> $sample_837_12$Trailer$GE
-#> $sample_837_12$Trailer$GE$`01`
-#> [1] "1"
-#> 
-#> $sample_837_12$Trailer$GE$`02`
-#> [1] "1"
-#> 
-#> 
-#> $sample_837_12$Trailer$IEA
-#> $sample_837_12$Trailer$IEA$`01`
-#> [1] "1"
-#> 
-#> $sample_837_12$Trailer$IEA$`02`
-#> [1] "000000001"
-#> 
-#> 
+#> $sample_837_12$IEA
+#> [1] "IEA"       "1"         "000000001"
 #> 
 #> 
 ```

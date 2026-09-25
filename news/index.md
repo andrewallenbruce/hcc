@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9056 (2026-09-25)
+
+- fixed bug in index print method
+
 ## hcc 0.0.0.9055 (2026-09-25)
 
 - 834 indexer/parser mvp

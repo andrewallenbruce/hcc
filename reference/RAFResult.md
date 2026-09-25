@@ -72,6 +72,7 @@ A `<RAFResult>` S7 object
 ## Examples
 
 ``` r
+if (FALSE) {
 RAFResult()
-#> Error in if (perl0(x, "-")) {    as.Date(x)} else {    as.Date.character(x, format = "%Y%m%d", ...)}: argument is of length zero
+}
 ```
