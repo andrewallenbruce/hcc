@@ -81,6 +81,15 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "BGN"      "00"       "12456"    "19980520" "1200"     NA         NA        
 #> [8] NA         "2"       
 #> 
+#> $`834_EX2_add_dependent`$REF38
+#> [1] "REF"        "38"         "ABCD012354"
+#> 
+#> $`834_EX2_add_dependent`$N1P5
+#> [1] "N1"        "P5"        NA          "FI"        "999888777"
+#> 
+#> $`834_EX2_add_dependent`$N1IN
+#> [1] "N1"        "IN"        NA          "FI"        "654456654"
+#> 
 #> $`834_EX2_add_dependent`$INS_1_1
 #>  [1] "INS" "N"   "19"  "021" "28"  "A"   NA    NA    NA    "F"  
 #> 
@@ -143,6 +152,20 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [7] NA                                    NA                                   
 #> [9] "2"                                  
 #> 
+#> $sample_834_06$QTYTO
+#> [1] "QTY" "TO"  "2"  
+#> 
+#> $sample_834_06$N1P5
+#> [1] "N1"                                                    
+#> [2] "P5"                                                    
+#> [3] "California Department of Health Care Services........."
+#> [4] "FI"                                                    
+#> [5] "999999990"                                             
+#> 
+#> $sample_834_06$N1IN
+#> [1] "N1"               "IN"               "Sample PACE Inc." "FI"              
+#> [5] "999999991"       
+#> 
 #> $sample_834_06$INS_1_1
 #> [1] "INS" "Y"   "18"  "001" "AI"  "A"   "E"   NA    "AC" 
 #> 
@@ -153,22 +176,24 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "REF"        "1L"         "randomCIN5"
 #> 
 #> $sample_834_06$INS_1_4
-#> [1] "REF"       "17"        ";;202502;"
+#> [1] "REF"    "17"     NA       NA       "202502"
 #> 
 #> $sample_834_06$INS_1_5
-#> [1] "REF"          "23"           "3;20200501;;"
+#> [1] "REF"      "23"       "3"        "20200501" NA        
 #> 
 #> $sample_834_06$INS_1_6
-#> [1] "REF"                    "3H"                     "19;60;randomCaseNum1;;"
+#> [1] "REF"            "3H"             "19"             "60"            
+#> [5] "randomCaseNum1" NA              
 #> 
 #> $sample_834_06$INS_1_7
-#> [1] "REF"        "6O"         ";A;Y;D;67;"
+#> [1] "REF" "6O"  NA    "A"   "Y"   "D"   "67" 
 #> 
 #> $sample_834_06$INS_1_8
-#> [1] "REF"               "Q4"                "randomProviderId;"
+#> [1] "REF"              "Q4"               "randomProviderId"
 #> 
 #> $sample_834_06$INS_1_9
-#> [1] "REF"                 "ZZ"                  "01059;;;;;010S1;;;;"
+#>  [1] "REF"   "ZZ"    "01059" NA      NA      NA      NA      "010S1" NA     
+#> [10] NA      NA     
 #> 
 #> $sample_834_06$INS_1_10
 #> [1] "NM1"          "IL"           "1"            "randomLName1" "randomFName1"
@@ -197,7 +222,7 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "N4"             "LOS ANGELES CA" "CA"             "90037"         
 #> 
 #> $sample_834_06$INS_1_18
-#> [1] "HD"     "001"    NA       "LTC"    "010;59"
+#> [1] "HD"  "001" NA    "LTC" "010" "59" 
 #> 
 #> $sample_834_06$INS_1_19
 #> [1] "DTP"      "348"      "D8"       "20250201"
@@ -206,10 +231,11 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "DTP"      "349"      "D8"       "20250131"
 #> 
 #> $sample_834_06$INS_1_21
-#> [1] "REF"             "17"              "N;;;;;;;;;;;;;1"
+#>  [1] "REF" "17"  "N"   NA    NA    NA    NA    NA    NA    NA    NA    NA   
+#> [13] NA    NA    NA    "1"  
 #> 
 #> $sample_834_06$INS_1_22
-#> [1] "REF"               "CE"                "60;001;80;891;;;;"
+#> [1] "REF" "CE"  "60"  "001" "80"  "891" NA    NA    NA   
 #> 
 #> $sample_834_06$INS_1_23
 #> [1] "REF" "RB"  "60" 
@@ -218,10 +244,10 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "REF" "ZX"  "19" 
 #> 
 #> $sample_834_06$INS_1_25
-#> [1] "REF"  "ZZ"   ";;10"
+#> [1] "REF" "ZZ"  NA    NA    "10" 
 #> 
 #> $sample_834_06$INS_1_26
-#> [1] "HD"     "021"    NA       "LTC"    "010;S1"
+#> [1] "HD"  "021" NA    "LTC" "010" "S1" 
 #> 
 #> $sample_834_06$INS_1_27
 #> [1] "DTP"      "348"      "D8"       "20250101"
@@ -230,10 +256,11 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "DTP"      "349"      "D8"       "20250131"
 #> 
 #> $sample_834_06$INS_1_29
-#> [1] "REF"             "17"              "N;;;;;;;;;;;;;1"
+#>  [1] "REF" "17"  "N"   NA    NA    NA    NA    NA    NA    NA    NA    NA   
+#> [13] NA    NA    NA    "1"  
 #> 
 #> $sample_834_06$INS_1_30
-#> [1] "REF"               "CE"                "60;401;80;891;;;;"
+#> [1] "REF" "CE"  "60"  "401" "80"  "891" NA    NA    NA   
 #> 
 #> $sample_834_06$INS_1_31
 #> [1] "REF" "RB"  "60" 
@@ -242,7 +269,7 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "REF" "ZX"  "19" 
 #> 
 #> $sample_834_06$INS_1_33
-#> [1] "REF"  "ZZ"   ";;11"
+#> [1] "REF" "ZZ"  NA    NA    "11" 
 #> 
 #> $sample_834_06$INS_2_1
 #> [1] "INS" "Y"   "18"  "001" "AI"  "A"   "C"   NA    "AC" 
@@ -254,28 +281,31 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "REF"        "1L"         "randomCIN6"
 #> 
 #> $sample_834_06$INS_2_4
-#> [1] "REF"       "17"        ";;202502;"
+#> [1] "REF"    "17"     NA       NA       "202502"
 #> 
 #> $sample_834_06$INS_2_5
-#> [1] "REF"          "23"           "9;20200601;;"
+#> [1] "REF"      "23"       "9"        "20200601" NA        
 #> 
 #> $sample_834_06$INS_2_6
-#> [1] "REF"                    "3H"                     "19;10;randomCaseNum2;;"
+#> [1] "REF"            "3H"             "19"             "10"            
+#> [5] "randomCaseNum2" NA              
 #> 
 #> $sample_834_06$INS_2_7
-#> [1] "REF"       "6O"        ";A;Y;;25;"
+#> [1] "REF" "6O"  NA    "A"   "Y"   NA    "25" 
 #> 
 #> $sample_834_06$INS_2_8
-#> [1] "REF"                    "DX"                     ";;;S5617;D635;20240901"
+#> [1] "REF"      "DX"       NA         NA         NA         "S5617"    "D635"    
+#> [8] "20240901"
 #> 
 #> $sample_834_06$INS_2_9
 #> [1] "REF"       "F6"        "randomId1"
 #> 
 #> $sample_834_06$INS_2_10
-#> [1] "REF"             "QQ"              ";;202004;202004"
+#> [1] "REF"    "QQ"     NA       NA       "202004" "202004"
 #> 
 #> $sample_834_06$INS_2_11
-#> [1] "REF"                 "ZZ"                  "01001;;;;;30401;;;;"
+#>  [1] "REF"   "ZZ"    "01001" NA      NA      NA      NA      "30401" NA     
+#> [10] NA      NA     
 #> 
 #> $sample_834_06$INS_2_12
 #> [1] "NM1"          "IL"           "1"            "randomLName2" "randomFName2"
@@ -296,7 +326,7 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [6] ":RET:2135-2"
 #> 
 #> $sample_834_06$INS_2_17
-#> [1] "HD"     "021"    NA       "LTC"    "010;01"
+#> [1] "HD"  "021" NA    "LTC" "010" "01" 
 #> 
 #> $sample_834_06$INS_2_18
 #> [1] "DTP"      "348"      "D8"       "20250201"
@@ -305,13 +335,14 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "DTP"      "349"      "D8"       "20250228"
 #> 
 #> $sample_834_06$INS_2_20
-#> [1] "REF"             "17"              "D;;;;;;;;;;;;;1"
+#>  [1] "REF" "17"  "D"   NA    NA    NA    NA    NA    NA    NA    NA    NA   
+#> [13] NA    NA    NA    "1"  
 #> 
 #> $sample_834_06$INS_2_21
-#> [1] "REF"   "9V"    "2;2;2"
+#> [1] "REF" "9V"  "2"   "2"   "2"  
 #> 
 #> $sample_834_06$INS_2_22
-#> [1] "REF"                    "CE"                     "10;401;9G;999;80;401;;"
+#> [1] "REF" "CE"  "10"  "401" "9G"  "999" "80"  "401" NA   
 #> 
 #> $sample_834_06$INS_2_23
 #> [1] "REF" "RB"  "10" 
@@ -320,7 +351,7 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [1] "REF" "ZX"  "19" 
 #> 
 #> $sample_834_06$INS_2_25
-#> [1] "REF"  "ZZ"   ";;10"
+#> [1] "REF" "ZZ"  NA    NA    "10" 
 #> 
 #> $sample_834_06$SE
 #> [1] "SE"   "64"   "0001"
