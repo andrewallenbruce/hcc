@@ -127,12 +127,13 @@ hcc_count <- function(hcc) {
 #' @param code `<chr>` Medi-Cal aid code or Medicare status code
 #' @returns Dual eligibility code ('01'-'08') or NA if not found
 #' @examplesIf FALSE
-#' map_to_dual(c("QMB", "QMBONLY", "SLMB+", "QQQ"))
-#' map_to_dual(c("4N", "5B", "40"))
+#' map_to_dual(
+#'   c("4N", "5B", "4O", "QMB",
+#'     "QMBONLY", "SLMB+", "QQQ")
+#' )
 #' @noRd
 map_to_dual <- function(code) {
-  from <- c(DUAL_CODES$MAP_STATUS, DUAL_CODES$MAP_AID)
-  unlist_(from)[collapse::fmatch(normalize_(code), rlang::names2(from))]
+  unlist_(DUAL_MAP)[collapse::fmatch(normalize_(code), rlang::names2(DUAL_MAP))]
 }
 
 #' Map Patient Age to Category Interval
@@ -145,14 +146,7 @@ map_to_dual <- function(code) {
 #' @param esrd `<lgl>` Beneficiary has **End Stage Renal Disease**
 #' @returns Category label for age range
 #' @examplesIf FALSE
-#' categorize_age(
-#'   age = 64,
-#'   sex = "F",
-#'   orec = "1",
-#'   vers = "V2",
-#'   new = TRUE,
-#'   esrd = FALSE
-#'  )
+#' categorize_age(64, "F", "V2", "1", TRUE, FALSE)
 #' @noRd
 categorize_age <- function(age, sex, vers, orec, new, esrd) {
   rlang::check_number_whole(age, min = 0, max = 120)
@@ -189,14 +183,13 @@ convert_sex <- function(sex, version) {
 }
 
 #' @examplesIf FALSE
-#' convert_model("v22")
-#' convert_model("e24")
+#' convert_model("C22")
+#' convert_model("D24")
 #' @noRd
 convert_model <- function(model) {
   check_string(model, allow_empty = FALSE)
-
+  model <- toupper(model)
   model <- rlang::arg_match0(model, rlang::names2(MODEL))
-
   unlist_(MODEL[model])
 }
 
@@ -275,11 +268,13 @@ age_category_NEW <- function(age, sex, orec) {
 #' parse_date("19550315")
 #' @noRd
 parse_date <- function(x, ...) {
-  if (perl0(x, "-")) {
-    as.Date(x)
-  } else {
-    as.Date.character(x, format = "%Y%m%d", ...)
+  if (collapse::is_date(x)) {
+    return(x)
   }
+  if (perl0(x, "-")) {
+    return(as.Date.character(x, format = "%Y-%m-%d"))
+  }
+  as.Date.character(x, format = "%Y%m%d")
 }
 
 #' Convert 6-digit date (YYMMDD) to ISO format
@@ -295,7 +290,7 @@ parse_yymmdd <- function(x, ...) {
 #' parse_date_range("20200202-20200402")
 #' @noRd
 parse_date_range <- function(x) {
-  x <- strsplit(x, "-", fixed = TRUE)[[1]]
+  x <- .subset2(strsplit(x, "-", fixed = TRUE), 1L)
   ivs::iv_pairs(cheapr::c_(parse_date(x[1]), parse_date(x[2]) + 1L))
 }
 
@@ -362,14 +357,25 @@ medi_cal_status <- function(
 #'
 #' @param x Raw race value from DMG segment
 #' @examplesIf FALSE
-#' parse_race_code(c(":RET:2135-2", "2135-2", "2106-3"))
+#' parse_race(c(":RET:2135-2", "2135-2", "2106-3"))
 #' @noRd
-parse_race_code <- function(x) {
+parse_race <- function(x) {
   if (perl0(x, ":")) {
     x <- strsplit(x, ":", fixed = TRUE)
-    o <- x[lengths(x) > 1L][[1]]
-    o <- rev(o[nzchar(o)])[1]
-    x <- c(o, unlist_(x[lengths(x) == 1L]))
+
+    g <- lengths(x) > 1L
+
+    x <- c(
+      .subset(x, g) |>
+        .subset2(1L) |>
+        rev() |>
+        .subset(1L),
+      .subset(x, !g) |>
+        unlist_()
+    )
   }
-  hcc::ra_race[["name"]][collapse::fmatch(x, hcc::ra_race[["code"]])]
+  .subset(
+    hcc::ra_race[["name"]],
+    collapse::fmatch(x, hcc::ra_race[["code"]])
+  )
 }

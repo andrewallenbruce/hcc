@@ -25,8 +25,10 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' idx = purrr::map(hcc::x12_820, index_x12)
-#' purrr::map(idx[c(10:11, 16L)], parse_820)
+#' x = hcc::x12_820
+#' i = hcc:::x12_type(x)
+#' i218 = x[endsWith(i, "218")] |> purrr::map(index_x12)
+#' purrr::map(i218, hcc:::parse_820_218)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -40,53 +42,48 @@ parse_820 <- function(x) {
     )
   )
 }
+# i306 = x[endsWith(i, "306")] |> purrr::map(index_x12)
 
 #' @noRd
 parse_820_ENT <- function(x) {
-  ent <- .subset2(x@index, "ENT")
-  purrr::map(
-    fill_sequence(
-      ent,
-      c(.subset(ent, -1L), .subset2(x@index, "SE")) - 1L
-    ),
-    function(idx) {
-      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
-    }
-  ) |>
-    rlang::set_names(
-      ~ cheapr::paste_(
-        "ENT_",
-        seq_along(.)
-      )
-    ) |>
-    purrr::list_flatten() |>
-    purrr::map(set_zchar)
+  en <- .subset2(x@index, "ENT")
+  se <- .subset2(x@index, "SE")
+  se <- c(.subset(en, -1L), se) - 1L
+  i <- fill_(en, se, as_list = TRUE)
+
+  ent <- purrr::map(i, \(i) {
+    e_ <- .subset(x@text, i) |>
+      strsplit("[*;]", perl = TRUE)
+
+    e_[[1]] <- e_[[1]][-1]
+
+    purrr::map(e_, \(x) collapse::na_rm(set_zchar(x)))
+  })
+
+  rlang::set_names(ent, seq_along(ent)) |>
+    purrr::list_flatten(name_spec = "{outer}.{inner}")
 }
 
 #' @noRd
 parse_820_218 <- function(x) {
-  header <- list(
+  X12_820_218(
     ISA = split_7(x, "ISA"),
     GS = split_7(x, "GS"),
     ST = split_7(x, "ST"),
     BPR = split_7(x, "BPR"),
     TRN = split_7(x, "TRN"),
-    REF14 = split_7(x, "REF14")
-  )
-
-  payment <- list(
-    N1PE = split_7(x, "N1PE"),
+    RF14 = split_7(x, "REF14")[-1],
+    N1PE = split_7(x, "N1PE")[-1],
     N3PE = split_7(x, "N3PE"),
     N4PE = split_7(x, "N4PE"),
-    N1PR = split_7(x, "N1PR"),
+    N1PR = split_7(x, "N1PR")[-1],
     N3PR = split_7(x, "N3PR"),
-    N4PR = split_7(x, "N4PR")
+    N4PR = split_7(x, "N4PR"),
+    ENT = parse_820_ENT(x),
+    SE = split_7(x, "SE"),
+    GE = split_7(x, "GE"),
+    IEA = split_7(x, "IEA")
   )
-
-  entity <- parse_820_ENT(x)
-  trailer <- parse_TRAILER(x)
-
-  c(header, payment, entity, trailer)
 }
 
 #' @noRd

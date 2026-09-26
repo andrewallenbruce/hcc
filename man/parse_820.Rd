@@ -41,6 +41,8 @@ Typical loop structure within an \code{820-X218}:
 }
 }
 \examples{
-idx = purrr::map(hcc::x12_820, index_x12)
-purrr::map(idx[c(10:11, 16L)], parse_820)
+x = hcc::x12_820
+i = hcc:::x12_type(x)
+i218 = x[endsWith(i, "218")] |> purrr::map(index_x12)
+purrr::map(i218, hcc:::parse_820_218)
 }

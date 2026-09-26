@@ -14,13 +14,17 @@ parse_TRAILER <- function(x) {
 
 #' @noRd
 split_7 <- function(x, name) {
-  split_1(
-    S7::prop(x, "text"),
-    .subset2(
-      S7::prop(x, "index"),
-      name
-    )
-  )
+  .subset(
+    split_1(
+      S7::prop(x, "text"),
+      .subset2(
+        S7::prop(x, "index"),
+        name
+      )
+    ),
+    -1L
+  ) |>
+  collapse::na_rm()
 }
 
 
@@ -80,7 +84,8 @@ pad_names <- function(x) {
   N <- as.character(seq_along(x))
   i <- whichv_(nchar(N), 1L)
   collapse::setv(N, i, cheapr::paste_("0", N[i]))
-  rlang::set_names(as.list(x), N)
+  N
+  # rlang::set_names(as.list(x), N)
 }
 
 #' @noRd

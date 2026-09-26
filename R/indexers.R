@@ -31,14 +31,10 @@ new_X12Index <- function(x, text, index, type) {
 #' @param text `<chr>` string of raw X12-820 text
 #' @returns `<hcc::X12Index>` S7 object
 #' @examples
-#' purrr::map(
-#'   c(hcc::x12_820,
-#'     hcc::x12_834,
-#'     hcc::x12_837I,
-#'     hcc::x12_837P
-#'    ),
-#'    index_x12
-#'  )
+#' hcc::x12_820 |> purrr::map(index_x12)
+#' hcc::x12_834 |> purrr::map(index_x12)
+#' hcc::x12_837I |> purrr::map(index_x12)
+#' hcc::x12_837P |> purrr::map(index_x12)
 #' @export
 index_x12 <- function(text) {
   text <- check_text_(text)

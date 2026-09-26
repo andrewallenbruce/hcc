@@ -1,3 +1,25 @@
+#' @export
+X12_820_218 := S7::new_class(
+  properties = list(
+    ISA = S7::class_character,
+    GS = S7::class_character,
+    ST = S7::class_character,
+    BPR = S7::class_character,
+    TRN = S7::class_character,
+    RF14 = S7::class_character,
+    N1PE = S7::class_character,
+    N3PE = S7::class_character,
+    N4PE = S7::class_character,
+    N1PR = S7::class_character,
+    N3PR = S7::class_character,
+    N4PR = S7::class_character,
+    ENT = S7::class_list,
+    SE = S7::class_character,
+    GE = S7::class_character,
+    IEA = S7::class_character
+  )
+)
+
 #' Remittance Line Item
 #'
 #' A single remittance line item within a member's payment record.

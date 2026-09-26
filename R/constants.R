@@ -79,6 +79,12 @@ DUAL_CODES = list(
   )
 )
 
+#' @noRd
+DUAL_MAP = c(
+  .subset2(DUAL_CODES, "MAP_STATUS"),
+  .subset2(DUAL_CODES, "MAP_AID")
+)
+
 #' OREC/CREC Codes
 #'
 #' @description

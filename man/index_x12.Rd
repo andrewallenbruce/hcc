@@ -16,12 +16,8 @@ index_x12(text)
 X12 Indexer
 }
 \examples{
-purrr::map(
-  c(hcc::x12_820,
-    hcc::x12_834,
-    hcc::x12_837I,
-    hcc::x12_837P
-   ),
-   index_x12
- )
+hcc::x12_820 |> purrr::map(index_x12)
+hcc::x12_834 |> purrr::map(index_x12)
+hcc::x12_837I |> purrr::map(index_x12)
+hcc::x12_837P |> purrr::map(index_x12)
 }
