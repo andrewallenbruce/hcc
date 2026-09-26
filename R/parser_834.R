@@ -54,10 +54,7 @@ parse_834 <- function(x) {
 #' @noRd
 parse_834_MID <- function(x) {
   middle <- purrr::map(
-    fill_sequence(
-      x@index$BGN + 1L,
-      collapse::fmax(x@index$N1)
-    ),
+    fill_(x@index$BGN + 1L, collapse::fmax(x@index$N1)),
     function(idx) {
       strsplit(.subset(x@text, idx), "*", fixed = TRUE)
     }
@@ -74,16 +71,16 @@ parse_834_MID <- function(x) {
 #' @noRd
 parse_834_INS <- function(x) {
   ins <- .subset2(S7::prop(x, "index"), "INS")
+  ise <- .subset2(S7::prop(x, "index"), "SE")
   purrr::map(
-    fill_sequence(
-      ins,
-      c(.subset(ins, -1L), .subset2(S7::prop(x, "index"), "SE")) - 1L
+    fill_(
+      start = ins,
+      end = c(.subset(ins, -1L), ise) - 1L,
+      as_list = TRUE
     ),
     function(idx) {
       strsplit(.subset(S7::prop(x, "text"), idx), "[;*]", perl = TRUE)
-      # strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
-    }
-  ) |>
+    }) |>
     rlang::set_names(
       ~ cheapr::paste_(
         "INS_",
@@ -95,7 +92,7 @@ parse_834_INS <- function(x) {
 }
 
 #' @noRd
-index_834_x220 <- function(x) {
+index_834_220 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),

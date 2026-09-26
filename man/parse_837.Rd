@@ -76,6 +76,6 @@ Waystar, Trizetto), with \verb{277CA}, \code{999}, and ultimately \code{835} ret
 }
 }
 \examples{
-idx = purrr::map(c(hcc::x12_837I, hcc::x12_837P), index_x12)
-purrr::map(idx, parse_837)
+purrr::map(hcc::x12_837I, index_x12) |> purrr::map(parse_837)
+purrr::map(hcc::x12_837P, index_x12) |> purrr::map(parse_837)
 }

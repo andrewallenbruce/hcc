@@ -42,8 +42,8 @@
 #' @param x `<chr>` string of raw X12-837 text
 #' @returns list
 #' @examples
-#' idx = purrr::map(c(hcc::x12_837I, hcc::x12_837P), index_x12)
-#' purrr::map(idx, parse_837)
+#' purrr::map(hcc::x12_837I, index_x12) |> purrr::map(parse_837)
+#' purrr::map(hcc::x12_837P, index_x12) |> purrr::map(parse_837)
 #' @export
 parse_837 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -53,18 +53,46 @@ parse_837 <- function(x) {
   header <- list(
     ISA = split_7(x, "ISA"),
     GS = split_7(x, "GS"),
-    ST = split_7(x, "ST")
+    ST = split_7(x, "ST"),
+    BHT = split_7(x, "BHT")
   )
 
-  transactions <- subset_(x@text, x@index$ST, x@index$SE - 1L)
-
+  middle <- parse_837_MID(x)
   trailer <- parse_TRAILER(x)
 
-  c(header, transactions, trailer)
+  # .subset(x@text, x@index$HIABK)
+
+  claim <- purrr::map(
+    fill_(x@index$CLM, x@index$SE - 1L),
+    function(idx) {
+      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
+    }
+  ) |>
+    purrr::list_flatten() |>
+    purrr::map(set_zchar)
+
+  purrr::compact(c(header, middle, claim, trailer))
 }
 
 #' @noRd
-index_837I_x223 <- function(x) {
+parse_837_MID <- function(x) {
+  middle <- purrr::map(
+    fill_(x@index$NM141, x@index$CLM - 1L),
+    function(idx) {
+      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
+    }
+  ) |>
+    purrr::list_flatten() |>
+    purrr::map(set_zchar)
+
+  rlang::set_names(
+    middle,
+    purrr::map_chr(middle, \(x) paste0(x[1], x[2]))
+  )
+}
+
+#' @noRd
+index_837I_223 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -145,7 +173,7 @@ index_837I_x223 <- function(x) {
 }
 
 #' @noRd
-index_837P_x222 <- function(x) {
+index_837P_222 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),

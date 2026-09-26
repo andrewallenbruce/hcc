@@ -60,11 +60,11 @@ index_x12 <- function(text) {
 
   i <- switch(
     xtype,
-    "820-X306" = index_820_x306(x),
-    "820-X218" = index_820_x218(x),
-    "834-X220" = index_834_x220(x),
-    "837I-X223" = index_837I_x223(x),
-    "837P-X222" = index_837P_x222(x)
+    "820-X306" = index_820_306(x),
+    "820-X218" = index_820_218(x),
+    "834-X220" = index_834_220(x),
+    "837I-X223" = index_837I_223(x),
+    "837P-X222" = index_837P_222(x)
   )
 
   new_X12Index(

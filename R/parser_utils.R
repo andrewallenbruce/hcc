@@ -54,6 +54,11 @@ check_text_ <- function(x) {
 }
 
 #' @noRd
+fill_ <- function(start, end, as_list = FALSE) {
+  cheapr::seq_(from = start, to = end, as_list = as_list)
+}
+
+#' @noRd
 fill_sequence <- function(start, end) {
   purrr::map2(start, end, \(a, b) seq.int(from = a, to = b))
 }
@@ -97,13 +102,13 @@ tilde <- function(x) {
 }
 
 #' @noRd
-semicolon <- function(x) {
-  .subset2(strsplit(x, ";", fixed = TRUE), 1L)
+star <- function(x, i) {
+  strsplit(.subset(x, i), "*", fixed = TRUE)
 }
 
 #' @noRd
-star <- function(x, i) {
-  strsplit(.subset(x, i), "*", fixed = TRUE)
+semicolon <- function(x) {
+  .subset2(strsplit(x, ";", fixed = TRUE), 1L)
 }
 
 #' @noRd

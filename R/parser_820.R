@@ -112,7 +112,7 @@ parse_820_306 <- function(x) {
 # GS-08 = 005010X218
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
 #' @noRd
-index_820_x218 <- function(x) {
+index_820_218 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -154,7 +154,7 @@ index_820_x218 <- function(x) {
 # GS-08 = 005010X306
 # https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
 #' @noRd
-index_820_x306 <- function(x) {
+index_820_306 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
