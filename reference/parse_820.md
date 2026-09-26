@@ -59,659 +59,572 @@ Typical loop structure within an `820-X218`:
 ## Examples
 
 ``` r
-idx = purrr::map(hcc::x12_820, index_x12)
-purrr::map(idx[c(10:11, 16L)], parse_820)
-#> $`820_EX7_aptc_adjustments2`
-#> $`820_EX7_aptc_adjustments2`$ISA
-#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
-#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "240221"    "1343"      "^"        
-#> [13] "00501"     "000000001" "0"         "T"         ">"        
-#> 
-#> $`820_EX7_aptc_adjustments2`$GS
-#> [1] "GS"         "RA"         "SENDERGS"   "RECEIVERGS" "20240221"  
-#> [6] "134329"     "000000001"  "X"          "005010X306"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ST
-#> [1] "ST"         "820"        "0002"       "005010X306"
-#> 
-#> $`820_EX7_aptc_adjustments2`$BPR
-#>  [1] "BPR"          "I"            "910"          "C"            "ACH"         
-#>  [6] "CCP"          NA             NA             NA             NA            
-#> [11] NA             NA             "01"           "000000001"    "DA"          
-#> [16] "123456772123" "20140228"    
-#> 
-#> $`820_EX7_aptc_adjustments2`$N1PE
-#> [1] "N1"        "PE"        "NATIONAL"  "FI"        "121231233"
-#> 
-#> $`820_EX7_aptc_adjustments2`$N1RM
-#> [1] "N1"  "RM"  "CMS" "58"  "CMS"
-#> 
-#> $`820_EX7_aptc_adjustments2`$PERIC
-#> [1] "PER"                        "IC"                        
-#> [3] "EXCHANGE OPERATIONS CENTER" "EM"                        
-#> [5] "CMS_FEPS@cms.hhs.gov"       "TE"                        
-#> [7] "8002671515"                
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_1
-#> [1] "ENT" "1"  
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_2
-#>  [1] "NM1"    "IL"     "1"      "SMITH"  "JANE"   NA       NA       NA      
-#>  [9] "C1"     "777222"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_3
-#> [1] "REF"              "38"               "12345MD000011221"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_4
-#> [1] "REF"  "POL"  "4567"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_5
-#> [1] "REF"   "AZ"    "PLAN1"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_6
-#> [1] "REF"    "0F"     "SUB123"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_7
-#> [1] "RMR"  "ZZ"   "APTC" NA     "500" 
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_8
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_9
-#> [1] "RMR" "ZZ"  "CSR" NA    "100"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_10
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_11
-#> [1] "RMR" "ZZ"  "UF"  NA    "-25"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_12
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_13
-#> [1] "RMR"     "ZZ"      "APTCADJ" NA        "-600"   
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_14
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140101-20140131"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_15
-#> [1] "RMR"     "ZZ"      "APTCADJ" NA        "500"    
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_1_16
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140101-20140131"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_1
-#> [1] "ENT" "2"  
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_2
-#>  [1] "NM1"    "IL"     "1"      "DOE"    "JOHN"   NA       NA       NA      
-#>  [9] "C1"     "777223"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_3
-#> [1] "REF"              "38"               "12346MD000011232"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_4
-#> [1] "REF"  "POL"  "5678"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_5
-#> [1] "REF"   "AZ"    "PLAN2"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_6
-#> [1] "REF"    "0F"     "SUB234"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_7
-#> [1] "RMR"  "ZZ"   "APTC" NA     "400" 
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_8
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_9
-#> [1] "RMR" "ZZ"  "CSR" NA    "50" 
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_10
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_11
-#> [1] "RMR" "ZZ"  "UF"  NA    "-15"
-#> 
-#> $`820_EX7_aptc_adjustments2`$ENT_2_12
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX7_aptc_adjustments2`$SE
-#> [1] "SE"   "35"   "0002"
-#> 
-#> $`820_EX7_aptc_adjustments2`$GE
-#> [1] "GE"        "1"         "000000001"
-#> 
-#> $`820_EX7_aptc_adjustments2`$IEA
-#> [1] "IEA"       "1"         "000000001"
-#> 
-#> 
-#> $`820_EX8_outstanding_debt_owed1`
-#> $`820_EX8_outstanding_debt_owed1`$ISA
-#>  [1] "ISA"       "00"        NA          "00"        NA          "ZZ"       
-#>  [7] "SENDER"    "ZZ"        "RECEIVER"  "240221"    "1345"      "^"        
-#> [13] "00501"     "000000001" "0"         "T"         ">"        
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$GS
-#> [1] "GS"         "RA"         "SENDERGS"   "RECEIVERGS" "20240221"  
-#> [6] "134520"     "000000001"  "X"          "005010X306"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ST
-#> [1] "ST"         "820"        "0001"       "005010X306"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$BPR
-#>  [1] "BPR"      "I"        "0"        "C"        "NON"      NA        
-#>  [7] NA         NA         NA         NA         NA         NA        
-#> [13] NA         NA         NA         NA         "20140210"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$N1PE
-#> [1] "N1"        "PE"        "NATIONAL"  "FI"        "121231233"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$N1RM
-#> [1] "N1"  "RM"  "CMS" "58"  "CMS"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$PERIC
-#> [1] "PER"                        "IC"                        
-#> [3] "EXCHANGE OPERATIONS CENTER" "EM"                        
-#> [5] "CMS_FEPS@cms.hhs.gov"       "TE"                        
-#> [7] "8002671515"                
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_1
-#> [1] "ENT" "1"  
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_2
-#>  [1] "NM1"    "IL"     "1"      "SMITH"  "JANE"   NA       NA       NA      
-#>  [9] "C1"     "777222"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_3
-#> [1] "REF"              "38"               "12345MD000011221"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_4
-#> [1] "REF"  "POL"  "4567"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_5
-#> [1] "REF"   "AZ"    "PLAN1"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_6
-#> [1] "REF"    "0F"     "SUB123"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_7
-#> [1] "RMR"  "ZZ"   "APTC" NA     "600" 
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_8
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_9
-#> [1] "RMR" "ZZ"  "CSR" NA    "100"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_10
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_11
-#> [1] "RMR" "ZZ"  "UF"  NA    "-25"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_1_12
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_1
-#> [1] "ENT" "2"  
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_2
-#>  [1] "NM1"    "IL"     "1"      "DOE"    "JOHN"   NA       NA       NA      
-#>  [9] "C1"     "777223"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_3
-#> [1] "REF"              "38"               "12346MD000011232"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_4
-#> [1] "REF"  "POL"  "5678"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_5
-#> [1] "REF"   "AZ"    "PLAN2"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_6
-#> [1] "REF"    "0F"     "SUB234"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_7
-#> [1] "RMR"  "ZZ"   "APTC" NA     "400" 
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_8
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_9
-#> [1] "RMR" "ZZ"  "CSR" NA    "50" 
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_10
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_11
-#> [1] "RMR" "ZZ"  "UF"  NA    "-1" 
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_2_12
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_3_1
-#> [1] "ENT" "3"  
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_3_2
-#> [1] "RMR"   "ZZ"    "BAL"   NA      "-1100"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$ENT_3_3
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20140201-20140228"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$SE
-#> [1] "SE"   "34"   "0001"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$GE
-#> [1] "GE"        "1"         "000000001"
-#> 
-#> $`820_EX8_outstanding_debt_owed1`$IEA
-#> [1] "IEA"       "1"         "000000001"
-#> 
+x = hcc::x12_820
+i = hcc:::x12_type(x)
+i218 = x[endsWith(i, "218")] |> purrr::map(index_x12)
+purrr::map(i218, hcc:::parse_820_218)
+#> $sample_820_01
+#> <hcc::X12_820_218>
+#>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260118" ...
+#>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" "083122" "43304" ...
+#>  @ ST  : chr [1:3] "820" "0001" "005010X218"
+#>  @ BPR : chr [1:6] "I" "102139.46" "C" "NON" "68-0317191" "20260115"
+#>  @ TRN : chr [1:2] "3" "TESTTRN01000001"
+#>  @ RF14: chr "0000245023"
+#>  @ N1PE: chr "TEST PAYEE ORGANIZATION"
+#>  @ N3PE: chr "123 TEST STREET"
+#>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ N1PR: chr "TEST PAYER AGENCY"
+#>  @ N3PR: chr "123 TEST STREET"
+#>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ ENT :List of 89
+#>  .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"
+#>  .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
+#>  .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 1.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"
+#>  .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...
+#>  .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 2.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 2.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 3.1 : chr [1:4] "3" "2J" "EI" "999999999"
+#>  .. $ 3.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...
+#>  .. $ 3.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 3.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 3.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 3.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 4.1 : chr [1:4] "4" "2J" "EI" "999999999"
+#>  .. $ 4.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME04" ...
+#>  .. $ 4.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 4.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 4.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 4.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 5.1 : chr [1:4] "5" "2J" "EI" "999999999"
+#>  .. $ 5.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...
+#>  .. $ 5.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 5.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 5.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 5.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 6.1 : chr [1:4] "6" "2J" "EI" "999999999"
+#>  .. $ 6.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...
+#>  .. $ 6.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 6.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 6.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 6.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 7.1 : chr [1:4] "7" "2J" "EI" "999999999"
+#>  .. $ 7.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME07" ...
+#>  .. $ 7.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 7.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 7.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 7.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 7.8 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 7.9 : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.10: chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 7.11: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 7.12: chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 8.1 : chr [1:4] "8" "2J" "EI" "999999999"
+#>  .. $ 8.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...
+#>  .. $ 8.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 8.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 8.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 8.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 9.1 : chr [1:4] "9" "2J" "EI" "999999999"
+#>  .. $ 9.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME09" ...
+#>  .. $ 9.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 9.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 9.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 9.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 9.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 10.1: chr [1:4] "10" "2J" "EI" "999999999"
+#>  .. $ 10.2: chr [1:7] "NM1" "IL" "1" "LASTNAME10" ...
+#>  .. $ 10.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 10.4: chr [1:3] "REF" "18" "957"
+#>  .. $ 10.5: chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 10.6: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 10.7: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 11.1: chr [1:4] "11" "2J" "EI" "999999999"
+#>  .. $ 11.2: chr [1:7] "NM1" "IL" "1" "LASTNAME11" ...
+#>  .. $ 11.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
+#>  .. $ 11.4: chr [1:3] "REF" "18" "957"
+#>  .. $ 11.5: chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 11.6: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 11.7: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 12.1: chr [1:4] "12" "2J" "EI" "999999999"
+#>  .. $ 12.2: chr [1:7] "NM1" "IL" "1" "LASTNAME12" ...
+#>  .. $ 12.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "5101.10"
+#>  .. $ 12.4: chr [1:3] "REF" "18" "957"
+#>  .. $ 12.5: chr [1:4] "REF" "ZZ" "17" "2"
+#>  .. $ 12.6: chr [1:3] "REF" "ZZ" "Dual-State Only"
+#>  .. $ 12.7: chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  @ SE  : chr [1:2] "100" "0001"
+#>  @ GE  : chr [1:2] "1" "43304"
+#>  @ IEA : chr [1:2] "1" "000058691"
+#> 
+#> $sample_820_02
+#> <hcc::X12_820_218>
+#>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260316" ...
+#>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" "085500" "44273" ...
+#>  @ ST  : chr [1:3] "820" "0001" "005010X218"
+#>  @ BPR : chr [1:6] "I" "91977.81" "C" "NON" "68-0317191" "20260312"
+#>  @ TRN : chr [1:2] "3" "TESTTRN02000001"
+#>  @ RF14: chr "0000245023"
+#>  @ N1PE: chr "TEST PAYEE ORGANIZATION"
+#>  @ N3PE: chr "123 TEST STREET"
+#>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ N1PR: chr "TEST PAYER AGENCY"
+#>  @ N3PR: chr "123 TEST STREET"
+#>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ ENT :List of 151
+#>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
+#>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
+#>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "5555.82"
+#>  .. $ 1.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Dual-State Only"
+#>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "454.72" ...
+#>  .. $ 1.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.10 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 1.11 : chr [1:3] "REF" "ZZ" "Dual-State Only"
+#>  .. $ 1.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 1.13 : chr [1:3] "ADX" "-5101.10" "53"
+#>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"
+#>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...
+#>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 2.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 2.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...
+#>  .. $ 2.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.10 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 2.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 2.13 : chr [1:3] "ADX" "-8086.53" "53"
+#>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"
+#>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...
+#>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 3.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 3.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...
+#>  .. $ 3.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.10 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 3.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 3.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 3.13 : chr [1:3] "ADX" "-8086.53" "53"
+#>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"
+#>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME13" ...
+#>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 4.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 4.8  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 4.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.10 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 4.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 4.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"
+#>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME04" ...
+#>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 5.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 5.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...
+#>  .. $ 5.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.10 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 5.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 5.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 5.13 : chr [1:3] "ADX" "-8086.53" "53"
+#>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"
+#>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...
+#>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 6.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 6.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...
+#>  .. $ 6.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.10 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 6.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 6.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 6.13 : chr [1:3] "ADX" "-8086.53" "53"
+#>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"
+#>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...
+#>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "-8086.53"
+#>  .. $ 7.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"
+#>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME07" ...
+#>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"
+#>  .. $ 8.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 8.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...
+#>  .. $ 8.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.10 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 8.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 8.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 8.13 : chr [1:3] "ADX" "-8086.53" "53"
+#>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"
+#>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...
+#>  ..  [list output truncated]
+#>  @ SE  : chr [1:2] "162" "0001"
+#>  @ GE  : chr [1:2] "1" "44273"
+#>  @ IEA : chr [1:2] "1" "000059660"
+#> 
+#> $sample_820_03
+#> <hcc::X12_820_218>
+#>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260316" ...
+#>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" "085458" "44272" ...
+#>  @ ST  : chr [1:3] "820" "0001" "005010X218"
+#>  @ BPR : chr [1:6] "I" "697085.64" "C" "NON" "68-0317191" "20260312"
+#>  @ TRN : chr [1:2] "3" "TESTTRN03000001"
+#>  @ RF14: chr "0000245023"
+#>  @ N1PE: chr "TEST PAYEE ORGANIZATION"
+#>  @ N3PE: chr "123 TEST STREET"
+#>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ N1PR: chr "TEST PAYER AGENCY"
+#>  @ N3PR: chr "123 TEST STREET"
+#>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ ENT :List of 1131
+#>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
+#>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...
+#>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 1.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...
+#>  .. $ 1.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.10 : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 1.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 1.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 1.13 : chr [1:3] "ADX" "-5258.86" "53"
+#>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"
+#>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...
+#>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 2.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 2.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...
+#>  .. $ 2.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.10 : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 2.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 2.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 2.13 : chr [1:3] "ADX" "-5258.86" "53"
+#>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"
+#>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME16" ...
+#>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 3.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"
+#>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME17" ...
+#>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 4.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 4.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...
+#>  .. $ 4.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.10 : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 4.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 4.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 4.13 : chr [1:3] "ADX" "-5258.86" "53"
+#>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"
+#>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME18" ...
+#>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "9645.74"
+#>  .. $ 5.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 5.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "559.75" ...
+#>  .. $ 5.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.10 : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 5.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 5.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 5.13 : chr [1:3] "ADX" "-9085.99" "53"
+#>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"
+#>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME19" ...
+#>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 6.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "17" "1"
+#>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"
+#>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME20" ...
+#>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "9645.74"
+#>  .. $ 7.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 7.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "559.75" ...
+#>  .. $ 7.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.10 : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 7.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 7.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 7.13 : chr [1:3] "ADX" "-9085.99" "53"
+#>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"
+#>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME21" ...
+#>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 8.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "17" "1"
+#>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"
+#>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME22" ...
+#>  .. $ 9.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
+#>  .. $ 9.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 9.5  : chr [1:4] "REF" "ZZ" "10" "1"
+#>  .. $ 9.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 9.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
+#>  .. $ 9.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...
+#>  .. $ 9.9  : chr [1:3] "REF" "18" "957"
+#>  .. $ 9.10 : chr [1:4] "REF" "ZZ" "10" "1"
+#>  .. $ 9.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 9.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 9.13 : chr [1:3] "ADX" "-5258.86" "53"
+#>  ..  [list output truncated]
+#>  @ SE  : chr [1:2] "1142" "0001"
+#>  @ GE  : chr [1:2] "1" "44272"
+#>  @ IEA : chr [1:2] "1" "000059659"
 #> 
 #> $sample_820_04
-#> $sample_820_04$ISA
-#>  [1] "ISA"        "00"         NA           "00"         NA          
-#>  [6] "ZZ"         "TEST-PAYER" "30"         "TEST-PAYEE" "251217"    
-#> [11] "2316"       "+"          "00501"      "000058142"  "0"         
-#> [16] "P"          ":"         
-#> 
-#> $sample_820_04$GS
-#> [1] "GS"         "RA"         "TEST-PAYER" "TEST-PAYEE" "20251217"  
-#> [6] "231624"     "42755"      "X"          "005010X218"
-#> 
-#> $sample_820_04$ST
-#> [1] "ST"         "820"        "0001"       "005010X218"
-#> 
-#> $sample_820_04$BPR
-#>  [1] "BPR"        "I"          "80865.30"   "C"          "NON"       
-#>  [6] NA           NA           NA           NA           NA          
-#> [11] "68-0317191" NA           NA           NA           NA          
-#> [16] NA           "20251216"  
-#> 
-#> $sample_820_04$TRN
-#> [1] "TRN"             "3"               "TESTTRN04000001"
-#> 
-#> $sample_820_04$REF14
-#> [1] "REF"        "14"         "0000245023"
-#> 
-#> $sample_820_04$N1PE
-#> [1] "N1"                      "PE"                     
-#> [3] "TEST PAYEE ORGANIZATION"
-#> 
-#> $sample_820_04$N3PE
-#> [1] "N3"              "123 TEST STREET"
-#> 
-#> $sample_820_04$N4PE
-#> [1] "N4"       "TESTCITY" "CA"       "00000"   
-#> 
-#> $sample_820_04$N1PR
-#> [1] "N1"                "PR"                "TEST PAYER AGENCY"
-#> 
-#> $sample_820_04$N3PR
-#> [1] "N3"              "123 TEST STREET"
-#> 
-#> $sample_820_04$N4PR
-#> [1] "N4"       "TESTCITY" "CA"       "00000"   
-#> 
-#> $sample_820_04$ENT_1_1
-#> [1] "ENT"       "1"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_1_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME01"      
-#>  [5] "FIRSTNAME01"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000001"
-#> 
-#> $sample_820_04$ENT_1_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_1_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_1_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_1_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_1_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_2_1
-#> [1] "ENT"       "2"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_2_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME02"      
-#>  [5] "FIRSTNAME02"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000002"
-#> 
-#> $sample_820_04$ENT_2_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_2_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_2_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_2_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_2_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_2_8
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "-5101.10"                      
-#> 
-#> $sample_820_04$ENT_2_9
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_2_10
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_2_11
-#> [1] "REF"             "ZZ"              "Dual-State Only"
-#> 
-#> $sample_820_04$ENT_2_12
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251001-20251031"
-#> 
-#> $sample_820_04$ENT_2_13
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_2_14
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_2_15
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_2_16
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_2_17
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251001-20251031"
-#> 
-#> $sample_820_04$ENT_3_1
-#> [1] "ENT"       "3"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_3_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME03"      
-#>  [5] "FIRSTNAME03"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000003"
-#> 
-#> $sample_820_04$ENT_3_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_3_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_3_5
-#> [1] "REF"  "ZZ"   "M1;2"
-#> 
-#> $sample_820_04$ENT_3_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_3_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_4_1
-#> [1] "ENT"       "4"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_4_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME05"      
-#>  [5] "FIRSTNAME05"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000005"
-#> 
-#> $sample_820_04$ENT_4_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_4_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_4_5
-#> [1] "REF"  "ZZ"   "M1;2"
-#> 
-#> $sample_820_04$ENT_4_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_4_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_5_1
-#> [1] "ENT"       "5"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_5_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME06"      
-#>  [5] "FIRSTNAME06"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000006"
-#> 
-#> $sample_820_04$ENT_5_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_5_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_5_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_5_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_5_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_6_1
-#> [1] "ENT"       "6"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_6_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME08"      
-#>  [5] "FIRSTNAME08"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000008"
-#> 
-#> $sample_820_04$ENT_6_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_6_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_6_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_6_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_6_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_7_1
-#> [1] "ENT"       "7"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_7_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME09"      
-#>  [5] "FIRSTNAME09"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000009"
-#> 
-#> $sample_820_04$ENT_7_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_7_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_7_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_7_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_7_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_8_1
-#> [1] "ENT"       "8"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_8_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME10"      
-#>  [5] "FIRSTNAME10"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000010"
-#> 
-#> $sample_820_04$ENT_8_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_8_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_8_5
-#> [1] "REF"  "ZZ"   "1H;2"
-#> 
-#> $sample_820_04$ENT_8_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_8_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_9_1
-#> [1] "ENT"       "9"         "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_9_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME11"      
-#>  [5] "FIRSTNAME11"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000011"
-#> 
-#> $sample_820_04$ENT_9_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "8086.53"                       
-#> 
-#> $sample_820_04$ENT_9_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_9_5
-#> [1] "REF"  "ZZ"   "M1;2"
-#> 
-#> $sample_820_04$ENT_9_6
-#> [1] "REF"                      "ZZ"                      
-#> [3] "Medi-Cal Only-State Only"
-#> 
-#> $sample_820_04$ENT_9_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251101-20251130"
-#> 
-#> $sample_820_04$ENT_10_1
-#> [1] "ENT"       "10"        "2J"        "EI"        "999999999"
-#> 
-#> $sample_820_04$ENT_10_2
-#>  [1] "NM1"              "IL"               "1"                "LASTNAME12"      
-#>  [5] "FIRSTNAME12"      NA                 NA                 NA                
-#>  [9] "N"                "TESTMBR000000012"
-#> 
-#> $sample_820_04$ENT_10_3
-#> [1] "RMR"                            "IK"                            
-#> [3] "TESTPLAN-SREGLR-2511190148000P" NA                              
-#> [5] "5101.10"                       
-#> 
-#> $sample_820_04$ENT_10_4
-#> [1] "REF" "18"  "957"
-#> 
-#> $sample_820_04$ENT_10_5
-#> [1] "REF"  "ZZ"   "17;2"
-#> 
-#> $sample_820_04$ENT_10_6
-#> [1] "REF"             "ZZ"              "Dual-State Only"
-#> 
-#> $sample_820_04$ENT_10_7
-#> [1] "DTM"               "582"               NA                 
-#> [4] NA                  NA                  "RD8"              
-#> [7] "20251001-20251031"
-#> 
-#> $sample_820_04$SE
-#> [1] "SE"   "91"   "0001"
-#> 
-#> $sample_820_04$GE
-#> [1] "GE"    "1"     "42755"
-#> 
-#> $sample_820_04$IEA
-#> [1] "IEA"       "1"         "000058142"
-#> 
+#> <hcc::X12_820_218>
+#>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "251217" ...
+#>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20251217" "231624" "42755" ...
+#>  @ ST  : chr [1:3] "820" "0001" "005010X218"
+#>  @ BPR : chr [1:6] "I" "80865.30" "C" "NON" "68-0317191" "20251216"
+#>  @ TRN : chr [1:2] "3" "TESTTRN04000001"
+#>  @ RF14: chr "0000245023"
+#>  @ N1PE: chr "TEST PAYEE ORGANIZATION"
+#>  @ N3PE: chr "123 TEST STREET"
+#>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ N1PR: chr "TEST PAYER AGENCY"
+#>  @ N3PR: chr "123 TEST STREET"
+#>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ ENT :List of 80
+#>  .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"
+#>  .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
+#>  .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 1.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"
+#>  .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...
+#>  .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 2.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 2.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 2.8 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "-5101.10"
+#>  .. $ 2.9 : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.10: chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.11: chr [1:3] "REF" "ZZ" "Dual-State Only"
+#>  .. $ 2.12: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"
+#>  .. $ 2.13: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 2.14: chr [1:3] "REF" "18" "957"
+#>  .. $ 2.15: chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 2.16: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 2.17: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"
+#>  .. $ 3.1 : chr [1:4] "3" "2J" "EI" "999999999"
+#>  .. $ 3.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...
+#>  .. $ 3.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 3.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 3.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 3.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 4.1 : chr [1:4] "4" "2J" "EI" "999999999"
+#>  .. $ 4.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...
+#>  .. $ 4.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 4.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 4.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 4.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 5.1 : chr [1:4] "5" "2J" "EI" "999999999"
+#>  .. $ 5.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...
+#>  .. $ 5.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 5.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 5.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 5.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 6.1 : chr [1:4] "6" "2J" "EI" "999999999"
+#>  .. $ 6.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...
+#>  .. $ 6.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 6.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 6.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 6.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 7.1 : chr [1:4] "7" "2J" "EI" "999999999"
+#>  .. $ 7.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME09" ...
+#>  .. $ 7.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 7.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 7.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 7.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 8.1 : chr [1:4] "8" "2J" "EI" "999999999"
+#>  .. $ 8.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME10" ...
+#>  .. $ 8.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 8.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.5 : chr [1:4] "REF" "ZZ" "1H" "2"
+#>  .. $ 8.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 8.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 9.1 : chr [1:4] "9" "2J" "EI" "999999999"
+#>  .. $ 9.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME11" ...
+#>  .. $ 9.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
+#>  .. $ 9.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 9.5 : chr [1:4] "REF" "ZZ" "M1" "2"
+#>  .. $ 9.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
+#>  .. $ 9.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
+#>  .. $ 10.1: chr [1:4] "10" "2J" "EI" "999999999"
+#>  .. $ 10.2: chr [1:7] "NM1" "IL" "1" "LASTNAME12" ...
+#>  .. $ 10.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "5101.10"
+#>  .. $ 10.4: chr [1:3] "REF" "18" "957"
+#>  .. $ 10.5: chr [1:4] "REF" "ZZ" "17" "2"
+#>  .. $ 10.6: chr [1:3] "REF" "ZZ" "Dual-State Only"
+#>  .. $ 10.7: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"
+#>  @ SE  : chr [1:2] "91" "0001"
+#>  @ GE  : chr [1:2] "1" "42755"
+#>  @ IEA : chr [1:2] "1" "000058142"
+#> 
+#> $sample_820_05
+#> <hcc::X12_820_218>
+#>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260217" ...
+#>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260217" "093627" "44044" ...
+#>  @ ST  : chr [1:3] "820" "0001" "005010X218"
+#>  @ BPR : chr [1:6] "I" "499187.57" "C" "NON" "68-0317191" "20260212"
+#>  @ TRN : chr [1:2] "3" "TESTTRN05000001"
+#>  @ RF14: chr "0000245023"
+#>  @ N1PE: chr "TEST PAYEE ORGANIZATION"
+#>  @ N3PE: chr "123 TEST STREET"
+#>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ N1PR: chr "TEST PAYER AGENCY"
+#>  @ N3PR: chr "123 TEST STREET"
+#>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
+#>  @ ENT :List of 632
+#>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
+#>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...
+#>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 1.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"
+#>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...
+#>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 2.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"
+#>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME17" ...
+#>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 3.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"
+#>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME18" ...
+#>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"
+#>  .. $ 4.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"
+#>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME19" ...
+#>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 5.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "17" "1"
+#>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"
+#>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME20" ...
+#>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"
+#>  .. $ 6.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "M1" "1"
+#>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"
+#>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME21" ...
+#>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 7.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "17" "1"
+#>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"
+#>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME22" ...
+#>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 8.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "10" "1"
+#>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"
+#>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME23" ...
+#>  .. $ 9.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 9.4  : chr [1:3] "REF" "18" "957"
+#>  .. $ 9.5  : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 9.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 9.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 10.1 : chr [1:4] "10" "2J" "EI" "999999999"
+#>  .. $ 10.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME24" ...
+#>  .. $ 10.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 10.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 10.5 : chr [1:4] "REF" "ZZ" "6H" "1"
+#>  .. $ 10.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 10.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 10.8 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 10.9 : chr [1:3] "REF" "18" "957"
+#>  .. $ 10.10: chr [1:4] "REF" "ZZ" "6H" "1"
+#>  .. $ 10.11: chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 10.12: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
+#>  .. $ 11.1 : chr [1:4] "11" "2J" "EI" "999999999"
+#>  .. $ 11.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME25" ...
+#>  .. $ 11.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 11.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 11.5 : chr [1:4] "REF" "ZZ" "60" "1"
+#>  .. $ 11.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 11.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 12.1 : chr [1:4] "12" "2J" "EI" "999999999"
+#>  .. $ 12.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME26" ...
+#>  .. $ 12.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"
+#>  .. $ 12.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 12.5 : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 12.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"
+#>  .. $ 12.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 13.1 : chr [1:4] "13" "2J" "EI" "999999999"
+#>  .. $ 13.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME28" ...
+#>  .. $ 13.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
+#>  .. $ 13.4 : chr [1:3] "REF" "18" "957"
+#>  .. $ 13.5 : chr [1:4] "REF" "ZZ" "1H" "1"
+#>  .. $ 13.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
+#>  .. $ 13.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
+#>  .. $ 14.1 : chr [1:4] "14" "2J" "EI" "999999999"
+#>  .. $ 14.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME29" ...
+#>  .. $ 14.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"
+#>  ..  [list output truncated]
+#>  @ SE  : chr [1:2] "643" "0001"
+#>  @ GE  : chr [1:2] "1" "44044"
+#>  @ IEA : chr [1:2] "1" "000059431"
 #> 
 ```

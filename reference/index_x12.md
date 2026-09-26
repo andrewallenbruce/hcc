@@ -21,14 +21,7 @@ index_x12(text)
 ## Examples
 
 ``` r
-purrr::map(
-  c(hcc::x12_820,
-    hcc::x12_834,
-    hcc::x12_837I,
-    hcc::x12_837P
-   ),
-   index_x12
- )
+hcc::x12_820 |> purrr::map(index_x12)
 #> $`820_EX10_debt_covered_by_affiliate1`
 #> 
 #> ── <hcc::X12Index> ─────────────────────────────────────────────────────────────
@@ -493,6 +486,7 @@ purrr::map(
 #> $stedi_820_07
 #> [1] NA
 #> 
+hcc::x12_834 |> purrr::map(index_x12)
 #> $`834_EX2_add_dependent`
 #> 
 #> ── <hcc::X12Index> ─────────────────────────────────────────────────────────────
@@ -915,6 +909,7 @@ purrr::map(
 #>     GE[1]: 67                
 #>    IEA[1]: 68                
 #> 
+hcc::x12_837I |> purrr::map(index_x12)
 #> $`837I_EX1a_institutional_claim`
 #> 
 #> ── <hcc::X12Index> ─────────────────────────────────────────────────────────────
@@ -1457,6 +1452,7 @@ purrr::map(
 #>     GE[1]: 49                            
 #>    IEA[1]: 50                            
 #> 
+hcc::x12_837P |> purrr::map(index_x12)
 #> $`837P_EX10a_drug_adm_office`
 #> 
 #> ── <hcc::X12Index> ─────────────────────────────────────────────────────────────

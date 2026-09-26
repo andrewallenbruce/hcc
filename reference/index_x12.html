@@ -63,14 +63,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>,</span></span>
-<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span>,</span></span>
-<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span>,</span></span>
-<span class="r-in"><span>    <span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span></span></span>
-<span class="r-in"><span>   <span class="op">)</span>,</span></span>
-<span class="r-in"><span>   <span class="va">index_x12</span></span></span>
-<span class="r-in"><span> <span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX10_debt_covered_by_affiliate1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
@@ -535,6 +528,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $stedi_820_07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_834.html">x12_834</a></span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
@@ -957,6 +951,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 67                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 68                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837I.html">x12_837I</a></span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
@@ -1499,6 +1494,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 49                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 50                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_837P.html">x12_837P</a></span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">index_x12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX10a_drug_adm_office`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::X12Index&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
