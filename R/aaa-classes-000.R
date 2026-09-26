@@ -1,3 +1,13 @@
+#' @noRd
+fright <- function(x, ...) {
+  format(x, justify = "right", ...)
+}
+
+#' @noRd
+fleft <- function(x, ...) {
+  format(x, justify = "left", ...)
+}
+
 #' @export
 X12Index := S7::new_class(
   properties = list(
@@ -11,43 +21,43 @@ X12Index := S7::new_class(
 
 S7::method(format, X12Index) <- function(x) {
   cli::cli_h1("<hcc::X12Index>")
-  names_ <- format(
-    c("Type", "Segments", "Problems"),
-    justify = "right"
-  )
-  p <- S7::prop(x, "problems")
-  probs_ <- if (length(p) == 1L && all(p == 0L)) p else length(p)
-  numbs_ <- format(
-    c(
-      S7::prop(x, "type"),
-      S7::prop(x, "segments"),
-      probs_
-    ),
-    justify = "left"
-  )
 
-  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
+  probs_ <- S7::prop(x, "problems")
+  probs_ <- if (length(probs_) == 1L && all(probs_ == 0L)) {
+    NULL
+  } else {
+    cli::col_red(length(S7::prop(x, "problems")))
+  }
+
+  names_ <- fright(c("Type", "Segments", if (!is.null(probs_)) "Problems"))
+  numbs_ <- fleft(c(S7::prop(x, "type"), S7::prop(x, "segments"), if (!is.null(probs_)) probs_))
+
+  cli::cat_line(
+    cheapr::paste_(
+      cli::col_cyan(
+        cli::style_bold(names_)
+      ),
+      ": ",
+      numbs_
+    )
+  )
   cli::cat_rule()
 
   idx <- S7::prop(x, "index")
   seg <- collapse::vlengths(idx)
 
-  names_ <- format(
+  names_ <- fright(cheapr::paste_(names(seg), "[", unname(seg), "]"))
+  numbs_ <- fleft(purrr::map_chr(unname(idx), \(x) toString(x, width = 60)))
+
+  cli::cat_line(
     cheapr::paste_(
-      names(seg),
-      "[",
-      unname(seg),
-      "]"
-    ),
-    justify = "right"
+      cli::col_yellow(
+        cli::style_bold(names_)
+      ),
+      ": ",
+      numbs_
+    )
   )
-
-  numbs_ <- format(
-    purrr::map_chr(unname(idx), \(x) toString(x, width = 60)),
-    justify = "left"
-  )
-
-  cli::cat_line(cheapr::paste_(cli::style_bold(names_), ": ", numbs_))
 }
 
 S7::method(print, X12Index) <- function(x) {
