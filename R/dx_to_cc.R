@@ -47,7 +47,7 @@ icd_to_cc <- function(
   }
 
   if (simplify) {
-    return(collapse::rsplit(x$cc, x$icd_code))
+    return(collapse::rsplit(x[["cc"]], x[["icd_code"]]))
   }
   collapse::roworderv(x, c("icd_code", "cc", "model_name"))
 }

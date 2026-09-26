@@ -43,14 +43,14 @@ parse_820 <- function(x) {
 
 #' @noRd
 parse_820_ENT <- function(x) {
-  ent <- .subset2(S7::prop(x, "index"), "ENT")
+  ent <- .subset2(x@index, "ENT")
   purrr::map(
     fill_sequence(
       ent,
-      c(.subset(ent, -1L), .subset2(S7::prop(x, "index"), "SE")) - 1L
+      c(.subset(ent, -1L), .subset2(x@index, "SE")) - 1L
     ),
     function(idx) {
-      strsplit(.subset(S7::prop(x, "text"), idx), "*", fixed = TRUE)
+      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
     }
   ) |>
     rlang::set_names(

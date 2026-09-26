@@ -22,15 +22,14 @@ X12Index := S7::new_class(
 S7::method(format, X12Index) <- function(x) {
   cli::cli_h1("<hcc::X12Index>")
 
-  probs_ <- S7::prop(x, "problems")
-  probs_ <- if (length(probs_) == 1L && all(probs_ == 0L)) {
+  probs_ <- if (length(x@problems) == 1L && allv_(x@problems, 0L)) {
     NULL
   } else {
-    cli::col_red(length(S7::prop(x, "problems")))
+    cli::col_red(length(x@problems))
   }
 
   names_ <- fright(c("Type", "Segments", if (!is.null(probs_)) "Problems"))
-  numbs_ <- fleft(c(S7::prop(x, "type"), S7::prop(x, "segments"), if (!is.null(probs_)) probs_))
+  numbs_ <- fleft(c(x@type, x@segments, if (!is.null(probs_)) probs_))
 
   cli::cat_line(
     cheapr::paste_(
@@ -43,7 +42,7 @@ S7::method(format, X12Index) <- function(x) {
   )
   cli::cat_rule()
 
-  idx <- S7::prop(x, "index")
+  idx <- x@index
   seg <- collapse::vlengths(idx)
 
   names_ <- fright(cheapr::paste_(names(seg), "[", unname(seg), "]"))
@@ -51,9 +50,7 @@ S7::method(format, X12Index) <- function(x) {
 
   cli::cat_line(
     cheapr::paste_(
-      cli::col_yellow(
-        cli::style_bold(names_)
-      ),
+      cli::style_bold(names_),
       ": ",
       numbs_
     )

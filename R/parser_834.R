@@ -55,26 +55,9 @@ parse_834 <- function(x) {
 }
 
 #' @noRd
-parse_834_MID <- function(x) {
-  middle <- purrr::map(
-    fill_(x@index$BGN + 1L, collapse::fmax(x@index$N1)),
-    function(idx) {
-      strsplit(.subset(x@text, idx), "*", fixed = TRUE)
-    }
-  ) |>
-    purrr::list_flatten() |>
-    purrr::map(set_zchar)
-
-  rlang::set_names(
-    middle,
-    purrr::map_chr(middle, \(x) paste0(x[1], x[2]))
-  )
-}
-
-#' @noRd
 parse_834_INS <- function(x) {
-  ins <- .subset2(S7::prop(x, "index"), "INS")
-  ise <- .subset2(S7::prop(x, "index"), "SE")
+  ins <- .subset2(x@index, "INS")
+  ise <- .subset2(x@index, "SE")
   purrr::map(
     fill_(
       start = ins,
@@ -82,7 +65,7 @@ parse_834_INS <- function(x) {
       as_list = TRUE
     ),
     function(idx) {
-      strsplit(.subset(S7::prop(x, "text"), idx), "[;*]", perl = TRUE)
+      strsplit(.subset(x@text, idx), "[;*]", perl = TRUE)
     }
   ) |>
     rlang::set_names(
@@ -106,7 +89,6 @@ index_834_220 <- function(x) {
     BGN = perl(x, "^BGN"),
     COB = perl(x, "^COB"),
     DMGD8 = perl(x, "^DMG\\*D8"),
-    # DSB = perl(x, "^DSB"),
     DTP007 = perl(x, "^DTP\\*007"),
     DTP303 = perl(x, "^DTP\\*303"),
     DTP348 = perl(x, "^DTP\\*348"),
@@ -114,14 +96,11 @@ index_834_220 <- function(x) {
     DTP351 = perl(x, "^DTP\\*351"),
     DTP356 = perl(x, "^DTP\\*356"),
     DTP357 = perl(x, "^DTP\\*357"),
-    # EC = perl(x, "^EC"),
     HD = perl(x, "^HD"),
     HLH = perl(x, "^HLH"),
     ICM = perl(x, "^ICM"),
     IDC = perl(x, "^IDC"),
     INS = perl(x, "^INS"),
-    # LE = perl(x, "^LE"),
-    # LS = perl(x, "^LS"),
     LUILD = perl(x, "^LUI\\*LD"),
     LX = perl(x, "^LX"),
     N1P5 = perl(x, "^N1\\*P5"),
@@ -134,7 +113,6 @@ index_834_220 <- function(x) {
     NM131 = perl(x, "^NM1\\*31"),
     NM170 = perl(x, "^NM1\\*70"),
     PERIP = perl(x, "^PER\\*IP"),
-    # PLA = perl(x, "^PLA"),
     QTY = perl(x, "^QTY"),
     REF17 = perl(x, "^REF\\*17"),
     REF23 = perl(x, "^REF\\*23"),
