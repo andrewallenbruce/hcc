@@ -90,7 +90,7 @@ RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
 #>  @ diagnosis_codes        : chr(0) 
 #>  @ service_level_data     :List of 2
 #>  .. $ : <hcc::ServiceLevelData>
-#>  ..  ..@ service_date           : Date[1:1], format: "2026-09-25"
+#>  ..  ..@ service_date           : Date[1:1], format: "2026-09-26"
 #>  ..  ..@ claim_id               : chr(0) 
 #>  ..  ..@ patient_id             : chr(0) 
 #>  ..  ..@ claim_type             : chr(0) 
@@ -109,7 +109,7 @@ RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
 #>  ..  ..@ unit                   : chr(0) 
 #>  ..  ..@ allowed_amount         : num(0) 
 #>  .. $ : <hcc::ServiceLevelData>
-#>  ..  ..@ service_date           : Date[1:1], format: "2026-09-25"
+#>  ..  ..@ service_date           : Date[1:1], format: "2026-09-26"
 #>  ..  ..@ claim_id               : chr(0) 
 #>  ..  ..@ patient_id             : chr(0) 
 #>  ..  ..@ claim_type             : chr(0) 
