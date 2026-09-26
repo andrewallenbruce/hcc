@@ -84,23 +84,11 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> $`834_EX2_add_dependent`$REF38
 #> [1] "REF"        "38"         "ABCD012354"
 #> 
-#> $`834_EX2_add_dependent`$BGN00
-#> [1] "BGN"      "00"       "12456"    "19980520" "1200"     NA         NA        
-#> [8] NA         "2"       
+#> $`834_EX2_add_dependent`$N1P5
+#> [1] "N1"        "P5"        NA          "FI"        "999888777"
 #> 
-#> $`834_EX2_add_dependent`$ST834
-#> [1] "ST"           "834"          "12345"        "005010X220A1"
-#> 
-#> $`834_EX2_add_dependent`$GSBE
-#> [1] "GS"           "BE"           "SENDERNAME"   "RECEIVERNAME" "20041227"    
-#> [6] "1324"         "000000103"    "X"            "005010X220A1"
-#> 
-#> $`834_EX2_add_dependent`$ISA00
-#>  [1] "ISA"             "00"              "          "      "00"             
-#>  [5] "          "      "ZZ"              "SENDERNAME     " "ZZ"             
-#>  [9] "RECEIVERNAME   " "041227"          "1324"            "^"              
-#> [13] "00501"           "000000103"       "0"               "P"              
-#> [17] ">"              
+#> $`834_EX2_add_dependent`$N1IN
+#> [1] "N1"        "IN"        NA          "FI"        "654456654"
 #> 
 #> $`834_EX2_add_dependent`$INS_1_1
 #>  [1] "INS" "N"   "19"  "021" "28"  "A"   NA    NA    NA    "F"  
@@ -164,30 +152,19 @@ purrr::map(idx[c(1L, 14L)], parse_834)
 #> [7] NA                                    NA                                   
 #> [9] "2"                                  
 #> 
-#> $sample_834_06$QTYTO
+#> $sample_834_06$QTY
 #> [1] "QTY" "TO"  "2"  
 #> 
-#> $sample_834_06$BGN00
-#> [1] "BGN"                                 "00"                                 
-#> [3] "DHCS834-DA-20250206-Sample PACE-001" "20250206"                           
-#> [5] "20082300"                            NA                                   
-#> [7] NA                                    NA                                   
-#> [9] "2"                                  
+#> $sample_834_06$N1P5
+#> [1] "N1"                                                    
+#> [2] "P5"                                                    
+#> [3] "California Department of Health Care Services........."
+#> [4] "FI"                                                    
+#> [5] "999999990"                                             
 #> 
-#> $sample_834_06$ST834
-#> [1] "ST"           "834"          "0001"         "005010X220A1"
-#> 
-#> $sample_834_06$GSBE
-#> [1] "GS"              "BE"              "CADHCS_5010_834" "999999991"      
-#> [5] "20250206"        "200823"          "10000005"        "X"              
-#> [9] "005010X220A1"   
-#> 
-#> $sample_834_06$ISA00
-#>  [1] "ISA"             "00"              "          "      "00"             
-#>  [5] "          "      "ZZ"              "CADHCS_5010_834" "30"             
-#>  [9] "999999991      " "250206"          "2008"            "^"              
-#> [13] "00501"           "000000005"       "0"               "P"              
-#> [17] ":"              
+#> $sample_834_06$N1IN
+#> [1] "N1"               "IN"               "Sample PACE Inc." "FI"              
+#> [5] "999999991"       
 #> 
 #> $sample_834_06$INS_1_1
 #> [1] "INS" "Y"   "18"  "001" "AI"  "A"   "E"   NA    "AC" 
