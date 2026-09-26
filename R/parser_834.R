@@ -41,14 +41,17 @@ parse_834 <- function(x) {
     ISA = split_7(x, "ISA"),
     GS = split_7(x, "GS"),
     ST = split_7(x, "ST"),
-    BGN = split_7(x, "BGN")
+    BGN = split_7(x, "BGN"),
+    REF38 = split_7(x, "REF38"),
+    DTP007 = split_7(x, "DTP007"),
+    QTY = split_7(x, "QTY"),
+    N1P5 = split_7(x, "N1P5"),
+    N1IN = split_7(x, "N1IN")
   )
-
-  middle <- parse_834_MID(x)
   entity <- parse_834_INS(x)
   trailer <- parse_TRAILER(x)
 
-  purrr::compact(c(header, middle, entity, trailer))
+  purrr::compact(c(header, entity, trailer))
 }
 
 #' @noRd

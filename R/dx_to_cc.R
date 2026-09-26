@@ -13,12 +13,12 @@
 #' @param simplify `<lgl>` Return a named list; default is FALSE
 #' @returns `<chr>` CCs mapped to diagnosis codes
 #' @examples
-#' icd_to_cc(icd = "E119", model = "C28", year = 2026)
+#' icd_to_cc("E119", "C28", 2026)
 #' icd_to_cc("E119", "C24", 2026)
 #' icd_to_cc("E119", "D21", 2026)
 #' icd_to_cc("I5022", "C28", 2026)
 #' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
-#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C24", 2026)
+#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026, simplify = TRUE)
 #' @export
 icd_to_cc <- function(
   icd = NULL,
@@ -26,8 +26,8 @@ icd_to_cc <- function(
   year = NULL,
   simplify = FALSE
 ) {
-  check_character(icd, allow_na = FALSE)
-  rlang::check_number_whole(year, min = 2025, max = 2026)
+  check_character(icd, allow_na = FALSE, allow_null = TRUE)
+  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
 
   x <- if (is.null(year)) {
     hcc::ra_dx_to_cc

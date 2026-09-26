@@ -31,10 +31,10 @@ icd_to_cc(icd = NULL, model = NULL, year = NULL, simplify = FALSE)
 Map ICD-10 Codes to CC
 }
 \examples{
-icd_to_cc(icd = "E119", model = "C28", year = 2026)
+icd_to_cc("E119", "C28", 2026)
 icd_to_cc("E119", "C24", 2026)
 icd_to_cc("E119", "D21", 2026)
 icd_to_cc("I5022", "C28", 2026)
 icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
-icd_to_cc(c("E103213", "I5022", "Z9999"), "C24", 2026)
+icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026, simplify = TRUE)
 }
