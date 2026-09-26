@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9059 (2026-09-26)
+
+* fixed arg checks in `icd_to_cc()`
+* removed unnecessary parsing step in 834 parser
+
+
 # hcc 0.0.0.9058 (2026-09-26)
 
 * removed unnecessary regex lookups from 834 indexer
