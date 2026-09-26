@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9058 (2026-09-26)
+
+- removed unnecessary regex lookups from 834 indexer
+- handle semicolons in 834 parsing
+
 ## hcc 0.0.0.9057 (2026-09-25)
 
 - [`problems()`](https://andrewallenbruce.github.io/hcc/reference/problems.md)
