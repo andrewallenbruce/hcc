@@ -20,6 +20,7 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/apply_interactions.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/chronic_hcc.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/chronic_hcc_no_esrd.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/create_index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/demographics.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/diagnostics.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/eob_json.html</loc></url>
@@ -28,12 +29,10 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc-package.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/index.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/index_x12.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/interactions.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/parse_820.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/parse_834.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/parse_837.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/problems.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_coefficients.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_edits.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/ra_dx_to_cc.html</loc></url>
@@ -45,5 +44,6 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_834.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_837I.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_837P.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/x12_type.html</loc></url>
 </urlset>
 

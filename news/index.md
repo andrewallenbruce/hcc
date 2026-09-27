@@ -1,5 +1,11 @@
 # Changelog
 
+## hcc 0.0.0.9061 (2026-09-27)
+
+- S7 stubs for raw X12 input
+- [`create_index()`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
+  generic
+
 ## hcc 0.0.0.9060 (2026-09-27)
 
 - work on S7 820 parsed class
@@ -18,8 +24,7 @@
 
 ## hcc 0.0.0.9057 (2026-09-25)
 
-- [`problems()`](https://andrewallenbruce.github.io/hcc/reference/problems.md)
-  generic
+- `problems()` generic
 - prop_integer
 
 ## hcc 0.0.0.9056 (2026-09-25)
@@ -40,8 +45,7 @@
 
 ## hcc 0.0.0.9052 (2026-09-24)
 
-- [`index_x12()`](https://andrewallenbruce.github.io/hcc/reference/index_x12.md)
-  centralized function
+- `index_x12()` centralized function
 
 ## hcc 0.0.0.9051 (2026-09-24)
 
@@ -114,7 +118,8 @@
 
 ## hcc 0.0.0.9035 (2026-09-07)
 
-- `x12_type()` helper
+- [`x12_type()`](https://andrewallenbruce.github.io/hcc/reference/x12_type.md)
+  helper
 
 ## hcc 0.0.0.9034 (2026-09-02)
 

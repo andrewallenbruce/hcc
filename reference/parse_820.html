@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9060</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9061</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>list</p>
+    <p>list of <code>&lt;hcc::X12_820_218&gt;</code> S7 objects</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -86,574 +86,152 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span>, <span class="va">index_x12</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">w</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">compact</a></span><span class="op">(</span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu">purrr</span><span class="fu">::</span><span class="va"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span>, <span class="st">"type"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span><span class="op">[</span><span class="fu">collapse</span><span class="fu">::</span><span class="fu"><a href="https://fastverse.org/collapse/reference/efficient-programming.html" class="external-link">whichv</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">:::</span><span class="fu">unlist_</span><span class="op">(</span><span class="va">w</span><span class="op">)</span>, <span class="st">"820-X218"</span><span class="op">)</span><span class="op">]</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu">hcc</span><span class="fu">:::</span><span class="va">parse_820_218</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260118" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" "083122" "43304" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ST  : chr [1:3] "820" "0001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR : chr [1:6] "I" "102139.46" "C" "NON" "68-0317191" "20260115"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN : chr [1:2] "3" "TESTTRN01000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ RF14: chr "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PE: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PR: chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PR: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ENT :List of 89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.1 : chr [1:4] "3" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.1 : chr [1:4] "4" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME04" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.1 : chr [1:4] "5" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.1 : chr [1:4] "6" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.1 : chr [1:4] "7" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME07" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.8 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.9 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.10: chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.11: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.12: chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.1 : chr [1:4] "8" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.1 : chr [1:4] "9" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME09" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.1: chr [1:4] "10" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.2: chr [1:7] "NM1" "IL" "1" "LASTNAME10" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.4: chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.5: chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.6: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.7: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.1: chr [1:4] "11" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.2: chr [1:7] "NM1" "IL" "1" "LASTNAME11" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.4: chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.5: chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.6: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.7: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.1: chr [1:4] "12" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.2: chr [1:7] "NM1" "IL" "1" "LASTNAME12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "5101.10"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.4: chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.5: chr [1:4] "REF" "ZZ" "17" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.6: chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.7: chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ SE  : chr [1:2] "100" "0001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GE  : chr [1:2] "1" "43304"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ IEA : chr [1:2] "1" "000058691"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260316" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" "085500" "44273" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ST  : chr [1:3] "820" "0001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR : chr [1:6] "I" "91977.81" "C" "NON" "68-0317191" "20260312"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN : chr [1:2] "3" "TESTTRN02000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ RF14: chr "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PE: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PR: chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PR: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ENT :List of 151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "5555.82"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "454.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.10 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.11 : chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.13 : chr [1:3] "ADX" "-5101.10" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.10 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.13 : chr [1:3] "ADX" "-8086.53" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.10 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.13 : chr [1:3] "ADX" "-8086.53" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME13" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.8  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.10 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME04" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.10 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.13 : chr [1:3] "ADX" "-8086.53" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.10 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.13 : chr [1:3] "ADX" "-8086.53" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "-8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME07" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "8488.25"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "401.72" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.10 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.11 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.13 : chr [1:3] "ADX" "-8086.53" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ SE  : chr [1:2] "162" "0001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GE  : chr [1:2] "1" "44273"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ IEA : chr [1:2] "1" "000059660"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260316" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" "085458" "44272" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ST  : chr [1:3] "820" "0001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR : chr [1:6] "I" "697085.64" "C" "NON" "68-0317191" "20260312"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN : chr [1:2] "3" "TESTTRN03000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ RF14: chr "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PE: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PR: chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PR: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ENT :List of 1131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.10 : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.13 : chr [1:3] "ADX" "-5258.86" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.10 : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.13 : chr [1:3] "ADX" "-5258.86" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME16" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME17" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.10 : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.13 : chr [1:3] "ADX" "-5258.86" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME18" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "9645.74"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "559.75" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.10 : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.13 : chr [1:3] "ADX" "-9085.99" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME19" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "17" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME20" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "9645.74"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "559.75" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.10 : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.13 : chr [1:3] "ADX" "-9085.99" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME21" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "17" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME22" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.5  : chr [1:4] "REF" "ZZ" "10" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.9  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.10 : chr [1:4] "REF" "ZZ" "10" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.11 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.12 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.13 : chr [1:3] "ADX" "-5258.86" "53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ SE  : chr [1:2] "1142" "0001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GE  : chr [1:2] "1" "44272"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ IEA : chr [1:2] "1" "000059659"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "251217" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20251217" "231624" "42755" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ST  : chr [1:3] "820" "0001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR : chr [1:6] "I" "80865.30" "C" "NON" "68-0317191" "20251216"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN : chr [1:2] "3" "TESTTRN04000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ RF14: chr "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PE: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PR: chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PR: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ENT :List of 80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.8 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "-5101.10"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.9 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.10: chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.11: chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.12: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.13: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.14: chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.15: chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.16: chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.17: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.1 : chr [1:4] "3" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME03" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.1 : chr [1:4] "4" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME05" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.1 : chr [1:4] "5" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME06" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.1 : chr [1:4] "6" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME08" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.1 : chr [1:4] "7" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME09" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.1 : chr [1:4] "8" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME10" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.1 : chr [1:4] "9" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME11" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.5 : chr [1:4] "REF" "ZZ" "M1" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.1: chr [1:4] "10" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.2: chr [1:7] "NM1" "IL" "1" "LASTNAME12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.3: chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "5101.10"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.4: chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.5: chr [1:4] "REF" "ZZ" "17" "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.6: chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.7: chr [1:4] "DTM" "582" "RD8" "20251001-20251031"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ SE  : chr [1:2] "91" "0001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GE  : chr [1:2] "1" "42755"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ IEA : chr [1:2] "1" "000058142"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" "30" "TEST-PAYEE" "260217" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260217" "093627" "44044" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ST  : chr [1:3] "820" "0001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR : chr [1:6] "I" "499187.57" "C" "NON" "68-0317191" "20260212"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN : chr [1:2] "3" "TESTTRN05000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ RF14: chr "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PE: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N1PR: chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N3PR: chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ ENT :List of 632</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 2.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.1  : chr [1:4] "3" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME17" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.5  : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 3.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.1  : chr [1:4] "4" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME18" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.5  : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 4.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.1  : chr [1:4] "5" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME19" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.5  : chr [1:4] "REF" "ZZ" "17" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 5.7  : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.1  : chr [1:4] "6" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME20" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.5  : chr [1:4] "REF" "ZZ" "M1" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 6.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.1  : chr [1:4] "7" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME21" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.5  : chr [1:4] "REF" "ZZ" "17" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 7.7  : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.1  : chr [1:4] "8" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME22" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.5  : chr [1:4] "REF" "ZZ" "10" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 8.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.1  : chr [1:4] "9" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME23" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.4  : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.5  : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 9.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.1 : chr [1:4] "10" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME24" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.5 : chr [1:4] "REF" "ZZ" "6H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.8 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.9 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.10: chr [1:4] "REF" "ZZ" "6H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.11: chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 10.12: chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.1 : chr [1:4] "11" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME25" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.5 : chr [1:4] "REF" "ZZ" "60" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 11.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.1 : chr [1:4] "12" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME26" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.5 : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Medi-Cal Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 12.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.1 : chr [1:4] "13" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME28" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.4 : chr [1:3] "REF" "18" "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.5 : chr [1:4] "REF" "ZZ" "1H" "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.6 : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 13.7 : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 14.1 : chr [1:4] "14" "2J" "EI" "999999999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 14.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME29" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ 14.3 : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "9085.99"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  [list output truncated]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ SE  : chr [1:2] "643" "0001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ GE  : chr [1:2] "1" "44044"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ IEA : chr [1:2] "1" "000059431"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_820.html">x12_820</a></span><span class="op">[</span><span class="fl">13</span><span class="op">:</span><span class="fl">17</span><span class="op">]</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="x12_type.html">x12_type</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="create_index.html">create_index</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">parse_820</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span>list.len <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_01: &lt;hcc::X12_820_218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "102139.46" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:2] "3" "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.4 : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "100" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "43304"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "000058691"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_02: &lt;hcc::X12_820_218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "91977.81" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:2] "3" "TESTTRN02000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "5555.82"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "1H" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Dual-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "454.72" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.9  : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.10 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "162" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "44273"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "000059660"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_03: &lt;hcc::X12_820_218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "697085.64" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:2] "3" "TESTTRN03000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 1131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.9  : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.10 : chr [1:4] "REF" "ZZ" "60" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "1142" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "44272"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "000059659"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_04: &lt;hcc::X12_820_218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20251217" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "80865.30" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:2] "3" "TESTTRN04000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.4 : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "91" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "42755"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "000058142"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_05: &lt;hcc::X12_820_218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260217" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "499187.57" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:2] "3" "TESTTRN05000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "643" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "44044"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "000059431"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
