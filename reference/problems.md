@@ -21,5 +21,5 @@ a character vector of interactions
 ``` r
 idx9 = index_x12(hcc::x12_837I$sample_837_9)
 problems(idx9)
-#> character(0)
+#> [1] NA
 ```
