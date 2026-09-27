@@ -47,6 +47,8 @@ Extracts enrollment and demographic data from 834 transactions with focus on:
 }
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 x = purrr::map(hcc::x12_834, index_x12)
 purrr::map(x, parse_834)
+\dontshow{\}) # examplesIf}
 }

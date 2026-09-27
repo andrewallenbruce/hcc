@@ -1,77 +1,300 @@
+# ST01(820) - ST03=GS08(005010X218)
+# https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
 #' @noRd
-sort_index <- function(i) {
-  i <- cheapr::sset(i, whichv_(collapse::vlengths(i, FALSE), 0L, TRUE))
-  i[names(sort.int(purrr::map_int(i, \(x) x[1])))]
-}
-
-#' @noRd
-parsing_problems <- function(x, i) {
-  if (length(x) != cheapr::unlisted_length(i)) {
-    cheapr::setdiff_(seq_along(x), unlist_(i))
-  } else {
-    NA_integer_
-  }
-}
-
-#' @noRd
-new_X12Index <- function(x, text, index, type) {
-  index <- sort_index(index)
-
-  X12Index(
-    type = type,
-    segments = cheapr::unlisted_length(index),
-    problems = parsing_problems(x, index),
-    index = index,
-    text = x
+index_820_218 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    TRN = perl(x, "^TRN"),
+    CUR = perl(x, "^CUR"),
+    REF14 = perl(x, "^REF\\*14"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N3PE = perl(x, "^N1\\*PE") + 1L,
+    N4PE = perl(x, "^N1\\*PE") + 2L,
+    N1PR = perl(x, "^N1\\*PR"),
+    N3PR = perl(x, "^N1\\*PR") + 1L,
+    N4PR = perl(x, "^N1\\*PR") + 2L,
+    PERIC = perl(x, "^PER\\*IC"),
+    ENT = perl(x, "^ENT"),
+    NM1 = perl(x, "^NM1\\*(DO|EY|IL|QE)"),
+    RMR = perl(x, "^RMR"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF38 = perl(x, "^REF\\*38"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    DTM009 = perl(x, "^DTM\\*009"),
+    DTM035 = perl(x, "^DTM\\*035"),
+    DTMAAG = perl(x, "^DTM\\*AAG"),
+    DTM097 = perl(x, "^DTM\\*097"),
+    ADX = perl(x, "^ADX"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
   )
 }
 
-#' X12 Indexer
-#'
-#' @param text `<chr>` string of raw X12-820 text
-#' @returns `<hcc::X12Index>` S7 object
-#' @examples
-#' hcc::x12_820 |> purrr::map(index_x12)
-#' hcc::x12_834 |> purrr::map(index_x12)
-#' hcc::x12_837I |> purrr::map(index_x12)
-#' hcc::x12_837P |> purrr::map(index_x12)
-#' @export
-index_x12 <- function(text) {
-  text <- input_(text)
-  type <- x12_type(text)
-
-  VALID_TYPES <- c(
-    "820-X306",
-    "820-X218",
-    "834-X220",
-    "837I-X223",
-    "837P-X222"
+# ST01(820) - ST03=GS08(005010X306)
+# https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
+#' @noRd
+index_820_306 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    ENT = perl(x, "^ENT"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N1RM = perl(x, "^N1\\*RM"),
+    NM1 = perl(x, "^NM1"),
+    PERIC = perl(x, "^PER\\*IC"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF38 = perl(x, "^REF\\*38"),
+    REF0F = perl(x, "^REF\\*0F"),
+    REF0N = perl(x, "^REF\\*0N"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REF1W = perl(x, "^REF\\*1W"),
+    REF4A = perl(x, "^REF\\*4A"),
+    REF60 = perl(x, "^REF\\*60"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFAZ = perl(x, "^REF\\*AZ"),
+    REFPOL = perl(x, "^REF\\*POL"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    RMR = perl(x, "^RMR"),
+    TRN = perl(x, "^TRN"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
   )
+}
 
-  if (type %!in_% VALID_TYPES || cheapr::is_na(type)) {
-    return(NA)
-  }
 
-  x <- tilde(text)
+#' @noRd
+index_834_220 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    ACT = perl(x, "^ACT"),
+    AMT = perl(x, "^AMT"),
+    BGN = perl(x, "^BGN"),
+    COB = perl(x, "^COB"),
+    DMGD8 = perl(x, "^DMG\\*D8"),
+    DTP007 = perl(x, "^DTP\\*007"),
+    DTP303 = perl(x, "^DTP\\*303"),
+    DTP348 = perl(x, "^DTP\\*348"),
+    DTP349 = perl(x, "^DTP\\*349"),
+    DTP351 = perl(x, "^DTP\\*351"),
+    DTP356 = perl(x, "^DTP\\*356"),
+    DTP357 = perl(x, "^DTP\\*357"),
+    HD = perl(x, "^HD"),
+    HLH = perl(x, "^HLH"),
+    ICM = perl(x, "^ICM"),
+    IDC = perl(x, "^IDC"),
+    INS = perl(x, "^INS"),
+    LUILD = perl(x, "^LUI\\*LD"),
+    LX = perl(x, "^LX"),
+    N1P5 = perl(x, "^N1\\*P5"),
+    N1IN = perl(x, "^N1\\*IN"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    NM1IL = perl(x, "^NM1\\*IL"),
+    NM1M8 = perl(x, "^NM1\\*M8"),
+    NM1P3 = perl(x, "^NM1\\*P3"),
+    NM131 = perl(x, "^NM1\\*31"),
+    NM170 = perl(x, "^NM1\\*70"),
+    PERIP = perl(x, "^PER\\*IP"),
+    QTY = perl(x, "^QTY"),
+    REF17 = perl(x, "^REF\\*17"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF38 = perl(x, "^REF\\*38"),
+    REF0F = perl(x, "^REF\\*0F"),
+    REF1D = perl(x, "^REF\\*1D"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REF3H = perl(x, "^REF\\*3H"),
+    REF6O = perl(x, "^REF\\*6O"),
+    REF6P = perl(x, "^REF\\*6P"),
+    REF9V = perl(x, "^REF\\*9V"),
+    REFF6 = perl(x, "^REF\\*F6"),
+    REFQ4 = perl(x, "^REF\\*Q4"),
+    REFCE = perl(x, "^REF\\*CE"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    REFZX = perl(x, "^REF\\*ZX"),
+    REFRB = perl(x, "^REF\\*RB"),
+    REFDX = perl(x, "^REF\\*DX"),
+    REFQQ = perl(x, "^REF\\*QQ"),
+    REFAB = perl(x, "^REF\\*AB\\*"),
+    REFABB = perl(x, "^REF\\*ABB\\*"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+}
 
-  new_X12Index(
-    x = switch(
-      type,
-      "820-X306" = ,
-      "820-X218" = Text820(x),
-      "834-X220" = Text834(x),
-      "837I-X223" = ,
-      "837P-X222" = Text837(x)
-    ),
-    text = text,
-    index = switch(
-      type,
-      "820-X306" = index_820_306(x),
-      "820-X218" = index_820_218(x),
-      "834-X220" = index_834_220(x),
-      "837I-X223" = index_837I_223(x),
-      "837P-X222" = index_837P_222(x)
-    ),
-    type = type
+
+#' @noRd
+index_837I_223 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    AMT = perl(x, "^AMT"),
+    BHT = perl(x, "^BHT"),
+    CAS = perl(x, "^CAS"),
+    CL1 = perl(x, "^CL1"),
+    CLM = perl(x, "^CLM"),
+    CN1 = perl(x, "^CN1"),
+    CR1 = perl(x, "^CR1"),
+    CR2 = perl(x, "^CR2"),
+    CR3 = perl(x, "^CR3"),
+    CR8 = perl(x, "^CR8"),
+    CRC = perl(x, "^CRC"),
+    CTP = perl(x, "^CTP"),
+    DMG = perl(x, "^DMG"),
+    DMH = perl(x, "^DMH"),
+    DTP096 = perl(x, "^DTP\\*096"),
+    DTP434 = perl(x, "^DTP\\*434"),
+    DTP435 = perl(x, "^DTP\\*435"),
+    DTP472 = perl(x, "^DTP\\*472"),
+    DTP523 = perl(x, "^DTP\\*523"),
+    FRM = perl(x, "^FRM"),
+    HCP = perl(x, "^HCP"),
+    HIABJ = perl(x, "^HI\\*ABJ"),
+    HIABK = perl(x, "^HI\\*ABK"),
+    HIBE = perl(x, "^HI\\*BE"),
+    HIBF = perl(x, "^HI\\*BF"),
+    HIBG = perl(x, "^HI\\*BG"),
+    HIBH = perl(x, "^HI\\*BH"),
+    HIBK = perl(x, "^HI\\*BK"),
+    HIBN = perl(x, "^HI\\*BN"),
+    HIPR = perl(x, "^HI\\*PR"),
+    HL = perl(x, "^HL"),
+    K3 = perl(x, "^K3"),
+    LIN = perl(x, "^LIN"),
+    LQ = perl(x, "^LQ"),
+    LU = perl(x, "^LU"),
+    LX = perl(x, "^LX"),
+    MEA = perl(x, "^MEA"),
+    MOA = perl(x, "^MOA"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    NM140 = perl(x, "^NM1\\*40"),
+    NM141 = perl(x, "^NM1\\*41"),
+    NM171 = perl(x, "^NM1\\*71"),
+    NM185 = perl(x, "^NM1\\*85"),
+    NM1IL = perl(x, "^NM1\\*IL"),
+    NM1PR = perl(x, "^NM1\\*PR"),
+    NM1QC = perl(x, "^NM1\\*QC"),
+    NTE = perl(x, "^NTE"),
+    OI = perl(x, "^OI"),
+    PAT = perl(x, "^PAT"),
+    PERIC = perl(x, "^PER\\*IC"),
+    PRVBI = perl(x, "^PRV\\*BI"),
+    PRVAT = perl(x, "^PRV\\*AT"),
+    PWK = perl(x, "^PWK"),
+    QTY = perl(x, "^QTY"),
+    REF1G = perl(x, "^REF\\*1G"),
+    REF2U = perl(x, "^REF\\*2U"),
+    REF6R = perl(x, "^REF\\*6R"),
+    REF9A = perl(x, "^REF\\*9A"),
+    REFD9 = perl(x, "^REF\\*D9"),
+    REFEI = perl(x, "^REF\\*EI"),
+    REFG2 = perl(x, "^REF\\*G2"),
+    REFLU = perl(x, "^REF\\*LU"),
+    REFY4 = perl(x, "^REF\\*Y4"),
+    SBRP = perl(x, "^SBR\\*P\\*"),
+    SBRS = perl(x, "^SBR\\*S\\*"),
+    SV1 = perl(x, "^SV1"),
+    SV2 = perl(x, "^SV2"),
+    SV5 = perl(x, "^SV5"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+}
+
+#' @noRd
+index_837P_222 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    AMT = perl(x, "^AMT"),
+    BHT = perl(x, "^BHT"),
+    CAS = perl(x, "^CAS"),
+    CLM = perl(x, "^CLM"),
+    CR1 = perl(x, "^CR1"),
+    CR2 = perl(x, "^CR2"),
+    CR3 = perl(x, "^CR3"),
+    CRC = perl(x, "^CRC"),
+    CTP = perl(x, "^CTP"),
+    DMG = perl(x, "^DMG"),
+    DTP096 = perl(x, "^DTP\\*096"),
+    DTP431 = perl(x, "^DTP\\*431"),
+    DTP434 = perl(x, "^DTP\\*434"),
+    DTP439 = perl(x, "^DTP\\*439"),
+    DTP435 = perl(x, "^DTP\\*435"),
+    DTP453 = perl(x, "^DTP\\*453"),
+    DTP454 = perl(x, "^DTP\\*454"),
+    DTP455 = perl(x, "^DTP\\*455"),
+    DTP461 = perl(x, "^DTP\\*461"),
+    DTP463 = perl(x, "^DTP\\*463"),
+    DTP472 = perl(x, "^DTP\\*472"),
+    DTP523 = perl(x, "^DTP\\*523"),
+    DTP573 = perl(x, "^DTP\\*573"),
+    DTP607 = perl(x, "^DTP\\*607"),
+    FRM = perl(x, "^FRM"),
+    HCP = perl(x, "^HCP"),
+    HIABK = perl(x, "^HI\\*ABK"),
+    HIBK = perl(x, "^HI\\*BK"),
+    HL = perl(x, "^HL"),
+    LIN = perl(x, "^LIN"),
+    LQ = perl(x, "^LQ"),
+    LX = perl(x, "^LX"),
+    MEA = perl(x, "^MEA"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    NM140 = perl(x, "^NM1\\*40"),
+    NM141 = perl(x, "^NM1\\*41"),
+    NM145 = perl(x, "^NM1\\*45"),
+    NM171 = perl(x, "^NM1\\*71"),
+    NM177 = perl(x, "^NM1\\*77"),
+    NM182 = perl(x, "^NM1\\*82"),
+    NM185 = perl(x, "^NM1\\*85"),
+    NM187 = perl(x, "^NM1\\*87"),
+    NM1DK = perl(x, "^NM1\\*DK"),
+    NM1DN = perl(x, "^NM1\\*DN"),
+    NM1IL = perl(x, "^NM1\\*IL"),
+    NM1PR = perl(x, "^NM1\\*PR"),
+    NM1PW = perl(x, "^NM1\\*PW"),
+    NM1QC = perl(x, "^NM1\\*QC"),
+    NTE = perl(x, "^NTE"),
+    OI = perl(x, "^OI"),
+    PAT = perl(x, "^PAT"),
+    PERIC = perl(x, "^PER\\*IC"),
+    PRVBI = perl(x, "^PRV\\*BI"),
+    PRVPE = perl(x, "^PRV\\*PE"),
+    PWK = perl(x, "^PWK"),
+    QTY = perl(x, "^QTY"),
+    REF1G = perl(x, "^REF\\*1G"),
+    REF6R = perl(x, "^REF\\*6R"),
+    REF9A = perl(x, "^REF\\*9A"),
+    REFD9 = perl(x, "^REF\\*D9"),
+    REFEI = perl(x, "^REF\\*EI"),
+    REFG2 = perl(x, "^REF\\*G2"),
+    SBRP = perl(x, "^SBR\\*P\\*"),
+    SBRS = perl(x, "^SBR\\*S\\*"),
+    SV1 = perl(x, "^SV1"),
+    SVD = perl(x, "^SVD"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
   )
 }

@@ -23,23 +23,23 @@
 #'    - Trailer: `SE` > `GE` > `IEA`
 #'
 #' @param x `<chr>` string of raw X12-820 text
-#' @returns list
+#' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' x = purrr::map(hcc::x12_820, index_x12)
-#' w = purrr::compact(purrr::map(x, purrr::pluck, "type"))
-#' x = x[names(w)[collapse::whichv(hcc:::unlist_(w), "820-X218")]]
-#' purrr::map(x, hcc:::parse_820_218)
+#' hcc::x12_820[13:17] |>
+#'   x12_type() |>
+#'   create_index() |>
+#'   purrr::map(parse_820) |>
+#'   str(list.len = 10L)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
     return(NA_character_)
   }
-  purrr::compact(
-    switch(
-      x@type,
-      "820-X306" = parse_820_306(x),
-      "820-X218" = parse_820_218(x)
-    )
+
+  switch(
+    x@type,
+    "820-X306" = parse_820_306(x),
+    "820-X218" = parse_820_218(x)
   )
 }
 
@@ -103,85 +103,4 @@ parse_820_306 <- function(x) {
   trailer <- parse_TRAILER(x)
 
   c(header, entity, trailer)
-}
-
-# ST-01 = 820
-# ST-03 = 005010X218
-# GS-08 = 005010X218
-# https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
-#' @noRd
-index_820_218 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BPR"),
-    TRN = perl(x, "^TRN"),
-    CUR = perl(x, "^CUR"),
-    REF14 = perl(x, "^REF\\*14"),
-    N1PE = perl(x, "^N1\\*PE"),
-    N3PE = perl(x, "^N1\\*PE") + 1L,
-    N4PE = perl(x, "^N1\\*PE") + 2L,
-    N1PR = perl(x, "^N1\\*PR"),
-    N3PR = perl(x, "^N1\\*PR") + 1L,
-    N4PR = perl(x, "^N1\\*PR") + 2L,
-    PERIC = perl(x, "^PER\\*IC"),
-    ENT = perl(x, "^ENT"),
-    NM1 = perl(x, "^NM1\\*(DO|EY|IL|QE)"),
-    RMR = perl(x, "^RMR"),
-    REF18 = perl(x, "^REF\\*18"),
-    REF38 = perl(x, "^REF\\*38"),
-    REFTV = perl(x, "^REF\\*TV"),
-    REF1L = perl(x, "^REF\\*1L"),
-    REFABY = perl(x, "^REF\\*ABY"),
-    REFZZ = perl(x, "^REF\\*ZZ"),
-    DTM582 = perl(x, "^DTM\\*582"),
-    DTM009 = perl(x, "^DTM\\*009"),
-    DTM035 = perl(x, "^DTM\\*035"),
-    DTMAAG = perl(x, "^DTM\\*AAG"),
-    DTM097 = perl(x, "^DTM\\*097"),
-    ADX = perl(x, "^ADX"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
-}
-
-# ST-01 = 820
-# ST-03 = 005010X306
-# GS-08 = 005010X306
-# https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
-#' @noRd
-index_820_306 <- function(x) {
-  list(
-    ISA = perl(x, "^ISA"),
-    GS = perl(x, "^GS"),
-    ST = perl(x, "^ST"),
-    BPR = perl(x, "^BPR"),
-    DTM582 = perl(x, "^DTM\\*582"),
-    ENT = perl(x, "^ENT"),
-    N1PE = perl(x, "^N1\\*PE"),
-    N1RM = perl(x, "^N1\\*RM"),
-    NM1 = perl(x, "^NM1"),
-    PERIC = perl(x, "^PER\\*IC"),
-    REF18 = perl(x, "^REF\\*18"),
-    REF23 = perl(x, "^REF\\*23"),
-    REF38 = perl(x, "^REF\\*38"),
-    REF0F = perl(x, "^REF\\*0F"),
-    REF0N = perl(x, "^REF\\*0N"),
-    REF1L = perl(x, "^REF\\*1L"),
-    REF1W = perl(x, "^REF\\*1W"),
-    REF4A = perl(x, "^REF\\*4A"),
-    REF60 = perl(x, "^REF\\*60"),
-    REFABY = perl(x, "^REF\\*ABY"),
-    REFAZ = perl(x, "^REF\\*AZ"),
-    REFPOL = perl(x, "^REF\\*POL"),
-    REFTV = perl(x, "^REF\\*TV"),
-    REFZZ = perl(x, "^REF\\*ZZ"),
-    RMR = perl(x, "^RMR"),
-    TRN = perl(x, "^TRN"),
-    SE = perl(x, "^SE"),
-    GE = perl(x, "^GE"),
-    IEA = perl(x, "^IEA")
-  )
 }

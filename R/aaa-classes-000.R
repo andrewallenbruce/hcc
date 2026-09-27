@@ -1,20 +1,28 @@
 #' @noRd
-Text820 := S7::new_class(S7::class_character)
+TextX12 := S7::new_class(
+  properties = list(
+    type = S7::class_character,
+    text = S7::class_character
+  )
+)
 
 #' @noRd
-Text834 := S7::new_class(S7::class_character)
+Text820 := S7::new_class(TextX12)
 
 #' @noRd
-Text837 := S7::new_class(S7::class_character)
+Text834 := S7::new_class(TextX12)
+
+#' @noRd
+Text837 := S7::new_class(TextX12)
 
 #' @export
 X12Index := S7::new_class(
   properties = list(
     type = S7::class_character,
+    text = S7::class_character,
     segments = S7::class_integer,
     problems = S7::class_integer,
-    index = S7::class_list,
-    text = S7::class_character
+    index = S7::class_list
   )
 )
 
@@ -28,82 +36,79 @@ fleft <- function(x, ...) {
   format(x, justify = "left", ...)
 }
 
-S7::method(format, X12Index) <- function(x) {
-  cli::cli_h1("<{attr(x, .c(class))[1]}>")
+# S7::method(format, X12Index) <- function(x) {
+#   cli::cli_h1("<{attr(x, .c(class))[1]}>")
+#
+#   probs_ <- if (!is.na(x@problems)) length(x@problems) else NULL
+#   names_ <- fright(c(
+#     "Type",
+#     "Segments",
+#     if (!is.null(probs_)) "Problems"
+#   ))
+#   numbs_ <- fleft(c(
+#     x@type,
+#     x@segments,
+#     if (!is.null(probs_)) cli::col_red(probs_)
+#   ))
+#
+#   cli::cat_line(
+#     cheapr::paste_(
+#       cli::col_cyan(
+#         cli::style_bold(names_)
+#       ),
+#       ": ",
+#       numbs_
+#     )
+#   )
+#   cli::cat_rule()
+#
+#   numbs_ <- unname(x@index) |>
+#     purrr::map_chr(\(x) toString(x, width = 60)) |>
+#     fleft()
+#
+#   names_ <- fright(cheapr::paste_(
+#     names(collapse::vlengths(x@index)),
+#     "[",
+#     collapse::vlengths(x@index, FALSE),
+#     "]"
+#   ))
+#
+#   cli::cat_line(
+#     cheapr::paste_(
+#       cli::style_bold(names_),
+#       ": ",
+#       numbs_
+#     )
+#   )
+# }
+#
+# S7::method(print, X12Index) <- function(x) {
+#   format(x)
+#   invisible(x)
+# }
 
-  probs_ <- if (!is.na(x@problems)) length(x@problems) else NULL
-  names_ <- fright(c(
-    "Type",
-    "Segments",
-    if (!is.null(probs_)) "Problems"
-  ))
-  numbs_ <- fleft(c(
-    x@type,
-    x@segments,
-    if (!is.null(probs_)) cli::col_red(probs_)
-  ))
-
-  cli::cat_line(
-    cheapr::paste_(
-      cli::col_cyan(
-        cli::style_bold(names_)
-      ),
-      ": ",
-      numbs_
-    )
-  )
-  cli::cat_rule()
-
-  numbs_ <- unname(x@index) |>
-    purrr::map_chr(\(x) toString(x, width = 60)) |>
-    fleft()
-
-  names_ <- fright(cheapr::paste_(
-    names(collapse::vlengths(x@index)),
-    "[",
-    collapse::vlengths(x@index, FALSE),
-    "]"
-  ))
-
-  cli::cat_line(
-    cheapr::paste_(
-      cli::style_bold(names_),
-      ": ",
-      numbs_
-    )
-  )
-}
-
-S7::method(print, X12Index) <- function(x) {
-  format(x)
-  invisible(x)
-}
-
-#' Extract Problems from X12 Indices
-#' @param x `<X12Index>` S7 object
-#' @param ... dots
-#' @returns a character vector of interactions
-#' @examples
-#' idx9 = index_x12(hcc::x12_837I$sample_837_9)
-#' problems(idx9)
-#' @export
-#' @name problems
-problems := S7::new_generic("x")
-
-S7::method(problems, S7::class_any) <- function(x) {
-  return(NA)
-}
-
-S7::method(problems, S7::class_list) <- function(x) {
-  purrr::map(x, problems)
-  # p <- problems(i)
-  # p <- p[cheapr::which_(purrr::map_lgl(p, rlang::is_empty), TRUE)]
-  # p[cheapr::which_(purrr::map_lgl(p, anyNA), TRUE)]
-}
-
-S7::method(problems, X12Index) <- function(x) {
-  .subset(x@text, x@problems)
-}
+# Extract Problems from X12 Indices
+# @param x `<X12Index>` S7 object
+# @param ... dots
+# @returns a character vector of interactions
+# @examples
+# idx9 = index_x12(hcc::x12_837I$sample_837_9)
+# problems(idx9)
+# @export
+# @name problems
+# problems := S7::new_generic("x")
+#
+# S7::method(problems, S7::class_any) <- function(x) {
+#   return(NA)
+# }
+#
+# S7::method(problems, S7::class_list) <- function(x) {
+#   purrr::map(x, problems)
+# }
+#
+# S7::method(problems, X12Index) <- function(x) {
+#   .subset(x@text, x@problems)
+# }
 
 #' @noRd
 class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))

@@ -10,7 +10,7 @@ parse_820(x)
 \item{x}{\verb{<chr>} string of raw X12-820 text}
 }
 \value{
-list
+list of \verb{<hcc::X12_820_218>} S7 objects
 }
 \description{
 Parses X12-820 (005010X218) transactions for Medicaid/Medicare capitation and
@@ -41,8 +41,9 @@ Typical loop structure within an \code{820-X218}:
 }
 }
 \examples{
-x = purrr::map(hcc::x12_820, index_x12)
-w = purrr::compact(purrr::map(x, purrr::pluck, "type"))
-x = x[names(w)[collapse::whichv(hcc:::unlist_(w), "820-X218")]]
-purrr::map(x, hcc:::parse_820_218)
+hcc::x12_820[13:17] |>
+  x12_type() |>
+  create_index() |>
+  purrr::map(parse_820) |>
+  str(list.len = 10L)
 }
