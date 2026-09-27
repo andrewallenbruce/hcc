@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9061 (2026-09-27)
+
+* S7 stubs for raw X12 input
+* `create_index()` generic
+
+
 # hcc 0.0.0.9060 (2026-09-27)
 
 * work on S7 820 parsed class
