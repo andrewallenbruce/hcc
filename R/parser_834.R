@@ -29,8 +29,8 @@
 #' @param x `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examples
-#' idx = purrr::map(hcc::x12_834, index_x12)
-#' purrr::map(idx[c(1L, 14L)], parse_834)
+#' x = purrr::map(hcc::x12_834, index_x12)
+#' purrr::map(x, parse_834)
 #' @export
 parse_834 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {

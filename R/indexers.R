@@ -9,7 +9,7 @@ parsing_problems <- function(x, i) {
   if (length(x) != cheapr::unlisted_length(i)) {
     cheapr::setdiff_(seq_along(x), unlist_(i))
   } else {
-    0L
+    NA_integer_
   }
 }
 
@@ -37,8 +37,8 @@ new_X12Index <- function(x, text, index, type) {
 #' hcc::x12_837P |> purrr::map(index_x12)
 #' @export
 index_x12 <- function(text) {
-  text <- check_text_(text)
-  xtype <- x12_type(text)
+  text <- input_(text)
+  type <- x12_type(text)
 
   VALID_TYPES <- c(
     "820-X306",
@@ -48,25 +48,30 @@ index_x12 <- function(text) {
     "837P-X222"
   )
 
-  if (xtype %!in_% VALID_TYPES || cheapr::is_na(xtype)) {
+  if (type %!in_% VALID_TYPES || cheapr::is_na(type)) {
     return(NA)
   }
 
   x <- tilde(text)
 
-  i <- switch(
-    xtype,
-    "820-X306" = index_820_306(x),
-    "820-X218" = index_820_218(x),
-    "834-X220" = index_834_220(x),
-    "837I-X223" = index_837I_223(x),
-    "837P-X222" = index_837P_222(x)
-  )
-
   new_X12Index(
-    x = x,
+    x = switch(
+      type,
+      "820-X306" = ,
+      "820-X218" = Text820(x),
+      "834-X220" = Text834(x),
+      "837I-X223" = ,
+      "837P-X222" = Text837(x)
+    ),
     text = text,
-    index = i,
-    type = xtype
+    index = switch(
+      type,
+      "820-X306" = index_820_306(x),
+      "820-X218" = index_820_218(x),
+      "834-X220" = index_834_220(x),
+      "837I-X223" = index_837I_223(x),
+      "837P-X222" = index_837P_222(x)
+    ),
+    type = type
   )
 }

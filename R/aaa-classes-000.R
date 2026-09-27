@@ -1,12 +1,11 @@
 #' @noRd
-fright <- function(x, ...) {
-  format(x, justify = "right", ...)
-}
+Text820 := S7::new_class(S7::class_character)
 
 #' @noRd
-fleft <- function(x, ...) {
-  format(x, justify = "left", ...)
-}
+Text834 := S7::new_class(S7::class_character)
+
+#' @noRd
+Text837 := S7::new_class(S7::class_character)
 
 #' @export
 X12Index := S7::new_class(
@@ -19,17 +18,30 @@ X12Index := S7::new_class(
   )
 )
 
+#' @noRd
+fright <- function(x, ...) {
+  format(x, justify = "right", ...)
+}
+
+#' @noRd
+fleft <- function(x, ...) {
+  format(x, justify = "left", ...)
+}
+
 S7::method(format, X12Index) <- function(x) {
-  cli::cli_h1("<hcc::X12Index>")
+  cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  probs_ <- if (length(x@problems) == 1L && allv_(x@problems, 0L)) {
-    NULL
-  } else {
-    cli::col_red(length(x@problems))
-  }
-
-  names_ <- fright(c("Type", "Segments", if (!is.null(probs_)) "Problems"))
-  numbs_ <- fleft(c(x@type, x@segments, if (!is.null(probs_)) probs_))
+  probs_ <- if (!is.na(x@problems)) length(x@problems) else NULL
+  names_ <- fright(c(
+    "Type",
+    "Segments",
+    if (!is.null(probs_)) "Problems"
+  ))
+  numbs_ <- fleft(c(
+    x@type,
+    x@segments,
+    if (!is.null(probs_)) cli::col_red(probs_)
+  ))
 
   cli::cat_line(
     cheapr::paste_(
@@ -42,11 +54,16 @@ S7::method(format, X12Index) <- function(x) {
   )
   cli::cat_rule()
 
-  idx <- x@index
-  seg <- collapse::vlengths(idx)
+  numbs_ <- unname(x@index) |>
+    purrr::map_chr(\(x) toString(x, width = 60)) |>
+    fleft()
 
-  names_ <- fright(cheapr::paste_(names(seg), "[", unname(seg), "]"))
-  numbs_ <- fleft(purrr::map_chr(unname(idx), \(x) toString(x, width = 60)))
+  names_ <- fright(cheapr::paste_(
+    names(collapse::vlengths(x@index)),
+    "[",
+    collapse::vlengths(x@index, FALSE),
+    "]"
+  ))
 
   cli::cat_line(
     cheapr::paste_(

@@ -49,9 +49,9 @@ split_1 <- function(x, i) {
 }
 
 #' @noRd
-check_text_ <- function(x) {
-  if (length(x) > 1L || is.list(x)) {
-    paste0(unlist_(x), collapse = "")
+input_ <- function(x) {
+  if (!rlang::is_scalar_character(x)) {
+    cheapr::paste_(x, collapse = "")
   } else {
     x
   }
@@ -81,10 +81,10 @@ set_zchar <- function(x) {
 
 #' @noRd
 pad_names <- function(x) {
-  N <- as.character(seq_along(x))
-  i <- whichv_(nchar(N), 1L)
-  collapse::setv(N, i, cheapr::paste_("0", N[i]))
-  N
+  n <- as.character(seq_along(x))
+  i <- whichv_(nchar(n), 1L)
+  collapse::setv(n, i, cheapr::paste_("0", n[i]))
+  n
   # rlang::set_names(as.list(x), N)
 }
 
@@ -109,11 +109,6 @@ tilde <- function(x) {
 #' @noRd
 star <- function(x, i) {
   strsplit(.subset(x, i), "*", fixed = TRUE)
-}
-
-#' @noRd
-semicolon <- function(x) {
-  .subset2(strsplit(x, ";", fixed = TRUE), 1L)
 }
 
 #' @noRd

@@ -21,7 +21,7 @@ x12_837_subtype <- function(x) {
 # x12_type_1(x12_820[1])
 #' @noRd
 x12_type_1 <- function(x) {
-  x <- check_text_(x)
+  x <- input_(x)
   x <- strsplit(rm_newline(x), "~", fixed = TRUE)[[1]]
   x <- strsplit(.subset(x, perl(x, "^ST")), "*", fixed = TRUE)[[1]]
   return(
