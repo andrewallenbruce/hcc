@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9060 (2026-09-27)
+
+- work on S7 820 parsed class
+- S7 document class
+
 ## hcc 0.0.0.9059 (2026-09-26)
 
 - fixed arg checks in
