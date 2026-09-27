@@ -1,3 +1,26 @@
+#' 2000B Individual Premium Remittance Detail Loop
+#'
+#' @noRd
+L2300B := S7::new_class(
+  properties = list(
+    RMR = S7::class_character,
+    REF = S7::class_list,
+    DTM = S7::class_character,
+    ADX = S7::class_character
+  )
+)
+
+#' 2000B Individual Remittance Loop
+#'
+#' @noRd
+L2000B := S7::new_class(
+  properties = list(
+    ENT = S7::class_character,
+    NM1 = S7::class_character,
+    L2300B = L2300B
+  )
+)
+
 #' @export
 X12_820_218 := S7::new_class(
   properties = list(

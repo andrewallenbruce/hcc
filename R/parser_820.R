@@ -25,10 +25,10 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list
 #' @examples
-#' x = hcc::x12_820
-#' i = hcc:::x12_type(x)
-#' i218 = x[endsWith(i, "218")] |> purrr::map(index_x12)
-#' purrr::map(i218, hcc:::parse_820_218)
+#' x = purrr::map(hcc::x12_820, index_x12)
+#' w = purrr::compact(purrr::map(x, purrr::pluck, "type"))
+#' x = x[names(w)[collapse::whichv(hcc:::unlist_(w), "820-X218")]]
+#' purrr::map(x, hcc:::parse_820_218)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, X12Index)) {
@@ -42,16 +42,17 @@ parse_820 <- function(x) {
     )
   )
 }
-# i306 = x[endsWith(i, "306")] |> purrr::map(index_x12)
 
 #' @noRd
 parse_820_ENT <- function(x) {
   en <- .subset2(x@index, "ENT")
-  se <- .subset2(x@index, "SE")
-  se <- c(.subset(en, -1L), se) - 1L
-  i <- fill_(en, se, as_list = TRUE)
+  ix <- fill_(
+    en,
+    c(.subset(en, -1L), .subset2(x@index, "SE")) - 1L,
+    as_list = TRUE
+  )
 
-  ent <- purrr::map(i, \(i) {
+  ent <- purrr::map(ix, \(i) {
     e_ <- .subset(x@text, i) |>
       strsplit("[*;]", perl = TRUE)
 

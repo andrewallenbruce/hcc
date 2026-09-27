@@ -41,8 +41,8 @@ Typical loop structure within an \code{820-X218}:
 }
 }
 \examples{
-x = hcc::x12_820
-i = hcc:::x12_type(x)
-i218 = x[endsWith(i, "218")] |> purrr::map(index_x12)
-purrr::map(i218, hcc:::parse_820_218)
+x = purrr::map(hcc::x12_820, index_x12)
+w = purrr::compact(purrr::map(x, purrr::pluck, "type"))
+x = x[names(w)[collapse::whichv(hcc:::unlist_(w), "820-X218")]]
+purrr::map(x, hcc:::parse_820_218)
 }
