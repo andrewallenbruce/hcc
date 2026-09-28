@@ -20,7 +20,6 @@ X12Index := S7::new_class(
   properties = list(
     type = S7::class_character,
     text = S7::class_character,
-    segments = S7::class_integer,
     problems = S7::class_integer,
     index = S7::class_list
   )

@@ -1,7 +1,7 @@
 # ST01(820) - ST03=GS08(005010X218)
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
 #' @noRd
-index_820_218 <- function(x) {
+ind_820_218 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -41,7 +41,7 @@ index_820_218 <- function(x) {
 # ST01(820) - ST03=GS08(005010X306)
 # https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
 #' @noRd
-index_820_306 <- function(x) {
+ind_820_306 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -77,7 +77,7 @@ index_820_306 <- function(x) {
 
 
 #' @noRd
-index_834_220 <- function(x) {
+ind_834 <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -140,7 +140,7 @@ index_834_220 <- function(x) {
 
 
 #' @noRd
-index_837I_223 <- function(x) {
+ind_837I <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),
@@ -221,7 +221,7 @@ index_837I_223 <- function(x) {
 }
 
 #' @noRd
-index_837P_222 <- function(x) {
+ind_837P <- function(x) {
   list(
     ISA = perl(x, "^ISA"),
     GS = perl(x, "^GS"),

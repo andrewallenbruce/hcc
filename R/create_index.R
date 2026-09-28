@@ -4,13 +4,7 @@
 #' @param ... dots
 #' @returns an `<hcc::X12Index>` S7 object
 #' @examples
-#' c(x12_820[1],
-#'   x12_834[1],
-#'   x12_837I[1],
-#'   x12_837P[1]
-#' ) |>
-#'   x12_type() |>
-#'   create_index()
+#' create_index(x = c(x12_820, x12_834, x12_837I, x12_837P))
 #' @export
 #' @name create_index
 create_index := S7::new_generic("x")
@@ -20,34 +14,36 @@ S7::method(create_index, S7::class_any) <- function(x) {
 }
 
 S7::method(create_index, S7::class_list) <- function(x) {
-  purrr::map(x, create_index)
+  purrr::map(x12_type(x), create_index)
+}
+
+S7::method(create_index, S7::class_character) <- function(x) {
+  create_index(x12_type(x))
 }
 
 S7::method(create_index, Text820) <- function(x) {
   i <- sort_index(
     switch(
       x@type,
-      "820-X306" = index_820_306(x@text),
-      "820-X218" = index_820_218(x@text)
+      "820-X306" = ind_820_306(x@text),
+      "820-X218" = ind_820_218(x@text)
     )
   )
   new_index(x, i)
 }
 
 S7::method(create_index, Text834) <- function(x) {
-  i <- sort_index(index_834_220(x@text))
-  new_index(x, i)
+  new_index(x, sort_index(ind_834(x@text)))
 }
 
 S7::method(create_index, Text837) <- function(x) {
   i <- sort_index(
     switch(
       x@type,
-      "837I-X223" = index_837I_223(x@text),
-      "837P-X222" = index_837P_222(x@text)
+      "837I-X223" = ind_837I(x@text),
+      "837P-X222" = ind_837P(x@text)
     )
   )
-
   new_index(x, i)
 }
 
@@ -58,7 +54,7 @@ sort_index <- function(i) {
 }
 
 #' @noRd
-parsing_problems <- function(x, i) {
+problems <- function(x, i) {
   if (length(x) != cheapr::unlisted_length(i)) {
     cheapr::setdiff_(seq_along(x), unlist_(i))
   } else {
@@ -67,13 +63,12 @@ parsing_problems <- function(x, i) {
 }
 
 #' @noRd
-new_index <- function(x, i) {
+new_index <- function(x, index) {
   X12Index(
     type = x@type,
     text = x@text,
-    segments = cheapr::unlisted_length(i),
-    problems = parsing_problems(x@text, i),
-    index = i
+    problems = problems(x@text, index),
+    index = index
   )
 }
 
@@ -92,9 +87,7 @@ x12_subtype <- function(x) {
 
 #' @noRd
 x12_type_ <- function(x) {
-  text <- input_(x)
-
-  text <- strsplit(text, "~", fixed = TRUE) |>
+  text <- strsplit(x, "~", fixed = TRUE) |>
     .subset2(1L)
 
   x <- .subset(text, perl(text, "^ST")) |>
@@ -117,8 +110,14 @@ x12_type_ <- function(x) {
 #' @param x description
 #' @export
 x12_type <- function(x) {
-  if (length(x) == 1L) {
+  if (rlang::is_scalar_character(x)) {
     return(x12_type_(x))
   }
-  purrr::map(x, x12_type_)
+  if (rlang::is_character(x)) {
+    return(x12_type_(cheapr::paste_(x, collapse = "")))
+  }
+  if (rlang::is_bare_list(x)) {
+    return(purrr::map(x, \(i) x12_type_(cheapr::paste_(i, collapse = ""))))
+  }
+  cli::cli_abort("Unknown X12 Type", call = rlang::caller_env())
 }
