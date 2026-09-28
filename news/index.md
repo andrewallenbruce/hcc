@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9062 (2026-09-28)
+
+- [`create_index()`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
+  dispatching correctly now
+
 ## hcc 0.0.0.9061 (2026-09-27)
 
 - S7 stubs for raw X12 input
