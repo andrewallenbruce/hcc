@@ -1,0 +1,341 @@
+{
+  "interchange": {
+    "senderId": "1234567",
+    "senderQualifier": "ZZ",
+    "receiverId": "11111",
+    "receiverQualifier": "ZZ",
+    "date": "170508",
+    "time": "1141",
+    "controlNumber": "000000101",
+    "acknowledgmentRequested": true,
+    "testIndicator": "P"
+  },
+  "functionalGroups": [
+    {
+      "functionalId": "HC",
+      "sender": "XXXXXXX",
+      "receiver": "XXXXX",
+      "date": "20170617",
+      "controlNumber": "101",
+      "transactions": [
+        {
+          "type": "820",
+          "typeName": "Payment Order/Remittance Advice",
+          "controlNumber": "0001",
+          "segments": [
+            {
+              "id": "BPR",
+              "description": "BPR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "C"
+                },
+                {
+                  "position": 2,
+                  "value": "19000"
+                },
+                {
+                  "position": 3,
+                  "value": "C"
+                },
+                {
+                  "position": 4,
+                  "value": "ACH"
+                },
+                {
+                  "position": 5,
+                  "value": "CTX"
+                },
+                {
+                  "position": 6,
+                  "value": "01"
+                },
+                {
+                  "position": 7,
+                  "value": "999999992"
+                },
+                {
+                  "position": 8,
+                  "value": "DA"
+                },
+                {
+                  "position": 9,
+                  "value": "12345678"
+                },
+                {
+                  "position": 10,
+                  "value": "1030449999"
+                },
+                {
+                  "position": 11,
+                  "value": ""
+                },
+                {
+                  "position": 12,
+                  "value": "01"
+                },
+                {
+                  "position": 13,
+                  "value": "199999999"
+                },
+                {
+                  "position": 14,
+                  "value": "DA"
+                },
+                {
+                  "position": 15,
+                  "value": "98765"
+                },
+                {
+                  "position": 16,
+                  "value": "20070516"
+                }
+              ]
+            },
+            {
+              "id": "TRN",
+              "description": "TRN",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                },
+                {
+                  "position": 2,
+                  "value": "12345"
+                },
+                {
+                  "position": 3,
+                  "value": "1030449999"
+                }
+              ]
+            },
+            {
+              "id": "REF",
+              "description": "Reference Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "14"
+                },
+                {
+                  "position": 2,
+                  "value": "12345"
+                }
+              ]
+            },
+            {
+              "id": "N1",
+              "description": "Party Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "PE"
+                },
+                {
+                  "position": 2,
+                  "value": "DEF HEALTH CARE INC."
+                },
+                {
+                  "position": 3,
+                  "value": "FI"
+                },
+                {
+                  "position": 4,
+                  "value": "012222222"
+                }
+              ]
+            },
+            {
+              "id": "N1",
+              "description": "Party Identification",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "PR"
+                },
+                {
+                  "position": 2,
+                  "value": "ABC PLASTICS"
+                },
+                {
+                  "position": 3,
+                  "value": "FI"
+                },
+                {
+                  "position": 4,
+                  "value": "123456789"
+                }
+              ]
+            },
+            {
+              "id": "ENT",
+              "description": "ENT",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                },
+                {
+                  "position": 2,
+                  "value": "2L"
+                },
+                {
+                  "position": 3,
+                  "value": "FI"
+                },
+                {
+                  "position": 4,
+                  "value": "123456789"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "970501001"
+                },
+                {
+                  "position": 3,
+                  "value": "PI"
+                },
+                {
+                  "position": 4,
+                  "value": "16500"
+                }
+              ]
+            },
+            {
+              "id": "IT1",
+              "description": "Baseline Item Data (Invoice)",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "id": "SLN",
+              "description": "SLN",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": "O"
+                },
+                {
+                  "position": 4,
+                  "value": "5"
+                },
+                {
+                  "position": 5,
+                  "value": "IE"
+                }
+              ]
+            },
+            {
+              "id": "SLN",
+              "description": "SLN",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "2"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": "O"
+                },
+                {
+                  "position": 4,
+                  "value": "75"
+                },
+                {
+                  "position": 5,
+                  "value": "10"
+                }
+              ]
+            },
+            {
+              "id": "RMR",
+              "description": "RMR",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "IK"
+                },
+                {
+                  "position": 2,
+                  "value": "970501002"
+                },
+                {
+                  "position": 3,
+                  "value": "PI"
+                },
+                {
+                  "position": 4,
+                  "value": "250"
+                }
+              ]
+            },
+            {
+              "id": "IT1",
+              "description": "Baseline Item Data (Invoice)",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "id": "SLN",
+              "description": "SLN",
+              "elements": [
+                {
+                  "position": 1,
+                  "value": "1"
+                },
+                {
+                  "position": 2,
+                  "value": ""
+                },
+                {
+                  "position": 3,
+                  "value": "O"
+                },
+                {
+                  "position": 4,
+                  "value": "25"
+                },
+                {
+                  "position": 5,
+                  "value": "IE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

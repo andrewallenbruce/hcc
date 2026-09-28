@@ -4,12 +4,12 @@
 \alias{create_index}
 \title{Create X12 Indices}
 \arguments{
-\item{x}{an \verb{<hcc::Text8XX>} S7 object}
+\item{x}{raw X12 text input}
 
 \item{...}{dots}
 }
 \value{
-an \verb{<hcc::X12Index>} S7 object
+an \verb{<hcc::IndexX12>} S7 object
 }
 \description{
 Create X12 Indices

@@ -70,6 +70,16 @@ unlist_df <- function(x) {
     )
 }
 
+#' @noRd
+fright <- function(x, ...) {
+  format(x, justify = "right", ...)
+}
+
+#' @noRd
+fleft <- function(x, ...) {
+  format(x, justify = "left", ...)
+}
+
 #' Is x Between a Minimum and a Maximum?
 #'
 #' @param x `<int>` vector of candidates

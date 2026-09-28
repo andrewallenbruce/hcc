@@ -1,8 +1,8 @@
 #' Create X12 Indices
 #'
-#' @param x an `<hcc::Text8XX>` S7 object
+#' @param x raw X12 text input
 #' @param ... dots
-#' @returns an `<hcc::X12Index>` S7 object
+#' @returns an `<hcc::IndexX12>` S7 object
 #' @examples
 #' create_index(x = c(x12_820[c(1L, 17L)], x12_834[1], x12_837I[1], x12_837P[1]))
 #' @export
@@ -10,7 +10,11 @@
 create_index := S7::new_generic("x")
 
 S7::method(create_index, S7::class_any) <- function(x) {
-  return(NA)
+  NA
+}
+
+S7::method(create_index, IndexX12) <- function(x) {
+  x
 }
 
 S7::method(create_index, S7::class_list) <- function(x) {
@@ -65,7 +69,7 @@ problems <- function(x, i) {
 #' @noRd
 new_index <- function(x, index) {
   index <- sort_index(index)
-  X12Index(
+  IndexX12(
     type = x@type,
     text = x@text,
     problems = problems(x@text, index),

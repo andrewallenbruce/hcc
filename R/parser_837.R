@@ -46,7 +46,7 @@
 #' purrr::map(hcc::x12_837P, index_x12) |> purrr::map(parse_837)
 #' @export
 parse_837 <- function(x) {
-  if (!S7::S7_inherits(x, X12Index)) {
+  if (!S7::S7_inherits(x, IndexX12)) {
     return(NA_character_)
   }
 

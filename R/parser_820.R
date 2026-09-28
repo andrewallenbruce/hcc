@@ -30,7 +30,7 @@
 #'   str(list.len = 10L)
 #' @export
 parse_820 <- function(x) {
-  if (!S7::S7_inherits(x, X12Index)) {
+  if (!S7::S7_inherits(x, IndexX12)) {
     return(NA_character_)
   }
 
