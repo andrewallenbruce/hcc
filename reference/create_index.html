@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9062</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9063</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>an <code>&lt;hcc::Text8XX&gt;</code> S7 object</p></dd>
+<dd><p>raw X12 text input</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -58,170 +58,170 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>an <code>&lt;hcc::X12Index&gt;</code> S7 object</p>
+    <p>an <code>&lt;hcc::IndexX12&gt;</code> S7 object</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">create_index</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x12_820</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">17L</span><span class="op">)</span><span class="op">]</span>, <span class="va">x12_834</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">x12_837I</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">x12_837P</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX10_debt_covered_by_affiliate1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12Index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ type    : chr "820-X306"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ text    : chr [1:42] "ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *240221*1348*^*00501*000000001*0*T*&gt;" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ problems: int NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ index   :List of 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA   : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS    : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ BPR   : int 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ TRN   : int 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1PE  : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1RM  : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PERIC : int 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ENT   : int [1:3] 9 25 37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1   : int [1:2] 10 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF38 : int [1:2] 11 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFPOL: int [1:2] 12 28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFAZ : int [1:2] 13 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF0F : int [1:2] 14 30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ RMR   : int [1:9] 15 17 19 21 23 31 33 35 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTM582: int [1:9] 16 18 20 22 24 32 34 36 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE    : int 40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE    : int 41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA   : int 42</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexX12&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">    Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 42      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ST[1]</span>: 3                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   BPR[1]</span>: 4                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   TRN[1]</span>: 5                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  N1PE[1]</span>: 6                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  N1RM[1]</span>: 7                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> PERIC[1]</span>: 8                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ENT[3]</span>: 9, 25, 37                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   NM1[2]</span>: 10, 26                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF38[2]</span>: 11, 27                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">REFPOL[2]</span>: 12, 28                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REFAZ[2]</span>: 13, 29                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF0F[2]</span>: 14, 30                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   RMR[9]</span>: 15, 17, 19, 21, 23, 31, 33, 35, 38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTM582[9]</span>: 16, 18, 20, 22, 24, 32, 34, 36, 39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    SE[1]</span>: 40                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 41                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 42                                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12Index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ type    : chr "820-X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ text    : chr [1:647] "ISA*00*          *00*          *ZZ*TEST-PAYER     *30*TEST-PAYEE     *260217*0936*+*00501*000059431*0*P*:" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ problems: int NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ index   :List of 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA   : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS    : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ BPR   : int 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ TRN   : int 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF14 : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1PE  : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N3PE  : int 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N4PE  : int 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1PR  : int 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N3PR  : int 11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N4PR  : int 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ENT   : int [1:81] 13 20 27 34 41 48 55 62 69 76 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1   : int [1:81] 14 21 28 35 42 49 56 63 70 77 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ RMR   : int [1:94] 15 22 29 36 43 50 57 64 71 78 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF18 : int [1:94] 16 23 30 37 44 51 58 65 72 79 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFZZ : int [1:188] 17 18 24 25 31 32 38 39 45 46 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTM582: int [1:94] 19 26 33 40 47 54 61 68 75 82 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE    : int 645</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE    : int 646</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA   : int 647</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexX12&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">    Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 647     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ISA[1]</span>: 1                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GS[1]</span>: 2                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     ST[1]</span>: 3                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    BPR[1]</span>: 4                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    TRN[1]</span>: 5                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  REF14[1]</span>: 6                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N1PE[1]</span>: 7                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N3PE[1]</span>: 8                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N4PE[1]</span>: 9                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N1PR[1]</span>: 10                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N3PR[1]</span>: 11                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   N4PR[1]</span>: 12                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ENT[81]</span>: 13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 88, 95, 102, 109....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   NM1[81]</span>: 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 89, 96, 103, 110....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   RMR[94]</span>: 15, 22, 29, 36, 43, 50, 57, 64, 71, 78, 83, 90, 97, 104,....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF18[94]</span>: 16, 23, 30, 37, 44, 51, 58, 65, 72, 79, 84, 91, 98, 105,....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">REFZZ[188]</span>: 17, 18, 24, 25, 31, 32, 38, 39, 45, 46, 52, 53, 59, 60, ....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTM582[94]</span>: 19, 26, 33, 40, 47, 54, 61, 68, 75, 82, 87, 94, 101, 108....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     SE[1]</span>: 645                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">     GE[1]</span>: 646                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    IEA[1]</span>: 647                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12Index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ type    : chr "834-X220"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ text    : chr [1:19] "ISA*00*          *00*          *ZZ*SENDERNAME     *ZZ*RECEIVERNAME   *041227*1324*^*00501*000000103*0*P*&gt;" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ problems: int NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ index   :List of 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA   : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS    : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ BGN   : int 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF38 : int 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1P5  : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N1IN  : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ INS   : int 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF0F : int 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF1L : int 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTP351: int 11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1IL : int 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DMGD8 : int 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1M8 : int 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HD    : int 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTP348: int 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE    : int 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE    : int 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA   : int 19</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexX12&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">    Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 19      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ST[1]</span>: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   BGN[1]</span>: 4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF38[1]</span>: 5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  N1P5[1]</span>: 6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  N1IN[1]</span>: 7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   INS[1]</span>: 8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF0F[1]</span>: 9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF1L[1]</span>: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTP351[1]</span>: 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1IL[1]</span>: 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> DMGD8[1]</span>: 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1M8[1]</span>: 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    HD[1]</span>: 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTP348[1]</span>: 16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    SE[1]</span>: 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 19</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12Index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ type    : chr "837I-X223"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ text    : chr [1:47] "ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *231106*1408*^*00501*000000001*0*T*&gt;" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ problems: int NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ index   :List of 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA   : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS    : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ BHT   : int 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM141 : int 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PERIC : int [1:2] 6 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM140 : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HL    : int [1:2] 8 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PRVBI : int 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM185 : int 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N3    : int [1:3] 11 18 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N4    : int [1:3] 12 19 37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFEI : int 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SBRP  : int 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1IL : int [1:2] 17 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DMG   : int 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1PR : int [1:2] 21 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFG2 : int 22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CLM   : int 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTP434: int 24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CL1   : int 25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBK  : int 26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBF  : int 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBH  : int 28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBE  : int 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBG  : int 30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM171 : int 31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REF1G : int 32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SBRS  : int 33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ OI    : int 34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ LX    : int [1:2] 39 42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SV2   : int [1:2] 40 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTP472: int [1:2] 41 44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE    : int 45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE    : int 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA   : int 47</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexX12&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">    Type</span>: 837I-X223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 47       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ST[1]</span>: 3         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   BHT[1]</span>: 4         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM141[1]</span>: 5         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> PERIC[2]</span>: 6, 14     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM140[1]</span>: 7         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    HL[2]</span>: 8, 15     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> PRVBI[1]</span>: 9         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM185[1]</span>: 10        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    N3[3]</span>: 11, 18, 36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    N4[3]</span>: 12, 19, 37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REFEI[1]</span>: 13        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  SBRP[1]</span>: 16        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1IL[2]</span>: 17, 35    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   DMG[1]</span>: 20        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1PR[2]</span>: 21, 38    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REFG2[1]</span>: 22        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   CLM[1]</span>: 23        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTP434[1]</span>: 24        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   CL1[1]</span>: 25        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBK[1]</span>: 26        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBF[1]</span>: 27        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBH[1]</span>: 28        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBE[1]</span>: 29        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBG[1]</span>: 30        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM171[1]</span>: 31        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REF1G[1]</span>: 32        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  SBRS[1]</span>: 33        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    OI[1]</span>: 34        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    LX[2]</span>: 39, 42    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   SV2[2]</span>: 40, 43    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTP472[2]</span>: 41, 44    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    SE[1]</span>: 45        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 46        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 47        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX10a_drug_adm_office`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::X12Index&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ type    : chr "837P-X222"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ text    : chr [1:35] "ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *231106*1411*^*00501*000000001*0*T*&gt;" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ problems: int NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ index   :List of 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA   : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS    : int 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST    : int 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ BHT   : int 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM141 : int 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PERIC : int 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM140 : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HL    : int [1:2] 8 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM185 : int 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N3    : int [1:2] 10 16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ N4    : int [1:2] 11 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ REFEI : int 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SBRP  : int 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1IL : int 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DMG   : int 18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM1PR : int 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CLM   : int 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ HIBK  : int 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ NM182 : int 22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PRVPE : int 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ LX    : int [1:2] 24 27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SV1   : int [1:2] 25 28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DTP472: int [1:2] 26 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ AMT   : int 30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ LIN   : int 31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CTP   : int 32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE    : int 33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE    : int 34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA   : int 35</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexX12&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">    Type</span>: 837P-X222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 35       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   ISA[1]</span>: 1     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GS[1]</span>: 2     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    ST[1]</span>: 3     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   BHT[1]</span>: 4     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM141[1]</span>: 5     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> PERIC[1]</span>: 6     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM140[1]</span>: 7     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    HL[2]</span>: 8, 13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM185[1]</span>: 9     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    N3[2]</span>: 10, 16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    N4[2]</span>: 11, 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> REFEI[1]</span>: 12    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  SBRP[1]</span>: 14    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1IL[1]</span>: 15    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   DMG[1]</span>: 18    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM1PR[1]</span>: 19    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   CLM[1]</span>: 20    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  HIBK[1]</span>: 21    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> NM182[1]</span>: 22    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;"> PRVPE[1]</span>: 23    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    LX[2]</span>: 24, 27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   SV1[2]</span>: 25, 28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTP472[2]</span>: 26, 29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   AMT[1]</span>: 30    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   LIN[1]</span>: 31    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   CTP[1]</span>: 32    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    SE[1]</span>: 33    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    GE[1]</span>: 34    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">   IEA[1]</span>: 35    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

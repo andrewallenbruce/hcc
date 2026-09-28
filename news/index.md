@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9063 (2026-09-28)
+
+- restored IndexX12 print method
+
 ## hcc 0.0.0.9062 (2026-09-28)
 
 - [`create_index()`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
