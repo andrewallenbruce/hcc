@@ -75,7 +75,6 @@ ind_820_306 <- function(x) {
   )
 }
 
-
 #' @noRd
 ind_834 <- function(x) {
   list(
