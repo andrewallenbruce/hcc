@@ -62,7 +62,6 @@ focus on:
 
 ``` r
 if (FALSE) {
-x = purrr::map(hcc::x12_834, index_x12)
 purrr::map(x, parse_834)
 }
 ```

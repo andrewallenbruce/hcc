@@ -92,7 +92,6 @@ Healthcare, Waystar, Trizetto), with `277CA`, `999`, and ultimately
 
 ``` r
 if (FALSE) {
-purrr::map(hcc::x12_837I, index_x12) |> purrr::map(parse_837)
-purrr::map(hcc::x12_837P, index_x12) |> purrr::map(parse_837)
+purrr::map(hcc::x12_EX$`837`$I223, parse_837)
 }
 ```
