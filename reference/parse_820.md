@@ -71,11 +71,11 @@ create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
 #>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"
 #>   ..@ RF14: chr "12345678"
 #>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"
-#>   ..@ N3PE: chr [1:2] "PR" "CHILD HEALTH PLUS"
-#>   ..@ N4PE: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N3PE: chr NA
+#>   ..@ N4PE: chr NA
 #>   ..@ N1PR: chr "CHILD HEALTH PLUS"
-#>   ..@ N3PR: chr [1:4] "1" "2L" "24" "141797357"
-#>   ..@ N4PR: chr [1:3] "1L" "12345678" "-5.55"
+#>   ..@ N3PR: chr NA
+#>   ..@ N4PR: chr NA
 #>   ..@ ENT :List of 2
 #>  .. .. $ 1:List of 5
 #>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
@@ -102,11 +102,11 @@ create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
 #>   ..@ TRN : chr [1:3] "3" "000000032788113" "1141797357"
 #>   ..@ RF14: chr "12345678"
 #>   ..@ N1PE: chr [1:2] "FI" "123456789"
-#>   ..@ N3PE: chr [1:2] "PR" "BASIC HEALTH PLAN"
-#>   ..@ N4PE: chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
+#>   ..@ N3PE: chr NA
+#>   ..@ N4PE: chr NA
 #>   ..@ N1PR: chr "BASIC HEALTH PLAN"
-#>   ..@ N3PR: chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
-#>   ..@ N4PR: chr [1:3] "ALBANY" "NY" "122370080"
+#>   ..@ N3PR: chr NA
+#>   ..@ N4PR: chr NA
 #>   ..@ ENT :List of 1
 #>  .. .. $ 1:List of 8
 #>  .. ..  ..$ : chr [1:5] "ENT" "1" "2J" "EI" ...
@@ -128,11 +128,11 @@ create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
 #>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"
 #>   ..@ RF14: chr "12345678"
 #>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"
-#>   ..@ N3PE: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
-#>   ..@ N4PE: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N3PE: chr NA
+#>   ..@ N4PE: chr NA
 #>   ..@ N1PR: chr [1:3] "NYSDOH" "FI" "141797357"
-#>   ..@ N3PR: chr [1:4] "1" "2L" "24" "141797357"
-#>   ..@ N4PR: chr [1:3] "1L" "12345678" "-63.34"
+#>   ..@ N3PR: chr NA
+#>   ..@ N4PR: chr NA
 #>   ..@ ENT :List of 3
 #>  .. .. $ 1:List of 7
 #>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
