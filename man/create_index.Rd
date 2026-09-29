@@ -15,5 +15,5 @@ an \verb{<hcc::IndexX12>} S7 object
 Create X12 Indices
 }
 \examples{
-create_index(x = c(x12_820[c(1L, 17L)], x12_834[1], x12_837I[1], x12_837P[1]))
+create_index(x12_EX$`820`$`306`)
 }
