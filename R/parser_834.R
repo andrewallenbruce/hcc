@@ -29,7 +29,6 @@
 #' @param x `<chr>` string of raw X12-834 text
 #' @returns list
 #' @examplesIf FALSE
-#' x = purrr::map(hcc::x12_834, index_x12)
 #' purrr::map(x, parse_834)
 #' @export
 parse_834 <- function(x) {

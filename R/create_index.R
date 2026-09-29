@@ -4,7 +4,7 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexX12>` S7 object
 #' @examples
-#' create_index(x = c(x12_820[c(1L, 17L)], x12_834[1], x12_837I[1], x12_837P[1]))
+#' create_index(x12_EX$`820`$`306`)
 #' @export
 #' @name create_index
 create_index := S7::new_generic("x")
@@ -59,10 +59,10 @@ sort_index <- function(i) {
 
 #' @noRd
 problems <- function(x, i) {
-  if (length(x) == cheapr::unlisted_length(i)) {
-    NA_integer_
-  } else {
+  if (length(x) != cheapr::unlisted_length(i)) {
     cheapr::setdiff_(seq_along(x), unlist_(i))
+  } else {
+    NA_integer_
   }
 }
 

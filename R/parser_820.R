@@ -25,7 +25,7 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' create_index(hcc::x12_820[13:17]) |>
+#' create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
 #'   purrr::map(parse_820) |>
 #'   str(list.len = 10L)
 #' @export
@@ -51,16 +51,16 @@ parse_820_ENT <- function(x) {
   )
 
   ent <- purrr::map(ix, \(i) {
-    e_ <- .subset(x@text, i) |>
+    x <- .subset(x@text, i) |>
       strsplit("[*;]", perl = TRUE)
 
-    e_[[1]] <- e_[[1]][-1]
+    # x[[1]] <- x[[1]][-1]
 
-    purrr::map(e_, \(x) collapse::na_rm(set_zchar(x)))
+    purrr::map(x, \(e) collapse::na_rm(set_zchar(e)))
   })
 
   rlang::set_names(ent, seq_along(ent)) |>
-    purrr::list_flatten(name_spec = "{outer}.{inner}")
+    vctrs::vec_c(.name_spec = "{outer}.{inner}")
 }
 
 #' @noRd
