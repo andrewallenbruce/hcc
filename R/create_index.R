@@ -4,7 +4,7 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexX12>` S7 object
 #' @examples
-#' create_index(x12_EX$`820`$`306`)
+#' create_index(x12_EX$`820`$`218`)
 #' @export
 #' @name create_index
 create_index := S7::new_generic("x")
