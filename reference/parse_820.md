@@ -59,148 +59,100 @@ Typical loop structure within an `820-X218`:
 ## Examples
 
 ``` r
-create_index(hcc::x12_820[13:17]) |>
+create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
   purrr::map(parse_820) |>
   str(list.len = 10L)
-#> List of 5
-#>  $ sample_820_01: <hcc::X12_820_218>
-#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...
-#>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" ...
-#>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"
-#>   ..@ BPR : chr [1:6] "I" "102139.46" "C" "NON" ...
-#>   ..@ TRN : chr [1:2] "3" "TESTTRN01000001"
-#>   ..@ RF14: chr "0000245023"
-#>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"
-#>   ..@ N3PE: chr "123 TEST STREET"
-#>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ N1PR: chr "TEST PAYER AGENCY"
-#>   ..@ N3PR: chr "123 TEST STREET"
-#>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ ENT :List of 89
-#>  .. .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"
-#>  .. .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
-#>  .. .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
-#>  .. .. $ 1.4 : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"
-#>  .. .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
-#>  .. .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251201-20251231"
-#>  .. .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"
-#>  .. .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...
-#>  .. .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2512150225000P" "8086.53"
-#>  .. ..  [list output truncated]
-#>   ..@ SE  : chr [1:2] "100" "0001"
-#>   ..@ GE  : chr [1:2] "1" "43304"
-#>   ..@ IEA : chr [1:2] "1" "000058691"
-#>  $ sample_820_02: <hcc::X12_820_218>
-#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...
-#>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...
-#>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"
-#>   ..@ BPR : chr [1:6] "I" "91977.81" "C" "NON" ...
-#>   ..@ TRN : chr [1:2] "3" "TESTTRN02000001"
-#>   ..@ RF14: chr "0000245023"
-#>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"
-#>   ..@ N3PE: chr "123 TEST STREET"
-#>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ N1PR: chr "TEST PAYER AGENCY"
-#>   ..@ N3PR: chr "123 TEST STREET"
-#>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ ENT :List of 151
-#>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
-#>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
-#>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "5555.82"
-#>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "1H" "2"
-#>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Dual-State Only"
-#>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
-#>  .. .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-SREGLR-2602200043000P" "454.72" ...
-#>  .. .. $ 1.9  : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.10 : chr [1:4] "REF" "ZZ" "1H" "2"
-#>  .. ..  [list output truncated]
-#>   ..@ SE  : chr [1:2] "162" "0001"
-#>   ..@ GE  : chr [1:2] "1" "44273"
-#>   ..@ IEA : chr [1:2] "1" "000059660"
-#>  $ sample_820_03: <hcc::X12_820_218>
-#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...
-#>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...
-#>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"
-#>   ..@ BPR : chr [1:6] "I" "697085.64" "C" "NON" ...
-#>   ..@ TRN : chr [1:2] "3" "TESTTRN03000001"
-#>   ..@ RF14: chr "0000245023"
-#>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"
-#>   ..@ N3PE: chr "123 TEST STREET"
-#>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ N1PR: chr "TEST PAYER AGENCY"
-#>   ..@ N3PR: chr "123 TEST STREET"
-#>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ ENT :List of 1131
-#>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
-#>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...
-#>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "5727.65"
-#>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"
-#>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
-#>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260201-20260228"
-#>  .. .. $ 1.8  : chr [1:5] "RMR" "IK" "TESTPLAN-PREGLR-2602200042000P" "468.79" ...
-#>  .. .. $ 1.9  : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.10 : chr [1:4] "REF" "ZZ" "60" "1"
-#>  .. ..  [list output truncated]
-#>   ..@ SE  : chr [1:2] "1142" "0001"
-#>   ..@ GE  : chr [1:2] "1" "44272"
-#>   ..@ IEA : chr [1:2] "1" "000059659"
-#>  $ sample_820_04: <hcc::X12_820_218>
-#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...
-#>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20251217" ...
-#>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"
-#>   ..@ BPR : chr [1:6] "I" "80865.30" "C" "NON" ...
-#>   ..@ TRN : chr [1:2] "3" "TESTTRN04000001"
-#>   ..@ RF14: chr "0000245023"
-#>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"
-#>   ..@ N3PE: chr "123 TEST STREET"
-#>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ N1PR: chr "TEST PAYER AGENCY"
-#>   ..@ N3PR: chr "123 TEST STREET"
-#>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ ENT :List of 80
-#>  .. .. $ 1.1 : chr [1:4] "1" "2J" "EI" "999999999"
-#>  .. .. $ 1.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME01" ...
-#>  .. .. $ 1.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
-#>  .. .. $ 1.4 : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.5 : chr [1:4] "REF" "ZZ" "1H" "2"
-#>  .. .. $ 1.6 : chr [1:3] "REF" "ZZ" "Medi-Cal Only-State Only"
-#>  .. .. $ 1.7 : chr [1:4] "DTM" "582" "RD8" "20251101-20251130"
-#>  .. .. $ 2.1 : chr [1:4] "2" "2J" "EI" "999999999"
-#>  .. .. $ 2.2 : chr [1:7] "NM1" "IL" "1" "LASTNAME02" ...
-#>  .. .. $ 2.3 : chr [1:4] "RMR" "IK" "TESTPLAN-SREGLR-2511190148000P" "8086.53"
-#>  .. ..  [list output truncated]
-#>   ..@ SE  : chr [1:2] "91" "0001"
-#>   ..@ GE  : chr [1:2] "1" "42755"
-#>   ..@ IEA : chr [1:2] "1" "000058142"
-#>  $ sample_820_05: <hcc::X12_820_218>
-#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "TEST-PAYER" ...
-#>   ..@ GS  : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260217" ...
-#>   ..@ ST  : chr [1:3] "820" "0001" "005010X218"
-#>   ..@ BPR : chr [1:6] "I" "499187.57" "C" "NON" ...
-#>   ..@ TRN : chr [1:2] "3" "TESTTRN05000001"
-#>   ..@ RF14: chr "0000245023"
-#>   ..@ N1PE: chr "TEST PAYEE ORGANIZATION"
-#>   ..@ N3PE: chr "123 TEST STREET"
-#>   ..@ N4PE: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ N1PR: chr "TEST PAYER AGENCY"
-#>   ..@ N3PR: chr "123 TEST STREET"
-#>   ..@ N4PR: chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..@ ENT :List of 632
-#>  .. .. $ 1.1  : chr [1:4] "1" "2J" "EI" "999999999"
-#>  .. .. $ 1.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME14" ...
-#>  .. .. $ 1.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
-#>  .. .. $ 1.4  : chr [1:3] "REF" "18" "957"
-#>  .. .. $ 1.5  : chr [1:4] "REF" "ZZ" "60" "1"
-#>  .. .. $ 1.6  : chr [1:3] "REF" "ZZ" "Primary Capitation Dual"
-#>  .. .. $ 1.7  : chr [1:4] "DTM" "582" "RD8" "20260101-20260131"
-#>  .. .. $ 2.1  : chr [1:4] "2" "2J" "EI" "999999999"
-#>  .. .. $ 2.2  : chr [1:7] "NM1" "IL" "1" "LASTNAME15" ...
-#>  .. .. $ 2.3  : chr [1:4] "RMR" "IK" "TESTPLAN-PREGLR-2601080201000P" "5258.86"
-#>  .. ..  [list output truncated]
-#>   ..@ SE  : chr [1:2] "643" "0001"
-#>   ..@ GE  : chr [1:2] "1" "44044"
-#>   ..@ IEA : chr [1:2] "1" "000059431"
+#> List of 3
+#>  $ 820_Child_Health_Plus_Payment_EFT: <hcc::X12_820_218>
+#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...
+#>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...
+#>   ..@ ST  : chr [1:3] "820" "222222222" "005010X218"
+#>   ..@ BPR : chr [1:13] "I" "239.6" "C" "ACH" ...
+#>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"
+#>   ..@ RF14: chr "12345678"
+#>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"
+#>   ..@ N3PE: chr [1:2] "PR" "CHILD HEALTH PLUS"
+#>   ..@ N4PE: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N1PR: chr "CHILD HEALTH PLUS"
+#>   ..@ N3PR: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N4PR: chr [1:3] "1L" "12345678" "-5.55"
+#>   ..@ ENT :List of 2
+#>  .. .. $ 1:List of 5
+#>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
+#>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-5.55"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
+#>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "96.96"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "LUMP SUM PAYMENT"
+#>  .. .. $ 2:List of 7
+#>  .. ..  ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
+#>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...
+#>  .. ..  ..$ : chr [1:4] "RMR" "AZ" "12345678" "148.19"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "1436500000001230"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "0123456789"
+#>  .. ..  ..$ : chr [1:3] "REF" "LU" "01"
+#>  .. ..  ..$ : chr [1:4] "DTM" "582" "RD8" "20141201-20141231"
+#>   ..@ SE  : chr [1:2] "17" "222222222"
+#>   ..@ GE  : chr [1:2] "1" "333333333"
+#>   ..@ IEA : chr [1:2] "1" "003333333"
+#>  $ 820_Essentail_Health_Plan        : <hcc::X12_820_218>
+#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...
+#>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20150105" ...
+#>   ..@ ST  : chr [1:3] "820" "221500001" "005010X218"
+#>   ..@ BPR : chr [1:6] "I" "123.45" "C" "CHK" ...
+#>   ..@ TRN : chr [1:3] "3" "000000032788113" "1141797357"
+#>   ..@ RF14: chr "12345678"
+#>   ..@ N1PE: chr [1:2] "FI" "123456789"
+#>   ..@ N3PE: chr [1:2] "PR" "BASIC HEALTH PLAN"
+#>   ..@ N4PE: chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
+#>   ..@ N1PR: chr "BASIC HEALTH PLAN"
+#>   ..@ N3PR: chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
+#>   ..@ N4PR: chr [1:3] "ALBANY" "NY" "122370080"
+#>   ..@ ENT :List of 1
+#>  .. .. $ 1:List of 8
+#>  .. ..  ..$ : chr [1:5] "ENT" "1" "2J" "EI" ...
+#>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LASTNAME" ...
+#>  .. ..  ..$ : chr [1:4] "RMR" "AZ" "LL88888L" "123.45"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "1500311111112540"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "0123456789"
+#>  .. ..  ..$ : chr [1:3] "REF" "LU" "01"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "51"
+#>  .. ..  ..$ : chr [1:4] "DTM" "582" "RD8" "20141201-20141231"
+#>   ..@ SE  : chr [1:2] "14" "221500001"
+#>   ..@ GE  : chr [1:2] "1" "5113240"
+#>   ..@ IEA : chr [1:2] "1" "005113240"
+#>  $ 820_Premium_Payment_EFT          : <hcc::X12_820_218>
+#>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...
+#>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...
+#>   ..@ ST  : chr [1:3] "820" "222222222" "005010X218"
+#>   ..@ BPR : chr [1:13] "I" "566.29" "C" "ACH" ...
+#>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"
+#>   ..@ RF14: chr "12345678"
+#>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"
+#>   ..@ N3PE: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#>   ..@ N4PE: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N1PR: chr [1:3] "NYSDOH" "FI" "141797357"
+#>   ..@ N3PR: chr [1:4] "1" "2L" "24" "141797357"
+#>   ..@ N4PR: chr [1:3] "1L" "12345678" "-63.34"
+#>   ..@ ENT :List of 3
+#>  .. .. $ 1:List of 7
+#>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
+#>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-63.34"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
+#>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "8.89"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "COURT ORDERED PAYMENT"
+#>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-12.67"
+#>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "STATE MANDATED PAYMENT REDUCT"
+#>  .. .. $ 2:List of 4
+#>  .. ..  ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
+#>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...
+#>  .. ..  ..$ : chr [1:5] "RMR" "IK" "1000210000000020" "183.47" ...
+#>  .. ..  ..$ : chr [1:3] "ADX" "181.64" "IA"
+#>  .. .. $ 3:List of 4
+#>  .. ..  ..$ : chr [1:5] "ENT" "3" "2J" "EI" ...
+#>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...
+#>  .. ..  ..$ : chr [1:5] "RMR" "IK" "1000210000000020" "449.94" ...
+#>  .. ..  ..$ : chr [1:3] "ADX" "445.45" "IA"
+#>   ..@ SE  : chr [1:2] "22" "222222222"
+#>   ..@ GE  : chr [1:2] "1" "333333333"
+#>   ..@ IEA : chr [1:2] "1" "003333333"
 ```
