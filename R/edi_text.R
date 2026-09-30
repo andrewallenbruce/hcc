@@ -10,12 +10,12 @@ edi_text_ <- function(x) {
     .subset(-1L)
 
   type <- cheapr::val_match(
-    .subset(x, length(x)),
+    substr(.subset(x, length(x)), 1L, 10L),
     "005010X218" ~ "820-X218",
     "005010X306" ~ "820-X306",
-    "005010X220A1" ~ "834-X220",
-    "005010X222A1" ~ "837P-X222",
-    "005010X223A2" ~ "837I-X223",
+    "005010X220" ~ "834-X220",
+    "005010X222" ~ "837P-X222",
+    "005010X223" ~ "837I-X223",
     .default = NA_character_
   )
 
