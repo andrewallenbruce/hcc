@@ -28,13 +28,15 @@
   : Apply risk adjustment coefficients to HCCs and interactions.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
   : Calculate HCC interactions across CMS models.
-- [`create_index`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
-  : Create X12 Indices
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.
 - [`diagnostics()`](https://andrewallenbruce.github.io/hcc/reference/diagnostics.md)
   : Model-Based Disease Categories
+- [`edi_index`](https://andrewallenbruce.github.io/hcc/reference/edi_index.md)
+  : Create an EDI Index Object
+- [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
+  : Create an EDI Text Object
 - [`get_prefix()`](https://andrewallenbruce.github.io/hcc/reference/get_prefix.md)
   : Demographics-Based Coefficient Prefix
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)

@@ -59,7 +59,7 @@ Typical loop structure within an `820-X218`:
 ## Examples
 
 ``` r
-create_index(hcc::x12_EX$`820`$`218`) |>
+edi_index(hcc::x12_EX$`820`$`218`) |>
   purrr::map(parse_820) |>
   str(list.len = 10L)
 #> List of 10

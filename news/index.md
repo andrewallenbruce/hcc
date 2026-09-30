@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9066 (2026-09-30)
+
+- EDI processors now prefixed with `edi_`
+
 ## hcc 0.0.0.9065 (2026-09-30)
 
 - 820 is parsing again
@@ -14,14 +18,12 @@
 
 ## hcc 0.0.0.9062 (2026-09-28)
 
-- [`create_index()`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
-  dispatching correctly now
+- `create_index()` dispatching correctly now
 
 ## hcc 0.0.0.9061 (2026-09-27)
 
 - S7 stubs for raw X12 input
-- [`create_index()`](https://andrewallenbruce.github.io/hcc/reference/create_index.md)
-  generic
+- `create_index()` generic
 
 ## hcc 0.0.0.9060 (2026-09-27)
 
