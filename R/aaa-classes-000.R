@@ -24,57 +24,6 @@ IndexEDI := S7::new_class(
   )
 )
 
-S7::method(format, IndexEDI) <- function(x) {
-  cli::cli_h1("<{attr(x, .c(class))[1]}>")
-
-  probs_ <- if (!is.na(x@problems)) length(x@problems) else NULL
-  names_ <- fright(c(
-    "Type",
-    "Segments",
-    if (!is.null(probs_)) "Problems"
-  ))
-  numbs_ <- fleft(c(
-    x@type,
-    length(x@text),
-    if (!is.null(probs_)) cli::col_red(cli::style_bold(probs_))
-  ))
-
-  cli::cat_line(
-    cheapr::paste_(
-      cli::col_cyan(
-        cli::style_bold(names_)
-      ),
-      ": ",
-      numbs_
-    )
-  )
-  cli::cat_rule()
-
-  numbs_ <- unname(x@index) |>
-    purrr::map_chr(\(x) toString(x, width = 60)) |>
-    fleft()
-
-  names_ <- fright(cheapr::paste_(
-    names(collapse::vlengths(x@index)),
-    "[",
-    collapse::vlengths(x@index, FALSE),
-    "]"
-  ))
-
-  cli::cat_line(
-    cheapr::paste_(
-      cli::style_bold(names_),
-      ": ",
-      numbs_
-    )
-  )
-}
-
-S7::method(print, IndexEDI) <- function(x) {
-  format(x)
-  invisible(x)
-}
-
 #' @noRd
 class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
 

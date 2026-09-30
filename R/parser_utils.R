@@ -1,4 +1,10 @@
 #' @noRd
+sort_index <- function(i) {
+  i <- cheapr::sset(i, whichv_(collapse::vlengths(i, FALSE), 0L, TRUE))
+  i[names(sort.int(purrr::map_int(i, \(x) .subset(x, 1L))))]
+}
+
+#' @noRd
 semi_count <- function(x) {
   length(.subset2(gregexpr(";", text = x, fixed = TRUE), 1L))
 }
@@ -24,7 +30,7 @@ split_7 <- function(x, name) {
     ),
     -1L
   ) |>
-  collapse::na_rm()
+    collapse::na_rm()
 }
 
 

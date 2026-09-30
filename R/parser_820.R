@@ -25,7 +25,7 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' create_index(hcc::x12_EX$`820`$`218`) |>
+#' edi_index(hcc::x12_EX$`820`$`218`) |>
 #'   purrr::map(parse_820) |>
 #'   str(list.len = 10L)
 #' @export
