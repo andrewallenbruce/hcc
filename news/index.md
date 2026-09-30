@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9065 (2026-09-30)
+
+- 820 is parsing again
+
 ## hcc 0.0.0.9064 (2026-09-30)
 
 - new version of indexing

@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9064</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9065</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,11 +86,161 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="create_index.html">create_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="create_index.html">create_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">parse_820</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span>list.len <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Child_Health_Plus_Payment_EFT:List of 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "222222222" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "239.6" "C" "ACH" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "CHILD HEALTH PLUS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$    :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-5.55"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "RECOVERY OF FUNDS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "96.96"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "LUMP SUM PAYMENT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$    :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ENT: chr [1:4] "2" "2J" "EI" "PATIENT ACCOUNT NUMBER"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "AZ" "12345678" NA "148.19"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "1436500000001230"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "0123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "LU" "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ DTM: chr [1:6] "582" NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Essentail_Health_Plan        :List of 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20150105" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "221500001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "123.45" "C" "CHK" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:3] "3" "000000032788113" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:4] "PE" NA "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "BASIC HEALTH PLAN"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "ALBANY" "NY" "122370080"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Premium_Payment_EFT          :List of 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "222222222" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "566.29" "C" "ACH" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:4] "PR" "NYSDOH" "FI" "141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$    :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-63.34"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "RECOVERY OF FUNDS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "8.89"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "COURT ORDERED PAYMENT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-12.67"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ REF: chr [1:2] "ZZ" "STATE MANDATED PAYMENT REDUCT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$    :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ENT: chr [1:4] "2" "2J" "EI" "PATIENT ACCOUNT NUMBER"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:5] "IK" "1000210000000020" NA "183.47" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ADX: chr [1:2] "181.64" "IA"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Premium_Payment_NOPMT        :List of 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20100101" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "173900001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "0" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:3] "3" "021300000000000" "1123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:4] "PR" "NYSDOH" "FI" "141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "ALBANY" "NY" "12204"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ payment_order_820_218            :List of 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "HC" "XXXXXXX" "XXXXX" "20170617" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "C" "19000" "C" "ACH" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:3] "1" "12345" "1030449999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$    :List of 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ ENT: chr [1:4] "1" "2L" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "IK" "970501001" "PI" "16500"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ IT1: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ SLN: chr [1:5] "1" NA "O" "5" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ SLN: chr [1:5] "2" NA "O" "75" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ RMR: chr [1:4] "IK" "970501002" "PI" "250"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ IT1: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ SLN: chr [1:5] "1" NA "O" "25" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ SE : chr [1:2] "15" "0001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_01                    :List of 27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "102139.46" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:2] "3" "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_02                    :List of 28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "91977.81" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:2] "3" "TESTTRN02000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_03                    :List of 108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "697085.64" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:2] "3" "TESTTRN03000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_04                    :List of 25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20251217" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "80865.30" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:2] "3" "TESTTRN04000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sample_820_05                    :List of 96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260217" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ST : chr [1:3] "820" "0001" "005010X218"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ BPR: chr [1:16] "I" "499187.57" "C" "NON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ TRN: chr [1:2] "3" "TESTTRN05000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N3 : chr "123 TEST STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. [list output truncated]</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
