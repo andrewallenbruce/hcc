@@ -9,7 +9,7 @@
 \item{...}{dots}
 }
 \value{
-an \verb{<hcc::IndexX12>} S7 object
+an \verb{<hcc::IndexEDI>} S7 object
 }
 \description{
 Create X12 Indices

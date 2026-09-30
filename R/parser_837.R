@@ -45,7 +45,7 @@
 #' purrr::map(hcc::x12_EX$`837`$I223, parse_837)
 #' @export
 parse_837 <- function(x) {
-  if (!S7::S7_inherits(x, IndexX12)) {
+  if (!S7::S7_inherits(x, IndexEDI)) {
     return(NA_character_)
   }
 

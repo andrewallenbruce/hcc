@@ -2,7 +2,7 @@
 #'
 #' @param x raw X12 text input
 #' @param ... dots
-#' @returns an `<hcc::IndexX12>` S7 object
+#' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
 #' create_index(x12_EX$`820`$`218`)
 #' @export
@@ -13,7 +13,7 @@ S7::method(create_index, S7::class_any) <- function(x) {
   NA
 }
 
-S7::method(create_index, IndexX12) <- function(x) {
+S7::method(create_index, IndexEDI) <- function(x) {
   x
 }
 
@@ -66,7 +66,7 @@ problems <- function(x, i) {
 #' @noRd
 new_index <- function(x, index) {
   index <- sort_index(index)
-  IndexX12(
+  IndexEDI(
     type = x@type,
     text = x@text,
     problems = problems(x@text, index),
@@ -76,7 +76,7 @@ new_index <- function(x, index) {
 
 #' @noRd
 new_index2 <- function(x, index) {
-  IndexX12(
+  IndexEDI(
     type = x@type,
     text = x@text,
     problems = problems(x@text, index),
@@ -86,7 +86,8 @@ new_index2 <- function(x, index) {
 
 #' @noRd
 x12_type_ <- function(x) {
-  text <- strsplit(x, "~", fixed = TRUE) |>
+  text <- trimws(x) |>
+    strsplit("~", fixed = TRUE) |>
     .subset2(1L)
 
   x <- .subset(text, perl(text, "^ST")) |>

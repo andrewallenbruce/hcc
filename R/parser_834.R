@@ -32,7 +32,7 @@
 #' purrr::map(x, parse_834)
 #' @export
 parse_834 <- function(x) {
-  if (!S7::S7_inherits(x, IndexX12)) {
+  if (!S7::S7_inherits(x, IndexEDI)) {
     return(NA_character_)
   }
 

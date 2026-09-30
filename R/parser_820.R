@@ -24,21 +24,60 @@
 #'
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
-#' @examplesIf FALSE
-#' create_index(hcc::x12_EX$`820`$`218`[1:3]) |>
+#' @examples
+#' create_index(hcc::x12_EX$`820`$`218`) |>
 #'   purrr::map(parse_820) |>
 #'   str(list.len = 10L)
 #' @export
 parse_820 <- function(x) {
-  if (!S7::S7_inherits(x, IndexX12)) {
+  if (!S7::S7_inherits(x, IndexEDI)) {
     return(NA_character_)
   }
 
   switch(
     x@type,
     "820-X306" = parse_820_306(x),
-    "820-X218" = parse_820_218(x)
+    "820-X218" = parse_218(x)
   )
+}
+
+#' @noRd
+parse_218 <- function(x) {
+  h <- .subset(x@text, x@index$header) |>
+    stringfish::sf_split("*", fixed = TRUE, nthreads = 4L) |>
+    purrr::map(\(x) set_zchar(trimws(x)))
+
+  h <- purrr::map(h, .subset, -1L) |>
+    rlang::set_names(purrr::map(h, 1L))
+
+  d <- .subset(x@text, x@index$details) |>
+    stringfish::sf_split("*", fixed = TRUE, nthreads = 4L) |>
+    purrr::map(\(x) set_zchar(trimws(x)))
+
+  d <- purrr::map(d, .subset, -1L) |>
+    rlang::set_names(purrr::map(d, 1L))
+
+  if (collapse::any_duplicated(names(d))) {
+    i <- anyDuplicated(names(d))
+    names(d)[i] <- paste0(names(d)[i], "_")
+  }
+
+  e <- purrr::map(x@index$entity, function(i) {
+    x <- .subset(x@text, i) |>
+      stringfish::sf_split("*", fixed = TRUE, nthreads = 4L) |>
+      purrr::map(\(x) set_zchar(trimws(x)))
+    purrr::map(x, .subset, -1L) |>
+      rlang::set_names(purrr::map(x, 1L))
+  })
+
+  r <- .subset(x@text, x@index$trailer) |>
+    stringfish::sf_split("*", fixed = TRUE, nthreads = 4L) |>
+    purrr::map(\(x) set_zchar(trimws(x)))
+
+  r <- purrr::map(r, .subset, -1L) |>
+    rlang::set_names(purrr::map(r, 1L))
+
+  vctrs::vec_c(h, d, e, r)
 }
 
 #' @noRd

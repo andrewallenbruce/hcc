@@ -1,5 +1,5 @@
 #' @noRd
-TextX12 := S7::new_class(
+TextEDI := S7::new_class(
   properties = list(
     type = S7::class_character,
     text = S7::class_character
@@ -7,25 +7,24 @@ TextX12 := S7::new_class(
 )
 
 #' @noRd
-Text820 := S7::new_class(TextX12)
+Text820 := S7::new_class(TextEDI)
 
 #' @noRd
-Text834 := S7::new_class(TextX12)
+Text834 := S7::new_class(TextEDI)
 
 #' @noRd
-Text837 := S7::new_class(TextX12)
+Text837 := S7::new_class(TextEDI)
 
 #' @export
-IndexX12 := S7::new_class(
+IndexEDI := S7::new_class(
+  parent = TextEDI,
   properties = list(
-    type = S7::class_character,
-    text = S7::class_character,
     problems = S7::class_integer,
     index = S7::class_list
   )
 )
 
-S7::method(format, IndexX12) <- function(x) {
+S7::method(format, IndexEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
   probs_ <- if (!is.na(x@problems)) length(x@problems) else NULL
@@ -71,7 +70,7 @@ S7::method(format, IndexX12) <- function(x) {
   )
 }
 
-S7::method(print, IndexX12) <- function(x) {
+S7::method(print, IndexEDI) <- function(x) {
   format(x)
   invisible(x)
 }
