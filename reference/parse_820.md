@@ -71,7 +71,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"
 #>   ..$ REF: chr [1:2] "14" "12345678"
 #>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>   ..$ N1_: chr [1:2] "PR" "CHILD HEALTH PLUS"
+#>   ..$ N1 : chr [1:2] "PR" "CHILD HEALTH PLUS"
 #>   ..$    :List of 5
 #>   .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"
 #>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-5.55"
@@ -95,7 +95,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ TRN: chr [1:3] "3" "000000032788113" "1141797357"
 #>   ..$ REF: chr [1:2] "14" "12345678"
 #>   ..$ N1 : chr [1:4] "PE" NA "FI" "123456789"
-#>   ..$ N1_: chr [1:2] "PR" "BASIC HEALTH PLAN"
+#>   ..$ N1 : chr [1:2] "PR" "BASIC HEALTH PLAN"
 #>   ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
 #>   ..$ N4 : chr [1:3] "ALBANY" "NY" "122370080"
 #>   .. [list output truncated]
@@ -107,7 +107,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"
 #>   ..$ REF: chr [1:2] "14" "12345678"
 #>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>   ..$ N1_: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#>   ..$ N1 : chr [1:4] "PR" "NYSDOH" "FI" "141797357"
 #>   ..$    :List of 7
 #>   .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"
 #>   .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-63.34"
@@ -130,7 +130,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ TRN: chr [1:3] "3" "021300000000000" "1123456789"
 #>   ..$ REF: chr [1:2] "14" "12345678"
 #>   ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>   ..$ N1_: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#>   ..$ N1 : chr [1:4] "PR" "NYSDOH" "FI" "141797357"
 #>   ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
 #>   ..$ N4 : chr [1:3] "ALBANY" "NY" "12204"
 #>   .. [list output truncated]
@@ -142,7 +142,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ TRN: chr [1:3] "1" "12345" "1030449999"
 #>   ..$ REF: chr [1:2] "14" "12345"
 #>   ..$ N1 : chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"
-#>   ..$ N1_: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"
+#>   ..$ N1 : chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"
 #>   ..$    :List of 8
 #>   .. ..$ ENT: chr [1:4] "1" "2L" "FI" "123456789"
 #>   .. ..$ RMR: chr [1:4] "IK" "970501001" "PI" "16500"
@@ -164,7 +164,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
 #>   ..$ N3 : chr "123 TEST STREET"
 #>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"
+#>   ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
 #>   .. [list output truncated]
 #>  $ sample_820_02                    :List of 28
 #>   ..$ ISA: chr [1:16] "00" NA "00" NA ...
@@ -176,7 +176,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
 #>   ..$ N3 : chr "123 TEST STREET"
 #>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"
+#>   ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
 #>   .. [list output truncated]
 #>  $ sample_820_03                    :List of 108
 #>   ..$ ISA: chr [1:16] "00" NA "00" NA ...
@@ -188,7 +188,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
 #>   ..$ N3 : chr "123 TEST STREET"
 #>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"
+#>   ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
 #>   .. [list output truncated]
 #>  $ sample_820_04                    :List of 25
 #>   ..$ ISA: chr [1:16] "00" NA "00" NA ...
@@ -200,7 +200,7 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
 #>   ..$ N3 : chr "123 TEST STREET"
 #>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"
+#>   ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
 #>   .. [list output truncated]
 #>  $ sample_820_05                    :List of 96
 #>   ..$ ISA: chr [1:16] "00" NA "00" NA ...
@@ -212,6 +212,6 @@ edi_index(hcc::x12_EX$`820`$`218`) |>
 #>   ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
 #>   ..$ N3 : chr "123 TEST STREET"
 #>   ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ N1_: chr [1:2] "PR" "TEST PAYER AGENCY"
+#>   ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
 #>   .. [list output truncated]
 ```
