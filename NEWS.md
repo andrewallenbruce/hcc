@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9067 (2026-09-30)
+
+* removed the offending line of code (closes #3)
+* fixed bug in `edi_text()`
+
+
 # hcc 0.0.0.9066 (2026-09-30)
 
 * EDI processors now prefixed with `edi_`
