@@ -1,4 +1,9 @@
 #' @noRd
+which_rex <- function(x, rex, negate = FALSE) {
+  whichv_(stringfish::sf_grepl(x, rex, nthreads = 4L), TRUE, negate = negate)
+}
+
+#' @noRd
 perl <- function(x, rex, negate = FALSE) {
   grep(pattern = rex, x = x, perl = TRUE, invert = negate)
 }

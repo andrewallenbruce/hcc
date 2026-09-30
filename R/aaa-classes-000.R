@@ -37,7 +37,7 @@ S7::method(format, IndexX12) <- function(x) {
   numbs_ <- fleft(c(
     x@type,
     length(x@text),
-    if (!is.null(probs_)) cli::col_red(probs_)
+    if (!is.null(probs_)) cli::col_red(cli::style_bold(probs_))
   ))
 
   cli::cat_line(

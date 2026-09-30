@@ -1,5 +1,36 @@
 # ST01(820) - ST03=GS08(005010X218)
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
+# x = x12_type(x12_EX$`820`$`218`)
+# i820_218(x$sample_820_01)
+# i820_218(x$sample_820_03)
+# x = x12_type(x12_EX$`820`$`218`$`820_Premium_Payment_EFT`)
+# i = i820_218(x)
+#' @noRd
+i820_218 <- function(x) {
+  ST <- which_rex(x, "^ST")
+  SE <- which_rex(x, "^SE")
+  ENT <- which_rex(x, "^ENT")
+
+  rlang::list2(
+    header = fill_(which_rex(x, "^ISA"), ST),
+    details = fill_(ST + 1L, ENT[1L] - 1L),
+    entity = create_entity_index(ENT, SE),
+    trailer = fill_(SE, which_rex(x, "^IEA"))
+  )
+}
+
+#' @noRd
+create_entity_index <- function(x, y) {
+  val <- c(x[1L], y - 1L, x[-1], x[-1] - 1L)
+  val <- sort.int(val)
+  id <- length(val) / 2L
+  seq <- seq.int(1L, id)
+  grp <- vctrs::vec_rep(2L, id)
+  by <- vctrs::vec_rep_each(seq, grp)
+  val <- vctrs::vec_split(val, by)$val
+  purrr::map(val, function(x) fill_(x[1], x[2]))
+}
+
 #' @noRd
 ind_820_218 <- function(x) {
   list(

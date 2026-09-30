@@ -37,11 +37,26 @@ inter_new <- function(new_caid, new_orig, full, category) {
 #'    - Looked up with `DI_`
 #' @noRd
 inter_orig <- function(aged, female, male, orig, esrd) {
-  list(
-    OriginallyDisabled_Female = mult_(aged, female, orig),
-    OriginallyDisabled_Male = mult_(aged, male, orig),
-    Originally_ESRD_Female = mult_(aged, female, esrd),
-    Originally_ESRD_Male = mult_(aged, male, esrd)
+  x <- cheapr::new_list(4L, 0L) |>
+    rlang::set_names(c(
+      "OriginallyDisabled_Female",
+      "OriginallyDisabled_Male",
+      "Originally_ESRD_Female",
+      "Originally_ESRD_Male"
+    ))
+
+  if (!aged) {
+    return(x)
+  }
+
+  cheapr::list_modify(
+    x,
+    list(
+      OriginallyDisabled_Female = mult_(female, orig),
+      OriginallyDisabled_Male = mult_(male, orig),
+      Originally_ESRD_Female = mult_(female, esrd),
+      Originally_ESRD_Male = mult_(male, esrd)
+    )
   )
 }
 

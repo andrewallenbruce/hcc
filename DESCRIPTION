@@ -12,8 +12,8 @@ BugReports: https://github.com/andrewallenbruce/hcc/issues
 Depends: 
     R (>= 4.2.0)
 Imports: 
-    cli (>= 3.6.6),
     cheapr (>= 1.5.2),
+    cli (>= 3.6.6),
     collapse (>= 2.1.7),
     ivs (>= 0.2.0),
     rlang (>= 1.1.0),
@@ -23,6 +23,7 @@ Suggests:
     clock (>= 0.7.4),
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
+    stringfish (>= 0.19.2),
     testthat (>= 3.3.2)
 Remotes:
     RConsortium/S7

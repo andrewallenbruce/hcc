@@ -26,13 +26,10 @@ S7::method(create_index, S7::class_character) <- function(x) {
 }
 
 S7::method(create_index, Text820) <- function(x) {
-  new_index(
-    x,
-    switch(
-      x@type,
-      "820-X306" = ind_820_306(x@text),
-      "820-X218" = ind_820_218(x@text)
-    )
+  switch(
+    x@type,
+    "820-X306" = new_index(x, ind_820_306(x@text)),
+    "820-X218" = new_index2(x, i820_218(x@text))
   )
 }
 
@@ -69,6 +66,16 @@ problems <- function(x, i) {
 #' @noRd
 new_index <- function(x, index) {
   index <- sort_index(index)
+  IndexX12(
+    type = x@type,
+    text = x@text,
+    problems = problems(x@text, index),
+    index = index
+  )
+}
+
+#' @noRd
+new_index2 <- function(x, index) {
   IndexX12(
     type = x@type,
     text = x@text,
