@@ -4,7 +4,8 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
-#' edi_index(x12_EX$`820`$`218`)
+#' edi_index(x12_EX$`820`$`218`$sample_820_05)
+#' edi_index(x12_EX$`820`$`306`[[1]])
 #' @export
 #' @name edi_index
 edi_index := S7::new_generic("x")
@@ -26,13 +27,10 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  new_index(
-    x,
-    switch(
-      x@type,
-      "820-X306" = ind_820_306(x@text),
-      "820-X218" = i820_218(x@text)
-    )
+  switch(
+    x@type,
+    "820-X306" = new_index(x, ind_820_306(x@text)),
+    "820-X218" = new_index820(x, i820_218(x@text))
   )
 }
 
@@ -58,6 +56,19 @@ new_index <- function(x, index) {
     text = x@text,
     problems = problems(x@text, index),
     index = index
+  )
+}
+
+#' @noRd
+new_index820 <- function(x, i) {
+  Index820(
+    type = x@type,
+    text = x@text,
+    problems = problems(x@text, i),
+    header = i$header,
+    details = i$details,
+    entity = i$entity,
+    trailer = i$trailer
   )
 }
 

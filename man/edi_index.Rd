@@ -15,5 +15,6 @@ an \verb{<hcc::IndexEDI>} S7 object
 Create an EDI Index Object
 }
 \examples{
-edi_index(x12_EX$`820`$`218`)
+edi_index(x12_EX$`820`$`218`$sample_820_05)
+edi_index(x12_EX$`820`$`306`[[1]])
 }

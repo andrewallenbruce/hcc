@@ -48,12 +48,14 @@ IndexEDI := S7::new_class(
 
 #' @export
 Index820 := S7::new_class(
-  parent = TextEDI,
+  # parent = TextEDI,
   properties = list(
+    type = S7::class_character,
+    text = S7::class_character,
     problems = prop_integer,
     header = prop_integer,
     details = prop_integer,
-    entity = prop_integer,
+    entity = S7::class_list,
     trailer = prop_integer
   )
 )
