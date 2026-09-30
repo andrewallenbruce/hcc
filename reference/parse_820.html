@@ -11,7 +11,7 @@ but handles the general 820 format used by state Medicaid agencies."></head><bod
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9063</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9064</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,102 +86,11 @@ but handles the general 820 format used by state Medicaid agencies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="create_index.html">create_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="create_index.html">create_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">parse_820</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span>list.len <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Child_Health_Plus_Payment_EFT: &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "222222222" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:13] "I" "239.6" "C" "ACH" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "CHILD HEALTH PLUS"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1:List of 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-5.55"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "96.96"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "LUMP SUM PAYMENT"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2:List of 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "AZ" "12345678" "148.19"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "1436500000001230"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "0123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "LU" "01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "DTM" "582" "RD8" "20141201-20141231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "17" "222222222"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "333333333"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "003333333"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Essentail_Health_Plan        : &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20150105" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "221500001" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:6] "I" "123.45" "C" "CHK" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:3] "3" "000000032788113" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr [1:2] "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr "BASIC HEALTH PLAN"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1:List of 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "1" "2J" "EI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LASTNAME" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "AZ" "LL88888L" "123.45"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "1500311111112540"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "0123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "LU" "01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "51"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "DTM" "582" "RD8" "20141201-20141231"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "14" "221500001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "5113240"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "005113240"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 820_Premium_Payment_EFT          : &lt;hcc::X12_820_218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ISA : chr [1:14] "00" "00" "ZZ" "EMEDNYBAT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GS  : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ST  : chr [1:3] "820" "222222222" "005010X218"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ BPR : chr [1:13] "I" "566.29" "C" "ACH" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ TRN : chr [1:3] "3" "021300000000000" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ RF14: chr "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PE: chr [1:3] "MANAGED CARE" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PE: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N1PR: chr [1:3] "NYSDOH" "FI" "141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N3PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ N4PR: chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ ENT :List of 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 1:List of 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-63.34"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "8.89"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "COURT ORDERED PAYMENT"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:4] "RMR" "1L" "12345678" "-12.67"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "REF" "ZZ" "STATE MANDATED PAYMENT REDUCT"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 2:List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "RMR" "IK" "1000210000000020" "183.47" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "ADX" "181.64" "IA"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. $ 3:List of 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "ENT" "3" "2J" "EI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:7] "NM1" "QE" "1" "LAST NAME" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:5] "RMR" "IK" "1000210000000020" "449.94" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. ..  ..$ : chr [1:3] "ADX" "445.45" "IA"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ SE  : chr [1:2] "22" "222222222"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ GE  : chr [1:2] "1" "333333333"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..@ IEA : chr [1:2] "1" "003333333"</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
