@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9066 (2026-09-30)
+
+* EDI processors now prefixed with `edi_`
+
+
 # hcc 0.0.0.9065 (2026-09-30)
 
 * 820 is parsing again
