@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9064 (2026-09-30)
+
+* new version of indexing
+
+
 # hcc 0.0.0.9063 (2026-09-28)
 
 * restored IndexX12 print method
