@@ -1,34 +1,50 @@
 # ST01(820) - ST03=GS08(005010X218)
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
-# x = x12_type(x12_EX$`820`$`218`)
+# e = edi_index(x12_EX$`820`$`218`)
 # i820_218(x$sample_820_01)
 # i820_218(x$sample_820_03)
-# x = x12_type(x12_EX$`820`$`218`$`820_Premium_Payment_EFT`)
+# x = edi_index(x12_EX$`820`$`218`$`820_Premium_Payment_EFT`) |> str()
 # i = i820_218(x)
 #' @noRd
 i820_218 <- function(x) {
-  ST <- which_rex(x, "^ST")
-  SE <- which_rex(x, "^SE")
-  ENT <- which_rex(x, "^ENT")
+  ST <- perl(x, "^ST")
+  SE <- perl(x, "^SE")
+  ENT <- perl(x, "^ENT")
+  RMR <- perl(x, "^RMR")
 
   rlang::list2(
-    header = fill_(which_rex(x, "^ISA"), ST),
+    header = fill_(perl(x, "^ISA"), ST),
     details = fill_(ST + 1L, ENT[1L] - 1L),
     entity = create_entity_index(ENT, SE),
-    trailer = fill_(SE, which_rex(x, "^IEA"))
+    # rmr_breaks = RMR,
+    trailer = fill_(SE, perl(x, "^IEA"))
   )
 }
 
 #' @noRd
-create_entity_index <- function(x, y) {
-  val <- c(x[1L], y - 1L, x[-1], x[-1] - 1L)
-  val <- sort.int(val)
-  id <- length(val) / 2L
-  seq <- seq.int(1L, id)
-  grp <- vctrs::vec_rep(2L, id)
-  by <- vctrs::vec_rep_each(seq, grp)
-  val <- vctrs::vec_split(val, by)$val
-  purrr::map(val, function(x) fill_(x[1], x[2]))
+create_entity_index <- function(ent, se) {
+  x <- sort.int(
+    c(
+      ent[1L],
+      se - 1L,
+      ent[-1],
+      ent[-1] - 1L
+    )
+  )
+
+  chunks <- length(x) / 2L
+
+  breaks <- vctrs::vec_rep_each(
+    seq.int(1L, chunks),
+    vctrs::vec_rep(2L, chunks)
+  )
+
+  purrr::map(
+    vctrs::vec_split(x, breaks)$val,
+    function(x) {
+      fill_(x[1], x[2])
+    }
+  )
 }
 
 #' @noRd
