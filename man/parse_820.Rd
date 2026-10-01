@@ -41,7 +41,6 @@ Typical loop structure within an \code{820-X218}:
 }
 }
 \examples{
-edi_index(hcc::x12_EX$`820`$`218`) |>
-  purrr::map(parse_820) |>
-  str(list.len = 10L)
+purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:10]), hcc:::parse_218) |>
+str(list.len = 10L)
 }

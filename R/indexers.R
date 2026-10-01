@@ -10,7 +10,7 @@ i820_218 <- function(x) {
   ST <- perl(x, "^ST")
   SE <- perl(x, "^SE")
   ENT <- perl(x, "^ENT")
-  RMR <- perl(x, "^RMR")
+  # RMR <- perl(x, "^RMR")
 
   rlang::list2(
     header = fill_(perl(x, "^ISA"), ST),
@@ -22,28 +22,26 @@ i820_218 <- function(x) {
 }
 
 #' @noRd
-create_entity_index <- function(ent, se) {
+create_entity_index <- function(
+  top,
+  final,
+  rest = top[-1]
+) {
   x <- sort.int(
     c(
-      ent[1L],
-      se - 1L,
-      ent[-1],
-      ent[-1] - 1L
+      top[1L],
+      rest - 1L,
+      rest,
+      final - 1L
     )
   )
 
-  chunks <- length(x) / 2L
-
-  breaks <- vctrs::vec_rep_each(
-    seq.int(1L, chunks),
-    vctrs::vec_rep(2L, chunks)
-  )
+  half <- vctrs::vec_size(x) / 2L
+  runs <- vctrs::vec_rep_each(seq(half), rep(2L, half))
 
   purrr::map(
-    vctrs::vec_split(x, breaks)$val,
-    function(x) {
-      fill_(x[1], x[2])
-    }
+    vctrs::vec_split(x, runs)$val,
+    \(x) fill_(start = x[1], end = x[2])
   )
 }
 

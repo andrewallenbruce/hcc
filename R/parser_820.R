@@ -25,19 +25,18 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' edi_index(hcc::x12_EX$`820`$`218`) |>
-#'   purrr::map(parse_820) |>
-#'   str(list.len = 10L)
+#' purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:10]), hcc:::parse_218) |>
+#' str(list.len = 10L)
 #' @export
 parse_820 <- function(x) {
-  if (!S7::S7_inherits(x, IndexEDI)) {
+  if (!S7::S7_inherits(x, IndexEDI) | !S7::S7_inherits(x, Index820)) {
     return(NA_character_)
   }
 
   switch(
     x@type,
     "820-X306" = parse_820_306(x),
-    "820-X218" = parse_218(x@text, x@index)
+    "820-X218" = parse_218(x)
   )
 }
 
@@ -58,12 +57,12 @@ subsplit <- function(x, i) {
 }
 
 #' @noRd
-parse_218 <- function(x, i) {
-  vctrs::vec_c(
-    subsplit(x, i$header),
-    subsplit(x, i$details),
-    purrr::map(i$entity, \(index) subsplit(x, index)),
-    subsplit(x, i$trailer)
+parse_218 <- function(x) {
+  list(
+    header = subsplit(x@text, x@header),
+    details = subsplit(x@text, x@details),
+    entity = purrr::map(x@entity, \(index) subsplit(x@text, index)),
+    trailer = subsplit(x@text, x@trailer)
   )
 }
 
@@ -87,28 +86,6 @@ parse_820_ENT <- function(x) {
 
   rlang::set_names(ent, seq_along(ent)) |>
     vctrs::vec_c(.name_spec = "{outer}.{inner}")
-}
-
-#' @noRd
-parse_820_218 <- function(x) {
-  X12_820_218(
-    ISA = split_7(x, "ISA"),
-    GS = split_7(x, "GS"),
-    ST = split_7(x, "ST"),
-    BPR = split_7(x, "BPR"),
-    TRN = split_7(x, "TRN"),
-    RF14 = split_7(x, "REF14")[-1],
-    N1PE = split_7(x, "N1PE")[-1],
-    N3PE = split_7(x, "N3PE") %||% NA_character_,
-    N4PE = split_7(x, "N4PE") %||% NA_character_,
-    N1PR = split_7(x, "N1PR")[-1],
-    N3PR = split_7(x, "N3PR") %||% NA_character_,
-    N4PR = split_7(x, "N4PR") %||% NA_character_,
-    ENT = parse_820_ENT(x),
-    SE = split_7(x, "SE"),
-    GE = split_7(x, "GE"),
-    IEA = split_7(x, "IEA")
-  )
 }
 
 #' @noRd
