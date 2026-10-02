@@ -4,19 +4,26 @@
 \alias{ServiceLevelData}
 \title{Healthcare Claim Service Level Data}
 \arguments{
+\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
+
 \item{claim_id}{\verb{<chr>} Unique identifier for the claim}
 
-\item{procedure_code}{\verb{<chr>} HCPCS code}
+\item{patient_id}{\verb{<chr>} Unique identifier for the patient}
 
-\item{ndc}{\verb{<chr>} National Drug Code}
+\item{claim_type}{\verb{<chr>} Type of claim (e.g., NCH Claim Type Code, or 837I,
+837P)}
+
+\item{place_of_service}{\verb{<chr>} Place of service code}
+
+\item{facility_type}{\verb{<chr>} Type of facility where service was rendered}
+
+\item{service_type}{\verb{<chr>} Type of service provided (facility type + service
+type = Type of Bill)}
 
 \item{linked_diagnosis_codes}{\verb{<chr>} ICD-10 diagnosis codes linked to this
 service}
 
 \item{claim_diagnosis_codes}{\verb{<chr>} All diagnosis codes on the claim}
-
-\item{claim_type}{\verb{<chr>} Type of claim (e.g., NCH Claim Type Code, or 837I,
-837P)}
 
 \item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
 
@@ -24,22 +31,15 @@ service}
 
 \item{billing_provider_npi}{\verb{<int>} NPI for billing provider}
 
-\item{patient_id}{\verb{<chr>} Unique identifier for the patient}
+\item{procedure_code}{\verb{<chr>} HCPCS code}
 
-\item{facility_type}{\verb{<chr>} Type of facility where service was rendered}
+\item{modifiers}{\verb{<chr>} List of procedure code modifiers}
 
-\item{service_type}{\verb{<chr>} Type of service provided (facility type + service
-type = Type of Bill)}
-
-\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
-
-\item{place_of_service}{\verb{<chr>} Place of service code}
+\item{ndc}{\verb{<chr>} National Drug Code}
 
 \item{quantity}{\verb{<num>} Number of units provided}
 
 \item{unit}{\verb{<chr>} Unit of measure for quantity}
-
-\item{modifiers}{\verb{<chr>} List of procedure code modifiers}
 
 \item{allowed_amount}{\verb{<num>} Allowed amount for the service}
 }

@@ -1,5 +1,8 @@
 #' Create Interactions
 #'
+#' @description
+#' `r doclisting::methods_list("interactions")`
+#'
 #' Creates interaction variables that are model-agnostic. The coefficient
 #' look-up will match only the relevant coefficients for each model.
 #'
@@ -8,24 +11,11 @@
 #' @param ... dots
 #' @returns a character vector of interactions
 #' @examples
-#' interactions(
-#'   demographics(
-#'     age = 64,
-#'     sex = "F",
-#'     orec = "1"
-#'   )
-#' )
-#'
-#' interactions(
-#'   demographics(age = 64, sex = "F", orec = "1"),
-#'   diagnostics("C24", c(17L, 85L))
-#' )
-#' interactions(
-#'   demographics(age = 64, sex = "F", orec = "1"),
-#'   diagnostics("R08", 130:133)
-#' )
+#' x = demographics(age = 64, sex = "F", orec = "1")
+#' interactions(x)
+#' interactions(x, diagnostics("C24", c(17L, 85L)))
+#' interactions(x, diagnostics("R08", 130:133))
 #' @export
-#' @name interactions
 interactions := S7::new_generic(c("x", "y"))
 
 S7::method(

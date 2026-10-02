@@ -8,9 +8,9 @@
 
 \item{report_date}{\verb{<Date>} \code{GS-04} Transaction date (YYYY-MM-DD)}
 
-\item{total_amount}{\verb{<chr>} \code{BPR-02} Total payment amount}
-
 \item{payment_date}{\verb{<Date>} \code{BPR-16} EFT effective date (YYYY-MM-DD)}
+
+\item{total_amount}{\verb{<chr>} \code{BPR-02} Total payment amount}
 
 \item{check_number}{\verb{<chr>} \code{TRN-02} EFT/check trace number}
 

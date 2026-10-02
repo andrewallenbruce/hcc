@@ -21,15 +21,17 @@ Imports:
     vctrs (>= 0.7.3)
 Suggests:
     clock (>= 0.7.4),
+    doclisting,
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
     stringfish (>= 0.19.2),
     testthat (>= 3.3.2)
 Remotes:
     RConsortium/S7
+Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.1.0.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
+Roxygen: list(roclets = c("collate", "namespace", "rd"))

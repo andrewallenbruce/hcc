@@ -6,11 +6,17 @@
 \arguments{
 \item{reference_number}{\verb{<chr>} \code{RMR-02} Invoice/check reference number}
 
+\item{original_amount}{\verb{<chr>} \code{RMR-05/RMR-06} Original amount before
+adjustment (when present)}
+
+\item{adjustment_amount}{\verb{<chr>} \code{ADX-01} Adjustment amount; If negative, it
+is a recoupment}
+
 \item{payment_amount}{\verb{<chr>} \code{RMR-04/RMR-05} Net payment amount for this
 period; negative = recoupment}
 
-\item{original_amount}{\verb{<chr>} \code{RMR-05/RMR-06} Original amount before
-adjustment (when present)}
+\item{adjustment_reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" =
+prior period)}
 
 \item{rate_code}{\verb{<chr>} \code{REF*18} Rate code (e.g., "957" = PACE rate)}
 
@@ -33,12 +39,6 @@ Capitation Dual", "Medi-Cal Only-State Only")}
 (YYYY-MM-DD) from DTM*582}
 
 \item{coverage_period}{\verb{<class_iv>} Coverage period start and end date}
-
-\item{adjustment_amount}{\verb{<chr>} \code{ADX-01} Adjustment amount; If negative, it
-is a recoupment}
-
-\item{adjustment_reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" =
-prior period)}
 }
 \value{
 A \verb{<RemittanceEntry>} S7 object

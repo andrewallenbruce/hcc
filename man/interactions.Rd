@@ -3,6 +3,9 @@
 \name{interactions}
 \alias{interactions}
 \title{Create Interactions}
+\usage{
+interactions(x, y, ...)
+}
 \arguments{
 \item{x}{\verb{<PatientDemographics>} S7 object}
 
@@ -14,24 +17,17 @@
 a character vector of interactions
 }
 \description{
+\itemize{
+\item \code{hcc::PatientDemographics,MISSING}
+\item \code{hcc::PatientDemographics,hcc::DiagnosticCategories}
+}
+
 Creates interaction variables that are model-agnostic. The coefficient
 look-up will match only the relevant coefficients for each model.
 }
 \examples{
-interactions(
-  demographics(
-    age = 64,
-    sex = "F",
-    orec = "1"
-  )
-)
-
-interactions(
-  demographics(age = 64, sex = "F", orec = "1"),
-  diagnostics("C24", c(17L, 85L))
-)
-interactions(
-  demographics(age = 64, sex = "F", orec = "1"),
-  diagnostics("R08", 130:133)
-)
+x = demographics(age = 64, sex = "F", orec = "1")
+interactions(x)
+interactions(x, diagnostics("C24", c(17L, 85L)))
+interactions(x, diagnostics("R08", 130:133))
 }

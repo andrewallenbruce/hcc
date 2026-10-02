@@ -1,4 +1,4 @@
-#' @export
+#' @noRd
 Document820 := S7::new_class(
   properties = list(
     ISA = S7::class_list,

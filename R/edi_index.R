@@ -1,5 +1,9 @@
 #' Create an EDI Index Object
 #'
+#' @description
+#' `r doclisting::methods_list("edi_index")`
+#'
+#'
 #' @param x raw X12 text input
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object

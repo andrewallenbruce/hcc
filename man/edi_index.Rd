@@ -3,6 +3,9 @@
 \name{edi_index}
 \alias{edi_index}
 \title{Create an EDI Index Object}
+\usage{
+edi_index(x, ...)
+}
 \arguments{
 \item{x}{raw X12 text input}
 
@@ -12,7 +15,15 @@
 an \verb{<hcc::IndexEDI>} S7 object
 }
 \description{
-Create an EDI Index Object
+\itemize{
+\item \code{ANY}
+\item \code{character}
+\item \code{hcc::IndexEDI}
+\item \code{hcc::Text820}
+\item \code{hcc::Text834}
+\item \code{hcc::Text837}
+\item \code{list}
+}
 }
 \examples{
 edi_index(x12_EX$`820`$`218`$sample_820_05)

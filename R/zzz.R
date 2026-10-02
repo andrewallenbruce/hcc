@@ -1,3 +1,7 @@
+ignore_unused_imports <- function() {
+  doclisting::methods_list
+}
+
 .onLoad <- function(...) {
   requireNamespace("pillar", quietly = TRUE)
   S7::S7_on_load()

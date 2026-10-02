@@ -174,3 +174,44 @@ dict_820 = list(
   collapse::unlist2d(idcols = "ID") |>
   collapse::rnm("ID.1" = "SEG", "ID.2" = "PT", "V1" = "DESCRIPTION") |>
   collapse::sbt(!is.na(DESCRIPTION))
+
+
+#' @noRd
+ind_820_218 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    TRN = perl(x, "^TRN"),
+    CUR = perl(x, "^CUR"),
+    REF14 = perl(x, "^REF\\*14"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N1PR = perl(x, "^N1\\*PR"),
+    N3 = perl(x, "^N3"),
+    N4 = perl(x, "^N4"),
+    PERIC = perl(x, "^PER\\*IC"),
+    ENT = perl(x, "^ENT"),
+    NM1 = perl(x, "^NM1\\*(DO|EY|IL|QE)"),
+    RMR = perl(x, "^RMR"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF38 = perl(x, "^REF\\*38"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    REFLU = perl(x, "^REF\\*LU"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    DTM009 = perl(x, "^DTM\\*009"),
+    DTM035 = perl(x, "^DTM\\*035"),
+    DTMAAG = perl(x, "^DTM\\*AAG"),
+    DTM097 = perl(x, "^DTM\\*097"),
+    SLN = perl(x, "^SLN"),
+    IT = perl(x, "^IT"),
+    ADX = perl(x, "^ADX"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+}
+

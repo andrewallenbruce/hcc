@@ -37,7 +37,7 @@ Text834 := S7::new_class(TextEDI)
 #' @noRd
 Text837 := S7::new_class(TextEDI)
 
-#' @export
+#' @noRd
 IndexEDI := S7::new_class(
   parent = TextEDI,
   properties = list(
@@ -46,7 +46,7 @@ IndexEDI := S7::new_class(
   )
 )
 
-#' @export
+#' @noRd
 Index820 := S7::new_class(
   # parent = TextEDI,
   properties = list(

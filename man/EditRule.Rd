@@ -5,6 +5,26 @@
 \alias{AgeEdit}
 \alias{SexEdit}
 \title{Single Edit Rule}
+\usage{
+AgeEdit(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0),
+  age = integer(0),
+  boundary = character(0)
+)
+
+SexEdit(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0),
+  sex = integer(0)
+)
+}
 \arguments{
 \item{icd}{\verb{<chr>} "sex" or "age"}
 
@@ -16,11 +36,11 @@
 
 \item{description}{description}
 
-\item{sex}{\verb{<int>} For sex edits: 1 (male) or 2 (female)}
-
 \item{age}{\verb{<int>} For age edits: minimum age (inclusive)}
 
 \item{boundary}{\verb{<int>} For age edits: maximum age (inclusive)}
+
+\item{sex}{\verb{<int>} For sex edits: 1 (male) or 2 (female)}
 }
 \value{
 An \verb{<EditRule>} S7 object
