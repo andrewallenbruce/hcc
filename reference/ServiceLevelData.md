@@ -4,17 +4,34 @@ Healthcare Claim Service Level Data
 
 ## Arguments
 
+- service_date:
+
+  `<Date>` Date service was performed (YYYY-MM-DD)
+
 - claim_id:
 
   `<chr>` Unique identifier for the claim
 
-- procedure_code:
+- patient_id:
 
-  `<chr>` HCPCS code
+  `<chr>` Unique identifier for the patient
 
-- ndc:
+- claim_type:
 
-  `<chr>` National Drug Code
+  `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
+
+- place_of_service:
+
+  `<chr>` Place of service code
+
+- facility_type:
+
+  `<chr>` Type of facility where service was rendered
+
+- service_type:
+
+  `<chr>` Type of service provided (facility type + service type = Type
+  of Bill)
 
 - linked_diagnosis_codes:
 
@@ -23,10 +40,6 @@ Healthcare Claim Service Level Data
 - claim_diagnosis_codes:
 
   `<chr>` All diagnosis codes on the claim
-
-- claim_type:
-
-  `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I, 837P)
 
 - provider_specialty:
 
@@ -40,26 +53,17 @@ Healthcare Claim Service Level Data
 
   `<int>` NPI for billing provider
 
-- patient_id:
+- procedure_code:
 
-  `<chr>` Unique identifier for the patient
+  `<chr>` HCPCS code
 
-- facility_type:
+- modifiers:
 
-  `<chr>` Type of facility where service was rendered
+  `<chr>` List of procedure code modifiers
 
-- service_type:
+- ndc:
 
-  `<chr>` Type of service provided (facility type + service type = Type
-  of Bill)
-
-- service_date:
-
-  `<Date>` Date service was performed (YYYY-MM-DD)
-
-- place_of_service:
-
-  `<chr>` Place of service code
+  `<chr>` National Drug Code
 
 - quantity:
 
@@ -68,10 +72,6 @@ Healthcare Claim Service Level Data
 - unit:
 
   `<chr>` Unit of measure for quantity
-
-- modifiers:
-
-  `<chr>` List of procedure code modifiers
 
 - allowed_amount:
 

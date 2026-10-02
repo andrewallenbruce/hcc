@@ -2,6 +2,29 @@
 
 Single Edit Rule
 
+## Usage
+
+``` r
+AgeEdit(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0),
+  age = integer(0),
+  boundary = character(0)
+)
+
+SexEdit(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0),
+  sex = integer(0)
+)
+```
+
 ## Arguments
 
 - icd:
@@ -24,10 +47,6 @@ Single Edit Rule
 
   description
 
-- sex:
-
-  `<int>` For sex edits: 1 (male) or 2 (female)
-
 - age:
 
   `<int>` For age edits: minimum age (inclusive)
@@ -35,6 +54,10 @@ Single Edit Rule
 - boundary:
 
   `<int>` For age edits: maximum age (inclusive)
+
+- sex:
+
+  `<int>` For sex edits: 1 (male) or 2 (female)
 
 ## Value
 

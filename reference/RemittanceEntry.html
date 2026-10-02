@@ -52,14 +52,24 @@
 <dd><p><code>&lt;chr&gt;</code> <code>RMR-02</code> Invoice/check reference number</p></dd>
 
 
+<dt id="arg-original-amount">original_amount<a class="anchor" aria-label="anchor" href="#arg-original-amount"></a></dt>
+<dd><p><code>&lt;chr&gt;</code> <code>RMR-05/RMR-06</code> Original amount before
+adjustment (when present)</p></dd>
+
+
+<dt id="arg-adjustment-amount">adjustment_amount<a class="anchor" aria-label="anchor" href="#arg-adjustment-amount"></a></dt>
+<dd><p><code>&lt;chr&gt;</code> <code>ADX-01</code> Adjustment amount; If negative, it
+is a recoupment</p></dd>
+
+
 <dt id="arg-payment-amount">payment_amount<a class="anchor" aria-label="anchor" href="#arg-payment-amount"></a></dt>
 <dd><p><code>&lt;chr&gt;</code> <code>RMR-04/RMR-05</code> Net payment amount for this
 period; negative = recoupment</p></dd>
 
 
-<dt id="arg-original-amount">original_amount<a class="anchor" aria-label="anchor" href="#arg-original-amount"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>RMR-05/RMR-06</code> Original amount before
-adjustment (when present)</p></dd>
+<dt id="arg-adjustment-reason">adjustment_reason<a class="anchor" aria-label="anchor" href="#arg-adjustment-reason"></a></dt>
+<dd><p><code>&lt;chr&gt;</code> <code>ADX-02</code> Adjustment reason code ("53" =
+prior period)</p></dd>
 
 
 <dt id="arg-rate-code">rate_code<a class="anchor" aria-label="anchor" href="#arg-rate-code"></a></dt>
@@ -94,16 +104,6 @@ Capitation Dual", "Medi-Cal Only-State Only")</p></dd>
 
 <dt id="arg-coverage-period">coverage_period<a class="anchor" aria-label="anchor" href="#arg-coverage-period"></a></dt>
 <dd><p><code>&lt;class_iv&gt;</code> Coverage period start and end date</p></dd>
-
-
-<dt id="arg-adjustment-amount">adjustment_amount<a class="anchor" aria-label="anchor" href="#arg-adjustment-amount"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>ADX-01</code> Adjustment amount; If negative, it
-is a recoupment</p></dd>
-
-
-<dt id="arg-adjustment-reason">adjustment_reason<a class="anchor" aria-label="anchor" href="#arg-adjustment-reason"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>ADX-02</code> Adjustment reason code ("53" =
-prior period)</p></dd>
 
 </dl></div>
     <div class="section level2">

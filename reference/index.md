@@ -2,9 +2,8 @@
 
 ## All functions
 
-- [`EditRule`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
-  [`AgeEdit`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
-  [`SexEdit`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
+- [`AgeEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
+  [`SexEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   : Single Edit Rule
 - [`EnrollmentData`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : X12-834 Transaction Enrollment Data
@@ -33,7 +32,7 @@
   categories.
 - [`diagnostics()`](https://andrewallenbruce.github.io/hcc/reference/diagnostics.md)
   : Model-Based Disease Categories
-- [`edi_index`](https://andrewallenbruce.github.io/hcc/reference/edi_index.md)
+- [`edi_index()`](https://andrewallenbruce.github.io/hcc/reference/edi_index.md)
   : Create an EDI Index Object
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
@@ -41,7 +40,7 @@
   : Demographics-Based Coefficient Prefix
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
   : Map ICD-10 Codes to CC
-- [`interactions`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
+- [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
 - [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
   : X12-820 (X306/X218) Payment Order/Remittance Advice Parser

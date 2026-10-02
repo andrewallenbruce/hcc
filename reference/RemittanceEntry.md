@@ -8,15 +8,23 @@ A single remittance line item within a member's payment record.
 
   `<chr>` `RMR-02` Invoice/check reference number
 
+- original_amount:
+
+  `<chr>` `RMR-05/RMR-06` Original amount before adjustment (when
+  present)
+
+- adjustment_amount:
+
+  `<chr>` `ADX-01` Adjustment amount; If negative, it is a recoupment
+
 - payment_amount:
 
   `<chr>` `RMR-04/RMR-05` Net payment amount for this period; negative =
   recoupment
 
-- original_amount:
+- adjustment_reason:
 
-  `<chr>` `RMR-05/RMR-06` Original amount before adjustment (when
-  present)
+  `<chr>` `ADX-02` Adjustment reason code ("53" = prior period)
 
 - rate_code:
 
@@ -50,14 +58,6 @@ A single remittance line item within a member's payment record.
 - coverage_period:
 
   `<class_iv>` Coverage period start and end date
-
-- adjustment_amount:
-
-  `<chr>` `ADX-01` Adjustment amount; If negative, it is a recoupment
-
-- adjustment_reason:
-
-  `<chr>` `ADX-02` Adjustment reason code ("53" = prior period)
 
 ## Value
 

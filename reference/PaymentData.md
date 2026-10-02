@@ -13,13 +13,13 @@ remittance from a state Medicaid agency or CMS to a managed care plan.
 
   `<Date>` `GS-04` Transaction date (YYYY-MM-DD)
 
-- total_amount:
-
-  `<chr>` `BPR-02` Total payment amount
-
 - payment_date:
 
   `<Date>` `BPR-16` EFT effective date (YYYY-MM-DD)
+
+- total_amount:
+
+  `<chr>` `BPR-02` Total payment amount
 
 - check_number:
 
