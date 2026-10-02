@@ -91,12 +91,3 @@ Index820 := S7::new_class(
     trailer = prop_integer
   )
 )
-
-#' @noRd
-DiagnosticCategories := S7::new_class(
-  properties = list(
-    model = S7::class_character,
-    hcc = prop_integer,
-    categories = S7::class_list
-  )
-)

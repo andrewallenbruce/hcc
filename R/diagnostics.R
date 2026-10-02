@@ -84,6 +84,15 @@ diagnostic_ESRD_V21 <- function(hcc) {
   )
 }
 
+#' @noRd
+DiagnosticCategories := S7::new_class(
+  properties = list(
+    model = S7::class_character,
+    hcc = prop_integer,
+    categories = S7::class_list
+  )
+)
+
 #' Model-Based Disease Categories
 #'
 #' @param model `<chr>` Model Name
