@@ -77,8 +77,144 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">$</span><span class="va">sample_820_05</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Child_Health_Plus_Payment_EFT`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 23      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; REF &gt; N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [2] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [2] [3]&lt;1&gt; [5]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Essentail_Health_Plan`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 21      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [7] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [1] &lt;2&gt;   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [1] [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Premium_Payment_EFT`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 26      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; REF &gt; N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [5]&lt;1&gt; [2]&lt;2&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Premium_Payment_NOPMT`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 22      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [7] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [2] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [2] [3]&lt;1&gt; [2]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $payment_order_820_218</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 19      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; REF &gt; N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [1] &lt;2&gt;   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [1] [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 104     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [9] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [12] &lt;2&gt;            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [12] [5]&lt;11&gt; [10]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 166     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [9] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [13] &lt;2&gt;                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [13] [11]&lt;9&gt; [10]&lt;1&gt; [5]&lt;2&gt; [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 1146    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [9] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [93] &lt;2&gt;                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [93] [11]&lt;64&gt; [5]&lt;20&gt; [10]&lt;3&gt; [25]&lt;3&gt; [15]&lt;2&gt; [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 95      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [9] BPR &gt; TRN &gt; REF &gt; N1 &gt; N3 &gt; N4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [10] &lt;2&gt;           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [10] [5]&lt;9&gt; [15]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X218</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 647     </span>
@@ -92,41 +228,203 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [81] &lt;2&gt;                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [81] [5]&lt;71&gt; [10]&lt;9&gt; [25]&lt;1&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
-<span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`306`</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::IndexEDI&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`306`</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX10_debt_covered_by_affiliate1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 42      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">ISA</span> [1] 1                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="font-weight: bold;">GS</span> [1] 2                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="font-weight: bold;">ST</span> [1] 3                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">BPR</span> [1] 4                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">DTM582</span> [9] 16, 18, 20, 22, 24, 32, 34, 36, 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">ENT</span> [3] 9, 25, 37                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">N1PE</span> [1] 6                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="font-weight: bold;">N1RM</span> [1] 7                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">NM1</span> [2] 10, 26                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">PERIC</span> [1] 8                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF18</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF23</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF38</span> [2] 11, 27                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF0F</span> [2] 14, 30                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF0N</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF1L</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF1W</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF4A</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REF60</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">REFABY</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REFAZ</span> [2] 13, 29                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">REFPOL</span> [2] 12, 28                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REFTV</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="font-weight: bold;">REFZZ</span> [0]                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">RMR</span> [9] 15, 17, 19, 21, 23, 31, 33, 35, 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">TRN</span> [1] 5                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="font-weight: bold;">SE</span> [1] 40                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="font-weight: bold;">GE</span> [1] 41                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="font-weight: bold;">IEA</span> [1] 42                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [14]&lt;1&gt; [10]&lt;1&gt; [1]&lt;1&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX11_debt_covered_by_affiliate2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 43      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [14]&lt;1&gt; [10]&lt;1&gt; [2]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX12_csr_manual_adj`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 34      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [8]&lt;2&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX1_different_types_of_pmt_by_HIX`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 41      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [6] BPR &gt; TRN &gt; REF &gt; N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [4] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [4] [5]&lt;3&gt; [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX2_payments_exceed_charges1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 38      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [10]&lt;2&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX3_payments_exceed_charges2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 35      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [2] &lt;2&gt;    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [2] [10]&lt;2&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX4_charges_exceed_payments1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 32      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [7]&lt;2&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX5_charges_exceed_payments2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 32      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [7]&lt;2&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX6_aptc_adjustments1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 42      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [14]&lt;1&gt; [10]&lt;1&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX7_aptc_adjustments2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 39      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [2] &lt;2&gt;            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [2] [14]&lt;1&gt; [10]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX8_outstanding_debt_owed1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 38      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [10]&lt;2&gt; [1]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX9_outstanding_debt_owed2`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 39      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [5] BPR &gt; TRN &gt; N1 &gt; PER</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [3] &lt;2&gt;           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [3] [10]&lt;2&gt; [2]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $payment_order_820_360</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 820-X306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 41      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [6] BPR &gt; TRN &gt; REF &gt; N1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Entity Loop</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #00BBBB; font-weight: bold;">Entity</span> [4] &lt;2&gt;          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Remittances</span> [4] [5]&lt;3&gt; [6]&lt;1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

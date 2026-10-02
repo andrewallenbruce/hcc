@@ -15,9 +15,7 @@ RemittanceEntry(
   aid_code = character(0),
   plan_type = character(0),
   payment_description = character(0),
-  coverage_start = Sys.Date(),
-  coverage_end = Sys.Date(),
-  coverage_period = ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L))
+  coverage_period = c(.Date(numeric(0L)), .Date(numeric(0L)))
 )
 ```
 
@@ -66,17 +64,10 @@ RemittanceEntry(
   `<chr>` `REF*ZZ` Payment description (e.g., "Primary Capitation Dual",
   "Medi-Cal Only-State Only")
 
-- coverage_start:
-
-  `<Date>` `DTM*582` Coverage period begin date (YYYY-MM-DD)
-
-- coverage_end:
-
-  `<Date>` `DTM*582` Coverage period end date (YYYY-MM-DD) from DTM\*582
-
 - coverage_period:
 
-  `<class_iv>` Coverage period start and end date
+  `<class_iv>` Coverage period start and end date (YYYY-MM-DD) from
+  DTM\*582
 
 ## Value
 
@@ -100,9 +91,7 @@ RemittanceEntry(
   aid_code = "17",
   plan_type = "2",
   payment_description = "Dual-State Only",
-  coverage_start = "2026-01-01",
-  coverage_end = "2026-01-31",
-  coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L))
+  coverage_period = c("2026-01-01", "2026-01-31")
 )
 #> <hcc::RemittanceEntry>
 #>  @ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
@@ -114,7 +103,5 @@ RemittanceEntry(
 #>  @ aid_code           : chr "17"
 #>  @ plan_type          : chr "2"
 #>  @ payment_description: chr "Dual-State Only"
-#>  @ coverage_start     : Date[1:1], format: "2026-01-01"
-#>  @ coverage_end       : Date[1:1], format: "2026-01-31"
 #>  @ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
 ```

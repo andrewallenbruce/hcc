@@ -8,8 +8,8 @@ remittance from a state Medicaid agency or CMS to a managed care plan.
 ``` r
 PaymentData(
   source = character(0),
-  report_date = Sys.Date(),
-  payment_date = Sys.Date(),
+  report_date = .Date(numeric(0L)),
+  payment_date = .Date(numeric(0L)),
   total_amount = numeric(0),
   check_number = character(0),
   payee_name = character(0),
@@ -130,9 +130,7 @@ PaymentData(
           aid_code = "17",
           plan_type = "2",
           payment_description = "Dual-State Only",
-          coverage_start = "2026-01-01",
-          coverage_end = "2026-01-31",
-          coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+          coverage_period = c("2026-01-01", "2026-01-31"),
           adjustment_amount = -8086.53,
           adjustment_reason = "53"
         )
@@ -174,7 +172,5 @@ PaymentData(
 #>  .. .. ..  ..@ aid_code           : chr "17"
 #>  .. .. ..  ..@ plan_type          : chr "2"
 #>  .. .. ..  ..@ payment_description: chr "Dual-State Only"
-#>  .. .. ..  ..@ coverage_start     : Date[1:1], format: "2026-01-01"
-#>  .. .. ..  ..@ coverage_end       : Date[1:1], format: "2026-01-31"
 #>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
 ```

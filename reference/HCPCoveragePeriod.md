@@ -6,8 +6,8 @@ Health Care Plan coverage period from HD loop
 
 ``` r
 HCPCoveragePeriod(
-  start_date = .Date(numeric()),
-  end_date = .Date(numeric()),
+  start_date = .Date(numeric(0L)),
+  end_date = .Date(numeric(0L)),
   hcp_code = character(0),
   hcp_status = character(0),
   aid_codes = character(0)
@@ -44,7 +44,10 @@ An `<HCPCoveragePeriod>` S7 object
 
 ``` r
 HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
-#> Error in HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25"): <hcc::HCPCoveragePeriod> object properties are invalid:
-#> - @start_date must be S3<Date>, not <character>
-#> - @end_date must be S3<Date>, not <character>
+#> <hcc::HCPCoveragePeriod>
+#>  @ start_date: Date[1:1], format: "2026-08-20"
+#>  @ end_date  : Date[1:1], format: "2026-08-25"
+#>  @ hcp_code  : chr(0) 
+#>  @ hcp_status: chr(0) 
+#>  @ aid_codes : chr(0) 
 ```

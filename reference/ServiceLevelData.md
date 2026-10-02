@@ -6,7 +6,7 @@ Healthcare Claim Service Level Data
 
 ``` r
 ServiceLevelData(
-  service_date = .Date(numeric()),
+  service_date = .Date(numeric(0L)),
   claim_id = character(0),
   patient_id = character(0),
   claim_type = character(0),
@@ -129,6 +129,23 @@ ServiceLevelData(
   modifiers = c("F1", "QQ"),
   allowed_amount = 89.93
 )
-#> Error in ServiceLevelData(claim_id = "756048Q", procedure_code = "93005",     ndc = "85972-161", linked_diagnosis_codes = c("3669", "4019",         "79431"), claim_diagnosis_codes = c("3669", "4019", "79431"),     claim_type = "837I", provider_specialty = "203BA0200N", performing_provider_npi = "1876540809",     billing_provider_npi = "1234567891", patient_id = "030005074A",     facility_type = "14", service_type = "03", service_date = "1996-09-11",     place_of_service = "11", quantity = "4", unit = "UN", modifiers = c("F1",         "QQ"), allowed_amount = 89.93): <hcc::ServiceLevelData> object properties are invalid:
-#> - @service_date must be S3<Date>, not <character>
+#> <hcc::ServiceLevelData>
+#>  @ service_date           : Date[1:1], format: "1996-09-11"
+#>  @ claim_id               : chr "756048Q"
+#>  @ patient_id             : chr "030005074A"
+#>  @ claim_type             : chr "837I"
+#>  @ place_of_service       : chr "11"
+#>  @ facility_type          : chr "14"
+#>  @ service_type           : chr "03"
+#>  @ linked_diagnosis_codes : chr [1:3] "3669" "4019" "79431"
+#>  @ claim_diagnosis_codes  : chr [1:3] "3669" "4019" "79431"
+#>  @ provider_specialty     : chr "203BA0200N"
+#>  @ performing_provider_npi: int 1876540809
+#>  @ billing_provider_npi   : int 1234567891
+#>  @ procedure_code         : chr "93005"
+#>  @ modifiers              : chr [1:2] "F1" "QQ"
+#>  @ ndc                    : chr "85972-161"
+#>  @ quantity               : int 4
+#>  @ unit                   : chr "UN"
+#>  @ allowed_amount         : num 89.9
 ```
