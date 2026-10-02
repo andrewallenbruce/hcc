@@ -5,7 +5,7 @@
 \title{Healthcare Claim Service Level Data}
 \usage{
 ServiceLevelData(
-  service_date = .Date(numeric()),
+  service_date = .Date(numeric(0L)),
   claim_id = character(0),
   patient_id = character(0),
   claim_type = character(0),

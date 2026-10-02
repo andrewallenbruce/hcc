@@ -30,6 +30,6 @@ Methods for \code{edi_index}:
 }
 }
 \examples{
-edi_index(x12_EX$`820`$`218`$sample_820_05)
-edi_index(x12_EX$`820`$`306`[[1]])
+edi_index(x12_EX$`820`$`218`)
+edi_index(x12_EX$`820`$`306`)
 }

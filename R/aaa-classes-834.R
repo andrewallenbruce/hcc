@@ -14,8 +14,8 @@
 #' @export
 HCPCoveragePeriod := S7::new_class(
   properties = list(
-    start_date = S7::class_Date,
-    end_date = S7::class_Date,
+    start_date = prop_date,
+    end_date = prop_date,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character

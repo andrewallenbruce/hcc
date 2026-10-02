@@ -62,5 +62,6 @@ A \verb{<RAFResult>} S7 object
 Risk Adjustment Factor Results
 }
 \examples{
-RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
+RAFResult(service_data
+ = list(ServiceLevelData(), ServiceLevelData()))
 }

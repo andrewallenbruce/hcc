@@ -9,8 +9,8 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
-#' edi_index(x12_EX$`820`$`218`$sample_820_05)
-#' edi_index(x12_EX$`820`$`306`[[1]])
+#' edi_index(x12_EX$`820`$`218`)
+#' edi_index(x12_EX$`820`$`306`)
 #' @export
 #' @name edi_index
 edi_index := S7::new_generic("x")
@@ -32,24 +32,20 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  switch(
-    x@type,
-    "820-X306" = new_index(x, ind_820_306(x@text)),
-    "820-X218" = new_index820(x, i820_218(x@text))
-  )
+  new_index820(x, index_820(S7::prop(x, "Text")))
 }
 
 S7::method(edi_index, Text834) <- function(x) {
-  new_index(x, ind_834(x@text))
+  new_index(x, ind_834(x@Text))
 }
 
 S7::method(edi_index, Text837) <- function(x) {
   new_index(
     x,
     switch(
-      x@type,
-      "837I-X223" = ind_837I(x@text),
-      "837P-X222" = ind_837P(x@text)
+      S7::prop(x, "Type"),
+      "837I-X223" = ind_837I(S7::prop(x, "Text")),
+      "837P-X222" = ind_837P(S7::prop(x, "Text"))
     )
   )
 }
@@ -57,23 +53,23 @@ S7::method(edi_index, Text837) <- function(x) {
 #' @noRd
 new_index <- function(x, index) {
   IndexEDI(
-    type = x@type,
-    text = x@text,
-    problems = problems(x@text, index),
-    index = index
+    Type = S7::prop(x, "Type"),
+    Text = S7::prop(x, "Text"),
+    Problems = problems(S7::prop(x, "Text"), index),
+    Index = index
   )
 }
 
 #' @noRd
 new_index820 <- function(x, i) {
   Index820(
-    type = x@type,
-    text = x@text,
-    problems = problems(x@text, i),
-    header = i$header,
-    details = i$details,
-    entity = i$entity,
-    trailer = i$trailer
+    Type = S7::prop(x, "Type"),
+    Text = S7::prop(x, "Text"),
+    Problems = problems(S7::prop(x, "Text"), i),
+    Header = i$header,
+    Details = i$details,
+    Entity = i$entity,
+    Trailer = i$trailer
   )
 }
 
@@ -84,4 +80,43 @@ problems <- function(x, i) {
   } else {
     NA_integer_
   }
+}
+
+#' @noRd
+index_820 <- function(x) {
+  ST <- perl(x, "^ST")
+  SE <- perl(x, "^SE")
+  ENT <- perl(x, "^ENT")
+  eindex <- create_entity_index(ENT, SE)
+
+  rlang::list2(
+    header = fill_(perl(x, "^ISA"), ST),
+    details = fill_(ST + 1L, ENT[1L] - 1L),
+    entity = purrr::map(eindex, \(x) list(x[1:2], c(x[3:length(x)]))),
+    trailer = fill_(SE, perl(x, "^IEA"))
+  )
+}
+
+#' @noRd
+create_entity_index <- function(
+  top,
+  final,
+  rest = top[-1]
+) {
+  x <- sort.int(
+    c(
+      top[1L],
+      rest - 1L,
+      rest,
+      final - 1L
+    )
+  )
+
+  half <- vctrs::vec_size(x) / 2L
+  runs <- vctrs::vec_rep_each(seq(half), rep(2L, half))
+
+  purrr::map(
+    vctrs::vec_split(x, runs)$val,
+    \(x) fill_(start = x[1], end = x[2])
+  )
 }

@@ -175,7 +175,13 @@ dict_820 = list(
   collapse::rnm("ID.1" = "SEG", "ID.2" = "PT", "V1" = "DESCRIPTION") |>
   collapse::sbt(!is.na(DESCRIPTION))
 
-
+# ST01(820) - ST03=GS08(005010X218)
+# https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B
+# e = edi_index(x12_EX$`820`$`218`)
+# i820_218(x$sample_820_01)
+# i820_218(x$sample_820_03)
+# x = edi_index(x12_EX$`820`$`218`$`820_Premium_Payment_EFT`) |> str()
+# i = i820_218(x)
 #' @noRd
 ind_820_218 <- function(x) {
   list(
@@ -215,3 +221,39 @@ ind_820_218 <- function(x) {
   )
 }
 
+# ST01(820) - ST03=GS08(005010X306)
+# https://portal.stedi.com/app/guides/view/hipaa/health-insurance-exchange-related-payments-x306/01HQ4HZB22GES43ZEA8H62Y77C
+#' @noRd
+ind_820_306 <- function(x) {
+  list(
+    ISA = perl(x, "^ISA"),
+    GS = perl(x, "^GS"),
+    ST = perl(x, "^ST"),
+    BPR = perl(x, "^BPR"),
+    DTM582 = perl(x, "^DTM\\*582"),
+    ENT = perl(x, "^ENT"),
+    N1PE = perl(x, "^N1\\*PE"),
+    N1RM = perl(x, "^N1\\*RM"),
+    NM1 = perl(x, "^NM1"),
+    PERIC = perl(x, "^PER\\*IC"),
+    REF18 = perl(x, "^REF\\*18"),
+    REF23 = perl(x, "^REF\\*23"),
+    REF38 = perl(x, "^REF\\*38"),
+    REF0F = perl(x, "^REF\\*0F"),
+    REF0N = perl(x, "^REF\\*0N"),
+    REF1L = perl(x, "^REF\\*1L"),
+    REF1W = perl(x, "^REF\\*1W"),
+    REF4A = perl(x, "^REF\\*4A"),
+    REF60 = perl(x, "^REF\\*60"),
+    REFABY = perl(x, "^REF\\*ABY"),
+    REFAZ = perl(x, "^REF\\*AZ"),
+    REFPOL = perl(x, "^REF\\*POL"),
+    REFTV = perl(x, "^REF\\*TV"),
+    REFZZ = perl(x, "^REF\\*ZZ"),
+    RMR = perl(x, "^RMR"),
+    TRN = perl(x, "^TRN"),
+    SE = perl(x, "^SE"),
+    GE = perl(x, "^GE"),
+    IEA = perl(x, "^IEA")
+  )
+}

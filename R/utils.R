@@ -312,11 +312,19 @@ parse_yymmdd <- function(x, ...) {
 
 #' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
 #' @examplesIf FALSE
-#' parse_date_range("20200202-20200402")
+#' parse_dtm_rd8("20200202-20200402")
 #' @noRd
-parse_date_range <- function(x) {
+parse_dtm_rd8 <- function(x) {
   x <- .subset2(strsplit(x, "-", fixed = TRUE), 1L)
-  ivs::iv_pairs(cheapr::c_(parse_date(x[1]), parse_date(x[2]) + 1L))
+  parse_date_range(x[1], x[2])
+}
+
+#' Parse Date Range
+#' @examplesIf FALSE
+#' parse_date_range("2020-02-02", "2020-04-02")
+#' @noRd
+parse_date_range <- function(start, end) {
+  ivs::iv(parse_date(start), parse_date(end) + 1L)
 }
 
 #' Calculate age from DOB

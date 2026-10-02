@@ -54,11 +54,7 @@ ENT_Loop := S7::new_class(
 #'    - "2" = pharmacy/state-only
 #' @param payment_description `<chr>` `REF*ZZ` Payment description (e.g., "Primary
 #'   Capitation Dual", "Medi-Cal Only-State Only")
-#' @param coverage_start `<Date>` `DTM*582` Coverage period begin date
-#'   (YYYY-MM-DD)
-#' @param coverage_end `<Date>` `DTM*582` Coverage period end date
-#'   (YYYY-MM-DD) from DTM*582
-#' @param coverage_period `<class_iv>` Coverage period start and end date
+#' @param coverage_period `<class_iv>` Coverage period start and end date (YYYY-MM-DD) from DTM*582
 #' @param adjustment_amount `<chr>` `ADX-01` Adjustment amount; If negative, it
 #'   is a recoupment
 #' @param adjustment_reason `<chr>` `ADX-02` Adjustment reason code ("53" =
@@ -75,9 +71,7 @@ ENT_Loop := S7::new_class(
 #'   aid_code = "17",
 #'   plan_type = "2",
 #'   payment_description = "Dual-State Only",
-#'   coverage_start = "2026-01-01",
-#'   coverage_end = "2026-01-31",
-#'   coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L))
+#'   coverage_period = c("2026-01-01", "2026-01-31")
 #' )
 #' @export
 RemittanceEntry := S7::new_class(
@@ -91,12 +85,7 @@ RemittanceEntry := S7::new_class(
     aid_code = S7::class_character,
     plan_type = S7::class_character,
     payment_description = S7::class_character,
-    coverage_start = prop_date,
-    coverage_end = prop_date,
-    coverage_period = S7::new_property(
-      class_iv,
-      default = quote(ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L)))
-    )
+    coverage_period = prop_date_range
   )
 )
 
@@ -128,9 +117,7 @@ RemittanceEntry := S7::new_class(
 #'       aid_code = "17",
 #'       plan_type = "2",
 #'       payment_description = "Dual-State Only",
-#'       coverage_start = "2026-01-01",
-#'       coverage_end = "2026-01-31",
-#'       coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+#'       coverage_period = c("2026-01-01", "2026-01-31"),
 #'       adjustment_amount = -8086.53,
 #'       adjustment_reason = "53"
 #'     ),
@@ -142,9 +129,7 @@ RemittanceEntry := S7::new_class(
 #'       aid_code = "17",
 #'       plan_type = "2",
 #'       payment_description = "Dual-State Only",
-#'       coverage_start = "2026-01-01",
-#'       coverage_end = "2026-01-31",
-#'       coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+#'       coverage_period = c("2026-01-01", "2026-01-31"),
 #'       adjustment_amount = -8086.53,
 #'       adjustment_reason = "53"
 #'     )
@@ -217,9 +202,7 @@ PaymentDetail := S7::new_class(
 #'           aid_code = "17",
 #'           plan_type = "2",
 #'           payment_description = "Dual-State Only",
-#'           coverage_start = "2026-01-01",
-#'           coverage_end = "2026-01-31",
-#'           coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L)),
+#'           coverage_period = c("2026-01-01", "2026-01-31"),
 #'           adjustment_amount = -8086.53,
 #'           adjustment_reason = "53"
 #'         )

@@ -70,26 +70,26 @@ subsplit2 <- function(x, i) {
 #' @noRd
 parse_218 <- function(x) {
   list(
-    header = subsplit(x@text, x@header),
-    details = subsplit(x@text, x@details),
-    entity = purrr::map(x@entity, \(index) {
-      purrr::map(index, \(i) subsplit(x@text, i))
+    header = subsplit(x@Text, x@Header),
+    details = subsplit(x@Text, x@Details),
+    entity = purrr::map(x@Entity, \(index) {
+      purrr::map(index, \(i) subsplit(x@Text, i))
     }),
-    trailer = subsplit(x@text, x@trailer)
+    trailer = subsplit(x@Text, x@Trailer)
   )
 }
 
 #' @noRd
 parse_820_ENT <- function(x) {
-  en <- .subset2(x@index, "ENT")
+  en <- .subset2(x@Index, "ENT")
   ix <- fill_(
     en,
-    c(.subset(en, -1L), .subset2(x@index, "SE")) - 1L,
+    c(.subset(en, -1L), .subset2(x@Index, "SE")) - 1L,
     as_list = TRUE
   )
 
   ent <- purrr::map(ix, \(i) {
-    x <- .subset(x@text, i) |>
+    x <- .subset(x@Text, i) |>
       strsplit("[*;]", perl = TRUE)
 
     # x[[1]] <- x[[1]][-1]

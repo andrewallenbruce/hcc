@@ -14,9 +14,7 @@ RemittanceEntry(
   aid_code = character(0),
   plan_type = character(0),
   payment_description = character(0),
-  coverage_start = Sys.Date(),
-  coverage_end = Sys.Date(),
-  coverage_period = ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L))
+  coverage_period = c(.Date(numeric(0L)), .Date(numeric(0L)))
 )
 }
 \arguments{
@@ -48,13 +46,7 @@ prior period)}
 \item{payment_description}{\verb{<chr>} \code{REF*ZZ} Payment description (e.g., "Primary
 Capitation Dual", "Medi-Cal Only-State Only")}
 
-\item{coverage_start}{\verb{<Date>} \code{DTM*582} Coverage period begin date
-(YYYY-MM-DD)}
-
-\item{coverage_end}{\verb{<Date>} \code{DTM*582} Coverage period end date
-(YYYY-MM-DD) from DTM*582}
-
-\item{coverage_period}{\verb{<class_iv>} Coverage period start and end date}
+\item{coverage_period}{\verb{<class_iv>} Coverage period start and end date (YYYY-MM-DD) from DTM*582}
 }
 \value{
 A \verb{<RemittanceEntry>} S7 object
@@ -77,8 +69,6 @@ RemittanceEntry(
   aid_code = "17",
   plan_type = "2",
   payment_description = "Dual-State Only",
-  coverage_start = "2026-01-01",
-  coverage_end = "2026-01-31",
-  coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L))
+  coverage_period = c("2026-01-01", "2026-01-31")
 )
 }

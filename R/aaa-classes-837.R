@@ -46,7 +46,7 @@
 #' @export
 ServiceLevelData := S7::new_class(
   properties = list(
-    service_date = S7::class_Date,
+    service_date = prop_date,
     claim_id = S7::class_character,
     patient_id = S7::class_character,
     claim_type = S7::class_character,
@@ -88,7 +88,8 @@ ServiceLevelData := S7::new_class(
 #' @param service_data list of `<ServiceLevelData>` objects, Processed service records
 #' @returns A `<RAFResult>` S7 object
 #' @examples
-#' RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
+#' RAFResult(service_data
+#'  = list(ServiceLevelData(), ServiceLevelData()))
 #' @export
 RAFResult := S7::new_class(
   properties = list(

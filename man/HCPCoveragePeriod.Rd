@@ -5,8 +5,8 @@
 \title{Health Care Plan Coverage Period}
 \usage{
 HCPCoveragePeriod(
-  start_date = .Date(numeric()),
-  end_date = .Date(numeric()),
+  start_date = .Date(numeric(0L)),
+  end_date = .Date(numeric(0L)),
   hcp_code = character(0),
   hcp_status = character(0),
   aid_codes = character(0)

@@ -4,9 +4,19 @@ class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
 #' @noRd
 prop_date <- S7::new_property(
   S7::class_Date,
-  default = quote(Sys.Date()),
+  default = quote(.Date(numeric(0L))),
   setter = function(self, name, value) {
     S7::prop(self, name) <- parse_date(value)
+    self
+  }
+)
+
+#' @noRd
+prop_date_range <- S7::new_property(
+  class_iv,
+  default = quote(c(.Date(numeric(0L)), .Date(numeric(0L)))),
+  setter = function(self, name, value) {
+    S7::prop(self, name) <- parse_date_range(value[1], value[2])
     self
   }
 )
@@ -55,8 +65,8 @@ prop_list_of <- function(class, names = c("any", "all", "none")) {
 #' @noRd
 TextEDI := S7::new_class(
   properties = list(
-    type = S7::class_character,
-    text = S7::class_character
+    Type = S7::class_character,
+    Text = S7::class_character
   )
 )
 
@@ -73,21 +83,19 @@ Text837 := S7::new_class(TextEDI)
 IndexEDI := S7::new_class(
   parent = TextEDI,
   properties = list(
-    problems = prop_integer,
-    index = S7::class_list
+    Problems = prop_integer,
+    Index = S7::class_list
   )
 )
 
 #' @noRd
 Index820 := S7::new_class(
-  # parent = TextEDI,
+  parent = TextEDI,
   properties = list(
-    type = S7::class_character,
-    text = S7::class_character,
-    problems = prop_integer,
-    header = prop_integer,
-    details = prop_integer,
-    entity = S7::class_list,
-    trailer = prop_integer
+    Problems = prop_integer,
+    Header = prop_integer,
+    Details = prop_integer,
+    Entity = S7::class_list,
+    Trailer = prop_integer
   )
 )
