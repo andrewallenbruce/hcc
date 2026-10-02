@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9068 (2026-10-02)
+
+- 820 indexer/parser now groups ENT/RMR blocks together
+
 ## hcc 0.0.0.9067 (2026-09-30)
 
 - removed the offending line of code (closes
