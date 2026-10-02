@@ -10,13 +10,12 @@ i820_218 <- function(x) {
   ST <- perl(x, "^ST")
   SE <- perl(x, "^SE")
   ENT <- perl(x, "^ENT")
-  # RMR <- perl(x, "^RMR")
+  eindex <- create_entity_index(ENT, SE)
 
   rlang::list2(
     header = fill_(perl(x, "^ISA"), ST),
     details = fill_(ST + 1L, ENT[1L] - 1L),
-    entity = create_entity_index(ENT, SE),
-    # rmr_breaks = RMR,
+    entity = purrr::map(eindex, \(x) list(x[1:2], c(x[3:length(x)]))),
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }

@@ -25,7 +25,7 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:10]), hcc:::parse_218) |>
+#' purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:7]), hcc:::parse_218) |>
 #' str(list.len = 10L)
 #' @export
 parse_820 <- function(x) {
@@ -57,11 +57,24 @@ subsplit <- function(x, i) {
 }
 
 #' @noRd
+subsplit2 <- function(x, i) {
+  stringfish::sf_split(
+    .subset(x, i),
+    "*",
+    fixed = TRUE,
+    nthreads = 4L
+  ) |>
+    purrr::map(\(x) set_zchar(trimws(x)))
+}
+
+#' @noRd
 parse_218 <- function(x) {
   list(
     header = subsplit(x@text, x@header),
     details = subsplit(x@text, x@details),
-    entity = purrr::map(x@entity, \(index) subsplit(x@text, index)),
+    entity = purrr::map(x@entity, \(index) {
+      purrr::map(index, \(i) subsplit(x@text, i))
+    }),
     trailer = subsplit(x@text, x@trailer)
   )
 }

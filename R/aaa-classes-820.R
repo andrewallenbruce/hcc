@@ -1,21 +1,35 @@
+#' @export
+Document820 := S7::new_class(
+  properties = list(
+    ISA = S7::class_list,
+    GS = S7::class_list,
+    ST = S7::class_list,
+    Details = S7::class_list,
+    Entity = S7::class_list,
+    SE = S7::class_list,
+    GE = S7::class_list,
+    IEA = S7::class_list
+  )
+)
+
 #' 2300B Individual Premium Remittance Detail Loop
 #' @noRd
-L2300B := S7::new_class(
+RMR_Loop := S7::new_class(
   properties = list(
-    RMR = S7::class_character,
+    RMR = S7::class_list,
     REF = S7::class_list,
-    DTM = S7::class_character,
-    ADX = S7::class_character
+    DTM = S7::class_list,
+    ADX = S7::class_list
   )
 )
 
 #' 2000B Individual Remittance Loop
 #' @noRd
-L2000B := S7::new_class(
+ENT_Loop := S7::new_class(
   properties = list(
-    ENT = S7::class_character,
-    NM1 = S7::class_character,
-    L2300B = L2300B
+    ENT = S7::class_list,
+    NM1 = S7::class_list,
+    RMR_Loop = S7::class_list
   )
 )
 
