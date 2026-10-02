@@ -49,13 +49,24 @@ appear in multiple ENT entries within the same transaction
 (e.g., retroactive adjustments for prior periods).</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PaymentDetail</span><span class="op">(</span></span>
+<span>  entity_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  member_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  last_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  first_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  middle_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  remittances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+    </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
 <dl><dt id="arg-entity-number">entity_number<a class="anchor" aria-label="anchor" href="#arg-entity-number"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>ENT-01</code> ENT sequence number</p></dd>
+<dd><p><code>&lt;int&gt;</code> <code>ENT-01</code> ENT sequence number</p></dd>
 
 
 <dt id="arg-member-id">member_id<a class="anchor" aria-label="anchor" href="#arg-member-id"></a></dt>
@@ -75,8 +86,7 @@ appear in multiple ENT entries within the same transaction
 
 
 <dt id="arg-remittances">remittances<a class="anchor" aria-label="anchor" href="#arg-remittances"></a></dt>
-<dd><p>List of <code>&lt;RemittanceEntry&gt;</code> line items (one per
-RMR/DTM set)</p></dd>
+<dd><p>list of <code>&lt;RemittanceEntry&gt;</code> objects, line items (one per RMR/DTM set)</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -123,7 +133,7 @@ RMR/DTM set)</p></dd>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ entity_number: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ entity_number: int 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ member_id    : chr "TESTMBR000000001"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ last_name    : chr "LASTNAME01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ first_name   : chr "FIRSTNAME01"</span>

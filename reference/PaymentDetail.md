@@ -4,11 +4,24 @@ One PaymentDetail is created per ENT segment. A member may appear in
 multiple ENT entries within the same transaction (e.g., retroactive
 adjustments for prior periods).
 
+## Usage
+
+``` r
+PaymentDetail(
+  entity_number = integer(0),
+  member_id = character(0),
+  last_name = character(0),
+  first_name = character(0),
+  middle_name = character(0),
+  remittances = list()
+)
+```
+
 ## Arguments
 
 - entity_number:
 
-  `<chr>` `ENT-01` ENT sequence number
+  `<int>` `ENT-01` ENT sequence number
 
 - member_id:
 
@@ -28,7 +41,7 @@ adjustments for prior periods).
 
 - remittances:
 
-  List of `<RemittanceEntry>` line items (one per RMR/DTM set)
+  list of `<RemittanceEntry>` objects, line items (one per RMR/DTM set)
 
 ## Value
 
@@ -74,7 +87,7 @@ PaymentDetail(
   )
 )
 #> <hcc::PaymentDetail>
-#>  @ entity_number: chr "1"
+#>  @ entity_number: int 1
 #>  @ member_id    : chr "TESTMBR000000001"
 #>  @ last_name    : chr "LASTNAME01"
 #>  @ first_name   : chr "FIRSTNAME01"

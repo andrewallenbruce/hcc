@@ -1,18 +1,6 @@
 # Create an EDI Index Object
 
-- `ANY`
-
-- `character`
-
-- `hcc::IndexEDI`
-
-- `hcc::Text820`
-
-- `hcc::Text834`
-
-- `hcc::Text837`
-
-- `list`
+Create an EDI Index Object
 
 ## Usage
 
@@ -33,6 +21,24 @@ edi_index(x, ...)
 ## Value
 
 an `<hcc::IndexEDI>` S7 object
+
+## Details
+
+Methods for `edi_index`:
+
+- `ANY`
+
+- `character`
+
+- `hcc::IndexEDI`
+
+- `hcc::Text820`
+
+- `hcc::Text834`
+
+- `hcc::Text837`
+
+- `list`
 
 ## Examples
 

@@ -1,11 +1,6 @@
 # Create Interactions
 
-- `hcc::PatientDemographics,MISSING`
-
-- `hcc::PatientDemographics,hcc::DiagnosticCategories`
-
-Creates interaction variables that are model-agnostic. The coefficient
-look-up will match only the relevant coefficients for each model.
+Create Interactions
 
 ## Usage
 
@@ -30,6 +25,17 @@ interactions(x, y, ...)
 ## Value
 
 a character vector of interactions
+
+## Details
+
+Methods for `interactions`:
+
+- `hcc::PatientDemographics,MISSING`
+
+- `hcc::PatientDemographics,hcc::DiagnosticCategories`
+
+Creates interaction variables that are model-agnostic. The coefficient
+look-up will match only the relevant coefficients for each model.
 
 ## Examples
 

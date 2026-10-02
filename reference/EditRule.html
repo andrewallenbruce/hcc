@@ -45,7 +45,15 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">AgeEdit</span><span class="op">(</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">EditRule</span><span class="op">(</span></span>
+<span>  icd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  override <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">AgeEdit</span><span class="op">(</span></span>
 <span>  icd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  override <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
@@ -70,7 +78,7 @@
 
 
 <dl><dt id="arg-icd">icd<a class="anchor" aria-label="anchor" href="#arg-icd"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> "sex" or "age"</p></dd>
+<dd><p><code>&lt;chr&gt;</code> ICD-10-CM diagnosis code</p></dd>
 
 
 <dt id="arg-action">action<a class="anchor" aria-label="anchor" href="#arg-action"></a></dt>
@@ -82,23 +90,23 @@
 
 
 <dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
-<dd><p>description</p></dd>
+<dd><p><code>&lt;chr&gt;</code> Model Name</p></dd>
 
 
 <dt id="arg-description">description<a class="anchor" aria-label="anchor" href="#arg-description"></a></dt>
-<dd><p>description</p></dd>
+<dd><p><code>&lt;chr&gt;</code> description of Edit Rule</p></dd>
 
 
 <dt id="arg-age">age<a class="anchor" aria-label="anchor" href="#arg-age"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For age edits: minimum age (inclusive)</p></dd>
+<dd><p><code>&lt;int&gt;</code> <code>&lt;AgeEdit&gt;</code>: patient age</p></dd>
 
 
 <dt id="arg-boundary">boundary<a class="anchor" aria-label="anchor" href="#arg-boundary"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For age edits: maximum age (inclusive)</p></dd>
+<dd><p><code>&lt;int&gt;</code> <code>&lt;AgeEdit&gt;</code>: maximum or minimum age</p></dd>
 
 
 <dt id="arg-sex">sex<a class="anchor" aria-label="anchor" href="#arg-sex"></a></dt>
-<dd><p><code>&lt;int&gt;</code> For sex edits: 1 (male) or 2 (female)</p></dd>
+<dd><p><code>&lt;int&gt;</code> <code>&lt;SexEdit&gt;</code>: 1 (male) or 2 (female)</p></dd>
 
 </dl></div>
     <div class="section level2">

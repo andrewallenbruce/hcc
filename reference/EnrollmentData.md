@@ -3,6 +3,75 @@
 Data needed for risk adjustment and Medicaid coverage tracking. Supports
 California DHCS Medi-Cal 834 format with FAME fields.
 
+## Usage
+
+``` r
+EnrollmentData(
+  source = character(),
+  report_date = character(),
+  member_id = character(),
+  mbi = character(),
+  medicaid_id = character(),
+  hic = character(),
+  cin = character(),
+  cin_check_digit = integer(),
+  first_name = character(),
+  last_name = character(),
+  middle_name = character(),
+  dob = character(),
+  age = integer(),
+  sex = character(),
+  race = character(),
+  language = character(),
+  death_date = character(),
+  address_1 = character(),
+  address_2 = character(),
+  city = character(),
+  state = character(),
+  zip = character(),
+  phone = character(),
+  maintenance_type = character(),
+  maintenance_reason_code = character(),
+  benefit_status_code = character(),
+  coverage_start = character(),
+  coverage_end = character(),
+  has_medicare = logical(),
+  has_medicaid = logical(),
+  dual_elgbl_cd = character(),
+  is_full_benefit_dual = logical(),
+  is_partial_benefit_dual = logical(),
+  medicare_status_code = character(),
+  medi_cal_aid_code = character(),
+  medi_cal_eligibility_status = character(),
+  fame_county_id = character(),
+  case_number = character(),
+  fame_card_issue_date = character(),
+  fame_redetermination_date = character(),
+  fame_death_date = character(),
+  primary_aid_code = character(),
+  carrier_code = character(),
+  fed_contract_number = character(),
+  client_reporting_cat = character(),
+  res_addr_flag = character(),
+  reas_add_ind = character(),
+  res_zip_deliv_code = character(),
+  orec = character(),
+  crec = character(),
+  snp = logical(),
+  low_income = logical(),
+  lti = logical(),
+  new_enrollee = logical(),
+  medicare_prt_a = logical(),
+  medicare_prt_b = logical(),
+  medicare_prt_d = logical(),
+  hcp_code = character(),
+  hcp_status = character(),
+  amount_qualifier = character(),
+  amount = double(),
+  hcp_history = HCPCoveragePeriod()
+)
+```
+
 ## Arguments
 
 - source:
@@ -268,7 +337,196 @@ A `<EnrollmentData>` S7 object
 ## Examples
 
 ``` r
-if (FALSE) {
 EnrollmentData()
-}
+#> $source
+#> character(0)
+#> 
+#> $report_date
+#> character(0)
+#> 
+#> $member_id
+#> character(0)
+#> 
+#> $mbi
+#> character(0)
+#> 
+#> $medicaid_id
+#> character(0)
+#> 
+#> $hic
+#> character(0)
+#> 
+#> $cin
+#> character(0)
+#> 
+#> $cin_check_digit
+#> integer(0)
+#> 
+#> $first_name
+#> character(0)
+#> 
+#> $last_name
+#> character(0)
+#> 
+#> $middle_name
+#> character(0)
+#> 
+#> $dob
+#> character(0)
+#> 
+#> $age
+#> integer(0)
+#> 
+#> $sex
+#> character(0)
+#> 
+#> $race
+#> character(0)
+#> 
+#> $language
+#> character(0)
+#> 
+#> $death_date
+#> character(0)
+#> 
+#> $address_1
+#> character(0)
+#> 
+#> $address_2
+#> character(0)
+#> 
+#> $city
+#> character(0)
+#> 
+#> $state
+#> character(0)
+#> 
+#> $zip
+#> character(0)
+#> 
+#> $phone
+#> character(0)
+#> 
+#> $maintenance_type
+#> character(0)
+#> 
+#> $maintenance_reason_code
+#> character(0)
+#> 
+#> $benefit_status_code
+#> character(0)
+#> 
+#> $coverage_start
+#> character(0)
+#> 
+#> $coverage_end
+#> character(0)
+#> 
+#> $has_medicare
+#> logical(0)
+#> 
+#> $has_medicaid
+#> logical(0)
+#> 
+#> $dual_elgbl_cd
+#> character(0)
+#> 
+#> $is_full_benefit_dual
+#> logical(0)
+#> 
+#> $is_partial_benefit_dual
+#> logical(0)
+#> 
+#> $medicare_status_code
+#> character(0)
+#> 
+#> $medi_cal_aid_code
+#> character(0)
+#> 
+#> $medi_cal_eligibility_status
+#> character(0)
+#> 
+#> $fame_county_id
+#> character(0)
+#> 
+#> $case_number
+#> character(0)
+#> 
+#> $fame_card_issue_date
+#> character(0)
+#> 
+#> $fame_redetermination_date
+#> character(0)
+#> 
+#> $fame_death_date
+#> character(0)
+#> 
+#> $primary_aid_code
+#> character(0)
+#> 
+#> $carrier_code
+#> character(0)
+#> 
+#> $fed_contract_number
+#> character(0)
+#> 
+#> $client_reporting_cat
+#> character(0)
+#> 
+#> $res_addr_flag
+#> character(0)
+#> 
+#> $reas_add_ind
+#> character(0)
+#> 
+#> $res_zip_deliv_code
+#> character(0)
+#> 
+#> $orec
+#> character(0)
+#> 
+#> $crec
+#> character(0)
+#> 
+#> $snp
+#> logical(0)
+#> 
+#> $low_income
+#> logical(0)
+#> 
+#> $lti
+#> logical(0)
+#> 
+#> $new_enrollee
+#> logical(0)
+#> 
+#> $medicare_prt_a
+#> logical(0)
+#> 
+#> $medicare_prt_b
+#> logical(0)
+#> 
+#> $medicare_prt_d
+#> logical(0)
+#> 
+#> $hcp_code
+#> character(0)
+#> 
+#> $hcp_status
+#> character(0)
+#> 
+#> $amount_qualifier
+#> character(0)
+#> 
+#> $amount
+#> numeric(0)
+#> 
+#> $hcp_history
+#> <hcc::HCPCoveragePeriod>
+#>  @ start_date: 'Date' num(0) 
+#>  @ end_date  : 'Date' num(0) 
+#>  @ hcp_code  : chr(0) 
+#>  @ hcp_status: chr(0) 
+#>  @ aid_codes : chr(0) 
+#> 
 ```

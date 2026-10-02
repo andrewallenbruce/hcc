@@ -5,6 +5,14 @@ Single Edit Rule
 ## Usage
 
 ``` r
+EditRule(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0)
+)
+
 AgeEdit(
   icd = character(0),
   action = character(0),
@@ -29,7 +37,7 @@ SexEdit(
 
 - icd:
 
-  `<chr>` "sex" or "age"
+  `<chr>` ICD-10-CM diagnosis code
 
 - action:
 
@@ -41,23 +49,23 @@ SexEdit(
 
 - model:
 
-  description
+  `<chr>` Model Name
 
 - description:
 
-  description
+  `<chr>` description of Edit Rule
 
 - age:
 
-  `<int>` For age edits: minimum age (inclusive)
+  `<int>` `<AgeEdit>`: patient age
 
 - boundary:
 
-  `<int>` For age edits: maximum age (inclusive)
+  `<int>` `<AgeEdit>`: maximum or minimum age
 
 - sex:
 
-  `<int>` For sex edits: 1 (male) or 2 (female)
+  `<int>` `<SexEdit>`: 1 (male) or 2 (female)
 
 ## Value
 

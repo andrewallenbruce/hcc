@@ -49,6 +49,27 @@ payment remittance from a state Medicaid agency or CMS to
 a managed care plan.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">PaymentData</span><span class="op">(</span></span>
+<span>  source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  report_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  payment_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  total_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  check_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payee_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payee_address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payee_city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payee_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payee_zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payer_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payer_address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payer_city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payer_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payer_zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  payment_details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+    </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
@@ -115,7 +136,7 @@ a managed care plan.</p>
 
 
 <dt id="arg-payment-details">payment_details<a class="anchor" aria-label="anchor" href="#arg-payment-details"></a></dt>
-<dd><p><code>&lt;PaymentDetail&gt;</code> List of per-member payment records</p></dd>
+<dd><p>list of <code>&lt;PaymentDetail&gt;</code> objects, per-member payment records</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -184,7 +205,7 @@ a managed care plan.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_zip      : chr "00000"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_details:List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number: chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number: int 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member_id    : chr "TESTMBR000000001"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ last_name    : chr "LASTNAME01"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ first_name   : chr "FIRSTNAME01"</span>

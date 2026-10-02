@@ -3,6 +3,29 @@
 Represents one ST\*820 transaction, typically a capitation payment
 remittance from a state Medicaid agency or CMS to a managed care plan.
 
+## Usage
+
+``` r
+PaymentData(
+  source = character(0),
+  report_date = Sys.Date(),
+  payment_date = Sys.Date(),
+  total_amount = numeric(0),
+  check_number = character(0),
+  payee_name = character(0),
+  payee_address = character(0),
+  payee_city = character(0),
+  payee_state = character(0),
+  payee_zip = character(0),
+  payer_name = character(0),
+  payer_address = character(0),
+  payer_city = character(0),
+  payer_state = character(0),
+  payer_zip = character(0),
+  payment_details = list()
+)
+```
+
 ## Arguments
 
 - source:
@@ -67,7 +90,7 @@ remittance from a state Medicaid agency or CMS to a managed care plan.
 
 - payment_details:
 
-  `<PaymentDetail>` List of per-member payment records
+  list of `<PaymentDetail>` objects, per-member payment records
 
 ## Value
 
@@ -135,7 +158,7 @@ PaymentData(
 #>  @ payer_zip      : chr "00000"
 #>  @ payment_details:List of 1
 #>  .. $ : <hcc::PaymentDetail>
-#>  ..  ..@ entity_number: chr "1"
+#>  ..  ..@ entity_number: int 1
 #>  ..  ..@ member_id    : chr "TESTMBR000000001"
 #>  ..  ..@ last_name    : chr "LASTNAME01"
 #>  ..  ..@ first_name   : chr "FIRSTNAME01"

@@ -22,6 +22,12 @@ get_prefix(x, ...)
 
 String prefix used to look up coefficients for beneficiary type
 
+## Details
+
+Methods for `get_prefix`:
+
+- [`hcc::PatientDemographics`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
+
 ## Examples
 
 ``` r
