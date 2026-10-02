@@ -64,7 +64,6 @@ ENT_Loop := S7::new_class(
 #' @param adjustment_reason `<chr>` `ADX-02` Adjustment reason code ("53" =
 #'   prior period)
 #' @returns A `<RemittanceEntry>` S7 object
-#' @usage NULL
 #' @examples
 #' RemittanceEntry(
 #'   reference_number = "TESTPLAN-SREGLR-2602200043000P",
@@ -80,7 +79,6 @@ ENT_Loop := S7::new_class(
 #'   coverage_end = "2026-01-31",
 #'   coverage_period = ivs::iv_pairs(c(as.Date("2026-01-01"), as.Date("2026-01-31") + 1L))
 #' )
-#' @name RemittanceEntry
 #' @export
 RemittanceEntry := S7::new_class(
   properties = list(
@@ -108,15 +106,13 @@ RemittanceEntry := S7::new_class(
 #' appear in multiple ENT entries within the same transaction
 #' (e.g., retroactive adjustments for prior periods).
 #'
-#' @param entity_number `<chr>` `ENT-01` ENT sequence number
+#' @param entity_number `<int>` `ENT-01` ENT sequence number
 #' @param member_id `<chr>` `NM1-09` Member identifier
 #' @param last_name `<chr>` `NM1-03` Member last name
 #' @param first_name `<chr>` `NM1-04` Member first name
 #' @param middle_name `<chr>` `NM1-05` Member middle name
-#' @param remittances List of `<RemittanceEntry>` line items (one per
-#'   RMR/DTM set)
+#' @param remittances list of `<RemittanceEntry>` objects, line items (one per RMR/DTM set)
 #' @returns A `<PaymentDetail>` S7 object
-#' @usage NULL
 #' @examples
 #' PaymentDetail(
 #'   entity_number = "1",
@@ -154,16 +150,15 @@ RemittanceEntry := S7::new_class(
 #'     )
 #'   )
 #' )
-#' @name PaymentDetail
 #' @export
 PaymentDetail := S7::new_class(
   properties = list(
-    entity_number = S7::class_character,
+    entity_number = prop_integer,
     member_id = S7::class_character,
     last_name = S7::class_character,
     first_name = S7::class_character,
     middle_name = S7::class_character,
-    remittances = S7::class_list
+    remittances = prop_list_of(RemittanceEntry)
   )
 )
 
@@ -188,9 +183,8 @@ PaymentDetail := S7::new_class(
 #' @param payer_city `<chr>` `N4` Payer city
 #' @param payer_state `<chr>` `N4` Payer state
 #' @param payer_zip `<chr>` `N4` Payer ZIP code
-#' @param payment_details `<PaymentDetail>` List of per-member payment records
+#' @param payment_details list of `<PaymentDetail>` objects, per-member payment records
 #' @returns A `<PaymentData>` S7 object
-#' @usage NULL
 #' @examples
 #' PaymentData(
 #'   source = "TEST-PAYER",
@@ -233,7 +227,6 @@ PaymentDetail := S7::new_class(
 #'     )
 #'   )
 #' )
-#' @name PaymentData
 #' @export
 PaymentData := S7::new_class(
   properties = list(
@@ -252,6 +245,6 @@ PaymentData := S7::new_class(
     payer_city = S7::class_character,
     payer_state = S7::class_character,
     payer_zip = S7::class_character,
-    payment_details = S7::class_list
+    payment_details = prop_list_of(PaymentDetail)
   )
 )

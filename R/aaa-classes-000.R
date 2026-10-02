@@ -21,6 +21,38 @@ prop_integer <- S7::new_property(
 )
 
 #' @noRd
+prop_list_of <- function(class, names = c("any", "all", "none")) {
+  force(class)
+  names <- rlang::arg_match(names)
+
+  S7::new_property(
+    class = S7::class_list,
+    validator = function(value) {
+      for (i in seq_along(value)) {
+        val <- value[[i]]
+        if (!S7::S7_inherits(val, class)) {
+          return(paste0(
+            "must be a list of <",
+            class@name,
+            ">s. ",
+            "Element ",
+            i,
+            " is ",
+            obj_type_friendly(val),
+            "."
+          ))
+        }
+      }
+      if (names == "all" && any(rlang::names2(value) == "")) {
+        "must be a named list."
+      } else if (names == "none" && any(rlang::names2(value) != "")) {
+        "must be an unnamed list."
+      }
+    }
+  )
+}
+
+#' @noRd
 TextEDI := S7::new_class(
   properties = list(
     type = S7::class_character,

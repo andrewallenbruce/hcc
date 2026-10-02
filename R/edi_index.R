@@ -1,6 +1,7 @@
 #' Create an EDI Index Object
 #'
-#' @description
+#' @details
+#' Methods for `edi_index`:
 #' `r doclisting::methods_list("edi_index")`
 #'
 #'

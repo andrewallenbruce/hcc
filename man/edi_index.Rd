@@ -15,6 +15,10 @@ edi_index(x, ...)
 an \verb{<hcc::IndexEDI>} S7 object
 }
 \description{
+Create an EDI Index Object
+}
+\details{
+Methods for \code{edi_index}:
 \itemize{
 \item \code{ANY}
 \item \code{character}

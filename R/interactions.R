@@ -1,6 +1,7 @@
 #' Create Interactions
 #'
-#' @description
+#' @details
+#' Methods for `interactions`:
 #' `r doclisting::methods_list("interactions")`
 #'
 #' Creates interaction variables that are model-agnostic. The coefficient

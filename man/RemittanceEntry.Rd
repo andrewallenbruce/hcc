@@ -3,6 +3,22 @@
 \name{RemittanceEntry}
 \alias{RemittanceEntry}
 \title{Remittance Line Item}
+\usage{
+RemittanceEntry(
+  reference_number = character(0),
+  original_amount = numeric(0),
+  adjustment_amount = numeric(0),
+  payment_amount = numeric(0),
+  adjustment_reason = character(0),
+  rate_code = character(0),
+  aid_code = character(0),
+  plan_type = character(0),
+  payment_description = character(0),
+  coverage_start = Sys.Date(),
+  coverage_end = Sys.Date(),
+  coverage_period = ivs::iv_pairs(c(Sys.Date(), Sys.Date() + 1L))
+)
+}
 \arguments{
 \item{reference_number}{\verb{<chr>} \code{RMR-02} Invoice/check reference number}
 

@@ -22,7 +22,6 @@
 #' @param modifiers `<chr>` List of procedure code modifiers
 #' @param allowed_amount `<num>` Allowed amount for the service
 #' @returns A `<ServiceLevelData>` S7 object
-#' @usage NULL
 #' @examples
 #' ServiceLevelData(
 #'   claim_id = "756048Q",
@@ -44,11 +43,10 @@
 #'   modifiers = c("F1", "QQ"),
 #'   allowed_amount = 89.93
 #' )
-#' @name ServiceLevelData
 #' @export
 ServiceLevelData := S7::new_class(
   properties = list(
-    service_date = prop_date,
+    service_date = S7::class_Date,
     claim_id = S7::class_character,
     patient_id = S7::class_character,
     claim_type = S7::class_character,
@@ -69,7 +67,7 @@ ServiceLevelData := S7::new_class(
   )
 )
 
-#' Risk Adjustment Factor score results
+#' Risk Adjustment Factor Results
 #'
 #' @param risk_score `<dbl>` Final RAF score
 #' @param risk_score_demographics `<dbl>` Demographics-only risk score
@@ -87,13 +85,10 @@ ServiceLevelData := S7::new_class(
 #' @param model_name `<chr>` HCC model used for calculation
 #' @param version `<chr>` Library version
 #' @param diagnosis_codes `<chr>` Input diagnosis codes
-#' @param service_level_data `<ServiceLevelData>` S7 object; Processed service
-#'   records
+#' @param service_data list of `<ServiceLevelData>` objects, Processed service records
 #' @returns A `<RAFResult>` S7 object
-#' @usage NULL
 #' @examples
 #' RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))
-#' @name RAFResult
 #' @export
 RAFResult := S7::new_class(
   properties = list(
@@ -111,6 +106,6 @@ RAFResult := S7::new_class(
     model_name = S7::class_character,
     version = S7::class_character,
     diagnosis_codes = S7::class_character,
-    service_level_data = S7::class_list
+    service_data = prop_list_of(ServiceLevelData)
   )
 )

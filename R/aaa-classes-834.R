@@ -1,6 +1,7 @@
-#' Health Care Plan coverage period from HD loop
+#' Health Care Plan Coverage Period
 #'
-#' Single HD loop (HCP coverage period)
+#' @description
+#' Health Care Plan coverage period from HD loop
 #'
 #' @param start_date `<Date>` coverage start date
 #' @param end_date `<Date>` coverage start date
@@ -8,20 +9,21 @@
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
 #' @returns An `<HCPCoveragePeriod>` S7 object
-#' @usage NULL
 #' @examples
 #' HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
-#' @name HCPCoveragePeriod
 #' @export
 HCPCoveragePeriod := S7::new_class(
   properties = list(
-    start_date = prop_date,
-    end_date = prop_date,
+    start_date = S7::class_Date,
+    end_date = S7::class_Date,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character
   ),
   validator = function(self) {
+    if (rlang::is_empty(self@start_date) && rlang::is_empty(self@end_date)) {
+      return()
+    }
     if (self@start_date >= self@end_date) {
       return("@start_date must occur before @end_date")
     }
@@ -103,8 +105,7 @@ HCPCoveragePeriod := S7::new_class(
 #' @param hcp_history `<HCPCoveragePeriod>` List of historical HCP coverage
 #'   periods
 #' @returns A `<EnrollmentData>` S7 object
-#' @usage NULL
-#' @examplesIf FALSE
+#' @examples
 #' EnrollmentData()
 #' @export
 EnrollmentData <- function(

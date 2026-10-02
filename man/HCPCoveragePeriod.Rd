@@ -2,7 +2,16 @@
 % Please edit documentation in R/aaa-classes-834.R
 \name{HCPCoveragePeriod}
 \alias{HCPCoveragePeriod}
-\title{Health Care Plan coverage period from HD loop}
+\title{Health Care Plan Coverage Period}
+\usage{
+HCPCoveragePeriod(
+  start_date = .Date(numeric()),
+  end_date = .Date(numeric()),
+  hcp_code = character(0),
+  hcp_status = character(0),
+  aid_codes = character(0)
+)
+}
 \arguments{
 \item{start_date}{\verb{<Date>} coverage start date}
 
@@ -18,7 +27,7 @@
 An \verb{<HCPCoveragePeriod>} S7 object
 }
 \description{
-Single HD loop (HCP coverage period)
+Health Care Plan coverage period from HD loop
 }
 \examples{
 HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")

@@ -21,16 +21,15 @@ apply_edits <- function(cc_to_dx, age = 49, sex = "F", model = "C28", edits) {
 
 #' Single Edit Rule
 #'
-#' @param icd `<chr>` "sex" or "age"
+#' @param icd `<chr>` ICD-10-CM diagnosis code
 #' @param action `<chr>` "invalid" or "override"
 #' @param override `<int>` CC to assign when `action = "override"`
-#' @param model description
-#' @param description description
-#' @param sex `<int>` For sex edits: 1 (male) or 2 (female)
-#' @param age `<int>` For age edits: minimum age (inclusive)
-#' @param boundary `<int>` For age edits: maximum age (inclusive)
+#' @param model `<chr>` Model Name
+#' @param description `<chr>` description of Edit Rule
+#' @param sex `<int>` `<SexEdit>`: 1 (male) or 2 (female)
+#' @param age `<int>` `<AgeEdit>`: patient age
+#' @param boundary `<int>` `<AgeEdit>`: maximum or minimum age
 #' @returns An `<EditRule>` S7 object
-#' @usage NULL
 #' @examples
 #' SexEdit(
 #'   icd = c("D66", "D67"),
@@ -57,7 +56,7 @@ EditRule := S7::new_class(
   properties = list(
     icd = S7::class_character,
     action = S7::class_character,
-    override = S7::class_integer,
+    override = prop_integer,
     model = S7::class_character,
     description = S7::class_character
   )
@@ -69,7 +68,7 @@ EditRule := S7::new_class(
 AgeEdit := S7::new_class(
   parent = EditRule,
   properties = list(
-    age = S7::class_integer,
+    age = prop_integer,
     boundary = S7::class_character
   )
 )
@@ -79,5 +78,5 @@ AgeEdit := S7::new_class(
 #' @export
 SexEdit := S7::new_class(
   parent = EditRule,
-  properties = list(sex = S7::class_integer)
+  properties = list(sex = prop_integer)
 )

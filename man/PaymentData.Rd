@@ -3,6 +3,26 @@
 \name{PaymentData}
 \alias{PaymentData}
 \title{X12-820 Transaction Remittance Data}
+\usage{
+PaymentData(
+  source = character(0),
+  report_date = Sys.Date(),
+  payment_date = Sys.Date(),
+  total_amount = numeric(0),
+  check_number = character(0),
+  payee_name = character(0),
+  payee_address = character(0),
+  payee_city = character(0),
+  payee_state = character(0),
+  payee_zip = character(0),
+  payer_name = character(0),
+  payer_address = character(0),
+  payer_city = character(0),
+  payer_state = character(0),
+  payer_zip = character(0),
+  payment_details = list()
+)
+}
 \arguments{
 \item{source}{\verb{<chr>} \code{ISA-06} Interchange sender ID, e.g., "CALIFORNIA-DHCS"}
 
@@ -34,7 +54,7 @@
 
 \item{payer_zip}{\verb{<chr>} \code{N4} Payer ZIP code}
 
-\item{payment_details}{\verb{<PaymentDetail>} List of per-member payment records}
+\item{payment_details}{list of \verb{<PaymentDetail>} objects, per-member payment records}
 }
 \value{
 A \verb{<PaymentData>} S7 object

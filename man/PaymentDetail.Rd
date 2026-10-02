@@ -3,8 +3,18 @@
 \name{PaymentDetail}
 \alias{PaymentDetail}
 \title{Per-Member Payment Record from an X12-820 ENT Loop}
+\usage{
+PaymentDetail(
+  entity_number = integer(0),
+  member_id = character(0),
+  last_name = character(0),
+  first_name = character(0),
+  middle_name = character(0),
+  remittances = list()
+)
+}
 \arguments{
-\item{entity_number}{\verb{<chr>} \code{ENT-01} ENT sequence number}
+\item{entity_number}{\verb{<int>} \code{ENT-01} ENT sequence number}
 
 \item{member_id}{\verb{<chr>} \code{NM1-09} Member identifier}
 
@@ -14,8 +24,7 @@
 
 \item{middle_name}{\verb{<chr>} \code{NM1-05} Member middle name}
 
-\item{remittances}{List of \verb{<RemittanceEntry>} line items (one per
-RMR/DTM set)}
+\item{remittances}{list of \verb{<RemittanceEntry>} objects, line items (one per RMR/DTM set)}
 }
 \value{
 A \verb{<PaymentDetail>} S7 object

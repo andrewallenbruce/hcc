@@ -17,6 +17,10 @@ interactions(x, y, ...)
 a character vector of interactions
 }
 \description{
+Create Interactions
+}
+\details{
+Methods for \code{interactions}:
 \itemize{
 \item \code{hcc::PatientDemographics,MISSING}
 \item \code{hcc::PatientDemographics,hcc::DiagnosticCategories}

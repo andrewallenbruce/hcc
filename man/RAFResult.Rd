@@ -2,7 +2,26 @@
 % Please edit documentation in R/aaa-classes-837.R
 \name{RAFResult}
 \alias{RAFResult}
-\title{Risk Adjustment Factor score results}
+\title{Risk Adjustment Factor Results}
+\usage{
+RAFResult(
+  risk_score = numeric(0),
+  risk_score_demographics = numeric(0),
+  risk_score_chronic_only = numeric(0),
+  risk_score_hcc = numeric(0),
+  risk_score_payment = numeric(0),
+  hcc_list = character(0),
+  hcc_details = character(0),
+  cc_to_dx = character(0),
+  coefficients = numeric(0),
+  interactions = character(0),
+  demographics = character(0),
+  model_name = character(0),
+  version = character(0),
+  diagnosis_codes = character(0),
+  service_data = list()
+)
+}
 \arguments{
 \item{risk_score}{\verb{<dbl>} Final RAF score}
 
@@ -34,14 +53,13 @@ status}
 
 \item{diagnosis_codes}{\verb{<chr>} Input diagnosis codes}
 
-\item{service_level_data}{\verb{<ServiceLevelData>} S7 object; Processed service
-records}
+\item{service_data}{list of \verb{<ServiceLevelData>} objects, Processed service records}
 }
 \value{
 A \verb{<RAFResult>} S7 object
 }
 \description{
-Risk Adjustment Factor score results
+Risk Adjustment Factor Results
 }
 \examples{
 RAFResult(service_level_data = list(ServiceLevelData(), ServiceLevelData()))

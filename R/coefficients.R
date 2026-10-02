@@ -49,6 +49,11 @@ rxhcc_prefix_ <- function(x) {
 #'
 #' Get the coefficient prefix based on beneficiary demographics.
 #'
+#' @details
+#' Methods for `get_prefix`:
+#' `r doclisting::methods_list("get_prefix")`
+#'
+#'
 #' @param x `<PatientDemographics>` S7 object
 #' @param ... dots
 #' @returns String prefix used to look up coefficients for beneficiary type

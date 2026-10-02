@@ -21,7 +21,6 @@
 #' @param esrd_months `<int>` Number of months since transplant *(ESRD only)*
 #' @param category `<chr>` Age-sex category code
 #' @returns A `<PatientDemographics>` S7 object
-#' @usage NULL
 #' @examples
 #' PatientDemographics(
 #'   age = 75,
@@ -29,7 +28,6 @@
 #'   orec_code = "0",
 #'   version = "V2"
 #' )
-#' @name PatientDemographics
 #' @export
 PatientDemographics := S7::new_class(
   properties = list(
@@ -63,7 +61,6 @@ PatientDemographics := S7::new_class(
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the
 #'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
-#' @usage NULL
 #' @examples
 #' HCCDetail(
 #'  hcc = "203",
@@ -71,7 +68,6 @@ PatientDemographics := S7::new_class(
 #'  is_chronic = TRUE,
 #'  coefficient = 0.486
 #' )
-#' @name HCCDetail
 #' @export
 HCCDetail := S7::new_class(
   properties = list(

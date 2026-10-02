@@ -3,6 +3,28 @@
 \name{ServiceLevelData}
 \alias{ServiceLevelData}
 \title{Healthcare Claim Service Level Data}
+\usage{
+ServiceLevelData(
+  service_date = .Date(numeric()),
+  claim_id = character(0),
+  patient_id = character(0),
+  claim_type = character(0),
+  place_of_service = character(0),
+  facility_type = character(0),
+  service_type = character(0),
+  linked_diagnosis_codes = character(0),
+  claim_diagnosis_codes = character(0),
+  provider_specialty = character(0),
+  performing_provider_npi = integer(0),
+  billing_provider_npi = integer(0),
+  procedure_code = character(0),
+  modifiers = character(0),
+  ndc = character(0),
+  quantity = integer(0),
+  unit = character(0),
+  allowed_amount = numeric(0)
+)
+}
 \arguments{
 \item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
 

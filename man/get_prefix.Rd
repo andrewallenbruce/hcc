@@ -17,6 +17,12 @@ String prefix used to look up coefficients for beneficiary type
 \description{
 Get the coefficient prefix based on beneficiary demographics.
 }
+\details{
+Methods for \code{get_prefix}:
+\itemize{
+\item \code{hcc::PatientDemographics}
+}
+}
 \examples{
 get_prefix(
   demographics(

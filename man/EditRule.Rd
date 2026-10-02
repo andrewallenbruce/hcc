@@ -6,6 +6,14 @@
 \alias{SexEdit}
 \title{Single Edit Rule}
 \usage{
+EditRule(
+  icd = character(0),
+  action = character(0),
+  override = integer(0),
+  model = character(0),
+  description = character(0)
+)
+
 AgeEdit(
   icd = character(0),
   action = character(0),
@@ -26,21 +34,21 @@ SexEdit(
 )
 }
 \arguments{
-\item{icd}{\verb{<chr>} "sex" or "age"}
+\item{icd}{\verb{<chr>} ICD-10-CM diagnosis code}
 
 \item{action}{\verb{<chr>} "invalid" or "override"}
 
 \item{override}{\verb{<int>} CC to assign when \code{action = "override"}}
 
-\item{model}{description}
+\item{model}{\verb{<chr>} Model Name}
 
-\item{description}{description}
+\item{description}{\verb{<chr>} description of Edit Rule}
 
-\item{age}{\verb{<int>} For age edits: minimum age (inclusive)}
+\item{age}{\verb{<int>} \verb{<AgeEdit>}: patient age}
 
-\item{boundary}{\verb{<int>} For age edits: maximum age (inclusive)}
+\item{boundary}{\verb{<int>} \verb{<AgeEdit>}: maximum or minimum age}
 
-\item{sex}{\verb{<int>} For sex edits: 1 (male) or 2 (female)}
+\item{sex}{\verb{<int>} \verb{<SexEdit>}: 1 (male) or 2 (female)}
 }
 \value{
 An \verb{<EditRule>} S7 object
