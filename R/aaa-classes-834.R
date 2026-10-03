@@ -3,31 +3,21 @@
 #' @description
 #' Health Care Plan coverage period from HD loop
 #'
-#' @param start_date `<Date>` coverage start date
-#' @param end_date `<Date>` coverage start date
+#' @param date_range `<Date>` coverage start date
 #' @param hcp_code `<chr>` HCP code
 #' @param hcp_status `<chr>` HCP status
 #' @param aid_codes `<chr>` REF*CE composite
 #' @returns An `<HCPCoveragePeriod>` S7 object
 #' @examples
-#' HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
+#' HCPCoveragePeriod(date_range = c("2026-08-20", "2026-08-25"))
 #' @export
 HCPCoveragePeriod := S7::new_class(
   properties = list(
-    start_date = prop_date,
-    end_date = prop_date,
+    date_range = prop_date_range,
     hcp_code = S7::class_character,
     hcp_status = S7::class_character,
     aid_codes = S7::class_character
-  ),
-  validator = function(self) {
-    if (rlang::is_empty(self@start_date) && rlang::is_empty(self@end_date)) {
-      return()
-    }
-    if (self@start_date >= self@end_date) {
-      return("@start_date must occur before @end_date")
-    }
-  }
+  )
 )
 
 #' X12-834 Transaction Enrollment Data
@@ -52,8 +42,7 @@ HCPCoveragePeriod := S7::new_class(
 #' @param race `DMG-05` Race/ethnicity code
 #' @param language `LUI-02` Preferred language
 #' @param death_date Date of death if applicable
-#' @param address_1 `N3-01` Street address line 1
-#' @param address_2 `N3-02` Street address line 2
+#' @param address `N3-01` Street address line 1
 #' @param city `N4-01` City
 #' @param state `N4-02` State code
 #' @param zip `N4-03` Postal code
@@ -65,8 +54,7 @@ HCPCoveragePeriod := S7::new_class(
 #'    - Reinstate (`025`)
 #' @param maintenance_reason_code `INS-04` Maintenance reason
 #' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
-#' @param coverage_start Coverage effective date
-#' @param coverage_end Coverage termination date
+#' @param coverage_period Coverage effective date range
 #' @param has_medicare Member has Medicare coverage
 #' @param has_medicaid Member has Medicaid coverage
 #' @param dual_elgbl_cd Dual eligibility status code (`00`,`01`-`08`)
@@ -102,138 +90,73 @@ HCPCoveragePeriod := S7::new_class(
 #' @param amount_qualifier AMT qualifier code (e.g., `D` = premium, `C1` =
 #'   copay)
 #' @param amount Premium or cost share amount (numeric)
-#' @param hcp_history `<HCPCoveragePeriod>` List of historical HCP coverage
+#' @param hcp_history List of `<HCPCoveragePeriod>`, historical HCP coverage
 #'   periods
-#' @returns A `<EnrollmentData>` S7 object
+#' @returns An `<hcc::EnrollmentData>` S7 object
 #' @examples
 #' EnrollmentData()
 #' @export
-EnrollmentData <- function(
-  source = character(),
-  report_date = character(),
-  member_id = character(),
-  mbi = character(),
-  medicaid_id = character(),
-  hic = character(),
-  cin = character(),
-  cin_check_digit = integer(),
-  first_name = character(),
-  last_name = character(),
-  middle_name = character(),
-  dob = character(),
-  age = integer(),
-  sex = character(),
-  race = character(),
-  language = character(),
-  death_date = character(),
-  address_1 = character(),
-  address_2 = character(),
-  city = character(),
-  state = character(),
-  zip = character(),
-  phone = character(),
-  maintenance_type = character(),
-  maintenance_reason_code = character(),
-  benefit_status_code = character(),
-  coverage_start = character(),
-  coverage_end = character(),
-  has_medicare = logical(),
-  has_medicaid = logical(),
-  dual_elgbl_cd = character(),
-  is_full_benefit_dual = logical(),
-  is_partial_benefit_dual = logical(),
-  medicare_status_code = character(),
-  medi_cal_aid_code = character(),
-  medi_cal_eligibility_status = character(),
-  fame_county_id = character(),
-  case_number = character(),
-  fame_card_issue_date = character(),
-  fame_redetermination_date = character(),
-  fame_death_date = character(),
-  primary_aid_code = character(),
-  carrier_code = character(),
-  fed_contract_number = character(),
-  client_reporting_cat = character(),
-  res_addr_flag = character(),
-  reas_add_ind = character(),
-  res_zip_deliv_code = character(),
-  orec = character(),
-  crec = character(),
-  snp = logical(),
-  low_income = logical(),
-  lti = logical(),
-  new_enrollee = logical(),
-  medicare_prt_a = logical(),
-  medicare_prt_b = logical(),
-  medicare_prt_d = logical(),
-  hcp_code = character(),
-  hcp_status = character(),
-  amount_qualifier = character(),
-  amount = double(),
-  hcp_history = HCPCoveragePeriod()
-) {
-  list(
-    source = source,
-    report_date = report_date,
-    member_id = member_id,
-    mbi = mbi,
-    medicaid_id = medicaid_id,
-    hic = hic,
-    cin = cin,
-    cin_check_digit = cin_check_digit,
-    first_name = first_name,
-    last_name = last_name,
-    middle_name = middle_name,
-    dob = dob,
-    age = age,
-    sex = sex,
-    race = race,
-    language = language,
-    death_date = death_date,
-    address_1 = address_1,
-    address_2 = address_2,
-    city = city,
-    state = state,
-    zip = zip,
-    phone = phone,
-    maintenance_type = maintenance_type,
-    maintenance_reason_code = maintenance_reason_code,
-    benefit_status_code = benefit_status_code,
-    coverage_start = coverage_start,
-    coverage_end = coverage_end,
-    has_medicare = has_medicare,
-    has_medicaid = has_medicaid,
-    dual_elgbl_cd = dual_elgbl_cd,
-    is_full_benefit_dual = is_full_benefit_dual,
-    is_partial_benefit_dual = is_partial_benefit_dual,
-    medicare_status_code = medicare_status_code,
-    medi_cal_aid_code = medi_cal_aid_code,
-    medi_cal_eligibility_status = medi_cal_eligibility_status,
-    fame_county_id = fame_county_id,
-    case_number = case_number,
-    fame_card_issue_date = fame_card_issue_date,
-    fame_redetermination_date = fame_redetermination_date,
-    fame_death_date = fame_death_date,
-    primary_aid_code = primary_aid_code,
-    carrier_code = carrier_code,
-    fed_contract_number = fed_contract_number,
-    client_reporting_cat = client_reporting_cat,
-    res_addr_flag = res_addr_flag,
-    reas_add_ind = reas_add_ind,
-    res_zip_deliv_code = res_zip_deliv_code,
-    orec = orec,
-    crec = crec,
-    snp = snp,
-    low_income = low_income,
-    lti = lti,
-    new_enrollee = new_enrollee,
-    medicare_prt_a = medicare_prt_a,
-    medicare_prt_b = medicare_prt_b,
-    medicare_prt_d = medicare_prt_d,
-    hcp_code = hcp_code,
-    hcp_status = hcp_status,
-    amount_qualifier = amount_qualifier,
-    amount = amount,
-    hcp_history = hcp_history
+EnrollmentData := S7::new_class(
+  properties = list(
+    source = S7::class_character,
+    report_date = prop_date,
+    member_id = S7::class_character,
+    mbi = S7::class_character,
+    medicaid_id = S7::class_character,
+    hic = prop_integer,
+    cin = prop_integer,
+    cin_check_digit = prop_integer,
+    first_name = S7::class_character,
+    last_name = S7::class_character,
+    middle_name = S7::class_character,
+    dob = prop_date,
+    age = prop_integer,
+    sex = S7::class_character,
+    race = S7::class_character,
+    language = S7::class_character,
+    death_date = prop_date,
+    address = S7::class_character,
+    city = S7::class_character,
+    state = S7::class_character,
+    zip = S7::class_character,
+    phone = S7::class_character,
+    maintenance_type = S7::class_character,
+    maintenance_reason_code = S7::class_character,
+    benefit_status_code = S7::class_character,
+    coverage_period = prop_date_range,
+    has_medicare = S7::class_logical,
+    has_medicaid = S7::class_logical,
+    dual_elgbl_cd = S7::class_character,
+    is_full_benefit_dual = S7::class_logical,
+    is_partial_benefit_dual = S7::class_logical,
+    medicare_status_code = S7::class_character,
+    medi_cal_aid_code = S7::class_character,
+    medi_cal_eligibility_status = S7::class_character,
+    fame_county_id = S7::class_character,
+    case_number = S7::class_character,
+    fame_card_issue_date = prop_date,
+    fame_redetermination_date = prop_date,
+    fame_death_date = prop_date,
+    primary_aid_code = S7::class_character,
+    carrier_code = S7::class_character,
+    fed_contract_number = S7::class_character,
+    client_reporting_cat = S7::class_character,
+    res_addr_flag = S7::class_character,
+    reas_add_ind = S7::class_character,
+    res_zip_deliv_code = S7::class_character,
+    orec = S7::class_character,
+    crec = S7::class_character,
+    snp = S7::class_logical,
+    low_income = S7::class_logical,
+    lti = S7::class_logical,
+    new_enrollee = S7::class_logical,
+    medicare_prt_a = S7::class_logical,
+    medicare_prt_b = S7::class_logical,
+    medicare_prt_d = S7::class_logical,
+    hcp_code = S7::class_character,
+    hcp_status = S7::class_character,
+    amount_qualifier = S7::class_character,
+    amount = prop_double,
+    hcp_history = prop_list_of(HCPCoveragePeriod)
   )
-}
+)

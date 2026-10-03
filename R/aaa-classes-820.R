@@ -122,7 +122,7 @@ RemittanceEntry := S7::new_class(
 #'       aid_code = "17",
 #'       plan_type = "2",
 #'       payment_description = "Dual-State Only",
-#'       coverage_period = c("2026-01-01", "2026-01-31"),
+#'       coverage_period = "20260101-20260131",
 #'       adjustment_amount = -8086.53,
 #'       adjustment_reason = "53"
 #'     ),
@@ -134,7 +134,7 @@ RemittanceEntry := S7::new_class(
 #'       aid_code = "17",
 #'       plan_type = "2",
 #'       payment_description = "Dual-State Only",
-#'       coverage_period = c("2026-01-01", "2026-01-31"),
+#'       coverage_period = "20260101-20260131",
 #'       adjustment_amount = -8086.53,
 #'       adjustment_reason = "53"
 #'     )
@@ -207,7 +207,7 @@ PaymentDetail := S7::new_class(
 #'           aid_code = "17",
 #'           plan_type = "2",
 #'           payment_description = "Dual-State Only",
-#'           coverage_period = c("2026-01-01", "2026-01-31"),
+#'           coverage_period = "20260101-20260131",
 #'           adjustment_amount = -8086.53,
 #'           adjustment_reason = "53"
 #'         )

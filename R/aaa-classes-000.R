@@ -161,16 +161,16 @@ TrailerEDI := S7::new_class(
 #' @noRd
 HeaderEDI := S7::new_class(
   properties = list(
-    ISA01 = S7::class_character,
-    ISA02 = S7::class_character,
-    ISA03 = S7::class_character,
-    ISA04 = S7::class_character,
+    # ISA01 = S7::class_character,
+    # ISA02 = S7::class_character,
+    # ISA03 = S7::class_character,
+    # ISA04 = S7::class_character,
     ISA05 = S7::class_character,
     ISA06 = S7::class_character,
     ISA07 = S7::class_character,
     ISA08 = S7::class_character,
-    ISA09 = S7::class_character,
-    ISA10 = S7::class_character,
+    ISA09 = prop_date,
+    ISA10 = prop_integer,
     ISA11 = S7::class_character,
     ISA12 = S7::class_character,
     ISA13 = S7::class_character,
@@ -206,10 +206,10 @@ edi_trailer <- function(se, ge, iea) {
 #' @noRd
 edi_header <- function(isa, gs, st) {
   HeaderEDI(
-    ISA01 = isa[1],
-    ISA02 = isa[2],
-    ISA03 = isa[3],
-    ISA04 = isa[4],
+    # ISA01 = isa[1],
+    # ISA02 = isa[2],
+    # ISA03 = isa[3],
+    # ISA04 = isa[4],
     ISA05 = isa[5],
     ISA06 = isa[6],
     ISA07 = isa[7],

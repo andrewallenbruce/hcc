@@ -53,7 +53,7 @@ status}
 
 \item{diagnosis_codes}{\verb{<chr>} Input diagnosis codes}
 
-\item{service_data}{list of \verb{<ServiceLevelData>} objects, Processed service records}
+\item{service_data}{list of \verb{<ServiceData>} objects, Processed service records}
 }
 \value{
 A \verb{<RAFResult>} S7 object
@@ -62,6 +62,5 @@ A \verb{<RAFResult>} S7 object
 Risk Adjustment Factor Results
 }
 \examples{
-RAFResult(service_data
- = list(ServiceLevelData(), ServiceLevelData()))
+RAFResult(service_data = list(ServiceData(), ServiceData()))
 }

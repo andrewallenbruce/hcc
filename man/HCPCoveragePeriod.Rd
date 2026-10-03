@@ -5,17 +5,14 @@
 \title{Health Care Plan Coverage Period}
 \usage{
 HCPCoveragePeriod(
-  start_date = .Date(numeric(0L)),
-  end_date = .Date(numeric(0L)),
+  date_range = c(.Date(numeric(0L)), .Date(numeric(0L))),
   hcp_code = character(0),
   hcp_status = character(0),
   aid_codes = character(0)
 )
 }
 \arguments{
-\item{start_date}{\verb{<Date>} coverage start date}
-
-\item{end_date}{\verb{<Date>} coverage start date}
+\item{date_range}{\verb{<Date>} coverage start date}
 
 \item{hcp_code}{\verb{<chr>} HCP code}
 
@@ -30,5 +27,5 @@ An \verb{<HCPCoveragePeriod>} S7 object
 Health Care Plan coverage period from HD loop
 }
 \examples{
-HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
+HCPCoveragePeriod(date_range = c("2026-08-20", "2026-08-25"))
 }

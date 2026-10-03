@@ -21,9 +21,9 @@
 #' @param unit `<chr>` Unit of measure for quantity
 #' @param modifiers `<chr>` List of procedure code modifiers
 #' @param allowed_amount `<num>` Allowed amount for the service
-#' @returns A `<ServiceLevelData>` S7 object
+#' @returns A `<ServiceData>` S7 object
 #' @examples
-#' ServiceLevelData(
+#' ServiceData(
 #'   claim_id = "756048Q",
 #'   procedure_code = "93005",
 #'   ndc = "85972-161",
@@ -41,10 +41,10 @@
 #'   quantity = "4",
 #'   unit = "UN",
 #'   modifiers = c("F1", "QQ"),
-#'   allowed_amount = 89.93
+#'   allowed_amount = "89.93"
 #' )
 #' @export
-ServiceLevelData := S7::new_class(
+ServiceData := S7::new_class(
   properties = list(
     service_date = prop_date,
     claim_id = S7::class_character,
@@ -63,7 +63,7 @@ ServiceLevelData := S7::new_class(
     ndc = S7::class_character,
     quantity = prop_integer,
     unit = S7::class_character,
-    allowed_amount = S7::class_double
+    allowed_amount = prop_double
   )
 )
 
@@ -85,28 +85,27 @@ ServiceLevelData := S7::new_class(
 #' @param model_name `<chr>` HCC model used for calculation
 #' @param version `<chr>` Library version
 #' @param diagnosis_codes `<chr>` Input diagnosis codes
-#' @param service_data list of `<ServiceLevelData>` objects, Processed service records
+#' @param service_data list of `<ServiceData>` objects, Processed service records
 #' @returns A `<RAFResult>` S7 object
 #' @examples
-#' RAFResult(service_data
-#'  = list(ServiceLevelData(), ServiceLevelData()))
+#' RAFResult(service_data = list(ServiceData(), ServiceData()))
 #' @export
 RAFResult := S7::new_class(
   properties = list(
-    risk_score = S7::class_double,
-    risk_score_demographics = S7::class_double,
-    risk_score_chronic_only = S7::class_double,
-    risk_score_hcc = S7::class_double,
-    risk_score_payment = S7::class_double,
+    risk_score = prop_double,
+    risk_score_demographics = prop_double,
+    risk_score_chronic_only = prop_double,
+    risk_score_hcc = prop_double,
+    risk_score_payment = prop_double,
     hcc_list = S7::class_character,
     hcc_details = S7::class_character,
     cc_to_dx = S7::class_character,
-    coefficients = S7::class_double,
+    coefficients = prop_double,
     interactions = S7::class_character,
     demographics = S7::class_character,
     model_name = S7::class_character,
     version = S7::class_character,
     diagnosis_codes = S7::class_character,
-    service_data = prop_list_of(ServiceLevelData)
+    service_data = prop_list_of(ServiceData)
   )
 )

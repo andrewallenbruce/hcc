@@ -5,68 +5,66 @@
 \title{X12-834 Transaction Enrollment Data}
 \usage{
 EnrollmentData(
-  source = character(),
-  report_date = character(),
-  member_id = character(),
-  mbi = character(),
-  medicaid_id = character(),
-  hic = character(),
-  cin = character(),
-  cin_check_digit = integer(),
-  first_name = character(),
-  last_name = character(),
-  middle_name = character(),
-  dob = character(),
-  age = integer(),
-  sex = character(),
-  race = character(),
-  language = character(),
-  death_date = character(),
-  address_1 = character(),
-  address_2 = character(),
-  city = character(),
-  state = character(),
-  zip = character(),
-  phone = character(),
-  maintenance_type = character(),
-  maintenance_reason_code = character(),
-  benefit_status_code = character(),
-  coverage_start = character(),
-  coverage_end = character(),
-  has_medicare = logical(),
-  has_medicaid = logical(),
-  dual_elgbl_cd = character(),
-  is_full_benefit_dual = logical(),
-  is_partial_benefit_dual = logical(),
-  medicare_status_code = character(),
-  medi_cal_aid_code = character(),
-  medi_cal_eligibility_status = character(),
-  fame_county_id = character(),
-  case_number = character(),
-  fame_card_issue_date = character(),
-  fame_redetermination_date = character(),
-  fame_death_date = character(),
-  primary_aid_code = character(),
-  carrier_code = character(),
-  fed_contract_number = character(),
-  client_reporting_cat = character(),
-  res_addr_flag = character(),
-  reas_add_ind = character(),
-  res_zip_deliv_code = character(),
-  orec = character(),
-  crec = character(),
-  snp = logical(),
-  low_income = logical(),
-  lti = logical(),
-  new_enrollee = logical(),
-  medicare_prt_a = logical(),
-  medicare_prt_b = logical(),
-  medicare_prt_d = logical(),
-  hcp_code = character(),
-  hcp_status = character(),
-  amount_qualifier = character(),
-  amount = double(),
-  hcp_history = HCPCoveragePeriod()
+  source = character(0),
+  report_date = .Date(numeric(0L)),
+  member_id = character(0),
+  mbi = character(0),
+  medicaid_id = character(0),
+  hic = integer(0),
+  cin = integer(0),
+  cin_check_digit = integer(0),
+  first_name = character(0),
+  last_name = character(0),
+  middle_name = character(0),
+  dob = .Date(numeric(0L)),
+  age = integer(0),
+  sex = character(0),
+  race = character(0),
+  language = character(0),
+  death_date = .Date(numeric(0L)),
+  address = character(0),
+  city = character(0),
+  state = character(0),
+  zip = character(0),
+  phone = character(0),
+  maintenance_type = character(0),
+  maintenance_reason_code = character(0),
+  benefit_status_code = character(0),
+  coverage_period = c(.Date(numeric(0L)), .Date(numeric(0L))),
+  has_medicare = logical(0),
+  has_medicaid = logical(0),
+  dual_elgbl_cd = character(0),
+  is_full_benefit_dual = logical(0),
+  is_partial_benefit_dual = logical(0),
+  medicare_status_code = character(0),
+  medi_cal_aid_code = character(0),
+  medi_cal_eligibility_status = character(0),
+  fame_county_id = character(0),
+  case_number = character(0),
+  fame_card_issue_date = .Date(numeric(0L)),
+  fame_redetermination_date = .Date(numeric(0L)),
+  fame_death_date = .Date(numeric(0L)),
+  primary_aid_code = character(0),
+  carrier_code = character(0),
+  fed_contract_number = character(0),
+  client_reporting_cat = character(0),
+  res_addr_flag = character(0),
+  reas_add_ind = character(0),
+  res_zip_deliv_code = character(0),
+  orec = character(0),
+  crec = character(0),
+  snp = logical(0),
+  low_income = logical(0),
+  lti = logical(0),
+  new_enrollee = logical(0),
+  medicare_prt_a = logical(0),
+  medicare_prt_b = logical(0),
+  medicare_prt_d = logical(0),
+  hcp_code = character(0),
+  hcp_status = character(0),
+  amount_qualifier = character(0),
+  amount = numeric(0),
+  hcp_history = list()
 )
 }
 \arguments{
@@ -104,9 +102,7 @@ EnrollmentData(
 
 \item{death_date}{Date of death if applicable}
 
-\item{address_1}{\code{N3-01} Street address line 1}
-
-\item{address_2}{\code{N3-02} Street address line 2}
+\item{address}{\code{N3-01} Street address line 1}
 
 \item{city}{\code{N4-01} City}
 
@@ -128,9 +124,7 @@ EnrollmentData(
 
 \item{benefit_status_code}{\code{INS-05} A=Active, C=COBRA, etc.}
 
-\item{coverage_start}{Coverage effective date}
-
-\item{coverage_end}{Coverage termination date}
+\item{coverage_period}{Coverage effective date range}
 
 \item{has_medicare}{Member has Medicare coverage}
 
@@ -200,11 +194,11 @@ copay)}
 
 \item{amount}{Premium or cost share amount (numeric)}
 
-\item{hcp_history}{\verb{<HCPCoveragePeriod>} List of historical HCP coverage
+\item{hcp_history}{List of \verb{<HCPCoveragePeriod>}, historical HCP coverage
 periods}
 }
 \value{
-A \verb{<EnrollmentData>} S7 object
+An \verb{<hcc::EnrollmentData>} S7 object
 }
 \description{
 Data needed for risk adjustment and Medicaid coverage tracking.

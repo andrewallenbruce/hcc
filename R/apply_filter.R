@@ -12,7 +12,7 @@
 #'
 #' @noRd
 apply_filter <- function(
-  data = ServiceLevelData(),
+  data = ServiceData(),
   inpatient_tob = c("11X", "41X"),
   outpatient_tob = c(
     "12X",

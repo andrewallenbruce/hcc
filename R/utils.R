@@ -290,24 +290,32 @@ age_category_NEW <- function(age, sex, orec) {
 #' @examplesIf FALSE
 #' parse_date("20200202")
 #' parse_date("20250108")
-#' parse_date("19550315")
+#' parse_date("1955-03-15")
+#' parse_date("200202")
 #' @noRd
 parse_date <- function(x, ...) {
   if (collapse::is_date(x)) {
     return(x)
   }
-  if (perl0(x, "-")) {
-    return(as.Date.character(x, format = "%Y-%m-%d"))
-  }
-  as.Date.character(x, format = "%Y%m%d")
-}
+  check_character(x, allow_na = FALSE)
 
-#' Convert 6-digit date (YYMMDD) to ISO format
-#' @examplesIf FALSE
-#' parse_yymmdd("200202")
-#' @noRd
-parse_yymmdd <- function(x, ...) {
-  as.Date.character(x, format = "%y%m%d", ...)
+  if (!rlang::has_length(x, 1L)) {
+    cli::cli_abort("Must have length 1")
+  }
+
+  fmt <- switch(
+    as.character(nchar(x)),
+    `10` = "%Y-%m-%d",
+    `8` = "%Y%m%d",
+    `6` = "%y%m%d",
+    NA_character_
+  )
+
+  if (cheapr::is_na(fmt)) {
+    return(as.Date(NA))
+  }
+
+  as.Date.character(x, format = fmt)
 }
 
 #' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
@@ -315,8 +323,11 @@ parse_yymmdd <- function(x, ...) {
 #' parse_DTM_RD8("20200202-20200402")
 #' @noRd
 parse_DTM_RD8 <- function(x) {
-  .c(x, y) %=% .subset2(strsplit(x, "-", fixed = TRUE), 1L)
-  parse_date_range(x, y)
+  if (nchar(x) == 17L) {
+    x <- .subset2(strsplit(x, "-", fixed = TRUE), 1L)
+    return(parse_date_range(x[1], x[2]))
+  }
+  as.Date(NA)
 }
 
 #' Parse Date Range
@@ -369,11 +380,9 @@ medi_cal_status <- function(
   end_date,
   report_date = Sys.Date()
 ) {
-  report_date <- parse_date(report_date)
-  report_date <- clock::date_start(report_date, "month")
-  end_date <- parse_date(end_date)
-
-  if (end_date < report_date) {
+  if (
+    parse_date(end_date) < clock::date_start(parse_date(report_date), "month")
+  ) {
     return("Terminated")
   } else {
     return("Active")
