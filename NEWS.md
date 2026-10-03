@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9070 (2026-10-03)
+
+* `Document820` class
+
+
 # hcc 0.0.0.9069 (2026-10-03)
 
 * `edi_text()` is now a generic
