@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9069 (2026-10-03)
+
+* `edi_text()` is now a generic
+* fixed bug in 820 indexer
+* `prop_date_range`
+* print method for `Index820`
+* Redocument with dev roxygen2, doclisting
+
+
 # hcc 0.0.0.9068 (2026-10-02)
 
 * 820 indexer/parser now groups ENT/RMR blocks together
