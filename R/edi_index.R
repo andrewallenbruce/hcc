@@ -87,36 +87,52 @@ index_820 <- function(x) {
   ST <- perl(x, "^ST")
   SE <- perl(x, "^SE")
   ENT <- perl(x, "^ENT")
-  eindex <- create_entity_index(ENT, SE)
+  NM1 <- perl(x, "^NM1") %0% 0L
+
+  if (length(ENT) != length(NM1)) {
+    emp <- cheapr::new_integer(length(ENT), seq_along(ENT))
+    emp[grep("^NM1", x[ENT + 1L])] <- NM1
+    NM1 <- unname(emp)
+  }
 
   rlang::list2(
     header = fill_(perl(x, "^ISA"), ST),
     details = fill_(ST + 1L, ENT[1L] - 1L),
-    entity = purrr::map(eindex, \(x) list(x[1:2], c(x[3:length(x)]))),
+    entity = map_entity_index(ENT, SE, NM1),
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }
 
 #' @noRd
-create_entity_index <- function(
-  top,
-  final,
-  rest = top[-1]
-) {
-  x <- sort.int(
+create_entity_index <- function(ENT, SE) {
+  index <- sort.int(
     c(
-      top[1L],
-      rest - 1L,
-      rest,
-      final - 1L
+      ENT[1L],
+      ENT[-1] - 1L,
+      ENT[-1],
+      SE - 1L
     )
   )
 
-  half <- vctrs::vec_size(x) / 2L
+  half <- vctrs::vec_size(index) / 2L
   runs <- vctrs::vec_rep_each(seq(half), rep(2L, half))
 
   purrr::map(
-    vctrs::vec_split(x, runs)$val,
+    vctrs::vec_split(index, runs)$val,
     \(x) fill_(start = x[1], end = x[2])
+  )
+}
+
+#' @noRd
+map_entity_index <- function(ENT, SE, NM1) {
+  purrr::map2(
+    create_entity_index(ENT, SE),
+    as.list(NM1),
+    function(x, nm) {
+      if (!nm) {
+        return(list(x[1], c(x[2:length(x)])))
+      }
+      list(x[1:2], c(x[3:length(x)]))
+    }
   )
 }

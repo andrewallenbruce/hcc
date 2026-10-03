@@ -25,8 +25,8 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:7]), hcc:::parse_218) |>
-#' str(list.len = 10L)
+#' x = edi_index(hcc::x12_EX$`820`$`218`[1:5])
+#' str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #' @export
 parse_820 <- function(x) {
   if (!S7::S7_inherits(x, IndexEDI) | !S7::S7_inherits(x, Index820)) {
