@@ -64,7 +64,7 @@ PaymentDetail(
       aid_code = "17",
       plan_type = "2",
       payment_description = "Dual-State Only",
-      coverage_period = c("2026-01-01", "2026-01-31"),
+      coverage_period = "20260101-20260131",
       adjustment_amount = -8086.53,
       adjustment_reason = "53"
     ),
@@ -76,11 +76,39 @@ PaymentDetail(
       aid_code = "17",
       plan_type = "2",
       payment_description = "Dual-State Only",
-      coverage_period = c("2026-01-01", "2026-01-31"),
+      coverage_period = "20260101-20260131",
       adjustment_amount = -8086.53,
       adjustment_reason = "53"
     )
   )
 )
-#> Error in .c(x, y) %=% .subset2(strsplit(x, "-", fixed = TRUE), 1L): length(lhs) must be equal to length(rhs)
+#> <hcc::PaymentDetail>
+#>  @ entity_number: int 1
+#>  @ member_id    : chr "TESTMBR000000001"
+#>  @ last_name    : chr "LASTNAME01"
+#>  @ first_name   : chr "FIRSTNAME01"
+#>  @ middle_name  : chr(0) 
+#>  @ remittances  :List of 2
+#>  .. $ : <hcc::RemittanceEntry>
+#>  ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
+#>  ..  ..@ original_amount    : num 8488
+#>  ..  ..@ adjustment_amount  : num -8087
+#>  ..  ..@ payment_amount     : num 402
+#>  ..  ..@ adjustment_reason  : chr "53"
+#>  ..  ..@ rate_code          : chr "957"
+#>  ..  ..@ aid_code           : chr "17"
+#>  ..  ..@ plan_type          : chr "2"
+#>  ..  ..@ payment_description: chr "Dual-State Only"
+#>  ..  ..@ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
+#>  .. $ : <hcc::RemittanceEntry>
+#>  ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
+#>  ..  ..@ original_amount    : num 8488
+#>  ..  ..@ adjustment_amount  : num -8087
+#>  ..  ..@ payment_amount     : num 402
+#>  ..  ..@ adjustment_reason  : chr "53"
+#>  ..  ..@ rate_code          : chr "957"
+#>  ..  ..@ aid_code           : chr "17"
+#>  ..  ..@ plan_type          : chr "2"
+#>  ..  ..@ payment_description: chr "Dual-State Only"
+#>  ..  ..@ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
 ```

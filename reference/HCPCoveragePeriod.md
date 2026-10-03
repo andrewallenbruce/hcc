@@ -6,8 +6,7 @@ Health Care Plan coverage period from HD loop
 
 ``` r
 HCPCoveragePeriod(
-  start_date = .Date(numeric(0L)),
-  end_date = .Date(numeric(0L)),
+  date_range = c(.Date(numeric(0L)), .Date(numeric(0L))),
   hcp_code = character(0),
   hcp_status = character(0),
   aid_codes = character(0)
@@ -16,11 +15,7 @@ HCPCoveragePeriod(
 
 ## Arguments
 
-- start_date:
-
-  `<Date>` coverage start date
-
-- end_date:
+- date_range:
 
   `<Date>` coverage start date
 
@@ -43,10 +38,9 @@ An `<HCPCoveragePeriod>` S7 object
 ## Examples
 
 ``` r
-HCPCoveragePeriod(start_date = "2026-08-20", end_date = "2026-08-25")
+HCPCoveragePeriod(date_range = c("2026-08-20", "2026-08-25"))
 #> <hcc::HCPCoveragePeriod>
-#>  @ start_date: Date[1:1], format: "2026-08-20"
-#>  @ end_date  : Date[1:1], format: "2026-08-25"
+#>  @ date_range: iv<date> [1:1] [2026-08-20, 2026-08-26)
 #>  @ hcp_code  : chr(0) 
 #>  @ hcp_status: chr(0) 
 #>  @ aid_codes : chr(0) 

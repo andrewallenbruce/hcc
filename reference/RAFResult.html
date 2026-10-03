@@ -127,7 +127,7 @@ status</p></dd>
 
 
 <dt id="arg-service-data">service_data<a class="anchor" aria-label="anchor" href="#arg-service-data"></a></dt>
-<dd><p>list of <code>&lt;ServiceLevelData&gt;</code> objects, Processed service records</p></dd>
+<dd><p>list of <code>&lt;ServiceData&gt;</code> objects, Processed service records</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -137,8 +137,7 @@ status</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">RAFResult</span><span class="op">(</span>service_data</span></span>
-<span class="r-in"><span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="ServiceLevelData.html">ServiceLevelData</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="ServiceLevelData.html">ServiceLevelData</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">RAFResult</span><span class="op">(</span>service_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="ServiceData.html">ServiceData</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="ServiceData.html">ServiceData</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::RAFResult&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ risk_score             : num(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ risk_score_demographics: num(0) </span>
@@ -155,7 +154,7 @@ status</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ version                : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ diagnosis_codes        : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ service_data           :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::ServiceLevelData&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::ServiceData&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ service_date           : 'Date' num(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ claim_id               : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ patient_id             : chr(0) </span>
@@ -174,7 +173,7 @@ status</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ quantity               : int(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ unit                   : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ allowed_amount         : num(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::ServiceLevelData&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::ServiceData&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ service_date           : 'Date' num(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ claim_id               : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ patient_id             : chr(0) </span>

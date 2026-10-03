@@ -85,7 +85,7 @@ RAFResult(
 
 - service_data:
 
-  list of `<ServiceLevelData>` objects, Processed service records
+  list of `<ServiceData>` objects, Processed service records
 
 ## Value
 
@@ -94,8 +94,7 @@ A `<RAFResult>` S7 object
 ## Examples
 
 ``` r
-RAFResult(service_data
- = list(ServiceLevelData(), ServiceLevelData()))
+RAFResult(service_data = list(ServiceData(), ServiceData()))
 #> <hcc::RAFResult>
 #>  @ risk_score             : num(0) 
 #>  @ risk_score_demographics: num(0) 
@@ -112,7 +111,7 @@ RAFResult(service_data
 #>  @ version                : chr(0) 
 #>  @ diagnosis_codes        : chr(0) 
 #>  @ service_data           :List of 2
-#>  .. $ : <hcc::ServiceLevelData>
+#>  .. $ : <hcc::ServiceData>
 #>  ..  ..@ service_date           : 'Date' num(0) 
 #>  ..  ..@ claim_id               : chr(0) 
 #>  ..  ..@ patient_id             : chr(0) 
@@ -131,7 +130,7 @@ RAFResult(service_data
 #>  ..  ..@ quantity               : int(0) 
 #>  ..  ..@ unit                   : chr(0) 
 #>  ..  ..@ allowed_amount         : num(0) 
-#>  .. $ : <hcc::ServiceLevelData>
+#>  .. $ : <hcc::ServiceData>
 #>  ..  ..@ service_date           : 'Date' num(0) 
 #>  ..  ..@ claim_id               : chr(0) 
 #>  ..  ..@ patient_id             : chr(0) 

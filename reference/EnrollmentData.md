@@ -7,68 +7,66 @@ California DHCS Medi-Cal 834 format with FAME fields.
 
 ``` r
 EnrollmentData(
-  source = character(),
-  report_date = character(),
-  member_id = character(),
-  mbi = character(),
-  medicaid_id = character(),
-  hic = character(),
-  cin = character(),
-  cin_check_digit = integer(),
-  first_name = character(),
-  last_name = character(),
-  middle_name = character(),
-  dob = character(),
-  age = integer(),
-  sex = character(),
-  race = character(),
-  language = character(),
-  death_date = character(),
-  address_1 = character(),
-  address_2 = character(),
-  city = character(),
-  state = character(),
-  zip = character(),
-  phone = character(),
-  maintenance_type = character(),
-  maintenance_reason_code = character(),
-  benefit_status_code = character(),
-  coverage_start = character(),
-  coverage_end = character(),
-  has_medicare = logical(),
-  has_medicaid = logical(),
-  dual_elgbl_cd = character(),
-  is_full_benefit_dual = logical(),
-  is_partial_benefit_dual = logical(),
-  medicare_status_code = character(),
-  medi_cal_aid_code = character(),
-  medi_cal_eligibility_status = character(),
-  fame_county_id = character(),
-  case_number = character(),
-  fame_card_issue_date = character(),
-  fame_redetermination_date = character(),
-  fame_death_date = character(),
-  primary_aid_code = character(),
-  carrier_code = character(),
-  fed_contract_number = character(),
-  client_reporting_cat = character(),
-  res_addr_flag = character(),
-  reas_add_ind = character(),
-  res_zip_deliv_code = character(),
-  orec = character(),
-  crec = character(),
-  snp = logical(),
-  low_income = logical(),
-  lti = logical(),
-  new_enrollee = logical(),
-  medicare_prt_a = logical(),
-  medicare_prt_b = logical(),
-  medicare_prt_d = logical(),
-  hcp_code = character(),
-  hcp_status = character(),
-  amount_qualifier = character(),
-  amount = double(),
-  hcp_history = HCPCoveragePeriod()
+  source = character(0),
+  report_date = .Date(numeric(0L)),
+  member_id = character(0),
+  mbi = character(0),
+  medicaid_id = character(0),
+  hic = integer(0),
+  cin = integer(0),
+  cin_check_digit = integer(0),
+  first_name = character(0),
+  last_name = character(0),
+  middle_name = character(0),
+  dob = .Date(numeric(0L)),
+  age = integer(0),
+  sex = character(0),
+  race = character(0),
+  language = character(0),
+  death_date = .Date(numeric(0L)),
+  address = character(0),
+  city = character(0),
+  state = character(0),
+  zip = character(0),
+  phone = character(0),
+  maintenance_type = character(0),
+  maintenance_reason_code = character(0),
+  benefit_status_code = character(0),
+  coverage_period = c(.Date(numeric(0L)), .Date(numeric(0L))),
+  has_medicare = logical(0),
+  has_medicaid = logical(0),
+  dual_elgbl_cd = character(0),
+  is_full_benefit_dual = logical(0),
+  is_partial_benefit_dual = logical(0),
+  medicare_status_code = character(0),
+  medi_cal_aid_code = character(0),
+  medi_cal_eligibility_status = character(0),
+  fame_county_id = character(0),
+  case_number = character(0),
+  fame_card_issue_date = .Date(numeric(0L)),
+  fame_redetermination_date = .Date(numeric(0L)),
+  fame_death_date = .Date(numeric(0L)),
+  primary_aid_code = character(0),
+  carrier_code = character(0),
+  fed_contract_number = character(0),
+  client_reporting_cat = character(0),
+  res_addr_flag = character(0),
+  reas_add_ind = character(0),
+  res_zip_deliv_code = character(0),
+  orec = character(0),
+  crec = character(0),
+  snp = logical(0),
+  low_income = logical(0),
+  lti = logical(0),
+  new_enrollee = logical(0),
+  medicare_prt_a = logical(0),
+  medicare_prt_b = logical(0),
+  medicare_prt_d = logical(0),
+  hcp_code = character(0),
+  hcp_status = character(0),
+  amount_qualifier = character(0),
+  amount = numeric(0),
+  hcp_history = list()
 )
 ```
 
@@ -142,13 +140,9 @@ EnrollmentData(
 
   Date of death if applicable
 
-- address_1:
+- address:
 
   `N3-01` Street address line 1
-
-- address_2:
-
-  `N3-02` Street address line 2
 
 - city:
 
@@ -186,13 +180,9 @@ EnrollmentData(
 
   `INS-05` A=Active, C=COBRA, etc.
 
-- coverage_start:
+- coverage_period:
 
-  Coverage effective date
-
-- coverage_end:
-
-  Coverage termination date
+  Coverage effective date range
 
 - has_medicare:
 
@@ -328,205 +318,75 @@ EnrollmentData(
 
 - hcp_history:
 
-  `<HCPCoveragePeriod>` List of historical HCP coverage periods
+  List of `<HCPCoveragePeriod>`, historical HCP coverage periods
 
 ## Value
 
-A `<EnrollmentData>` S7 object
+An `<hcc::EnrollmentData>` S7 object
 
 ## Examples
 
 ``` r
 EnrollmentData()
-#> $source
-#> character(0)
-#> 
-#> $report_date
-#> character(0)
-#> 
-#> $member_id
-#> character(0)
-#> 
-#> $mbi
-#> character(0)
-#> 
-#> $medicaid_id
-#> character(0)
-#> 
-#> $hic
-#> character(0)
-#> 
-#> $cin
-#> character(0)
-#> 
-#> $cin_check_digit
-#> integer(0)
-#> 
-#> $first_name
-#> character(0)
-#> 
-#> $last_name
-#> character(0)
-#> 
-#> $middle_name
-#> character(0)
-#> 
-#> $dob
-#> character(0)
-#> 
-#> $age
-#> integer(0)
-#> 
-#> $sex
-#> character(0)
-#> 
-#> $race
-#> character(0)
-#> 
-#> $language
-#> character(0)
-#> 
-#> $death_date
-#> character(0)
-#> 
-#> $address_1
-#> character(0)
-#> 
-#> $address_2
-#> character(0)
-#> 
-#> $city
-#> character(0)
-#> 
-#> $state
-#> character(0)
-#> 
-#> $zip
-#> character(0)
-#> 
-#> $phone
-#> character(0)
-#> 
-#> $maintenance_type
-#> character(0)
-#> 
-#> $maintenance_reason_code
-#> character(0)
-#> 
-#> $benefit_status_code
-#> character(0)
-#> 
-#> $coverage_start
-#> character(0)
-#> 
-#> $coverage_end
-#> character(0)
-#> 
-#> $has_medicare
-#> logical(0)
-#> 
-#> $has_medicaid
-#> logical(0)
-#> 
-#> $dual_elgbl_cd
-#> character(0)
-#> 
-#> $is_full_benefit_dual
-#> logical(0)
-#> 
-#> $is_partial_benefit_dual
-#> logical(0)
-#> 
-#> $medicare_status_code
-#> character(0)
-#> 
-#> $medi_cal_aid_code
-#> character(0)
-#> 
-#> $medi_cal_eligibility_status
-#> character(0)
-#> 
-#> $fame_county_id
-#> character(0)
-#> 
-#> $case_number
-#> character(0)
-#> 
-#> $fame_card_issue_date
-#> character(0)
-#> 
-#> $fame_redetermination_date
-#> character(0)
-#> 
-#> $fame_death_date
-#> character(0)
-#> 
-#> $primary_aid_code
-#> character(0)
-#> 
-#> $carrier_code
-#> character(0)
-#> 
-#> $fed_contract_number
-#> character(0)
-#> 
-#> $client_reporting_cat
-#> character(0)
-#> 
-#> $res_addr_flag
-#> character(0)
-#> 
-#> $reas_add_ind
-#> character(0)
-#> 
-#> $res_zip_deliv_code
-#> character(0)
-#> 
-#> $orec
-#> character(0)
-#> 
-#> $crec
-#> character(0)
-#> 
-#> $snp
-#> logical(0)
-#> 
-#> $low_income
-#> logical(0)
-#> 
-#> $lti
-#> logical(0)
-#> 
-#> $new_enrollee
-#> logical(0)
-#> 
-#> $medicare_prt_a
-#> logical(0)
-#> 
-#> $medicare_prt_b
-#> logical(0)
-#> 
-#> $medicare_prt_d
-#> logical(0)
-#> 
-#> $hcp_code
-#> character(0)
-#> 
-#> $hcp_status
-#> character(0)
-#> 
-#> $amount_qualifier
-#> character(0)
-#> 
-#> $amount
-#> numeric(0)
-#> 
-#> $hcp_history
-#> <hcc::HCPCoveragePeriod>
-#>  @ start_date: 'Date' num(0) 
-#>  @ end_date  : 'Date' num(0) 
-#>  @ hcp_code  : chr(0) 
-#>  @ hcp_status: chr(0) 
-#>  @ aid_codes : chr(0) 
-#> 
+#> <hcc::EnrollmentData>
+#>  @ source                     : chr(0) 
+#>  @ report_date                : 'Date' num(0) 
+#>  @ member_id                  : chr(0) 
+#>  @ mbi                        : chr(0) 
+#>  @ medicaid_id                : chr(0) 
+#>  @ hic                        : int(0) 
+#>  @ cin                        : int(0) 
+#>  @ cin_check_digit            : int(0) 
+#>  @ first_name                 : chr(0) 
+#>  @ last_name                  : chr(0) 
+#>  @ middle_name                : chr(0) 
+#>  @ dob                        : 'Date' num(0) 
+#>  @ age                        : int(0) 
+#>  @ sex                        : chr(0) 
+#>  @ race                       : chr(0) 
+#>  @ language                   : chr(0) 
+#>  @ death_date                 : 'Date' num(0) 
+#>  @ address                    : chr(0) 
+#>  @ city                       : chr(0) 
+#>  @ state                      : chr(0) 
+#>  @ zip                        : chr(0) 
+#>  @ phone                      : chr(0) 
+#>  @ maintenance_type           : chr(0) 
+#>  @ maintenance_reason_code    : chr(0) 
+#>  @ benefit_status_code        : chr(0) 
+#>  @ coverage_period            : iv<date> [1:1] [NA, NA)
+#>  @ has_medicare               : logi(0) 
+#>  @ has_medicaid               : logi(0) 
+#>  @ dual_elgbl_cd              : chr(0) 
+#>  @ is_full_benefit_dual       : logi(0) 
+#>  @ is_partial_benefit_dual    : logi(0) 
+#>  @ medicare_status_code       : chr(0) 
+#>  @ medi_cal_aid_code          : chr(0) 
+#>  @ medi_cal_eligibility_status: chr(0) 
+#>  @ fame_county_id             : chr(0) 
+#>  @ case_number                : chr(0) 
+#>  @ fame_card_issue_date       : 'Date' num(0) 
+#>  @ fame_redetermination_date  : 'Date' num(0) 
+#>  @ fame_death_date            : 'Date' num(0) 
+#>  @ primary_aid_code           : chr(0) 
+#>  @ carrier_code               : chr(0) 
+#>  @ fed_contract_number        : chr(0) 
+#>  @ client_reporting_cat       : chr(0) 
+#>  @ res_addr_flag              : chr(0) 
+#>  @ reas_add_ind               : chr(0) 
+#>  @ res_zip_deliv_code         : chr(0) 
+#>  @ orec                       : chr(0) 
+#>  @ crec                       : chr(0) 
+#>  @ snp                        : logi(0) 
+#>  @ low_income                 : logi(0) 
+#>  @ lti                        : logi(0) 
+#>  @ new_enrollee               : logi(0) 
+#>  @ medicare_prt_a             : logi(0) 
+#>  @ medicare_prt_b             : logi(0) 
+#>  @ medicare_prt_d             : logi(0) 
+#>  @ hcp_code                   : chr(0) 
+#>  @ hcp_status                 : chr(0) 
+#>  @ amount_qualifier           : chr(0) 
+#>  @ amount                     : num(0) 
+#>  @ hcp_history                : list()
 ```

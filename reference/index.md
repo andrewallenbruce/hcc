@@ -24,7 +24,7 @@
   : Risk Adjustment Factor Results
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
   : Remittance Line Item
-- [`ServiceLevelData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceLevelData.md)
+- [`ServiceData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceData.md)
   : Healthcare Claim Service Level Data
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
   : Apply risk adjustment coefficients to HCCs and interactions.

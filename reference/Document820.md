@@ -51,16 +51,12 @@ Document820
 Document820()
 #> <hcc::Document820>
 #>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA01: chr(0) 
-#>  .. @ ISA02: chr(0) 
-#>  .. @ ISA03: chr(0) 
-#>  .. @ ISA04: chr(0) 
 #>  .. @ ISA05: chr(0) 
 #>  .. @ ISA06: chr(0) 
 #>  .. @ ISA07: chr(0) 
 #>  .. @ ISA08: chr(0) 
-#>  .. @ ISA09: chr(0) 
-#>  .. @ ISA10: chr(0) 
+#>  .. @ ISA09: 'Date' num(0) 
+#>  .. @ ISA10: int(0) 
 #>  .. @ ISA11: chr(0) 
 #>  .. @ ISA12: chr(0) 
 #>  .. @ ISA13: chr(0) 
