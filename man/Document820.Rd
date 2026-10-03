@@ -14,14 +14,14 @@ Document820(
 \arguments{
 \item{Header}{\verb{<hcc::HeaderEDI>} object}
 
+\item{Details}{\verb{<hcc::DetailEDI>} object}
+
 \item{Entity}{list of \verb{<hcc::ENT_Loop>} objects}
 
 \item{Trailer}{\verb{<hcc::TrailerEDI>} object}
-
-\item{Detail}{\verb{<hcc::DetailEDI>} object}
 }
 \value{
-\verb{<hcc::Document820>} S7 objects
+\verb{<hcc::Document820>} S7 object
 }
 \description{
 Document 820 S7 Object

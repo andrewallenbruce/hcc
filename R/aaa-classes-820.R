@@ -21,10 +21,10 @@ ENT_Loop := S7::new_class(
 
 #' Document 820 S7 Object
 #' @param Header `<hcc::HeaderEDI>` object
-#' @param Detail `<hcc::DetailEDI>` object
+#' @param Details `<hcc::DetailEDI>` object
 #' @param Entity list of `<hcc::ENT_Loop>` objects
 #' @param Trailer `<hcc::TrailerEDI>` object
-#' @returns `<hcc::Document820>` S7 objects
+#' @returns `<hcc::Document820>` S7 object
 #' @examples
 #' Document820
 #' Document820()
