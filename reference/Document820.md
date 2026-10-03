@@ -19,6 +19,10 @@ Document820(
 
   `<hcc::HeaderEDI>` object
 
+- Details:
+
+  `<hcc::DetailEDI>` object
+
 - Entity:
 
   list of `<hcc::ENT_Loop>` objects
@@ -27,13 +31,9 @@ Document820(
 
   `<hcc::TrailerEDI>` object
 
-- Detail:
-
-  `<hcc::DetailEDI>` object
-
 ## Value
 
-`<hcc::Document820>` S7 objects
+`<hcc::Document820>` S7 object
 
 ## Examples
 
