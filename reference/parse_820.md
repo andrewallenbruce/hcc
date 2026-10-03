@@ -59,10 +59,146 @@ Typical loop structure within an `820-X218`:
 ## Examples
 
 ``` r
-purrr::map(edi_index(hcc::x12_EX$`820`$`218`[5:7]), hcc:::parse_218) |>
-str(list.len = 10L)
-#> List of 3
-#>  $ payment_order_820_218:List of 4
+x = edi_index(hcc::x12_EX$`820`$`218`[1:5])
+str(purrr::map(x, hcc:::parse_218), list.len = 10L)
+#> List of 5
+#>  $ 820_Child_Health_Plus_Payment_EFT:List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...
+#>   .. ..$ ST : chr [1:3] "820" "222222222" "005010X218"
+#>   ..$ details:List of 5
+#>   .. ..$ BPR: chr [1:16] "I" "239.6" "C" "ACH" ...
+#>   .. ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"
+#>   .. ..$ REF: chr [1:2] "14" "12345678"
+#>   .. ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>   .. ..$ N1 : chr [1:2] "PR" "CHILD HEALTH PLUS"
+#>   ..$ entity :List of 2
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
+#>   .. .. .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"
+#>   .. .. ..$ :List of 4
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-5.55"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "RECOVERY OF FUNDS"
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "12345678" NA "96.96"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "LUMP SUM PAYMENT"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ ENT: chr [1:4] "2" "2J" "EI" "PATIENT ACCOUNT NUMBER"
+#>   .. .. .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...
+#>   .. .. ..$ :List of 5
+#>   .. .. .. ..$ RMR: chr [1:4] "AZ" "12345678" NA "148.19"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1436500000001230"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "0123456789"
+#>   .. .. .. ..$ REF: chr [1:2] "LU" "01"
+#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "17" "222222222"
+#>   .. ..$ GE : chr [1:2] "1" "333333333"
+#>   .. ..$ IEA: chr [1:2] "1" "003333333"
+#>  $ 820_Essentail_Health_Plan        :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20150105" ...
+#>   .. ..$ ST : chr [1:3] "820" "221500001" "005010X218"
+#>   ..$ details:List of 7
+#>   .. ..$ BPR: chr [1:16] "I" "123.45" "C" "CHK" ...
+#>   .. ..$ TRN: chr [1:3] "3" "000000032788113" "1141797357"
+#>   .. ..$ REF: chr [1:2] "14" "12345678"
+#>   .. ..$ N1 : chr [1:4] "PE" NA "FI" "123456789"
+#>   .. ..$ N1 : chr [1:2] "PR" "BASIC HEALTH PLAN"
+#>   .. ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
+#>   .. ..$ N4 : chr [1:3] "ALBANY" "NY" "122370080"
+#>   ..$ entity :List of 1
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ ENT: chr [1:4] "1" "2J" "EI" "LL88888L"
+#>   .. .. .. ..$ NM1: chr [1:9] "QE" "1" "LASTNAME" "FIRSTNAME" ...
+#>   .. .. ..$ :List of 6
+#>   .. .. .. ..$ RMR: chr [1:4] "AZ" "LL88888L" NA "123.45"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1500311111112540"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "0123456789"
+#>   .. .. .. ..$ REF: chr [1:2] "LU" "01"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "51"
+#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "14" "221500001"
+#>   .. ..$ GE : chr [1:2] "1" "5113240"
+#>   .. ..$ IEA: chr [1:2] "1" "005113240"
+#>  $ 820_Premium_Payment_EFT          :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" ...
+#>   .. ..$ ST : chr [1:3] "820" "222222222" "005010X218"
+#>   ..$ details:List of 5
+#>   .. ..$ BPR: chr [1:16] "I" "566.29" "C" "ACH" ...
+#>   .. ..$ TRN: chr [1:3] "3" "021300000000000" "1141797357"
+#>   .. ..$ REF: chr [1:2] "14" "12345678"
+#>   .. ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>   .. ..$ N1 : chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#>   ..$ entity :List of 3
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
+#>   .. .. .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"
+#>   .. .. ..$ :List of 6
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-63.34"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "RECOVERY OF FUNDS"
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "12345678" NA "8.89"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "COURT ORDERED PAYMENT"
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "12345678" NA "-12.67"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "STATE MANDATED PAYMENT REDUCT"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ ENT: chr [1:4] "2" "2J" "EI" "PATIENT ACCOUNT NUMBER"
+#>   .. .. .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ RMR: chr [1:5] "IK" "1000210000000020" NA "183.47" ...
+#>   .. .. .. ..$ ADX: chr [1:2] "181.64" "IA"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ ENT: chr [1:4] "3" "2J" "EI" "PATIENT ACCOUNT NUMBER"
+#>   .. .. .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ RMR: chr [1:5] "IK" "1000210000000020" NA "449.94" ...
+#>   .. .. .. ..$ ADX: chr [1:2] "445.45" "IA"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "22" "222222222"
+#>   .. ..$ GE : chr [1:2] "1" "333333333"
+#>   .. ..$ IEA: chr [1:2] "1" "003333333"
+#>  $ 820_Premium_Payment_NOPMT        :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20100101" ...
+#>   .. ..$ ST : chr [1:3] "820" "173900001" "005010X218"
+#>   ..$ details:List of 7
+#>   .. ..$ BPR: chr [1:16] "I" "0" "C" "NON" ...
+#>   .. ..$ TRN: chr [1:3] "3" "021300000000000" "1123456789"
+#>   .. ..$ REF: chr [1:2] "14" "12345678"
+#>   .. ..$ N1 : chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>   .. ..$ N1 : chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#>   .. ..$ N3 : chr [1:2] "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
+#>   .. ..$ N4 : chr [1:3] "ALBANY" "NY" "12204"
+#>   ..$ entity :List of 2
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
+#>   .. .. .. ..$ ENT: chr [1:4] "1" "2L" "24" "141797357"
+#>   .. .. ..$ :List of 4
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "01234567" NA "-63.37"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "RECOVERY OF FUNDS"
+#>   .. .. .. ..$ RMR: chr [1:4] "1L" "01234567" NA "-56.63"
+#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "STATE MANDATED PAYMENT REDUCT"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ ENT: chr [1:4] "2" "2J" "EI" "PATIENT ACCOUNT NUMBER"
+#>   .. .. .. ..$ NM1: chr [1:9] "QE" "1" "LAST NAME" "FIRST NAME" ...
+#>   .. .. ..$ :List of 2
+#>   .. .. .. ..$ RMR: chr [1:5] "IK" "1320600000000020" NA "120" ...
+#>   .. .. .. ..$ ADX: chr [1:2] "-2851.11" "H1"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "18" "173900001"
+#>   .. ..$ GE : chr [1:2] "1" "6000001"
+#>   .. ..$ IEA: chr [1:2] "1" "006000001"
+#>  $ payment_order_820_218            :List of 4
 #>   ..$ header :List of 3
 #>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
 #>   .. ..$ GS : chr [1:8] "HC" "XXXXXXX" "XXXXX" "20170617" ...
@@ -75,10 +211,10 @@ str(list.len = 10L)
 #>   .. ..$ N1 : chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"
 #>   ..$ entity :List of 1
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ ENT: chr [1:4] "1" "2L" "FI" "123456789"
+#>   .. .. ..$ :List of 7
 #>   .. .. .. ..$ RMR: chr [1:4] "IK" "970501001" "PI" "16500"
-#>   .. .. ..$ :List of 6
 #>   .. .. .. ..$ IT1: chr "1"
 #>   .. .. .. ..$ SLN: chr [1:5] "1" NA "O" "5" ...
 #>   .. .. .. ..$ SLN: chr [1:5] "2" NA "O" "75" ...
@@ -89,304 +225,4 @@ str(list.len = 10L)
 #>   .. ..$ SE : chr [1:2] "15" "0001"
 #>   .. ..$ GE : chr [1:2] "1" "101"
 #>   .. ..$ IEA: chr [1:2] "1" "000000101"
-#>  $ sample_820_01        :List of 4
-#>   ..$ header :List of 3
-#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
-#>   .. ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260118" ...
-#>   .. ..$ ST : chr [1:3] "820" "0001" "005010X218"
-#>   ..$ details:List of 9
-#>   .. ..$ BPR: chr [1:16] "I" "102139.46" "C" "NON" ...
-#>   .. ..$ TRN: chr [1:2] "3" "TESTTRN01000001"
-#>   .. ..$ REF: chr [1:2] "14" "0000245023"
-#>   .. ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
-#>   .. ..$ N3 : chr "123 TEST STREET"
-#>   .. ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   .. ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
-#>   .. ..$ N3 : chr "123 TEST STREET"
-#>   .. ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ entity :List of 12
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "1" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME01" "FIRSTNAME01" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "2" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME02" "FIRSTNAME02" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "3" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME03" "FIRSTNAME03" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "4" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME04" "FIRSTNAME04" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "5" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME05" "FIRSTNAME05" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "6" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME06" "FIRSTNAME06" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "7" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME07" "FIRSTNAME07" ...
-#>   .. .. ..$ :List of 10
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "8" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME08" "FIRSTNAME08" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "9" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME09" "FIRSTNAME09" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "10" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME10" "FIRSTNAME10" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2512150225000P" NA "8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. [list output truncated]
-#>   ..$ trailer:List of 3
-#>   .. ..$ SE : chr [1:2] "100" "0001"
-#>   .. ..$ GE : chr [1:2] "1" "43304"
-#>   .. ..$ IEA: chr [1:2] "1" "000058691"
-#>  $ sample_820_02        :List of 4
-#>   ..$ header :List of 3
-#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
-#>   .. ..$ GS : chr [1:8] "RA" "TEST-PAYER" "TEST-PAYEE" "20260316" ...
-#>   .. ..$ ST : chr [1:3] "820" "0001" "005010X218"
-#>   ..$ details:List of 9
-#>   .. ..$ BPR: chr [1:16] "I" "91977.81" "C" "NON" ...
-#>   .. ..$ TRN: chr [1:2] "3" "TESTTRN02000001"
-#>   .. ..$ REF: chr [1:2] "14" "0000245023"
-#>   .. ..$ N1 : chr [1:2] "PE" "TEST PAYEE ORGANIZATION"
-#>   .. ..$ N3 : chr "123 TEST STREET"
-#>   .. ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   .. ..$ N1 : chr [1:2] "PR" "TEST PAYER AGENCY"
-#>   .. ..$ N3 : chr "123 TEST STREET"
-#>   .. ..$ N4 : chr [1:3] "TESTCITY" "CA" "00000"
-#>   ..$ entity :List of 13
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "1" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME01" "FIRSTNAME01" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "5555.82"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Dual-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "454.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Dual-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "2" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME02" "FIRSTNAME02" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "3" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME03" "FIRSTNAME03" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "4" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME13" "FIRSTNAME13" ...
-#>   .. .. ..$ :List of 10
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "5" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME04" "FIRSTNAME04" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "6" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME05" "FIRSTNAME05" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "7" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME06" "FIRSTNAME06" ...
-#>   .. .. ..$ :List of 5
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "-8086.53"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "8" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME07" "FIRSTNAME07" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "M1;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "9" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME08" "FIRSTNAME08" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
-#>   .. .. .. ..$ ENT: chr [1:4] "10" "2J" "EI" "999999999"
-#>   .. .. .. ..$ NM1: chr [1:9] "IL" "1" "LASTNAME09" "FIRSTNAME09" ...
-#>   .. .. ..$ :List of 11
-#>   .. .. .. ..$ RMR: chr [1:4] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "8488.25"
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. ..$ RMR: chr [1:5] "IK" "TESTPLAN-SREGLR-2602200043000P" NA "401.72" ...
-#>   .. .. .. ..$ REF: chr [1:2] "18" "957"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "1H;2"
-#>   .. .. .. ..$ REF: chr [1:2] "ZZ" "Medi-Cal Only-State Only"
-#>   .. .. .. ..$ DTM: chr [1:6] "582" NA NA NA ...
-#>   .. .. .. .. [list output truncated]
-#>   .. .. [list output truncated]
-#>   ..$ trailer:List of 3
-#>   .. ..$ SE : chr [1:2] "162" "0001"
-#>   .. ..$ GE : chr [1:2] "1" "44273"
-#>   .. ..$ IEA: chr [1:2] "1" "000059660"
 ```
