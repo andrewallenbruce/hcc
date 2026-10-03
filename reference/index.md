@@ -2,6 +2,8 @@
 
 ## All functions
 
+- [`Document820()`](https://andrewallenbruce.github.io/hcc/reference/Document820.md)
+  : Document 820 S7 Object
 - [`EditRule()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   [`AgeEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   [`SexEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)

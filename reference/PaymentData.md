@@ -138,39 +138,5 @@ PaymentData(
     )
   )
 )
-#> <hcc::PaymentData>
-#>  @ source         : chr "TEST-PAYER"
-#>  @ report_date    : Date[1:1], format: "2026-03-16"
-#>  @ payment_date   : Date[1:1], format: "2026-03-12"
-#>  @ total_amount   : num 91978
-#>  @ check_number   : chr "TESTTRN02000001"
-#>  @ payee_name     : chr "TEST PAYEE ORGANIZATION"
-#>  @ payee_address  : chr "123 TEST STREET"
-#>  @ payee_city     : chr "TESTCITY"
-#>  @ payee_state    : chr "CA"
-#>  @ payee_zip      : chr "00000"
-#>  @ payer_name     : chr "TEST PAYER AGENCY"
-#>  @ payer_address  : chr "123 TEST STREET"
-#>  @ payer_city     : chr "TESTCITY"
-#>  @ payer_state    : chr "CA"
-#>  @ payer_zip      : chr "00000"
-#>  @ payment_details:List of 1
-#>  .. $ : <hcc::PaymentDetail>
-#>  ..  ..@ entity_number: int 1
-#>  ..  ..@ member_id    : chr "TESTMBR000000001"
-#>  ..  ..@ last_name    : chr "LASTNAME01"
-#>  ..  ..@ first_name   : chr "FIRSTNAME01"
-#>  ..  ..@ middle_name  : chr(0) 
-#>  ..  ..@ remittances  :List of 1
-#>  .. .. .. $ : <hcc::RemittanceEntry>
-#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
-#>  .. .. ..  ..@ original_amount    : num 8488
-#>  .. .. ..  ..@ adjustment_amount  : num -8087
-#>  .. .. ..  ..@ payment_amount     : num 402
-#>  .. .. ..  ..@ adjustment_reason  : chr "53"
-#>  .. .. ..  ..@ rate_code          : chr "957"
-#>  .. .. ..  ..@ aid_code           : chr "17"
-#>  .. .. ..  ..@ plan_type          : chr "2"
-#>  .. .. ..  ..@ payment_description: chr "Dual-State Only"
-#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
+#> Error in .c(x, y) %=% .subset2(strsplit(x, "-", fixed = TRUE), 1L): length(lhs) must be equal to length(rhs)
 ```

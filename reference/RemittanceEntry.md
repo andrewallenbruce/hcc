@@ -83,15 +83,15 @@ REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
 ``` r
 RemittanceEntry(
   reference_number = "TESTPLAN-SREGLR-2602200043000P",
-  original_amount = 8488.25,
-  adjustment_amount = -8086.53,
-  payment_amount = 401.72,
+  original_amount = "8488.25",
+  adjustment_amount = "-8086.53",
+  payment_amount = "401.72",
   adjustment_reason = "53",
   rate_code = "957",
   aid_code = "17",
   plan_type = "2",
   payment_description = "Dual-State Only",
-  coverage_period = c("2026-01-01", "2026-01-31")
+  coverage_period = "20260101-20260131"
 )
 #> <hcc::RemittanceEntry>
 #>  @ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
