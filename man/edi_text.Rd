@@ -4,10 +4,12 @@
 \alias{edi_text}
 \title{Create an EDI Text Object}
 \usage{
-edi_text(x)
+edi_text(x, ...)
 }
 \arguments{
 \item{x}{raw X12 text input}
+
+\item{...}{dots}
 }
 \value{
 an \verb{<hcc::TextEDI>} S7 object
@@ -15,6 +17,16 @@ an \verb{<hcc::TextEDI>} S7 object
 \description{
 Create an EDI Text Object
 }
+\details{
+Methods for \code{edi_index}:
+\itemize{
+\item \code{ANY}
+\item \code{character}
+\item \code{hcc::TextEDI}
+\item \code{list}
+}
+}
 \examples{
-edi_text(x12_EX$`837`$P222)
+edi_text(x12_EX$`820`$`218`)
+edi_text(x12_EX$`820`$`306`)
 }

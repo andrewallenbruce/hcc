@@ -1,3 +1,38 @@
+#' Create an EDI Text Object
+#'
+#' @details
+#' Methods for `edi_index`:
+#' `r doclisting::methods_list("edi_text")`
+#'
+#'
+#' @param x raw X12 text input
+#' @param ... dots
+#' @returns an `<hcc::TextEDI>` S7 object
+#' @examples
+#' edi_text(x12_EX$`820`$`218`)
+#' edi_text(x12_EX$`820`$`306`)
+#' @export
+edi_text := S7::new_generic("x")
+
+S7::method(edi_text, S7::class_any) <- function(x) {
+  return(NA)
+}
+
+S7::method(edi_text, TextEDI) <- function(x) {
+  return(x)
+}
+
+S7::method(edi_text, S7::class_list) <- function(x) {
+  purrr::map(x, \(i) edi_text_(cheapr::paste_(i, collapse = "")))
+}
+
+S7::method(edi_text, S7::class_character) <- function(x) {
+  if (length(x) > 1L) {
+    return(edi_text_(cheapr::paste_(x, collapse = "")))
+  }
+  edi_text_(x)
+}
+
 #' @noRd
 edi_text_ <- function(x) {
   text <- trimws(x) |>
@@ -25,24 +60,4 @@ edi_text_ <- function(x) {
     "834" = Text834(type, text),
     "837" = Text837(type, text)
   )
-}
-
-#' Create an EDI Text Object
-#'
-#' @param x raw X12 text input
-#' @returns an `<hcc::TextEDI>` S7 object
-#' @examples
-#' edi_text(x12_EX$`837`$P222)
-#' @export
-edi_text <- function(x) {
-  if (rlang::is_scalar_character(x)) {
-    return(edi_text_(x))
-  }
-  if (rlang::is_character(x)) {
-    return(edi_text_(cheapr::paste_(x, collapse = "")))
-  }
-  if (rlang::is_bare_list(x)) {
-    return(purrr::map(x, \(i) edi_text_(cheapr::paste_(i, collapse = ""))))
-  }
-  cli::cli_abort("Unknown X12 Type", call = rlang::caller_env())
 }

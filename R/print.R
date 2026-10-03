@@ -1,7 +1,10 @@
+BoldRed <- cli::combine_ansi_styles("bold", "red")
+BoldCyan <- cli::combine_ansi_styles("bold", "cyan")
+
 S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  names_ <- cli::col_cyan(cli::style_bold(S7::prop_names(x)))
+  names_ <- BoldCyan((c("Type", "Segments")))
   numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
 
   cli::cat_line(cheapr::paste_(fright(names_), ": ", fleft(numbs_)))
@@ -11,15 +14,12 @@ S7::method(format, TextEDI) <- function(x) {
 S7::method(format, IndexEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  names_ <- cli::col_cyan(cli::style_bold((c("Type", "Segments"))))
+  names_ <- BoldCyan((c("Type", "Segments")))
   numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
 
   if (!cheapr::is_na(S7::prop(x, "Problems"))) {
-    names_ <- c(names_, cli::col_red(cli::style_bold("Problems")))
-    numbs_ <- c(
-      numbs_,
-      cli::col_red(cli::style_bold(length(S7::prop(x, "Problems"))))
-    )
+    names_ <- c(names_, BoldRed("Problems"))
+    numbs_ <- c(numbs_, BoldRed(length(S7::prop(x, "Problems"))))
   }
 
   cli::cat_line(cheapr::paste_(fright(names_)), ": ", fleft(numbs_))
@@ -42,42 +42,42 @@ S7::method(format, IndexEDI) <- function(x) {
 S7::method(format, Index820) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  nm_ <- cli::col_cyan(cli::style_bold((c("Type", "Segments"))))
+  nm_ <- BoldCyan((c("Type", "Segments")))
   ns_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
   pr_ <- S7::prop(x, "Problems")
 
   if (!cheapr::is_na(pr_)) {
-    pr_ <- length(pr_)
-    nm_ <- c(nm_, cli::col_red(cli::style_bold("Problems")))
-    ns_ <- c(ns_, cli::col_red(cli::style_bold(pr_)))
+    nm_ <- c(nm_, BoldRed("Problems"))
+    ns_ <- c(ns_, BoldRed(length(pr_)))
   }
 
   cli::cat_line(cheapr::paste_(fright(nm_)), ": ", fleft(ns_))
   cli::cat_rule()
 
-  seg_nm <- cli::col_cyan(cli::style_bold(
-    (c("Header", "Detail", "Trailer"))
-  ))
-  seg_pr <- list(x@Header, x@Details, x@Trailer)
-  seg_ln <- cheapr::lengths_(seg_pr)
+  seg_nm <- BoldCyan(c("Header", "Detail", "Trailer"))
+  seg_pr <- list(
+    S7::prop(x, "Header"),
+    S7::prop(x, "Details"),
+    S7::prop(x, "Trailer")
+  )
   seg_el <- purrr::map(seg_pr, \(i) {
-    unique(purrr::map_chr(S7::prop(x, "Text")[i], \(x) {
-      gsub("*", "", substr(x, 1, 3), fixed = TRUE)
-    }))
+    S7::prop(x, "Text")[i] |>
+      purrr::map_chr(\(x) gsub("*", "", substr(x, 1, 3), fixed = TRUE)) |>
+      cheapr::unique_()
   }) |>
     purrr::map_chr(\(i) cheapr::paste_(i, collapse = " > "))
 
   cli::cat_line(cheapr::paste_(
     fright(seg_nm),
     " ",
-    fright(cheapr::paste_(" [", seg_ln, "]")),
+    fright(cheapr::paste_(" [", cheapr::lengths_(seg_pr), "]")),
     " ",
     fleft(seg_el)
   ))
 
   cli::cli_h2("Entity Loop")
 
-  elp_nm <- cli::col_cyan(cli::style_bold((c("Entity", "Remits"))))
+  elp_nm <- BoldCyan(c("Entity", "Remits"))
   elp_ln <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
   ent_ln <- purrr::map_int(elp_ln, 1L)
   ent_tb <- cheapr::table_(ent_ln)

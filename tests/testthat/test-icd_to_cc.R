@@ -3,9 +3,10 @@ test_that("Common diabetes code maps correctly", {
     icd_to_cc(
       icd = "E119",
       model = "C28",
-      year = 2026
-    )$cc,
-    38
+      year = 2026,
+      simplify = TRUE
+    ),
+    list(E119 = 38)
   )
 })
 
@@ -14,9 +15,10 @@ test_that("Batch mapping works", {
     icd_to_cc(
       icd = c("E103213", "I5022", "Z9999"),
       model = "C28",
-      year = 2026
-    )$cc,
-    c(37, 298, 226)
+      year = 2026,
+      simplify = TRUE
+    ),
+    list(E103213 = c(37, 298), I5022 = 226)
   )
 })
 
@@ -25,9 +27,10 @@ test_that("Different model version", {
     icd_to_cc(
       icd = "E119",
       model = "D21",
-      year = 2026
-    )$cc,
-    19
+      year = 2026,
+      simplify = TRUE
+    ),
+    list(E119 = 19)
   )
 })
 
@@ -36,8 +39,9 @@ test_that("Non-existent diagnosis code returns nothing", {
     icd_to_cc(
       icd = "Z9999",
       model = "C28",
-      year = 2026
-    )$cc,
-    integer(0)
+      year = 2026,
+      simplify = TRUE
+    ),
+    rlang::set_names(list(), character())
   )
 })

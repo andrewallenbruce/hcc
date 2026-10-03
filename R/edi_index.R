@@ -36,7 +36,7 @@ S7::method(edi_index, Text820) <- function(x) {
 }
 
 S7::method(edi_index, Text834) <- function(x) {
-  new_index(x, ind_834(x@Text))
+  new_index(x, ind_834(S7::prop(x, "Text")))
 }
 
 S7::method(edi_index, Text837) <- function(x) {

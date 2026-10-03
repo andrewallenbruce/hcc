@@ -97,3 +97,46 @@ disease_interactions <- function(diag, demo = NULL) {
 
   names(x)[unlist_(x) == 1L]
 }
+
+
+#' Create an EDI Text Object
+#'
+#' @param x raw X12 text input
+#' @returns an `<hcc::TextEDI>` S7 object
+#' @examples
+#' edi_text(x12_EX$`837`$P222)
+#' @export
+edi_text <- function(x) {
+  if (rlang::is_scalar_character(x)) {
+    return(edi_text_(x))
+  }
+  if (rlang::is_character(x)) {
+    return(edi_text_(cheapr::paste_(x, collapse = "")))
+  }
+  if (rlang::is_bare_list(x)) {
+    return(purrr::map(x, \(i) edi_text_(cheapr::paste_(i, collapse = ""))))
+  }
+  cli::cli_abort("Unknown X12 Type", call = rlang::caller_env())
+}
+
+#' @noRd
+parse_820_ENT <- function(x) {
+  en <- .subset2(x@Index, "ENT")
+  ix <- fill_(
+    en,
+    c(.subset(en, -1L), .subset2(x@Index, "SE")) - 1L,
+    as_list = TRUE
+  )
+
+  ent <- purrr::map(ix, \(i) {
+    x <- .subset(x@Text, i) |>
+      strsplit("[*;]", perl = TRUE)
+
+    # x[[1]] <- x[[1]][-1]
+
+    purrr::map(x, \(e) collapse::na_rm(set_zchar(e)))
+  })
+
+  rlang::set_names(ent, seq_along(ent)) |>
+    vctrs::vec_c(.name_spec = "{outer}.{inner}")
+}

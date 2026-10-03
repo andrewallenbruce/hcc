@@ -57,48 +57,15 @@ subsplit <- function(x, i) {
 }
 
 #' @noRd
-subsplit2 <- function(x, i) {
-  stringfish::sf_split(
-    .subset(x, i),
-    "*",
-    fixed = TRUE,
-    nthreads = 4L
-  ) |>
-    purrr::map(\(x) set_zchar(trimws(x)))
-}
-
-#' @noRd
 parse_218 <- function(x) {
   list(
-    header = subsplit(x@Text, x@Header),
-    details = subsplit(x@Text, x@Details),
-    entity = purrr::map(x@Entity, \(index) {
-      purrr::map(index, \(i) subsplit(x@Text, i))
+    header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header")),
+    details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
+    entity = purrr::map(S7::prop(x, "Entity"), \(index) {
+      purrr::map(index, \(i) subsplit(S7::prop(x, "Text"), i))
     }),
-    trailer = subsplit(x@Text, x@Trailer)
+    trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"))
   )
-}
-
-#' @noRd
-parse_820_ENT <- function(x) {
-  en <- .subset2(x@Index, "ENT")
-  ix <- fill_(
-    en,
-    c(.subset(en, -1L), .subset2(x@Index, "SE")) - 1L,
-    as_list = TRUE
-  )
-
-  ent <- purrr::map(ix, \(i) {
-    x <- .subset(x@Text, i) |>
-      strsplit("[*;]", perl = TRUE)
-
-    # x[[1]] <- x[[1]][-1]
-
-    purrr::map(x, \(e) collapse::na_rm(set_zchar(e)))
-  })
-
-  rlang::set_names(ent, seq_along(ent)) |>
-    vctrs::vec_c(.name_spec = "{outer}.{inner}")
 }
 
 #' @noRd
@@ -112,9 +79,4 @@ parse_820_306 <- function(x) {
     N1RM = split_7(x, "N1RM"),
     PERIC = split_7(x, "PERIC")
   )
-
-  entity <- parse_820_ENT(x)
-  trailer <- parse_TRAILER(x)
-
-  c(header, entity, trailer)
 }
