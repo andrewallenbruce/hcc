@@ -1,17 +1,3 @@
-#' @noRd
-Document820 := S7::new_class(
-  properties = list(
-    ISA = S7::class_list,
-    GS = S7::class_list,
-    ST = S7::class_list,
-    Details = S7::class_list,
-    Entity = S7::class_list,
-    SE = S7::class_list,
-    GE = S7::class_list,
-    IEA = S7::class_list
-  )
-)
-
 #' 2300B Individual Premium Remittance Detail Loop
 #' @noRd
 RMR_Loop := S7::new_class(
@@ -29,7 +15,26 @@ ENT_Loop := S7::new_class(
   properties = list(
     ENT = S7::class_list,
     NM1 = S7::class_list,
-    RMR_Loop = S7::class_list
+    RMR_Loop = prop_list_of(RMR_Loop)
+  )
+)
+
+#' Document 820 S7 Object
+#' @param Header `<hcc::HeaderEDI>` object
+#' @param Detail `<hcc::DetailEDI>` object
+#' @param Entity list of `<hcc::ENT_Loop>` objects
+#' @param Trailer `<hcc::TrailerEDI>` object
+#' @returns `<hcc::Document820>` S7 objects
+#' @examples
+#' Document820
+#' Document820()
+#' @export
+Document820 := S7::new_class(
+  properties = list(
+    Header = HeaderEDI,
+    Details = DetailEDI,
+    Entity = prop_list_of(ENT_Loop),
+    Trailer = TrailerEDI
   )
 )
 
@@ -63,29 +68,29 @@ ENT_Loop := S7::new_class(
 #' @examples
 #' RemittanceEntry(
 #'   reference_number = "TESTPLAN-SREGLR-2602200043000P",
-#'   original_amount = 8488.25,
-#'   adjustment_amount = -8086.53,
-#'   payment_amount = 401.72,
+#'   original_amount = "8488.25",
+#'   adjustment_amount = "-8086.53",
+#'   payment_amount = "401.72",
 #'   adjustment_reason = "53",
 #'   rate_code = "957",
 #'   aid_code = "17",
 #'   plan_type = "2",
 #'   payment_description = "Dual-State Only",
-#'   coverage_period = c("2026-01-01", "2026-01-31")
+#'   coverage_period = "20260101-20260131"
 #' )
 #' @export
 RemittanceEntry := S7::new_class(
   properties = list(
     reference_number = S7::class_character,
-    original_amount = S7::class_double,
-    adjustment_amount = S7::class_double,
-    payment_amount = S7::class_double,
+    original_amount = prop_double,
+    adjustment_amount = prop_double,
+    payment_amount = prop_double,
     adjustment_reason = S7::class_character,
     rate_code = S7::class_character,
     aid_code = S7::class_character,
     plan_type = S7::class_character,
     payment_description = S7::class_character,
-    coverage_period = prop_date_range
+    coverage_period = prop_dtm_rd8
   )
 )
 

@@ -312,11 +312,11 @@ parse_yymmdd <- function(x, ...) {
 
 #' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
 #' @examplesIf FALSE
-#' parse_dtm_rd8("20200202-20200402")
+#' parse_DTM_RD8("20200202-20200402")
 #' @noRd
-parse_dtm_rd8 <- function(x) {
-  x <- .subset2(strsplit(x, "-", fixed = TRUE), 1L)
-  parse_date_range(x[1], x[2])
+parse_DTM_RD8 <- function(x) {
+  .c(x, y) %=% .subset2(strsplit(x, "-", fixed = TRUE), 1L)
+  parse_date_range(x, y)
 }
 
 #' Parse Date Range

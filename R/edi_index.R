@@ -62,9 +62,9 @@ new_index <- function(x, index) {
 
 #' @noRd
 new_index820 <- function(x, i) {
-  Index820(
-    Type = S7::prop(x, "Type"),
-    Text = S7::prop(x, "Text"),
+  S7::convert(
+    x,
+    Index820,
     Problems = problems(S7::prop(x, "Text"), i),
     Header = i$header,
     Details = i$details,
