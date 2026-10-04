@@ -111,17 +111,53 @@ S7::method(format, Index820) <- function(x) {
   cli::cat_rule()
 }
 
-S7::method(print, TextEDI) <- function(x) {
+S7::method(format, Index834) <- function(x) {
+  cli::cli_h1("<{attr(x, .c(class))[1]}>")
+
+  nm_ <- BoldCyan((c("Type", "Segments")))
+  ns_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
+  pr_ <- S7::prop(x, "Problems")
+
+  if (!cheapr::is_na(pr_)) {
+    nm_ <- c(nm_, BoldRed("Problems"))
+    ns_ <- c(ns_, BoldRed(length(pr_)))
+  }
+
+  cli::cat_line(cheapr::paste_(fright(nm_)), ": ", fleft(ns_))
+  cli::cat_rule()
+
+  seg_nm <- BoldCyan(c("Header", "Detail", "Member", "Trailer"))
+  seg_pr <- list(
+    S7::prop(x, "Header"),
+    S7::prop(x, "Details"),
+    S7::prop(x, "Member"),
+    S7::prop(x, "Trailer")
+  )
+
+  seg_el <- purrr::map(seg_pr, \(i) {
+    if (is.list(i)) {
+      i <- unlist_(i)
+    }
+    S7::prop(x, "Text")[i] |>
+      purrr::map_chr(\(x) gsub("*", "", substr(x, 1, 3), fixed = TRUE)) |>
+      cheapr::unique_()
+  }) |>
+    purrr::map_chr(\(i) cheapr::paste_(i, collapse = " > "))
+
+  seg_pr <- cheapr::paste_(" [", collapse::vlengths(seg_pr), "]")
+
+  cli::cat_line(
+    cheapr::paste_(fright(seg_nm), fright(seg_pr), fleft(seg_el), sep = " ")
+  )
+  cli::cat_rule()
+}
+
+S7::method(print, TextEDI | IndexEDI) <- function(x) {
   format(x)
   invisible(x)
 }
 
-S7::method(print, IndexEDI) <- function(x) {
-  format(x)
-  invisible(x)
-}
-
-S7::method(print, Index820) <- function(x) {
+S7::method(print, Index820 | Index834) <- function(x) {
   format(x)
   invisible(x)
 }

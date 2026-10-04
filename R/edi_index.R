@@ -9,6 +9,7 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
+#' edi_index(x12_EX$`834`)
 #' edi_index(x12_EX$`820`$`218`)
 #' edi_index(x12_EX$`820`$`306`)
 #' @export
@@ -32,11 +33,29 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  new_index820(x, index_820(S7::prop(x, "Text")))
+  i <- index_820(S7::prop(x, "Text"))
+  S7::convert(
+    x,
+    Index820,
+    Problems = problems(S7::prop(x, "Text"), i),
+    Header = i$header,
+    Details = i$details,
+    Entity = i$entity,
+    Trailer = i$trailer
+  )
 }
 
 S7::method(edi_index, Text834) <- function(x) {
-  new_index(x, ind_834(S7::prop(x, "Text")))
+  i <- index_834(S7::prop(x, "Text"))
+  S7::convert(
+    x,
+    Index834,
+    Problems = problems(S7::prop(x, "Text"), i),
+    Header = i$header,
+    Details = i$details,
+    Member = i$member,
+    Trailer = i$trailer
+  )
 }
 
 S7::method(edi_index, Text837) <- function(x) {
@@ -61,25 +80,26 @@ new_index <- function(x, index) {
 }
 
 #' @noRd
-new_index820 <- function(x, i) {
-  S7::convert(
-    x,
-    Index820,
-    Problems = problems(S7::prop(x, "Text"), i),
-    Header = i$header,
-    Details = i$details,
-    Entity = i$entity,
-    Trailer = i$trailer
-  )
-}
-
-#' @noRd
 problems <- function(x, i) {
   if (length(x) != cheapr::unlisted_length(i)) {
     cheapr::setdiff_(seq_along(x), unlist_(i))
   } else {
     NA_integer_
   }
+}
+
+#' @noRd
+index_834 <- function(x) {
+  ST <- perl(x, "^ST")
+  SE <- perl(x, "^SE")
+  INS <- perl(x, "^INS")
+
+  rlang::list2(
+    header = fill_(perl(x, "^ISA"), ST),
+    details = fill_(ST + 1L, INS[1L] - 1L),
+    member = create_entity_index(INS, SE),
+    trailer = fill_(SE, perl(x, "^IEA"))
+  )
 }
 
 #' @noRd

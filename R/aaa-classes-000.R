@@ -108,6 +108,18 @@ IndexEDI := S7::new_class(
 )
 
 #' @noRd
+Index834 := S7::new_class(
+  parent = Text834,
+  properties = list(
+    Problems = prop_integer,
+    Header = prop_integer,
+    Details = prop_integer,
+    Member = S7::class_list,
+    Trailer = prop_integer
+  )
+)
+
+#' @noRd
 Index820 := S7::new_class(
   parent = Text820,
   properties = list(
@@ -124,7 +136,9 @@ SegmentEDI := S7::new_class(
   properties = list(
     Position = prop_integer,
     Element = S7::class_character,
-    Meaning = S7::class_character
+    Meaning = S7::class_character,
+    Name = S7::class_character,
+    Description = S7::class_character
   )
 )
 
@@ -132,7 +146,27 @@ SegmentEDI := S7::new_class(
 isa_segment <- function(i, x) {
   SegmentEDI(
     Position = 1:16,
-    Element = x
+    Element = x$header$ISA,
+    # Meaning = ,
+    Name = c(
+      "Authorization Info Qualifier",
+      "Authorization Information",
+      "Security Info Qualifier",
+      "Security Information",
+      "Interchange ID Qualifier",
+      "Interchange Sender ID",
+      "Interchange ID Qualifier",
+      "Interchange Receiver ID",
+      "Interchange Date",
+      "Interchange Time",
+      "Repetition Separator",
+      "Interchange Control Version Number",
+      "Interchange Control Number",
+      "Acknowledgment Requested",
+      "Interchange Usage Indicator",
+      "Component Element Separator"
+    )
+    # Description = S7::class_character
   )
 }
 
