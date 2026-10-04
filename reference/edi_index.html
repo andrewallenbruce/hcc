@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9070</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9071</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +77,108 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`834`</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 19      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [4] BGN &gt; REF &gt; N1                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; DTP &gt; NM1 &gt; DMG &gt; HD</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX3_enroll_employee_mco`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 22      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [3] BGN &gt; N1                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; DTP &gt; NM1 &gt; PER &gt; N3 &gt; N4 &gt; DMG &gt; HD &gt; LX</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX4_add_subscriber_coverage`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 16      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [4] BGN &gt; REF &gt; N1            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; NM1 &gt; HD &gt; DTP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX5_change_subscriber_info`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 16      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [3] BGN &gt; N1             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; NM1 &gt; DMG</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX6_cancel_dependent`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 16      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [4] BGN &gt; REF &gt; N1             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; DTP &gt; NM1 &gt; DMG</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX7_terminate_subscriber_eligibility`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 14      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [3] BGN &gt; N1             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; DTP &gt; NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX8_reinstate_employee`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 15      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [4] BGN &gt; REF &gt; N1       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; DTP &gt; NM1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX9_reinstate_employee_coverage`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #00BBBB; font-weight: bold;">Type</span>: 834-X220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Segments</span>: 16      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Header</span>  [3] ISA &gt; GS &gt; ST             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Detail</span>  [4] BGN &gt; REF &gt; N1            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #00BBBB; font-weight: bold;">Member</span>  [1] INS &gt; REF &gt; NM1 &gt; HD &gt; DTP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">Trailer</span>  [3] SE &gt; GE &gt; IEA             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $benefit_enrollment_834_220</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index834&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in if (!cheapr::is_na(pr_)) {    nm_ &lt;- c(nm_, BoldRed("Problems"))    ns_ &lt;- c(ns_, BoldRed(length(pr_)))}:</span> the condition has length &gt; 1</span>
+<span class="r-in"><span><span class="fu">edi_index</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Child_Health_Plus_Payment_EFT`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">&lt;hcc::Index820&gt;</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────</span></span>
