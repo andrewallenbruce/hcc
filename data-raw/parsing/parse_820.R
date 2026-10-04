@@ -4,7 +4,6 @@
 # 2000B Loop: Individual Remittance Loop
 # 2100B Loop: Individual Name Loop
 # 2300B Loop: Individual Premium Remittance Detail Loop
-
 dict_820 = list(
   # length = 16
   ISA = list(

@@ -95,7 +95,7 @@ index_834 <- function(x) {
   INS <- perl(x, "^INS")
 
   rlang::list2(
-    header = fill_(perl(x, "^ISA"), ST),
+    header = fill_(perl(x, "ISA\\*"), ST),
     details = fill_(ST + 1L, INS[1L] - 1L),
     member = create_entity_index(INS, SE),
     trailer = fill_(SE, perl(x, "^IEA"))
@@ -116,7 +116,7 @@ index_820 <- function(x) {
   }
 
   rlang::list2(
-    header = fill_(perl(x, "^ISA"), ST),
+    header = fill_(perl(x, "ISA\\*"), ST),
     details = fill_(ST + 1L, ENT[1L] - 1L),
     entity = map_entity_index(ENT, SE, NM1),
     trailer = fill_(SE, perl(x, "^IEA"))
