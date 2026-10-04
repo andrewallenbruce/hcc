@@ -120,6 +120,26 @@ Index820 := S7::new_class(
 )
 
 #' @noRd
+SegmentEDI := S7::new_class(
+  properties = list(
+    Position = prop_integer,
+    Element = S7::class_character,
+    Meaning = S7::class_character
+  )
+)
+
+#' @noRd
+isa_segment <- function(i, x) {
+  SegmentEDI(
+    Position = 1:16,
+    Element = x
+  )
+}
+
+#' @noRd
+Text820 := S7::new_class(TextEDI)
+
+#' @noRd
 DetailEDI := S7::new_class(
   properties = list(
     BPR01 = S7::class_character,
@@ -161,10 +181,6 @@ TrailerEDI := S7::new_class(
 #' @noRd
 HeaderEDI := S7::new_class(
   properties = list(
-    # ISA01 = S7::class_character,
-    # ISA02 = S7::class_character,
-    # ISA03 = S7::class_character,
-    # ISA04 = S7::class_character,
     ISA05 = S7::class_character,
     ISA06 = S7::class_character,
     ISA07 = S7::class_character,

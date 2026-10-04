@@ -41,7 +41,7 @@ parse_820 <- function(x) {
 }
 
 #' @noRd
-subsplit <- function(x, i) {
+subsplit <- function(x, i, name = FALSE) {
   x <- stringfish::sf_split(
     .subset(x, i),
     "*",
@@ -49,6 +49,10 @@ subsplit <- function(x, i) {
     nthreads = 4L
   ) |>
     purrr::map(\(x) set_zchar(trimws(x)))
+
+  if (!name) {
+    return(x)
+  }
 
   rlang::set_names(
     purrr::map(x, .subset, -1L),
@@ -59,12 +63,12 @@ subsplit <- function(x, i) {
 #' @noRd
 parse_218 <- function(x) {
   list(
-    header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header")),
-    details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
+    header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
+    details = subsplit(x = S7::prop(x, "Text"), S7::prop(x, "Details")),
     entity = purrr::map(S7::prop(x, "Entity"), \(index) {
       purrr::map(index, \(i) subsplit(S7::prop(x, "Text"), i))
     }),
-    trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"))
+    trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"), TRUE)
   )
 }
 
