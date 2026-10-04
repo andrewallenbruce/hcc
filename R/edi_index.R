@@ -10,8 +10,7 @@
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
 #' edi_index(x12_EX$`834`)
-#' edi_index(x12_EX$`820`$`218`)
-#' edi_index(x12_EX$`820`$`306`)
+#' edi_index(purrr::list_flatten(x12_EX$`820`))
 #' @export
 #' @name edi_index
 edi_index := S7::new_generic("x")
