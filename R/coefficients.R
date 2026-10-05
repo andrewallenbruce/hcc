@@ -1,46 +1,58 @@
 #' @noRd
-esrd_prefix_ <- function(x) {
-  if (x@has_esrd) {
-    if (x@esrd_months > 0L) {
+prefix_esrd <- function(x) {
+  if (S7::prop(x, "has_esrd")) {
+    if (S7::prop(x, "esrd_months") > 0L) {
       # Functioning graft case
-      if (x@is_lti) {
+      if (S7::prop(x, "is_lti")) {
         return("GI_")
       }
-      if (x@new_enrollee) {
+      if (S7::prop(x, "new_enrollee")) {
         return("GNE_")
       }
       # Community functioning graft
       return(
         cheapr::paste_(
           "G",
-          cheapr::if_else_(x@dual_full, "F", "NP"),
-          cheapr::if_else_(x@age >= 65L, "A", "N"),
+          cheapr::if_else_(S7::prop(x, "dual_full"), "F", "NP"),
+          cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "N"),
           "_"
         )
       )
     }
     # Dialysis case
-    return(cheapr::if_else_(x@new_enrollee, "DNE_", "DI_"))
+    return(cheapr::if_else_(S7::prop(x, "new_enrollee"), "DNE_", "DI_"))
   }
   # Transplant case
-  if (in_between(x@esrd_months, 1L, 3L)) {
-    return(cheapr::paste_("TRANSPLANT_KIDNEY_ONLY_", x@esrd_months, "M"))
+  if (in_between(S7::prop(x, "esrd_months"), 1L, 3L)) {
+    return(cheapr::paste_(
+      "TRANSPLANT_KIDNEY_ONLY_",
+      S7::prop(x, "esrd_months"),
+      "M"
+    ))
   }
   NULL
 }
 
 #' @noRd
-rxhcc_prefix_ <- function(x) {
-  if (x@is_lti) {
-    return(cheapr::if_else_(x@new_enrollee, "Rx_NE_LTI_", "Rx_CE_LTI_"))
+prefix_rxhcc <- function(x) {
+  if (S7::prop(x, "is_lti")) {
+    return(cheapr::if_else_(
+      S7::prop(x, "new_enrollee"),
+      "Rx_NE_LTI_",
+      "Rx_CE_LTI_"
+    ))
   }
-  if (x@new_enrollee) {
-    return(cheapr::if_else_(x@low_income, "Rx_NE_Lo_", "Rx_NE_NoLo_"))
+  if (S7::prop(x, "new_enrollee")) {
+    return(cheapr::if_else_(
+      S7::prop(x, "low_income"),
+      "Rx_NE_Lo_",
+      "Rx_NE_NoLo_"
+    ))
   }
   cheapr::paste_(
     "Rx_CE_",
-    cheapr::if_else_(x@low_income, "Low", "NoLow"),
-    cheapr::if_else_(x@age >= 65L, "Aged", "NoAged"),
+    cheapr::if_else_(S7::prop(x, "low_income"), "Low", "NoLow"),
+    cheapr::if_else_(S7::prop(x, "age") >= 65L, "Aged", "NoAged"),
     "_"
   )
 }
@@ -49,55 +61,41 @@ rxhcc_prefix_ <- function(x) {
 #'
 #' Get the coefficient prefix based on beneficiary demographics.
 #'
-#' @details
-#' Methods for `get_prefix`:
-#' `r doclisting::methods_list("get_prefix")`
-#'
-#'
 #' @param x `<PatientDemographics>` S7 object
-#' @param ... dots
+#' @param model `<chr>` model name; default is `"C28"`
 #' @returns String prefix used to look up coefficients for beneficiary type
 #' @examples
-#' get_prefix(
-#'   demographics(
-#'     age = 70,
-#'     sex = "F",
-#'     dual = "00",
-#'     orec = "0",
-#'     crec = "0"
-#'   )
-#' )
-#' get_prefix(
-#'   demographics(
-#'     age = 45,
-#'     sex = "M",
-#'     dual = "00",
-#'     orec = "2",
-#'     crec = "0"
-#'   ),
-#'   model = "CMS-HCC ESRD Model V24"
-#' )
+#' x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
+#' prefix(x, model = "C28")
+#' prefix(x, model = "D24")
 #' @export
-get_prefix <- S7::new_generic("get_prefix", "x")
+prefix <- function(x, model = "C28") {
+  if (!S7::S7_inherits(x, PatientDemographics)) {
+    cli::cli_abort(
+      "{.arg {arg}} must be an {.cls PatientDemographics}, not {.obj_type_friendly {x}}",
+      arg = rlang::caller_arg(x),
+      call = rlang::caller_env()
+    )
+  }
 
-S7::method(get_prefix, PatientDemographics) <- function(x, model = "default") {
-  if (perl0(model, "ESRD")) {
-    p <- esrd_prefix_(x)
+  model <- rlang::arg_match0(model, rlang::names2(MODEL))
+
+  if (model %in_% c("D20", "D21", "D24")) {
+    p <- prefix_esrd(x)
     if (!is.null(p)) {
       return(p)
     }
   }
-  if (perl0(model, "RxHCC")) {
-    return(rxhcc_prefix_(x))
+  if (model %in_% c("R05", "R08")) {
+    return(prefix_rxhcc(x))
   }
 
-  # Default CMS-HCC Model
-  if (x@is_lti) {
+  if (S7::prop(x, "is_lti")) {
     return("INS_")
   }
 
-  if (x@new_enrollee) {
-    return(cheapr::if_else_(x@has_snp, "SNPNE_", "NE_"))
+  if (S7::prop(x, "new_enrollee")) {
+    return(cheapr::if_else_(S7::prop(x, "has_snp"), "SNPNE_", "NE_"))
   }
 
   # Community case
@@ -105,12 +103,12 @@ S7::method(get_prefix, PatientDemographics) <- function(x, model = "default") {
     cheapr::paste_(
       "C",
       cheapr::case(
-        isTRUE(x@dual_full) ~ "F",
-        isTRUE(x@dual_part) ~ "P",
+        isTRUE(S7::prop(x, "dual_full")) ~ "F",
+        isTRUE(S7::prop(x, "dual_part")) ~ "P",
         .default = "N"
       )
     ),
-    cheapr::if_else_(x@age >= 65L, "A", "D"),
+    cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "D"),
     "_"
   )
 }
@@ -155,17 +153,17 @@ apply_coefficients <- function(
   interactions,
   coefficients = NULL,
   hcc,
-  model = "V28",
+  model = "C28",
   year = 2026L,
   prefix_override = NULL
 ) {
-  model <- convert_model(model)
-
   prefix <- if (!is.null(prefix_override)) {
     prefix_override
   } else {
-    get_prefix(demographics, model)
+    prefix(demographics, model)
   }
+
+  model <- convert_model(model)
 
   # No-prefix lookup for ESRD duration coefficients stored without prefix
   # ESRD V21: GE65_DUR*, LT65_DUR*
@@ -224,7 +222,7 @@ apply_coefficients2 <- function(
   interactions = NA,
   coefficients = NULL,
   hcc = NA,
-  model = "CMS-HCC Model V28",
+  model = "C28",
   year = 2026L,
   prefix_override = NULL
 ) {

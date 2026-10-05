@@ -44,10 +44,10 @@ S7::method(edi_index, Text820) <- function(x) {
     x,
     Index820,
     Problems = problems(S7::prop(x, "Text"), i),
-    Header = i$header,
-    Details = i$details,
-    Entity = i$entity,
-    Trailer = i$trailer
+    Header = i[["header"]],
+    Details = i[["details"]],
+    Entity = i[["entity"]],
+    Trailer = i[["trailer"]]
   )
 }
 

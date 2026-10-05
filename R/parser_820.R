@@ -102,7 +102,7 @@ parse_218_entity <- function(Text, Entity) {
 #' @noRd
 parse_820_306 <- function(x) {
   header <- list(
-    ISA = split_7(x, "ISA"),
+    ISA = split_1(x, "ISA"),
     GS = split_7(x, "GS"),
     ST = split_7(x, "ST"),
     BPR = split_7(x, "BPR"),
