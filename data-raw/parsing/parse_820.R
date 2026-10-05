@@ -70,27 +70,27 @@ dict_820 = list(
     `02` = "Exchange Assigned Qualified Health Plan Identifier"
   ),
   # 1000A Payee Name Loop
-  `N1*PE` = list(
+  N1PE = list(
     `01` = "Entity Identifier Code",
     `02` = "Premium Receiver's Last or Organization Name"
   ),
-  `N3*PE` = list(
+  N3PE = list(
     `01` = "Premium Receiver's Address Line"
   ),
-  `N4*PE` = list(
+  N4PE = list(
     `01` = "Premium Receiver's City Name",
     `02` = "Premium Receiver's State Code",
     `03` = "Premium Receiver's Postal Zone or Zip Code"
   ),
   # 1000B Loop Premium Payer's Name Loop
-  `N1*PR` = list(
+  N1PR = list(
     `01` = "Entity Identifier Code",
     `02` = "Premium Payer Name"
   ),
-  `N3*PR` = list(
+  N3PR = list(
     `01` = "Premium Payer Address Line"
   ),
-  `N4*PR` = list(
+  N4PR = list(
     `01` = "Premium Payer City Name",
     `02` = "Premium Payer State Code",
     `03` = "Premium Payer Postal Zone or Zip Code"
@@ -127,15 +127,15 @@ dict_820 = list(
     `03` = NA,
     `04` = "Detail Premium Payment Amount" # Amount Applied to This Invoice
   ),
-  REF = list(
+  REF18 = list(
     `01` = "Organizational Reference Identification Qualifier", # 18 = Plan Number
     `02` = "Organizational Reference Identifier" # 957
   ),
-  REF = list(
+  REFZZ = list(
     `01` = "Organizational Reference Identification Qualifier", # ZZ = Mutually Defined
     `02` = "Organizational Reference Identifier" # 1H;2
   ),
-  REF = list(
+  REFZZ = list(
     `01` = "Organizational Reference Identification Qualifier", # ZZ = Mutually Defined
     `02` = "Organizational Reference Identifier" # Medi-Cal Only-State Only
   ),
@@ -172,7 +172,10 @@ dict_820 = list(
 ) |>
   collapse::unlist2d(idcols = "ID") |>
   collapse::rnm("ID.1" = "SEG", "ID.2" = "PT", "V1" = "DESCRIPTION") |>
-  collapse::sbt(!is.na(DESCRIPTION))
+  collapse::sbt(!is.na(DESCRIPTION)) |>
+  collapse::qTBL()
+
+dict_820
 
 # ST01(820) - ST03=GS08(005010X218)
 # https://portal.stedi.com/app/guides/view/hipaa/payroll-deducted-and-other-group-premium-payment-for-insurance-products-examples-x218/01GRYB6CPB1S1257NJJP6K497B

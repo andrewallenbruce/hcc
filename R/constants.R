@@ -1,27 +1,26 @@
-#' Dual Eligibility Codes
-#'
-#' @description
-#' CMS Dual Eligibility Status Codes (Medicare + Medicaid)
-#'
-#' @details
-#' Used in coefficient prefix selection.
-#'
-#' ### Full Benefit Dual Eligible:
-#'    * Receive both Medicare and full Medicaid benefits
-#'    * Uses "CFA_" or "CFD_" prefixes
-#'
-#' ### Partial Benefit Dual Eligible
-#'    * Medicare + limited Medicaid
-#'    * Uses "CPA_" or "CPD_" prefixes
-#'
-#' Dual-eligibles are often divided into "full-duals" and "partial-duals" based
-#' on the level of Medicaid benefits they receive. CMS generally considers
-#' beneficiaries to be full-duals if they have values of 02, 04, or 08, and to
-#' be partial-duals if they have values of 01, 03, 05, or 06.
-#'
-#' Partial-duals are sometimes divided into the QMB-only population (01) and all
-#' other partial-duals (03, 05, or 06).
-#' @noRd
+# Dual Eligibility Codes
+#
+# @description
+# CMS Dual Eligibility Status Codes (Medicare + Medicaid)
+#
+# @details
+# Used in coefficient prefix selection.
+#
+# ### Full Benefit Dual Eligible:
+#    * Receive both Medicare and full Medicaid benefits
+#    * Uses "CFA_" or "CFD_" prefixes
+#
+# ### Partial Benefit Dual Eligible
+#    * Medicare + limited Medicaid
+#    * Uses "CPA_" or "CPD_" prefixes
+#
+# Dual-eligibles are often divided into "full-duals" and "partial-duals" based
+# on the level of Medicaid benefits they receive. CMS generally considers
+# beneficiaries to be full-duals if they have values of 02, 04, or 08, and to
+# be partial-duals if they have values of 01, 03, 05, or 06.
+#
+# Partial-duals are sometimes divided into the QMB-only population (01) and all
+# other partial-duals (03, 05, or 06).
 DUAL_CODES = list(
   ANY = c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"),
   VALID = c("00", "01", "02", "03", "04", "05", "06", "08"),
@@ -79,28 +78,26 @@ DUAL_CODES = list(
   )
 )
 
-#' @noRd
 DUAL_MAP = c(
   .subset2(DUAL_CODES, "MAP_STATUS"),
   .subset2(DUAL_CODES, "MAP_AID")
 )
 
-#' OREC/CREC Codes
-#'
-#' @description
-#' CMS Reason for Entitlement Codes
-#'
-#' @details
-#' Determines if beneficiary has ESRD.
-#' Affects coefficient prefix selection.
-#'
-#' ### OREC
-#' Original Reason for Entitlement Code
-#'
-#' ### CREC
-#' Current Reason for Entitlement Code.
-#' May differ from OREC.
-#' @noRd
+# OREC/CREC Codes
+#
+# @description
+# CMS Reason for Entitlement Codes
+#
+# @details
+# Determines if beneficiary has ESRD.
+# Affects coefficient prefix selection.
+#
+# ### OREC
+# Original Reason for Entitlement Code
+#
+# ### CREC
+# Current Reason for Entitlement Code.
+# May differ from OREC.
 REC_CODES = list(
   VALID = c("0", "1", "2", "3"),
   ESRD = c("2", "3"),
@@ -112,9 +109,8 @@ REC_CODES = list(
   )
 )
 
-#' COEFFICIENT PREFIX GROUPS
-#' Used for prefix_override logic in model_demographics
-#' @noRd
+# COEFFICIENT PREFIX GROUPS
+# Used for prefix_override logic in model_demographics
 PREFIX = list(
   ESRD = c("DI_", "DNE_", "GI_", "GNE_", "GFPA_", "GFPN_", "GNPA_", "GNPN_"),
   NEW_ENROLLEE = c("NE_", "SNPNE_", "DNE_", "GNE_"),
@@ -158,9 +154,8 @@ PREFIX = list(
   )
 )
 
-#' DEMOGRAPHIC CODES
-#' X12-834 Gender Code mappings (V6)
-#' @noRd
+# DEMOGRAPHIC CODES
+# X12-834 Gender Code mappings (V6)
 SEX = list(
   VALID = c("M", "F", "1", "2"),
   MALE = c("M", "1"),
@@ -179,8 +174,7 @@ SEX = list(
   )
 )
 
-#' X12-834 MAINTENANCE TYPE CODES (INS-03)
-#' @noRd
+# X12-834 MAINTENANCE TYPE CODES (INS-03)
 MAINTENANCE = list(
   Change = "001",
   Add = "021",
@@ -194,8 +188,7 @@ MAINTENANCE = list(
   )
 )
 
-#' Type of Bill (TOB)
-#' @noRd
+# Type of Bill (TOB)
 TOB = list(
   Inpatient = c("11X", "41X"),
   Outpatient = c(
@@ -211,7 +204,6 @@ TOB = list(
   )
 )
 
-#' @noRd
 MODEL = list(
   "C21" = "CMS-HCC Model V21",
   "C22" = "CMS-HCC Model V22",
@@ -228,7 +220,6 @@ MODEL = list(
   # "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
 )
 
-#' @noRd
 AGES = list(
   V6 = list(
     RANGE = ivs::iv_pairs(
@@ -318,7 +309,6 @@ AGES = list(
   )
 )
 
-#' @noRd
 LANG = list(
   SPA = "Spanish",
   ENG = "English",
@@ -338,7 +328,6 @@ LANG = list(
   THA = "Thai"
 )
 
-#' @noRd
 KEYWORDS = list(
   MEDICARE = c(
     "MEDICARE",
