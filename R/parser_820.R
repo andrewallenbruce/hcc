@@ -64,12 +64,39 @@ subsplit <- function(x, i, name = FALSE) {
 parse_218 <- function(x) {
   list(
     header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
-    details = subsplit(x = S7::prop(x, "Text"), S7::prop(x, "Details")),
+    details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
+    # entity = parse_218_entity(S7::prop(x, "Text"), S7::prop(x, "Entity")),
     entity = purrr::map(S7::prop(x, "Entity"), \(index) {
       purrr::map(index, \(i) subsplit(S7::prop(x, "Text"), i))
     }),
     trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"), TRUE)
   )
+}
+
+#' @noRd
+parse_218_entity <- function(Text, Entity) {
+  init <- purrr::map(Entity, \(index) {
+    purrr::map(index, \(i) subsplit(Text, i))
+  })
+
+  names(init) <- as.character(seq_along(init))
+  # names(Entity) <- as.character(seq_along(Entity))
+
+  rmr <- purrr::map(init, purrr::pluck, 2L)
+  rmr <- purrr::map(rmr, \(i) {
+    idx = perl(Text[i], "^RMR")
+    idx = idx[length(idx) != 1L]
+    vctrs::vec_chop(i, indices = as.list(idx))
+  })
+
+  purrr::map2(init, rmr, \(E, R) {
+    if (length(R) != 0L) {
+      purrr::pluck(E, 2) <- R
+      return(E)
+    } else {
+      return(E)
+    }
+  })
 }
 
 #' @noRd

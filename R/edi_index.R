@@ -32,7 +32,14 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  i <- index_820(S7::prop(x, "Text"))
+  # i <- switch(
+  #   S7::prop(x, "Type"),
+  #   "820-X218" = index_820(S7::prop(x, "Text")),
+  #   "820-X306" = index_306(S7::prop(x, "Text"))
+  # )
+
+  i = index_820(S7::prop(x, "Text"))
+
   S7::convert(
     x,
     Index820,
@@ -102,6 +109,28 @@ index_834 <- function(x) {
 }
 
 #' @noRd
+index_306 <- function(x) {
+  ST <- perl(x, "^ST")
+  SE <- perl(x, "^SE")
+  ENT <- perl(x, "^ENT")
+  NM1 <- perl(x, "^NM1") %0% 0L
+  REF <- perl(x, "^REF")
+
+  if (length(ENT) != length(NM1)) {
+    emp <- cheapr::new_integer(length(ENT), seq_along(ENT))
+    emp[grep("^NM1", x[ENT + 1L])] <- c(REF[diff(REF) != 1L], max(REF))
+    NM1 <- unname(emp)
+  }
+
+  rlang::list2(
+    header = fill_(perl(x, "ISA\\*"), ST),
+    details = fill_(ST + 1L, ENT[1L] - 1L),
+    entity = map_entity_index(ENT, SE, NM1),
+    trailer = fill_(SE, perl(x, "^IEA"))
+  )
+}
+
+#' @noRd
 index_820 <- function(x) {
   ST <- perl(x, "^ST")
   SE <- perl(x, "^SE")
@@ -151,6 +180,7 @@ map_entity_index <- function(ENT, SE, NM1) {
       if (!nm) {
         return(list(x[1], c(x[2:length(x)])))
       }
+      # ni = nm + 1L
       list(x[1:2], c(x[3:length(x)]))
     }
   )
