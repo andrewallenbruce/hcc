@@ -99,78 +99,80 @@ A `<PaymentData>` S7 object
 ## Examples
 
 ``` r
+x =  parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
+#> Error in parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01)): could not find function "parse_218"
 PaymentData(
-  source = "TEST-PAYER",
-  report_date = "2026-03-16",
-  payment_date = "2026-03-12",
-  total_amount = 91977.81,
-  check_number = "TESTTRN02000001",
-  payee_name = "TEST PAYEE ORGANIZATION",
-  payee_address = "123 TEST STREET",
-  payee_city = "TESTCITY",
-  payee_state = "CA",
-  payee_zip = "00000",
-  payer_name = "TEST PAYER AGENCY",
-  payer_address = "123 TEST STREET",
-  payer_city = "TESTCITY",
-  payer_state = "CA",
-  payer_zip = "00000",
+  source = purrr::pluck(x, "header", "ISA", 6L),
+  report_date = purrr::pluck(x, "header", "GS", 4L),
+  total_amount = purrr::pluck(x, "details", 1L, 3L),
+  payment_date = purrr::pluck(x, "details", 1L, 17L),
+  check_number = purrr::pluck(x, "details", 2L, 3L),
+  payee_name = purrr::pluck(x, "details", 4L, 3L),
+  payee_address = purrr::pluck(x, "details", 5L, 2L),
+  payee_city = purrr::pluck(x, "details", 6L, 2L),
+  payee_state = purrr::pluck(x, "details", 6L, 3L),
+  payee_zip = purrr::pluck(x, "details", 6L, 4L),
+  payer_name = purrr::pluck(x, "details", 7L, 3L),
+  payer_address = purrr::pluck(x, "details", 8L, 2L),
+  payer_city = purrr::pluck(x, "details", 9L, 2L),
+  payer_state = purrr::pluck(x, "details", 9L, 3L),
+  payer_zip = purrr::pluck(x, "details", 9L, 4L),
   payment_details = list(
     PaymentDetail(
-      entity_number = "1",
-      member_id = "TESTMBR000000001",
-      last_name = "LASTNAME01",
-      first_name = "FIRSTNAME01",
+      entity_number = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
+      member_id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
+      last_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
+      first_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
+      middle_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L),
       remittances = list(
         RemittanceEntry(
-          reference_number = "TESTPLAN-SREGLR-2602200043000P",
-          payment_amount = 401.72,
-          original_amount = 8488.25,
-          rate_code = "957",
-          aid_code = "17",
-          plan_type = "2",
-          payment_description = "Dual-State Only",
-          coverage_period = "20260101-20260131",
-          adjustment_amount = -8086.53,
-          adjustment_reason = "53"
+          reference_number = purrr::pluck(x, "entity", 1L, 2L, 1L, 3L),
+          payment_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 5L, .default = NA_real_),
+          original_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 6L, .default = NA_real_),
+          adjustment_amount = NA_real_,
+          adjustment_reason = NA_character_,
+          rate_code = purrr::pluck(x, "entity", 1L, 2L, 3L, 3L),
+          aid_code = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 1L, 2L),
+          plan_type = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 4L),
+          payment_description = purrr::pluck(x, "entity", 1L, 2L, 4L, 3L),
+          coverage_period = purrr::pluck(x, "entity", 1L, 2L, 5L, 7L)
+        )
+      )
+    ),
+    PaymentDetail(
+      entity_number = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
+      member_id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
+      last_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
+      first_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
+      middle_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L),
+      remittances = list(
+        RemittanceEntry(
+          reference_number = purrr::pluck(x, "entity", 7L, 2L, 1L, 3L),
+          payment_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 5L, .default = NA_real_),
+          original_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 6L, .default = NA_real_),
+          adjustment_amount = NA_real_,
+          adjustment_reason = NA_character_,
+          rate_code = purrr::pluck(x, "entity", 7L, 2L, 3L, 3L),
+          aid_code = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 1L, 2L),
+          plan_type = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 4L),
+          payment_description = purrr::pluck(x, "entity", 7L, 2L, 4L, 3L),
+          coverage_period = purrr::pluck(x, "entity", 7L, 2L, 5L, 7L)
+        ),
+        RemittanceEntry(
+          reference_number = purrr::pluck(x, "entity", 7L, 2L, 6L, 3L),
+          payment_amount = purrr::pluck(x, "entity", 7L, 2L, 6L, 5L, .default = NA_real_),
+          original_amount = purrr::pluck(x, "entity", 7L, 2L, 6L, 6L, .default = NA_real_),
+          adjustment_amount = NA_real_,
+          adjustment_reason = NA_character_,
+          rate_code = purrr::pluck(x, "entity", 7L, 2L, 7L, 3L),
+          aid_code = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 1L, 2L),
+          plan_type = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 4L),
+          payment_description = purrr::pluck(x, "entity", 7L, 2L, 9L, 3L),
+          coverage_period = purrr::pluck(x, "entity", 7L, 2L, 10L, 7L)
         )
       )
     )
   )
 )
-#> <hcc::PaymentData>
-#>  @ source         : chr "TEST-PAYER"
-#>  @ report_date    : Date[1:1], format: "2026-03-16"
-#>  @ payment_date   : Date[1:1], format: "2026-03-12"
-#>  @ total_amount   : num 91978
-#>  @ check_number   : chr "TESTTRN02000001"
-#>  @ payee_name     : chr "TEST PAYEE ORGANIZATION"
-#>  @ payee_address  : chr "123 TEST STREET"
-#>  @ payee_city     : chr "TESTCITY"
-#>  @ payee_state    : chr "CA"
-#>  @ payee_zip      : chr "00000"
-#>  @ payer_name     : chr "TEST PAYER AGENCY"
-#>  @ payer_address  : chr "123 TEST STREET"
-#>  @ payer_city     : chr "TESTCITY"
-#>  @ payer_state    : chr "CA"
-#>  @ payer_zip      : chr "00000"
-#>  @ payment_details:List of 1
-#>  .. $ : <hcc::PaymentDetail>
-#>  ..  ..@ entity_number: int 1
-#>  ..  ..@ member_id    : chr "TESTMBR000000001"
-#>  ..  ..@ last_name    : chr "LASTNAME01"
-#>  ..  ..@ first_name   : chr "FIRSTNAME01"
-#>  ..  ..@ middle_name  : chr(0) 
-#>  ..  ..@ remittances  :List of 1
-#>  .. .. .. $ : <hcc::RemittanceEntry>
-#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
-#>  .. .. ..  ..@ original_amount    : num 8488
-#>  .. .. ..  ..@ adjustment_amount  : num -8087
-#>  .. .. ..  ..@ payment_amount     : num 402
-#>  .. .. ..  ..@ adjustment_reason  : chr "53"
-#>  .. .. ..  ..@ rate_code          : chr "957"
-#>  .. .. ..  ..@ aid_code           : chr "17"
-#>  .. .. ..  ..@ plan_type          : chr "2"
-#>  .. .. ..  ..@ payment_description: chr "Dual-State Only"
-#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
+#> Error: object 'x' not found
 ```

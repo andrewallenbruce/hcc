@@ -77,31 +77,3 @@ A `<RemittanceEntry>` S7 object
 
 Each RemittanceEntry corresponds to one RMR segment and its associated
 REF, DTM, and ADX segments within an ENT loop of an 820 transaction.
-
-## Examples
-
-``` r
-RemittanceEntry(
-  reference_number = "TESTPLAN-SREGLR-2602200043000P",
-  original_amount = "8488.25",
-  adjustment_amount = "-8086.53",
-  payment_amount = "401.72",
-  adjustment_reason = "53",
-  rate_code = "957",
-  aid_code = "17",
-  plan_type = "2",
-  payment_description = "Dual-State Only",
-  coverage_period = "20260101-20260131"
-)
-#> <hcc::RemittanceEntry>
-#>  @ reference_number   : chr "TESTPLAN-SREGLR-2602200043000P"
-#>  @ original_amount    : num 8488
-#>  @ adjustment_amount  : num -8087
-#>  @ payment_amount     : num 402
-#>  @ adjustment_reason  : chr "53"
-#>  @ rate_code          : chr "957"
-#>  @ aid_code           : chr "17"
-#>  @ plan_type          : chr "2"
-#>  @ payment_description: chr "Dual-State Only"
-#>  @ coverage_period    : iv<date> [1:1] [2026-01-01, 2026-02-01)
-```
