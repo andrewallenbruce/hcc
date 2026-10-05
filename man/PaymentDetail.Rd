@@ -34,37 +34,3 @@ One PaymentDetail is created per ENT segment. A member may
 appear in multiple ENT entries within the same transaction
 (e.g., retroactive adjustments for prior periods).
 }
-\examples{
-PaymentDetail(
-  entity_number = "1",
-  member_id = "TESTMBR000000001",
-  last_name = "LASTNAME01",
-  first_name = "FIRSTNAME01",
-  remittances = list(
-    RemittanceEntry(
-      reference_number = "TESTPLAN-SREGLR-2602200043000P",
-      payment_amount = 401.72,
-      original_amount = 8488.25,
-      rate_code = "957",
-      aid_code = "17",
-      plan_type = "2",
-      payment_description = "Dual-State Only",
-      coverage_period = "20260101-20260131",
-      adjustment_amount = -8086.53,
-      adjustment_reason = "53"
-    ),
-    RemittanceEntry(
-      reference_number = "TESTPLAN-SREGLR-2602200043000P",
-      payment_amount = 401.72,
-      original_amount = 8488.25,
-      rate_code = "957",
-      aid_code = "17",
-      plan_type = "2",
-      payment_description = "Dual-State Only",
-      coverage_period = "20260101-20260131",
-      adjustment_amount = -8086.53,
-      adjustment_reason = "53"
-    )
-  )
-)
-}
