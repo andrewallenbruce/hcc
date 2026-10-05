@@ -5,7 +5,7 @@ Get the coefficient prefix based on beneficiary demographics.
 ## Usage
 
 ``` r
-prefix(x, ...)
+prefix(x, model = "C28")
 ```
 
 ## Arguments
@@ -14,9 +14,9 @@ prefix(x, ...)
 
   `<PatientDemographics>` S7 object
 
-- ...:
+- model:
 
-  dots
+  `<chr>` model name; default is `"C28"`
 
 ## Value
 
@@ -25,25 +25,9 @@ String prefix used to look up coefficients for beneficiary type
 ## Examples
 
 ``` r
-prefix(
-  demographics(
-    age = 70,
-    sex = "F",
-    dual = "00",
-    orec = "0",
-    crec = "0"
-  )
-)
+x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
+prefix(x, model = "C28")
 #> [1] "CNA_"
-prefix(
-  demographics(
-    age = 45,
-    sex = "M",
-    dual = "00",
-    orec = "2",
-    crec = "0"
-  ),
-  model = "CMS-HCC ESRD Model V24"
-)
-#> [1] "DI_"
+prefix(x, model = "D24")
+#> [1] "CNA_"
 ```

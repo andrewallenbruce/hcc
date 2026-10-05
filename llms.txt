@@ -54,8 +54,6 @@ pak::pak("andrewallenbruce/hcc")
   : Create an EDI Index Object
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
-- [`get_prefix()`](https://andrewallenbruce.github.io/hcc/reference/get_prefix.md)
-  : Demographics-Based Coefficient Prefix
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
   : Map ICD-10 Codes to CC
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
@@ -66,4 +64,6 @@ pak::pak("andrewallenbruce/hcc")
   : X12-834 (X220A1) Benefit Enrollment Parser
 - [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
   : X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
+- [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
+  : Demographics-Based Coefficient Prefix
 
