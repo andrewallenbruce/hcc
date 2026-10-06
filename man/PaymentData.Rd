@@ -65,7 +65,7 @@ payment remittance from a state Medicaid agency or CMS to
 a managed care plan.
 }
 \examples{
-x =  parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
+x =  hcc:::parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
 PaymentData(
   source = purrr::pluck(x, "header", "ISA", 6L),
   report_date = purrr::pluck(x, "header", "GS", 4L),
