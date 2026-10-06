@@ -57,17 +57,9 @@ a managed care plan.</p>
 <span>  payment_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0L</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  total_amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  check_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payee_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payee_address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payee_city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payee_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payee_zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payer_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payer_address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payer_city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payer_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payer_zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  payment_details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  payee <span class="op">=</span> <span class="fu">class_entity</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  payer <span class="op">=</span> <span class="fu">class_entity</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  payments <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -95,53 +87,21 @@ a managed care plan.</p>
 <dd><p><code>&lt;chr&gt;</code> <code>TRN-02</code> EFT/check trace number</p></dd>
 
 
-<dt id="arg-payee-name">payee_name<a class="anchor" aria-label="anchor" href="#arg-payee-name"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N1*PE</code> Receiving organization name</p></dd>
+<dt id="arg-payee">payee<a class="anchor" aria-label="anchor" href="#arg-payee"></a></dt>
+<dd><p><code>&lt;hcc::class_entity&gt;</code> Receiving organization name, street address, city, state, zip</p></dd>
 
 
-<dt id="arg-payee-address">payee_address<a class="anchor" aria-label="anchor" href="#arg-payee-address"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N3</code> Payee street address</p></dd>
+<dt id="arg-payer">payer<a class="anchor" aria-label="anchor" href="#arg-payer"></a></dt>
+<dd><p><code>&lt;hcc::class_entity&gt;</code> Paying organization name, street address, city, state, zip</p></dd>
 
 
-<dt id="arg-payee-city">payee_city<a class="anchor" aria-label="anchor" href="#arg-payee-city"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payee city</p></dd>
-
-
-<dt id="arg-payee-state">payee_state<a class="anchor" aria-label="anchor" href="#arg-payee-state"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payee state</p></dd>
-
-
-<dt id="arg-payee-zip">payee_zip<a class="anchor" aria-label="anchor" href="#arg-payee-zip"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payee ZIP code</p></dd>
-
-
-<dt id="arg-payer-name">payer_name<a class="anchor" aria-label="anchor" href="#arg-payer-name"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N1*PR</code> Paying organization name</p></dd>
-
-
-<dt id="arg-payer-address">payer_address<a class="anchor" aria-label="anchor" href="#arg-payer-address"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N3</code> Payer street address</p></dd>
-
-
-<dt id="arg-payer-city">payer_city<a class="anchor" aria-label="anchor" href="#arg-payer-city"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payer city</p></dd>
-
-
-<dt id="arg-payer-state">payer_state<a class="anchor" aria-label="anchor" href="#arg-payer-state"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payer state</p></dd>
-
-
-<dt id="arg-payer-zip">payer_zip<a class="anchor" aria-label="anchor" href="#arg-payer-zip"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>N4</code> Payer ZIP code</p></dd>
-
-
-<dt id="arg-payment-details">payment_details<a class="anchor" aria-label="anchor" href="#arg-payment-details"></a></dt>
-<dd><p>list of <code>&lt;PaymentDetail&gt;</code> objects, per-member payment records</p></dd>
+<dt id="arg-payments">payments<a class="anchor" aria-label="anchor" href="#arg-payments"></a></dt>
+<dd><p>list of <code>&lt;hcc::Payment&gt;</code> objects, per-member payment records</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>&lt;PaymentData&gt;</code> S7 object</p>
+    <p>A <code>&lt;hcc::PaymentData&gt;</code> S7 object</p>
     </div>
 
     <div class="section level2">
@@ -153,24 +113,34 @@ a managed care plan.</p>
 <span class="r-in"><span>  total_amount <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  payment_date <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">1L</span>, <span class="fl">17L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  check_number <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">2L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payee_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">4L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payee_address <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">5L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payee_city <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payee_state <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payee_zip <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payer_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">7L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payer_address <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">8L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payer_city <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payer_state <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payer_zip <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  payment_details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="PaymentDetail.html">PaymentDetail</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      entity_number <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      member_id <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">10L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      last_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      first_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      middle_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">6L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      remittances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  payee <span class="op">=</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">class_entity</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">4L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">5L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">6L</span>, <span class="fl">4L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  payer <span class="op">=</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">class_entity</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">7L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">8L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"details"</span>, <span class="fl">9L</span>, <span class="fl">4L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  payments <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="Payment.html">Payment</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      order <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      member <span class="op">=</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">class_member</span><span class="op">(</span></span></span>
+<span class="r-in"><span>        id <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">10L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        last <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        first <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        middle <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">6L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span>,</span></span>
+<span class="r-in"><span>      remits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>        <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>          reference_number <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>          payment_amount <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">5L</span>, .default <span class="op">=</span> <span class="cn">NA_real_</span><span class="op">)</span>,</span></span>
@@ -185,13 +155,15 @@ a managed care plan.</p>
 <span class="r-in"><span>        <span class="op">)</span></span></span>
 <span class="r-in"><span>      <span class="op">)</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span>,</span></span>
-<span class="r-in"><span>    <span class="fu"><a href="PaymentDetail.html">PaymentDetail</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      entity_number <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      member_id <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">10L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      last_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      first_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      middle_name <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">6L</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      remittances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="Payment.html">Payment</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      order <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      member <span class="op">=</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">class_member</span><span class="op">(</span></span></span>
+<span class="r-in"><span>        id <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">10L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        last <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        first <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        middle <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">6L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span>,</span></span>
+<span class="r-in"><span>      remits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>        <span class="fu"><a href="RemittanceEntry.html">RemittanceEntry</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>          reference_number <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>          payment_amount <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"entity"</span>, <span class="fl">7L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">5L</span>, .default <span class="op">=</span> <span class="cn">NA_real_</span><span class="op">)</span>,</span></span>
@@ -221,29 +193,26 @@ a managed care plan.</p>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PaymentData&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ source         : chr "TEST-PAYER"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ report_date    : Date[1:1], format: "2026-01-18"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_date   : Date[1:1], format: "2026-01-15"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ total_amount   : num 102139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ check_number   : chr "TESTTRN01000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee_name     : chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee_address  : chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee_city     : chr "TESTCITY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee_state    : chr "CA"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee_zip      : chr "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_name     : chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_address  : chr "123 TEST STREET"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_city     : chr "TESTCITY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_state    : chr "CA"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer_zip      : chr "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_details:List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number: int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member_id    : chr "TESTMBR000000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ last_name    : chr "LASTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ first_name   : chr "FIRSTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ middle_name  : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remittances  :List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ source      : chr "TEST-PAYER"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ report_date : Date[1:1], format: "2026-01-18"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_date: Date[1:1], format: "2026-01-15"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ total_amount: num 102139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ check_number: chr "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee       : &lt;hcc::class_entity&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name   : chr "TEST PAYEE ORGANIZATION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer       : &lt;hcc::class_entity&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name   : chr "TEST PAYER AGENCY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payments    :List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::Payment&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ order : int 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member: &lt;hcc::class_member&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ id    : chr "TESTMBR000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ last  : chr "LASTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ first : chr "FIRSTNAME01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ middle: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remits:List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::RemittanceEntry&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original_amount    : num NA</span>
@@ -255,13 +224,14 @@ a managed care plan.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ plan_type          : chr "2"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage_period    : iv&lt;date&gt; [1:1] [2025-12-01, 2026-01-01)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::PaymentDetail&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ entity_number: int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member_id    : chr "TESTMBR000000007"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ last_name    : chr "LASTNAME07"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ first_name   : chr "FIRSTNAME07"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ middle_name  : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remittances  :List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::Payment&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ order : int 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member: &lt;hcc::class_member&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ id    : chr "TESTMBR000000007"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ last  : chr "LASTNAME07"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ first : chr "FIRSTNAME07"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ middle: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remits:List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::RemittanceEntry&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original_amount    : num NA</span>

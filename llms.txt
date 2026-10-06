@@ -31,10 +31,10 @@ pak::pak("andrewallenbruce/hcc")
   : Health Care Plan Coverage Period
 - [`PatientDemographics()`](https://andrewallenbruce.github.io/hcc/reference/PatientDemographics.md)
   : Patient Demographics Categorization
+- [`Payment()`](https://andrewallenbruce.github.io/hcc/reference/Payment.md)
+  : Per-Member Payment Record from an X12-820 ENT Loop
 - [`PaymentData()`](https://andrewallenbruce.github.io/hcc/reference/PaymentData.md)
   : X12-820 Transaction Remittance Data
-- [`PaymentDetail()`](https://andrewallenbruce.github.io/hcc/reference/PaymentDetail.md)
-  : Per-Member Payment Record from an X12-820 ENT Loop
 - [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
   : Risk Adjustment Factor Results
 - [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
