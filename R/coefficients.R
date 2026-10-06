@@ -1,116 +1,36 @@
 #' @noRd
-prefix_esrd <- function(x) {
-  if (S7::prop(x, "has_esrd")) {
-    if (S7::prop(x, "esrd_months") > 0L) {
-      # Functioning graft case
-      if (S7::prop(x, "is_lti")) {
-        return("GI_")
-      }
-      if (S7::prop(x, "new_enrollee")) {
-        return("GNE_")
-      }
-      # Community functioning graft
-      return(
-        cheapr::paste_(
-          "G",
-          cheapr::if_else_(S7::prop(x, "dual_full"), "F", "NP"),
-          cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "N"),
-          "_"
-        )
-      )
-    }
-    # Dialysis case
-    return(cheapr::if_else_(S7::prop(x, "new_enrollee"), "DNE_", "DI_"))
-  }
-  # Transplant case
-  if (in_between(S7::prop(x, "esrd_months"), 1L, 3L)) {
-    return(cheapr::paste_(
-      "TRANSPLANT_KIDNEY_ONLY_",
-      S7::prop(x, "esrd_months"),
-      "M"
-    ))
-  }
-  NULL
-}
-
-#' @noRd
-prefix_rxhcc <- function(x) {
-  if (S7::prop(x, "is_lti")) {
-    return(cheapr::if_else_(
-      S7::prop(x, "new_enrollee"),
-      "Rx_NE_LTI_",
-      "Rx_CE_LTI_"
-    ))
-  }
-  if (S7::prop(x, "new_enrollee")) {
-    return(cheapr::if_else_(
-      S7::prop(x, "low_income"),
-      "Rx_NE_Lo_",
-      "Rx_NE_NoLo_"
-    ))
-  }
-  cheapr::paste_(
-    "Rx_CE_",
-    cheapr::if_else_(S7::prop(x, "low_income"), "Low", "NoLow"),
-    cheapr::if_else_(S7::prop(x, "age") >= 65L, "Aged", "NoAged"),
-    "_"
+get_coefficient <- function(coefficient, model, year) {
+  rlang::check_number_whole(
+    year,
+    min = 2025,
+    max = 2026,
+    allow_null = TRUE
   )
-}
 
-#' Demographics-Based Coefficient Prefix
-#'
-#' Get the coefficient prefix based on beneficiary demographics.
-#'
-#' @param x `<PatientDemographics>` S7 object
-#' @param model `<chr>` model name; default is `"C28"`
-#' @returns String prefix used to look up coefficients for beneficiary type
-#' @examples
-#' x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
-#' prefix(x, model = "C28")
-#' prefix(x, model = "D24")
-#' @export
-prefix <- function(x, model = "C28") {
-  if (!S7::S7_inherits(x, PatientDemographics)) {
-    cli::cli_abort(
-      "{.arg {arg}} must be an {.cls PatientDemographics}, not {.obj_type_friendly {x}}",
-      arg = rlang::caller_arg(x),
-      call = rlang::caller_env()
+  # year
+  x <- if (is.null(year)) {
+    hcc::ra_coefficients
+  } else {
+    collapse::ss(
+      hcc::ra_coefficients,
+      collapse::whichv(
+        hcc::ra_coefficients[["year"]],
+        year
+      )
     )
   }
 
-  model <- rlang::arg_match0(model, rlang::names2(MODEL))
-
-  if (model %in_% c("D20", "D21", "D24")) {
-    p <- prefix_esrd(x)
-    if (!is.null(p)) {
-      return(p)
-    }
-  }
-  if (model %in_% c("R05", "R08")) {
-    return(prefix_rxhcc(x))
+  # model
+  if (!is.null(model)) {
+    model <- convert_model(model)
+    x <- collapse::ss(x, collapse::whichv(x[["model_name"]], model))
   }
 
-  if (S7::prop(x, "is_lti")) {
-    return("INS_")
+  # coefficient
+  if (is.null(coefficient)) {
+    return(x)
   }
-
-  if (S7::prop(x, "new_enrollee")) {
-    return(cheapr::if_else_(S7::prop(x, "has_snp"), "SNPNE_", "NE_"))
-  }
-
-  # Community case
-  cheapr::paste_(
-    cheapr::paste_(
-      "C",
-      cheapr::case(
-        isTRUE(S7::prop(x, "dual_full")) ~ "F",
-        isTRUE(S7::prop(x, "dual_part")) ~ "P",
-        .default = "N"
-      )
-    ),
-    cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "D"),
-    "_"
-  )
+  collapse::ss(x, collapse::whichv(x[["coefficient"]], coefficient))
 }
 
 #' Apply risk adjustment coefficients to HCCs and interactions.
@@ -294,66 +214,4 @@ apply_coefficients2 <- function(
   }
 
   return(output)
-}
-
-#' @noRd
-get_coefficient <- function(
-  coefficient,
-  model = "CMS-HCC Model V28",
-  year = 2026L
-) {
-  rlang::check_number_whole(
-    year,
-    min = 2025,
-    max = 2026,
-    allow_null = TRUE
-  )
-
-  # year
-  x <- if (is.null(year)) {
-    hcc::ra_coefficients
-  } else {
-    collapse::ss(
-      hcc::ra_coefficients,
-      collapse::whichv(
-        hcc::ra_coefficients[["year"]],
-        year
-      )
-    )
-  }
-
-  # model
-  if (!is.null(model)) {
-    model <- rlang::arg_match0(
-      model,
-      c(
-        "CMS-HCC Model V24",
-        "CMS-HCC ESRD Model V21",
-        "CMS-HCC ESRD Model V24",
-        "CMS-HCC Model V22",
-        "CMS-HCC Model V28",
-        "RxHCC Model V05",
-        "RxHCC Model V08",
-        "CMS-HCC Model V21",
-        "CMS-HCC Model V23"
-      )
-    )
-
-    x <- collapse::ss(
-      x,
-      collapse::whichv(
-        x[["model_name"]],
-        model
-      )
-    )
-  }
-
-  # coefficient
-  if (is.null(coefficient)) {
-    return(x)
-  }
-
-  rex <- paste0("^", coefficient, "$", collapse = "|")
-  idx <- grep(rex, x[["coefficient"]], perl = TRUE)
-  collapse::ss(x, idx)
 }

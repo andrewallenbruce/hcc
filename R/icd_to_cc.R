@@ -35,6 +35,8 @@ icd_to_cc <- function(
     collapse::ss(hcc::ra_dx_to_cc, whichv_(hcc::ra_dx_to_cc[["year"]], year))
   }
 
+  x <- collapse::roworderv(x, c("cc", "icd_code", "model_name"))
+
   if (!is.null(model)) {
     x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
   }
@@ -47,7 +49,50 @@ icd_to_cc <- function(
   }
 
   if (simplify) {
-    return(collapse::rsplit(x[["cc"]], x[["icd_code"]]))
+    return(collapse::rsplit(x[["icd_code"]], x[["cc"]]))
   }
-  collapse::roworderv(x, c("icd_code", "cc", "model_name"))
+  return(x)
+}
+
+# x <- icd_to_cc(c("E1100", "E1022", "E1165", "E119"), "C24", 2025L)
+# cc_to_hierarchy(x$cc, "C24", 2025L)
+#' @noRd
+cc_to_hierarchy <- function(
+  cc = NULL,
+  model = NULL,
+  year = NULL,
+  simplify = FALSE
+) {
+  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
+
+  x <- if (is.null(year)) {
+    hcc::ra_hierarchies
+  } else {
+    collapse::ss(
+      hcc::ra_hierarchies,
+      whichv_(hcc::ra_hierarchies[["year"]], year)
+    )
+  }
+  x <- collapse::roworderv(x, c("cc_parent", "cc_child", "model_name"))
+
+  if (!is.null(model)) {
+    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
+  }
+
+  if (!is.null(cc)) {
+    x <- collapse::ss(x, x[["cc_child"]] %iin% collapse::funique(cc))
+  }
+
+  if (simplify) {
+    return(collapse::rsplit(x[["cc_child"]], x[["cc_parent"]]))
+  }
+  return(x)
+}
+
+#' @noRd
+icd_to_cc_hierarchy <- function(icd = NULL, model = NULL, year = NULL) {
+  x <- icd_to_cc(icd, model, year, TRUE)
+  y <- cc_to_hierarchy(names(x), model, year, TRUE)
+
+  list(icd = x, cc = y)
 }

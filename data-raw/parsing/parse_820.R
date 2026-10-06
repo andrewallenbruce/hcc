@@ -42,9 +42,8 @@ dict_820 = list(
     `03` = "Implementation Convention Reference" # Must be the same as the value in GS-08
   ),
   BPR = list(
-    # length = 16
     `01` = "Transaction Handling Code", # I = Remittance Information Only, C = Payment with Remittance
-    `02` = "Total Payment Amount", # The total payment amount for this 820 cannot exceed eleven characters, including decimals (99999999.99). Although the value can be zero, the 820 cannot be issued for less than zero dollars.
+    `02` = "Total Premium Payment Amount", # The total payment amount for this 820 cannot exceed eleven characters, including decimals (99999999.99). Although the value can be zero, the 820 cannot be issued for less than zero dollars.
     `03` = "Credit or Debit Flag Code", # C = Credit, D = Debit
     `04` = "Payment Method Code", # NON = Non-Payment Data (No dollars, nothing paid), ACH = Automated Clearing House, CHK = Check, FWT = Federal Reserve Funds/Wire Transfer - Nonrepetitive, BOP = Financial Institution Option
     `05` = "Payment Format Code", # CCP = Cash Concentration/Disbursement plus Addenda (CCD+) (ACH), CTX = Corporate Trade Exchange
@@ -61,39 +60,42 @@ dict_820 = list(
     `16` = "Check Issue or EFT Effective Date" # CCYYMMDD format
   ),
   TRN = list(
-    # length = 2
     `01` = "Trace Type Code", # 1 = Current Transaction Trace, 3 = Financial Reassociation Trace Number
-    `02` = "Check or EFT Trace Number"
+    `02` = "Check or EFT Trace Number",
+    `03` = "Originating Company Identifier",
+    `04` = "Originating Company Supplemental Code"
   ),
   REF = list(
-    `01` = "Reference Identification Qualifier",
+    `01` = "Reference Identification Qualifier", # 2F Consolidated Invoice Number, 14 Master Account Number, 17 Client Reporting Category, 18 Plan Number, 38 Master Policy Number, 72 Schedule Reference Number, LB Lockbox
     `02` = "Exchange Assigned Qualified Health Plan Identifier"
   ),
-  # 1000A Payee Name Loop
-  N1PE = list(
+  DTM = list(
+    `01` = "Date Time Qualifier", # 009 Process, 035 Delivered, 582 Report Period, 097 Transaction Creation
+    `02` = "Payer Process Date"
+  ),
+  N1 = list(
     `01` = "Entity Identifier Code",
-    `02` = "Premium Receiver's Last or Organization Name"
+    `02` = "Premium Receiver's Last or Organization Name",
+    `03` = "Identification Code Qualifier",
+    `04` = "Premium Receiver's Identification Code"
   ),
-  N3PE = list(
-    `01` = "Premium Receiver's Address Line"
+  N3 = list(
+    `01` = "Premium Receiver's Address Line",
+    `02` = "Premium Receiver's Address Line"
   ),
-  N4PE = list(
+  N4 = list(
     `01` = "Premium Receiver's City Name",
     `02` = "Premium Receiver's State Code",
-    `03` = "Premium Receiver's Postal Zone or Zip Code"
+    `03` = "Premium Receiver's Postal Zone or Zip Code",
+    `04` = "Country Code",
+    `07` = "Country Subdivision Code"
   ),
-  # 1000B Loop Premium Payer's Name Loop
-  N1PR = list(
-    `01` = "Entity Identifier Code",
-    `02` = "Premium Payer Name"
-  ),
-  N3PR = list(
-    `01` = "Premium Payer Address Line"
-  ),
-  N4PR = list(
-    `01` = "Premium Payer City Name",
-    `02` = "Premium Payer State Code",
-    `03` = "Premium Payer Postal Zone or Zip Code"
+  PER = list(
+    `01` = "Premium Receiver's City Name",
+    `02` = "Premium Receiver's State Code",
+    `03` = "Premium Receiver's Postal Zone or Zip Code",
+    `04` = "Country Code",
+    `07` = "Country Subdivision Code"
   ),
   # 2000B Loop Individual Remittance Loop
   ENT = list(
