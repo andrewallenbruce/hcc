@@ -1,3 +1,21 @@
+#' @noRd
+class_entity := S7::new_class(
+  properties = list(
+    name = S7::class_character,
+    address = S7::class_character
+  )
+)
+
+#' @noRd
+class_member := S7::new_class(
+  properties = list(
+    id = S7::class_character,
+    last = S7::class_character,
+    first = S7::class_character,
+    middle = S7::class_character
+  )
+)
+
 #' 2300B Individual Premium Remittance Detail Loop
 #' @noRd
 RMR_Loop := S7::new_class(
@@ -83,26 +101,24 @@ RemittanceEntry := S7::new_class(
 
 #' Per-Member Payment Record from an X12-820 ENT Loop
 #'
-#' One PaymentDetail is created per ENT segment. A member may
+#' One Payment is created per ENT segment. A member may
 #' appear in multiple ENT entries within the same transaction
 #' (e.g., retroactive adjustments for prior periods).
 #'
-#' @param entity_number `<int>` `ENT-01` ENT sequence number
-#' @param member_id `<chr>` `NM1-09` Member identifier
-#' @param last_name `<chr>` `NM1-03` Member last name
-#' @param first_name `<chr>` `NM1-04` Member first name
-#' @param middle_name `<chr>` `NM1-05` Member middle name
-#' @param remittances list of `<RemittanceEntry>` objects, line items (one per RMR/DTM set)
-#' @returns A `<PaymentDetail>` S7 object
+#' @param order `<int>` `ENT-01` ENT sequence number
+#' @param member `<hcc::class_member>`
+#'    - `NM1-09` Member identifier
+#'    - `NM1-03` Member last name
+#'    - `NM1-04` Member first name
+#'    - `NM1-05` Member middle name
+#' @param remits list of `<hcc::RemittanceEntry>` objects, line items (one per RMR/DTM set)
+#' @returns A `<hcc::Payment>` S7 object
 #' @export
-PaymentDetail := S7::new_class(
+Payment := S7::new_class(
   properties = list(
-    entity_number = prop_integer,
-    member_id = S7::class_character,
-    last_name = S7::class_character,
-    first_name = S7::class_character,
-    middle_name = S7::class_character,
-    remittances = prop_list_of(RemittanceEntry)
+    order = prop_integer,
+    member = class_member,
+    remits = prop_list_of(RemittanceEntry)
   )
 )
 
@@ -117,18 +133,10 @@ PaymentDetail := S7::new_class(
 #' @param total_amount `<chr>` `BPR-02` Total payment amount
 #' @param payment_date `<Date>` `BPR-16` EFT effective date (YYYY-MM-DD)
 #' @param check_number `<chr>` `TRN-02` EFT/check trace number
-#' @param payee_name `<chr>` `N1*PE` Receiving organization name
-#' @param payee_address `<chr>` `N3` Payee street address
-#' @param payee_city `<chr>` `N4` Payee city
-#' @param payee_state `<chr>` `N4` Payee state
-#' @param payee_zip `<chr>` `N4` Payee ZIP code
-#' @param payer_name `<chr>` `N1*PR` Paying organization name
-#' @param payer_address `<chr>` `N3` Payer street address
-#' @param payer_city `<chr>` `N4` Payer city
-#' @param payer_state `<chr>` `N4` Payer state
-#' @param payer_zip `<chr>` `N4` Payer ZIP code
-#' @param payment_details list of `<PaymentDetail>` objects, per-member payment records
-#' @returns A `<PaymentData>` S7 object
+#' @param payee `<hcc::class_entity>` Receiving organization name, street address, city, state, zip
+#' @param payer `<hcc::class_entity>` Paying organization name, street address, city, state, zip
+#' @param payments list of `<hcc::Payment>` objects, per-member payment records
+#' @returns A `<hcc::PaymentData>` S7 object
 #' @examples
 #' x =  hcc:::parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
 #' PaymentData(
@@ -137,24 +145,34 @@ PaymentDetail := S7::new_class(
 #'   total_amount = purrr::pluck(x, "details", 1L, 3L),
 #'   payment_date = purrr::pluck(x, "details", 1L, 17L),
 #'   check_number = purrr::pluck(x, "details", 2L, 3L),
-#'   payee_name = purrr::pluck(x, "details", 4L, 3L),
-#'   payee_address = purrr::pluck(x, "details", 5L, 2L),
-#'   payee_city = purrr::pluck(x, "details", 6L, 2L),
-#'   payee_state = purrr::pluck(x, "details", 6L, 3L),
-#'   payee_zip = purrr::pluck(x, "details", 6L, 4L),
-#'   payer_name = purrr::pluck(x, "details", 7L, 3L),
-#'   payer_address = purrr::pluck(x, "details", 8L, 2L),
-#'   payer_city = purrr::pluck(x, "details", 9L, 2L),
-#'   payer_state = purrr::pluck(x, "details", 9L, 3L),
-#'   payer_zip = purrr::pluck(x, "details", 9L, 4L),
-#'   payment_details = list(
-#'     PaymentDetail(
-#'       entity_number = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
-#'       member_id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
-#'       last_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
-#'       first_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
-#'       middle_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L),
-#'       remittances = list(
+#'   payee = hcc:::class_entity(
+#'     name = purrr::pluck(x, "details", 4L, 3L),
+#'     address = c(
+#'       purrr::pluck(x, "details", 5L, 2L),
+#'       purrr::pluck(x, "details", 6L, 2L),
+#'       purrr::pluck(x, "details", 6L, 3L),
+#'       purrr::pluck(x, "details", 6L, 4L)
+#'     )
+#'   ),
+#'   payer = hcc:::class_entity(
+#'     name = purrr::pluck(x, "details", 7L, 3L),
+#'     address = c(
+#'       purrr::pluck(x, "details", 8L, 2L),
+#'       purrr::pluck(x, "details", 9L, 2L),
+#'       purrr::pluck(x, "details", 9L, 3L),
+#'       purrr::pluck(x, "details", 9L, 4L)
+#'     )
+#'   ),
+#'   payments = list(
+#'     Payment(
+#'       order = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
+#'       member = hcc:::class_member(
+#'         id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
+#'         last = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
+#'         first = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
+#'         middle = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L)
+#'       ),
+#'       remits = list(
 #'         RemittanceEntry(
 #'           reference_number = purrr::pluck(x, "entity", 1L, 2L, 1L, 3L),
 #'           payment_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 5L, .default = NA_real_),
@@ -169,13 +187,15 @@ PaymentDetail := S7::new_class(
 #'         )
 #'       )
 #'     ),
-#'     PaymentDetail(
-#'       entity_number = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
-#'       member_id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
-#'       last_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
-#'       first_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
-#'       middle_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L),
-#'       remittances = list(
+#'     Payment(
+#'       order = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
+#'       member = hcc:::class_member(
+#'         id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
+#'         last = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
+#'         first = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
+#'         middle = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L)
+#'       ),
+#'       remits = list(
 #'         RemittanceEntry(
 #'           reference_number = purrr::pluck(x, "entity", 7L, 2L, 1L, 3L),
 #'           payment_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 5L, .default = NA_real_),
@@ -212,16 +232,8 @@ PaymentData := S7::new_class(
     payment_date = prop_date,
     total_amount = prop_double,
     check_number = S7::class_character,
-    payee_name = S7::class_character,
-    payee_address = S7::class_character,
-    payee_city = S7::class_character,
-    payee_state = S7::class_character,
-    payee_zip = S7::class_character,
-    payer_name = S7::class_character,
-    payer_address = S7::class_character,
-    payer_city = S7::class_character,
-    payer_state = S7::class_character,
-    payer_zip = S7::class_character,
-    payment_details = prop_list_of(PaymentDetail)
+    payee = class_entity,
+    payer = class_entity,
+    payments = prop_list_of(Payment)
   )
 )

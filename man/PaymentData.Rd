@@ -10,17 +10,9 @@ PaymentData(
   payment_date = .Date(numeric(0L)),
   total_amount = numeric(0),
   check_number = character(0),
-  payee_name = character(0),
-  payee_address = character(0),
-  payee_city = character(0),
-  payee_state = character(0),
-  payee_zip = character(0),
-  payer_name = character(0),
-  payer_address = character(0),
-  payer_city = character(0),
-  payer_state = character(0),
-  payer_zip = character(0),
-  payment_details = list()
+  payee = class_entity(),
+  payer = class_entity(),
+  payments = list()
 )
 }
 \arguments{
@@ -34,30 +26,14 @@ PaymentData(
 
 \item{check_number}{\verb{<chr>} \code{TRN-02} EFT/check trace number}
 
-\item{payee_name}{\verb{<chr>} \code{N1*PE} Receiving organization name}
+\item{payee}{\verb{<hcc::class_entity>} Receiving organization name, street address, city, state, zip}
 
-\item{payee_address}{\verb{<chr>} \code{N3} Payee street address}
+\item{payer}{\verb{<hcc::class_entity>} Paying organization name, street address, city, state, zip}
 
-\item{payee_city}{\verb{<chr>} \code{N4} Payee city}
-
-\item{payee_state}{\verb{<chr>} \code{N4} Payee state}
-
-\item{payee_zip}{\verb{<chr>} \code{N4} Payee ZIP code}
-
-\item{payer_name}{\verb{<chr>} \code{N1*PR} Paying organization name}
-
-\item{payer_address}{\verb{<chr>} \code{N3} Payer street address}
-
-\item{payer_city}{\verb{<chr>} \code{N4} Payer city}
-
-\item{payer_state}{\verb{<chr>} \code{N4} Payer state}
-
-\item{payer_zip}{\verb{<chr>} \code{N4} Payer ZIP code}
-
-\item{payment_details}{list of \verb{<PaymentDetail>} objects, per-member payment records}
+\item{payments}{list of \verb{<hcc::Payment>} objects, per-member payment records}
 }
 \value{
-A \verb{<PaymentData>} S7 object
+A \verb{<hcc::PaymentData>} S7 object
 }
 \description{
 Represents one ST*820 transaction, typically a capitation
@@ -72,24 +48,34 @@ PaymentData(
   total_amount = purrr::pluck(x, "details", 1L, 3L),
   payment_date = purrr::pluck(x, "details", 1L, 17L),
   check_number = purrr::pluck(x, "details", 2L, 3L),
-  payee_name = purrr::pluck(x, "details", 4L, 3L),
-  payee_address = purrr::pluck(x, "details", 5L, 2L),
-  payee_city = purrr::pluck(x, "details", 6L, 2L),
-  payee_state = purrr::pluck(x, "details", 6L, 3L),
-  payee_zip = purrr::pluck(x, "details", 6L, 4L),
-  payer_name = purrr::pluck(x, "details", 7L, 3L),
-  payer_address = purrr::pluck(x, "details", 8L, 2L),
-  payer_city = purrr::pluck(x, "details", 9L, 2L),
-  payer_state = purrr::pluck(x, "details", 9L, 3L),
-  payer_zip = purrr::pluck(x, "details", 9L, 4L),
-  payment_details = list(
-    PaymentDetail(
-      entity_number = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
-      member_id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
-      last_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
-      first_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
-      middle_name = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L),
-      remittances = list(
+  payee = hcc:::class_entity(
+    name = purrr::pluck(x, "details", 4L, 3L),
+    address = c(
+      purrr::pluck(x, "details", 5L, 2L),
+      purrr::pluck(x, "details", 6L, 2L),
+      purrr::pluck(x, "details", 6L, 3L),
+      purrr::pluck(x, "details", 6L, 4L)
+    )
+  ),
+  payer = hcc:::class_entity(
+    name = purrr::pluck(x, "details", 7L, 3L),
+    address = c(
+      purrr::pluck(x, "details", 8L, 2L),
+      purrr::pluck(x, "details", 9L, 2L),
+      purrr::pluck(x, "details", 9L, 3L),
+      purrr::pluck(x, "details", 9L, 4L)
+    )
+  ),
+  payments = list(
+    Payment(
+      order = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
+      member = hcc:::class_member(
+        id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
+        last = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
+        first = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
+        middle = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L)
+      ),
+      remits = list(
         RemittanceEntry(
           reference_number = purrr::pluck(x, "entity", 1L, 2L, 1L, 3L),
           payment_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 5L, .default = NA_real_),
@@ -104,13 +90,15 @@ PaymentData(
         )
       )
     ),
-    PaymentDetail(
-      entity_number = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
-      member_id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
-      last_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
-      first_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
-      middle_name = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L),
-      remittances = list(
+    Payment(
+      order = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
+      member = hcc:::class_member(
+        id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
+        last = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
+        first = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
+        middle = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L)
+      ),
+      remits = list(
         RemittanceEntry(
           reference_number = purrr::pluck(x, "entity", 7L, 2L, 1L, 3L),
           payment_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 5L, .default = NA_real_),
