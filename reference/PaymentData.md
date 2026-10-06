@@ -99,8 +99,7 @@ A `<PaymentData>` S7 object
 ## Examples
 
 ``` r
-x =  parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
-#> Error in parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01)): could not find function "parse_218"
+x =  hcc:::parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
 PaymentData(
   source = purrr::pluck(x, "header", "ISA", 6L),
   report_date = purrr::pluck(x, "header", "GS", 4L),
@@ -174,5 +173,68 @@ PaymentData(
     )
   )
 )
-#> Error: object 'x' not found
+#> <hcc::PaymentData>
+#>  @ source         : chr "TEST-PAYER"
+#>  @ report_date    : Date[1:1], format: "2026-01-18"
+#>  @ payment_date   : Date[1:1], format: "2026-01-15"
+#>  @ total_amount   : num 102139
+#>  @ check_number   : chr "TESTTRN01000001"
+#>  @ payee_name     : chr "TEST PAYEE ORGANIZATION"
+#>  @ payee_address  : chr "123 TEST STREET"
+#>  @ payee_city     : chr "TESTCITY"
+#>  @ payee_state    : chr "CA"
+#>  @ payee_zip      : chr "00000"
+#>  @ payer_name     : chr "TEST PAYER AGENCY"
+#>  @ payer_address  : chr "123 TEST STREET"
+#>  @ payer_city     : chr "TESTCITY"
+#>  @ payer_state    : chr "CA"
+#>  @ payer_zip      : chr "00000"
+#>  @ payment_details:List of 2
+#>  .. $ : <hcc::PaymentDetail>
+#>  ..  ..@ entity_number: int 1
+#>  ..  ..@ member_id    : chr "TESTMBR000000001"
+#>  ..  ..@ last_name    : chr "LASTNAME01"
+#>  ..  ..@ first_name   : chr "FIRSTNAME01"
+#>  ..  ..@ middle_name  : chr NA
+#>  ..  ..@ remittances  :List of 1
+#>  .. .. .. $ : <hcc::RemittanceEntry>
+#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original_amount    : num NA
+#>  .. .. ..  ..@ adjustment_amount  : num NA
+#>  .. .. ..  ..@ payment_amount     : num 8087
+#>  .. .. ..  ..@ adjustment_reason  : chr NA
+#>  .. .. ..  ..@ rate_code          : chr "1H;2"
+#>  .. .. ..  ..@ aid_code           : chr "1H"
+#>  .. .. ..  ..@ plan_type          : chr "2"
+#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-12-01, 2026-01-01)
+#>  .. $ : <hcc::PaymentDetail>
+#>  ..  ..@ entity_number: int 7
+#>  ..  ..@ member_id    : chr "TESTMBR000000007"
+#>  ..  ..@ last_name    : chr "LASTNAME07"
+#>  ..  ..@ first_name   : chr "FIRSTNAME07"
+#>  ..  ..@ middle_name  : chr NA
+#>  ..  ..@ remittances  :List of 2
+#>  .. .. .. $ : <hcc::RemittanceEntry>
+#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original_amount    : num NA
+#>  .. .. ..  ..@ adjustment_amount  : num NA
+#>  .. .. ..  ..@ payment_amount     : num 8087
+#>  .. .. ..  ..@ adjustment_reason  : chr NA
+#>  .. .. ..  ..@ rate_code          : chr "M1;2"
+#>  .. .. ..  ..@ aid_code           : chr "M1"
+#>  .. .. ..  ..@ plan_type          : chr "2"
+#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-12-01, 2026-01-01)
+#>  .. .. .. $ : <hcc::RemittanceEntry>
+#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original_amount    : num NA
+#>  .. .. ..  ..@ adjustment_amount  : num NA
+#>  .. .. ..  ..@ payment_amount     : num 8087
+#>  .. .. ..  ..@ adjustment_reason  : chr NA
+#>  .. .. ..  ..@ rate_code          : chr "957"
+#>  .. .. ..  ..@ aid_code           : chr "M1"
+#>  .. .. ..  ..@ plan_type          : chr "2"
+#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-11-01, 2025-12-01)
 ```
