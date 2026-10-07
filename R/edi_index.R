@@ -38,7 +38,7 @@ S7::method(edi_index, Text820) <- function(x) {
   #   "820-X306" = index_306(S7::prop(x, "Text"))
   # )
 
-  i = index_306(S7::prop(x, "Text"))
+  # i = index_306(S7::prop(x, "Text"))
   i = index_820(S7::prop(x, "Text"))
 
   S7::convert(

@@ -50,29 +50,41 @@ S7::method(
   names(x)[unlist_(x) == 1L]
 }
 
+#' @noRd
+demo_diag_impl <- function(demo, diag) {
+  x <- switch(
+    diag@model,
+    "CMS-HCC Model V28" = disease_C28(diag@category, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V24" = disease_C24(diag@category, demo@dis_curr, diag@hcc),
+    "CMS-HCC Model V22" = disease_C22(diag@category, demo@dis_curr, diag@hcc),
+    "CMS-HCC ESRD Model V24" = disease_D24(
+      diag@category,
+      demo@non_aged,
+      diag@hcc
+    ),
+    "CMS-HCC ESRD Model V21" = disease_D21(
+      diag@category,
+      demo@non_aged,
+      diag@hcc
+    ),
+    "RxHCC Model V08" = disease_R08(demo@non_aged, diag@hcc)
+  )
+
+  names(x)[unlist_(x) == 1L]
+}
+
 S7::method(
   interactions,
   list(PatientDemographics, DiagnosticCategories)
 ) <- function(x, y) {
-  x <- switch(
-    y@model,
-    "CMS-HCC Model V28" = disease_V28(y@categories, x@dis_curr, y@hcc),
-    "CMS-HCC Model V24" = disease_V24(y@categories, x@dis_curr, y@hcc),
-    "CMS-HCC Model V22" = disease_V22(y@categories, x@dis_curr, y@hcc),
-    "CMS-HCC ESRD Model V24" = disease_ESRD_V24(
-      y@categories,
-      x@non_aged,
-      y@hcc
-    ),
-    "CMS-HCC ESRD Model V21" = disease_ESRD_V21(
-      y@categories,
-      x@non_aged,
-      y@hcc
-    ),
-    "RxHCC Model V08" = disease_RxHCC_V8(x@non_aged, y@hcc)
-  )
+  demo_diag_impl(x, y)
+}
 
-  names(x)[unlist_(x) == 1L]
+S7::method(
+  interactions,
+  list(DiagnosticCategories, PatientDemographics)
+) <- function(x, y) {
+  demo_diag_impl(y, x)
 }
 
 #' Calculate HCC interactions across CMS models.

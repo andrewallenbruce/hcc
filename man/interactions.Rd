@@ -22,6 +22,7 @@ Create Interactions
 \details{
 Methods for \code{interactions}:
 \itemize{
+\item \code{hcc::DiagnosticCategories,hcc::PatientDemographics}
 \item \code{hcc::PatientDemographics,MISSING}
 \item \code{hcc::PatientDemographics,hcc::DiagnosticCategories}
 }

@@ -10,7 +10,7 @@
 #'    - ESRD V24
 #'
 #' @noRd
-inter_new <- function(new_caid, new_orig, full, category) {
+inter_new <- function(new_caid, new_orig, full, category = NULL) {
   rlang::set_names(
     list(
       NMCAID_NORIGDIS = mult_(!new_caid, !new_orig),
@@ -151,9 +151,8 @@ inter_dual <- function(aged, full, part, male, female) {
   )
 }
 
-#' CMS-HCC Model V28
 #' @noRd
-disease_V28 <- function(x, current, hcc) {
+disease_C28 <- function(x, current, hcc) {
   list(
     DIABETES_HF_V28 = mult_(x[["DIABETES_V28"]], x[["HF_V28"]]),
     HF_CHR_LUNG_V28 = mult_(x[["HF_V28"]], x[["CHR_LUNG_V28"]]),
@@ -175,9 +174,8 @@ disease_V28 <- function(x, current, hcc) {
   )
 }
 
-#' CMS-HCC Model V24
 #' @noRd
-disease_V24 <- function(x, current, hcc) {
+disease_C24 <- function(x, current, hcc) {
   list(
     HCC47_gCancer = mult_(any_hcc(47L, hcc), x[["CANCER"]]),
     DIABETES_CHF = mult_(x[["DIABETES"]], x[["CHF"]]),
@@ -210,9 +208,8 @@ disease_V24 <- function(x, current, hcc) {
   )
 }
 
-#' CMS-HCC Model V22
 #' @noRd
-disease_V22 <- function(x, current, hcc) {
+disease_C22 <- function(x, current, hcc) {
   list(
     HCC47_gCancer = mult_(any_hcc(47L, hcc), x[["CANCER"]]),
     HCC85_gDiabetesMellitus = mult_(any_hcc(85L, hcc), x[["DIABETES"]]),
@@ -254,7 +251,7 @@ disease_V22 <- function(x, current, hcc) {
 
 #' CMS-HCC ESRD Model V24
 #' @noRd
-disease_ESRD_V24 <- function(x, non_aged, hcc) {
+disease_D24 <- function(x, non_aged, hcc) {
   list(
     HCC47_gCancer = mult_(any_hcc(47L, hcc), x[["CANCER"]]),
     DIABETES_CHF = mult_(x[["DIABETES"]], x[["CHF"]]),
@@ -299,9 +296,8 @@ disease_ESRD_V24 <- function(x, non_aged, hcc) {
   )
 }
 
-#' CMS-HCC ESRD Model V21
 #' @noRd
-disease_ESRD_V21 <- function(x, non_aged, hcc) {
+disease_D21 <- function(x, non_aged, hcc) {
   list(
     HCC47_gCancer = mult_(any_hcc(47L, hcc), x[["CANCER"]]),
     DIABETES_CHF = mult_(x[["DIABETES"]], x[["CHF"]]),
@@ -346,9 +342,8 @@ disease_ESRD_V21 <- function(x, non_aged, hcc) {
   )
 }
 
-#' RxHCC Model V08
 #' @noRd
-disease_RxHCC_V8 <- function(non_aged, hcc) {
+disease_R08 <- function(non_aged, hcc) {
   list(
     NonAged_RXHCC1 = mult_(non_aged, any_hcc(1L, hcc)),
     NonAged_RXHCC130 = mult_(non_aged, any_hcc(130L, hcc)),

@@ -112,3 +112,32 @@ prefix <- function(x, model = "C28") {
     "_"
   )
 }
+
+#' @noRd
+is_prefix_esrd <- function(x) {
+  x %in_% PREFIX[["ESRD"]]
+}
+#' @noRd
+is_prefix_new_enrollee <- function(x) {
+  x %in_% PREFIX[["NEW_ENROLLEE"]]
+}
+#' @noRd
+is_prefix_comm_lti <- function(x) {
+  x %in_% PREFIX[["COMM_LTI"]]
+}
+#' @noRd
+is_prefix_lti <- function(x) {
+  x %in_% PREFIX[["LTI"]]
+}
+#' @noRd
+is_prefix_dual_full <- function(x) {
+  x %in_% PREFIX[["DUAL"]][["FULL"]]
+}
+#' @noRd
+is_prefix_dual_partial <- function(x) {
+  x %in_% PREFIX[["DUAL"]][["PARTIAL"]]
+}
+#' @noRd
+is_prefix_non_dual <- function(x) {
+  x %in_% PREFIX[["DUAL"]][["NON"]]
+}

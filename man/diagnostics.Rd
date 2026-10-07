@@ -7,7 +7,14 @@
 diagnostics(model, hcc)
 }
 \arguments{
-\item{model}{\verb{<chr>} Model Name}
+\item{model}{\verb{<chr>} HCC model name:
+\itemize{
+\item \code{C22}: CMS-HCC Model V22
+\item \code{C24}: CMS-HCC Model V24
+\item \code{C28}: CMS-HCC Model V28
+\item \code{D21}: CMS-HCC ESRD Model V21
+\item \code{D24}: CMS-HCC ESRD Model V24
+}}
 
 \item{hcc}{\verb{<int>} hcc}
 }
@@ -18,5 +25,5 @@ diagnostics(model, hcc)
 Model-Based Disease Categories
 }
 \examples{
-diagnostics(model = "C24", hcc = c(17:19, 85L))
+diagnostics(hcc = c(17:19, 85L), model = "C24")
 }

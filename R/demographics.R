@@ -60,25 +60,24 @@ demographics <- function(
 
   # Override demographics based on prefix
   if (!is.null(prefix)) {
-    if (prefix %in_% PREFIX[["ESRD"]]) {
+    if (is_prefix_esrd(prefix)) {
       esrd <- TRUE
     }
-
-    if (prefix %in_% PREFIX[["NEW_ENROLLEE"]]) {
+    if (is_prefix_new_enrollee(prefix)) {
       new <- TRUE
-    } else if (prefix %in_% PREFIX[["COMM_LTI"]]) {
+    } else if (is_prefix_comm_lti(prefix)) {
       new <- FALSE
     }
 
-    if (prefix %in_% PREFIX[["DUAL"]][["FULL"]]) {
+    if (is_prefix_dual_full(prefix)) {
       .c(full, part) %=% c(TRUE, FALSE)
-    } else if (prefix %in_% PREFIX[["DUAL"]][["PARTIAL"]]) {
+    } else if (is_prefix_dual_partial(prefix)) {
       .c(full, part) %=% c(FALSE, TRUE)
-    } else if (prefix %in_% PREFIX[["DUAL"]][["NON"]]) {
+    } else if (is_prefix_non_dual(prefix)) {
       .c(full, part) %=% c(FALSE, FALSE)
     }
 
-    if (prefix %in_% PREFIX[["LTI"]]) {
+    if (is_prefix_lti(prefix)) {
       lti <- TRUE
     }
   }
