@@ -21,4 +21,5 @@ Get the coefficient prefix based on beneficiary demographics.
 x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
 prefix(x, model = "C28")
 prefix(x, model = "D24")
+prefix(x, model = "R05")
 }

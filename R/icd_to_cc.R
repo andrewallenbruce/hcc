@@ -18,7 +18,7 @@
 #' icd_to_cc("E119", "D21", 2026)
 #' icd_to_cc("I5022", "C28", 2026)
 #' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
-#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026, simplify = TRUE)
+#' icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
 #' @export
 icd_to_cc <- function(
   icd = NULL,

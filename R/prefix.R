@@ -30,7 +30,7 @@ prefix_esrd <- function(x) {
       "M"
     ))
   }
-  NULL
+  NA_character_
 }
 
 #' @noRd
@@ -68,12 +68,15 @@ prefix_rxhcc <- function(x) {
 #' x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
 #' prefix(x, model = "C28")
 #' prefix(x, model = "D24")
+#' prefix(x, model = "R05")
 #' @export
 prefix <- function(x, model = "C28") {
   if (!S7::S7_inherits(x, PatientDemographics)) {
     cli::cli_abort(
-      "{.arg {arg}} must be an {.cls PatientDemographics}, not {.obj_type_friendly {x}}",
-      arg = rlang::caller_arg(x),
+      c(
+        "{.arg {x}} must be a {.cls hcc::PatientDemographics} object, not {.obj_type_friendly {x}}",
+        "i" = "Create one with {.fn hcc::demographics}"
+      ),
       call = rlang::caller_env()
     )
   }
@@ -81,10 +84,7 @@ prefix <- function(x, model = "C28") {
   model <- rlang::arg_match0(model, rlang::names2(MODEL))
 
   if (model %in_% c("D20", "D21", "D24")) {
-    p <- prefix_esrd(x)
-    if (!is.null(p)) {
-      return(p)
-    }
+    return(prefix_esrd(x))
   }
   if (model %in_% c("R05", "R08")) {
     return(prefix_rxhcc(x))
