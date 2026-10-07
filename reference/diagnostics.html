@@ -53,7 +53,12 @@
 
 
 <dl><dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Model Name</p></dd>
+<dd><p><code>&lt;chr&gt;</code> HCC model name:</p><ul><li><p><code>C22</code>: CMS-HCC Model V22</p></li>
+<li><p><code>C24</code>: CMS-HCC Model V24</p></li>
+<li><p><code>C28</code>: CMS-HCC Model V28</p></li>
+<li><p><code>D21</code>: CMS-HCC ESRD Model V21</p></li>
+<li><p><code>D24</code>: CMS-HCC ESRD Model V24</p></li>
+</ul></dd>
 
 
 <dt id="arg-hcc">hcc<a class="anchor" aria-label="anchor" href="#arg-hcc"></a></dt>
@@ -67,18 +72,18 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">diagnostics</span><span class="op">(</span>model <span class="op">=</span> <span class="st">"C24"</span>, hcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span><span class="op">:</span><span class="fl">19</span>, <span class="fl">85L</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">diagnostics</span><span class="op">(</span>hcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span><span class="op">:</span><span class="fl">19</span>, <span class="fl">85L</span><span class="op">)</span>, model <span class="op">=</span> <span class="st">"C24"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::DiagnosticCategories&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ model     : chr "CMS-HCC Model V24"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ hcc       : int [1:4] 17 18 19 85</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ categories:List of 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ model   : chr "CMS-HCC Model V24"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ hcc     : int [1:4] 17 18 19 85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ category:List of 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CANCER                   : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ DIABETES                 : int 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CARD_RESP_FAIL           : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ CHF                      : int 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SEPSIS                   : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ gCopdCF                  : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ RENAL_V24                : int 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SEPSIS                   : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ gSubstanceUseDisorder_V24: int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ gPsychiatric_V24         : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ PRESSURE_ULCER           : int 0</span>

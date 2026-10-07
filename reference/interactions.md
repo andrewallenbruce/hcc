@@ -30,6 +30,8 @@ a character vector of interactions
 
 Methods for `interactions`:
 
+- `hcc::DiagnosticCategories,hcc::PatientDemographics`
+
 - `hcc::PatientDemographics,MISSING`
 
 - `hcc::PatientDemographics,hcc::DiagnosticCategories`
