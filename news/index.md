@@ -1,5 +1,11 @@
 # Changelog
 
+## hcc 0.0.0.9072 (2026-10-06)
+
+- [`apply_hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/apply_hierarchies.md)
+- `get_prefix()` -\>
+  [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
+
 ## hcc 0.0.0.9071 (2026-10-04)
 
 - 834 indexer convert/print methods

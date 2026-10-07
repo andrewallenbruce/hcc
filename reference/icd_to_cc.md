@@ -74,14 +74,11 @@ icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
 #> 1  2026 E103213     37 CMS-HCC Model V28
 #> 2  2026 I5022      226 CMS-HCC Model V28
 #> 3  2026 E103213    298 CMS-HCC Model V28
-icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026, simplify = TRUE)
-#> $`37`
-#> [1] "E103213"
-#> 
-#> $`226`
-#> [1] "I5022"
-#> 
-#> $`298`
-#> [1] "E103213"
-#> 
+icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
+#> # A tibble: 3 × 4
+#>    year icd_code    cc model_name       
+#>   <int> <chr>    <int> <chr>            
+#> 1  2026 E103213     37 CMS-HCC Model V28
+#> 2  2026 I5022      226 CMS-HCC Model V28
+#> 3  2026 E103213    298 CMS-HCC Model V28
 ```

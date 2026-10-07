@@ -29,5 +29,7 @@ x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
 prefix(x, model = "C28")
 #> [1] "CNA_"
 prefix(x, model = "D24")
-#> [1] "CNA_"
+#> [1] NA
+prefix(x, model = "R05")
+#> [1] "Rx_CE_NoLowAged_"
 ```
