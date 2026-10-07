@@ -89,10 +89,11 @@ cc_to_hierarchy <- function(
   return(x)
 }
 
+#' icd_to_cc_hierarchy(c("E1100", "E1022", "E1165", "E119"), "C24", 2025L)
 #' @noRd
 icd_to_cc_hierarchy <- function(icd = NULL, model = NULL, year = NULL) {
-  x <- icd_to_cc(icd, model, year, TRUE)
-  y <- cc_to_hierarchy(names(x), model, year, TRUE)
+  x <- icd_to_cc(icd, model, year)
+  y <- cc_to_hierarchy(x$cc, model, year)
 
   list(icd = x, cc = y)
 }

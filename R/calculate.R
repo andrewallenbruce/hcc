@@ -1,7 +1,7 @@
 #' @noRd
 calculate_raf <- function(
   icd,
-  model = "CMS-HCC Model V28",
+  model = "C28",
   age = 65,
   sex = "F",
   dual = NA,
@@ -23,5 +23,6 @@ calculate_raf <- function(
   norm_factor = 1,
   frailty_score = 0
 ) {
-  return(NULL)
+  icd_to_cc(c("E103213", "I5022", "Z9999"), "C28", 2026)
+  hierarchies(17L, "C28")
 }

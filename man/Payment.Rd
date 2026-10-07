@@ -4,12 +4,12 @@
 \alias{Payment}
 \title{Per-Member Payment Record from an X12-820 ENT Loop}
 \usage{
-Payment(order = integer(0), member = class_member(), remits = list())
+Payment(order = integer(0), member = Member(), remits = list())
 }
 \arguments{
 \item{order}{\verb{<int>} \code{ENT-01} ENT sequence number}
 
-\item{member}{\verb{<hcc::class_member>}
+\item{member}{\verb{<hcc::Member>}
 \itemize{
 \item \code{NM1-09} Member identifier
 \item \code{NM1-03} Member last name
@@ -17,7 +17,7 @@ Payment(order = integer(0), member = class_member(), remits = list())
 \item \code{NM1-05} Member middle name
 }}
 
-\item{remits}{list of \verb{<hcc::RemittanceEntry>} objects, line items (one per RMR/DTM set)}
+\item{remits}{list of \verb{<hcc::Remittance>} objects, line items (one per RMR/DTM set)}
 }
 \value{
 A \verb{<hcc::Payment>} S7 object
