@@ -1,13 +1,23 @@
 BoldRed <- cli::combine_ansi_styles("bold", "red")
 BoldCyan <- cli::combine_ansi_styles("bold", "cyan")
 
+#' @noRd
+bracket <- function(x) cheapr::paste_("[", x, "]")
+#' @noRd
+angle <- function(x) cheapr::paste_("<", x, ">")
+#' @noRd
+colon <- function(x, y) cheapr::paste_(x, ": ", y)
+#' @noRd
+arrow <- function(x, y) cheapr::paste_(x, collapse = " > ")
+
+
 S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
   names_ <- BoldCyan((c("Type", "Segments")))
   numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
 
-  cli::cat_line(cheapr::paste_(fright(names_), ": ", fleft(numbs_)))
+  cli::cat_line(colon(fright(names_), fleft(numbs_)))
   cli::cat_rule()
 }
 
@@ -22,20 +32,22 @@ S7::method(format, IndexEDI) <- function(x) {
     numbs_ <- c(numbs_, BoldRed(length(S7::prop(x, "Problems"))))
   }
 
-  cli::cat_line(cheapr::paste_(fright(names_)), ": ", fleft(numbs_))
+  cli::cat_line(colon(fright(names_), fleft(numbs_)))
   cli::cat_rule()
 
   vlens <- collapse::vlengths(S7::prop(x, "Index"))
   names_ <- cli::style_bold(names(vlens))
-  bracks <- cheapr::paste_(" [", unname(vlens), "]")
+  bracks <- bracket(unname(vlens))
   numbs_ <- purrr::map_chr(unname(S7::prop(x, "Index")), toString, width = 45L)
 
-  cli::cat_line(cheapr::paste_(
-    fright(names_),
-    fright(bracks),
-    " ",
-    fleft(numbs_)
-  ))
+  cli::cat_line(
+    cheapr::paste_(
+      fright(names_),
+      fright(bracks),
+      fleft(numbs_),
+      sep = " "
+    )
+  )
   cli::cat_rule()
 }
 
@@ -51,62 +63,61 @@ S7::method(format, Index820) <- function(x) {
     ns_ <- c(ns_, BoldRed(length(pr_)))
   }
 
-  cli::cat_line(cheapr::paste_(fright(nm_)), ": ", fleft(ns_))
+  cli::cat_line(colon(fright(nm_), fleft(ns_)))
   cli::cat_rule()
 
-  seg_nm <- BoldCyan(c("Header", "Detail", "Trailer"))
-  seg_pr <- list(
+  seg <- list(
     S7::prop(x, "Header"),
     S7::prop(x, "Details"),
     S7::prop(x, "Trailer")
   )
-  seg_el <- purrr::map(seg_pr, \(i) {
+  ele <- purrr::map(seg, \(i) {
     S7::prop(x, "Text")[i] |>
       purrr::map_chr(\(x) gsub("*", "", substr(x, 1, 3), fixed = TRUE)) |>
       cheapr::unique_()
-  }) |>
-    purrr::map_chr(\(i) cheapr::paste_(i, collapse = " > "))
+  })
 
-  cli::cat_line(cheapr::paste_(
-    fright(seg_nm),
-    " ",
-    fright(cheapr::paste_(" [", cheapr::lengths_(seg_pr), "]")),
-    " ",
-    fleft(seg_el)
-  ))
+  cli::cat_line(
+    cheapr::paste_(
+      fright(BoldCyan(c("Header", "Detail", "Trailer"))),
+      bracket(cheapr::lengths_(seg)),
+      fleft(purrr::map_chr(ele, arrow)),
+      sep = " "
+    )
+  )
 
   cli::cli_h2("Entity Loop")
-
-  elp_nm <- BoldCyan(c("Entity", "Remits"))
-  elp_ln <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
-  ent_ln <- purrr::map_int(elp_ln, 1L)
-  ent_tb <- cheapr::table_(ent_ln)
-  ent_tb <- cheapr::paste_(
-    "[",
-    unname(ent_tb),
-    "] <",
-    names(ent_tb),
-    ">",
-    collapse = " "
+  elp <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
+  ent <- cheapr::table_(purrr::map_int(elp, 2L))
+  ent <- cheapr::paste_(
+    cli::style_bold(
+      bracket(length(ent))
+    ),
+    cheapr::paste_(
+      bracket(unname(ent)),
+      angle(names(ent)),
+      sep = " ",
+      collapse = " "
+    )
   )
-  ent_ln <- cheapr::paste_("[", length(ent_ln), "] ", ent_tb)
 
-  rmr_ln <- purrr::map_int(elp_ln, 2L)
-  rmr_tb <- cheapr::table_(rmr_ln)
-  rmr_tb <- cheapr::paste_(
-    "[",
-    unname(rmr_tb),
-    "] <",
-    names(rmr_tb),
-    ">",
-    collapse = " "
+  rmr <- cheapr::table_(purrr::map_int(elp, 2L))
+  rmr <- cheapr::paste_(
+    cli::style_bold(
+      bracket(length(rmr))
+    ),
+    cheapr::paste_(
+      bracket(unname(rmr)),
+      angle(names(rmr)),
+      sep = " ",
+      collapse = " "
+    )
   )
-  rmr_ln <- cheapr::paste_("[", length(rmr_ln), "] ", rmr_tb)
 
   cli::cat_line(cheapr::paste_(
-    fright(elp_nm),
-    " ",
-    fleft(c(ent_ln, rmr_ln))
+    fright(BoldCyan(c("Entity", "Remits"))),
+    fleft(c(ent, rmr)),
+    sep = " "
   ))
   cli::cat_rule()
 }

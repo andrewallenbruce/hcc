@@ -38,6 +38,7 @@ S7::method(edi_index, Text820) <- function(x) {
   #   "820-X306" = index_306(S7::prop(x, "Text"))
   # )
 
+  i = index_306(S7::prop(x, "Text"))
   i = index_820(S7::prop(x, "Text"))
 
   S7::convert(
@@ -110,22 +111,19 @@ index_834 <- function(x) {
 
 #' @noRd
 index_306 <- function(x) {
+  ISA <- perl(x, "ISA\\*")
   ST <- perl(x, "^ST")
-  SE <- perl(x, "^SE")
   ENT <- perl(x, "^ENT")
-  NM1 <- perl(x, "^NM1") %0% 0L
-  REF <- perl(x, "^REF")
+  RMR <- perl(x, "^RMR")
+  SE <- perl(x, "^SE")
 
-  if (length(ENT) != length(NM1)) {
-    emp <- cheapr::new_integer(length(ENT), seq_along(ENT))
-    emp[grep("^NM1", x[ENT + 1L])] <- c(REF[diff(REF) != 1L], max(REF))
-    NM1 <- unname(emp)
-  }
+  i <- cheapr::seq_(ENT[1L], SE - 1L)
+  ii <- findInterval(i, sort.int(c(ENT, RMR, SE - 1L)), all.inside = TRUE)
 
   rlang::list2(
-    header = fill_(perl(x, "ISA\\*"), ST),
-    details = fill_(ST + 1L, ENT[1L] - 1L),
-    entity = map_entity_index(ENT, SE, NM1),
+    header = cheapr::seq_(ISA, ST),
+    details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
+    entity = vctrs::vec_split(i, ii)$val,
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }
