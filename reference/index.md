@@ -28,8 +28,6 @@
   : Healthcare Claim Service Level Data
 - [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
   : Apply risk adjustment coefficients to HCCs and interactions.
-- [`apply_hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/apply_hierarchies.md)
-  : Apply hierarchical rules to a set of CCs based on model version.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
   : Calculate HCC interactions across CMS models.
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
@@ -41,6 +39,8 @@
   : Create an EDI Index Object
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
+- [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
+  : Apply hierarchical rules to a set of CCs based on model version.
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
   : Map ICD-10 Codes to CC
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)

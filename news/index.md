@@ -1,8 +1,12 @@
 # Changelog
 
+## hcc 0.0.0.9073 (2026-10-07)
+
+- [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
+
 ## hcc 0.0.0.9072 (2026-10-06)
 
-- [`apply_hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/apply_hierarchies.md)
+- `apply_hierarchies()`
 - `get_prefix()` -\>
   [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
 
