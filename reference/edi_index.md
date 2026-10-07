@@ -231,14 +231,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 23      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > REF > N1
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > REF > N1
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [2] [1] <1> [1] <2>
-#> Remits [2] [1] <4> [1] <5>
+#> Entity [2][1] <4> [1] <5>
+#> Remits [2][1] <4> [1] <5>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Essentail_Health_Plan`
@@ -246,14 +246,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 21      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [7] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [7] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [1] [1] <2>
-#> Remits [1] [1] <6>
+#> Entity [1][1] <6>
+#> Remits [1][1] <6>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Premium_Payment_EFT`
@@ -261,14 +261,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 26      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > REF > N1
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > REF > N1
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [1] <1> [2] <2>
-#> Remits [3] [1] <6> [2] <2>
+#> Entity [2][1] <6> [2] <2>
+#> Remits [2][1] <6> [2] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Premium_Payment_NOPMT`
@@ -276,14 +276,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 22      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [7] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [7] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [2] [1] <1> [1] <2>
-#> Remits [2] [1] <4> [1] <2>
+#> Entity [2][1] <4> [1] <2>
+#> Remits [2][1] <4> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_payment_order_820_218`
@@ -291,14 +291,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 19      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > REF > N1
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > REF > N1
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [1] [1] <1>
-#> Remits [1] [1] <7>
+#> Entity [1][1] <7>
+#> Remits [1][1] <7>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_01`
@@ -306,14 +306,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 104     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [9] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [9] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [12] [12] <2>         
-#> Remits [12] [11] <5> [1] <10>
+#> Entity [2][11] <5> [1] <10>
+#> Remits [2][11] <5> [1] <10>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_02`
@@ -321,14 +321,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 166     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [9] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [9] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [13] [13] <2>                         
-#> Remits [13] [9] <11> [1] <10> [2] <5> [1] <6>
+#> Entity [4][9] <11> [1] <10> [2] <5> [1] <6>
+#> Remits [4][9] <11> [1] <10> [2] <5> [1] <6>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_03`
@@ -336,14 +336,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 1146    
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [9] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [9] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [93] [93] <2>                                             
-#> Remits [93] [64] <11> [20] <5> [3] <10> [3] <25> [2] <15> [1] <6>
+#> Entity [6][64] <11> [20] <5> [3] <10> [3] <25> [2] <15> [1] <6>
+#> Remits [6][64] <11> [20] <5> [3] <10> [3] <25> [2] <15> [1] <6>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_04`
@@ -351,14 +351,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 95      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [9] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [9] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [10] [10] <2>        
-#> Remits [10] [9] <5> [1] <15>
+#> Entity [2][9] <5> [1] <15>
+#> Remits [2][9] <5> [1] <15>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_05`
@@ -366,14 +366,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 647     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST                 
-#>  Detail  [9] BPR > TRN > REF > N1 > N3 > N4
-#> Trailer  [3] SE > GE > IEA                 
+#>  Header [3] ISA > GS > ST                 
+#>  Detail [9] BPR > TRN > REF > N1 > N3 > N4
+#> Trailer [3] SE > GE > IEA                 
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [81] [81] <2>                  
-#> Remits [81] [71] <5> [9] <10> [1] <25>
+#> Entity [3][71] <5> [9] <10> [1] <25>
+#> Remits [3][71] <5> [9] <10> [1] <25>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX10_debt_covered_by_affiliate1`
@@ -381,14 +381,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 42      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>          
-#> Remits [3] [1] <14> [1] <10> [1] <2>
+#> Entity [3][1] <14> [1] <10> [1] <2>
+#> Remits [3][1] <14> [1] <10> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX11_debt_covered_by_affiliate2`
@@ -396,14 +396,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 43      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>          
-#> Remits [3] [1] <14> [1] <10> [1] <3>
+#> Entity [3][1] <14> [1] <10> [1] <3>
+#> Remits [3][1] <14> [1] <10> [1] <3>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX12_csr_manual_adj`
@@ -411,14 +411,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 34      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>
-#> Remits [3] [2] <8> [1] <2>
+#> Entity [2][2] <8> [1] <2>
+#> Remits [2][2] <8> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX1_different_types_of_pmt_by_HIX`
@@ -426,14 +426,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 41      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [6] BPR > TRN > REF > N1
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [6] BPR > TRN > REF > N1
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [4] [4] <2>        
-#> Remits [4] [3] <5> [1] <6>
+#> Entity [2][3] <5> [1] <6>
+#> Remits [2][3] <5> [1] <6>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX2_payments_exceed_charges1`
@@ -441,14 +441,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 38      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1> 
-#> Remits [3] [2] <10> [1] <2>
+#> Entity [2][2] <10> [1] <2>
+#> Remits [2][2] <10> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX3_payments_exceed_charges2`
@@ -456,14 +456,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 35      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [2] [2] <2> 
-#> Remits [2] [2] <10>
+#> Entity [1][2] <10>
+#> Remits [1][2] <10>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX4_charges_exceed_payments1`
@@ -471,14 +471,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 32      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>
-#> Remits [3] [2] <7> [1] <2>
+#> Entity [2][2] <7> [1] <2>
+#> Remits [2][2] <7> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX5_charges_exceed_payments2`
@@ -486,14 +486,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 32      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>
-#> Remits [3] [2] <7> [1] <2>
+#> Entity [2][2] <7> [1] <2>
+#> Remits [2][2] <7> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX6_aptc_adjustments1`
@@ -501,14 +501,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 42      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1>          
-#> Remits [3] [1] <14> [1] <10> [1] <2>
+#> Entity [3][1] <14> [1] <10> [1] <2>
+#> Remits [3][1] <14> [1] <10> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX7_aptc_adjustments2`
@@ -516,14 +516,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 39      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [2] [2] <2>          
-#> Remits [2] [1] <14> [1] <10>
+#> Entity [2][1] <14> [1] <10>
+#> Remits [2][1] <14> [1] <10>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX8_outstanding_debt_owed1`
@@ -531,14 +531,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 38      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1> 
-#> Remits [3] [2] <10> [1] <2>
+#> Entity [2][2] <10> [1] <2>
+#> Remits [2][2] <10> [1] <2>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX9_outstanding_debt_owed2`
@@ -546,14 +546,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 39      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [5] BPR > TRN > N1 > PER
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [5] BPR > TRN > N1 > PER
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [3] [2] <2> [1] <1> 
-#> Remits [3] [2] <10> [1] <3>
+#> Entity [2][2] <10> [1] <3>
+#> Remits [2][2] <10> [1] <3>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_payment_order_820_360`
@@ -561,14 +561,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X306
 #> Segments: 41      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header  [3] ISA > GS > ST       
-#>  Detail  [6] BPR > TRN > REF > N1
-#> Trailer  [3] SE > GE > IEA       
+#>  Header [3] ISA > GS > ST       
+#>  Detail [6] BPR > TRN > REF > N1
+#> Trailer [3] SE > GE > IEA       
 #> 
 #> ── Entity Loop ──
 #> 
-#> Entity [4] [4] <2>        
-#> Remits [4] [3] <5> [1] <6>
+#> Entity [2][3] <5> [1] <6>
+#> Remits [2][3] <5> [1] <6>
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 ```
