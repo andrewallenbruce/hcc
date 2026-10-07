@@ -205,6 +205,7 @@ TOB = list(
 )
 
 MODEL = list(
+  "C20" = "CMS-HCC Model V20",
   "C21" = "CMS-HCC Model V21",
   "C22" = "CMS-HCC Model V22",
   "C23" = "CMS-HCC Model V23",

@@ -119,11 +119,17 @@ index_306 <- function(x) {
 
   i <- cheapr::seq_(ENT[1L], SE - 1L)
   ii <- findInterval(i, sort.int(c(ENT, RMR, SE - 1L)), all.inside = TRUE)
+  iii <- vctrs::vec_split(i, ii)$val
+  inn <- purrr::map_depth(iii, 1L, function(y) {
+    x = substring(x[y], 1L, 7L)
+    x = gsub("*", "-", x, fixed = TRUE)
+    x = gsub("-$|-[0-9A-Z]$", "", x, perl = TRUE)
+  })
 
   rlang::list2(
     header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = vctrs::vec_split(i, ii)$val,
+    entity = list(index = iii, names = inn),
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }
