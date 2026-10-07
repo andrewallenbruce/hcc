@@ -12,8 +12,8 @@ PaymentData(
   payment_date = .Date(numeric(0L)),
   total_amount = numeric(0),
   check_number = character(0),
-  payee = class_entity(),
-  payer = class_entity(),
+  payee = Party(),
+  payer = Party(),
   payments = list()
 )
 ```
@@ -42,13 +42,13 @@ PaymentData(
 
 - payee:
 
-  `<hcc::class_entity>` Receiving organization name, street address,
-  city, state, zip
+  `<hcc::Party>` Receiving organization name, street address, city,
+  state, zip
 
 - payer:
 
-  `<hcc::class_entity>` Paying organization name, street address, city,
-  state, zip
+  `<hcc::Party>` Paying organization name, street address, city, state,
+  zip
 
 - payments:
 
@@ -68,7 +68,7 @@ PaymentData(
   total_amount = purrr::pluck(x, "details", 1L, 3L),
   payment_date = purrr::pluck(x, "details", 1L, 17L),
   check_number = purrr::pluck(x, "details", 2L, 3L),
-  payee = hcc:::class_entity(
+  payee = hcc:::Party(
     name = purrr::pluck(x, "details", 4L, 3L),
     address = c(
       purrr::pluck(x, "details", 5L, 2L),
@@ -77,7 +77,7 @@ PaymentData(
       purrr::pluck(x, "details", 6L, 4L)
     )
   ),
-  payer = hcc:::class_entity(
+  payer = hcc:::Party(
     name = purrr::pluck(x, "details", 7L, 3L),
     address = c(
       purrr::pluck(x, "details", 8L, 2L),
@@ -89,59 +89,51 @@ PaymentData(
   payments = list(
     Payment(
       order = purrr::pluck(x, "entity", 1L, 1L, 1L, 2L),
-      member = hcc:::class_member(
+      member = hcc:::Member(
         id = purrr::pluck(x, "entity", 1L, 1L, 2L, 10L),
         last = purrr::pluck(x, "entity", 1L, 1L, 2L, 4L),
-        first = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L),
-        middle = purrr::pluck(x, "entity", 1L, 1L, 2L, 6L)
+        first = purrr::pluck(x, "entity", 1L, 1L, 2L, 5L)
       ),
       remits = list(
-        RemittanceEntry(
-          reference_number = purrr::pluck(x, "entity", 1L, 2L, 1L, 3L),
-          payment_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 5L, .default = NA_real_),
-          original_amount = purrr::pluck(x, "entity", 1L, 2L, 1L, 6L, .default = NA_real_),
-          adjustment_amount = NA_real_,
-          adjustment_reason = NA_character_,
-          rate_code = purrr::pluck(x, "entity", 1L, 2L, 3L, 3L),
-          aid_code = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 1L, 2L),
-          plan_type = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 4L),
-          payment_description = purrr::pluck(x, "entity", 1L, 2L, 4L, 3L),
-          coverage_period = purrr::pluck(x, "entity", 1L, 2L, 5L, 7L)
+        Remittance(
+          reference = purrr::pluck(x, "entity", 1L, 2L, 1L, 3L),
+          payment = purrr::pluck(x, "entity", 1L, 2L, 1L, 5L, .default = NA_real_),
+          original = purrr::pluck(x, "entity", 1L, 2L, 1L, 6L, .default = NA_real_),
+          rate = purrr::pluck(x, "entity", 1L, 2L, 3L, 3L),
+          aid = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 1L, 2L),
+          plan = substring(purrr::pluck(x, "entity", 1L, 2L, 3L, 3L), 4L),
+          description = purrr::pluck(x, "entity", 1L, 2L, 4L, 3L),
+          coverage = purrr::pluck(x, "entity", 1L, 2L, 5L, 7L)
         )
       )
     ),
     Payment(
       order = purrr::pluck(x, "entity", 7L, 1L, 1L, 2L),
-      member = hcc:::class_member(
+      member = hcc:::Member(
         id = purrr::pluck(x, "entity", 7L, 1L, 2L, 10L),
         last = purrr::pluck(x, "entity", 7L, 1L, 2L, 4L),
-        first = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L),
-        middle = purrr::pluck(x, "entity", 7L, 1L, 2L, 6L)
+        first = purrr::pluck(x, "entity", 7L, 1L, 2L, 5L)
       ),
       remits = list(
-        RemittanceEntry(
-          reference_number = purrr::pluck(x, "entity", 7L, 2L, 1L, 3L),
-          payment_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 5L, .default = NA_real_),
-          original_amount = purrr::pluck(x, "entity", 7L, 2L, 1L, 6L, .default = NA_real_),
-          adjustment_amount = NA_real_,
-          adjustment_reason = NA_character_,
-          rate_code = purrr::pluck(x, "entity", 7L, 2L, 3L, 3L),
-          aid_code = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 1L, 2L),
-          plan_type = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 4L),
-          payment_description = purrr::pluck(x, "entity", 7L, 2L, 4L, 3L),
-          coverage_period = purrr::pluck(x, "entity", 7L, 2L, 5L, 7L)
+        Remittance(
+          reference = purrr::pluck(x, "entity", 7L, 2L, 1L, 3L),
+          payment = purrr::pluck(x, "entity", 7L, 2L, 1L, 5L, .default = NA_real_),
+          original = purrr::pluck(x, "entity", 7L, 2L, 1L, 6L, .default = NA_real_),
+          rate = purrr::pluck(x, "entity", 7L, 2L, 2L, 3L),
+          aid = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 1L, 2L),
+          plan = substring(purrr::pluck(x, "entity", 7L, 2L, 3L, 3L), 4L),
+          description = purrr::pluck(x, "entity", 7L, 2L, 4L, 3L),
+          coverage = purrr::pluck(x, "entity", 7L, 2L, 5L, 7L)
         ),
-        RemittanceEntry(
-          reference_number = purrr::pluck(x, "entity", 7L, 2L, 6L, 3L),
-          payment_amount = purrr::pluck(x, "entity", 7L, 2L, 6L, 5L, .default = NA_real_),
-          original_amount = purrr::pluck(x, "entity", 7L, 2L, 6L, 6L, .default = NA_real_),
-          adjustment_amount = NA_real_,
-          adjustment_reason = NA_character_,
-          rate_code = purrr::pluck(x, "entity", 7L, 2L, 7L, 3L),
-          aid_code = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 1L, 2L),
-          plan_type = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 4L),
-          payment_description = purrr::pluck(x, "entity", 7L, 2L, 9L, 3L),
-          coverage_period = purrr::pluck(x, "entity", 7L, 2L, 10L, 7L)
+        Remittance(
+          reference = purrr::pluck(x, "entity", 7L, 2L, 6L, 3L),
+          payment = purrr::pluck(x, "entity", 7L, 2L, 6L, 5L, .default = NA_real_),
+          original = purrr::pluck(x, "entity", 7L, 2L, 6L, 6L, .default = NA_real_),
+          rate = purrr::pluck(x, "entity", 7L, 2L, 7L, 3L),
+          aid = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 1L, 2L),
+          plan = substring(purrr::pluck(x, "entity", 7L, 2L, 8L, 3L), 4L, 4L),
+          description = purrr::pluck(x, "entity", 7L, 2L, 9L, 3L),
+          coverage = purrr::pluck(x, "entity", 7L, 2L, 10L, 7L)
         )
       )
     )
@@ -153,60 +145,60 @@ PaymentData(
 #>  @ payment_date: Date[1:1], format: "2026-01-15"
 #>  @ total_amount: num 102139
 #>  @ check_number: chr "TESTTRN01000001"
-#>  @ payee       : <hcc::class_entity>
+#>  @ payee       : <hcc::Party>
 #>  .. @ name   : chr "TEST PAYEE ORGANIZATION"
 #>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
-#>  @ payer       : <hcc::class_entity>
+#>  @ payer       : <hcc::Party>
 #>  .. @ name   : chr "TEST PAYER AGENCY"
 #>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
 #>  @ payments    :List of 2
 #>  .. $ : <hcc::Payment>
 #>  ..  ..@ order : int 1
-#>  ..  ..@ member: <hcc::class_member>
+#>  ..  ..@ member: <hcc::Member>
 #>  .. .. .. @ id    : chr "TESTMBR000000001"
 #>  .. .. .. @ last  : chr "LASTNAME01"
 #>  .. .. .. @ first : chr "FIRSTNAME01"
-#>  .. .. .. @ middle: chr NA
+#>  .. .. .. @ middle: chr(0) 
 #>  ..  ..@ remits:List of 1
-#>  .. .. .. $ : <hcc::RemittanceEntry>
-#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original_amount    : num NA
-#>  .. .. ..  ..@ adjustment_amount  : num NA
-#>  .. .. ..  ..@ payment_amount     : num 8087
-#>  .. .. ..  ..@ adjustment_reason  : chr NA
-#>  .. .. ..  ..@ rate_code          : chr "1H;2"
-#>  .. .. ..  ..@ aid_code           : chr "1H"
-#>  .. .. ..  ..@ plan_type          : chr "2"
-#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-12-01, 2026-01-01)
+#>  .. .. .. $ : <hcc::Remittance>
+#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original   : num NA
+#>  .. .. ..  ..@ adjustment : num(0) 
+#>  .. .. ..  ..@ payment    : num 8087
+#>  .. .. ..  ..@ rate       : chr "1H;2"
+#>  .. .. ..  ..@ aid        : chr "1H"
+#>  .. .. ..  ..@ plan       : chr "2"
+#>  .. .. ..  ..@ reason     : chr(0) 
+#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
 #>  .. $ : <hcc::Payment>
 #>  ..  ..@ order : int 7
-#>  ..  ..@ member: <hcc::class_member>
+#>  ..  ..@ member: <hcc::Member>
 #>  .. .. .. @ id    : chr "TESTMBR000000007"
 #>  .. .. .. @ last  : chr "LASTNAME07"
 #>  .. .. .. @ first : chr "FIRSTNAME07"
-#>  .. .. .. @ middle: chr NA
+#>  .. .. .. @ middle: chr(0) 
 #>  ..  ..@ remits:List of 2
-#>  .. .. .. $ : <hcc::RemittanceEntry>
-#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original_amount    : num NA
-#>  .. .. ..  ..@ adjustment_amount  : num NA
-#>  .. .. ..  ..@ payment_amount     : num 8087
-#>  .. .. ..  ..@ adjustment_reason  : chr NA
-#>  .. .. ..  ..@ rate_code          : chr "M1;2"
-#>  .. .. ..  ..@ aid_code           : chr "M1"
-#>  .. .. ..  ..@ plan_type          : chr "2"
-#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-12-01, 2026-01-01)
-#>  .. .. .. $ : <hcc::RemittanceEntry>
-#>  .. .. ..  ..@ reference_number   : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original_amount    : num NA
-#>  .. .. ..  ..@ adjustment_amount  : num NA
-#>  .. .. ..  ..@ payment_amount     : num 8087
-#>  .. .. ..  ..@ adjustment_reason  : chr NA
-#>  .. .. ..  ..@ rate_code          : chr "957"
-#>  .. .. ..  ..@ aid_code           : chr "M1"
-#>  .. .. ..  ..@ plan_type          : chr "2"
-#>  .. .. ..  ..@ payment_description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage_period    : iv<date> [1:1] [2025-11-01, 2025-12-01)
+#>  .. .. .. $ : <hcc::Remittance>
+#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original   : num NA
+#>  .. .. ..  ..@ adjustment : num(0) 
+#>  .. .. ..  ..@ payment    : num 8087
+#>  .. .. ..  ..@ rate       : chr "957"
+#>  .. .. ..  ..@ aid        : chr "M1"
+#>  .. .. ..  ..@ plan       : chr "2"
+#>  .. .. ..  ..@ reason     : chr(0) 
+#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
+#>  .. .. .. $ : <hcc::Remittance>
+#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
+#>  .. .. ..  ..@ original   : num NA
+#>  .. .. ..  ..@ adjustment : num(0) 
+#>  .. .. ..  ..@ payment    : num 8087
+#>  .. .. ..  ..@ rate       : chr "957"
+#>  .. .. ..  ..@ aid        : chr "M1"
+#>  .. .. ..  ..@ plan       : chr "2"
+#>  .. .. ..  ..@ reason     : chr(0) 
+#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
+#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-11-01, 2025-12-01)
 ```

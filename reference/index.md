@@ -2,8 +2,6 @@
 
 ## All functions
 
-- [`Document820()`](https://andrewallenbruce.github.io/hcc/reference/Document820.md)
-  : Document 820 S7 Object
 - [`EditRule()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   [`AgeEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
   [`SexEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
@@ -22,7 +20,7 @@
   : X12-820 Transaction Remittance Data
 - [`RAFResult()`](https://andrewallenbruce.github.io/hcc/reference/RAFResult.md)
   : Risk Adjustment Factor Results
-- [`RemittanceEntry()`](https://andrewallenbruce.github.io/hcc/reference/RemittanceEntry.md)
+- [`Remittance()`](https://andrewallenbruce.github.io/hcc/reference/Remittance.md)
   : Remittance Line Item
 - [`ServiceData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceData.md)
   : Healthcare Claim Service Level Data

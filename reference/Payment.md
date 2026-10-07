@@ -7,7 +7,7 @@ for prior periods).
 ## Usage
 
 ``` r
-Payment(order = integer(0), member = class_member(), remits = list())
+Payment(order = integer(0), member = Member(), remits = list())
 ```
 
 ## Arguments
@@ -18,7 +18,7 @@ Payment(order = integer(0), member = class_member(), remits = list())
 
 - member:
 
-  `<hcc::class_member>`
+  `<hcc::Member>`
 
   - `NM1-09` Member identifier
 
@@ -30,8 +30,7 @@ Payment(order = integer(0), member = class_member(), remits = list())
 
 - remits:
 
-  list of `<hcc::RemittanceEntry>` objects, line items (one per RMR/DTM
-  set)
+  list of `<hcc::Remittance>` objects, line items (one per RMR/DTM set)
 
 ## Value
 
