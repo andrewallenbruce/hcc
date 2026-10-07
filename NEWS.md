@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9073 (2026-10-07)
+
+* `hierarchies()`
+
+
 # hcc 0.0.0.9072 (2026-10-06)
 
 * `apply_hierarchies()`
