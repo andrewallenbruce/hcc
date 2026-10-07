@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9072 (2026-10-06)
+
+* `apply_hierarchies()`
+* `get_prefix()` -> `prefix()`
+
+
 # hcc 0.0.0.9071 (2026-10-04)
 
 * 834 indexer convert/print methods
