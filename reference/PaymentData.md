@@ -61,6 +61,7 @@ A `<hcc::PaymentData>` S7 object
 ## Examples
 
 ``` r
+if (FALSE) {
 x =  hcc:::parse_218(edi_index(hcc::x12_EX$`820`$`218`$sample_820_01))
 PaymentData(
   source = purrr::pluck(x, "header", "ISA", 6L),
@@ -139,66 +140,5 @@ PaymentData(
     )
   )
 )
-#> <hcc::PaymentData>
-#>  @ source      : chr "TEST-PAYER"
-#>  @ report_date : Date[1:1], format: "2026-01-18"
-#>  @ payment_date: Date[1:1], format: "2026-01-15"
-#>  @ total_amount: num 102139
-#>  @ check_number: chr "TESTTRN01000001"
-#>  @ payee       : <hcc::Party>
-#>  .. @ name   : chr "TEST PAYEE ORGANIZATION"
-#>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
-#>  @ payer       : <hcc::Party>
-#>  .. @ name   : chr "TEST PAYER AGENCY"
-#>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
-#>  @ payments    :List of 2
-#>  .. $ : <hcc::Payment>
-#>  ..  ..@ order : int 1
-#>  ..  ..@ member: <hcc::Member>
-#>  .. .. .. @ id    : chr "TESTMBR000000001"
-#>  .. .. .. @ last  : chr "LASTNAME01"
-#>  .. .. .. @ first : chr "FIRSTNAME01"
-#>  .. .. .. @ middle: chr(0) 
-#>  ..  ..@ remits:List of 1
-#>  .. .. .. $ : <hcc::Remittance>
-#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original   : num NA
-#>  .. .. ..  ..@ adjustment : num(0) 
-#>  .. .. ..  ..@ payment    : num 8087
-#>  .. .. ..  ..@ rate       : chr "1H;2"
-#>  .. .. ..  ..@ aid        : chr "1H"
-#>  .. .. ..  ..@ plan       : chr "2"
-#>  .. .. ..  ..@ reason     : chr(0) 
-#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
-#>  .. $ : <hcc::Payment>
-#>  ..  ..@ order : int 7
-#>  ..  ..@ member: <hcc::Member>
-#>  .. .. .. @ id    : chr "TESTMBR000000007"
-#>  .. .. .. @ last  : chr "LASTNAME07"
-#>  .. .. .. @ first : chr "FIRSTNAME07"
-#>  .. .. .. @ middle: chr(0) 
-#>  ..  ..@ remits:List of 2
-#>  .. .. .. $ : <hcc::Remittance>
-#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original   : num NA
-#>  .. .. ..  ..@ adjustment : num(0) 
-#>  .. .. ..  ..@ payment    : num 8087
-#>  .. .. ..  ..@ rate       : chr "957"
-#>  .. .. ..  ..@ aid        : chr "M1"
-#>  .. .. ..  ..@ plan       : chr "2"
-#>  .. .. ..  ..@ reason     : chr(0) 
-#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
-#>  .. .. .. $ : <hcc::Remittance>
-#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original   : num NA
-#>  .. .. ..  ..@ adjustment : num(0) 
-#>  .. .. ..  ..@ payment    : num 8087
-#>  .. .. ..  ..@ rate       : chr "957"
-#>  .. .. ..  ..@ aid        : chr "M1"
-#>  .. .. ..  ..@ plan       : chr "2"
-#>  .. .. ..  ..@ reason     : chr(0) 
-#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-11-01, 2025-12-01)
+}
 ```

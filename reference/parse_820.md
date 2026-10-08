@@ -73,24 +73,35 @@ str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #>   .. ..$ : chr [1:3] "REF" "14" "12345678"
 #>   .. ..$ : chr [1:5] "N1" "PE" "MANAGED CARE" "FI" ...
 #>   .. ..$ : chr [1:3] "N1" "PR" "CHILD HEALTH PLUS"
-#>   ..$ entity :List of 2
-#>   .. ..$ :List of 2
+#>   ..$ entity :List of 5
+#>   .. ..$ :List of 1
 #>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
-#>   .. .. ..$ :List of 4
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "LUMP SUM PAYMENT"
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>   .. .. ..$ :List of 5
+#>   .. ..$ :List of 5
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "AZ" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "1436500000001230"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "0123456789"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "LU" "01"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:7] "DTM" "582" NA NA ...
 #>   ..$ trailer:List of 3
 #>   .. ..$ SE : chr [1:2] "17" "222222222"
@@ -109,17 +120,24 @@ str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #>   .. ..$ : chr [1:3] "N1" "PR" "BASIC HEALTH PLAN"
 #>   .. ..$ : chr [1:3] "N3" "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
 #>   .. ..$ : chr [1:4] "N4" "ALBANY" "NY" "122370080"
-#>   ..$ entity :List of 1
+#>   ..$ entity :List of 2
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "1" "2J" "EI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:10] "NM1" "QE" "1" "LASTNAME" ...
-#>   .. .. ..$ :List of 6
+#>   .. ..$ :List of 6
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "AZ" "LL88888L" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "1500311111112540"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "0123456789"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "LU" "01"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "51"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:7] "DTM" "582" NA NA ...
 #>   ..$ trailer:List of 3
 #>   .. ..$ SE : chr [1:2] "14" "221500001"
@@ -136,30 +154,44 @@ str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #>   .. ..$ : chr [1:3] "REF" "14" "12345678"
 #>   .. ..$ : chr [1:5] "N1" "PE" "MANAGED CARE" "FI" ...
 #>   .. ..$ : chr [1:5] "N1" "PR" "NYSDOH" "FI" ...
-#>   ..$ entity :List of 3
-#>   .. ..$ :List of 2
+#>   ..$ entity :List of 8
+#>   .. ..$ :List of 1
 #>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
-#>   .. .. ..$ :List of 6
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "COURT ORDERED PAYMENT"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "STATE MANDATED PAYMENT REDUCT"
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>   .. .. ..$ :List of 2
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "RMR" "IK" "1000210000000020" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "ADX" "181.64" "IA"
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "3" "2J" "EI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>   .. .. ..$ :List of 2
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "RMR" "IK" "1000210000000020" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "ADX" "445.45" "IA"
 #>   ..$ trailer:List of 3
 #>   .. ..$ SE : chr [1:2] "22" "222222222"
@@ -178,21 +210,29 @@ str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #>   .. ..$ : chr [1:5] "N1" "PR" "NYSDOH" "FI" ...
 #>   .. ..$ : chr [1:3] "N3" "OFFICE OF HEALTH INSURANCE PROGRAMS" "CORNING TOWER, EMPIRE STATE PLAZA"
 #>   .. ..$ : chr [1:4] "N4" "ALBANY" "NY" "12204"
-#>   ..$ entity :List of 2
-#>   .. ..$ :List of 2
+#>   ..$ entity :List of 5
+#>   .. ..$ :List of 1
 #>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
-#>   .. .. ..$ :List of 4
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "01234567" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "1L" "01234567" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "REF" "ZZ" "STATE MANDATED PAYMENT REDUCT"
 #>   .. ..$ :List of 2
-#>   .. .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>   .. .. ..$ :List of 2
+#>   .. ..$ :List of 2
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "RMR" "IK" "1320600000000020" NA ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:3] "ADX" "-2851.11" "H1"
 #>   ..$ trailer:List of 3
 #>   .. ..$ SE : chr [1:2] "18" "173900001"
@@ -209,17 +249,25 @@ str(purrr::map(x, hcc:::parse_218), list.len = 10L)
 #>   .. ..$ : chr [1:3] "REF" "14" "12345"
 #>   .. ..$ : chr [1:5] "N1" "PE" "DEF HEALTH CARE INC." "FI" ...
 #>   .. ..$ : chr [1:5] "N1" "PR" "ABC PLASTICS" "FI" ...
-#>   ..$ entity :List of 1
-#>   .. ..$ :List of 2
+#>   ..$ entity :List of 3
+#>   .. ..$ :List of 1
 #>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "ENT" "1" "2L" "FI" ...
-#>   .. .. ..$ :List of 7
+#>   .. ..$ :List of 4
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "IK" "970501001" "PI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:2] "IT1" "1"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "SLN" "1" NA "O" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "SLN" "2" NA "O" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:5] "RMR" "IK" "970501002" "PI" ...
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:2] "IT1" "1"
+#>   .. .. ..$ :List of 1
 #>   .. .. .. ..$ : chr [1:6] "SLN" "1" NA "O" ...
 #>   ..$ trailer:List of 3
 #>   .. ..$ SE : chr [1:2] "15" "0001"

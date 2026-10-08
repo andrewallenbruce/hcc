@@ -106,7 +106,8 @@ a managed care plan.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span>  <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">parse_218</span><span class="op">(</span><span class="fu"><a href="edi_index.html">edi_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">$</span><span class="va">sample_820_01</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span>  <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">parse_218</span><span class="op">(</span><span class="fu"><a href="edi_index.html">edi_index</a></span><span class="op">(</span><span class="fu">hcc</span><span class="fu">::</span><span class="va"><a href="x12_EX.html">x12_EX</a></span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">$</span><span class="va">sample_820_01</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">PaymentData</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  source <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"header"</span>, <span class="st">"ISA"</span>, <span class="fl">6L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  report_date <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"header"</span>, <span class="st">"GS"</span>, <span class="fl">4L</span><span class="op">)</span>,</span></span>
@@ -184,68 +185,7 @@ a managed care plan.</p>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::PaymentData&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ source      : chr "TEST-PAYER"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ report_date : Date[1:1], format: "2026-01-18"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payment_date: Date[1:1], format: "2026-01-15"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ total_amount: num 102139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ check_number: chr "TESTTRN01000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payee       : &lt;hcc::Party&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name   : chr "TEST PAYEE ORGANIZATION"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payer       : &lt;hcc::Party&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name   : chr "TEST PAYER AGENCY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ payments    :List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::Payment&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ order : int 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member: &lt;hcc::Member&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ id    : chr "TESTMBR000000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ last  : chr "LASTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ first : chr "FIRSTNAME01"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ middle: chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remits:List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::Remittance&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original   : num NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment : num(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment    : num 8087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ rate       : chr "1H;2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ aid        : chr "1H"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ plan       : chr "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reason     : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage   : iv&lt;date&gt; [1:1] [2025-12-01, 2026-01-01)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : &lt;hcc::Payment&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ order : int 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ member: &lt;hcc::Member&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ id    : chr "TESTMBR000000007"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ last  : chr "LASTNAME07"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ first : chr "FIRSTNAME07"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. @ middle: chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..@ remits:List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::Remittance&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original   : num NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment : num(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment    : num 8087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ rate       : chr "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ aid        : chr "M1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ plan       : chr "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reason     : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage   : iv&lt;date&gt; [1:1] [2025-12-01, 2026-01-01)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. .. $ : &lt;hcc::Remittance&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ original   : num NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ adjustment : num(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ payment    : num 8087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ rate       : chr "957"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ aid        : chr "M1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ plan       : chr "2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ reason     : chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ coverage   : iv&lt;date&gt; [1:1] [2025-11-01, 2025-12-01)</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
