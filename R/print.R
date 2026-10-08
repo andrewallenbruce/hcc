@@ -70,55 +70,95 @@ S7::method(format, Index820) <- function(x) {
     S7::prop(x, "Header"),
     S7::prop(x, "Details"),
     S7::prop(x, "Trailer")
-  )
-  ele <- purrr::map(seg, \(i) {
-    S7::prop(x, "Text")[i] |>
-      purrr::map_chr(\(x) gsub("*", "", substr(x, 1, 3), fixed = TRUE)) |>
-      cheapr::unique_()
-  })
+  ) |>
+    purrr::map(\(y) {
+      S7::prop(x, "Text")[y] |>
+        purrr::map_chr(\(x) {
+          if (perl0(x, "^N1")) {
+            return(substr(x, 1L, 5L))
+          }
+          if (perl0(x, "^REF")) {
+            return(substr(x, 1L, 6L))
+          }
+          if (perl0(x, "^ISA|^BPR|^TRN")) {
+            return(substr(x, 1L, 3L))
+          }
+          substr(x, 1L, 2L)
+        })
+    })
 
   cli::cat_line(
     cheapr::paste_(
       fright(BoldCyan(c("Header", "Detail", "Trailer"))),
       bracket(cheapr::lengths_(seg)),
-      fleft(purrr::map_chr(ele, arrow)),
+      fleft(purrr::map_chr(seg, arrow)),
       sep = " "
     )
   )
 
+  ent <- S7::prop(x, "Entity") |>
+    purrr::map_depth(2L, \(y) {
+      S7::prop(x, "Text")[y] |>
+        purrr::map_chr(\(x) {
+          if (perl0(x, "^ENT")) {
+            return(substr(x, 1L, 5L))
+          }
+          if (perl0(x, "^REF|^NM1|^RMR")) {
+            return(substr(x, 1L, 6L))
+          }
+          if (perl0(x, "^DTM")) {
+            return(substr(x, 1L, 7L))
+          }
+          if (perl0(x, "^ISA|^BPR|^TRN")) {
+            return(substr(x, 1L, 3L))
+          }
+          substr(x, 1L, 2L)
+        })
+    }) |>
+    purrr::list_flatten()
+
   cli::cli_h2("Entity Loop")
-  elp <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
-  ent <- cheapr::table_(purrr::map_int(elp, 2L))
-  ent <- cheapr::paste_(
-    cli::style_bold(
-      bracket(length(ent))
-    ),
+  cli::cat_line(
     cheapr::paste_(
-      bracket(unname(ent)),
-      angle(names(ent)),
-      sep = " ",
-      collapse = " "
+      # fright(BoldCyan(c(cli::symbol$radio_on, " "))),
+      fright(bracket(BoldCyan(cheapr::lengths_(ent)))),
+      strtrim(fleft(purrr::map_chr(ent, arrow)), width = 43),
+      sep = " "
     )
   )
 
-  rmr <- cheapr::table_(purrr::map_int(elp, 2L))
-  rmr <- cheapr::paste_(
-    cli::style_bold(
-      bracket(length(rmr))
-    ),
-    cheapr::paste_(
-      bracket(unname(rmr)),
-      angle(names(rmr)),
-      sep = " ",
-      collapse = " "
-    )
-  )
-
-  cli::cat_line(cheapr::paste_(
-    fright(BoldCyan(c("Entity", "Remits"))),
-    fleft(c(ent, rmr)),
-    sep = " "
-  ))
+  # elp <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
+  # ent <- cheapr::table_(purrr::map_int(elp, 2L))
+  # ent <- cheapr::paste_(
+  #   cli::style_bold(
+  #     bracket(length(ent))
+  #   ),
+  #   cheapr::paste_(
+  #     bracket(unname(ent)),
+  #     angle(names(ent)),
+  #     sep = " ",
+  #     collapse = " "
+  #   )
+  # )
+  #
+  # rmr <- cheapr::table_(purrr::map_int(elp, 2L))
+  # rmr <- cheapr::paste_(
+  #   cli::style_bold(
+  #     bracket(length(rmr))
+  #   ),
+  #   cheapr::paste_(
+  #     bracket(unname(rmr)),
+  #     angle(names(rmr)),
+  #     sep = " ",
+  #     collapse = " "
+  #   )
+  # )
+  #
+  # cli::cat_line(cheapr::paste_(
+  #   fright(BoldCyan(c("Entity", "Remits"))),
+  #   fleft(c(ent, rmr)),
+  #   sep = " "
+  # ))
   cli::cat_rule()
 }
 
