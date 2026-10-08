@@ -1,9 +1,9 @@
 itred <- cli::combine_ansi_styles("italic", "red")
 bcyan <- cli::combine_ansi_styles("bold", "cyan")
 orange <- cli::combine_ansi_styles("bold", "orange")
-grey <- cli::make_ansi_style("grey85")
-brick <- cli::make_ansi_style("bold", "orange2")
-dot <- grey(cli::symbol$bullet)
+dblue <- cli::make_ansi_style("dodgerblue")
+brick <- orange
+dot <- dblue(cli::symbol$bullet)
 
 #' @noRd
 bracket <- function(x) cheapr::paste_("[", x, "]")
@@ -59,15 +59,17 @@ S7::method(format, Index820) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
   nm_ <- bcyan((c("Type", "Segments")))
-  ns_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
-  pr_ <- S7::prop(x, "Problems")
+  ns_ <- c(S7::prop(x, "Type"), bracket(bcyan(length(S7::prop(x, "Text")))))
 
-  if (!cheapr::is_na(pr_)) {
+  if (!cheapr::is_na(S7::prop(x, "Problems"))) {
     nm_ <- c(nm_, itred("Problems"))
-    ns_ <- c(ns_, itred(length(pr_)))
+    ns_ <- c(ns_, itred(length(S7::prop(x, "Problems"))))
   }
 
-  cli::cat_line(colon(fright(nm_), fleft(ns_)))
+  cli::cat_line(cheapr::paste_(
+    fright(strrep(" ", 1L)),
+    colon(fright(nm_), fleft(ns_))
+  ))
   cli::cat_rule()
 
   seg <- list(
@@ -94,6 +96,7 @@ S7::method(format, Index820) <- function(x) {
 
   cli::cat_line(
     cheapr::paste_(
+      fright(strrep(" ", 1L)),
       fright(bcyan(c("Header", "Detail", "Trailer"))),
       fright(bracket(bcyan(cheapr::lengths_(seg)))),
       fleft(purrr::map_chr(seg, arrow)),
@@ -110,7 +113,7 @@ S7::method(format, Index820) <- function(x) {
           if (perl0(x, "^ENT")) {
             return(
               cheapr::paste_(
-                brick("ENT"),
+                cli::col_yellow("ENT"),
                 itred(charr::str_pad(
                   charr::str_remove(substr(x, 5L, 6L), "\\*"),
                   width = 2L,
@@ -121,12 +124,12 @@ S7::method(format, Index820) <- function(x) {
             )
           }
           if (perl0(x, "^RMR|^REF|^NM1")) {
-            return(grey(substr(x, 1L, 6L)))
+            return(substr(x, 1L, 6L))
           }
           if (perl0(x, "^DTM|^ADX|^IT|^SLN")) {
-            return(grey(substr(x, 1L, 3L)))
+            return(substr(x, 1L, 3L))
           }
-          grey(substr(x, 1L, 2L))
+          substr(x, 1L, 2L)
         }
       ) |>
         charr::str_replace("\\*", dot)

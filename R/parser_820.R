@@ -29,7 +29,10 @@
 #' str(edi_parse(x), list.len = 10L)
 #' @export
 edi_parse <- function(x) {
-  purrr::map(x, parse_218)
+  if (length(x) > 1L) {
+    return(purrr::map(x, parse_820))
+  }
+  parse_820(x)
 }
 
 #' @noRd
@@ -53,7 +56,7 @@ subsplit <- function(x, i, name = FALSE) {
 }
 
 #' @noRd
-parse_218 <- function(x) {
+parse_820 <- function(x) {
   list(
     header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
     details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),

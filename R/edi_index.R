@@ -9,7 +9,7 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
-#' edi_index(x12_EX$`834`)
+#' # edi_index(x12_EX$`834`)
 #' edi_index(purrr::list_flatten(x12_EX$`820`))
 #' @export
 #' @name edi_index
@@ -32,23 +32,11 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  i <- switch(
-    S7::prop(x, "Type"),
-    "820-X218" = ,
-    "820-X306" = index_306(S7::prop(x, "Text"))
-  )
-
+  i <- index_820(S7::prop(x, "Text"))
   S7::convert(
     x,
     Index820,
-    Problems = problems(
-      x,
-      switch(
-        S7::prop(x, "Type"),
-        "820-X218" = ,
-        "820-X306" = i
-      )
-    ),
+    Problems = problems(x, i),
     Header = i[["header"]],
     Details = i[["details"]],
     Entity = i[["entity"]],
@@ -81,6 +69,26 @@ S7::method(edi_index, Text837) <- function(x) {
 }
 
 #' @noRd
+index_820 <- function(x) {
+  ST <- perl(x, "^ST")
+  ENT <- perl(x, "^ENT")
+  SE <- perl(x, "^SE")
+
+  i <- cheapr::seq_(ENT[1L], SE - 1L)
+  b <- sort.int(c(ENT, perl(x, "^RMR"), SE - 1L))
+  f <- findInterval(i, b, all.inside = TRUE)
+  v <- vctrs::vec_split(i, f)$val
+  n <- purrr::map_depth(v, 1L, \(y) substring(x[y], 1L, 7L))
+
+  rlang::list2(
+    header = cheapr::seq_(perl(x, "ISA\\*"), ST),
+    details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
+    entity = purrr::map2(v, n, \(s, e) rlang::set_names(s, e)),
+    trailer = cheapr::seq_(SE, perl(x, "^IEA"))
+  )
+}
+
+#' @noRd
 new_index <- function(x, index) {
   IndexEDI(
     Type = S7::prop(x, "Type"),
@@ -100,52 +108,6 @@ problems <- function(x, i) {
 }
 
 #' @noRd
-index_306 <- function(x) {
-  ISA <- perl(x, "ISA\\*")
-  ST <- perl(x, "^ST")
-  ENT <- perl(x, "^ENT")
-  RMR <- perl(x, "^RMR")
-  SE <- perl(x, "^SE")
-
-  i <- cheapr::seq_(ENT[1L], SE - 1L)
-  ii <- findInterval(i, sort.int(c(ENT, RMR, SE - 1L)), all.inside = TRUE)
-  iii <- vctrs::vec_split(i, ii)$val
-  inn <- purrr::map_depth(iii, 1L, function(y) {
-    x = substring(x[y], 1L, 7L)
-    # x = gsub("*", "-", x, fixed = TRUE)
-    # x = gsub("-$|-[0-9A-Z]$", "", x, perl = TRUE)
-  })
-
-  rlang::list2(
-    header = cheapr::seq_(ISA, ST),
-    details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = purrr::map2(iii, inn, \(x, n) rlang::set_names(x, n)),
-    trailer = fill_(SE, perl(x, "^IEA"))
-  )
-}
-
-#' @noRd
-index_820 <- function(x) {
-  ST <- perl(x, "^ST")
-  SE <- perl(x, "^SE")
-  ENT <- perl(x, "^ENT")
-  NM1 <- perl(x, "^NM1") %0% 0L
-
-  if (length(ENT) != length(NM1)) {
-    emp <- cheapr::new_integer(length(ENT), seq_along(ENT))
-    emp[grep("^NM1", x[ENT + 1L])] <- NM1
-    NM1 <- unname(emp)
-  }
-
-  rlang::list2(
-    header = fill_(perl(x, "ISA\\*"), ST),
-    details = fill_(ST + 1L, ENT[1L] - 1L),
-    entity = map_entity_index(ENT, SE, NM1),
-    trailer = fill_(SE, perl(x, "^IEA"))
-  )
-}
-
-#' @noRd
 index_834 <- function(x) {
   ST <- perl(x, "^ST")
   SE <- perl(x, "^SE")
@@ -154,42 +116,7 @@ index_834 <- function(x) {
   rlang::list2(
     header = fill_(perl(x, "ISA\\*"), ST),
     details = fill_(ST + 1L, INS[1L] - 1L),
-    member = create_entity_index(INS, SE),
+    # member = create_entity_index(INS, SE),
     trailer = fill_(SE, perl(x, "^IEA"))
-  )
-}
-
-#' @noRd
-create_entity_index <- function(ENT, SE) {
-  index <- sort.int(
-    c(
-      ENT[1L],
-      ENT[-1] - 1L,
-      ENT[-1],
-      SE - 1L
-    )
-  )
-
-  half <- vctrs::vec_size(index) / 2L
-  runs <- vctrs::vec_rep_each(seq(half), rep(2L, half))
-
-  purrr::map(
-    vctrs::vec_split(index, runs)$val,
-    \(x) fill_(start = x[1], end = x[2])
-  )
-}
-
-#' @noRd
-map_entity_index <- function(ENT, SE, NM1) {
-  purrr::map2(
-    create_entity_index(ENT, SE),
-    as.list(NM1),
-    function(x, nm) {
-      if (!nm) {
-        return(list(x[1], c(x[2:length(x)])))
-      }
-      # ni = nm + 1L
-      list(x[1:2], c(x[3:length(x)]))
-    }
   )
 }
