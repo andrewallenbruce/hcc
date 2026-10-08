@@ -1,7 +1,8 @@
-BoldRed <- cli::combine_ansi_styles("bold", "red")
-BoldCyan <- cli::combine_ansi_styles("bold", "cyan")
-BoldOrange <- cli::combine_ansi_styles("bold", "orange")
-BoldGreen <- cli::combine_ansi_styles("palegreen4")
+itred <- cli::combine_ansi_styles("italic", "red")
+bcyan <- cli::combine_ansi_styles("bold", "cyan")
+orange <- cli::combine_ansi_styles("bold", "orange")
+green <- cli::make_ansi_style("grey55")
+seashell <- cli::make_ansi_style("seashell4")
 
 #' @noRd
 bracket <- function(x) cheapr::paste_("[", x, "]")
@@ -10,13 +11,13 @@ angle <- function(x) cheapr::paste_("<", x, ">")
 #' @noRd
 colon <- function(x, y) cheapr::paste_(x, ": ", y)
 #' @noRd
-arrow <- function(x) cheapr::paste_(x, collapse = BoldOrange(" > "))
+arrow <- function(x) cheapr::paste_(x, collapse = orange(" > "))
 
 
 S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  names_ <- BoldCyan((c("Type", "Segments")))
+  names_ <- bcyan((c("Type", "Segments")))
   numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
 
   cli::cat_line(colon(fright(names_), fleft(numbs_)))
@@ -26,12 +27,12 @@ S7::method(format, TextEDI) <- function(x) {
 S7::method(format, IndexEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  names_ <- BoldCyan((c("Type", "Segments")))
+  names_ <- bcyan((c("Type", "Segments")))
   numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
 
   if (!cheapr::is_na(S7::prop(x, "Problems"))) {
-    names_ <- c(names_, BoldRed("Problems"))
-    numbs_ <- c(numbs_, BoldRed(length(S7::prop(x, "Problems"))))
+    names_ <- c(names_, itred("Problems"))
+    numbs_ <- c(numbs_, itred(length(S7::prop(x, "Problems"))))
   }
 
   cli::cat_line(colon(fright(names_), fleft(numbs_)))
@@ -56,13 +57,13 @@ S7::method(format, IndexEDI) <- function(x) {
 S7::method(format, Index820) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  nm_ <- BoldCyan((c("Type", "Segments")))
+  nm_ <- bcyan((c("Type", "Segments")))
   ns_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
   pr_ <- S7::prop(x, "Problems")
 
   if (!cheapr::is_na(pr_)) {
-    nm_ <- c(nm_, BoldRed("Problems"))
-    ns_ <- c(ns_, BoldRed(length(pr_)))
+    nm_ <- c(nm_, itred("Problems"))
+    ns_ <- c(ns_, itred(length(pr_)))
   }
 
   cli::cat_line(colon(fright(nm_), fleft(ns_)))
@@ -87,13 +88,13 @@ S7::method(format, Index820) <- function(x) {
           }
           substr(x, 1L, 2L)
         }) |>
-        charr::str_replace("\\*", BoldGreen(cli::symbol$bullet))
+        charr::str_replace("\\*", green(cli::symbol$bullet))
     })
 
   cli::cat_line(
     cheapr::paste_(
-      fright(BoldCyan(c("Header", "Detail", "Trailer"))),
-      fright(bracket(BoldCyan(cheapr::lengths_(seg)))),
+      fright(bcyan(c("Header", "Detail", "Trailer"))),
+      fright(bracket(bcyan(cheapr::lengths_(seg)))),
       fleft(purrr::map_chr(seg, arrow)),
       sep = " "
     )
@@ -105,23 +106,27 @@ S7::method(format, Index820) <- function(x) {
       S7::prop(x, "Text")[y] |>
         purrr::map_chr(\(x) {
           if (perl0(x, "^ENT")) {
-            return(BoldCyan(substr(x, 1L, 3L)))
+            return(
+              cheapr::paste_(
+                "ENT",
+                itred(charr::str_pad(
+                  charr::str_remove(substr(x, 5L, 6L), "\\*"),
+                  width = 2L,
+                  pad = "0"
+                )),
+                sep = " "
+              )
+            )
           }
-          if (perl0(x, "^RMR")) {
-            return(substr(x, 1L, 3L))
+          if (perl0(x, "^RMR|^REF|^NM1")) {
+            return(seashell(substr(x, 1L, 6L)))
           }
-          if (perl0(x, "^REF|^NM1")) {
-            return(substr(x, 1L, 6L))
+          if (perl0(x, "^DTM|^ADX|^IT|^SLN")) {
+            return(seashell(substr(x, 1L, 3L)))
           }
-          if (perl0(x, "^DTM")) {
-            return(substr(x, 1L, 7L))
-          }
-          if (perl0(x, "^ISA|^BPR|^TRN|^IT|^SLN")) {
-            return(substr(x, 1L, 3L))
-          }
-          substr(x, 1L, 2L)
+          seashell(substr(x, 1L, 2L))
         }) |>
-        charr::str_replace("\\*", BoldGreen(cli::symbol$bullet))
+        charr::str_replace("\\*", green(cli::symbol$bullet))
     }
   ) |>
     purrr::list_flatten()
@@ -130,15 +135,15 @@ S7::method(format, Index820) <- function(x) {
 
   cli::cli_rule(
     cheapr::paste_(
-      BoldCyan("Entity Loop"),
-      bracket(BoldCyan(cheapr::unlisted_length(ent))),
+      bcyan("Entity"),
+      bracket(bcyan(cheapr::unlisted_length(ent))),
       sep = " "
     )
   )
   cli::cat_line(
     cheapr::paste_(
       fright(strrep(" ", 2L)),
-      fleft(cli::ansi_strtrim(purrr::map_chr(ent, arrow), width = 50)),
+      fleft(cli::ansi_strtrim(purrr::map_chr(ent, arrow), width = 60)),
       sep = " "
     )
   )
@@ -148,19 +153,19 @@ S7::method(format, Index820) <- function(x) {
 S7::method(format, Index834) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  nm_ <- BoldCyan((c("Type", "Segments")))
+  nm_ <- bcyan((c("Type", "Segments")))
   ns_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
   pr_ <- S7::prop(x, "Problems")
 
   if (!cheapr::is_na(pr_)) {
-    nm_ <- c(nm_, BoldRed("Problems"))
-    ns_ <- c(ns_, BoldRed(length(pr_)))
+    nm_ <- c(nm_, itred("Problems"))
+    ns_ <- c(ns_, itred(length(pr_)))
   }
 
   cli::cat_line(cheapr::paste_(fright(nm_)), ": ", fleft(ns_))
   cli::cat_rule()
 
-  seg_nm <- BoldCyan(c("Header", "Detail", "Member", "Trailer"))
+  seg_nm <- bcyan(c("Header", "Detail", "Member", "Trailer"))
   seg_pr <- list(
     S7::prop(x, "Header"),
     S7::prop(x, "Details"),
