@@ -24,6 +24,7 @@ Suggests:
     doclisting,
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
+    charr (>= 0.1.0),
     stringfish (>= 0.19.2),
     testthat (>= 3.3.2)
 Remotes:

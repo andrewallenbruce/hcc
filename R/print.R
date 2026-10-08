@@ -1,5 +1,7 @@
 BoldRed <- cli::combine_ansi_styles("bold", "red")
 BoldCyan <- cli::combine_ansi_styles("bold", "cyan")
+BoldOrange <- cli::combine_ansi_styles("bold", "orange")
+BoldGreen <- cli::combine_ansi_styles("palegreen4")
 
 #' @noRd
 bracket <- function(x) cheapr::paste_("[", x, "]")
@@ -8,7 +10,7 @@ angle <- function(x) cheapr::paste_("<", x, ">")
 #' @noRd
 colon <- function(x, y) cheapr::paste_(x, ": ", y)
 #' @noRd
-arrow <- function(x, y) cheapr::paste_(x, collapse = " > ")
+arrow <- function(x) cheapr::paste_(x, collapse = BoldOrange(" > "))
 
 
 S7::method(format, TextEDI) <- function(x) {
@@ -84,13 +86,14 @@ S7::method(format, Index820) <- function(x) {
             return(substr(x, 1L, 3L))
           }
           substr(x, 1L, 2L)
-        })
+        }) |>
+        charr::str_replace("\\*", BoldGreen(cli::symbol$bullet))
     })
 
   cli::cat_line(
     cheapr::paste_(
       fright(BoldCyan(c("Header", "Detail", "Trailer"))),
-      bracket(cheapr::lengths_(seg)),
+      fright(bracket(BoldCyan(cheapr::lengths_(seg)))),
       fleft(purrr::map_chr(seg, arrow)),
       sep = " "
     )
@@ -98,12 +101,15 @@ S7::method(format, Index820) <- function(x) {
 
   ent <- S7::prop(x, "Entity") |>
     purrr::map_depth(2L, \(y) {
-      S7::prop(x, "Text")[y] |>
+      txt = S7::prop(x, "Text")[y] |>
         purrr::map_chr(\(x) {
           if (perl0(x, "^ENT")) {
-            return(substr(x, 1L, 5L))
+            return(BoldCyan(substr(x, 1L, 3L)))
           }
-          if (perl0(x, "^REF|^NM1|^RMR")) {
+          if (perl0(x, "^RMR")) {
+            return(substr(x, 1L, 3L))
+          }
+          if (perl0(x, "^REF|^NM1")) {
             return(substr(x, 1L, 6L))
           }
           if (perl0(x, "^DTM")) {
@@ -113,16 +119,24 @@ S7::method(format, Index820) <- function(x) {
             return(substr(x, 1L, 3L))
           }
           substr(x, 1L, 2L)
-        })
+        }) |>
+        charr::str_replace("\\*", BoldGreen(cli::symbol$bullet))
     }) |>
     purrr::list_flatten()
 
-  cli::cli_h2("Entity Loop")
+  cli::cli_text()
+
+  cli::cli_rule(
+    cheapr::paste_(
+      BoldCyan("Entity Loop"),
+      bracket(BoldCyan(cheapr::unlisted_length(ent))),
+      sep = " "
+    )
+  )
   cli::cat_line(
     cheapr::paste_(
-      # fright(BoldCyan(c(cli::symbol$radio_on, " "))),
-      fright(bracket(BoldCyan(cheapr::lengths_(ent)))),
-      strtrim(fleft(purrr::map_chr(ent, arrow)), width = 43),
+      fright(strrep(" ", 2L)),
+      fleft(cli::ansi_strtrim(purrr::map_chr(ent, arrow), width = 50)),
       sep = " "
     )
   )
