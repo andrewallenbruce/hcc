@@ -32,13 +32,11 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  i <- ii <- switch(
+  i <- switch(
     S7::prop(x, "Type"),
     "820-X218" = ,
     "820-X306" = index_306(S7::prop(x, "Text"))
   )
-
-  ii$entity <- ii$entity$index
 
   S7::convert(
     x,
@@ -48,7 +46,7 @@ S7::method(edi_index, Text820) <- function(x) {
       switch(
         S7::prop(x, "Type"),
         "820-X218" = ,
-        "820-X306" = ii
+        "820-X306" = i
       )
     ),
     Header = i[["header"]],
@@ -114,14 +112,14 @@ index_306 <- function(x) {
   iii <- vctrs::vec_split(i, ii)$val
   inn <- purrr::map_depth(iii, 1L, function(y) {
     x = substring(x[y], 1L, 7L)
-    x = gsub("*", "-", x, fixed = TRUE)
-    x = gsub("-$|-[0-9A-Z]$", "", x, perl = TRUE)
+    # x = gsub("*", "-", x, fixed = TRUE)
+    # x = gsub("-$|-[0-9A-Z]$", "", x, perl = TRUE)
   })
 
   rlang::list2(
     header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = list(index = iii, names = inn),
+    entity = purrr::map2(iii, inn, \(x, n) rlang::set_names(x, n)),
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }

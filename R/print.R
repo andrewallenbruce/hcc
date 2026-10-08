@@ -1,8 +1,9 @@
 itred <- cli::combine_ansi_styles("italic", "red")
 bcyan <- cli::combine_ansi_styles("bold", "cyan")
 orange <- cli::combine_ansi_styles("bold", "orange")
-green <- cli::make_ansi_style("grey55")
-seashell <- cli::make_ansi_style("seashell4")
+grey <- cli::make_ansi_style("grey85")
+brick <- cli::make_ansi_style("bold", "orange2")
+dot <- grey(cli::symbol$bullet)
 
 #' @noRd
 bracket <- function(x) cheapr::paste_("[", x, "]")
@@ -88,7 +89,7 @@ S7::method(format, Index820) <- function(x) {
           }
           substr(x, 1L, 2L)
         }) |>
-        charr::str_replace("\\*", green(cli::symbol$bullet))
+        charr::str_replace("\\*", dot)
     })
 
   cli::cat_line(
@@ -101,14 +102,15 @@ S7::method(format, Index820) <- function(x) {
   )
 
   ent <- purrr::map(
-    S7::prop(x, "Entity")$index,
+    S7::prop(x, "Entity"),
     \(y) {
-      S7::prop(x, "Text")[y] |>
-        purrr::map_chr(\(x) {
+      purrr::map_chr(
+        names(y),
+        \(x) {
           if (perl0(x, "^ENT")) {
             return(
               cheapr::paste_(
-                "ENT",
+                brick("ENT"),
                 itred(charr::str_pad(
                   charr::str_remove(substr(x, 5L, 6L), "\\*"),
                   width = 2L,
@@ -119,14 +121,15 @@ S7::method(format, Index820) <- function(x) {
             )
           }
           if (perl0(x, "^RMR|^REF|^NM1")) {
-            return(seashell(substr(x, 1L, 6L)))
+            return(grey(substr(x, 1L, 6L)))
           }
           if (perl0(x, "^DTM|^ADX|^IT|^SLN")) {
-            return(seashell(substr(x, 1L, 3L)))
+            return(grey(substr(x, 1L, 3L)))
           }
-          seashell(substr(x, 1L, 2L))
-        }) |>
-        charr::str_replace("\\*", green(cli::symbol$bullet))
+          grey(substr(x, 1L, 2L))
+        }
+      ) |>
+        charr::str_replace("\\*", dot)
     }
   ) |>
     purrr::list_flatten()

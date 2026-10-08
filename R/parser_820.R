@@ -25,18 +25,11 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
-#' x = edi_index(hcc::x12_EX$`820`$`218`[1:5])
-#' str(purrr::map(x, hcc:::parse_218), list.len = 10L)
+#' x = edi_index(c(x12_EX$`820`$`218`[1:2], x12_EX$`820`$`306`[1:2]))
+#' str(edi_parse(x), list.len = 10L)
 #' @export
-parse_820 <- function(x) {
-  if (!S7::S7_inherits(x, IndexEDI) | !S7::S7_inherits(x, Index820)) {
-    return(NA_character_)
-  }
-  switch(
-    x@type,
-    "820-X306" = parse_820_306(x),
-    "820-X218" = parse_218(x)
-  )
+edi_parse <- function(x) {
+  purrr::map(x, parse_218)
 }
 
 #' @noRd
@@ -64,48 +57,13 @@ parse_218 <- function(x) {
   list(
     header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
     details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
-    entity = purrr::map(S7::prop(x, "Entity")$index, \(index) {
-      purrr::map(index, \(i) subsplit(S7::prop(x, "Text"), i))
-    }),
+    entity = purrr::map_depth(
+      S7::prop(x, "Entity"),
+      1L,
+      \(index) {
+        subsplit(S7::prop(x, "Text"), index)
+      }
+    ),
     trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"), TRUE)
-  )
-}
-
-#' @noRd
-parse_218_entity <- function(Text, Entity) {
-  init <- purrr::map(Entity, \(index) {
-    purrr::map(index, \(i) subsplit(Text, i))
-  })
-
-  names(init) <- as.character(seq_along(init))
-  # names(Entity) <- as.character(seq_along(Entity))
-
-  rmr <- purrr::map(init, purrr::pluck, 2L)
-  rmr <- purrr::map(rmr, \(i) {
-    idx = perl(Text[i], "^RMR")
-    idx = idx[length(idx) != 1L]
-    vctrs::vec_chop(i, indices = as.list(idx))
-  })
-
-  purrr::map2(init, rmr, \(E, R) {
-    if (length(R) != 0L) {
-      purrr::pluck(E, 2) <- R
-      return(E)
-    } else {
-      return(E)
-    }
-  })
-}
-
-#' @noRd
-parse_820_306 <- function(x) {
-  header <- list(
-    ISA = split_1(x, "ISA"),
-    GS = split_7(x, "GS"),
-    ST = split_7(x, "ST"),
-    BPR = split_7(x, "BPR"),
-    N1PE = split_7(x, "N1PE"),
-    N1RM = split_7(x, "N1RM"),
-    PERIC = split_7(x, "PERIC")
   )
 }
