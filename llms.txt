@@ -50,6 +50,8 @@ pak::pak("andrewallenbruce/hcc")
   : Model-Based Disease Categories
 - [`edi_index()`](https://andrewallenbruce.github.io/hcc/reference/edi_index.md)
   : Create an EDI Index Object
+- [`edi_parse()`](https://andrewallenbruce.github.io/hcc/reference/edi_parse.md)
+  : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
 - [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
@@ -58,8 +60,6 @@ pak::pak("andrewallenbruce/hcc")
   : Map ICD-10 Codes to CC
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
-- [`parse_820()`](https://andrewallenbruce.github.io/hcc/reference/parse_820.md)
-  : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
 - [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
   : X12-834 (X220A1) Benefit Enrollment Parser
 - [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)

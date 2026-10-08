@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9074 (2026-10-08)
+
+- [`edi_parse()`](https://andrewallenbruce.github.io/hcc/reference/edi_parse.md),
+  print method
+
 ## hcc 0.0.0.9073 (2026-10-07)
 
 - [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
