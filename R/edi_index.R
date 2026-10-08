@@ -32,19 +32,25 @@ S7::method(edi_index, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_index, Text820) <- function(x) {
-  # i <- switch(
-  #   S7::prop(x, "Type"),
-  #   "820-X218" = index_820(S7::prop(x, "Text")),
-  #   "820-X306" = index_306(S7::prop(x, "Text"))
-  # )
+  i <- ii <- switch(
+    S7::prop(x, "Type"),
+    "820-X218" = ,
+    "820-X306" = index_306(S7::prop(x, "Text"))
+  )
 
-  # i = index_306(S7::prop(x, "Text"))
-  i = index_820(S7::prop(x, "Text"))
+  ii$entity <- ii$entity$index
 
   S7::convert(
     x,
     Index820,
-    Problems = problems(S7::prop(x, "Text"), i),
+    Problems = problems(
+      x,
+      switch(
+        S7::prop(x, "Type"),
+        "820-X218" = ,
+        "820-X306" = ii
+      )
+    ),
     Header = i[["header"]],
     Details = i[["details"]],
     Entity = i[["entity"]],
@@ -57,11 +63,11 @@ S7::method(edi_index, Text834) <- function(x) {
   S7::convert(
     x,
     Index834,
-    Problems = problems(S7::prop(x, "Text"), i),
-    Header = i$header,
-    Details = i$details,
-    Member = i$member,
-    Trailer = i$trailer
+    Problems = problems(x, i),
+    Header = i[["header"]],
+    Details = i[["details"]],
+    Member = i[["member"]],
+    Trailer = i[["trailer"]]
   )
 }
 
@@ -81,32 +87,18 @@ new_index <- function(x, index) {
   IndexEDI(
     Type = S7::prop(x, "Type"),
     Text = S7::prop(x, "Text"),
-    Problems = problems(S7::prop(x, "Text"), index),
+    Problems = problems(x, index),
     Index = index
   )
 }
 
 #' @noRd
 problems <- function(x, i) {
-  if (length(x) != cheapr::unlisted_length(i)) {
-    cheapr::setdiff_(seq_along(x), unlist_(i))
+  if (length(S7::prop(x, "Text")) != cheapr::unlisted_length(i)) {
+    cheapr::setdiff_(seq_along(S7::prop(x, "Text")), unlist_(i))
   } else {
     NA_integer_
   }
-}
-
-#' @noRd
-index_834 <- function(x) {
-  ST <- perl(x, "^ST")
-  SE <- perl(x, "^SE")
-  INS <- perl(x, "^INS")
-
-  rlang::list2(
-    header = fill_(perl(x, "ISA\\*"), ST),
-    details = fill_(ST + 1L, INS[1L] - 1L),
-    member = create_entity_index(INS, SE),
-    trailer = fill_(SE, perl(x, "^IEA"))
-  )
 }
 
 #' @noRd
@@ -151,6 +143,20 @@ index_820 <- function(x) {
     header = fill_(perl(x, "ISA\\*"), ST),
     details = fill_(ST + 1L, ENT[1L] - 1L),
     entity = map_entity_index(ENT, SE, NM1),
+    trailer = fill_(SE, perl(x, "^IEA"))
+  )
+}
+
+#' @noRd
+index_834 <- function(x) {
+  ST <- perl(x, "^ST")
+  SE <- perl(x, "^SE")
+  INS <- perl(x, "^INS")
+
+  rlang::list2(
+    header = fill_(perl(x, "ISA\\*"), ST),
+    details = fill_(ST + 1L, INS[1L] - 1L),
+    member = create_entity_index(INS, SE),
     trailer = fill_(SE, perl(x, "^IEA"))
   )
 }

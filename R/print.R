@@ -99,9 +99,10 @@ S7::method(format, Index820) <- function(x) {
     )
   )
 
-  ent <- S7::prop(x, "Entity") |>
-    purrr::map_depth(2L, \(y) {
-      txt = S7::prop(x, "Text")[y] |>
+  ent <- purrr::map(
+    S7::prop(x, "Entity")$index,
+    \(y) {
+      S7::prop(x, "Text")[y] |>
         purrr::map_chr(\(x) {
           if (perl0(x, "^ENT")) {
             return(BoldCyan(substr(x, 1L, 3L)))
@@ -115,13 +116,14 @@ S7::method(format, Index820) <- function(x) {
           if (perl0(x, "^DTM")) {
             return(substr(x, 1L, 7L))
           }
-          if (perl0(x, "^ISA|^BPR|^TRN")) {
+          if (perl0(x, "^ISA|^BPR|^TRN|^IT|^SLN")) {
             return(substr(x, 1L, 3L))
           }
           substr(x, 1L, 2L)
         }) |>
         charr::str_replace("\\*", BoldGreen(cli::symbol$bullet))
-    }) |>
+    }
+  ) |>
     purrr::list_flatten()
 
   cli::cli_text()
@@ -140,39 +142,6 @@ S7::method(format, Index820) <- function(x) {
       sep = " "
     )
   )
-
-  # elp <- purrr::map(S7::prop(x, "Entity"), collapse::vlengths)
-  # ent <- cheapr::table_(purrr::map_int(elp, 2L))
-  # ent <- cheapr::paste_(
-  #   cli::style_bold(
-  #     bracket(length(ent))
-  #   ),
-  #   cheapr::paste_(
-  #     bracket(unname(ent)),
-  #     angle(names(ent)),
-  #     sep = " ",
-  #     collapse = " "
-  #   )
-  # )
-  #
-  # rmr <- cheapr::table_(purrr::map_int(elp, 2L))
-  # rmr <- cheapr::paste_(
-  #   cli::style_bold(
-  #     bracket(length(rmr))
-  #   ),
-  #   cheapr::paste_(
-  #     bracket(unname(rmr)),
-  #     angle(names(rmr)),
-  #     sep = " ",
-  #     collapse = " "
-  #   )
-  # )
-  #
-  # cli::cat_line(cheapr::paste_(
-  #   fright(BoldCyan(c("Entity", "Remits"))),
-  #   fleft(c(ent, rmr)),
-  #   sep = " "
-  # ))
   cli::cat_rule()
 }
 

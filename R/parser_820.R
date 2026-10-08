@@ -32,7 +32,6 @@ parse_820 <- function(x) {
   if (!S7::S7_inherits(x, IndexEDI) | !S7::S7_inherits(x, Index820)) {
     return(NA_character_)
   }
-
   switch(
     x@type,
     "820-X306" = parse_820_306(x),
@@ -65,8 +64,7 @@ parse_218 <- function(x) {
   list(
     header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
     details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
-    # entity = parse_218_entity(S7::prop(x, "Text"), S7::prop(x, "Entity")),
-    entity = purrr::map(S7::prop(x, "Entity"), \(index) {
+    entity = purrr::map(S7::prop(x, "Entity")$index, \(index) {
       purrr::map(index, \(i) subsplit(S7::prop(x, "Text"), i))
     }),
     trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"), TRUE)
