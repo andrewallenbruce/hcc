@@ -231,812 +231,811 @@ edi_index(purrr::list_flatten(x12_EX$`820`))
 #>     Type: 820-X218
 #> Segments: 23      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                     
-#>  Detail [5] BPR > TRN > REF*14 > N1*PE > N1*PR
-#> Trailer [3] SE > GE > IE                      
+#>  Header [3] ISA > GS > ST                                                                                                                                   
+#>  Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
+#> Trailer [3] SE > GE > IE                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#> [1] ENT*1                                      
-#> [4] RMR*1L > REF*ZZ > RMR*1L > REF*ZZ          
-#> [2] ENT*2 > NM1*QE                             
-#> [5] RMR*AZ > REF*ZZ > REF*ZZ > REF*LU > DTM*582
+#> ── Entity Loop [12] ────────────────────────────────────────────────────────────
+#>    ENT                                                                                                                                                                                                  
+#>    RMR > REF•ZZ > RMR > REF•ZZ                                                                            
+#>    ENT > NM1•QE                                                                                                                                                         
+#>    RMR > REF•ZZ > REF•ZZ > REF•LU > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Essentail_Health_Plan`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 21      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                               
-#>  Detail [7] BPR > TRN > REF*14 > N1*PE > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                           
+#>  Detail [7] BPR > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                            
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*QE                             
-#> [6] RMR*AZ > REF*ZZ > REF*ZZ > REF*LU > REF*ZZ 
+#> ── Entity Loop [8] ─────────────────────────────────────────────────────────────
+#>    ENT > NM1•QE                                                                                                                                                                                                                 
+#>    RMR > REF•ZZ > REF•ZZ > REF•LU > REF•ZZ > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Premium_Payment_EFT`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 26      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                     
-#>  Detail [5] BPR > TRN > REF*14 > N1*PE > N1*PR
-#> Trailer [3] SE > GE > IE                      
+#>  Header [3] ISA > GS > ST                                                                                                                                   
+#>  Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
+#> Trailer [3] SE > GE > IE                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#> [1] ENT*1                                      
-#> [6] RMR*1L > REF*ZZ > RMR*1L > REF*ZZ > RMR*1L 
-#> [2] ENT*2 > NM1*QE                             
-#> [2] RMR*IK > AD                                
-#> [2] ENT*3 > NM1*QE                             
-#> [2] RMR*IK > AD                                
+#> ── Entity Loop [15] ────────────────────────────────────────────────────────────
+#>    ENT                                                                                                                                                                                                                   
+#>    RMR > REF•ZZ > RMR > REF•ZZ > RMR > REF•ZZ
+#>    ENT > NM1•QE                                                                                                                                                                          
+#>    RMR > AD                                                                                                                                                                                                              
+#>    ENT > NM1•QE                                                                                                                                                                          
+#>    RMR > AD                                                                                                                                                                                                              
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_820_Premium_Payment_NOPMT`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 22      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                               
-#>  Detail [7] BPR > TRN > REF*14 > N1*PE > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                           
+#>  Detail [7] BPR > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                            
 #> 
-#> ── Entity Loop ──
-#> 
-#> [1] ENT*1                            
-#> [4] RMR*1L > REF*ZZ > RMR*1L > REF*ZZ
-#> [2] ENT*2 > NM1*QE                   
-#> [2] RMR*IK > AD                      
+#> ── Entity Loop [9] ─────────────────────────────────────────────────────────────
+#>    ENT                                                                                                                      
+#>    RMR > REF•ZZ > RMR > REF•ZZ
+#>    ENT > NM1•QE                                                                             
+#>    RMR > AD                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_payment_order_820_218`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 19      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                     
-#>  Detail [5] BPR > TRN > REF*14 > N1*PE > N1*PR
-#> Trailer [3] SE > GE > IE                      
+#>  Header [3] ISA > GS > ST                                                                                                                                   
+#>  Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
+#> Trailer [3] SE > GE > IE                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#> [1] ENT*1                                   
-#> [7] RMR*IK > IT > SL > SL > RMR*IK > IT > SL
+#> ── Entity Loop [8] ─────────────────────────────────────────────────────────────
+#>    ENT                                                                                                                                                                                          
+#>    RMR > IT > SL > SL > RMR > IT > SL
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_01`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 104     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                                         
-#>  Detail [9] BPR > TRN > REF*14 > N1*PE > N3 > N4 > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                          
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                                                                                                   
+#>  Detail [9] BPR > TRN > REF•14 > N1•PE > N3 > N4 > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
+#> ── Entity Loop [89] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_02`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 166     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                                         
-#>  Detail [9] BPR > TRN > REF*14 > N1*PE > N3 > N4 > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                          
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                                                                                                   
+#>  Detail [9] BPR > TRN > REF•14 > N1•PE > N3 > N4 > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [6] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
+#> ── Entity Loop [151] ───────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > AD                                    
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_03`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 1146    
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                                         
-#>  Detail [9] BPR > TRN > REF*14 > N1*PE > N3 > N4 > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                          
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                                                                                                   
+#>  Detail [9] BPR > TRN > REF•14 > N1•PE > N3 > N4 > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [25] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [25] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [25] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [15] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [15] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [6] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#> [11] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
+#> ── Entity Loop [1131] ──────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > AD                                    
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_04`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 95      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                                         
-#>  Detail [9] BPR > TRN > REF*14 > N1*PE > N3 > N4 > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                          
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                                                                                                   
+#>  Detail [9] BPR > TRN > REF•14 > N1•PE > N3 > N4 > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [15] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
+#> ── Entity Loop [80] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`218_sample_820_05`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X218
 #> Segments: 647     
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                                         
-#>  Detail [9] BPR > TRN > REF*14 > N1*PE > N3 > N4 > N1*PR > N3 > N4
-#> Trailer [3] SE > GE > IE                                          
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                                                                                                                   
+#>  Detail [9] BPR > TRN > REF•14 > N1•PE > N3 > N4 > N1•PR > N3 > N4
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                                                                                                                    
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*9 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*1 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*2 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*3 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [25] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*4 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*5 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#> [10] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*6 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*7 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
-#>  [2] ENT*8 > NM1*IL                             
-#>  [5] RMR*IK > REF*18 > REF*ZZ > REF*ZZ > DTM*582
+#> ── Entity Loop [632] ───────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582 > RMR > …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
+#>    ENT > NM1•IL                                                                                                                                                                                                                                 
+#>    RMR > REF•18 > REF•ZZ > REF•ZZ > DTM•582                                                                        
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX10_debt_covered_by_affiliate1`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 42      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [14] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [31] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > DTM•582                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX11_debt_covered_by_affiliate2`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 43      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [14] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [3] RMR*ZZ > REF*0N > DTM*582                  
+#> ── Entity Loop [32] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > REF•0N > DTM•582                                                                                                                                                                         
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX12_csr_manual_adj`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 34      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*IL                             
-#> [8] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#> [2] ENT*2 > NM1*IL                             
-#> [8] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#> [1] ENT*3                                      
-#> [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [23] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > DTM•582                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX1_different_types_of_pmt_by_HIX`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 41      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                              
-#>  Detail [6] BPR > TRN > REF*38 > REF*TV > N1*PE > N1*RM
-#> Trailer [3] SE > GE > IE                               
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                           
+#>  Detail [6] BPR > TRN > REF•38 > REF•TV > N1•PE > N1•RM
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                            
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*2 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*3 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*4 > NM1*IL                             
-#> [6] REF*PO > REF*AZ > RMR*ZZ > DTM*582 > RMR*ZZ
+#> ── Entity Loop [29] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > RMR > DTM•582 > RMR > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX2_payments_exceed_charges1`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 38      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [27] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > DTM•582                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX3_payments_exceed_charges2`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 35      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
+#> ── Entity Loop [24] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX4_charges_exceed_payments1`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 32      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*IL                             
-#> [7] REF*38 > REF*1L > REF*PO > REF*AZ > REF*0F 
-#> [2] ENT*2 > NM1*IL                             
-#> [7] REF*38 > REF*1L > REF*PO > REF*AZ > REF*0F 
-#> [1] ENT*3                                      
-#> [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [21] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                                 
+#>    REF•38 > REF•1L > REF•PO > REF•AZ > REF•0F > RMR …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                                 
+#>    REF•38 > REF•1L > REF•PO > REF•AZ > REF•0F > RMR …
+#>    ENT                                                                                                                                                                                                                                                                                          
+#>    RMR > DTM•582                                                                                                                                                                                                                                                                
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX5_charges_exceed_payments2`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 32      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*IL                             
-#> [7] REF*38 > REF*1L > REF*PO > REF*AZ > REF*0F 
-#> [2] ENT*2 > NM1*IL                             
-#> [7] REF*38 > REF*1L > REF*PO > REF*AZ > REF*0F 
-#> [1] ENT*3                                      
-#> [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [21] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                                                 
+#>    REF•38 > REF•1L > REF•PO > REF•AZ > REF•0F > RMR …
+#>    ENT > NM1•IL                                                                                                                                                                                                                                                 
+#>    REF•38 > REF•1L > REF•PO > REF•AZ > REF•0F > RMR …
+#>    ENT                                                                                                                                                                                                                                                                                          
+#>    RMR > DTM•582                                                                                                                                                                                                                                                                
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX6_aptc_adjustments1`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 42      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [14] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [31] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > DTM•582                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX7_aptc_adjustments2`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 39      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [14] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
+#> ── Entity Loop [28] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX8_outstanding_debt_owed1`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 38      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [2] RMR*ZZ > DTM*582                           
+#> ── Entity Loop [27] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > DTM•582                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_820_EX9_outstanding_debt_owed2`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 39      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                 
-#>  Detail [5] BPR > TRN > N1*PE > N1*RM > PE
-#> Trailer [3] SE > GE > IE                  
+#>  Header [3] ISA > GS > ST                                                                                                               
+#>  Detail [5] BPR > TRN > N1•PE > N1•RM > PE
+#> Trailer [3] SE > GE > IE                                                                                                                
 #> 
-#> ── Entity Loop ──
-#> 
-#>  [2] ENT*1 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [2] ENT*2 > NM1*IL                             
-#> [10] REF*38 > REF*PO > REF*AZ > REF*0F > RMR*ZZ 
-#>  [1] ENT*3                                      
-#>  [3] RMR*ZZ > REF*0N > DTM*582                  
+#> ── Entity Loop [28] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT > NM1•IL                                                                                                                                                                                                                  
+#>    REF•38 > REF•PO > REF•AZ > REF•0F > RMR > DTM•582…
+#>    ENT                                                                                                                                                                                                                                                           
+#>    RMR > REF•0N > DTM•582                                                                                                                                                                         
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`306_payment_order_820_360`
+#> 
 #> ── <hcc::Index820> ─────────────────────────────────────────────────────────────
 #>     Type: 820-X306
 #> Segments: 41      
 #> ────────────────────────────────────────────────────────────────────────────────
-#>  Header [3] ISA > GS > ST                              
-#>  Detail [6] BPR > TRN > REF*38 > REF*TV > N1*PE > N1*RM
-#> Trailer [3] SE > GE > IE                               
+#>  Header [3] ISA > GS > ST                                                                                                                                                                                           
+#>  Detail [6] BPR > TRN > REF•38 > REF•TV > N1•PE > N1•RM
+#> Trailer [3] SE > GE > IE                                                                                                                                                                                            
 #> 
-#> ── Entity Loop ──
-#> 
-#> [2] ENT*1 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*2 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*3 > NM1*IL                             
-#> [5] REF*PO > REF*AZ > REF*0F > RMR*ZZ > DTM*582
-#> [2] ENT*4 > NM1*IL                             
-#> [6] REF*PO > REF*AZ > RMR*ZZ > DTM*582 > RMR*ZZ
+#> ── Entity Loop [29] ────────────────────────────────────────────────────────────
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > REF•0F > RMR > DTM•582                                      
+#>    ENT > NM1•IL                                                                                                                                                                                               
+#>    REF•PO > REF•AZ > RMR > DTM•582 > RMR > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 ```
