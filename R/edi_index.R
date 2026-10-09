@@ -58,14 +58,14 @@ S7::method(edi_index, Text834) <- function(x) {
 }
 
 S7::method(edi_index, Text837) <- function(x) {
-  new_index(
-    x,
-    switch(
-      S7::prop(x, "Type"),
-      "837I-X223" = ind_837I(S7::prop(x, "Text")),
-      "837P-X222" = ind_837P(S7::prop(x, "Text"))
-    )
-  )
+#   new_index(
+#     x,
+#     switch(
+#       S7::prop(x, "Type"),
+#       "837I-X223" = ind_837I(S7::prop(x, "Text")),
+#       "837P-X222" = ind_837P(S7::prop(x, "Text"))
+#     )
+#   )
 }
 
 #' @noRd
@@ -105,17 +105,6 @@ index_834 <- function(x) {
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
     member = purrr::map2(v, n, \(s, e) rlang::set_names(s, e)),
     trailer = cheapr::seq_(SE, perl(x, "^IEA"))
-  )
-}
-
-
-#' @noRd
-new_index <- function(x, index) {
-  IndexEDI(
-    Type = S7::prop(x, "Type"),
-    Text = S7::prop(x, "Text"),
-    Problems = problems(x, index),
-    Index = index
   )
 }
 

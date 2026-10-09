@@ -48,7 +48,7 @@ fmt_segment <- function(x) {
   if (charr::str_detect(x, "^REF")) {
     return(charr::str_sub(x, 1L, 6L))
   }
-  if (charr::str_detect(x, "^ISA|^BPR|^BGN|^TRN|^IEA")) {
+  if (charr::str_detect(x, "^ISA|^BPR|^BGN|^TRN|^IEA|^QTY")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
@@ -189,7 +189,11 @@ S7::method(format, Index834) <- function(x) {
   cli::cat_line(
     cheapr::paste_(
       fright(strrep(" ", 2L)),
-      fleft(cli::ansi_strwrap(purrr::map_chr(mem, arrow), exdent = 9L)),
+      fleft(cli::ansi_strwrap(
+        purrr::map_chr(mem, arrow),
+        exdent = 9L,
+        width = cli::console_width() - 10L
+      )),
       sep = " "
     )
   )
