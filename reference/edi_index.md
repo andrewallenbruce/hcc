@@ -55,10 +55,8 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [9] ──────────────────────────────────────────────────────────────────
-#>    INS  N > REF•0F > REF•1L > DTP•351
-#>    NM1•IL > DMG                                                                                                                                                  
-#>    NM1•M8                                                                                                                                                                                       
-#>    HD 021 > DTP•348                                                                                                                                              
+#>    INS  N > REF•0F > REF•1L > DTP•351 > NM1•IL > DMG > NM1•M8
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                    
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX3_enroll_employee_mco`
@@ -72,10 +70,8 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA      
 #> 
 #> ── Member [13] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > DTP•356
-#>    NM1•IL > PER > N3 > N4 > DMG                                     
-#>    HD 021 > DTP•348 > LX                                                                                                          
-#>    NM1•P3                                                                                                                                                                                       
+#>    INS  Y > REF•0F > REF•1L > DTP•356 > NM1•IL > PER > N3 > N4 > DMG
+#>    HD•021 > DTP•348 > LX > NM1•P3                                                                                                                                                                                                                                             
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX4_add_subscriber_coverage`
@@ -89,9 +85,8 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L
-#>    NM1•IL                                                                                                                                              
-#>    HD 021 > DTP•348                                                                                                     
+#>    INS  Y > REF•0F > REF•1L > NM1•IL
+#>    HD•021 > DTP•348                                                                                                                              
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX5_change_subscriber_info`
@@ -105,9 +100,7 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA      
 #> 
 #> ── Member [7] ──────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L
-#>    NM1•IL > DMG                                                                                                         
-#>    NM1•70 > DMG                                                                                                         
+#>    INS  Y > REF•0F > REF•1L > NM1•IL > DMG > NM1•70 > DMG
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX6_cancel_dependent`
@@ -121,8 +114,7 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
-#>    INS  N > REF•0F > REF•1L > DTP•357
-#>    NM1•IL > DMG                                                                                                                                                  
+#>    INS  N > REF•0F > REF•1L > DTP•357 > NM1•IL > DMG
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX7_terminate_subscriber_eligibility`
@@ -136,8 +128,7 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA      
 #> 
 #> ── Member [5] ──────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > DTP•357
-#>    NM1•IL                                                                                                                                                                                       
+#>    INS  Y > REF•0F > REF•1L > DTP•357 > NM1•IL
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX8_reinstate_employee`
@@ -151,8 +142,7 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [5] ──────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > DTP•303
-#>    NM1•IL                                                                                                                                                                                       
+#>    INS  Y > REF•0F > REF•1L > DTP•303 > NM1•IL
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX9_reinstate_employee_coverage`
@@ -166,9 +156,8 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L
-#>    NM1•IL                                                                                                                                              
-#>    HD 025 > DTP•348                                                                                                     
+#>    INS  Y > REF•0F > REF•1L > NM1•IL
+#>    HD•025 > DTP•348                                                                                                                              
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $benefit_enrollment_834_220
@@ -177,16 +166,15 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [25]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ﻿I > GS > ST        
+#>    Header [3] IS > GS > ST       
 #>    Detail [3] BGN > N1•P5 > N1•IN
 #>   Trailer [3] SE > GE > IEA      
 #> 
 #> ── Member [16] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > DTP•356
-#>    NM1•IL > PER > N3 > N4 > DMG                                     
-#>    HD 021 > DTP•348 > COB                                                                                                         
-#>    HD 021 > DTP•348                                                                                                                                              
-#>    HD 021 > DTP•348                                                                                                                                              
+#>    INS  Y > REF•0F > REF•1L > DTP•356 > NM1•IL > PER > N3 > N4 > DMG
+#>    HD•021 > DTP•348 > COB                                                                                                                                                                                                                                                                                    
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                         
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                         
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_01
@@ -200,24 +188,19 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                                                                  
 #> 
 #> ── Member [60] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•ABB
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                             
-#>    HD 021 > DTP•348                                                                                                                                                                                      
-#>    HD 021 > DTP•348                                                                                                                                                                                      
-#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•AB 
-#>    NM1•IL > N3 > N4 > DMG                                                                                                                  
-#>    HD 001 > DTP•348                                                                                                                                                                                      
-#>    HD 001 > DTP•348                                                                                                                                                                                      
-#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•ABB
-#>    NM1•IL > N3 > N4 > DMG                                                                                                                  
-#>    HD 024 > DTP•348 > DTP•349                                                                                                                                             
-#>    HD 024 > DTP•348 > DTP•349                                                                                                                                             
-#>    INS  Y > REF•0F > REF•1D                                                                                 
-#>    NM1•IL > N3 > N4 > DMG                                                                                                                  
-#>    HD 021 > DTP•348                                                                                                                                                                                      
-#>    INS  Y > REF•0F > REF•6P                                                                                 
-#>    NM1•IL > N3 > N4 > DMG                                                                                                                  
-#>    HD 021 > DTP•348                                                                                                                                                                                      
+#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•ABB > NM1•IL > PER > N3 > N4 > DMG
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
+#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•AB > NM1•IL > N3 > N4 > DMG                                      
+#>    HD•001 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
+#>    HD•001 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
+#>    INS  Y > REF•0F > REF•6P > REF•1D > REF•ABB > NM1•IL > N3 > N4 > DMG                                     
+#>    HD•024 > DTP•348 > DTP•349                                                                                                                                                                                                                                                                                                                        
+#>    HD•024 > DTP•348 > DTP•349                                                                                                                                                                                                                                                                                                                        
+#>    INS  Y > REF•0F > REF•1D > NM1•IL > N3 > N4 > DMG                                                                                                                      
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
+#>    INS  Y > REF•0F > REF•6P > NM1•IL > N3 > N4 > DMG                                                                                                                      
+#>    HD•021 > DTP•348                                                                                                                                                                                                                                                                                                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_02
@@ -231,9 +214,10 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                          
 #> 
 #> ── Member [23] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•ZZ
-#>    NM1•IL > PER > N3 > N4 > DMG > LUI                                                                                                                                                               
-#>    HD 021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•…                                                             
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•ZZ > NM1•IL >
+#>             PER > N3 > N4 > DMG > LUI                                                                                                                                                                                                                                                        
+#>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•ZX >                                                                                     
+#>             REF•ZZ                                                                                                                                                                                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_03
@@ -247,9 +231,10 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                          
 #> 
 #> ── Member [26] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX…
-#>    NM1•IL > PER > N3 > N4 > DMG > LUI                                                                                                                                                                
-#>    HD 021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•…                                                              
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6 >
+#>             REF•QQ > REF•ZZ > NM1•IL > PER > N3 > N4 > DMG > LUI                                                                                                                                
+#>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•ZX >                                                                                     
+#>             REF•ZZ                                                                                                                                                                                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_04
@@ -263,9 +248,10 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                          
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX…
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                                                     
-#>    HD 021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•…                                                              
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6 >
+#>             REF•QQ > REF•ZZ > NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                     
+#>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•ZX >                                                                                     
+#>             REF•ZZ                                                                                                                                                                                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_05
@@ -279,9 +265,9 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                          
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX…
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                                                     
-#>    HD 001 > DTP•348 > DTP•349 > AMT > REF•17 > REF•9V > REF•CE > REF•ZX …                               
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6 >
+#>             REF•QQ > REF•ZZ > NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                     
+#>    HD•001 > DTP•348 > DTP•349 > AMT > REF•17 > REF•9V > REF•CE > REF•ZX > REF•ZZ                                                                                 
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_06
@@ -295,14 +281,14 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                          
 #> 
 #> ── Member [58] ─────────────────────────────────────────────────────────────────
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•Q4…
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                                                     
-#>    NM1•31 > N3 > N4                                                                                                                                                                                                                                                                               
-#>    HD 001 > DTP•348 > DTP•349 > REF•17 > REF•CE > REF•RB > REF•ZX > REF•…                                                              
-#>    HD 021 > DTP•348 > DTP•349 > REF•17 > REF•CE > REF•RB > REF•ZX > REF•…                                                              
-#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX…
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                                                     
-#>    HD 021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•…                                                              
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•Q4 > REF•ZZ >
+#>             NM1•IL > PER > N3 > N4 > DMG > NM1•31 > N3 > N4                                                                                                                                     
+#>    HD•001 > DTP•348 > DTP•349 > REF•17 > REF•CE > REF•RB > REF•ZX > REF•ZZ                                                                                                                      
+#>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•CE > REF•RB > REF•ZX > REF•ZZ                                                                                                                      
+#>    INS  Y > REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6 >
+#>             REF•QQ > REF•ZZ > NM1•IL > PER > N3 > N4 > DMG                                                                                                                                                                     
+#>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB > REF•ZX >                                                                                     
+#>             REF•ZZ                                                                                                                                                                                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
