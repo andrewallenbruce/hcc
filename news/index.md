@@ -2,7 +2,7 @@
 
 ## hcc 0.0.0.9075 (2026-10-09)
 
-- Same as previous version.
+- 834 Indexer, print method
 
 ## hcc 0.0.0.9074 (2026-10-08)
 
