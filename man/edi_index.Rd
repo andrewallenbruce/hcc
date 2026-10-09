@@ -30,6 +30,6 @@ Methods for \code{edi_index}:
 }
 }
 \examples{
-# edi_index(x12_EX$`834`)
-edi_index(purrr::list_flatten(x12_EX$`820`))
+edi_index(x12_EX$`834`)
+edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 }
