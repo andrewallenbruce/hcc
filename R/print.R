@@ -12,12 +12,11 @@ colon <- function(x, y) cheapr::paste_(x, ": ", y)
 #' @noRd
 arrow <- function(x) cheapr::paste_(x, collapse = orange(" > "))
 
-
 S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
   names_ <- bcyan((c("Type", "Segments")))
-  numbs_ <- c(S7::prop(x, "Type"), length(S7::prop(x, "Text")))
+  numbs_ <- c(S7::prop(x, "Type"), bracket(bcyan(length(S7::prop(x, "Text")))))
 
   cli::cat_line(colon(fright(names_), fleft(numbs_)))
   cli::cat_rule()
@@ -42,138 +41,143 @@ format_head <- function(x) {
 }
 
 #' @noRd
-format_segment <- function(x) {
-  seg <- list(
+fmt_segment <- function(x) {
+  if (charr::str_detect(x, "^N1")) {
+    return(charr::str_sub(x, 1L, 5L))
+  }
+  if (charr::str_detect(x, "^REF")) {
+    return(charr::str_sub(x, 1L, 6L))
+  }
+  if (charr::str_detect(x, "^ISA|^BPR|^BGN|^TRN|^IEA")) {
+    return(charr::str_sub(x, 1L, 3L))
+  }
+  charr::str_sub(x, 1L, 2L)
+}
+
+#' @noRd
+format_segments <- function(x) {
+  x <- list(
     S7::prop(x, "Header"),
     S7::prop(x, "Details"),
     S7::prop(x, "Trailer")
   ) |>
     purrr::map(\(y) {
-      S7::prop(x, "Text")[y] |>
-        purrr::map_chr(\(x) {
-          if (perl0(x, "^N1")) {
-            return(substr(x, 1L, 5L))
-          }
-          if (perl0(x, "^REF")) {
-            return(substr(x, 1L, 6L))
-          }
-          if (perl0(x, "^ISA|^BPR|^BGN|^TRN|^IEA")) {
-            return(substr(x, 1L, 3L))
-          }
-          substr(x, 1L, 2L)
-        }) |>
+      purrr::map_chr(
+        S7::prop(x, "Text")[y],
+        fmt_segment
+      ) |>
         charr::str_replace("\\*", dot)
     })
 
   cli::cat_line(
     cheapr::paste_(
-      fright(strrep(" ", 1L)),
+      fright(" "),
       fright(bcyan(c("Header", "Detail", "Trailer"))),
-      fright(bracket(bcyan(cheapr::lengths_(seg)))),
-      fleft(purrr::map_chr(seg, arrow)),
+      fright(bracket(bcyan(cheapr::lengths_(x)))),
+      fleft(purrr::map_chr(x, arrow)),
       sep = " "
     )
   )
 }
 
+#' @noRd
+fmt_entity <- function(x) {
+  if (charr::str_detect(x, "^ENT")) {
+    x <- charr::str_pad(
+      charr::str_remove(
+        charr::str_sub(x, 5L, 6L),
+        "\\*"
+      ),
+      width = 2L,
+      pad = "0"
+    )
+    return(cheapr::paste_(
+      cli::col_yellow("ENT"),
+      itred(x),
+      sep = " "
+    ))
+  }
+  if (charr::str_detect(x, "^RMR|^REF|^NM1")) {
+    return(charr::str_sub(x, 1L, 6L))
+  }
+  if (charr::str_detect(x, "^DTM|^ADX|^IT|^SLN")) {
+    return(charr::str_sub(x, 1L, 3L))
+  }
+  charr::str_sub(x, 1L, 2L)
+}
+
 S7::method(format, Index820) <- function(x) {
   format_head(x)
-  format_segment(x)
+  format_segments(x)
+  cat("", sep = "\n")
 
-  ent <- purrr::map(
-    S7::prop(x, "Entity"),
-    \(y) {
-      purrr::map_chr(
-        names(y),
-        \(x) {
-          if (perl0(x, "^ENT")) {
-            return(
-              cheapr::paste_(
-                cli::col_yellow("ENT"),
-                itred(charr::str_pad(
-                  charr::str_remove(substr(x, 5L, 6L), "\\*"),
-                  width = 2L,
-                  pad = "0"
-                )),
-                sep = " "
-              )
-            )
-          }
-          if (perl0(x, "^RMR|^REF|^NM1")) {
-            return(substr(x, 1L, 6L))
-          }
-          if (perl0(x, "^DTM|^ADX|^IT|^SLN")) {
-            return(substr(x, 1L, 3L))
-          }
-          substr(x, 1L, 2L)
-        }
-      ) |>
+  x <- S7::prop(x, "Entity") |>
+    purrr::map(\(y) {
+      purrr::map_chr(names(y), fmt_entity) |>
         charr::str_replace("\\*", dot)
-    }
-  ) |>
-    purrr::list_flatten()
-
-  cli::cli_text()
+    })
 
   cli::cli_rule(
     cheapr::paste_(
       bcyan("Entity"),
-      bracket(bcyan(cheapr::unlisted_length(ent))),
+      bracket(bcyan(cheapr::unlisted_length(x))),
       sep = " "
     )
   )
-  cli::cat_line(
-    cheapr::paste_(
-      fright(strrep(" ", 2L)),
-      fleft(cli::ansi_strtrim(purrr::map_chr(ent, arrow), width = 60)),
-      sep = " "
-    )
-  )
+
+  x <- fleft(cli::ansi_strtrim(purrr::map_chr(x, arrow), width = 60))
+  cli::cat_line(cheapr::paste_(fright(strrep(" ", 2L)), x, sep = " "))
   cli::cat_rule()
 }
 
 S7::method(format, Index834) <- function(x) {
   format_head(x)
-  format_segment(x)
+  format_segments(x)
+  cat("", sep = "\n")
   mem <- purrr::map(
     S7::prop(x, "Member"),
     \(y) {
       purrr::map_chr(
         names(y),
         \(x) {
-          if (perl0(x, "^INS")) {
+          if (charr::str_detect(x, "^INS")) {
             return(
               cheapr::paste_(
-                orange("INS"),
-                itred(charr::str_pad(
-                  charr::str_remove(substr(x, 5L, 6L), "\\*"),
-                  width = 2L
-                )),
+                cli::col_yellow("INS"),
+                itred(
+                  charr::str_pad(
+                    charr::str_remove(
+                      charr::str_sub(x, 5L, 6L),
+                      "\\*"
+                    ),
+                    width = 2L
+                  )
+                ),
                 sep = " "
               )
             )
           }
-          if (perl0(x, "^REF\\*[A-Z0-9]{3}|^DTP")) {
-            return(substr(x, 1L, 7L))
+          if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTP")) {
+            return(charr::str_sub(x, 1L, 7L))
           }
-          if (perl0(x, "^HD\\*")) {
-            return(cheapr::paste_("HD", substr(x, 4L, 6L), sep = " "))
+          if (charr::str_detect(x, "^HD\\*|^REF\\*[A-Z0-9]{2}|^NM1")) {
+            return(charr::str_sub(x, 1L, 6L))
           }
-          if (perl0(x, "^REF\\*[A-Z0-9]{2}|^NM1")) {
-            return(substr(x, 1L, 6L))
+          if (
+            charr::str_detect(
+              x,
+              "^DSB|^DMG|^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI"
+            )
+          ) {
+            return(charr::str_sub(x, 1L, 3L))
           }
-          if (perl0(x, "^DSB|^DMG|^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI")) {
-            return(substr(x, 1L, 3L))
-          }
-          substr(x, 1L, 2L)
+          charr::str_sub(x, 1L, 2L)
         }
       ) |>
         charr::str_replace("\\*", dot)
     }
   ) |>
     purrr::list_flatten()
-
-  cli::cli_text()
 
   cli::cli_rule(
     cheapr::paste_(
@@ -185,7 +189,7 @@ S7::method(format, Index834) <- function(x) {
   cli::cat_line(
     cheapr::paste_(
       fright(strrep(" ", 2L)),
-      fleft(cli::ansi_strtrim(purrr::map_chr(mem, arrow), width = 70)),
+      fleft(cli::ansi_strwrap(purrr::map_chr(mem, arrow), exdent = 9L)),
       sep = " "
     )
   )

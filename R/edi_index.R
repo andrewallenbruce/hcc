@@ -95,7 +95,7 @@ index_834 <- function(x) {
   SE <- perl(x, "^SE")
 
   i <- cheapr::seq_(ENT[1L], SE - 1L)
-  b <- sort.int(c(ENT, perl(x, "^NM1\\*"), perl(x, "^HD\\*"), SE - 1L))
+  b <- sort.int(c(ENT, perl(x, "^HD\\*"), SE - 1L))
   f <- findInterval(i, b, all.inside = TRUE)
   v <- vctrs::vec_split(i, f)$val
   n <- purrr::map_depth(v, 1L, \(y) substring(x[y], 1L, 7L))
