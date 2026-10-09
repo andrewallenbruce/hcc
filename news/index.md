@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9075 (2026-10-09)
+
+- Same as previous version.
+
 ## hcc 0.0.0.9074 (2026-10-08)
 
 - [`edi_parse()`](https://andrewallenbruce.github.io/hcc/reference/edi_parse.md),
