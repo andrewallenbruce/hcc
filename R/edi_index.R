@@ -58,14 +58,14 @@ S7::method(edi_index, Text834) <- function(x) {
 }
 
 S7::method(edi_index, Text837) <- function(x) {
-#   new_index(
-#     x,
-#     switch(
-#       S7::prop(x, "Type"),
-#       "837I-X223" = ind_837I(S7::prop(x, "Text")),
-#       "837P-X222" = ind_837P(S7::prop(x, "Text"))
-#     )
-#   )
+  #   new_index(
+  #     x,
+  #     switch(
+  #       S7::prop(x, "Type"),
+  #       "837I-X223" = ind_837I(S7::prop(x, "Text")),
+  #       "837P-X222" = ind_837P(S7::prop(x, "Text"))
+  #     )
+  #   )
 }
 
 #' @noRd
@@ -95,7 +95,13 @@ index_834 <- function(x) {
   SE <- perl(x, "^SE")
 
   i <- cheapr::seq_(ENT[1L], SE - 1L)
-  b <- sort.int(c(ENT, perl(x, "^HD\\*"), SE - 1L))
+  b <- sort.int(c(
+    ENT,
+    perl(x, "^REF\\*0F"),
+    perl(x, "^NM1\\*"),
+    perl(x, "^HD\\*"),
+    SE - 1L
+  ))
   f <- findInterval(i, b, all.inside = TRUE)
   v <- vctrs::vec_split(i, f)$val
   n <- purrr::map_depth(v, 1L, \(y) substring(x[y], 1L, 7L))

@@ -42,6 +42,9 @@ format_head <- function(x) {
 
 #' @noRd
 fmt_segment <- function(x) {
+  if (charr::str_detect(x, "^DTP")) {
+    return(charr::str_sub(x, 1L, 7L))
+  }
   if (charr::str_detect(x, "^N1")) {
     return(charr::str_sub(x, 1L, 5L))
   }
