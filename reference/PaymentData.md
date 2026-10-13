@@ -157,7 +157,7 @@ PaymentData(
 #>  .. .. ..  ..@ payment    : num 8087
 #>  .. .. ..  ..@ rate       : chr "957"
 #>  .. .. ..  ..@ aid        : chr "1H"
-#>  .. .. ..  ..@ plan       : chr "2"
+#>  .. .. ..  ..@ plan       : chr ""
 #>  .. .. ..  ..@ reason     : chr(0) 
 #>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
 #>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
@@ -176,7 +176,7 @@ PaymentData(
 #>  .. .. ..  ..@ payment    : num 8087
 #>  .. .. ..  ..@ rate       : chr "957"
 #>  .. .. ..  ..@ aid        : chr "M1"
-#>  .. .. ..  ..@ plan       : chr "2"
+#>  .. .. ..  ..@ plan       : chr ""
 #>  .. .. ..  ..@ reason     : chr(0) 
 #>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
 #>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
