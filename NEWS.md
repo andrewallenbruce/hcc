@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9077 (2026-10-13)
+
+* `edi_parse()`
+
+
 # hcc 0.0.0.9076 (2026-10-13)
 
 * 834 parser
