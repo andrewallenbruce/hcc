@@ -36,7 +36,7 @@
 - [`edi_index()`](https://andrewallenbruce.github.io/hcc/reference/edi_index.md)
   : Create an EDI Index Object
 - [`edi_parse()`](https://andrewallenbruce.github.io/hcc/reference/edi_parse.md)
-  : X12-820 (X306/X218) Payment Order/Remittance Advice Parser
+  : Create an EDI Parse Object
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
 - [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
