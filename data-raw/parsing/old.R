@@ -140,3 +140,65 @@ parse_820_ENT <- function(x) {
   rlang::set_names(ent, seq_along(ent)) |>
     vctrs::vec_c(.name_spec = "{outer}.{inner}")
 }
+
+#' Single Edit Rule
+#'
+#' @param icd `<chr>` ICD-10-CM diagnosis code
+#' @param action `<chr>` "invalid" or "override"
+#' @param override `<int>` CC to assign when `action = "override"`
+#' @param model `<chr>` Model Name
+#' @param description `<chr>` description of Edit Rule
+#' @param sex `<int>` `<SexEdit>`: 1 (male) or 2 (female)
+#' @param age `<int>` `<AgeEdit>`: patient age
+#' @param boundary `<int>` `<AgeEdit>`: maximum or minimum age
+#' @returns An `<EditRule>` S7 object
+#' @examples
+#' SexEdit(
+#'   icd = c("D66", "D67"),
+#'   sex = 2L,
+#'   action = "override",
+#'   override = 112L,
+#'   model = "C28",
+#'   description = "Hemophilia A/B in female - assign to CC 112"
+#' )
+#'
+#' AgeEdit(
+#'   icd = "J410",
+#'   age = 17L,
+#'   boundary = "max",
+#'   action = "invalid",
+#'   override = NA_integer_,
+#'   model = "C28",
+#'   description = "Simple chronic bronchitis - invalid if age < 18"
+#' )
+#' @name EditRule
+#' @export
+EditRule := S7::new_class(
+  abstract = TRUE,
+  properties = list(
+    icd = S7::class_character,
+    action = S7::class_character,
+    override = prop_integer,
+    model = S7::class_character,
+    description = S7::class_character
+  )
+)
+
+#' @rdname EditRule
+#' @name AgeEdit
+#' @export
+AgeEdit := S7::new_class(
+  parent = EditRule,
+  properties = list(
+    age = prop_integer,
+    boundary = S7::class_character
+  )
+)
+
+#' @rdname EditRule
+#' @name SexEdit
+#' @export
+SexEdit := S7::new_class(
+  parent = EditRule,
+  properties = list(sex = prop_integer)
+)
