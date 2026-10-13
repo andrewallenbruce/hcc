@@ -71,6 +71,7 @@ prefix_rxhcc <- function(x) {
 #' prefix(x, model = "R05")
 #' @export
 prefix <- function(x, model = "C28") {
+  S7::check_is_S7(x)
   if (!S7::S7_inherits(x, PatientDemographics)) {
     cli::cli_abort(
       c(

@@ -1,4 +1,7 @@
 #' @noRd
+NA_Date_ <- as.Date(NA)
+
+#' @noRd
 `%0%` <- function(x, y) {
   if (vctrs::vec_size(x) == 0L) y else x
 }
@@ -288,10 +291,12 @@ age_category_NEW <- function(age, sex, orec) {
 
 #' Convert YYYYMMDD to ISO YYYY-MM-DD
 #' @examplesIf FALSE
+#' # BPR-17
 #' parse_date("20200202")
 #' parse_date("20250108")
 #' parse_date("1955-03-15")
 #' parse_date("200202")
+#' parse_date("2002")
 #' @noRd
 parse_date <- function(x, ...) {
   if (collapse::is_date(x)) {
@@ -304,7 +309,7 @@ parse_date <- function(x, ...) {
   }
 
   fmt <- switch(
-    as.character(nchar(x)),
+    as.character(charr::str_length(x)),
     `10` = "%Y-%m-%d",
     `8` = "%Y%m%d",
     `6` = "%y%m%d",
@@ -312,22 +317,10 @@ parse_date <- function(x, ...) {
   )
 
   if (cheapr::is_na(fmt)) {
-    return(as.Date(NA))
+    return(NA_Date_)
   }
 
-  as.Date.character(x, format = fmt)
-}
-
-#' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
-#' @examplesIf FALSE
-#' parse_DTM_RD8("20200202-20200402")
-#' @noRd
-parse_DTM_RD8 <- function(x) {
-  if (nchar(x) == 17L) {
-    x <- .subset2(strsplit(x, "-", fixed = TRUE), 1L)
-    return(parse_date_range(x[1], x[2]))
-  }
-  as.Date(NA)
+  clock::date_parse(x, format = fmt)
 }
 
 #' Parse Date Range
@@ -338,18 +331,63 @@ parse_date_range <- function(start, end) {
   ivs::iv(parse_date(start), parse_date(end) + 1L)
 }
 
+#' Parse Date Time
+#' @examplesIf FALSE
+#' # ISA-09/ISA-10
+#' parse_date_time("141231", "1159")
+#' # GS-04/GS-05
+#' parse_date_time("20141231", "11595900")
+#' @noRd
+parse_date_time <- function(date, time) {
+  clock::date_time_parse(
+    cheapr::paste_(parse_date(date), time, sep = " "),
+    zone = "US/Eastern",
+    format = c("%F %H%M", "%F %H%M%S")
+  )
+}
+
+#' Parse DTM-RD8 Date Range (YYYYMMDD-YYYYMMDD)
+#' @examplesIf FALSE
+#' parse_DTM_RD8("20200202-20200402")
+#' @noRd
+parse_DTM_RD8 <- function(x) {
+  if (!rlang::has_length(x, 1L)) {
+    cli::cli_abort("Must have length 1")
+  }
+
+  if (charr::str_length(x) == 17L && charr::str_sub(x, 9L, 9L) == "-") {
+    x <- charr::str_split_1(x, "-")
+    return(parse_date_range(x[1], x[2]))
+  }
+  NA_Date_
+}
+
+#' @noRd
+years_between <- function(start, end) {
+  clock::date_count_between(
+    parse_date(start),
+    parse_date(end),
+    precision = "year"
+  )
+}
+
+#' @noRd
+months_between <- function(start, end) {
+  clock::date_count_between(
+    parse_date(start),
+    parse_date(end),
+    precision = "month"
+  )
+}
+
 #' Calculate age from DOB
 #' @examplesIf FALSE
 #' calculate_age("20200202")
 #' calculate_age("1955-03-15", "2025-01-08")
 #' calculate_age("1960-08-22", "2025-01-08")
 #' @noRd
-calculate_age <- function(dob, dos = Sys.Date()) {
-  clock::date_count_between(
-    parse_date(dob),
-    parse_date(dos),
-    precision = "year"
-  )
+calculate_age <- function(dob, dos = clock::date_today("")) {
+  years_between(dob, dos)
 }
 
 #' Determine if member is new enrollee
@@ -361,13 +399,8 @@ calculate_age <- function(dob, dos = Sys.Date()) {
 #' is_new_enrollee("2024-09-08", "2025-01-08")
 #' is_new_enrollee("2024-01-08", "2025-01-08")
 #' @noRd
-is_new_enrollee <- function(start, end = Sys.Date()) {
-  clock::date_count_between(
-    parse_date(start),
-    parse_date(end),
-    precision = "month"
-  ) <=
-    3L
+is_new_enrollee <- function(start, end = clock::date_today("")) {
+  months_between(start, end) <= 3L
 }
 
 #' Derive Medi-Cal eligibility status
@@ -378,7 +411,7 @@ is_new_enrollee <- function(start, end = Sys.Date()) {
 #' @noRd
 medi_cal_status <- function(
   end_date,
-  report_date = Sys.Date()
+  report_date = clock::date_today("")
 ) {
   if (
     parse_date(end_date) < clock::date_start(parse_date(report_date), "month")

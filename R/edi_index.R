@@ -16,6 +16,10 @@
 edi_index := S7::new_generic("x")
 
 S7::method(edi_index, S7::class_any) <- function(x) {
+  cli::cli_alert_warning(
+    "No {.fn hcc::edi_index} method found for {.obj_type_friendly {x}}",
+    call = rlang::caller_env()
+  )
   return(NA)
 }
 
@@ -69,48 +73,64 @@ S7::method(edi_index, Text837) <- function(x) {
 }
 
 #' @noRd
-index_820 <- function(x) {
-  ST <- perl(x, "^ST")
-  ENT <- perl(x, "^ENT")
-  SE <- perl(x, "^SE")
+split_interval <- function(index, breaks) {
+  vctrs::vec_split(
+    index,
+    findInterval(
+      index,
+      sort.int(breaks),
+      all.inside = TRUE
+    )
+  )
+}
 
-  i <- cheapr::seq_(ENT[1L], SE - 1L)
-  b <- sort.int(c(ENT, perl(x, "^RMR"), SE - 1L))
-  f <- findInterval(i, b, all.inside = TRUE)
-  v <- vctrs::vec_split(i, f)$val
-  n <- purrr::map_depth(v, 1L, \(y) substring(x[y], 1L, 7L))
+#' @noRd
+index_820 <- function(x) {
+  ST <- charr::str_which(x, "^ST")
+  SE <- charr::str_which(x, "^SE")
+  ISA <- charr::str_which(x, "ISA\\*")
+  IEA <- charr::str_which(x, "^IEA")
+
+  ENT <- charr::str_which(x, "^ENT")
+  RMR <- charr::str_which(x, "^RMR")
+
+  v <- split_interval(
+    cheapr::seq_(ENT[1L], SE - 1L),
+    c(ENT, RMR, SE - 1L)
+  )
+  n <- purrr::map_depth(v$val, 1L, \(y) charr::str_sub(x[y], 1L, 7L))
 
   rlang::list2(
-    header = cheapr::seq_(perl(x, "ISA\\*"), ST),
+    header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = purrr::map2(v, n, \(s, e) rlang::set_names(s, e)),
-    trailer = cheapr::seq_(SE, perl(x, "^IEA"))
+    entity = purrr::map2(v$val, n, \(s, e) rlang::set_names(s, e)),
+    trailer = cheapr::seq_(SE, IEA)
   )
 }
 
 #' @noRd
 index_834 <- function(x) {
-  ST <- perl(x, "^ST")
-  ENT <- perl(x, "^INS")
-  SE <- perl(x, "^SE")
+  ST <- charr::str_which(x, "^ST")
+  SE <- charr::str_which(x, "^SE")
+  ISA <- charr::str_which(x, "ISA\\*")
+  IEA <- charr::str_which(x, "^IEA")
 
-  i <- cheapr::seq_(ENT[1L], SE - 1L)
-  b <- sort.int(c(
-    ENT,
-    perl(x, "^REF\\*0F"),
-    perl(x, "^NM1\\*"),
-    perl(x, "^HD\\*"),
-    SE - 1L
-  ))
-  f <- findInterval(i, b, all.inside = TRUE)
-  v <- vctrs::vec_split(i, f)$val
-  n <- purrr::map_depth(v, 1L, \(y) substring(x[y], 1L, 7L))
+  HD <- charr::str_which(x, "^HD\\*")
+  INS <- charr::str_which(x, "^INS")
+  NM1 <- charr::str_which(x, "^NM1\\*")
+  REF0F <- charr::str_which(x, "^REF\\*0F")
+
+  v <- split_interval(
+    cheapr::seq_(INS[1L], SE - 1L),
+    c(INS, REF0F, NM1, HD, SE - 1L)
+  )
+  n <- purrr::map_depth(v$val, 1L, \(y) charr::str_sub(x[y], 1L, 7L))
 
   rlang::list2(
-    header = cheapr::seq_(perl(x, "ISA\\*"), ST),
-    details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    member = purrr::map2(v, n, \(s, e) rlang::set_names(s, e)),
-    trailer = cheapr::seq_(SE, perl(x, "^IEA"))
+    header = cheapr::seq_(ISA, ST),
+    details = cheapr::seq_(ST + 1L, INS[1L] - 1L),
+    member = purrr::map2(v$val, n, \(s, e) rlang::set_names(s, e)),
+    trailer = cheapr::seq_(SE, IEA)
   )
 }
 
