@@ -348,11 +348,11 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [12] ─────────────────────────────────────────────────────────────────
-#>    ENT 01                                                                                                              
-#>    RMR•1L > REF•ZZ                                                                                                                     
-#>    RMR•1L > REF•ZZ                                                                                                                     
-#>    ENT 02 > NM1•QE                                                                      
-#>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > DTM
+#>    ENT001                                                                                                                  
+#>    RMR•1L > REF•ZZ                                                                                                                         
+#>    RMR•1L > REF•ZZ                                                                                                                         
+#>    ENT002 > NM1•QE                                                                                                         
+#>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`820_Essentail_Health_Plan`
@@ -366,8 +366,8 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                                                                                             
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
-#>    ENT 01 > NM1•QE                                                                                                              
-#>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > REF•ZZ > DTM
+#>    ENT001 > NM1•QE                                                                                                                                                 
+#>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > REF•ZZ > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`820_Premium_Payment_EFT`
@@ -381,14 +381,14 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [15] ─────────────────────────────────────────────────────────────────
-#>    ENT 01                                        
-#>    RMR•1L > REF•ZZ                                               
-#>    RMR•1L > REF•ZZ                                               
-#>    RMR•1L > REF•ZZ                                               
-#>    ENT 02 > NM1•QE
-#>    RMR•IK > ADX                                                  
-#>    ENT 03 > NM1•QE
-#>    RMR•IK > ADX                                                  
+#>    ENT001         
+#>    RMR•1L > REF•ZZ                
+#>    RMR•1L > REF•ZZ                
+#>    RMR•1L > REF•ZZ                
+#>    ENT002 > NM1•QE
+#>    RMR•IK > ADX                   
+#>    ENT003 > NM1•QE
+#>    RMR•IK > ADX                   
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`820_Premium_Payment_NOPMT`
@@ -402,11 +402,11 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                                                                                             
 #> 
 #> ── Entity [9] ──────────────────────────────────────────────────────────────────
-#>    ENT 01                                        
-#>    RMR•1L > REF•ZZ                                               
-#>    RMR•1L > REF•ZZ                                               
-#>    ENT 02 > NM1•QE
-#>    RMR•IK > ADX                                                  
+#>    ENT001         
+#>    RMR•1L > REF•ZZ                
+#>    RMR•1L > REF•ZZ                
+#>    ENT002 > NM1•QE
+#>    RMR•IK > ADX                   
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $payment_order_820_218
@@ -420,7 +420,7 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
-#>    ENT 01                                                                   
+#>    ENT001                                                                   
 #>    RMR•IK > IT > SLN•1 > SLN•2
 #>    RMR•IK > IT > SLN•1                                       
 #> ────────────────────────────────────────────────────────────────────────────────
