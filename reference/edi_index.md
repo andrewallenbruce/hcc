@@ -50,9 +50,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [19]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN > REF•38 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > REF•38 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [9] ──────────────────────────────────────────────────────────────────
 #>    INS  N                                  
@@ -68,9 +68,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [22]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST      
-#>    Detail [3] BGN > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA      
+#>    Header [3] ISA > GS > ST         
+#>    Detail [3] BGN•00 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [13] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                   
@@ -86,9 +86,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [16]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN > REF•38 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > REF•38 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
 #>    INS  Y
@@ -103,9 +103,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [16]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST      
-#>    Detail [3] BGN > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA      
+#>    Header [3] ISA > GS > ST         
+#>    Detail [3] BGN•00 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [7] ──────────────────────────────────────────────────────────────────
 #>    INS  Y
@@ -120,9 +120,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [16]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN > REF•38 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > REF•38 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
 #>    INS  N                                  
@@ -136,9 +136,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [14]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST      
-#>    Detail [3] BGN > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA      
+#>    Header [3] ISA > GS > ST         
+#>    Detail [3] BGN•00 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [5] ──────────────────────────────────────────────────────────────────
 #>    INS  Y                                  
@@ -152,9 +152,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [15]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN > REF•38 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > REF•38 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [5] ──────────────────────────────────────────────────────────────────
 #>    INS  Y                                  
@@ -168,9 +168,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [16]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN > REF•38 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > REF•38 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
 #>    INS  Y
@@ -185,9 +185,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [25]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] IS > GS > ST       
-#>    Detail [3] BGN > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA      
+#>    Header [3] IS > GS > ST          
+#>    Detail [3] BGN•00 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [16] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                   
@@ -204,9 +204,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [71]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                       
-#>    Detail [5] BGN > REF•38 > DTP•007 > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                                                                       
+#>    Header [3] ISA > GS > ST                                                                                          
+#>    Detail [5] BGN•00 > REF•38 > DTP•007 > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                                                          
 #> 
 #> ── Member [60] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                   
@@ -240,9 +240,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [33]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                           
-#>    Detail [4] BGN > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                           
+#>    Header [3] ISA > GS > ST                                              
+#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [23] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                    
@@ -258,9 +258,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [36]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                           
-#>    Detail [4] BGN > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                           
+#>    Header [3] ISA > GS > ST                                              
+#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [26] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -277,9 +277,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [35]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                           
-#>    Detail [4] BGN > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                           
+#>    Header [3] ISA > GS > ST                                              
+#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -296,9 +296,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [35]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                           
-#>    Detail [4] BGN > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                           
+#>    Header [3] ISA > GS > ST                                              
+#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -315,9 +315,9 @@ edi_index(x12_EX$`834`)
 #>      Type: 834-X220                           
 #>  Segments: [68]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                           
-#>    Detail [4] BGN > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                           
+#>    Header [3] ISA > GS > ST                                              
+#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                              
 #> 
 #> ── Member [58] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -343,9 +343,9 @@ edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 #>      Type: 820-X218                           
 #>  Segments: [23]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                   
-#>    Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
-#>   Trailer [3] SE > GE > IEA                                                                                   
+#>    Header [3] ISA > GS > ST                                                                                     
+#>    Detail [5] BPR•I > TRN > REF•14 > N1•PE > N1•PR
+#>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [12] ─────────────────────────────────────────────────────────────────
 #>    ENT 01                                                                                                              
@@ -361,9 +361,9 @@ edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 #>      Type: 820-X218                           
 #>  Segments: [21]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                                                                                           
-#>    Detail [7] BPR > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
-#>   Trailer [3] SE > GE > IEA                                                                                                                                                           
+#>    Header [3] ISA > GS > ST                                                                                                                                                             
+#>    Detail [7] BPR•I > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
+#>   Trailer [3] SE > GE > IEA                                                                                                                                                             
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
 #>    ENT 01 > NM1•QE                                                                                                              
@@ -376,9 +376,9 @@ edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 #>      Type: 820-X218                           
 #>  Segments: [26]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                   
-#>    Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
-#>   Trailer [3] SE > GE > IEA                                                                                   
+#>    Header [3] ISA > GS > ST                                                                                     
+#>    Detail [5] BPR•I > TRN > REF•14 > N1•PE > N1•PR
+#>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [15] ─────────────────────────────────────────────────────────────────
 #>    ENT 01                                        
@@ -397,9 +397,9 @@ edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 #>      Type: 820-X218                           
 #>  Segments: [22]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                                                                                           
-#>    Detail [7] BPR > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
-#>   Trailer [3] SE > GE > IEA                                                                                                                                                           
+#>    Header [3] ISA > GS > ST                                                                                                                                                             
+#>    Detail [7] BPR•I > TRN > REF•14 > N1•PE > N1•PR > N3 > N4
+#>   Trailer [3] SE > GE > IEA                                                                                                                                                             
 #> 
 #> ── Entity [9] ──────────────────────────────────────────────────────────────────
 #>    ENT 01                                        
@@ -415,14 +415,14 @@ edi_index(purrr::list_flatten(x12_EX$`820`)[1:5])
 #>      Type: 820-X218                           
 #>  Segments: [19]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                                                                   
-#>    Detail [5] BPR > TRN > REF•14 > N1•PE > N1•PR
-#>   Trailer [3] SE > GE > IEA                                                                                   
+#>    Header [3] ISA > GS > ST                                                                                     
+#>    Detail [5] BPR•C > TRN > REF•14 > N1•PE > N1•PR
+#>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
-#>    ENT 01                                                                
-#>    RMR•IK > IT1 > SLN > SLN
-#>    RMR•IK > IT1 > SLN                                     
+#>    ENT 01                                                                    
+#>    RMR•IK > IT1 > SLN•1 > SLN•2
+#>    RMR•IK > IT1 > SLN•1                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 ```
