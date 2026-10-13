@@ -38,12 +38,7 @@
 #'       - The service section groups `LX` + `SV1` (Professional) / `SV2` (Institutional) / `SV3` (Dental) detailing each procedure with its CPT / HCPCS / CDT code, modifiers, units, charge, and service date via `DTP`.
 #' ### Summary
 #'    - a single `SE`
-#'
-#' @param x `<chr>` string of raw X12-837 text
-#' @returns list
-#' @examplesIf FALSE
-#' purrr::map(hcc::x12_EX$`837`$I223, parse_837)
-#' @export
+#' @noRd
 parse_837 <- function(x) {
   if (!S7::S7_inherits(x, IndexEDI)) {
     return(NA_character_)

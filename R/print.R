@@ -106,13 +106,15 @@ fmt_entity <- function(x) {
   if (charr::str_detect(x, "^SLN")) {
     return(charr::str_sub(x, 1L, 5L))
   }
-  if (charr::str_detect(x, "^DTM|^ADX|^IT")) {
+  if (charr::str_detect(x, "^DTM|^ADX")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
 }
 
 S7::method(format, Index820) <- function(x) {
+  # X12 820 Health Insurance Exchange Related Payments (005010/X306)
+  # X12 820 Payroll Deducted and Other Group Premium Payment For Insurance Products Examples (005010/X218)
   format_head(x)
   format_segments(x)
   cat("", sep = "\n")

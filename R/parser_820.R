@@ -25,6 +25,9 @@
 #' @param x `<chr>` string of raw X12-820 text
 #' @returns list of `<hcc::X12_820_218>` S7 objects
 #' @examples
+#' x = edi_index(x12_EX$`834`)
+#' purrr::map(x, hcc:::parse_834_) |> str(list.len = 10L)
+#'
 #' x = edi_index(c(x12_EX$`820`$`218`[1:2], x12_EX$`820`$`306`[1:2]))
 #' str(edi_parse(x), list.len = 10L)
 #' @export
@@ -39,7 +42,7 @@ edi_parse <- function(x) {
 subsplit <- function(x, i, name = FALSE) {
   x <- stringfish::sf_split(
     .subset(x, i),
-    "*",
+    "\\*",
     fixed = TRUE,
     nthreads = 4L
   ) |>
@@ -56,17 +59,49 @@ subsplit <- function(x, i, name = FALSE) {
 }
 
 #' @noRd
+subsplit2 <- function(x, i, name = FALSE) {
+  x <- .subset(S7::prop(x, "Text"), i) |>
+    charr::str_split("\\*") |>
+    purrr::map(\(x) set_zchar(trimws(x)))
+
+  if (!name) {
+    return(x)
+  }
+
+  rlang::set_names(
+    purrr::map(x, .subset, -1L),
+    purrr::map(x, 1L)
+  )
+}
+
+#' @noRd
 parse_820 <- function(x) {
   list(
-    header = subsplit(S7::prop(x, "Text"), S7::prop(x, "Header"), TRUE),
-    details = subsplit(S7::prop(x, "Text"), S7::prop(x, "Details")),
+    header = subsplit2(x, S7::prop(x, "Header"), TRUE),
+    details = subsplit2(x, S7::prop(x, "Details")),
     entity = purrr::map_depth(
       S7::prop(x, "Entity"),
       1L,
       \(index) {
-        subsplit(S7::prop(x, "Text"), index)
+        subsplit2(x, index)
       }
     ),
-    trailer = subsplit(S7::prop(x, "Text"), S7::prop(x, "Trailer"), TRUE)
+    trailer = subsplit2(x, S7::prop(x, "Trailer"), TRUE)
+  )
+}
+
+#' @noRd
+parse_834_ <- function(x) {
+  list(
+    header = subsplit2(x, S7::prop(x, "Header"), TRUE),
+    details = subsplit2(x, S7::prop(x, "Details")),
+    member = purrr::map_depth(
+      S7::prop(x, "Member"),
+      1L,
+      \(index) {
+        subsplit2(x, index)
+      }
+    ),
+    trailer = subsplit2(x, S7::prop(x, "Trailer"), TRUE)
   )
 }
