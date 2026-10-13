@@ -20,10 +20,10 @@
   : Remittance Line Item
 - [`ServiceData()`](https://andrewallenbruce.github.io/hcc/reference/ServiceData.md)
   : Healthcare Claim Service Level Data
-- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
-  : Apply risk adjustment coefficients to HCCs and interactions.
 - [`apply_interactions()`](https://andrewallenbruce.github.io/hcc/reference/apply_interactions.md)
   : Calculate HCC interactions across CMS models.
+- [`coefficients()`](https://andrewallenbruce.github.io/hcc/reference/coefficients.md)
+  : Retrieve Risk Adjustment Coefficients
 - [`demographics()`](https://andrewallenbruce.github.io/hcc/reference/demographics.md)
   : Categorize a beneficiary's demographics into risk adjustment
   categories.

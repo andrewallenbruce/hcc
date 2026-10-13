@@ -200,8 +200,7 @@
 
 ## hcc 0.0.0.9034 (2026-09-02)
 
-- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
-  reworking + tests
+- `apply_coefficients()` reworking + tests
 
 ## hcc 0.0.0.9033 (2026-09-01)
 
@@ -220,7 +219,7 @@
 - added ESRD-specific
   [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   tests
-- [`apply_coefficients()`](https://andrewallenbruce.github.io/hcc/reference/apply_coefficients.md)
+- `apply_coefficients()`
 
 ## hcc 0.0.0.9030 (2026-08-30)
 
