@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9076 (2026-10-13)
+
+* 834 parser
+
+
 # hcc 0.0.0.9075 (2026-10-09)
 
 * 834 Indexer, print method
