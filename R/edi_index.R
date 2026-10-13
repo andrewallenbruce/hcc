@@ -23,7 +23,7 @@ S7::method(edi_index, S7::class_any) <- function(x) {
   return(NA)
 }
 
-S7::method(edi_index, IndexEDI) <- function(x) {
+S7::method(edi_index, Index820 | Index834) <- function(x) {
   return(x)
 }
 
@@ -61,26 +61,38 @@ S7::method(edi_index, Text834) <- function(x) {
   )
 }
 
-S7::method(edi_index, Text837) <- function(x) {
-  #   new_index(
-  #     x,
-  #     switch(
-  #       S7::prop(x, "Type"),
-  #       "837I-X223" = ind_837I(S7::prop(x, "Text")),
-  #       "837P-X222" = ind_837P(S7::prop(x, "Text"))
-  #     )
-  #   )
-}
+# S7::method(edi_index, Text837) <- function(x) {
+#   new_index(
+#     x,
+#     switch(
+#       S7::prop(x, "Type"),
+#       "837I-X223" = ind_837I(S7::prop(x, "Text")),
+#       "837P-X222" = ind_837P(S7::prop(x, "Text"))
+#     )
+#   )
+# }
 
 #' @noRd
-split_interval <- function(index, breaks) {
-  vctrs::vec_split(
-    index,
+split_interval <- function(x, start, end, breaks) {
+  ind <- cheapr::seq_(from = start, to = end)
+
+  vec <- vctrs::vec_split(
+    ind,
     findInterval(
-      index,
+      ind,
       sort.int(breaks),
       all.inside = TRUE
     )
+  )
+
+  purrr::map2(
+    vec$val,
+    purrr::map_depth(vec$val, 1L, function(y) {
+      charr::str_sub(x[y], 1L, 7L)
+    }),
+    function(s, e) {
+      rlang::set_names(s, e)
+    }
   )
 }
 
@@ -94,16 +106,10 @@ index_820 <- function(x) {
   ENT <- charr::str_which(x, "^ENT")
   RMR <- charr::str_which(x, "^RMR")
 
-  v <- split_interval(
-    cheapr::seq_(ENT[1L], SE - 1L),
-    c(ENT, RMR, SE - 1L)
-  )
-  n <- purrr::map_depth(v$val, 1L, \(y) charr::str_sub(x[y], 1L, 7L))
-
   rlang::list2(
     header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = purrr::map2(v$val, n, \(s, e) rlang::set_names(s, e)),
+    entity = split_interval(x, ENT[1L], SE - 1L, c(ENT, RMR, SE - 1L)),
     trailer = cheapr::seq_(SE, IEA)
   )
 }
@@ -120,16 +126,15 @@ index_834 <- function(x) {
   NM1 <- charr::str_which(x, "^NM1\\*")
   REF0F <- charr::str_which(x, "^REF\\*0F")
 
-  v <- split_interval(
-    cheapr::seq_(INS[1L], SE - 1L),
-    c(INS, REF0F, NM1, HD, SE - 1L)
-  )
-  n <- purrr::map_depth(v$val, 1L, \(y) charr::str_sub(x[y], 1L, 7L))
-
   rlang::list2(
     header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, INS[1L] - 1L),
-    member = purrr::map2(v$val, n, \(s, e) rlang::set_names(s, e)),
+    member = split_interval(
+      x,
+      INS[1L],
+      SE - 1L,
+      c(INS, REF0F, NM1, HD, SE - 1L)
+    ),
     trailer = cheapr::seq_(SE, IEA)
   )
 }

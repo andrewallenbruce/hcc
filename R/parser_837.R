@@ -40,10 +40,6 @@
 #'    - a single `SE`
 #' @noRd
 parse_837 <- function(x) {
-  if (!S7::S7_inherits(x, IndexEDI)) {
-    return(NA_character_)
-  }
-
   header <- list(
     ISA = split_7(x, "ISA"),
     GS = split_7(x, "GS"),
@@ -52,7 +48,7 @@ parse_837 <- function(x) {
   )
 
   middle <- parse_837_MID(x)
-  trailer <- parse_TRAILER(x)
+  # trailer <- parse_TRAILER(x)
 
   # .subset(x@text, x@index$HIABK)
 
@@ -65,7 +61,7 @@ parse_837 <- function(x) {
     purrr::list_flatten() |>
     purrr::map(set_zchar)
 
-  purrr::compact(c(header, middle, claim, trailer))
+  purrr::compact(c(header, middle, claim))
 }
 
 #' @noRd

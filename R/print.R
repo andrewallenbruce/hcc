@@ -199,12 +199,7 @@ S7::method(format, Index834) <- function(x) {
   cli::cat_rule()
 }
 
-S7::method(print, TextEDI | IndexEDI) <- function(x) {
-  format(x)
-  invisible(x)
-}
-
-S7::method(print, Index820 | Index834) <- function(x) {
+S7::method(print, TextEDI | Index820 | Index834) <- function(x) {
   format(x)
   invisible(x)
 }

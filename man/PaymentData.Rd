@@ -41,59 +41,72 @@ payment remittance from a state Medicaid agency or CMS to
 a managed care plan.
 }
 \examples{
-x = edi_index(hcc::x12_EX$`820`$`218`$sample_820_01)
-x = edi_parse(x)
+x = edi_parse(hcc::x12_EX$`820`$`218`$sample_820_01)
 PaymentData(
-  source = purrr::pluck(x, "header", "ISA", 6L),
-  report_date = purrr::pluck(x, "header", "GS", 4L),
-  total_amount = purrr::pluck(x, "details", 1L, 3L),
-  payment_date = purrr::pluck(x, "details", 1L, 17L),
-  check_number = purrr::pluck(x, "details", 2L, 3L),
+  source = purrr::pluck(x@Header, "ISA", 6L),
+  report_date = purrr::pluck(x@Header, "GS", 4L),
+  total_amount = purrr::pluck(x@Details, 1L, 3L),
+  payment_date = purrr::pluck(x@Details, 1L, 17L),
+  check_number = purrr::pluck(x@Details, 2L, 3L),
   payee = hcc:::Party(
-    name = purrr::pluck(x, "details", 4L, 3L),
+    name = purrr::pluck(x@Details, 4L, 3L),
     address = c(
-      purrr::pluck(x, "details", 5L, 2L),
-      purrr::pluck(x, "details", 6L, 2L),
-      purrr::pluck(x, "details", 6L, 3L),
-      purrr::pluck(x, "details", 6L, 4L))),
+      purrr::pluck(x@Details, 5L, 2L),
+      purrr::pluck(x@Details, 6L, 2L),
+      purrr::pluck(x@Details, 6L, 3L),
+      purrr::pluck(x@Details, 6L, 4L)
+    )
+  ),
   payer = hcc:::Party(
-    name = purrr::pluck(x, "details", 7L, 3L),
+    name = purrr::pluck(x@Details, 7L, 3L),
     address = c(
-      purrr::pluck(x, "details", 8L, 2L),
-      purrr::pluck(x, "details", 9L, 2L),
-      purrr::pluck(x, "details", 9L, 3L),
-      purrr::pluck(x, "details", 9L, 4L))),
+      purrr::pluck(x@Details, 8L, 2L),
+      purrr::pluck(x@Details, 9L, 2L),
+      purrr::pluck(x@Details, 9L, 3L),
+      purrr::pluck(x@Details, 9L, 4L)
+    )
+  ),
   payments = list(
     Payment(
-      order = purrr::pluck(x, "entity", 1L, 1L, 2L),
+      order = purrr::pluck(x@Entity, 1L, 1L, 2L),
       member = hcc:::Member(
-        id = purrr::pluck(x, "entity", 1L, 2L, 10L),
-        last = purrr::pluck(x, "entity", 1L, 2L, 4L),
-        first = purrr::pluck(x, "entity", 1L, 2L, 5L)),
+        id = purrr::pluck(x@Entity, 1L, 2L, 10L),
+        last = purrr::pluck(x@Entity, 1L, 2L, 4L),
+        first = purrr::pluck(x@Entity, 1L, 2L, 5L)
+      ),
       remits = list(
         Remittance(
-          reference = purrr::pluck(x, "entity", 2L, 1L, 3L),
-          payment = purrr::pluck(x, "entity", 2L, 1L, 5L, .default = NA_real_),
-          original = purrr::pluck(x, "entity", 2L, 1L, 6L, .default = NA_real_),
-          rate = purrr::pluck(x, "entity", 2L, 2L, 3L),
-          aid = substring(purrr::pluck(x, "entity", 2L, 3L, 3L), 1L, 2L),
-          plan = substring(purrr::pluck(x, "entity", 2L, 3L, 3L), 4L),
-          description = purrr::pluck(x, "entity", 2L, 4L, 3L),
-          coverage = purrr::pluck(x, "entity", 2L, 5L, 7L)))),
+          reference = purrr::pluck(x@Entity, 2L, 1L, 3L),
+          payment = purrr::pluck(x@Entity, 2L, 1L, 5L, .default = NA_real_),
+          original = purrr::pluck(x@Entity, 2L, 1L, 6L, .default = NA_real_),
+          rate = purrr::pluck(x@Entity, 2L, 2L, 3L),
+          aid = substring(purrr::pluck(x@Entity, 2L, 3L, 3L), 1L, 2L),
+          plan = substring(purrr::pluck(x@Entity, 2L, 3L, 3L), 4L),
+          description = purrr::pluck(x@Entity, 2L, 4L, 3L),
+          coverage = purrr::pluck(x@Entity, 2L, 5L, 7L)
+        )
+      )
+    ),
     Payment(
-      order = purrr::pluck(x, "entity", 7L, 1L, 2L),
+      order = purrr::pluck(x@Entity, 7L, 1L, 2L),
       member = hcc:::Member(
-        id = purrr::pluck(x, "entity", 7L, 2L, 10L),
-        last = purrr::pluck(x, "entity", 7L, 2L, 4L),
-        first = purrr::pluck(x, "entity", 7L, 2L, 5L)),
+        id = purrr::pluck(x@Entity, 7L, 2L, 10L),
+        last = purrr::pluck(x@Entity, 7L, 2L, 4L),
+        first = purrr::pluck(x@Entity, 7L, 2L, 5L)
+      ),
       remits = list(
         Remittance(
-          reference = purrr::pluck(x, "entity", 8L, 1L, 3L),
-          payment = purrr::pluck(x, "entity", 8L, 1L, 5L, .default = NA_real_),
-          original = purrr::pluck(x, "entity", 8L, 1L, 6L, .default = NA_real_),
-          rate = purrr::pluck(x, "entity", 8L, 2L, 3L),
-          aid = substring(purrr::pluck(x, "entity", 8L, 3L, 3L), 1L, 2L),
-          plan = substring(purrr::pluck(x, "entity", 8L, 3L, 3L), 4L),
-          description = purrr::pluck(x, "entity", 8L, 4L, 3L),
-          coverage = purrr::pluck(x, "entity", 8L, 5L, 7L))))))
+          reference = purrr::pluck(x@Entity, 8L, 1L, 3L),
+          payment = purrr::pluck(x@Entity, 8L, 1L, 5L, .default = NA_real_),
+          original = purrr::pluck(x@Entity, 8L, 1L, 6L, .default = NA_real_),
+          rate = purrr::pluck(x@Entity, 8L, 2L, 3L),
+          aid = substring(purrr::pluck(x@Entity, 8L, 3L, 3L), 1L, 2L),
+          plan = substring(purrr::pluck(x@Entity, 8L, 3L, 3L), 4L),
+          description = purrr::pluck(x@Entity, 8L, 4L, 3L),
+          coverage = purrr::pluck(x@Entity, 8L, 5L, 7L)
+        )
+      )
+    )
+  )
+)
 }

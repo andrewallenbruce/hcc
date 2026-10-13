@@ -4,8 +4,8 @@ diag_common <- function(hcc) {
     CANCER = any_hcc(8:12, hcc),
     DIABETES = any_hcc(17:19, hcc),
     CARD_RESP_FAIL = any_hcc(82:84, hcc),
-    CHF = as.integer(85L %in_% hcc),
-    SEPSIS = as.integer(2L %in_% hcc)
+    CHF = any_hcc(85L, hcc),
+    SEPSIS = any_hcc(2L, hcc)
   )
 }
 
@@ -59,8 +59,8 @@ diag_D21 <- function(hcc) {
     diag_common(hcc),
     COPD = any_hcc(110:111, hcc),
     RENAL = any_hcc(134:141, hcc),
-    COMPL = as.integer(176L %in_% hcc),
-    IMMUNE = as.integer(47L %in_% hcc),
+    COMPL = any_hcc(176L, hcc),
+    IMMUNE = any_hcc(47L, hcc),
     PRESSURE_ULCER = any_hcc(157:160, hcc)
   )
 }

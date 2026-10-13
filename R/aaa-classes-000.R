@@ -99,15 +99,6 @@ Text834 := S7::new_class(TextEDI)
 Text837 := S7::new_class(TextEDI)
 
 #' @noRd
-IndexEDI := S7::new_class(
-  parent = TextEDI,
-  properties = list(
-    Problems = prop_integer,
-    Index = S7::class_list
-  )
-)
-
-#' @noRd
 Index820 := S7::new_class(
   parent = Text820,
   properties = list(
@@ -128,6 +119,26 @@ Index834 := S7::new_class(
     Details = prop_integer,
     Member = S7::class_list,
     Trailer = prop_integer
+  )
+)
+
+#' @noRd
+Parsed820 := S7::new_class(
+  properties = list(
+    Header = S7::class_list,
+    Details = S7::class_list,
+    Entity = S7::class_list,
+    Trailer = S7::class_list
+  )
+)
+
+#' @noRd
+Parsed834 := S7::new_class(
+  properties = list(
+    Header = S7::class_list,
+    Details = S7::class_list,
+    Member = S7::class_list,
+    Trailer = S7::class_list
   )
 )
 
