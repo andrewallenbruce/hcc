@@ -42,16 +42,16 @@ format_head <- function(x) {
 
 #' @noRd
 fmt_segment <- function(x) {
-  if (charr::str_detect(x, "^DTP")) {
+  if (charr::str_detect(x, "^DTP|^REF\\*[A-Z0-9]{3}")) {
     return(charr::str_sub(x, 1L, 7L))
   }
-  if (charr::str_detect(x, "^N1")) {
-    return(charr::str_sub(x, 1L, 5L))
-  }
-  if (charr::str_detect(x, "^REF")) {
+  if (charr::str_detect(x, "^BGN|^REF\\*[A-Z0-9]{2}")) {
     return(charr::str_sub(x, 1L, 6L))
   }
-  if (charr::str_detect(x, "^ISA|^BPR|^BGN|^TRN|^IEA|^QTY")) {
+  if (charr::str_detect(x, "^N1|^BPR")) {
+    return(charr::str_sub(x, 1L, 5L))
+  }
+  if (charr::str_detect(x, "^ISA|^TRN|^IEA|^QTY")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
@@ -103,7 +103,10 @@ fmt_entity <- function(x) {
   if (charr::str_detect(x, "^RMR|^REF|^NM1")) {
     return(charr::str_sub(x, 1L, 6L))
   }
-  if (charr::str_detect(x, "^DTM|^ADX|^IT|^SLN")) {
+  if (charr::str_detect(x, "^SLN")) {
+    return(charr::str_sub(x, 1L, 5L))
+  }
+  if (charr::str_detect(x, "^DTM|^ADX|^IT")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
@@ -133,73 +136,64 @@ S7::method(format, Index820) <- function(x) {
   cli::cat_rule()
 }
 
+#' @noRd
+fmt_member <- function(x) {
+  if (charr::str_detect(x, "^INS")) {
+    return(
+      cheapr::paste_(
+        cli::col_yellow("INS"),
+        itred(charr::str_pad(
+          charr::str_remove(charr::str_sub(x, 5L, 6L), "\\*"),
+          width = 2L
+        )),
+        sep = " "
+      )
+    )
+  }
+  if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTP")) {
+    return(charr::str_sub(x, 1L, 7L))
+  }
+  if (charr::str_detect(x, "^HD\\*|^REF\\*[A-Z0-9]{2}|^NM1")) {
+    return(charr::str_sub(x, 1L, 6L))
+  }
+  if (
+    charr::str_detect(
+      x,
+      "^DSB|^DMG|^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI"
+    )
+  ) {
+    return(charr::str_sub(x, 1L, 3L))
+  }
+  charr::str_sub(x, 1L, 2L)
+}
+
 S7::method(format, Index834) <- function(x) {
+  # X12 834 Benefit Enrollment and Maintenance (005010/X220A1)
   format_head(x)
   format_segments(x)
   cat("", sep = "\n")
-  mem <- purrr::map(
-    S7::prop(x, "Member"),
-    \(y) {
-      purrr::map_chr(
-        names(y),
-        \(x) {
-          if (charr::str_detect(x, "^INS")) {
-            return(
-              cheapr::paste_(
-                cli::col_yellow("INS"),
-                itred(
-                  charr::str_pad(
-                    charr::str_remove(
-                      charr::str_sub(x, 5L, 6L),
-                      "\\*"
-                    ),
-                    width = 2L
-                  )
-                ),
-                sep = " "
-              )
-            )
-          }
-          if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTP")) {
-            return(charr::str_sub(x, 1L, 7L))
-          }
-          if (charr::str_detect(x, "^HD\\*|^REF\\*[A-Z0-9]{2}|^NM1")) {
-            return(charr::str_sub(x, 1L, 6L))
-          }
-          if (
-            charr::str_detect(
-              x,
-              "^DSB|^DMG|^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI"
-            )
-          ) {
-            return(charr::str_sub(x, 1L, 3L))
-          }
-          charr::str_sub(x, 1L, 2L)
-        }
-      ) |>
+
+  x <- S7::prop(x, "Member") |>
+    purrr::map(\(y) {
+      purrr::map_chr(names(y), fmt_member) |>
         charr::str_replace("\\*", dot)
-    }
-  ) |>
-    purrr::list_flatten()
+    })
 
   cli::cli_rule(
     cheapr::paste_(
       bcyan("Member"),
-      bracket(bcyan(cheapr::unlisted_length(mem))),
+      bracket(bcyan(cheapr::unlisted_length(x))),
       sep = " "
     )
   )
-  cli::cat_line(
-    cheapr::paste_(
-      fright(strrep(" ", 2L)),
-      fleft(cli::ansi_strwrap(
-        purrr::map_chr(mem, arrow),
-        exdent = 9L,
-        width = cli::console_width() - 10L
-      )),
-      sep = " "
-    )
-  )
+
+  x <- fleft(cli::ansi_strwrap(
+    purrr::map_chr(x, arrow),
+    exdent = 9L,
+    width = cli::console_width() - 10L
+  ))
+
+  cli::cat_line(cheapr::paste_(fright(strrep(" ", 2L)), x, sep = " "))
   cli::cat_rule()
 }
 

@@ -1,21 +1,3 @@
-#' @noRd
-Party := S7::new_class(
-  properties = list(
-    name = S7::class_character,
-    address = S7::class_character
-  )
-)
-
-#' @noRd
-Member := S7::new_class(
-  properties = list(
-    id = S7::class_character,
-    last = S7::class_character,
-    first = S7::class_character,
-    middle = S7::class_character
-  )
-)
-
 #' Remittance Line Item
 #'
 #' A single remittance line item within a member's payment record.

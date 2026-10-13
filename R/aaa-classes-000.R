@@ -132,12 +132,19 @@ Index834 := S7::new_class(
 )
 
 #' @noRd
-SegmentEDI := S7::new_class(
+Party := S7::new_class(
   properties = list(
-    Position = prop_integer,
-    Element = S7::class_character,
-    Meaning = S7::class_character,
-    Name = S7::class_character,
-    Description = S7::class_character
+    name = S7::class_character,
+    address = S7::class_character
+  )
+)
+
+#' @noRd
+Member := S7::new_class(
+  properties = list(
+    id = S7::class_character,
+    last = S7::class_character,
+    first = S7::class_character,
+    middle = S7::class_character
   )
 )
