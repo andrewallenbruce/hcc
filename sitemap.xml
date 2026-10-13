@@ -6,7 +6,6 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/authors.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/news/index.html</loc></url>
-<url><loc>https://andrewallenbruce.github.io/hcc/reference/EditRule.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/HCCDetail.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/HCPCoveragePeriod.html</loc></url>
@@ -25,6 +24,7 @@
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/edi_index.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/edi_parse.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/edi_text.html</loc></url>
+<url><loc>https://andrewallenbruce.github.io/hcc/reference/edit_rules.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/eob_json.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/eob_ndjson.html</loc></url>
 <url><loc>https://andrewallenbruce.github.io/hcc/reference/hcc-package.html</loc></url>

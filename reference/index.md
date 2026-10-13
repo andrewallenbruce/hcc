@@ -2,10 +2,6 @@
 
 ## All functions
 
-- [`EditRule()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
-  [`AgeEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
-  [`SexEdit()`](https://andrewallenbruce.github.io/hcc/reference/EditRule.md)
-  : Single Edit Rule
 - [`EnrollmentData()`](https://andrewallenbruce.github.io/hcc/reference/EnrollmentData.md)
   : X12-834 Transaction Enrollment Data
 - [`HCCDetail()`](https://andrewallenbruce.github.io/hcc/reference/HCCDetail.md)
@@ -39,6 +35,8 @@
   : Create an EDI Parse Object
 - [`edi_text()`](https://andrewallenbruce.github.io/hcc/reference/edi_text.md)
   : Create an EDI Text Object
+- [`edit_rules()`](https://andrewallenbruce.github.io/hcc/reference/edit_rules.md)
+  : Apply CMS Edit Rules
 - [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
   : Apply hierarchical rules to a set of CCs based on model version.
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
