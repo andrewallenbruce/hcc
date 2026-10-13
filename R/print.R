@@ -93,26 +93,25 @@ format_segments <- function(x) {
 fmt_entity <- function(x) {
   if (charr::str_detect(x, "^ENT")) {
     x <- charr::str_pad(
-      charr::str_remove(
-        charr::str_sub(x, 5L, 6L),
-        "\\*"
-      ),
-      width = 2L,
+      charr::str_sub(x, 4L, 7L),
+      width = 3L,
       pad = "0"
     )
     return(cheapr::paste_(
-      cli::col_yellow("ENT"),
-      itred(x),
-      sep = " "
+      cli::col_black("ENT"),
+      orange(x)
     ))
   }
-  if (charr::str_detect(x, "^RMR|^REF|^NM1")) {
+  if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTM")) {
+    return(charr::str_sub(x, 1L, 7L))
+  }
+  if (charr::str_detect(x, "^RMR|^REF\\*[A-Z0-9]{2}|^NM1")) {
     return(charr::str_sub(x, 1L, 6L))
   }
   if (charr::str_detect(x, "^SLN")) {
     return(charr::str_sub(x, 1L, 5L))
   }
-  if (charr::str_detect(x, "^DTM|^ADX")) {
+  if (charr::str_detect(x, "^ADX")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)

@@ -88,7 +88,13 @@ split_interval <- function(x, start, end, breaks) {
   purrr::map2(
     vec$val,
     purrr::map_depth(vec$val, 1L, function(y) {
-      charr::str_sub(x[y], 1L, 7L)
+      cheapr::if_else_(
+        charr::str_starts(x[y], "ENT"),
+        charr::str_sub(x[y], 1L, 6L) |>
+          charr::str_remove_all("\\*"),
+        charr::str_sub(x[y], 1L, 7L) |>
+          charr::str_remove_all("\\*$")
+      )
     }),
     function(s, e) {
       rlang::set_names(s, e)
