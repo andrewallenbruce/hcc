@@ -1,5 +1,18 @@
-#' @noRd
-get_coefficient <- function(coefficient, model, year) {
+#' Retrieve Risk Adjustment Coefficients
+#'
+#' @param coefficient prefixed HCC
+#' @param model Risk adjustment model to use; default is "CMS-HCC Model V28"
+#' @param year Model year; default is 2026
+#' @returns Dictionary mapping HCC codes and interaction variables to their
+#'   coefficient values for variables that are present
+#' @examples
+#' coefficients(c("CPD_HCC111", "INS_HCC49"), "C28", 2026L)
+#' @export
+coefficients <- function(
+  coefficient = NULL,
+  model = NULL,
+  year = NULL
+) {
   rlang::check_number_whole(
     year,
     min = 2025,
@@ -13,24 +26,21 @@ get_coefficient <- function(coefficient, model, year) {
   } else {
     collapse::ss(
       hcc::ra_coefficients,
-      collapse::whichv(
-        hcc::ra_coefficients[["year"]],
-        year
-      )
+      hcc::ra_coefficients[["year"]] %iin% year
     )
   }
 
   # model
   if (!is.null(model)) {
     model <- convert_model(model)
-    x <- collapse::ss(x, collapse::whichv(x[["model_name"]], model))
+    x <- collapse::ss(x, x[["model_name"]] %iin% model)
   }
 
   # coefficient
   if (is.null(coefficient)) {
     return(x)
   }
-  collapse::ss(x, collapse::whichv(x[["coefficient"]], coefficient))
+  collapse::ss(x, x[["coefficient"]] %iin% coefficient)
 }
 
 #' Apply risk adjustment coefficients to HCCs and interactions.
@@ -67,7 +77,7 @@ get_coefficient <- function(coefficient, model, year) {
 #'     low = FALSE
 #'   )
 #' )
-#' @export
+#' @noRd
 apply_coefficients <- function(
   demographics,
   interactions,
