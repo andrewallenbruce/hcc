@@ -45,9 +45,5 @@
   : Map ICD-10 Codes to CC
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
   : Create Interactions
-- [`parse_834()`](https://andrewallenbruce.github.io/hcc/reference/parse_834.md)
-  : X12-834 (X220A1) Benefit Enrollment Parser
-- [`parse_837()`](https://andrewallenbruce.github.io/hcc/reference/parse_837.md)
-  : X12-837I (X223A3) & X12-837P (X222A2) Health Care Claim Parser
 - [`prefix()`](https://andrewallenbruce.github.io/hcc/reference/prefix.md)
   : Demographics-Based Coefficient Prefix

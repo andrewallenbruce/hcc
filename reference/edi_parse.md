@@ -59,6 +59,306 @@ Typical loop structure within an `820-X218`:
 ## Examples
 
 ``` r
+x = edi_index(x12_EX$`834`)
+purrr::map(x, hcc:::parse_834_) |> str(list.len = 10L)
+#> List of 15
+#>  $ 834_EX2_add_dependent                   :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 4
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "ABCD012354"
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 5
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "INS" "N" "19" "021" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "351" "D8" "19980515"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19770816" "M"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:4] "NM1" "M8" "2" "PENN STATE UNIVERSITY"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "HLT"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "15" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX3_enroll_employee_mco             :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 3
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 5
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "021" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "202443307"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "356" "D8" "19960112"
+#>   .. ..$ :List of 5
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...
+#>   .. .. ..$ : chr [1:7] "PER" "IP" NA "HP" ...
+#>   .. .. ..$ : chr [1:2] "N3" "1715 SOUTHWIND AVENUE"
+#>   .. .. ..$ : chr [1:4] "N4" "ANYTOWN" "PA" "171110000"
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19700614" "M"
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "HMO"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
+#>   .. .. ..$ : chr [1:2] "LX" "01"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:11] "NM1" "P3" "1" "BROWN" ...
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "18" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX4_add_subscriber_coverage         :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 4
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "20020601" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "ABCD012354"
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 4
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "001" ...
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "202443307"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "DEN"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20020701"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "12" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX5_change_subscriber_info          :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 3
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:5] "N1" "P5" "GENERIC INC" "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" "ABC INSURANCE" "FI" ...
+#>   ..$ member :List of 4
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "001" ...
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19500415" "M"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:6] "NM1" "70" "1" "DOE" ...
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19500416" "M"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "12" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX6_cancel_dependent                :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 4
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "ABCD012354"
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 3
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:6] "INS" "N" "19" "024" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "357" "D8" "19960801"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19770816" "M"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "12" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX7_terminate_subscriber_eligibility:List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 3
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 3
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "024" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "357" "D8" "19961001"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "10" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX8_reinstate_employee              :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 4
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "ABCD012354"
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 3
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "025" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "303" "D8" "19961001"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "11" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ 834_EX9_reinstate_employee_coverage     :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 4
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "20020601" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "ABCD012354"
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 4
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "025" ...
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "202443307"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:4] "HD" "025" NA "DEN"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20020701"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "12" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000000103"
+#>   .. ..$ IEA: chr [1:2] "1" "000000103"
+#>  $ benefit_enrollment_834_220              :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "386028429" "382328142" "20050221" ...
+#>   .. ..$ ST : chr [1:3] "834" "12345" "005010X220A1"
+#>   ..$ details:List of 3
+#>   .. ..$ : chr [1:9] "BGN" "00" "12456" "19980520" ...
+#>   .. ..$ : chr [1:5] "N1" "P5" NA "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" NA "FI" ...
+#>   ..$ member :List of 6
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:9] "INS" "Y" "18" "021" ...
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "123456789"
+#>   .. .. ..$ : chr [1:3] "REF" "1L" "123456001"
+#>   .. .. ..$ : chr [1:4] "DTP" "356" "D8" "19960523"
+#>   .. ..$ :List of 5
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
+#>   .. .. ..$ : chr [1:7] "PER" "IP" NA "HP" ...
+#>   .. .. ..$ : chr [1:3] "N3" "100 MARKET ST" "APT 3G"
+#>   .. .. ..$ : chr [1:7] "N4" "CAMP HILL" "PA" "17011" ...
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19400816" "M"
+#>   .. ..$ :List of 3
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "HLT"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
+#>   .. .. ..$ : chr [1:4] "COB" "P" "890111" "5"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "DEN"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:4] "HD" "021" NA "VIS"
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "21" "12345"
+#>   .. ..$ GE : chr [1:2] "1" "000012345"
+#>   .. ..$ IEA: chr [1:2] "1" "000012345"
+#>  $ sample_834_01                           :List of 4
+#>   ..$ header :List of 3
+#>   .. ..$ ISA: chr [1:16] "00" NA "00" NA ...
+#>   .. ..$ GS : chr [1:8] "BE" "DHCS" "HEALTHPLAN" "20250108" ...
+#>   .. ..$ ST : chr [1:3] "834" "0001" "005010X220A1"
+#>   ..$ details:List of 5
+#>   .. ..$ : chr [1:9] "BGN" "00" "12345" "20250108" ...
+#>   .. ..$ : chr [1:3] "REF" "38" "MEDI-CAL"
+#>   .. ..$ : chr [1:4] "DTP" "007" "D8" "20250108"
+#>   .. ..$ : chr [1:5] "N1" "P5" "CALIFORNIA DHCS" "FI" ...
+#>   .. ..$ : chr [1:5] "N1" "IN" "HEALTH PLAN NAME" "FI" ...
+#>   ..$ member :List of 23
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "INS" "Y" "18" "021" ...
+#>   .. ..$ :List of 4
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "MBR001"
+#>   .. .. ..$ : chr [1:3] "REF" "6P" "TESTMBI000000001"
+#>   .. .. ..$ : chr [1:3] "REF" "1D" "TESTMCD000000001"
+#>   .. .. ..$ : chr [1:3] "REF" "ABB" "QMBPLUS"
+#>   .. ..$ :List of 5
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "TESTLAST01" ...
+#>   .. .. ..$ : chr [1:5] "PER" "IP" NA "HP" ...
+#>   .. .. ..$ : chr [1:2] "N3" "123 TEST STREET"
+#>   .. .. ..$ : chr [1:4] "N4" "TESTCITY" "CA" "00000"
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19000101" "F"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:5] "HD" "021" NA "HLT" ...
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20240101"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:5] "HD" "021" NA "HLT" ...
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20240101"
+#>   .. ..$ :List of 1
+#>   .. .. ..$ : chr [1:10] "INS" "Y" "18" "001" ...
+#>   .. ..$ :List of 4
+#>   .. .. ..$ : chr [1:3] "REF" "0F" "MBR002"
+#>   .. .. ..$ : chr [1:3] "REF" "6P" "TESTMBI000000002"
+#>   .. .. ..$ : chr [1:3] "REF" "1D" "TESTMCD000000002"
+#>   .. .. ..$ : chr [1:3] "REF" "AB" "4M"
+#>   .. ..$ :List of 4
+#>   .. .. ..$ : chr [1:10] "NM1" "IL" "1" "TESTLAST02" ...
+#>   .. .. ..$ : chr [1:2] "N3" "123 TEST STREET"
+#>   .. .. ..$ : chr [1:4] "N4" "TESTCITY" "CA" "00000"
+#>   .. .. ..$ : chr [1:4] "DMG" "D8" "19000101" "M"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:5] "HD" "001" NA "HLT" ...
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20230515"
+#>   .. ..$ :List of 2
+#>   .. .. ..$ : chr [1:5] "HD" "001" NA "HLT" ...
+#>   .. .. ..$ : chr [1:4] "DTP" "348" "D8" "20240101"
+#>   .. .. [list output truncated]
+#>   ..$ trailer:List of 3
+#>   .. ..$ SE : chr [1:2] "68" "0001"
+#>   .. ..$ GE : chr [1:2] "1" "1"
+#>   .. ..$ IEA: chr [1:2] "1" "000000001"
+#>   [list output truncated]
+
 x = edi_index(c(x12_EX$`820`$`218`[1:2], x12_EX$`820`$`306`[1:2]))
 str(edi_parse(x), list.len = 10L)
 #> List of 4
