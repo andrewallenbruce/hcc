@@ -27,6 +27,5 @@ Methods for \code{edi_index}:
 }
 }
 \examples{
-edi_text(x12_EX$`820`$`218`)
-edi_text(x12_EX$`820`$`306`)
+edi_text(x12_EX)
 }

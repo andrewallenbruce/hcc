@@ -16,7 +16,10 @@ S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
   names_ <- bcyan((c("Type", "Segments")))
-  numbs_ <- c(S7::prop(x, "Type"), bracket(bcyan(length(S7::prop(x, "Text")))))
+  numbs_ <- c(
+    toString(S7::prop(x, "Type")),
+    bracket(bcyan(length(S7::prop(x, "Text"))))
+  )
 
   cli::cat_line(colon(fright(names_), fleft(numbs_)))
   cli::cat_rule()
@@ -26,7 +29,10 @@ S7::method(format, TextEDI) <- function(x) {
 format_head <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
   nm_ <- bcyan((c("Type", "Segments")))
-  ns_ <- c(S7::prop(x, "Type"), bracket(bcyan(length(S7::prop(x, "Text")))))
+  ns_ <- c(
+    toString(S7::prop(x, "Type")),
+    bracket(bcyan(length(S7::prop(x, "Text"))))
+  )
 
   if (!cheapr::is_na(S7::prop(x, "Problems"))) {
     nm_ <- c(nm_, itred("Problems"))

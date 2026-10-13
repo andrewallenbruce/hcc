@@ -9,8 +9,7 @@
 #' @param ... dots
 #' @returns an `<hcc::TextEDI>` S7 object
 #' @examples
-#' edi_text(x12_EX$`820`$`218`)
-#' edi_text(x12_EX$`820`$`306`)
+#' edi_text(x12_EX)
 #' @export
 edi_text := S7::new_generic("x")
 
@@ -23,7 +22,7 @@ S7::method(edi_text, TextEDI) <- function(x) {
 }
 
 S7::method(edi_text, S7::class_list) <- function(x) {
-  purrr::map(x, \(i) edi_text_(cheapr::paste_(i, collapse = "")))
+  purrr::map(x, edi_text)
 }
 
 S7::method(edi_text, S7::class_character) <- function(x) {
@@ -35,27 +34,35 @@ S7::method(edi_text, S7::class_character) <- function(x) {
 
 #' @noRd
 edi_text_ <- function(x) {
-  text <- trimws(x) |>
-    strsplit("~", fixed = TRUE) |>
-    .subset2(1L)
+  text <- charr::str_squish(x) |>
+    charr::str_split_1("~") |>
+    set_zchar() |>
+    collapse::na_rm() |>
+    charr::str_replace_all(";", "*")
 
-  x <- .subset(text, perl(text, "^ST")) |>
-    strsplit("*", fixed = TRUE) |>
-    .subset2(1L) |>
-    .subset(-1L)
+  ST03 <- charr::str_unique(
+    charr::str_sub(
+      charr::str_split_i(
+        charr::str_subset(text, "^ST"),
+        "[*]",
+        4L
+      ),
+      end = 10L
+    )
+  )
 
   type <- cheapr::val_match(
-    substr(.subset(x, length(x)), 1L, 10L),
-    "005010X218" ~ "820-X218",
-    "005010X306" ~ "820-X306",
-    "005010X220" ~ "834-X220",
-    "005010X222" ~ "837P-X222",
-    "005010X223" ~ "837I-X223",
+    ST03,
+    "005010X218" ~ "X12 820 (X218)",
+    "005010X306" ~ "X12 820 (X306)",
+    "005010X220" ~ "X12 834 (X220A1)",
+    "005010X222" ~ "X12 837 (X222A1)",
+    "005010X223" ~ "X12 837 (X223A2)",
     .default = NA_character_
   )
 
   switch(
-    substr(type, 1L, 3L),
+    charr::str_unique(charr::str_sub(type, 5L, 7L)),
     "820" = Text820(type, text),
     "834" = Text834(type, text),
     "837" = Text837(type, text)

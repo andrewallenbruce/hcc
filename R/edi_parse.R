@@ -7,10 +7,10 @@
 #'
 #' @param x raw X12 text input
 #' @param ... dots
-#' @returns an `<hcc::IndexEDI>` S7 object
+#' @returns an `<hcc::ParsedEDI>` S7 object
 #' @examples
 #' edi_parse(x12_EX$`834`)
-#' edi_parse(purrr::list_flatten(x12_EX$`820`)[1:6])
+#' edi_parse(x12_EX$`820`$`218`[1:6])
 #' @export
 #' @name edi_parse
 edi_parse := S7::new_generic("x")

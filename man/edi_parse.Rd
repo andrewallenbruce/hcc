@@ -12,7 +12,7 @@ edi_parse(x, ...)
 \item{...}{dots}
 }
 \value{
-an \verb{<hcc::IndexEDI>} S7 object
+an \verb{<hcc::ParsedEDI>} S7 object
 }
 \description{
 Create an EDI Parse Object
@@ -31,5 +31,5 @@ Methods for \code{edi_index}:
 }
 \examples{
 edi_parse(x12_EX$`834`)
-edi_parse(purrr::list_flatten(x12_EX$`820`)[1:6])
+edi_parse(x12_EX$`820`$`218`[1:6])
 }
