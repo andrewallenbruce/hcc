@@ -9,9 +9,11 @@
 #' @param ... dots
 #' @returns an `<hcc::ParsedEDI>` S7 object
 #' @examples
-#' edi_parse(x12_EX$`837`[[1]][1:5])
-#' edi_parse(x12_EX$`834`)
-#' edi_parse(x12_EX$`820`$`218`[1:6])
+#' edi_parse(x12_EX$`837`[[1]][[1]])
+#' edi_parse(x12_EX$`837`[[2]][[1]])
+#' edi_parse(x12_EX$`834`[[1]])
+#' edi_parse(x12_EX$`820`[[1]][[1]])
+#' edi_parse(x12_EX$`820`[[2]][[1]])
 #' @export
 #' @name edi_parse
 edi_parse := S7::new_generic("x")
@@ -39,30 +41,54 @@ S7::method(edi_parse, S7::class_character) <- function(x) {
 S7::method(edi_parse, Index820) <- function(x) {
   i <- parse_820(x)
   Parsed820(
-    Header = i[["header"]],
+    Header = HeaderEDI(
+      ISA = i[["header"]][["ISA"]],
+      GS = i[["header"]][["GS"]],
+      ST = i[["header"]][["ST"]]
+    ),
     Details = i[["details"]],
     Entity = i[["entity"]],
-    Trailer = i[["trailer"]]
+    Trailer = TrailerEDI(
+      SE = i[["trailer"]][["SE"]],
+      GE = i[["trailer"]][["GE"]],
+      IEA = i[["trailer"]][["IEA"]]
+    )
   )
 }
 
 S7::method(edi_parse, Index834) <- function(x) {
   i <- parse_834(x)
   Parsed834(
-    Header = i[["header"]],
+    Header = HeaderEDI(
+      ISA = i[["header"]][["ISA"]],
+      GS = i[["header"]][["GS"]],
+      ST = i[["header"]][["ST"]]
+    ),
     Details = i[["details"]],
     Member = i[["member"]],
-    Trailer = i[["trailer"]]
+    Trailer = TrailerEDI(
+      SE = i[["trailer"]][["SE"]],
+      GE = i[["trailer"]][["GE"]],
+      IEA = i[["trailer"]][["IEA"]]
+    )
   )
 }
 
 S7::method(edi_parse, Index837) <- function(x) {
   i <- parse_837(x)
   Parsed837(
-    Header = i[["header"]],
+    Header = HeaderEDI(
+      ISA = i[["header"]][["ISA"]],
+      GS = i[["header"]][["GS"]],
+      ST = i[["header"]][["ST"]]
+    ),
     Details = i[["details"]],
     Claims = i[["claims"]],
-    Trailer = i[["trailer"]]
+    Trailer = TrailerEDI(
+      SE = i[["trailer"]][["SE"]],
+      GE = i[["trailer"]][["GE"]],
+      IEA = i[["trailer"]][["IEA"]]
+    )
   )
 }
 

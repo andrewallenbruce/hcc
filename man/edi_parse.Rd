@@ -32,7 +32,9 @@ Methods for \code{edi_index}:
 }
 }
 \examples{
-edi_parse(x12_EX$`837`[[1]][1:5])
-edi_parse(x12_EX$`834`)
-edi_parse(x12_EX$`820`$`218`[1:6])
+edi_parse(x12_EX$`837`[[1]][[1]])
+edi_parse(x12_EX$`837`[[2]][[1]])
+edi_parse(x12_EX$`834`[[1]])
+edi_parse(x12_EX$`820`[[1]][[1]])
+edi_parse(x12_EX$`820`[[2]][[1]])
 }

@@ -1,4 +1,5 @@
 utils::globalVariables(c("value"))
+
 #' @noRd
 prop_scalar <- function(class, default = NULL) {
   S7::new_property(
@@ -221,32 +222,80 @@ Index837 := S7::new_class(
 )
 
 #' @noRd
+HeaderEDI := S7::new_class(
+  properties = list(
+    ISA = S7::class_character,
+    GS = S7::class_character,
+    ST = S7::class_character
+  ),
+  validator = function(self) {
+    if (length(self@ISA) != 16L) {
+      cli::cli_abort(
+        "Length of {.arg @ISA} must be {.val {16}} not {.val {length(self@ISA)}}."
+      )
+    } else if (length(self@GS) != 8L) {
+      cli::cli_abort(
+        "Length of {.arg @GS} must be {.val {8}} not {.val {length(self@GS)}}."
+      )
+    } else if (length(self@ST) != 3L) {
+      cli::cli_abort(
+        "Length of {.arg @ST} must be {.val {3}} not {.val {length(self@ST)}}."
+      )
+    }
+  }
+)
+
+#' @noRd
+TrailerEDI := S7::new_class(
+  properties = list(
+    SE = S7::class_character,
+    GE = S7::class_character,
+    IEA = S7::class_character
+  ),
+  validator = function(self) {
+    if (length(self@SE) != 2L) {
+      cli::cli_abort(
+        "Length of {.arg @SE} must be {.val {2}} not {.val {length(self@SE)}}."
+      )
+    } else if (length(self@GE) != 2L) {
+      cli::cli_abort(
+        "Length of {.arg @GE} must be {.val {2}} not {.val {length(self@GE)}}."
+      )
+    } else if (length(self@IEA) != 2L) {
+      cli::cli_abort(
+        "Length of {.arg @IEA} must be {.val {2}} not {.val {length(self@IEA)}}."
+      )
+    }
+  }
+)
+
+#' @noRd
 Parsed820 := S7::new_class(
   properties = list(
-    Header = S7::class_list,
+    Header = HeaderEDI,
     Details = S7::class_list,
     Entity = S7::class_list,
-    Trailer = S7::class_list
+    Trailer = TrailerEDI
   )
 )
 
 #' @noRd
 Parsed834 := S7::new_class(
   properties = list(
-    Header = S7::class_list,
+    Header = HeaderEDI,
     Details = S7::class_list,
     Member = S7::class_list,
-    Trailer = S7::class_list
+    Trailer = TrailerEDI
   )
 )
 
 #' @noRd
 Parsed837 := S7::new_class(
   properties = list(
-    Header = S7::class_list,
+    Header = HeaderEDI,
     Details = S7::class_list,
     Claims = S7::class_list,
-    Trailer = S7::class_list
+    Trailer = TrailerEDI
   )
 )
 
