@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9080 (2026-10-14)
+
+- `HeaderEDI` & `TrailerEDI` classes
+
 ## hcc 0.0.0.9079 (2026-10-14)
 
 - 837 indexer/parser
