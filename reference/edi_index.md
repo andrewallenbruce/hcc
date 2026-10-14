@@ -57,7 +57,7 @@ edi_index(x12_EX$`834`)
 #> ── Member [9] ──────────────────────────────────────────────────────────────────
 #>    INS  N                                  
 #>    REF•0F > REF•1L > DTP•351
-#>    NM1•IL > DMG                                            
+#>    NM1•IL > DMG•D8                                         
 #>    NM1•M8                                                                                 
 #>    HD•021 > DTP•348                                        
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -73,11 +73,11 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [13] ─────────────────────────────────────────────────────────────────
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•1L > DTP•356                                                                 
-#>    NM1•IL > PER > N3 > N4 > DMG
-#>    HD•021 > DTP•348 > LX                                                                     
-#>    NM1•P3                                                                                                                                                  
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•1L > DTP•356                                                                    
+#>    NM1•IL > PER > N3 > N4 > DMG•D8
+#>    HD•021 > DTP•348 > LX                                                                        
+#>    NM1•P3                                                                                                                                                     
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX4_add_subscriber_coverage`
@@ -110,8 +110,8 @@ edi_index(x12_EX$`834`)
 #> ── Member [7] ──────────────────────────────────────────────────────────────────
 #>    INS  Y
 #>    REF•0F > REF•1L       
-#>    NM1•IL > DMG          
-#>    NM1•70 > DMG          
+#>    NM1•IL > DMG•D8       
+#>    NM1•70 > DMG•D8       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX6_cancel_dependent`
@@ -127,7 +127,7 @@ edi_index(x12_EX$`834`)
 #> ── Member [6] ──────────────────────────────────────────────────────────────────
 #>    INS  N                                  
 #>    REF•0F > REF•1L > DTP•357
-#>    NM1•IL > DMG                                            
+#>    NM1•IL > DMG•D8                                         
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`834_EX7_terminate_subscriber_eligibility`
@@ -190,12 +190,12 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA         
 #> 
 #> ── Member [16] ─────────────────────────────────────────────────────────────────
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•1L > DTP•356                                                                 
-#>    NM1•IL > PER > N3 > N4 > DMG
-#>    HD•021 > DTP•348 > COB                                                                    
-#>    HD•021 > DTP•348                                                                                                         
-#>    HD•021 > DTP•348                                                                                                         
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•1L > DTP•356                                                                    
+#>    NM1•IL > PER > N3 > N4 > DMG•D8
+#>    HD•021 > DTP•348 > COB                                                                       
+#>    HD•021 > DTP•348                                                                                                            
+#>    HD•021 > DTP•348                                                                                                            
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_01
@@ -209,29 +209,29 @@ edi_index(x12_EX$`834`)
 #>   Trailer [3] SE > GE > IEA                                                                                          
 #> 
 #> ── Member [60] ─────────────────────────────────────────────────────────────────
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•6P > REF•1D > REF•ABB                         
-#>    NM1•IL > PER > N3 > N4 > DMG
-#>    HD•021 > DTP•348                                                                                                         
-#>    HD•021 > DTP•348                                                                                                         
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•6P > REF•1D > REF•AB                          
-#>    NM1•IL > N3 > N4 > DMG                                     
-#>    HD•001 > DTP•348                                                                                                         
-#>    HD•001 > DTP•348                                                                                                         
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•6P > REF•1D > REF•ABB                         
-#>    NM1•IL > N3 > N4 > DMG                                     
-#>    HD•024 > DTP•348 > DTP•349                                                                
-#>    HD•024 > DTP•348 > DTP•349                                                                
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•1D                                                                                                          
-#>    NM1•IL > N3 > N4 > DMG                                     
-#>    HD•021 > DTP•348                                                                                                         
-#>    INS  Y                                                                                                   
-#>    REF•0F > REF•6P                                                                                                          
-#>    NM1•IL > N3 > N4 > DMG                                     
-#>    HD•021 > DTP•348                                                                                                         
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•6P > REF•1D > REF•ABB                            
+#>    NM1•IL > PER > N3 > N4 > DMG•D8
+#>    HD•021 > DTP•348                                                                                                            
+#>    HD•021 > DTP•348                                                                                                            
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•6P > REF•1D > REF•AB                             
+#>    NM1•IL > N3 > N4 > DMG•D8                                     
+#>    HD•001 > DTP•348                                                                                                            
+#>    HD•001 > DTP•348                                                                                                            
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•6P > REF•1D > REF•ABB                            
+#>    NM1•IL > N3 > N4 > DMG•D8                                     
+#>    HD•024 > DTP•348 > DTP•349                                                                   
+#>    HD•024 > DTP•348 > DTP•349                                                                   
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•1D                                                                                                             
+#>    NM1•IL > N3 > N4 > DMG•D8                                     
+#>    HD•021 > DTP•348                                                                                                            
+#>    INS  Y                                                                                                      
+#>    REF•0F > REF•6P                                                                                                             
+#>    NM1•IL > N3 > N4 > DMG•D8                                     
+#>    HD•021 > DTP•348                                                                                                            
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $sample_834_02
@@ -247,7 +247,7 @@ edi_index(x12_EX$`834`)
 #> ── Member [23] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                    
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•ZZ                                   
-#>    NM1•IL > PER > N3 > N4 > DMG > LUI                                                                                            
+#>    NM1•IL > PER > N3 > N4 > DMG•D8 > LUI                                                                                         
 #>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB >
 #>             REF•ZX > REF•ZZ                                                                                                                                                                                                                                  
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -266,7 +266,7 @@ edi_index(x12_EX$`834`)
 #>    INS  Y                                                                                                                                                                                                                                         
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6
 #>             > REF•QQ > REF•ZZ                                                                                                                                                                                                      
-#>    NM1•IL > PER > N3 > N4 > DMG > LUI                                                                                                 
+#>    NM1•IL > PER > N3 > N4 > DMG•D8 > LUI                                                                                              
 #>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB >     
 #>             REF•ZX > REF•ZZ                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ edi_index(x12_EX$`834`)
 #>    INS  Y                                                                                                                                                                                                                                         
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6
 #>             > REF•QQ > REF•ZZ                                                                                                                                                                                                      
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                      
+#>    NM1•IL > PER > N3 > N4 > DMG•D8                                                                                                                                   
 #>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB >     
 #>             REF•ZX > REF•ZZ                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -304,7 +304,7 @@ edi_index(x12_EX$`834`)
 #>    INS  Y                                                                                                                                                                                                                                         
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6
 #>             > REF•QQ > REF•ZZ                                                                                                                                                                                                      
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                      
+#>    NM1•IL > PER > N3 > N4 > DMG•D8                                                                                                                                   
 #>    HD•001 > DTP•348 > DTP•349 > AMT > REF•17 > REF•9V > REF•CE > REF•ZX 
 #>             > REF•ZZ                                                                                                                                                                                                                                              
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -322,7 +322,7 @@ edi_index(x12_EX$`834`)
 #> ── Member [58] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•Q4 > REF•ZZ
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                      
+#>    NM1•IL > PER > N3 > N4 > DMG•D8                                                                                                                                   
 #>    NM1•31 > N3 > N4                                                                                                                                                                                                                
 #>    HD•001 > DTP•348 > DTP•349 > REF•17 > REF•CE > REF•RB > REF•ZX >     
 #>             REF•ZZ                                                                                                                                                                                                                                                                               
@@ -331,7 +331,7 @@ edi_index(x12_EX$`834`)
 #>    INS  Y                                                                                                                                                                                                                                         
 #>    REF•0F > REF•1L > REF•17 > REF•23 > REF•3H > REF•6O > REF•DX > REF•F6
 #>             > REF•QQ > REF•ZZ                                                                                                                                                                                                      
-#>    NM1•IL > PER > N3 > N4 > DMG                                                                                                                                      
+#>    NM1•IL > PER > N3 > N4 > DMG•D8                                                                                                                                   
 #>    HD•021 > DTP•348 > DTP•349 > REF•17 > REF•9V > REF•CE > REF•RB >     
 #>             REF•ZX > REF•ZZ                                                                                                                                                                                                                                       
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -348,10 +348,10 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [12] ─────────────────────────────────────────────────────────────────
-#>    ENT001                                                                                                                  
+#>    ENT001                                                                                                                                  
 #>    RMR•1L > REF•ZZ                                                                                                                         
 #>    RMR•1L > REF•ZZ                                                                                                                         
-#>    ENT002 > NM1•QE                                                                                                         
+#>    ENT002 > NM1•QE                                                                                                                         
 #>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
@@ -366,7 +366,7 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                                                                                             
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
-#>    ENT001 > NM1•QE                                                                                                                                                 
+#>    ENT001 > NM1•QE                                                                                                                                                                 
 #>    RMR•AZ > REF•ZZ > REF•ZZ > REF•LU > REF•ZZ > DTM•582
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
@@ -382,13 +382,13 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #> 
 #> ── Entity [15] ─────────────────────────────────────────────────────────────────
 #>    ENT001         
-#>    RMR•1L > REF•ZZ                
-#>    RMR•1L > REF•ZZ                
-#>    RMR•1L > REF•ZZ                
+#>    RMR•1L > REF•ZZ
+#>    RMR•1L > REF•ZZ
+#>    RMR•1L > REF•ZZ
 #>    ENT002 > NM1•QE
-#>    RMR•IK > ADX                   
+#>    RMR•IK > ADX   
 #>    ENT003 > NM1•QE
-#>    RMR•IK > ADX                   
+#>    RMR•IK > ADX   
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $`820_Premium_Payment_NOPMT`
@@ -403,10 +403,10 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #> 
 #> ── Entity [9] ──────────────────────────────────────────────────────────────────
 #>    ENT001         
-#>    RMR•1L > REF•ZZ                
-#>    RMR•1L > REF•ZZ                
+#>    RMR•1L > REF•ZZ
+#>    RMR•1L > REF•ZZ
 #>    ENT002 > NM1•QE
-#>    RMR•IK > ADX                   
+#>    RMR•IK > ADX   
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> $payment_order_820_218
@@ -420,9 +420,9 @@ edi_index(x12_EX$`820`$`218`[1:5])
 #>   Trailer [3] SE > GE > IEA                                                                                     
 #> 
 #> ── Entity [8] ──────────────────────────────────────────────────────────────────
-#>    ENT001                                                                   
-#>    RMR•IK > IT > SLN•1 > SLN•2
-#>    RMR•IK > IT > SLN•1                                       
+#>    ENT001                                                                                    
+#>    RMR•IK > IT1 > SLN•1 > SLN•2
+#>    RMR•IK > IT1 > SLN•1                                       
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 ```
