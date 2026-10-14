@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9078</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9079</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,14 +70,316 @@
 <li><p><code>character</code></p></li>
 <li><p><code>hcc::Index820</code></p></li>
 <li><p><code>hcc::Index834</code></p></li>
+<li><p><code>hcc::Index837</code></p></li>
 <li><p><code>hcc::Parsed820</code></p></li>
 <li><p><code>hcc::Parsed834</code></p></li>
+<li><p><code>hcc::Parsed837</code></p></li>
 <li><p><code>list</code></p></li>
 </ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`834`</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`837`</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST : chr [1:3] "837" "987654" "005010X223A2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Details:List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:7] "BHT" "0019" "00" "0123" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "41" "2" "JONES HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:5] "PER" "IC" "JANE DOE" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "40" "2" "MEDICARE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Claims :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "PRV" "BI" "PXC" "203BA0200N"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "85" "2" "JONES HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "225 MAIN STREET BARKLEY BUILDING"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "EI" "567891234"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "PER" "IC" "CONNIE" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" "18" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "125 CITY AVENUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19261111" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "MEDICARE B" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "G2" "330127"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "756048Q" "89.93" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "19960911"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "3" NA "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;3669"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "HI" "BF&gt;4019" "BF&gt;79431"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HI" "BH&gt;A1&gt;D8&gt;19261111" "BH&gt;A2&gt;D8&gt;19911101" "BH&gt;B1&gt;D8&gt;19261111" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BE&gt;A2&gt;&gt;&gt;15.31"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BG&gt;09"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "NM1" "71" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "1G" "B99937"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "S" "01" "351630" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:7] "OI" NA NA "Y" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "125 CITY AVENUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "STATE TEACHERS" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0305" "HC&gt;85025" "13.39" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "19960911"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0730" "HC&gt;93005" "76.54" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "19960911"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Trailer:List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE : chr [1:2] "43" "987654"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE : chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA: chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1b_2claims_1provider`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST : chr [1:3] "837" "987654" "005010X223A2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Details:List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:7] "BHT" "0019" "00" "0123" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "41" "2" "JONES HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:5] "PER" "IC" "JANE DOE" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "40" "2" "TRICARE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Claims :List of 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "PRV" "BI" "PXC" "282N00000X"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "85" "2" "JONES HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "225 MAIN STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "ANYWHERE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "EI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" "18" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "125 CITY AVENUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19681111" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "TRICARE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "756048Q" "89.95" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "20050315-20050315"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "1" NA "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;3669"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "HI" "BF&gt;4019" "BF&gt;79431"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "71" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "1G" "U12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0305" "HC&gt;85025" "13.39" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050315"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0730" "HC&gt;93010" "76.56" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050315"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "3" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" "18" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "5 MAIN STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "ANYWHERE" "PA" "17111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19621210" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "TRICARE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "756049Q" "50" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "20050401-20050401"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "1" NA "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;30000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "71" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "PRV" "AT" "PXC" "363LP0200N"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0300" "HC&gt;85087" "50" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050401"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Trailer:List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE : chr [1:2] "48" "987654"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE : chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA: chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1c_ppo_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST : chr [1:3] "837" "1002" "005010X223A2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Details:List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:7] "BHT" "0019" "00" "1002" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "41" "2" "REGIONAL PPO NETWORK" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:5] "PER" "IC" "SUBMITTER CONTACT INFO" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "40" "2" "LOCAL INSURANCE COMPANY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Claims :List of 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "85" "2" "GOOD HEALTH HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "592 NORTH ELM STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "EDGEWOOD" "AZ" "860015590"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "EI" "344232321"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" NA "46522567AW" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "4512 WEST AVENUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "EVANSVILLE" "AZ" "863030000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19690731" "F"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "LOCAL INSURANCE COMPANY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "3" "2" "23" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "PAT" "19"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "NM1" "QC" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "4512 WEST AVENUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "EVANSVILLE" "AZ" "863030000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19980820" "F"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "456DFH43" "237.5" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "20050706-20050706"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "435" "DT" "200507060800"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "1" "2" "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "AMT" "F3" "237.5"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "9A" "09459034092"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "D9" "04566877634343456"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;38181"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BF&gt;38900"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BH&gt;11&gt;D8&gt;20050706"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HCP" "03" "182.88" "54.62" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "71" "1" "JOHNSON" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "S" "19" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:7] "OI" NA NA "Y" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "JONES" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "OTHER COVERAGE COMPANY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0471" "HC&gt;92557" "178" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050706"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "HCP" "03" "137.06" "40.94"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0471" "HC&gt;92567" "59.5" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050706"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "HCP" "03" "45.82" "13.68"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Trailer:List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE : chr [1:2] "48" "1002"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE : chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA: chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1d_oon_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST : chr [1:3] "837" "1024" "005010X223A2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Details:List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:7] "BHT" "0019" "00" "1024" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "41" "2" "REGIONAL PPO NETWORK" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:5] "PER" "IC" "SUBMITTER CONTACT INFO" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "40" "2" "CONSERVATIVE INSURANCE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Claims :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "85" "2" "LOCAL HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "3423 SMALL STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "COLUMBUS" "OH" "432150000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "EI" "111002222"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" "18" "34561W" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "934 NORTH STREET"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "COLUMBUS" "OH" "432150000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19621015" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "CONSERVATIVE INSURANCE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "W392-49141" "14.84" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "20050617-20050617"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "435" "DT" "200506170800"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "1" "1" "01"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "AMT" "F3" "14.84"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "9A" "459804390823"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "D9" "32423466233"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;53081"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:14] "HCP" "00" "0" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "71" "1" "RIVERS" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0301" "HC&gt;82270" "14.84" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20050617"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Trailer:List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE : chr [1:2] "31" "1024"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE : chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA: chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX2_car_accident`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ISA: chr [1:16] "00" NA "00" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ ST : chr [1:3] "837" "557766" "005010X223A2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Details:List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:7] "BHT" "0019" "00" "0324" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "41" "2" "HALL OF FAME MEMORIAL HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:5] "PER" "IC" "KATE CASEY" "TE" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ : chr [1:10] "NM1" "40" "2" "HEISMAN INSURANCE COMPANY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Claims :List of 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "PRV" "BI" "PXC" "203BA0200N"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "85" "2" "HALL OF FAME MEMORIAL HOSPITAL" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "1 CANTON ROAD"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "BROKEN FIELD" "CA" "99998"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "EI" "737373737"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "SBR" "P" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "HOWLING" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "HEISMAN INSURANCE COMPANY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "HL" "3" "2" "23" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "PAT" "21"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:5] "NM1" "QC" "1" "MEXICO" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "N3" "32 BUFFALO RUN"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "N4" "ROCKING HORSE" "CA" "99666"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DMG" "D8" "19480601" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "Y4" "32323232"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "CLM" "67236695521" "545" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "20051031-20051101"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "CL1" "3" "7" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "REF" "LU" "CA"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "BK&gt;8842"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "HI" "PR&gt;8842"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:3] "HI" "BN&gt;E9750" "BN&gt;E9860"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:10] "NM1" "71" "1" "LOMBARDO" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0450" "HC&gt;98765" "150" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20051031"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0360" "HC&gt;26591" "75" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20051031"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0312" "HC&gt;86225" "100" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20051031"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ :List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:2] "LX" "4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:6] "SV2" "0360" "HC&gt;99283" "220" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20051031"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ Trailer:List of 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ SE : chr [1:2] "43" "557766"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ GE : chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ IEA: chr [1:2] "1" "000000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`834`</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Parsed834&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ Header :List of 3</span>

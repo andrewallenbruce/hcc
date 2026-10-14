@@ -30,7 +30,11 @@ Methods for `edi_index`:
 
 - `character`
 
-- `hcc::TextEDI`
+- `hcc::Text820`
+
+- `hcc::Text834`
+
+- `hcc::Text837`
 
 - `list`
 
