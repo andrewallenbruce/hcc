@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9079 (2026-10-14)
+
+* 837 indexer/parser
+* `coefficients()`
+
+
 # hcc 0.0.0.9078 (2026-10-13)
 
 * `apply_edits()`
