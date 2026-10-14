@@ -17,7 +17,7 @@ S7::method(edi_text, S7::class_any) <- function(x) {
   return(NA)
 }
 
-S7::method(edi_text, TextEDI) <- function(x) {
+S7::method(edi_text, Text820 | Text834 | Text837) <- function(x) {
   return(x)
 }
 

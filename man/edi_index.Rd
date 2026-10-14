@@ -24,12 +24,15 @@ Methods for \code{edi_index}:
 \item \code{character}
 \item \code{hcc::Index820}
 \item \code{hcc::Index834}
+\item \code{hcc::Index837}
 \item \code{hcc::Text820}
 \item \code{hcc::Text834}
+\item \code{hcc::Text837}
 \item \code{list}
 }
 }
 \examples{
-edi_index(x12_EX$`834`)
 edi_index(x12_EX$`820`$`218`[1:5])
+edi_index(x12_EX$`834`)
+edi_index(x12_EX$`837`)
 }

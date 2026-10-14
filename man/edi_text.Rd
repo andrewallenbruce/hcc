@@ -22,7 +22,9 @@ Methods for \code{edi_index}:
 \itemize{
 \item \code{ANY}
 \item \code{character}
-\item \code{hcc::TextEDI}
+\item \code{hcc::Text820}
+\item \code{hcc::Text834}
+\item \code{hcc::Text837}
 \item \code{list}
 }
 }

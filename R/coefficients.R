@@ -127,8 +127,8 @@ apply_coefficients <- function(
       unname(hcc_key[coef$coefficient])
     )
   } else {
-    coef = get_coefficient(demographics_key, model, year)
-    values = get_coefficient(key, model, year)
+    coef = coefficients(demographics_key, model, year)
+    values = coefficients(key, model, year)
     output = list()
     if (!rlang::is_empty(coef)) {
       output$category <- coef$coefficient
@@ -140,87 +140,6 @@ apply_coefficients <- function(
         values$coefficient
       )
     }
-  }
-
-  return(output)
-}
-
-
-#' @noRd
-apply_coefficients2 <- function(
-  demographics,
-  interactions = NA,
-  coefficients = NULL,
-  hcc = NA,
-  model = "C28",
-  year = 2026L,
-  prefix_override = NULL
-) {
-  model <- rlang::arg_match0(model, MODEL)
-
-  prefix <- if (!is.null(prefix_override)) {
-    prefix_override
-  } else {
-    prefix(demographics, model)
-  }
-
-  # No-prefix lookup for ESRD duration
-  # coefficients stored without prefix
-  # ESRD V21: GE65_DUR*, LT65_DUR*
-  # ESRD V24: FGC_*, FGI_*, LTI_GE65/LT65
-
-  # if (
-  #   any(startsWith(interactions, "FGC")) |
-  #     any(startsWith(interactions, "FGI")) |
-  #     any(startsWith(interactions, "GE65_DUR")) |
-  #     any(startsWith(interactions, "LT65_DUR")) |
-  #     any(interactions %in% c("LTI_GE65", "LTI_LT65"))
-  # ) {
-  #   interactions_key = interactions
-  # } else {
-  #   interactions_key = cheapr::paste_(prefix, interactions)
-  # }
-
-  interactions_key = interactions
-
-  if (!cheapr::is_na(interactions)) {
-    interactions_key = cheapr::paste_(prefix, interactions)
-  }
-
-  demographics_key = cheapr::paste_(prefix, demographics@category)
-  coefficients_key = cheapr::paste_(
-    prefix,
-    cheapr::if_else_(perl0(model, "RxHCC"), "RxHCC", "HCC"),
-    if (all(cheapr::is_na(hcc))) NULL else hcc
-  )
-
-  if (!is.null(coefficients)) {
-    search_ = c(demographics_key, coefficients_key, interactions_key)
-    index_ = collapse::fmatch(search_, coefficients$coefficient, nomatch = 0L)
-    coef = cheapr::sset(coefficients, index_)
-
-    # all(cheapr::is_na(c(hcc, interactions)))
-
-    hcc_ = rlang::set_names(c(hcc, interactions), search_[index_])
-
-    output = rlang::set_names(
-      as.list(coef$value),
-      unname(hcc_[coef$coefficient])
-    )
-  } else {
-    # coef = get_coefficient(demographics_key, model, year)
-    # values = get_coefficient(key, model, year)
-    # output = list()
-    # if (!rlang::is_empty(coef)) {
-    #   output$category <- coef$coefficient
-    # }
-    #
-    # if (!rlang::is_empty(values)) {
-    #   output$hcc <- rlang::set_names(
-    #     as.list(values$value),
-    #     values$coefficient
-    #   )
-    # }
   }
 
   return(output)

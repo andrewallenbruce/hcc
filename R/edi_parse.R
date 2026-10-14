@@ -9,6 +9,7 @@
 #' @param ... dots
 #' @returns an `<hcc::ParsedEDI>` S7 object
 #' @examples
+#' edi_parse(x12_EX$`837`[[1]][1:5])
 #' edi_parse(x12_EX$`834`)
 #' edi_parse(x12_EX$`820`$`218`[1:6])
 #' @export
@@ -23,7 +24,7 @@ S7::method(edi_parse, S7::class_any) <- function(x) {
   return(NA)
 }
 
-S7::method(edi_parse, Parsed820 | Parsed834) <- function(x) {
+S7::method(edi_parse, Parsed820 | Parsed834 | Parsed837) <- function(x) {
   return(x)
 }
 
@@ -51,6 +52,16 @@ S7::method(edi_parse, Index834) <- function(x) {
     Header = i[["header"]],
     Details = i[["details"]],
     Member = i[["member"]],
+    Trailer = i[["trailer"]]
+  )
+}
+
+S7::method(edi_parse, Index837) <- function(x) {
+  i <- parse_837(x)
+  Parsed837(
+    Header = i[["header"]],
+    Details = i[["details"]],
+    Claims = i[["claims"]],
     Trailer = i[["trailer"]]
   )
 }
@@ -95,6 +106,22 @@ parse_834 <- function(x) {
     details = subset_(x, S7::prop(x, "Details")),
     member = purrr::map_depth(
       S7::prop(x, "Member"),
+      1L,
+      \(index) {
+        subset_(x, index)
+      }
+    ),
+    trailer = subset_(x, S7::prop(x, "Trailer"), TRUE)
+  )
+}
+
+#' @noRd
+parse_837 <- function(x) {
+  list(
+    header = subset_(x, S7::prop(x, "Header"), TRUE),
+    details = subset_(x, S7::prop(x, "Details")),
+    claims = purrr::map_depth(
+      S7::prop(x, "Claims"),
       1L,
       \(index) {
         subset_(x, index)

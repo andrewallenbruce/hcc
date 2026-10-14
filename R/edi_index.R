@@ -9,8 +9,9 @@
 #' @param ... dots
 #' @returns an `<hcc::IndexEDI>` S7 object
 #' @examples
-#' edi_index(x12_EX$`834`)
 #' edi_index(x12_EX$`820`$`218`[1:5])
+#' edi_index(x12_EX$`834`)
+#' edi_index(x12_EX$`837`)
 #' @export
 #' @name edi_index
 edi_index := S7::new_generic("x")
@@ -23,7 +24,7 @@ S7::method(edi_index, S7::class_any) <- function(x) {
   return(NA)
 }
 
-S7::method(edi_index, Index820 | Index834) <- function(x) {
+S7::method(edi_index, Index820 | Index834 | Index837) <- function(x) {
   return(x)
 }
 
@@ -61,16 +62,27 @@ S7::method(edi_index, Text834) <- function(x) {
   )
 }
 
-# S7::method(edi_index, Text837) <- function(x) {
-#   new_index(
-#     x,
-#     switch(
-#       S7::prop(x, "Type"),
-#       "837I-X223" = ind_837I(S7::prop(x, "Text")),
-#       "837P-X222" = ind_837P(S7::prop(x, "Text"))
-#     )
-#   )
-# }
+S7::method(edi_index, Text837) <- function(x) {
+  i <- index_837(S7::prop(x, "Text"))
+  S7::convert(
+    x,
+    Index837,
+    Problems = problems(x, i),
+    Header = i[["header"]],
+    Details = i[["details"]],
+    Claims = i[["claims"]],
+    Trailer = i[["trailer"]]
+  )
+}
+
+#' @noRd
+problems <- function(x, i) {
+  if (length(S7::prop(x, "Text")) != cheapr::unlisted_length(i)) {
+    cheapr::setdiff_(seq_along(S7::prop(x, "Text")), unlist_(i))
+  } else {
+    NA_integer_
+  }
+}
 
 #' @noRd
 split_interval <- function(x, start, end, breaks) {
@@ -90,10 +102,8 @@ split_interval <- function(x, start, end, breaks) {
     purrr::map_depth(vec$val, 1L, function(y) {
       cheapr::if_else_(
         charr::str_starts(x[y], "ENT"),
-        charr::str_sub(x[y], 1L, 6L) |>
-          charr::str_remove_all("\\*"),
-        charr::str_sub(x[y], 1L, 7L) |>
-          charr::str_remove_all("\\*$")
+        charr::str_remove_all(charr::str_sub(x[y], 1L, 6L), "\\*"),
+        charr::str_remove_all(charr::str_sub(x[y], 1L, 7L), "\\*$")
       )
     }),
     function(s, e) {
@@ -115,7 +125,12 @@ index_820 <- function(x) {
   rlang::list2(
     header = cheapr::seq_(ISA, ST),
     details = cheapr::seq_(ST + 1L, ENT[1L] - 1L),
-    entity = split_interval(x, ENT[1L], SE - 1L, c(ENT, RMR, SE - 1L)),
+    entity = split_interval(
+      x,
+      ENT[1L],
+      SE - 1L,
+      c(ENT, RMR, SE - 1L)
+    ),
     trailer = cheapr::seq_(SE, IEA)
   )
 }
@@ -146,10 +161,25 @@ index_834 <- function(x) {
 }
 
 #' @noRd
-problems <- function(x, i) {
-  if (length(S7::prop(x, "Text")) != cheapr::unlisted_length(i)) {
-    cheapr::setdiff_(seq_along(S7::prop(x, "Text")), unlist_(i))
-  } else {
-    NA_integer_
-  }
+index_837 <- function(x) {
+  ST <- charr::str_which(x, "^ST")
+  SE <- charr::str_which(x, "^SE")
+  ISA <- charr::str_which(x, "ISA\\*")
+  IEA <- charr::str_which(x, "^IEA")
+
+  HL <- charr::str_which(x, "^HL\\*")
+  CLM <- charr::str_which(x, "^CLM")
+  LX <- charr::str_which(x, "^LX\\*")
+
+  rlang::list2(
+    header = cheapr::seq_(ISA, ST),
+    details = cheapr::seq_(ST + 1L, HL[1L] - 1L),
+    claims = split_interval(
+      x,
+      HL[1L],
+      SE - 1L,
+      c(HL, CLM, LX, SE - 1L)
+    ),
+    trailer = cheapr::seq_(SE, IEA)
+  )
 }

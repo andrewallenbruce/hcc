@@ -24,12 +24,15 @@ Methods for \code{edi_index}:
 \item \code{character}
 \item \code{hcc::Index820}
 \item \code{hcc::Index834}
+\item \code{hcc::Index837}
 \item \code{hcc::Parsed820}
 \item \code{hcc::Parsed834}
+\item \code{hcc::Parsed837}
 \item \code{list}
 }
 }
 \examples{
+edi_parse(x12_EX$`837`[[1]][1:5])
 edi_parse(x12_EX$`834`)
 edi_parse(x12_EX$`820`$`218`[1:6])
 }

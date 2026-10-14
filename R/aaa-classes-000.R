@@ -1,5 +1,91 @@
+utils::globalVariables(c("value"))
 #' @noRd
-class_iv <- S7::new_S3_class(c("ivs_iv", "vctrs_rcrd", "vctrs_vctr"))
+prop_scalar <- function(class, default = NULL) {
+  S7::new_property(
+    class,
+    validator = function(value) {
+      if (!rlang::is_scalar_atomic(value)) {
+        "must be a scalar atomic"
+      }
+    },
+    default = default
+  )
+}
+
+#' @noRd
+class_string <- prop_scalar(S7::class_character, default = NA_character_)
+#' @noRd
+class_boolean <- prop_scalar(S7::class_logical, default = NA)
+
+#' @noRd
+Enum := S7::new_class(
+  abstract = TRUE,
+  properties = list(
+    value = class_string,
+    variants = S7::class_character
+  ),
+  validator = function(self) {
+    if (cheapr::is_na(self@value)) {
+      "@value must not be NA"
+    }
+    if (self@value %!in_% self@variants) {
+      cli::format_inline("@value must be one of {.val {self@variants}}")
+    }
+  }
+)
+
+#' @noRd
+new_enum <- function(name, variants, default = NULL) {
+  check_string(name, allow_empty = FALSE)
+  check_character(variants)
+  check_string(default, allow_na = FALSE, allow_null = TRUE)
+
+  if (length(variants) == 0L) {
+    cli::cli_abort("{.arg variants} must contain at least one value.")
+  }
+  if (anyDuplicated(variants)) {
+    cli::cli_abort("{.arg variants} must be unique.")
+  }
+
+  if (!rlang::is_null(default)) {
+    if (cheapr::is_na(default) || default %!in_% variants) {
+      cli::cli_abort("{.arg default} must be one of {.val {variants}}.")
+    }
+  }
+
+  S7::new_class(
+    name,
+    parent = Enum,
+    package = "hcc",
+    properties = list(
+      value = class_string,
+      variants = S7::new_property(
+        S7::class_character,
+        default = rlang::expr(variants)
+      )
+    ),
+    constructor = rlang::new_function(
+      args = if (rlang::is_null(default)) {
+        rlang::pairlist2(value = )
+      } else {
+        rlang::pairlist2(value = default)
+      },
+      body = rlang::expr({
+        S7::new_object(
+          S7::S7_object(),
+          value = value,
+          variants = variants
+        )
+      }),
+      env = rlang::current_env()
+    )
+  )
+}
+
+#' @noRd
+class_iv <- S7::new_S3_class(
+  c("ivs_iv", "vctrs_rcrd", "vctrs_vctr")
+)
 
 #' @noRd
 prop_date <- S7::new_property(
@@ -123,6 +209,18 @@ Index834 := S7::new_class(
 )
 
 #' @noRd
+Index837 := S7::new_class(
+  parent = Text837,
+  properties = list(
+    Problems = prop_integer,
+    Header = prop_integer,
+    Details = prop_integer,
+    Claims = S7::class_list,
+    Trailer = prop_integer
+  )
+)
+
+#' @noRd
 Parsed820 := S7::new_class(
   properties = list(
     Header = S7::class_list,
@@ -138,6 +236,16 @@ Parsed834 := S7::new_class(
     Header = S7::class_list,
     Details = S7::class_list,
     Member = S7::class_list,
+    Trailer = S7::class_list
+  )
+)
+
+#' @noRd
+Parsed837 := S7::new_class(
+  properties = list(
+    Header = S7::class_list,
+    Details = S7::class_list,
+    Claims = S7::class_list,
     Trailer = S7::class_list
   )
 )
