@@ -51,7 +51,7 @@ fmt_segment <- function(x) {
   if (charr::str_detect(x, "^DTP|^REF\\*[A-Z0-9]{3}")) {
     return(charr::str_sub(x, 1L, 7L))
   }
-  if (charr::str_detect(x, "^BGN|^REF\\*[A-Z0-9]{2}")) {
+  if (charr::str_detect(x, "^BGN|^PER\\*|^REF\\*[A-Z0-9]{2}")) {
     return(charr::str_sub(x, 1L, 6L))
   }
   if (charr::str_detect(x, "^N1|^BPR")) {
@@ -97,21 +97,18 @@ fmt_entity <- function(x) {
       width = 3L,
       pad = "0"
     )
-    return(cheapr::paste_(
-      cli::col_black("ENT"),
-      orange(x)
-    ))
+    return(cheapr::paste_("ENT", orange(x)))
   }
-  if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTM")) {
+  if (charr::str_detect(x, "^DTM|^REF\\*[A-Z0-9]{3}")) {
     return(charr::str_sub(x, 1L, 7L))
   }
-  if (charr::str_detect(x, "^RMR|^REF\\*[A-Z0-9]{2}|^NM1")) {
+  if (charr::str_detect(x, "^RMR|^NM1|^REF\\*[A-Z0-9]{2}")) {
     return(charr::str_sub(x, 1L, 6L))
   }
   if (charr::str_detect(x, "^SLN")) {
     return(charr::str_sub(x, 1L, 5L))
   }
-  if (charr::str_detect(x, "^ADX")) {
+  if (charr::str_detect(x, "^ADX|^IT")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
@@ -157,18 +154,13 @@ fmt_member <- function(x) {
       )
     )
   }
-  if (charr::str_detect(x, "^REF\\*[A-Z0-9]{3}|^DTP")) {
+  if (charr::str_detect(x, "^DSB|^DMG|^DTP|^REF\\*[A-Z0-9]{3}")) {
     return(charr::str_sub(x, 1L, 7L))
   }
-  if (charr::str_detect(x, "^HD\\*|^REF\\*[A-Z0-9]{2}|^NM1")) {
+  if (charr::str_detect(x, "^HD\\*|^NM1|^REF\\*[A-Z0-9]{2}")) {
     return(charr::str_sub(x, 1L, 6L))
   }
-  if (
-    charr::str_detect(
-      x,
-      "^DSB|^DMG|^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI"
-    )
-  ) {
+  if (charr::str_detect(x, "^AMT|^ACT|^IDC|^PLA|^COB|^PER|^QTY|^HLH|^LUI")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
