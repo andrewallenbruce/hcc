@@ -196,38 +196,7 @@ edi_parse(x12_EX$`834`[[1]])
 #>  .. @ GE : chr [1:2] "1" "000000103"
 #>  .. @ IEA: chr [1:2] "1" "000000103"
 edi_parse(x12_EX$`820`[[1]][[1]])
-#> <hcc::Parsed820>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "EMEDNYBAT" "ZZ" "ETIN" "141231" ...
-#>  .. @ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" "11595900" ...
-#>  .. @ ST : chr [1:3] "820" "222222222" "005010X218"
-#>  @ Details: <hcc::Detail218>
-#>  .. @ BPR  : chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...
-#>  .. @ TRN  : chr [1:3] "3" "021300000000000" "1141797357"
-#>  .. @ REF14: chr [1:2] "14" "12345678"
-#>  .. @ N1PE : chr [1:3] "MANAGED CARE" "FI" "123456789"
-#>  .. @ N1PR : chr [1:3] "CHILD HEALTH PLUS" NA NA
-#>  @ Entity :List of 5
-#>  .. $ :List of 1
-#>  ..  ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
-#>  .. $ :List of 2
-#>  ..  ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
-#>  ..  ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
-#>  .. $ :List of 2
-#>  ..  ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
-#>  ..  ..$ : chr [1:3] "REF" "ZZ" "LUMP SUM PAYMENT"
-#>  .. $ :List of 2
-#>  ..  ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
-#>  ..  ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>  .. $ :List of 5
-#>  ..  ..$ : chr [1:5] "RMR" "AZ" "12345678" NA ...
-#>  ..  ..$ : chr [1:3] "REF" "ZZ" "1436500000001230"
-#>  ..  ..$ : chr [1:3] "REF" "ZZ" "0123456789"
-#>  ..  ..$ : chr [1:3] "REF" "LU" "01"
-#>  ..  ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "17" "222222222"
-#>  .. @ GE : chr [1:2] "1" "333333333"
-#>  .. @ IEA: chr [1:2] "1" "003333333"
-# edi_parse(x12_EX$`820`[[2]][[1]])
+#> Error in as_detail218(x): object 'x' not found
+edi_parse(x12_EX$`820`[[2]][[1]])
+#> Error in as_detail306(x): object 'x' not found
 ```

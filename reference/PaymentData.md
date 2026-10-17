@@ -62,6 +62,7 @@ A `<hcc::PaymentData>` S7 object
 
 ``` r
 x = edi_parse(hcc::x12_EX$`820`$`218`$sample_820_01)
+#> Error in as_detail218(x): object 'x' not found
 PaymentData(
 source = x@Header@ISA[6L],
 report_date = x@Header@GS[4L],
@@ -107,55 +108,5 @@ aid = x@Entity[[8L]][[3L]][3L],
 plan = x@Entity[[8L]][[3L]][4L],
 description = x@Entity[[8L]][[4L]][3L],
 coverage = x@Entity[[8L]][[5L]][7L])))))
-#> <hcc::PaymentData>
-#>  @ source      : chr "TEST-PAYER"
-#>  @ report_date : Date[1:1], format: "2026-01-18"
-#>  @ payment_date: Date[1:1], format: "2026-01-15"
-#>  @ total_amount: num 102139
-#>  @ check_number: chr "TESTTRN01000001"
-#>  @ payee       : <hcc::Party>
-#>  .. @ name   : chr "TEST PAYEE ORGANIZATION"
-#>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
-#>  @ payer       : <hcc::Party>
-#>  .. @ name   : chr "TEST PAYER AGENCY"
-#>  .. @ address: chr [1:4] "123 TEST STREET" "TESTCITY" "CA" "00000"
-#>  @ payments    :List of 2
-#>  .. $ : <hcc::Payment>
-#>  ..  ..@ order : int 1
-#>  ..  ..@ member: <hcc::Member>
-#>  .. .. .. @ id    : chr "TESTMBR000000001"
-#>  .. .. .. @ last  : chr "LASTNAME01"
-#>  .. .. .. @ first : chr "FIRSTNAME01"
-#>  .. .. .. @ middle: chr(0) 
-#>  ..  ..@ remits:List of 1
-#>  .. .. .. $ : <hcc::Remittance>
-#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original   : num NA
-#>  .. .. ..  ..@ adjustment : num(0) 
-#>  .. .. ..  ..@ payment    : num 8087
-#>  .. .. ..  ..@ rate       : chr "957"
-#>  .. .. ..  ..@ aid        : chr "1H"
-#>  .. .. ..  ..@ plan       : chr "2"
-#>  .. .. ..  ..@ reason     : chr(0) 
-#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
-#>  .. $ : <hcc::Payment>
-#>  ..  ..@ order : int 4
-#>  ..  ..@ member: <hcc::Member>
-#>  .. .. .. @ id    : chr "TESTMBR000000004"
-#>  .. .. .. @ last  : chr "LASTNAME04"
-#>  .. .. .. @ first : chr "FIRSTNAME04"
-#>  .. .. .. @ middle: chr(0) 
-#>  ..  ..@ remits:List of 1
-#>  .. .. .. $ : <hcc::Remittance>
-#>  .. .. ..  ..@ reference  : chr "TESTPLAN-SREGLR-2512150225000P"
-#>  .. .. ..  ..@ original   : num NA
-#>  .. .. ..  ..@ adjustment : num(0) 
-#>  .. .. ..  ..@ payment    : num 8087
-#>  .. .. ..  ..@ rate       : chr "957"
-#>  .. .. ..  ..@ aid        : chr "M1"
-#>  .. .. ..  ..@ plan       : chr "2"
-#>  .. .. ..  ..@ reason     : chr(0) 
-#>  .. .. ..  ..@ description: chr "Medi-Cal Only-State Only"
-#>  .. .. ..  ..@ coverage   : iv<date> [1:1] [2025-12-01, 2026-01-01)
+#> Error: object 'x' not found
 ```
