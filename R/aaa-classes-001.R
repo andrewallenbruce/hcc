@@ -124,6 +124,18 @@ Detail306 := S7::new_class(
 )
 
 #' @noRd
+Detail834 := S7::new_class(
+  properties = list(
+    BGN = S7::class_character,
+    N1P5 = S7::class_character,
+    N1IN = S7::class_character,
+    REF38 = S7::class_character,
+    QTY = S7::class_character,
+    DTP = S7::class_character
+  )
+)
+
+#' @noRd
 Parsed820 := S7::new_class(
   properties = list(
     Header = HeaderEDI,
@@ -137,7 +149,7 @@ Parsed820 := S7::new_class(
 Parsed834 := S7::new_class(
   properties = list(
     Header = HeaderEDI,
-    Details = S7::class_list,
+    Details = Detail834,
     Member = S7::class_list,
     Trailer = TrailerEDI
   )

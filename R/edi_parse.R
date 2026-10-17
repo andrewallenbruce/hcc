@@ -60,7 +60,7 @@ S7::method(edi_parse, Index820) <- function(x) {
 S7::method(edi_parse, Index834) <- function(x) {
   Parsed834(
     Header = as_header(x),
-    Details = subset_(x, S7::prop(x, "Details")),
+    Details = as_detail834(x),
     Member = purrr::map_depth(
       S7::prop(x, "Member"),
       1L,
@@ -108,6 +108,60 @@ as_trailer <- function(x) {
 }
 
 #' @noRd
+as_detail834 <- function(x) {
+  d <- subset_(x, S7::prop(x, "Details"))
+  if (length(d) == 3L) {
+    return(
+      Detail834(
+        BGN = d[[1L]][-1L],
+        N1P5 = d[[2L]][3:5],
+        N1IN = d[[3L]][3:5],
+        REF38 = NA_character_,
+        QTY = NA_character_,
+        DTP = NA_character_
+      )
+    )
+  }
+  if (length(d) == 5L) {
+    return(
+      Detail834(
+        BGN = d[[1L]][-1L],
+        REF38 = d[[2L]][-1L],
+        DTP = d[[3L]][-1L],
+        N1P5 = d[[4L]][3:5],
+        N1IN = d[[5L]][3:5],
+        QTY = NA_character_
+      )
+    )
+  }
+
+  if (length(d) == 4L && d[[2]][1] == "QTY") {
+    return(
+      Detail834(
+        BGN = d[[1L]][-1L],
+        QTY = d[[2L]][-1L],
+        N1P5 = d[[3L]][3:5],
+        N1IN = d[[4L]][3:5],
+        REF38 = NA_character_,
+        DTP = NA_character_
+      )
+    )
+  }
+  if (length(d) == 4L && d[[2]][1] == "REF") {
+    return(
+      Detail834(
+        BGN = d[[1L]][-1L],
+        REF38 = d[[2L]][-1L],
+        N1P5 = d[[3L]][3:5],
+        N1IN = d[[4L]][3:5],
+        QTY = NA_character_,
+        DTP = NA_character_
+      )
+    )
+  }
+}
+
+#' @noRd
 as_detail306 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"))
   if (length(d) == 5L) {
@@ -115,6 +169,8 @@ as_detail306 <- function(x) {
       Detail306(
         BPR = d[[1L]][-1L],
         TRN = d[[2L]][-1L],
+        REF38 = NA_character_,
+        REFTV = NA_character_,
         N1PE = d[[3L]][3:5],
         N1RM = d[[4L]][3:5],
         PER = d[[5L]][-1L]
@@ -130,7 +186,8 @@ as_detail306 <- function(x) {
         REF38 = d[[3L]][3L],
         REFTV = d[[4L]][3L],
         N1PE = d[[5L]][3:5],
-        N1RM = d[[6L]][3:5]
+        N1RM = d[[6L]][3:5],
+        PER = NA_character_
       )
     )
   }
