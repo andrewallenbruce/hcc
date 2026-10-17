@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9081 (2026-10-17)
+
+- `Detail802` classes
+
 ## hcc 0.0.0.9080 (2026-10-14)
 
 - `HeaderEDI` & `TrailerEDI` classes
