@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9082 (2026-10-17)
+
+* `Detail834` class
+* `edi_parse` refactoring
+
+
 # hcc 0.0.0.9081 (2026-10-17)
 
 * `Detail802` classes
