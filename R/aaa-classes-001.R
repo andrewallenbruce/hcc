@@ -60,15 +60,15 @@ HeaderEDI := S7::new_class(
   ),
   validator = function(self) {
     if (length(self@ISA) != 16L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @ISA} must be {.val {16}} not {.val {length(self@ISA)}}."
       )
     } else if (length(self@GS) != 8L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @GS} must be {.val {8}} not {.val {length(self@GS)}}."
       )
     } else if (length(self@ST) != 3L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @ST} must be {.val {3}} not {.val {length(self@ST)}}."
       )
     }
@@ -84,15 +84,15 @@ TrailerEDI := S7::new_class(
   ),
   validator = function(self) {
     if (length(self@SE) != 2L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @SE} must be {.val {2}} not {.val {length(self@SE)}}."
       )
     } else if (length(self@GE) != 2L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @GE} must be {.val {2}} not {.val {length(self@GE)}}."
       )
     } else if (length(self@IEA) != 2L) {
-      cli::cli_abort(
+      cli::format_inline(
         "Length of {.arg @IEA} must be {.val {2}} not {.val {length(self@IEA)}}."
       )
     }
@@ -100,10 +100,34 @@ TrailerEDI := S7::new_class(
 )
 
 #' @noRd
+Detail218 := S7::new_class(
+  properties = list(
+    BPR = S7::class_character,
+    TRN = S7::class_character,
+    REF14 = S7::class_character,
+    N1PE = S7::class_character,
+    N1PR = S7::class_character
+  )
+)
+
+#' @noRd
+Detail306 := S7::new_class(
+  properties = list(
+    BPR = S7::class_character,
+    TRN = S7::class_character,
+    REF38 = S7::class_character,
+    REFTV = S7::class_character,
+    N1PE = S7::class_character,
+    N1RM = S7::class_character,
+    PER = S7::class_character
+  )
+)
+
+#' @noRd
 Parsed820 := S7::new_class(
   properties = list(
     Header = HeaderEDI,
-    Details = S7::class_list,
+    Details = Detail218 | Detail306,
     Entity = S7::class_list,
     Trailer = TrailerEDI
   )

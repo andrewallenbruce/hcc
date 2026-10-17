@@ -82,66 +82,50 @@ Payment := S7::new_class(
 #' @examples
 #' x = edi_parse(hcc::x12_EX$`820`$`218`$sample_820_01)
 #' PaymentData(
-#'   source = x@Header@ISA[6L],
-#'   report_date = x@Header@GS[4L],
-#'   total_amount = x@Details[[1L]][3L],
-#'   payment_date = x@Details[[1L]][17L],
-#'   check_number = x@Details[[2L]][3L],
-#'   payee = hcc:::Party(
-#'     name = x@Details[[4L]][3L],
-#'     address = c(
-#'     x@Details[[5L]][-1L],
-#'     x@Details[[6L]][-1L]
-#'   )),
-#'   payer = hcc:::Party(
-#'     name = x@Details[[7L]][3L],
-#'     address = c(
-#'     x@Details[[8L]][-1L],
-#'     x@Details[[9L]][-1L]
-#'   )),
-#'   payments = list(
-#'     Payment(
-#'       order = x@Entity[[1L]][[1L]][2L],
-#'       member = hcc:::Member(
-#'         id = x@Entity[[1L]][[2L]][10L],
-#'         last = x@Entity[[1L]][[2L]][4L],
-#'         first = x@Entity[[1L]][[2L]][5L]
-#'       ),
-#'       remits = list(
-#'         Remittance(
-#'           reference = x@Entity[[2L]][[1L]][3L],
-#'           payment = x@Entity[[2L]][[1L]][5L],
-#'           original = x@Entity[[2L]][[1L]][6L],
-#'           rate = x@Entity[[2L]][[2L]][3L],
-#'           aid = x@Entity[[2L]][[3L]][3L],
-#'           plan = x@Entity[[2L]][[3L]][4L],
-#'           description = x@Entity[[2L]][[4L]][3L],
-#'           coverage = x@Entity[[2L]][[5L]][7L]
-#'         )
-#'       )
-#'     ),
-#'     Payment(
-#'       order = x@Entity[[7L]][[1L]][2L],
-#'       member = hcc:::Member(
-#'         id = x@Entity[[7L]][[2L]][10L],
-#'         last = x@Entity[[7L]][[2L]][4L],
-#'         first = x@Entity[[7L]][[2L]][5L]
-#'       ),
-#'       remits = list(
-#'         Remittance(
-#'           reference = x@Entity[[8L]][[1L]][3L],
-#'           payment = x@Entity[[8L]][[1L]][5L],
-#'           original = x@Entity[[8L]][[1L]][6L],
-#'           rate = x@Entity[[8L]][[2L]][3L],
-#'           aid = x@Entity[[8L]][[3L]][3L],
-#'           plan = x@Entity[[8L]][[3L]][4L],
-#'           description = x@Entity[[8L]][[4L]][3L],
-#'           coverage = x@Entity[[8L]][[5L]][7L]
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
+#' source = x@Header@ISA[6L],
+#' report_date = x@Header@GS[4L],
+#' total_amount = x@Details@BPR[2L],
+#' payment_date = x@Details@BPR[16L],
+#' check_number = x@Details@TRN[2L],
+#' payee = hcc:::Party(
+#' name = x@Details@N1PE[1L],
+#' address = x@Details@N1PE[-1L]),
+#' payer = hcc:::Party(
+#' name = x@Details@N1PR[1L],
+#' address = x@Details@N1PR[-1L]),
+#' payments = list(
+#' Payment(
+#' order = x@Entity[[1L]][[1L]][2L],
+#' member = hcc:::Member(
+#' id = x@Entity[[1L]][[2L]][10L],
+#' last = x@Entity[[1L]][[2L]][4L],
+#' first = x@Entity[[1L]][[2L]][5L]),
+#' remits = list(
+#' Remittance(
+#' reference = x@Entity[[2L]][[1L]][3L],
+#' payment = x@Entity[[2L]][[1L]][5L],
+#' original = x@Entity[[2L]][[1L]][6L],
+#' rate = x@Entity[[2L]][[2L]][3L],
+#' aid = x@Entity[[2L]][[3L]][3L],
+#' plan = x@Entity[[2L]][[3L]][4L],
+#' description = x@Entity[[2L]][[4L]][3L],
+#' coverage = x@Entity[[2L]][[5L]][7L]))),
+#' Payment(
+#' order = x@Entity[[7L]][[1L]][2L],
+#' member = hcc:::Member(
+#' id = x@Entity[[7L]][[2L]][10L],
+#' last = x@Entity[[7L]][[2L]][4L],
+#' first = x@Entity[[7L]][[2L]][5L]),
+#' remits = list(
+#' Remittance(
+#' reference = x@Entity[[8L]][[1L]][3L],
+#' payment = x@Entity[[8L]][[1L]][5L],
+#' original = x@Entity[[8L]][[1L]][6L],
+#' rate = x@Entity[[8L]][[2L]][3L],
+#' aid = x@Entity[[8L]][[3L]][3L],
+#' plan = x@Entity[[8L]][[3L]][4L],
+#' description = x@Entity[[8L]][[4L]][3L],
+#' coverage = x@Entity[[8L]][[5L]][7L])))))
 #' @export
 PaymentData := S7::new_class(
   properties = list(

@@ -13,7 +13,7 @@
 #' edi_parse(x12_EX$`837`[[2]][[1]])
 #' edi_parse(x12_EX$`834`[[1]])
 #' edi_parse(x12_EX$`820`[[1]][[1]])
-#' edi_parse(x12_EX$`820`[[2]][[1]])
+#' # edi_parse(x12_EX$`820`[[2]][[1]])
 #' @export
 #' @name edi_parse
 edi_parse := S7::new_generic("x")
@@ -42,7 +42,7 @@ S7::method(edi_parse, Index820) <- function(x) {
   i <- parse_820(x)
   Parsed820(
     Header = as_header(i),
-    Details = i[["details"]],
+    Details = as_detail218(i[["details"]]),
     Entity = i[["entity"]],
     Trailer = as_trailer(i)
   )
@@ -84,6 +84,52 @@ as_trailer <- function(i) {
     GE = i[["trailer"]][["GE"]],
     IEA = i[["trailer"]][["IEA"]]
   )
+}
+
+#' @noRd
+as_detail218 <- function(d) {
+  if (length(d) == 5L) {
+    return(
+      Detail218(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        REF14 = d[[3L]][-1L],
+        N1PE = d[[4L]][3:5],
+        N1PR = d[[5L]][3:5]
+      )
+    )
+  }
+
+  if (length(d) == 9L) {
+    return(
+      Detail218(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        REF14 = d[[3L]][-1L],
+        N1PE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
+        N1PR = c(d[[7L]][3L], d[[8L]][2L], d[[9L]][-1L])
+      )
+    )
+  }
+  if (length(d) == 7L) {
+    if (length(d[[4L]]) == 3L) {
+      Detail218(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        REF14 = d[[3L]][-1L],
+        N1PE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
+        N1PR = d[[7L]][3:5]
+      )
+    } else if (length(d[[4L]]) == 5L) {
+      Detail218(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        REF14 = d[[3L]][-1L],
+        N1PE = d[[4L]][3:5],
+        N1PR = c(d[[5L]][3L], d[[6L]][2L], d[[7L]][-1L])
+      )
+    }
+  }
 }
 
 #' @noRd
