@@ -40,8 +40,7 @@ period; negative = recoupment}
 \item "2" = pharmacy/state-only
 }}
 
-\item{reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" =
-prior period)}
+\item{reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" = prior period)}
 
 \item{description}{\verb{<chr>} \code{REF*ZZ} Payment description (e.g., "Primary
 Capitation Dual", "Medi-Cal Only-State Only")}

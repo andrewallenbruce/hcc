@@ -18,7 +18,7 @@ an \verb{<hcc::ParsedEDI>} S7 object
 Create an EDI Parse Object
 }
 \details{
-Methods for \code{edi_index}:
+Methods for \code{edi_parse}:
 \itemize{
 \item \code{ANY}
 \item \code{character}

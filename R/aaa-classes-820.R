@@ -22,8 +22,7 @@
 #' @param coverage `<class_iv>` Coverage period start and end date (YYYY-MM-DD) from DTM*582
 #' @param adjustment `<chr>` `ADX-01` Adjustment amount; If negative, it
 #'   is a recoupment
-#' @param reason `<chr>` `ADX-02` Adjustment reason code ("53" =
-#'   prior period)
+#' @param reason `<chr>` `ADX-02` Adjustment reason code ("53" = prior period)
 #' @returns A `<hcc::Remittance>` S7 object
 #' @export
 Remittance := S7::new_class(

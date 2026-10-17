@@ -1,7 +1,7 @@
 #' Create an EDI Parse Object
 #'
 #' @details
-#' Methods for `edi_index`:
+#' Methods for `edi_parse`:
 #' `r doclisting::methods_list("edi_parse")`
 #'
 #'
@@ -108,7 +108,7 @@ as_trailer <- function(x) {
 }
 
 #' @noRd
-as_detail306 <- function(d) {
+as_detail306 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"))
   if (length(d) == 5L) {
     return(
@@ -137,7 +137,7 @@ as_detail306 <- function(d) {
 }
 
 #' @noRd
-as_detail218 <- function(d) {
+as_detail218 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"))
   if (length(d) == 5L) {
     return(

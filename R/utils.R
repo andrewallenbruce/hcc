@@ -1,19 +1,15 @@
 #' @noRd
+set_zchar <- function(x) {
+  collapse::setv(x, !nzchar(x), NA_character_)
+  x
+}
+
+#' @noRd
 NA_Date_ <- as.Date(NA)
 
 #' @noRd
 `%0%` <- function(x, y) {
   if (vctrs::vec_size(x) == 0L) y else x
-}
-
-#' @noRd
-make_names <- function(x, i) {
-  paste0(names(x), "_", i)
-}
-
-#' @noRd
-which_rex <- function(x, rex, negate = FALSE) {
-  whichv_(stringfish::sf_grepl(x, rex, nthreads = 4L), TRUE, negate = negate)
 }
 
 #' @noRd
