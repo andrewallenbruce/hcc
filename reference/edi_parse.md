@@ -171,11 +171,13 @@ edi_parse(x12_EX$`834`[[1]])
 #>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "SENDERNAME" "ZZ" "RECEIVERNAME" ...
 #>  .. @ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" "1324" ...
 #>  .. @ ST : chr [1:3] "834" "12345" "005010X220A1"
-#>  @ Details:List of 4
-#>  .. $ : chr [1:9] "BGN" "00" "12456" "19980520" ...
-#>  .. $ : chr [1:3] "REF" "38" "ABCD012354"
-#>  .. $ : chr [1:5] "N1" "P5" NA "FI" ...
-#>  .. $ : chr [1:5] "N1" "IN" NA "FI" ...
+#>  @ Details: <hcc::Detail834>
+#>  .. @ BGN  : chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  .. @ N1P5 : chr [1:3] NA "FI" "999888777"
+#>  .. @ N1IN : chr [1:3] NA "FI" "654456654"
+#>  .. @ REF38: chr [1:2] "38" "ABCD012354"
+#>  .. @ QTY  : chr NA
+#>  .. @ DTP  : chr NA
 #>  @ Member :List of 5
 #>  .. $ :List of 1
 #>  ..  ..$ : chr [1:10] "INS" "N" "19" "021" ...
@@ -238,8 +240,8 @@ edi_parse(x12_EX$`820`[[2]][[1]])
 #>  @ Details: <hcc::Detail306>
 #>  .. @ BPR  : chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  .. @ TRN  : chr [1:2] "3" "123456789123385"
-#>  .. @ REF38: chr(0) 
-#>  .. @ REFTV: chr(0) 
+#>  .. @ REF38: chr NA
+#>  .. @ REFTV: chr NA
 #>  .. @ N1PE : chr [1:3] "NATIONAL EAST" "FI" "121231244"
 #>  .. @ N1RM : chr [1:3] "CMS" "58" "CMS"
 #>  .. @ PER  : chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
