@@ -15,7 +15,7 @@ arrow <- function(x) cheapr::paste_(x, collapse = orange(" > "))
 S7::method(format, TextEDI) <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
 
-  names_ <- bcyan((c("Type", "Segments")))
+  names_ <- bcyan(c("Type", "Segments"))
   numbs_ <- c(
     toString(S7::prop(x, "Type")),
     bracket(bcyan(length(S7::prop(x, "Text"))))
@@ -28,7 +28,7 @@ S7::method(format, TextEDI) <- function(x) {
 #' @noRd
 format_head <- function(x) {
   cli::cli_h1("<{attr(x, .c(class))[1]}>")
-  nm_ <- bcyan((c("Type", "Segments")))
+  nm_ <- bcyan(c("Type", "Segments"))
   ns_ <- c(
     toString(S7::prop(x, "Type")),
     bracket(bcyan(length(S7::prop(x, "Text"))))
@@ -114,9 +114,9 @@ fmt_entity <- function(x) {
   charr::str_sub(x, 1L, 2L)
 }
 
+# X12 820 Health Insurance Exchange Related Payments (005010/X306)
+# X12 820 Payroll Deducted and Other Group Premium Payment For Insurance Products Examples (005010/X218)
 S7::method(format, Index820) <- function(x) {
-  # X12 820 Health Insurance Exchange Related Payments (005010/X306)
-  # X12 820 Payroll Deducted and Other Group Premium Payment For Insurance Products Examples (005010/X218)
   format_head(x)
   format_segments(x)
   cat("", sep = "\n")
@@ -166,8 +166,8 @@ fmt_member <- function(x) {
   charr::str_sub(x, 1L, 2L)
 }
 
+# X12 834 Benefit Enrollment and Maintenance (005010/X220A1)
 S7::method(format, Index834) <- function(x) {
-  # X12 834 Benefit Enrollment and Maintenance (005010/X220A1)
   format_head(x)
   format_segments(x)
   cat("", sep = "\n")

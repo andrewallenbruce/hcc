@@ -13,7 +13,7 @@
 #' edi_parse(x12_EX$`837`[[2]][[1]])
 #' edi_parse(x12_EX$`834`[[1]])
 #' edi_parse(x12_EX$`820`[[1]][[1]])
-#' # edi_parse(x12_EX$`820`[[2]][[1]])
+#' edi_parse(x12_EX$`820`[[2]][[1]])
 #' @export
 #' @name edi_parse
 edi_parse := S7::new_generic("x")
@@ -39,61 +39,112 @@ S7::method(edi_parse, S7::class_character) <- function(x) {
 }
 
 S7::method(edi_parse, Index820) <- function(x) {
-  i <- parse_820(x)
   Parsed820(
-    Header = as_header(i),
-    Details = as_detail218(i[["details"]]),
-    Entity = i[["entity"]],
-    Trailer = as_trailer(i)
+    Header = as_header(x),
+    Details = switch(
+      x@Type,
+      "X12 820 (X218)" = as_detail218(x),
+      "X12 820 (X306)" = as_detail306(x)
+    ),
+    Entity = purrr::map_depth(
+      S7::prop(x, "Entity"),
+      1L,
+      \(index) {
+        subset_(x, index)
+      }
+    ),
+    Trailer = as_trailer(x)
   )
 }
 
 S7::method(edi_parse, Index834) <- function(x) {
-  i <- parse_834(x)
   Parsed834(
-    Header = as_header(i),
-    Details = i[["details"]],
-    Member = i[["member"]],
-    Trailer = as_trailer(i)
+    Header = as_header(x),
+    Details = subset_(x, S7::prop(x, "Details")),
+    Member = purrr::map_depth(
+      S7::prop(x, "Member"),
+      1L,
+      \(index) {
+        subset_(x, index)
+      }
+    ),
+    Trailer = as_trailer(x)
   )
 }
 
 S7::method(edi_parse, Index837) <- function(x) {
-  i <- parse_837(x)
   Parsed837(
-    Header = as_header(i),
-    Details = i[["details"]],
-    Claims = i[["claims"]],
-    Trailer = as_trailer(i)
+    Header = as_header(x),
+    Details = subset_(x, S7::prop(x, "Details")),
+    Claims = purrr::map_depth(
+      S7::prop(x, "Claims"),
+      1L,
+      \(index) {
+        subset_(x, index)
+      }
+    ),
+    Trailer = as_trailer(x)
   )
 }
 
 #' @noRd
-as_header <- function(i) {
+as_header <- function(x) {
+  i <- subset_(x, S7::prop(x, "Header"))
   HeaderEDI(
-    ISA = i[["header"]][["ISA"]],
-    GS = i[["header"]][["GS"]],
-    ST = i[["header"]][["ST"]]
+    ISA = i[[1L]][-1L],
+    GS = i[[2L]][-1L],
+    ST = i[[3L]][-1L]
   )
 }
 
 #' @noRd
-as_trailer <- function(i) {
+as_trailer <- function(x) {
+  i <- subset_(x, S7::prop(x, "Trailer"))
   TrailerEDI(
-    SE = i[["trailer"]][["SE"]],
-    GE = i[["trailer"]][["GE"]],
-    IEA = i[["trailer"]][["IEA"]]
+    SE = i[[1L]][-1L],
+    GE = i[[2L]][-1L],
+    IEA = i[[3L]][-1L]
   )
+}
+
+#' @noRd
+as_detail306 <- function(d) {
+  d <- subset_(x, S7::prop(x, "Details"))
+  if (length(d) == 5L) {
+    return(
+      Detail306(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        N1PE = d[[3L]][3:5],
+        N1RM = d[[4L]][3:5],
+        PER = d[[5L]][-1L]
+      )
+    )
+  }
+
+  if (length(d) == 6L) {
+    return(
+      Detail306(
+        BPR = d[[1L]][-1L],
+        TRN = d[[2L]][-1L],
+        REF38 = d[[3L]][3L],
+        REFTV = d[[4L]][3L],
+        N1PE = d[[5L]][3:5],
+        N1RM = d[[6L]][3:5]
+      )
+    )
+  }
 }
 
 #' @noRd
 as_detail218 <- function(d) {
+  d <- subset_(x, S7::prop(x, "Details"))
   if (length(d) == 5L) {
     return(
       Detail218(
         BPR = d[[1L]][-1L],
         TRN = d[[2L]][-1L],
-        REF14 = d[[3L]][-1L],
+        REF14 = d[[3L]][3L],
         N1PE = d[[4L]][3:5],
         N1PR = d[[5L]][3:5]
       )
@@ -105,30 +156,33 @@ as_detail218 <- function(d) {
       Detail218(
         BPR = d[[1L]][-1L],
         TRN = d[[2L]][-1L],
-        REF14 = d[[3L]][-1L],
+        REF14 = d[[3L]][3L],
         N1PE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
         N1PR = c(d[[7L]][3L], d[[8L]][2L], d[[9L]][-1L])
       )
     )
   }
-  if (length(d) == 7L) {
-    if (length(d[[4L]]) == 3L) {
+  if (length(d[[4L]]) == 3L) {
+    return(
       Detail218(
         BPR = d[[1L]][-1L],
         TRN = d[[2L]][-1L],
-        REF14 = d[[3L]][-1L],
+        REF14 = d[[3L]][3L],
         N1PE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
         N1PR = d[[7L]][3:5]
       )
-    } else if (length(d[[4L]]) == 5L) {
+    )
+  }
+  if (length(d[[4L]]) == 5L) {
+    return(
       Detail218(
         BPR = d[[1L]][-1L],
         TRN = d[[2L]][-1L],
-        REF14 = d[[3L]][-1L],
+        REF14 = d[[3L]][3L],
         N1PE = d[[4L]][3:5],
         N1PR = c(d[[5L]][3L], d[[6L]][2L], d[[7L]][-1L])
       )
-    }
+    )
   }
 }
 
@@ -146,53 +200,5 @@ subset_ <- function(x, i, name = FALSE) {
   rlang::set_names(
     purrr::map(x, .subset, -1L),
     purrr::map(x, 1L)
-  )
-}
-
-#' @noRd
-parse_820 <- function(x) {
-  list(
-    header = subset_(x, S7::prop(x, "Header"), TRUE),
-    details = subset_(x, S7::prop(x, "Details")),
-    entity = purrr::map_depth(
-      S7::prop(x, "Entity"),
-      1L,
-      \(index) {
-        subset_(x, index)
-      }
-    ),
-    trailer = subset_(x, S7::prop(x, "Trailer"), TRUE)
-  )
-}
-
-#' @noRd
-parse_834 <- function(x) {
-  list(
-    header = subset_(x, S7::prop(x, "Header"), TRUE),
-    details = subset_(x, S7::prop(x, "Details")),
-    member = purrr::map_depth(
-      S7::prop(x, "Member"),
-      1L,
-      \(index) {
-        subset_(x, index)
-      }
-    ),
-    trailer = subset_(x, S7::prop(x, "Trailer"), TRUE)
-  )
-}
-
-#' @noRd
-parse_837 <- function(x) {
-  list(
-    header = subset_(x, S7::prop(x, "Header"), TRUE),
-    details = subset_(x, S7::prop(x, "Details")),
-    claims = purrr::map_depth(
-      S7::prop(x, "Claims"),
-      1L,
-      \(index) {
-        subset_(x, index)
-      }
-    ),
-    trailer = subset_(x, S7::prop(x, "Trailer"), TRUE)
   )
 }
