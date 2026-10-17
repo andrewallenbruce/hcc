@@ -41,54 +41,48 @@ S7::method(edi_parse, S7::class_character) <- function(x) {
 S7::method(edi_parse, Index820) <- function(x) {
   i <- parse_820(x)
   Parsed820(
-    Header = HeaderEDI(
-      ISA = i[["header"]][["ISA"]],
-      GS = i[["header"]][["GS"]],
-      ST = i[["header"]][["ST"]]
-    ),
+    Header = as_header(i),
     Details = i[["details"]],
     Entity = i[["entity"]],
-    Trailer = TrailerEDI(
-      SE = i[["trailer"]][["SE"]],
-      GE = i[["trailer"]][["GE"]],
-      IEA = i[["trailer"]][["IEA"]]
-    )
+    Trailer = as_trailer(i)
   )
 }
 
 S7::method(edi_parse, Index834) <- function(x) {
   i <- parse_834(x)
   Parsed834(
-    Header = HeaderEDI(
-      ISA = i[["header"]][["ISA"]],
-      GS = i[["header"]][["GS"]],
-      ST = i[["header"]][["ST"]]
-    ),
+    Header = as_header(i),
     Details = i[["details"]],
     Member = i[["member"]],
-    Trailer = TrailerEDI(
-      SE = i[["trailer"]][["SE"]],
-      GE = i[["trailer"]][["GE"]],
-      IEA = i[["trailer"]][["IEA"]]
-    )
+    Trailer = as_trailer(i)
   )
 }
 
 S7::method(edi_parse, Index837) <- function(x) {
   i <- parse_837(x)
   Parsed837(
-    Header = HeaderEDI(
-      ISA = i[["header"]][["ISA"]],
-      GS = i[["header"]][["GS"]],
-      ST = i[["header"]][["ST"]]
-    ),
+    Header = as_header(i),
     Details = i[["details"]],
     Claims = i[["claims"]],
-    Trailer = TrailerEDI(
-      SE = i[["trailer"]][["SE"]],
-      GE = i[["trailer"]][["GE"]],
-      IEA = i[["trailer"]][["IEA"]]
-    )
+    Trailer = as_trailer(i)
+  )
+}
+
+#' @noRd
+as_header <- function(i) {
+  HeaderEDI(
+    ISA = i[["header"]][["ISA"]],
+    GS = i[["header"]][["GS"]],
+    ST = i[["header"]][["ST"]]
+  )
+}
+
+#' @noRd
+as_trailer <- function(i) {
+  TrailerEDI(
+    SE = i[["trailer"]][["SE"]],
+    GE = i[["trailer"]][["GE"]],
+    IEA = i[["trailer"]][["IEA"]]
   )
 }
 
