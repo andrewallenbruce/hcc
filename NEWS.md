@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9083 (2026-10-17)
+
+* `split_interval2` for nested hierarchies
+
+
 # hcc 0.0.0.9082 (2026-10-17)
 
 * `Detail834` class
