@@ -333,9 +333,9 @@ edi_index(x12_EX$`834`)
 #>      Type: X12 834 (X220A1)                   
 #>  Segments: [33]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > QTY•TO > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [23] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                    
@@ -351,9 +351,9 @@ edi_index(x12_EX$`834`)
 #>      Type: X12 834 (X220A1)                   
 #>  Segments: [36]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > QTY•TO > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [26] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -370,9 +370,9 @@ edi_index(x12_EX$`834`)
 #>      Type: X12 834 (X220A1)                   
 #>  Segments: [35]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > QTY•TO > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -389,9 +389,9 @@ edi_index(x12_EX$`834`)
 #>      Type: X12 834 (X220A1)                   
 #>  Segments: [35]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > QTY•TO > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [25] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
@@ -408,9 +408,9 @@ edi_index(x12_EX$`834`)
 #>      Type: X12 834 (X220A1)                   
 #>  Segments: [68]
 #> ────────────────────────────────────────────────────────────────────────────────
-#>    Header [3] ISA > GS > ST                                              
-#>    Detail [4] BGN•00 > QTY > N1•P5 > N1•IN
-#>   Trailer [3] SE > GE > IEA                                              
+#>    Header [3] ISA > GS > ST                                                 
+#>    Detail [4] BGN•00 > QTY•TO > N1•P5 > N1•IN
+#>   Trailer [3] SE > GE > IEA                                                 
 #> 
 #> ── Member [58] ─────────────────────────────────────────────────────────────────
 #>    INS  Y                                                                                                                                                                                                                                         
