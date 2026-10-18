@@ -46,13 +46,8 @@ S7::method(edi_parse, Index820) <- function(x) {
       "X12 820 (X218)" = as_detail218(x),
       "X12 820 (X306)" = as_detail306(x)
     ),
-    Entity = purrr::map_depth(
-      S7::prop(x, "Entity"),
-      1L,
-      \(index) {
-        subset_(x, index)
-      }
-    ),
+    Entity = S7::prop(x, "Entity") |>
+      purrr::map_depth(2L, \(id) subset_(x, id)),
     Trailer = as_trailer(x)
   )
 }

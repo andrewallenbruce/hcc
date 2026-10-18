@@ -41,6 +41,7 @@ payment remittance from a state Medicaid agency or CMS to
 a managed care plan.
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 x = edi_parse(hcc::x12_EX$`820`$`218`$sample_820_01)
 PaymentData(
 source = x@Header@ISA[6L],
@@ -87,4 +88,5 @@ aid = x@Entity[[8L]][[3L]][3L],
 plan = x@Entity[[8L]][[3L]][4L],
 description = x@Entity[[8L]][[4L]][3L],
 coverage = x@Entity[[8L]][[5L]][7L])))))
+\dontshow{\}) # examplesIf}
 }

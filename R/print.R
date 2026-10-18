@@ -51,13 +51,13 @@ fmt_segment <- function(x) {
   if (charr::str_detect(x, "^DTP|^REF\\*[A-Z0-9]{3}")) {
     return(charr::str_sub(x, 1L, 7L))
   }
-  if (charr::str_detect(x, "^BGN|^PER\\*|^REF\\*[A-Z0-9]{2}")) {
+  if (charr::str_detect(x, "^BGN|^QTY|^PER\\*|^REF\\*[A-Z0-9]{2}")) {
     return(charr::str_sub(x, 1L, 6L))
   }
   if (charr::str_detect(x, "^N1|^BPR")) {
     return(charr::str_sub(x, 1L, 5L))
   }
-  if (charr::str_detect(x, "^ISA|^TRN|^IEA|^QTY")) {
+  if (charr::str_detect(x, "^ISA|^TRN|^IEA")) {
     return(charr::str_sub(x, 1L, 3L))
   }
   charr::str_sub(x, 1L, 2L)
@@ -122,7 +122,7 @@ S7::method(format, Index820) <- function(x) {
   cat("", sep = "\n")
 
   x <- S7::prop(x, "Entity") |>
-    purrr::map(\(y) {
+    purrr::map_depth(2L, \(y) {
       purrr::map_chr(names(y), fmt_entity) |>
         charr::str_replace("\\*", dot)
     })
@@ -135,7 +135,10 @@ S7::method(format, Index820) <- function(x) {
     )
   )
 
-  x <- fleft(cli::ansi_strtrim(purrr::map_chr(x, arrow), width = 60))
+  x <- fleft(cli::ansi_strtrim(
+    unlist_((purrr::map_depth(x, 2L, arrow))),
+    width = 60
+  ))
   cli::cat_line(cheapr::paste_(fright(strrep(" ", 2L)), x, sep = " "))
   cli::cat_rule()
 }

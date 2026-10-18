@@ -78,7 +78,7 @@ Payment := S7::new_class(
 #' @param payer `<hcc::Party>` Paying organization name, street address, city, state, zip
 #' @param payments list of `<hcc::Payment>` objects, per-member payment records
 #' @returns A `<hcc::PaymentData>` S7 object
-#' @examples
+#' @examplesIf FALSE
 #' x = edi_parse(hcc::x12_EX$`820`$`218`$sample_820_01)
 #' PaymentData(
 #' source = x@Header@ISA[6L],
