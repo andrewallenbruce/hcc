@@ -118,7 +118,7 @@ EnrollmentData(
 
 - dob:
 
-  Date of birth (YYYY-MM-DD)
+  `DMG-02` Date of birth (YYYY-MM-DD)
 
 - age:
 
@@ -126,7 +126,7 @@ EnrollmentData(
 
 - sex:
 
-  Member sex (M/F)
+  `DMG-03` Member sex (M/F)
 
 - race:
 
@@ -138,7 +138,7 @@ EnrollmentData(
 
 - death_date:
 
-  Date of death if applicable
+  `INS-12` Date of death if applicable
 
 - address:
 
@@ -164,13 +164,15 @@ EnrollmentData(
 
   `INS-03`
 
-  - Change (`001`)
+  - `001`: Change
 
-  - Add (`021`)
+  - `021`: Add
 
-  - Cancel (`024`)
+  - `024`: Cancel
 
-  - Reinstate (`025`)
+  - `025`: Reinstate
+
+  - `030`: Audit/Compare
 
 - maintenance_reason_code:
 
@@ -178,7 +180,15 @@ EnrollmentData(
 
 - benefit_status_code:
 
-  `INS-05` A=Active, C=COBRA, etc.
+  `INS-05`
+
+  - `A`: Active
+
+  - `C`: COBRA
+
+  - `S`: Surviving Insured
+
+  - `T`: TEFRA
 
 - coverage_period:
 
@@ -206,7 +216,7 @@ EnrollmentData(
 
 - medicare_status_code:
 
-  QMB, SLMB, QI, QDWI, etc.
+  `INS-06` QMB, SLMB, QI, QDWI, etc.
 
 - medi_cal_aid_code:
 
@@ -214,15 +224,15 @@ EnrollmentData(
 
 - medi_cal_eligibility_status:
 
-  Medi-Cal eligibility status (Active/Terminated/None)
+  Active/Terminated/None
 
 - fame_county_id:
 
-  FAME county ID (`REF*ZX` or `N4*CY`)
+  `REF*ZX`\|`N4*CY`FAME county ID
 
 - case_number:
 
-  Case number (`REF*1L`)
+  `REF*1L` Case number
 
 - fame_card_issue_date:
 
@@ -230,7 +240,7 @@ EnrollmentData(
 
 - fame_redetermination_date:
 
-  FAME redetermination date (`REF*17`)
+  `REF*17` FAME redetermination date
 
 - fame_death_date:
 
@@ -238,7 +248,7 @@ EnrollmentData(
 
 - primary_aid_code:
 
-  Primary AID code (`REF*RB`)
+  `REF*RB` Primary AID code
 
 - carrier_code:
 

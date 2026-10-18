@@ -31,11 +31,11 @@ ServiceData(
 
 - service_date:
 
-  `<Date>` Date service was performed (YYYY-MM-DD)
+  `DTP*472` Date service was performed (YYYY-MM-DD)
 
 - claim_id:
 
-  `<chr>` Unique identifier for the claim
+  `CLM-01` Unique identifier for the claim
 
 - patient_id:
 
@@ -47,20 +47,20 @@ ServiceData(
 
 - place_of_service:
 
-  `<chr>` Place of service code
+  `CLM-05` Place of service code
 
 - facility_type:
 
-  `<chr>` Type of facility where service was rendered
+  `CLM-05` Type of facility where service was rendered
 
 - service_type:
 
-  `<chr>` Type of service provided (facility type + service type = Type
+  `CLM-05` Type of service provided (facility type + service type = Type
   of Bill)
 
 - linked_diagnosis_codes:
 
-  `<chr>` ICD-10 diagnosis codes linked to this service
+  `HI-01` ICD-10 diagnosis codes linked to this service
 
 - claim_diagnosis_codes:
 
@@ -68,39 +68,39 @@ ServiceData(
 
 - provider_specialty:
 
-  `<chr>` Provider taxonomy or specialty code
+  `PRV*BI-03` Provider taxonomy or specialty code
 
 - performing_provider_npi:
 
-  `<int>` NPI for performing provider
+  `NM1*82` NPI for performing provider
 
 - billing_provider_npi:
 
-  `<int>` NPI for billing provider
+  `NM1*85` NPI for billing provider
 
 - procedure_code:
 
-  `<chr>` HCPCS code
+  `SV1-01` HCPCS code
 
 - modifiers:
 
-  `<chr>` List of procedure code modifiers
+  `SV1-01` List of procedure code modifiers
 
 - ndc:
 
-  `<chr>` National Drug Code
+  `LIN-03` `<chr>` National Drug Code
 
 - quantity:
 
-  `<num>` Number of units provided
+  `CTP-04` Number of units provided
 
 - unit:
 
-  `<chr>` Unit of measure for quantity
+  `CTP-05` Unit of measure for quantity
 
 - allowed_amount:
 
-  `<num>` Allowed amount for the service
+  `SV1-02` Allowed amount for the service
 
 ## Value
 

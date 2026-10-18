@@ -72,11 +72,11 @@
 
 
 <dl><dt id="arg-service-date">service_date<a class="anchor" aria-label="anchor" href="#arg-service-date"></a></dt>
-<dd><p><code>&lt;Date&gt;</code> Date service was performed (YYYY-MM-DD)</p></dd>
+<dd><p><code>DTP*472</code> Date service was performed (YYYY-MM-DD)</p></dd>
 
 
 <dt id="arg-claim-id">claim_id<a class="anchor" aria-label="anchor" href="#arg-claim-id"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Unique identifier for the claim</p></dd>
+<dd><p><code>CLM-01</code> Unique identifier for the claim</p></dd>
 
 
 <dt id="arg-patient-id">patient_id<a class="anchor" aria-label="anchor" href="#arg-patient-id"></a></dt>
@@ -89,20 +89,20 @@
 
 
 <dt id="arg-place-of-service">place_of_service<a class="anchor" aria-label="anchor" href="#arg-place-of-service"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Place of service code</p></dd>
+<dd><p><code>CLM-05</code> Place of service code</p></dd>
 
 
 <dt id="arg-facility-type">facility_type<a class="anchor" aria-label="anchor" href="#arg-facility-type"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Type of facility where service was rendered</p></dd>
+<dd><p><code>CLM-05</code> Type of facility where service was rendered</p></dd>
 
 
 <dt id="arg-service-type">service_type<a class="anchor" aria-label="anchor" href="#arg-service-type"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Type of service provided (facility type + service
+<dd><p><code>CLM-05</code> Type of service provided (facility type + service
 type = Type of Bill)</p></dd>
 
 
 <dt id="arg-linked-diagnosis-codes">linked_diagnosis_codes<a class="anchor" aria-label="anchor" href="#arg-linked-diagnosis-codes"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> ICD-10 diagnosis codes linked to this
+<dd><p><code>HI-01</code> ICD-10 diagnosis codes linked to this
 service</p></dd>
 
 
@@ -111,39 +111,39 @@ service</p></dd>
 
 
 <dt id="arg-provider-specialty">provider_specialty<a class="anchor" aria-label="anchor" href="#arg-provider-specialty"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Provider taxonomy or specialty code</p></dd>
+<dd><p><code>PRV*BI-03</code> Provider taxonomy or specialty code</p></dd>
 
 
 <dt id="arg-performing-provider-npi">performing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-performing-provider-npi"></a></dt>
-<dd><p><code>&lt;int&gt;</code> NPI for performing provider</p></dd>
+<dd><p><code>NM1*82</code> NPI for performing provider</p></dd>
 
 
 <dt id="arg-billing-provider-npi">billing_provider_npi<a class="anchor" aria-label="anchor" href="#arg-billing-provider-npi"></a></dt>
-<dd><p><code>&lt;int&gt;</code> NPI for billing provider</p></dd>
+<dd><p><code>NM1*85</code> NPI for billing provider</p></dd>
 
 
 <dt id="arg-procedure-code">procedure_code<a class="anchor" aria-label="anchor" href="#arg-procedure-code"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> HCPCS code</p></dd>
+<dd><p><code>SV1-01</code> HCPCS code</p></dd>
 
 
 <dt id="arg-modifiers">modifiers<a class="anchor" aria-label="anchor" href="#arg-modifiers"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> List of procedure code modifiers</p></dd>
+<dd><p><code>SV1-01</code> List of procedure code modifiers</p></dd>
 
 
 <dt id="arg-ndc">ndc<a class="anchor" aria-label="anchor" href="#arg-ndc"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> National Drug Code</p></dd>
+<dd><p><code>LIN-03</code> <code>&lt;chr&gt;</code> National Drug Code</p></dd>
 
 
 <dt id="arg-quantity">quantity<a class="anchor" aria-label="anchor" href="#arg-quantity"></a></dt>
-<dd><p><code>&lt;num&gt;</code> Number of units provided</p></dd>
+<dd><p><code>CTP-04</code> Number of units provided</p></dd>
 
 
 <dt id="arg-unit">unit<a class="anchor" aria-label="anchor" href="#arg-unit"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> Unit of measure for quantity</p></dd>
+<dd><p><code>CTP-05</code> Unit of measure for quantity</p></dd>
 
 
 <dt id="arg-allowed-amount">allowed_amount<a class="anchor" aria-label="anchor" href="#arg-allowed-amount"></a></dt>
-<dd><p><code>&lt;num&gt;</code> Allowed amount for the service</p></dd>
+<dd><p><code>SV1-02</code> Allowed amount for the service</p></dd>
 
 </dl></div>
     <div class="section level2">
