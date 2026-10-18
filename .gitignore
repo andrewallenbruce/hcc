@@ -5,3 +5,6 @@
 .DS_Store
 .quarto
 docs
+
+# scrutin history + caches (keep runner scripts tracked)
+.scrutin/state.db*

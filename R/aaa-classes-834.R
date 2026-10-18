@@ -36,40 +36,44 @@ HCPCoveragePeriod := S7::new_class(
 #' @param first_name `NM1-04` Member first name
 #' @param last_name `NM1-03` Member last name
 #' @param middle_name `NM1-05` Member middle name
-#' @param dob Date of birth (YYYY-MM-DD)
+#' @param dob `DMG-02` Date of birth (YYYY-MM-DD)
 #' @param age Calculated age
-#' @param sex Member sex (M/F)
+#' @param sex `DMG-03` Member sex (M/F)
 #' @param race `DMG-05` Race/ethnicity code
 #' @param language `LUI-02` Preferred language
-#' @param death_date Date of death if applicable
+#' @param death_date `INS-12` Date of death if applicable
 #' @param address `N3-01` Street address line 1
 #' @param city `N4-01` City
 #' @param state `N4-02` State code
 #' @param zip `N4-03` Postal code
 #' @param phone `PER-04` Phone number
 #' @param maintenance_type `INS-03`
-#'    - Change (`001`)
-#'    - Add (`021`)
-#'    - Cancel (`024`)
-#'    - Reinstate (`025`)
+#'    - `001`: Change
+#'    - `021`: Add
+#'    - `024`: Cancel
+#'    - `025`: Reinstate
+#'    - `030`: Audit/Compare
 #' @param maintenance_reason_code `INS-04` Maintenance reason
-#' @param benefit_status_code `INS-05` A=Active, C=COBRA, etc.
+#' @param benefit_status_code `INS-05`
+#'    - `A`: Active
+#'    - `C`: COBRA
+#'    - `S`: Surviving Insured
+#'    - `T`: TEFRA
 #' @param coverage_period Coverage effective date range
 #' @param has_medicare Member has Medicare coverage
 #' @param has_medicaid Member has Medicaid coverage
 #' @param dual_elgbl_cd Dual eligibility status code (`00`,`01`-`08`)
 #' @param is_full_benefit_dual Full Benefit Dual (uses CFA_/CFD_ prefix)
 #' @param is_partial_benefit_dual Partial Benefit Dual (uses CPA_/CPD_ prefix)
-#' @param medicare_status_code QMB, SLMB, QI, QDWI, etc.
+#' @param medicare_status_code `INS-06` QMB, SLMB, QI, QDWI, etc.
 #' @param medi_cal_aid_code California Medi-Cal aid code
-#' @param medi_cal_eligibility_status Medi-Cal eligibility status
-#'   (Active/Terminated/None)
-#' @param fame_county_id FAME county ID (`REF*ZX` or `N4*CY`)
-#' @param case_number Case number (`REF*1L`)
+#' @param medi_cal_eligibility_status Active/Terminated/None
+#' @param fame_county_id `REF*ZX`|`N4*CY`FAME county ID
+#' @param case_number `REF*1L` Case number
 #' @param fame_card_issue_date FAME card issue date
-#' @param fame_redetermination_date FAME redetermination date (`REF*17`)
+#' @param fame_redetermination_date `REF*17` FAME redetermination date
 #' @param fame_death_date FAME death date
-#' @param primary_aid_code Primary AID code (`REF*RB`)
+#' @param primary_aid_code `REF*RB` Primary AID code
 #' @param carrier_code Carrier code
 #' @param fed_contract_number Federal contract number
 #' @param client_reporting_cat Client reporting category

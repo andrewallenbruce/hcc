@@ -6,6 +6,7 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^\.scrutin$
 ^[.]?air[.]toml$
 ^\.vscode$
 ^README\.Rmd$

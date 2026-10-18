@@ -90,17 +90,17 @@ EnrollmentData(
 
 \item{middle_name}{\code{NM1-05} Member middle name}
 
-\item{dob}{Date of birth (YYYY-MM-DD)}
+\item{dob}{\code{DMG-02} Date of birth (YYYY-MM-DD)}
 
 \item{age}{Calculated age}
 
-\item{sex}{Member sex (M/F)}
+\item{sex}{\code{DMG-03} Member sex (M/F)}
 
 \item{race}{\code{DMG-05} Race/ethnicity code}
 
 \item{language}{\code{LUI-02} Preferred language}
 
-\item{death_date}{Date of death if applicable}
+\item{death_date}{\code{INS-12} Date of death if applicable}
 
 \item{address}{\code{N3-01} Street address line 1}
 
@@ -114,15 +114,22 @@ EnrollmentData(
 
 \item{maintenance_type}{\code{INS-03}
 \itemize{
-\item Change (\code{001})
-\item Add (\code{021})
-\item Cancel (\code{024})
-\item Reinstate (\code{025})
+\item \code{001}: Change
+\item \code{021}: Add
+\item \code{024}: Cancel
+\item \code{025}: Reinstate
+\item \code{030}: Audit/Compare
 }}
 
 \item{maintenance_reason_code}{\code{INS-04} Maintenance reason}
 
-\item{benefit_status_code}{\code{INS-05} A=Active, C=COBRA, etc.}
+\item{benefit_status_code}{\code{INS-05}
+\itemize{
+\item \code{A}: Active
+\item \code{C}: COBRA
+\item \code{S}: Surviving Insured
+\item \code{T}: TEFRA
+}}
 
 \item{coverage_period}{Coverage effective date range}
 
@@ -136,24 +143,23 @@ EnrollmentData(
 
 \item{is_partial_benefit_dual}{Partial Benefit Dual (uses CPA_/CPD_ prefix)}
 
-\item{medicare_status_code}{QMB, SLMB, QI, QDWI, etc.}
+\item{medicare_status_code}{\code{INS-06} QMB, SLMB, QI, QDWI, etc.}
 
 \item{medi_cal_aid_code}{California Medi-Cal aid code}
 
-\item{medi_cal_eligibility_status}{Medi-Cal eligibility status
-(Active/Terminated/None)}
+\item{medi_cal_eligibility_status}{Active/Terminated/None}
 
-\item{fame_county_id}{FAME county ID (\code{REF*ZX} or \code{N4*CY})}
+\item{fame_county_id}{\code{REF*ZX}|\code{N4*CY}FAME county ID}
 
-\item{case_number}{Case number (\code{REF*1L})}
+\item{case_number}{\code{REF*1L} Case number}
 
 \item{fame_card_issue_date}{FAME card issue date}
 
-\item{fame_redetermination_date}{FAME redetermination date (\code{REF*17})}
+\item{fame_redetermination_date}{\code{REF*17} FAME redetermination date}
 
 \item{fame_death_date}{FAME death date}
 
-\item{primary_aid_code}{Primary AID code (\code{REF*RB})}
+\item{primary_aid_code}{\code{REF*RB} Primary AID code}
 
 \item{carrier_code}{Carrier code}
 

@@ -26,44 +26,44 @@ ServiceData(
 )
 }
 \arguments{
-\item{service_date}{\verb{<Date>} Date service was performed (YYYY-MM-DD)}
+\item{service_date}{\code{DTP*472} Date service was performed (YYYY-MM-DD)}
 
-\item{claim_id}{\verb{<chr>} Unique identifier for the claim}
+\item{claim_id}{\code{CLM-01} Unique identifier for the claim}
 
 \item{patient_id}{\verb{<chr>} Unique identifier for the patient}
 
 \item{claim_type}{\verb{<chr>} Type of claim (e.g., NCH Claim Type Code, or 837I,
 837P)}
 
-\item{place_of_service}{\verb{<chr>} Place of service code}
+\item{place_of_service}{\code{CLM-05} Place of service code}
 
-\item{facility_type}{\verb{<chr>} Type of facility where service was rendered}
+\item{facility_type}{\code{CLM-05} Type of facility where service was rendered}
 
-\item{service_type}{\verb{<chr>} Type of service provided (facility type + service
+\item{service_type}{\code{CLM-05} Type of service provided (facility type + service
 type = Type of Bill)}
 
-\item{linked_diagnosis_codes}{\verb{<chr>} ICD-10 diagnosis codes linked to this
+\item{linked_diagnosis_codes}{\code{HI-01} ICD-10 diagnosis codes linked to this
 service}
 
 \item{claim_diagnosis_codes}{\verb{<chr>} All diagnosis codes on the claim}
 
-\item{provider_specialty}{\verb{<chr>} Provider taxonomy or specialty code}
+\item{provider_specialty}{\code{PRV*BI-03} Provider taxonomy or specialty code}
 
-\item{performing_provider_npi}{\verb{<int>} NPI for performing provider}
+\item{performing_provider_npi}{\code{NM1*82} NPI for performing provider}
 
-\item{billing_provider_npi}{\verb{<int>} NPI for billing provider}
+\item{billing_provider_npi}{\code{NM1*85} NPI for billing provider}
 
-\item{procedure_code}{\verb{<chr>} HCPCS code}
+\item{procedure_code}{\code{SV1-01} HCPCS code}
 
-\item{modifiers}{\verb{<chr>} List of procedure code modifiers}
+\item{modifiers}{\code{SV1-01} List of procedure code modifiers}
 
-\item{ndc}{\verb{<chr>} National Drug Code}
+\item{ndc}{\code{LIN-03} \verb{<chr>} National Drug Code}
 
-\item{quantity}{\verb{<num>} Number of units provided}
+\item{quantity}{\code{CTP-04} Number of units provided}
 
-\item{unit}{\verb{<chr>} Unit of measure for quantity}
+\item{unit}{\code{CTP-05} Unit of measure for quantity}
 
-\item{allowed_amount}{\verb{<num>} Allowed amount for the service}
+\item{allowed_amount}{\code{SV1-02} Allowed amount for the service}
 }
 \value{
 A \verb{<ServiceData>} S7 object

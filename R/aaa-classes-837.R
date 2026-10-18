@@ -1,26 +1,26 @@
 #' Healthcare Claim Service Level Data
 #'
-#' @param claim_id `<chr>` Unique identifier for the claim
-#' @param procedure_code `<chr>` HCPCS code
-#' @param ndc `<chr>` National Drug Code
-#' @param linked_diagnosis_codes `<chr>` ICD-10 diagnosis codes linked to this
+#' @param claim_id `CLM-01` Unique identifier for the claim
+#' @param procedure_code `SV1-01` HCPCS code
+#' @param ndc `LIN-03` `<chr>` National Drug Code
+#' @param linked_diagnosis_codes `HI-01` ICD-10 diagnosis codes linked to this
 #'   service
 #' @param claim_diagnosis_codes `<chr>` All diagnosis codes on the claim
 #' @param claim_type `<chr>` Type of claim (e.g., NCH Claim Type Code, or 837I,
 #'   837P)
-#' @param provider_specialty `<chr>` Provider taxonomy or specialty code
-#' @param performing_provider_npi `<int>` NPI for performing provider
-#' @param billing_provider_npi `<int>` NPI for billing provider
+#' @param provider_specialty `PRV*BI-03` Provider taxonomy or specialty code
+#' @param performing_provider_npi `NM1*82` NPI for performing provider
+#' @param billing_provider_npi `NM1*85` NPI for billing provider
 #' @param patient_id `<chr>` Unique identifier for the patient
-#' @param facility_type `<chr>` Type of facility where service was rendered
-#' @param service_type `<chr>` Type of service provided (facility type + service
+#' @param facility_type `CLM-05` Type of facility where service was rendered
+#' @param service_type `CLM-05` Type of service provided (facility type + service
 #'   type = Type of Bill)
-#' @param service_date `<Date>` Date service was performed (YYYY-MM-DD)
-#' @param place_of_service `<chr>` Place of service code
-#' @param quantity `<num>` Number of units provided
-#' @param unit `<chr>` Unit of measure for quantity
-#' @param modifiers `<chr>` List of procedure code modifiers
-#' @param allowed_amount `<num>` Allowed amount for the service
+#' @param service_date `DTP*472` Date service was performed (YYYY-MM-DD)
+#' @param place_of_service `CLM-05` Place of service code
+#' @param quantity `CTP-04` Number of units provided
+#' @param unit `CTP-05` Unit of measure for quantity
+#' @param modifiers `SV1-01` List of procedure code modifiers
+#' @param allowed_amount `SV1-02` Allowed amount for the service
 #' @returns A `<ServiceData>` S7 object
 #' @examples
 #' ServiceData(
