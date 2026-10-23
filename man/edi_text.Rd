@@ -29,5 +29,6 @@ Methods for \code{edi_index}:
 }
 }
 \examples{
-edi_text(x12_EX)
+x = edi_text(x12_EX)
+x
 }

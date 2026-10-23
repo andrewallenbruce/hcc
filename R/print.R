@@ -136,7 +136,7 @@ S7::method(format, Index820) <- function(x) {
   )
 
   x <- fleft(cli::ansi_strtrim(
-    unlist_((purrr::map_depth(x, 2L, arrow))),
+    unlist_(purrr::map_depth(x, 2L, arrow)),
     width = 60
   ))
   cli::cat_line(cheapr::paste_(fright(strrep(" ", 2L)), x, sep = " "))

@@ -9,7 +9,8 @@
 #' @param ... dots
 #' @returns an `<hcc::TextEDI>` S7 object
 #' @examples
-#' edi_text(x12_EX)
+#' x = edi_text(x12_EX)
+#' x
 #' @export
 edi_text := S7::new_generic("x")
 
