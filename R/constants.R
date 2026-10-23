@@ -221,6 +221,20 @@ MODEL = list(
   # "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
 )
 
+#' @noRd
+check_model <- function(
+  model,
+  arg_nm = rlang::caller_arg(model),
+  error_call = rlang::caller_env()
+) {
+  rlang::arg_match0(
+    model,
+    rlang::names2(MODEL),
+    arg_nm = arg_nm,
+    error_call = error_call
+  )
+}
+
 LANG = list(
   SPA = "Spanish",
   ENG = "English",

@@ -165,20 +165,23 @@ Parsed837 := S7::new_class(
   )
 )
 
-#' @noRd
+#' Party class
+#' @keywords internal
+#' @export
 Party := S7::new_class(
   properties = list(
-    name = S7::class_character,
+    name = class_string,
     address = S7::class_character
   )
 )
 
-#' @noRd
+#' Member class
+#' @keywords internal
+#' @export
 Member := S7::new_class(
   properties = list(
-    id = S7::class_character,
-    last = S7::class_character,
-    first = S7::class_character,
-    middle = S7::class_character
+    id = class_string,
+    last = class_string,
+    first = class_string
   )
 )

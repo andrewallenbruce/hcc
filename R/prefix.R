@@ -99,18 +99,17 @@ prefix_rxhcc <- function(x) {
 #' prefix(x, "R05")
 #' @export
 prefix <- function(x, model = "C28") {
-  S7::check_is_S7(x)
   if (!S7::S7_inherits(x, PatientDemographics)) {
     cli::cli_abort(
       c(
-        "{.arg {x}} must be a {.cls hcc::PatientDemographics} object, not {.obj_type_friendly {x}}",
+        "{.arg x} must be a {.cls hcc::PatientDemographics} object, not {.obj_type_friendly {x}}",
         "i" = "Create one with {.fn hcc::demographics}"
       ),
       call = rlang::caller_env()
     )
   }
 
-  model <- rlang::arg_match0(model, rlang::names2(MODEL))
+  check_model(model)
 
   if (model %in_% c("D20", "D21", "D24")) {
     return(prefix_esrd(x))
@@ -138,8 +137,8 @@ prefix <- function(x, model = "C28") {
     cheapr::paste_(
       "C",
       cheapr::case(
-        isTRUE(S7::prop(x, "dual_full")) ~ "F",
-        isTRUE(S7::prop(x, "dual_part")) ~ "P",
+        S7::prop(x, "dual_full") ~ "F",
+        S7::prop(x, "dual_part") ~ "P",
         .default = "N"
       )
     ),

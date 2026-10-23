@@ -3,6 +3,8 @@
 export(EnrollmentData)
 export(HCCDetail)
 export(HCPCoveragePeriod)
+export(Member)
+export(Party)
 export(PatientDemographics)
 export(Payment)
 export(PaymentData)

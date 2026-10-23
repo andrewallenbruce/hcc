@@ -31,24 +31,24 @@
 #' @export
 PatientDemographics := S7::new_class(
   properties = list(
-    version = S7::class_character,
+    version = class_string,
     age = prop_integer,
-    sex = S7::class_character,
-    dual_code = S7::class_character,
+    sex = class_string,
+    dual_code = class_string,
     orec_code = prop_integer,
     crec_code = prop_integer,
-    new_enrollee = S7::class_logical,
-    has_snp = S7::class_logical,
-    non_aged = S7::class_logical,
-    dis_orig = S7::class_logical,
-    dis_curr = S7::class_logical,
-    dual_full = S7::class_logical,
-    dual_part = S7::class_logical,
-    has_esrd = S7::class_logical,
-    is_lti = S7::class_logical,
-    low_income = S7::class_logical,
+    new_enrollee = class_boolean,
+    has_snp = class_boolean,
+    non_aged = class_boolean,
+    dis_orig = class_boolean,
+    dis_curr = class_boolean,
+    dual_full = class_boolean,
+    dual_part = class_boolean,
+    has_esrd = class_boolean,
+    is_lti = class_boolean,
+    low_income = class_boolean,
     esrd_months = prop_integer,
-    category = S7::class_character
+    category = class_string
   )
 )
 
