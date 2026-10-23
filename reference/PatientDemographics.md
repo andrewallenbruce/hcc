@@ -6,24 +6,24 @@ Patient Demographics Categorization
 
 ``` r
 PatientDemographics(
-  version = character(0),
+  version = NA_character_,
   age = integer(0),
-  sex = character(0),
-  dual_code = character(0),
+  sex = NA_character_,
+  dual_code = NA_character_,
   orec_code = integer(0),
   crec_code = integer(0),
-  new_enrollee = logical(0),
-  has_snp = logical(0),
-  non_aged = logical(0),
-  dis_orig = logical(0),
-  dis_curr = logical(0),
-  dual_full = logical(0),
-  dual_part = logical(0),
-  has_esrd = logical(0),
-  is_lti = logical(0),
-  low_income = logical(0),
+  new_enrollee = NA,
+  has_snp = NA,
+  non_aged = NA,
+  dis_orig = NA,
+  dis_curr = NA,
+  dual_full = NA,
+  dual_part = NA,
+  has_esrd = NA,
+  is_lti = NA,
+  low_income = NA,
   esrd_months = integer(0),
-  category = character(0)
+  category = NA_character_
 )
 ```
 
