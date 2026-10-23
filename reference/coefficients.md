@@ -5,22 +5,22 @@ Retrieve Risk Adjustment Coefficients
 ## Usage
 
 ``` r
-coefficients(coefficient = NULL, model = NULL, year = NULL)
+coefficients(coefficient = NULL, model = "C28", year = 2026L)
 ```
 
 ## Arguments
 
 - coefficient:
 
-  prefixed HCC
+  prefixed HCC(s)
 
 - model:
 
-  Risk adjustment model to use; default is "CMS-HCC Model V28"
+  Risk adjustment model to use; default is "C28" (CMS-HCC Model V28)
 
 - year:
 
-  Model year; default is 2026
+  Model year; default is 2025
 
 ## Value
 
