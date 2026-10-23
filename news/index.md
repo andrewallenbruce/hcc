@@ -119,7 +119,7 @@
 ## hcc 0.0.0.9059 (2026-09-26)
 
 - fixed arg checks in
-  [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
+  [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
 - removed unnecessary parsing step in 834 parser
 
 ## hcc 0.0.0.9058 (2026-09-26)

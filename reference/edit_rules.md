@@ -30,7 +30,7 @@ edit_rules(icd, age = NULL, sex = NULL, model = "C28")
 ## Value
 
 Modified
-[`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
+[`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
 output with edits applied
 
 ## Details

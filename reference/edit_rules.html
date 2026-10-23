@@ -73,7 +73,7 @@ applied AFTER initial ICD -&gt; CC mapping but BEFORE hierarchies.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Modified <code><a href="icd_to_cc.html">icd_to_cc()</a></code> output with edits applied</p>
+    <p>Modified <code><a href="hierarchies.html">icd_to_cc()</a></code> output with edits applied</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -83,7 +83,7 @@ applied AFTER initial ICD -&gt; CC mapping but BEFORE hierarchies.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="icd_to_cc.html">icd_to_cc</a></span><span class="op">(</span>icd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D67"</span>, <span class="st">"C50522"</span><span class="op">)</span>, model <span class="op">=</span> <span class="st">"C28"</span>, year <span class="op">=</span> <span class="fl">2026L</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="hierarchies.html">icd_to_cc</a></span><span class="op">(</span>icd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D67"</span>, <span class="st">"C50522"</span><span class="op">)</span>, model <span class="op">=</span> <span class="st">"C28"</span>, year <span class="op">=</span> <span class="fl">2026L</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    year icd_code    cc model_name       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
