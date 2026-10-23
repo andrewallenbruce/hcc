@@ -151,12 +151,9 @@ hcc_count <- function(hcc) {
 #' @param code `<chr>` Medi-Cal aid code or Medicare status code
 #' @returns Dual eligibility code ('01'-'08') or NA if not found
 #' @examplesIf FALSE
-#' map_to_dual(
-#'   c("4N", "5B", "4O", "QMB",
-#'     "QMBONLY", "SLMB+", "QQQ")
-#' )
+#' convert_status(c("4N", "5B", "4O", "QMB", "SLMB+", "QQQ"))
 #' @noRd
-map_to_dual <- function(code) {
+convert_status <- function(code) {
   unlist_(DUAL_MAP)[collapse::fmatch(normalize_(code), rlang::names2(DUAL_MAP))]
 }
 

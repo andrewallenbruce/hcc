@@ -2,21 +2,21 @@
 % Please edit documentation in R/hierarchies.R
 \name{hierarchies}
 \alias{hierarchies}
+\alias{icd_to_cc}
 \title{Apply HCC Rules}
 \usage{
 hierarchies(cc, model = "C28", year = 2025)
+
+icd_to_cc(icd = NULL, model = "C28", year = 2025, simplify = FALSE)
 }
 \arguments{
 \item{cc}{\verb{<int>} Set of currently active CCs}
 
 \item{model}{\verb{<chr>} Model name, default is "C28"; one of:
 \itemize{
-\item \code{C20}: CMS-HCC Model V20
 \item \code{C22}: CMS-HCC Model V22
-\item \code{C23}: CMS-HCC Model V23
 \item \code{C24}: CMS-HCC Model V24
 \item \code{C28}: CMS-HCC Model V28
-\item \code{D20}: CMS-HCC ESRD Model V20
 \item \code{D21}: CMS-HCC ESRD Model V21
 \item \code{D24}: CMS-HCC ESRD Model V24
 \item \code{R05}: RxHCC Model V05
@@ -24,9 +24,18 @@ hierarchies(cc, model = "C28", year = 2025)
 }}
 
 \item{year}{\verb{<int>} 2025 or 2026; default is 2025}
+
+\item{icd}{\verb{<chr>} ICD-10 diagnosis code(s)}
+
+\item{simplify}{\verb{<lgl>} Return a named list; default is FALSE}
 }
 \value{
-\verb{<int>} vector of CCs after applying hierarchies or an empty integer vector
+An \verb{<int>} vector; one of:
+\itemize{
+\item CCs mapped to diagnosis codes
+\item CCs after applying hierarchies
+\item Empty vector, indicating the input CCs do not exist in the model/year
+}
 }
 \description{
 Applies hierarchical rules to a set of CCs based on the selected model
@@ -40,4 +49,10 @@ hierarchies(c(221L, 223L))
 hierarchies(134:135, "D21")
 hierarchies(134:137, "D24")
 hierarchies(17L)
+
+icd_to_cc("E119")
+icd_to_cc("E119", "C24")
+icd_to_cc("E119", "D21")
+icd_to_cc("I5022")
+icd_to_cc(c("E103213", "I5022", "Z9999"))
 }

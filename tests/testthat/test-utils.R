@@ -1,6 +1,6 @@
 test_that("any_hcc works", {
-  expect_equal(any_hcc(17:19, 18:21), 1)
-  expect_equal(any_hcc(17:19, 20:22), 0)
+  expect_equal(any_hcc(17:19, 18:21), 1L)
+  expect_equal(any_hcc(17:19, 20:22), 0L)
 })
 
 test_that("hcc_count works", {
@@ -10,7 +10,6 @@ test_that("hcc_count works", {
 })
 
 test_that("date parsing utility works", {
-  NA_Date_ <- as.Date(NA)
   expect_equal(parse_date("20250108"), as.Date("2025-01-08"))
   expect_equal(parse_date("19550315"), as.Date("1955-03-15"))
 
@@ -58,14 +57,14 @@ test_that("New Enrollee detection", {
 })
 
 test_that("Status to Dual mapping works", {
-  expect_all_equal(map_to_dual(c("QMB", "4M", "4O")), "01")
-  expect_all_equal(map_to_dual(c("QMBPLUS", "QMB+", "4N", "4P")), "02")
-  expect_all_equal(map_to_dual(c("SLMB", "5A", "5C")), "03")
-  expect_all_equal(map_to_dual(c("SLMBPLUS", "SLMB+", "5B", "5D")), "04")
-  expect_all_equal(map_to_dual(c("QI", "5E", "5F")), "06")
-  expect_equal(map_to_dual("QDWI"), "05")
-  expect_equal(map_to_dual("FBDE"), "08")
-  expect_equal(map_to_dual("INVALID"), NA_character_) # Returns '00' for invalid
+  expect_all_equal(convert_status(c("QMB", "4M", "4O")), "01")
+  expect_all_equal(convert_status(c("QMBPLUS", "QMB+", "4N", "4P")), "02")
+  expect_all_equal(convert_status(c("SLMB", "5A", "5C")), "03")
+  expect_all_equal(convert_status(c("SLMBPLUS", "SLMB+", "5B", "5D")), "04")
+  expect_all_equal(convert_status(c("QI", "5E", "5F")), "06")
+  expect_equal(convert_status("QDWI"), "05")
+  expect_equal(convert_status("FBDE"), "08")
+  expect_equal(convert_status("INVALID"), NA_character_) # Returns '00' for invalid
 })
 
 test_that("Medi-Cal eligibility status can be derived from dates", {
