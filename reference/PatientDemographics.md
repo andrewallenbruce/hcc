@@ -10,8 +10,8 @@ PatientDemographics(
   age = integer(0),
   sex = character(0),
   dual_code = character(0),
-  orec_code = character(0),
-  crec_code = character(0),
+  orec_code = integer(0),
+  crec_code = integer(0),
   new_enrollee = logical(0),
   has_snp = logical(0),
   non_aged = logical(0),
@@ -109,29 +109,12 @@ A `<PatientDemographics>` S7 object
 ## Examples
 
 ``` r
+if (FALSE) {
 PatientDemographics(
   age = 75,
   sex = "2",
   orec_code = "0",
   version = "V2"
 )
-#> <hcc::PatientDemographics>
-#>  @ version     : chr "V2"
-#>  @ age         : int 75
-#>  @ sex         : chr "2"
-#>  @ dual_code   : chr(0) 
-#>  @ orec_code   : chr "0"
-#>  @ crec_code   : chr(0) 
-#>  @ new_enrollee: logi(0) 
-#>  @ has_snp     : logi(0) 
-#>  @ non_aged    : logi(0) 
-#>  @ dis_orig    : logi(0) 
-#>  @ dis_curr    : logi(0) 
-#>  @ dual_full   : logi(0) 
-#>  @ dual_part   : logi(0) 
-#>  @ has_esrd    : logi(0) 
-#>  @ is_lti      : logi(0) 
-#>  @ low_income  : logi(0) 
-#>  @ esrd_months : int(0) 
-#>  @ category    : chr(0) 
+}
 ```

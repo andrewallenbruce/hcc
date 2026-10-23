@@ -40,15 +40,12 @@ An `<HCCDetail>` S7 object
 ## Examples
 
 ``` r
+if (FALSE) {
 HCCDetail(
  hcc = "203",
  label = "Coma, Brain Compression/Anoxic Damage",
  is_chronic = TRUE,
  coefficient = 0.486
 )
-#> <hcc::HCCDetail>
-#>  @ hcc        : int 203
-#>  @ label      : chr "Coma, Brain Compression/Anoxic Damage"
-#>  @ is_chronic : logi TRUE
-#>  @ coefficient: num 0.486
+}
 ```

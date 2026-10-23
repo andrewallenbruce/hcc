@@ -27,7 +27,7 @@ apply_interactions(diagnostics, demographics)
 ``` r
 apply_interactions(
   diagnostics(model = "C24", hcc = c(17L, 85L)),
-  demographics(age = 64, sex = "F", orec = "1")
+  demographics(age = 64, sex = "F", orec = 1)
 )
 #> $demographic
 #> [1] "NMCAID_NORIGDIS_F60_64" "ND_PBD_NORIGDIS_F60_64"

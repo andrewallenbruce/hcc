@@ -10,13 +10,13 @@ adjustment models.
 demographics(
   age,
   sex,
-  version = "V2",
+  ver = "V2",
   dual = NA_character_,
-  orec = NA_character_,
-  crec = NA_character_,
-  new = FALSE,
+  orec = NA_integer_,
+  crec = NA_integer_,
+  new_enrollee = FALSE,
   snp = FALSE,
-  low = FALSE,
+  low_income = FALSE,
   lti = FALSE,
   months = 0,
   prefix = NULL
@@ -33,9 +33,9 @@ demographics(
 
   `<chr>` Beneficiary sex (`M`/`1` or `F`/`2`)
 
-- version:
+- ver:
 
-  `<chr>` Version of categorization to use (`V2`, `V4`, `V6`)
+  `<chr>` Version of categorization; default is `V2`
 
 - dual:
 
@@ -43,13 +43,31 @@ demographics(
 
 - orec, crec:
 
-  `<chr>` Original/Current reason for entitlement code (`0` - `3`)
+  `<chr>` Original/Current reason for entitlement code:
 
-- new, snp, low, lti:
+  - `0`: Old Age and Survivors Insurance (OASI)
 
-  `<lgl>` Beneficiary is a **New Enrollee**, in a **Special Needs
-  Plan**, is **Low Income** (RxHCC only), and/or is **Long-Term
-  Institutionalized**
+  - `1`: Disability Insurance Benefits (DIB)
+
+  - `2`: ESRD - End-Stage Renal Disease
+
+  - `3`: DIB and ESRD
+
+- new_enrollee:
+
+  `<lgl>` Beneficiary is a New Enrollee
+
+- snp:
+
+  `<lgl>` Beneficiary is in a Special Needs Plan
+
+- low_income:
+
+  `<lgl>` Beneficiary is Low Income (RxHCC only)
+
+- lti:
+
+  `<lgl>` Beneficiary is Long-Term Institutionalized
 
 - months:
 
@@ -73,8 +91,8 @@ demographics(age = 48, sex = "1")
 #>  @ age         : int 48
 #>  @ sex         : chr "1"
 #>  @ dual_code   : chr NA
-#>  @ orec_code   : chr NA
-#>  @ crec_code   : chr NA
+#>  @ orec_code   : int NA
+#>  @ crec_code   : int NA
 #>  @ new_enrollee: logi FALSE
 #>  @ has_snp     : logi FALSE
 #>  @ non_aged    : logi TRUE
@@ -87,14 +105,14 @@ demographics(age = 48, sex = "1")
 #>  @ low_income  : logi FALSE
 #>  @ esrd_months : int 0
 #>  @ category    : chr "M45_54"
-demographics(version = "V6", age = 35, sex = "M")
+demographics(age = 35, sex = "M", ver = "V6")
 #> <hcc::PatientDemographics>
 #>  @ version     : chr "V6"
 #>  @ age         : int 35
 #>  @ sex         : chr "M"
 #>  @ dual_code   : chr NA
-#>  @ orec_code   : chr NA
-#>  @ crec_code   : chr NA
+#>  @ orec_code   : int NA
+#>  @ crec_code   : int NA
 #>  @ new_enrollee: logi FALSE
 #>  @ has_snp     : logi FALSE
 #>  @ non_aged    : logi TRUE
@@ -107,14 +125,14 @@ demographics(version = "V6", age = 35, sex = "M")
 #>  @ low_income  : logi FALSE
 #>  @ esrd_months : int 0
 #>  @ category    : chr "MAGE_LAST_35_39"
-demographics(version = "V2", age = 75, sex = "2", orec = "0")
+demographics(age = 75, sex = "2", orec = 0)
 #> <hcc::PatientDemographics>
 #>  @ version     : chr "V2"
 #>  @ age         : int 75
 #>  @ sex         : chr "2"
 #>  @ dual_code   : chr NA
-#>  @ orec_code   : chr "0"
-#>  @ crec_code   : chr NA
+#>  @ orec_code   : int 0
+#>  @ crec_code   : int NA
 #>  @ new_enrollee: logi FALSE
 #>  @ has_snp     : logi FALSE
 #>  @ non_aged    : logi FALSE

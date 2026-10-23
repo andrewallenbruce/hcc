@@ -25,7 +25,7 @@ String prefix used to look up coefficients for beneficiary type
 ## Examples
 
 ``` r
-x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
+x = demographics(age = 70, sex = "F", dual = "00", orec = 0, crec = 0)
 prefix(x, "C28")
 #> [1] "CNA_"
 prefix(x, "D24")

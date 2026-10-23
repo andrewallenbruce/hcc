@@ -42,7 +42,7 @@ look-up will match only the relevant coefficients for each model.
 ## Examples
 
 ``` r
-x = demographics(age = 64, sex = "F", orec = "1")
+x = demographics(age = 64, sex = "F", orec = 1)
 interactions(x)
 #> [1] "NMCAID_NORIGDIS_F60_64" "ND_PBD_NORIGDIS_F60_64"
 interactions(x, diagnostics("C24", c(17L, 85L)))
