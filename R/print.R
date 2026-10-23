@@ -2,33 +2,31 @@ itred <- cli::combine_ansi_styles("italic", "red")
 bcyan <- cli::combine_ansi_styles("bold", "cyan")
 orange <- cli::combine_ansi_styles("bold", "orange")
 dot <- cli::col_blue(cli::symbol$bullet)
-
-#' @noRd
-bracket <- function(x) cheapr::paste_("[", x, "]")
-#' @noRd
-angle <- function(x) cheapr::paste_("<", x, ">")
-#' @noRd
-colon <- function(x, y) cheapr::paste_(x, ": ", y)
-#' @noRd
-arrow <- function(x) cheapr::paste_(x, collapse = orange(" > "))
+bracket <- \(x) cheapr::paste_("[", x, "]")
+angle <- \(x) cheapr::paste_("<", x, ">")
+colon <- \(x, y) cheapr::paste_(x, ": ", y)
+arrow <- \(x) cheapr::paste_(x, collapse = orange(" > "))
+print_class <- \(x) cli::cli_h1("<{attr(x, .c(class))[1]}>")
+print_names_ <- bcyan(c("Type", "Segments"))
+print_names_2 <- bcyan(c("Header", "Detail", "Trailer"))
 
 S7::method(format, TextEDI) <- function(x) {
-  cli::cli_h1("<{attr(x, .c(class))[1]}>")
+  print_class(x)
 
-  names_ <- bcyan(c("Type", "Segments"))
-  numbs_ <- c(
-    toString(S7::prop(x, "Type")),
-    bracket(bcyan(length(S7::prop(x, "Text"))))
-  )
-
-  cli::cat_line(colon(fright(names_), fleft(numbs_)))
+  cli::cat_line(colon(
+    fright(print_names_),
+    fleft(c(
+      toString(S7::prop(x, "Type")),
+      bracket(bcyan(length(S7::prop(x, "Text"))))
+    ))
+  ))
   cli::cat_rule()
 }
 
 #' @noRd
 format_head <- function(x) {
-  cli::cli_h1("<{attr(x, .c(class))[1]}>")
-  nm_ <- bcyan(c("Type", "Segments"))
+  print_class(x)
+  nm_ <- print_names_
   ns_ <- c(
     toString(S7::prop(x, "Type")),
     bracket(bcyan(length(S7::prop(x, "Text"))))
@@ -81,7 +79,7 @@ format_segments <- function(x) {
   cli::cat_line(
     cheapr::paste_(
       fright(" "),
-      fright(bcyan(c("Header", "Detail", "Trailer"))),
+      fright(print_names_2),
       fright(bracket(bcyan(cheapr::lengths_(x)))),
       fleft(purrr::map_chr(x, arrow)),
       sep = " "

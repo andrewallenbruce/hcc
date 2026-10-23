@@ -4,14 +4,14 @@
 \alias{coefficients}
 \title{Retrieve Risk Adjustment Coefficients}
 \usage{
-coefficients(coefficient = NULL, model = NULL, year = NULL)
+coefficients(coefficient = NULL, model = "C28", year = 2026L)
 }
 \arguments{
-\item{coefficient}{prefixed HCC}
+\item{coefficient}{prefixed HCC(s)}
 
-\item{model}{Risk adjustment model to use; default is "CMS-HCC Model V28"}
+\item{model}{Risk adjustment model to use; default is "C28" (CMS-HCC Model V28)}
 
-\item{year}{Model year; default is 2026}
+\item{year}{Model year; default is 2025}
 }
 \value{
 Dictionary mapping HCC codes and interaction variables to their

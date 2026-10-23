@@ -1,8 +1,8 @@
 #' Retrieve Risk Adjustment Coefficients
 #'
-#' @param coefficient prefixed HCC
-#' @param model Risk adjustment model to use; default is "CMS-HCC Model V28"
-#' @param year Model year; default is 2026
+#' @param coefficient prefixed HCC(s)
+#' @param model Risk adjustment model to use; default is "C28" (CMS-HCC Model V28)
+#' @param year Model year; default is 2025
 #' @returns Dictionary mapping HCC codes and interaction variables to their
 #'   coefficient values for variables that are present
 #' @examples
@@ -10,8 +10,8 @@
 #' @export
 coefficients <- function(
   coefficient = NULL,
-  model = NULL,
-  year = NULL
+  model = "C28",
+  year = 2026L
 ) {
   rlang::check_number_whole(
     year,
