@@ -41,7 +41,8 @@ Methods for `edi_index`:
 ## Examples
 
 ``` r
-edi_text(x12_EX)
+x = edi_text(x12_EX)
+x
 #> $`820`
 #> $`820`$`218`
 #> $`820`$`218`$`820_Child_Health_Plus_Payment_EFT`
