@@ -26,10 +26,10 @@ String prefix used to look up coefficients for beneficiary type
 
 ``` r
 x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
-prefix(x, model = "C28")
+prefix(x, "C28")
 #> [1] "CNA_"
-prefix(x, model = "D24")
+prefix(x, "D24")
 #> [1] NA
-prefix(x, model = "R05")
+prefix(x, "R05")
 #> [1] "Rx_CE_NoLowAged_"
 ```

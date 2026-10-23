@@ -1,5 +1,10 @@
 # Changelog
 
+## hcc 0.0.0.9084 (2026-10-23)
+
+- added tests for
+  [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
+
 ## hcc 0.0.0.9083 (2026-10-17)
 
 - `split_interval2` for nested hierarchies

@@ -1,22 +1,23 @@
-# Apply hierarchical rules to a set of CCs based on model version.
+# Apply HCC Rules
 
-Apply hierarchical rules to a set of CCs based on model version.
+Applies hierarchical rules to a set of CCs based on the selected model
+version.
 
 ## Usage
 
 ``` r
-hierarchies(cc, model, year = 2025L)
+hierarchies(cc, model = "C28", year = 2025)
 ```
 
 ## Arguments
 
 - cc:
 
-  `<chr>` Set of current active CCs
+  `<int>` Set of currently active CCs
 
 - model:
 
-  `<chr>` HCC model name to use for hierarchy rules; one of:
+  `<chr>` Model name, default is "C28"; one of:
 
   - `C20`: CMS-HCC Model V20
 
@@ -40,27 +41,28 @@ hierarchies(cc, model, year = 2025L)
 
 - year:
 
-  `<int>` 2025, 2026
+  `<int>` 2025 or 2026; default is 2025
 
 ## Value
 
-Set of CCs after applying hierarchies
+`<int>` vector of CCs after applying hierarchies or an empty integer
+vector
 
 ## Examples
 
 ``` r
-hierarchies(17:19, "C28")
+hierarchies(17:19)
 #> [1] 17
-hierarchies(18:19, "C28")
+hierarchies(18:19)
 #> [1] 18
-hierarchies(223L, "C28")
+hierarchies(223L)
 #> integer(0)
-hierarchies(c(221L, 223L), "C28")
+hierarchies(c(221L, 223L))
 #> [1] 221 223
 hierarchies(134:135, "D21")
 #> [1] 135
 hierarchies(134:137, "D24")
 #> integer(0)
-hierarchies(17L, "C28")
+hierarchies(17L)
 #> [1] 17
 ```

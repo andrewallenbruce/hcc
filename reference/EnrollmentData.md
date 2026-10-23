@@ -320,11 +320,25 @@ EnrollmentData(
 
 - amount_qualifier:
 
-  AMT qualifier code (e.g., `D` = premium, `C1` = copay)
+  `AMT-01` qualifier code:
+
+  - `B9`: Co-insurance - Actual
+
+  - `C1`: Co-Payment Amount
+
+  - `D2`: Deductible Amount
+
+  - `EBA`: Expected Expenditure Amount
+
+  - `FK`: Other Unlisted Amount
+
+  - `P3`: Premium Amount
+
+  - `R`: Spend Down
 
 - amount:
 
-  Premium or cost share amount (numeric)
+  `AMT-02` Monetary amount identified in `AMT-01`
 
 - hcp_history:
 

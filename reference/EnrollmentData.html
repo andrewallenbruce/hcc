@@ -9,7 +9,7 @@ Supports California DHCS Medi-Cal 834 format with FAME fields."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9083</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9084</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -354,12 +354,18 @@ Supports California DHCS Medi-Cal 834 format with FAME fields.</p>
 
 
 <dt id="arg-amount-qualifier">amount_qualifier<a class="anchor" aria-label="anchor" href="#arg-amount-qualifier"></a></dt>
-<dd><p>AMT qualifier code (e.g., <code>D</code> = premium, <code>C1</code> =
-copay)</p></dd>
+<dd><p><code>AMT-01</code> qualifier code:</p><ul><li><p><code>B9</code>: Co-insurance - Actual</p></li>
+<li><p><code>C1</code>: Co-Payment Amount</p></li>
+<li><p><code>D2</code>: Deductible Amount</p></li>
+<li><p><code>EBA</code>: Expected Expenditure Amount</p></li>
+<li><p><code>FK</code>: Other Unlisted Amount</p></li>
+<li><p><code>P3</code>: Premium Amount</p></li>
+<li><p><code>R</code>: Spend Down</p></li>
+</ul></dd>
 
 
 <dt id="arg-amount">amount<a class="anchor" aria-label="anchor" href="#arg-amount"></a></dt>
-<dd><p>Premium or cost share amount (numeric)</p></dd>
+<dd><p><code>AMT-02</code> Monetary amount identified in <code>AMT-01</code></p></dd>
 
 
 <dt id="arg-hcp-history">hcp_history<a class="anchor" aria-label="anchor" href="#arg-hcp-history"></a></dt>

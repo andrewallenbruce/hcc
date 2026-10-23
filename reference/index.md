@@ -38,7 +38,7 @@
 - [`edit_rules()`](https://andrewallenbruce.github.io/hcc/reference/edit_rules.md)
   : Apply CMS Edit Rules
 - [`hierarchies()`](https://andrewallenbruce.github.io/hcc/reference/hierarchies.md)
-  : Apply hierarchical rules to a set of CCs based on model version.
+  : Apply HCC Rules
 - [`icd_to_cc()`](https://andrewallenbruce.github.io/hcc/reference/icd_to_cc.md)
   : Map ICD-10 Codes to CC
 - [`interactions()`](https://andrewallenbruce.github.io/hcc/reference/interactions.md)
