@@ -91,9 +91,15 @@ HCPCoveragePeriod := S7::new_class(
 #' @param medicare_prt_d description
 #' @param hcp_code Current HCP code (`HD-04` first part)
 #' @param hcp_status Current HCP status (`HD-04` second part)
-#' @param amount_qualifier AMT qualifier code (e.g., `D` = premium, `C1` =
-#'   copay)
-#' @param amount Premium or cost share amount (numeric)
+#' @param amount_qualifier `AMT-01` qualifier code:
+#'    - `B9`: Co-insurance - Actual
+#'    - `C1`: Co-Payment Amount
+#'    - `D2`: Deductible Amount
+#'    - `EBA`: Expected Expenditure Amount
+#'    - `FK`: Other Unlisted Amount
+#'    - `P3`: Premium Amount
+#'    - `R`: Spend Down
+#' @param amount `AMT-02` Monetary amount identified in `AMT-01`
 #' @param hcp_history List of `<HCPCoveragePeriod>`, historical HCP coverage
 #'   periods
 #' @returns An `<hcc::EnrollmentData>` S7 object

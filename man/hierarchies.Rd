@@ -2,14 +2,14 @@
 % Please edit documentation in R/hierarchies.R
 \name{hierarchies}
 \alias{hierarchies}
-\title{Apply hierarchical rules to a set of CCs based on model version.}
+\title{Apply HCC Rules}
 \usage{
-hierarchies(cc, model, year = 2025L)
+hierarchies(cc, model = "C28", year = 2025)
 }
 \arguments{
-\item{cc}{\verb{<chr>} Set of current active CCs}
+\item{cc}{\verb{<int>} Set of currently active CCs}
 
-\item{model}{\verb{<chr>} HCC model name to use for hierarchy rules; one of:
+\item{model}{\verb{<chr>} Model name, default is "C28"; one of:
 \itemize{
 \item \code{C20}: CMS-HCC Model V20
 \item \code{C22}: CMS-HCC Model V22
@@ -23,20 +23,21 @@ hierarchies(cc, model, year = 2025L)
 \item \code{R08}: RxHCC Model V08
 }}
 
-\item{year}{\verb{<int>} 2025, 2026}
+\item{year}{\verb{<int>} 2025 or 2026; default is 2025}
 }
 \value{
-Set of CCs after applying hierarchies
+\verb{<int>} vector of CCs after applying hierarchies or an empty integer vector
 }
 \description{
-Apply hierarchical rules to a set of CCs based on model version.
+Applies hierarchical rules to a set of CCs based on the selected model
+version.
 }
 \examples{
-hierarchies(17:19, "C28")
-hierarchies(18:19, "C28")
-hierarchies(223L, "C28")
-hierarchies(c(221L, 223L), "C28")
+hierarchies(17:19)
+hierarchies(18:19)
+hierarchies(223L)
+hierarchies(c(221L, 223L))
 hierarchies(134:135, "D21")
 hierarchies(134:137, "D24")
-hierarchies(17L, "C28")
+hierarchies(17L)
 }

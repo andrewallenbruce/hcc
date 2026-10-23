@@ -1,7 +1,10 @@
-#' Apply hierarchical rules to a set of CCs based on model version.
+#' Apply HCC Rules
 #'
-#' @param cc `<chr>` Set of current active CCs
-#' @param model `<chr>` HCC model name to use for hierarchy rules; one of:
+#' Applies hierarchical rules to a set of CCs based on the selected model
+#' version.
+#'
+#' @param cc `<int>` Set of currently active CCs
+#' @param model `<chr>` Model name, default is "C28"; one of:
 #'    - `C20`: CMS-HCC Model V20
 #'    - `C22`: CMS-HCC Model V22
 #'    - `C23`: CMS-HCC Model V23
@@ -12,18 +15,25 @@
 #'    - `D24`: CMS-HCC ESRD Model V24
 #'    - `R05`: RxHCC Model V05
 #'    - `R08`: RxHCC Model V08
-#' @param year `<int>` 2025, 2026
-#' @returns Set of CCs after applying hierarchies
+#' @param year `<int>` 2025 or 2026; default is 2025
+#' @returns `<int>` vector of CCs after applying hierarchies or an empty integer vector
 #' @examples
-#' hierarchies(17:19, "C28")
-#' hierarchies(18:19, "C28")
-#' hierarchies(223L, "C28")
-#' hierarchies(c(221L, 223L), "C28")
+#' hierarchies(17:19)
+#' hierarchies(18:19)
+#' hierarchies(223L)
+#' hierarchies(c(221L, 223L))
 #' hierarchies(134:135, "D21")
 #' hierarchies(134:137, "D24")
-#' hierarchies(17L, "C28")
+#' hierarchies(17L)
 #' @export
-hierarchies <- function(cc, model, year = 2025L) {
+hierarchies <- function(cc, model = "C28", year = 2025) {
+  rlang::check_required(cc)
+  rlang::check_number_whole(
+    year,
+    min = 2025,
+    max = 2026
+  )
+
   if (model == "C28" && 223L %in_% cc) {
     if (!any_hcc(c(221:222, 224:226), cc)) {
       cc <- cheapr::setdiff_(cc, 223L)
@@ -43,4 +53,103 @@ hierarchies <- function(cc, model, year = 2025L) {
   x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
   x <- collapse::ss(x, x[["cc_parent"]] %iin% cc)
   cheapr::setdiff_(cc, collapse::funique(x[["cc_child"]]))
+}
+
+#' Map ICD-10 Codes to CC
+#'
+#' @param icd `<chr>` ICD-10 diagnosis code(s)
+#' @param model `<chr>` Model name, default is "C28"; one of:
+#'    - `C22`: CMS-HCC Model V22
+#'    - `C24`: CMS-HCC Model V24
+#'    - `C28`: CMS-HCC Model V28
+#'    - `D21`: CMS-HCC ESRD Model V21
+#'    - `D24`: CMS-HCC ESRD Model V24
+#'    - `R05`: RxHCC Model V05
+#'    - `R08`: RxHCC Model V08
+#' @param year `<int>` 2025, 2026
+#' @param simplify `<lgl>` Return a named list; default is FALSE
+#' @returns `<chr>` CCs mapped to diagnosis codes
+#' @examples
+#' icd_to_cc("E119")
+#' icd_to_cc("E119", "C24")
+#' icd_to_cc("E119", "D21")
+#' icd_to_cc("I5022")
+#' icd_to_cc(c("E103213", "I5022", "Z9999"))
+#' @export
+icd_to_cc <- function(
+  icd = NULL,
+  model = "C28",
+  year = 2025,
+  simplify = FALSE
+) {
+  check_character(icd, allow_na = FALSE, allow_null = TRUE)
+  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
+
+  x <- if (is.null(year)) {
+    hcc::ra_dx_to_cc
+  } else {
+    collapse::ss(hcc::ra_dx_to_cc, whichv_(hcc::ra_dx_to_cc[["year"]], year))
+  }
+
+  x <- collapse::roworderv(x, c("cc", "icd_code", "model_name"))
+
+  if (!is.null(model)) {
+    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
+  }
+
+  if (!is.null(icd)) {
+    x <- collapse::ss(
+      x,
+      x[["icd_code"]] %iin% convert_icd(icd)
+    )
+  }
+
+  if (simplify) {
+    return(collapse::rsplit(x[["icd_code"]], x[["cc"]]))
+  }
+  return(x)
+}
+
+# x <- icd_to_cc(c("E1100", "E1022", "E1165", "E119"), "C24", 2025L)
+# cc_to_hierarchy(x$cc, "C24", 2025L)
+#' @noRd
+cc_to_hierarchy <- function(
+  cc = NULL,
+  model = NULL,
+  year = NULL,
+  simplify = FALSE
+) {
+  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
+
+  x <- if (is.null(year)) {
+    hcc::ra_hierarchies
+  } else {
+    collapse::ss(
+      hcc::ra_hierarchies,
+      whichv_(hcc::ra_hierarchies[["year"]], year)
+    )
+  }
+  x <- collapse::roworderv(x, c("cc_parent", "cc_child", "model_name"))
+
+  if (!is.null(model)) {
+    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
+  }
+
+  if (!is.null(cc)) {
+    x <- collapse::ss(x, x[["cc_child"]] %iin% collapse::funique(cc))
+  }
+
+  if (simplify) {
+    return(collapse::rsplit(x[["cc_child"]], x[["cc_parent"]]))
+  }
+  return(x)
+}
+
+#' icd_to_cc_hierarchy(c("E1100", "E1022", "E1165", "E119"), "C24", 2025L)
+#' @noRd
+icd_to_cc_hierarchy <- function(icd = NULL, model = NULL, year = NULL) {
+  x <- icd_to_cc(icd, model, year)
+  y <- cc_to_hierarchy(x$cc, model, year)
+
+  list(icd = x, cc = y)
 }

@@ -13,22 +13,38 @@ prefix_esrd <- function(x) {
       return(
         cheapr::paste_(
           "G",
-          cheapr::if_else_(S7::prop(x, "dual_full"), "F", "NP"),
-          cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "N"),
+          cheapr::if_else_(
+            S7::prop(x, "dual_full"),
+            "F",
+            "NP"
+          ),
+          cheapr::if_else_(
+            S7::prop(x, "age") >= 65L,
+            "A",
+            "N"
+          ),
           "_"
         )
       )
     }
     # Dialysis case
-    return(cheapr::if_else_(S7::prop(x, "new_enrollee"), "DNE_", "DI_"))
+    return(
+      cheapr::if_else_(
+        S7::prop(x, "new_enrollee"),
+        "DNE_",
+        "DI_"
+      )
+    )
   }
   # Transplant case
   if (in_between(S7::prop(x, "esrd_months"), 1L, 3L)) {
-    return(cheapr::paste_(
-      "TRANSPLANT_KIDNEY_ONLY_",
-      S7::prop(x, "esrd_months"),
-      "M"
-    ))
+    return(
+      cheapr::paste_(
+        "TRANSPLANT_KIDNEY_ONLY_",
+        S7::prop(x, "esrd_months"),
+        "M"
+      )
+    )
   }
   NA_character_
 }
@@ -36,23 +52,35 @@ prefix_esrd <- function(x) {
 #' @noRd
 prefix_rxhcc <- function(x) {
   if (S7::prop(x, "is_lti")) {
-    return(cheapr::if_else_(
-      S7::prop(x, "new_enrollee"),
-      "Rx_NE_LTI_",
-      "Rx_CE_LTI_"
-    ))
+    return(
+      cheapr::if_else_(
+        S7::prop(x, "new_enrollee"),
+        "Rx_NE_LTI_",
+        "Rx_CE_LTI_"
+      )
+    )
   }
   if (S7::prop(x, "new_enrollee")) {
-    return(cheapr::if_else_(
-      S7::prop(x, "low_income"),
-      "Rx_NE_Lo_",
-      "Rx_NE_NoLo_"
-    ))
+    return(
+      cheapr::if_else_(
+        S7::prop(x, "low_income"),
+        "Rx_NE_Lo_",
+        "Rx_NE_NoLo_"
+      )
+    )
   }
   cheapr::paste_(
     "Rx_CE_",
-    cheapr::if_else_(S7::prop(x, "low_income"), "Low", "NoLow"),
-    cheapr::if_else_(S7::prop(x, "age") >= 65L, "Aged", "NoAged"),
+    cheapr::if_else_(
+      S7::prop(x, "low_income"),
+      "Low",
+      "NoLow"
+    ),
+    cheapr::if_else_(
+      S7::prop(x, "age") >= 65L,
+      "Aged",
+      "NoAged"
+    ),
     "_"
   )
 }
@@ -66,9 +94,9 @@ prefix_rxhcc <- function(x) {
 #' @returns String prefix used to look up coefficients for beneficiary type
 #' @examples
 #' x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
-#' prefix(x, model = "C28")
-#' prefix(x, model = "D24")
-#' prefix(x, model = "R05")
+#' prefix(x, "C28")
+#' prefix(x, "D24")
+#' prefix(x, "R05")
 #' @export
 prefix <- function(x, model = "C28") {
   S7::check_is_S7(x)
@@ -96,7 +124,13 @@ prefix <- function(x, model = "C28") {
   }
 
   if (S7::prop(x, "new_enrollee")) {
-    return(cheapr::if_else_(S7::prop(x, "has_snp"), "SNPNE_", "NE_"))
+    return(
+      cheapr::if_else_(
+        S7::prop(x, "has_snp"),
+        "SNPNE_",
+        "NE_"
+      )
+    )
   }
 
   # Community case
@@ -109,7 +143,11 @@ prefix <- function(x, model = "C28") {
         .default = "N"
       )
     ),
-    cheapr::if_else_(S7::prop(x, "age") >= 65L, "A", "D"),
+    cheapr::if_else_(
+      S7::prop(x, "age") >= 65L,
+      "A",
+      "D"
+    ),
     "_"
   )
 }

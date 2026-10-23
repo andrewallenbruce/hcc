@@ -195,10 +195,18 @@ EnrollmentData(
 
 \item{hcp_status}{Current HCP status (\code{HD-04} second part)}
 
-\item{amount_qualifier}{AMT qualifier code (e.g., \code{D} = premium, \code{C1} =
-copay)}
+\item{amount_qualifier}{\code{AMT-01} qualifier code:
+\itemize{
+\item \code{B9}: Co-insurance - Actual
+\item \code{C1}: Co-Payment Amount
+\item \code{D2}: Deductible Amount
+\item \code{EBA}: Expected Expenditure Amount
+\item \code{FK}: Other Unlisted Amount
+\item \code{P3}: Premium Amount
+\item \code{R}: Spend Down
+}}
 
-\item{amount}{Premium or cost share amount (numeric)}
+\item{amount}{\code{AMT-02} Monetary amount identified in \code{AMT-01}}
 
 \item{hcp_history}{List of \verb{<HCPCoveragePeriod>}, historical HCP coverage
 periods}
