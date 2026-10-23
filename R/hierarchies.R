@@ -60,11 +60,25 @@ hierarchies <- function(cc, model = "C28", year = 2025) {
     cc <- cheapr::setdiff_(cc, 134:137)
   }
 
-  x <- hcc::ra_hierarchies
-  x <- collapse::ss(x, x[["year"]] %iin% year)
-  x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
-  x <- collapse::ss(x, x[["cc_parent"]] %iin% cc)
-  cheapr::setdiff_(cc, collapse::funique(x[["cc_child"]]))
+  x <- collapse::ss(
+    hcc::ra_hierarchies,
+    hcc::ra_hierarchies[["year"]] %iin% year,
+    check = FALSE
+  )
+  x <- collapse::ss(
+    x,
+    x[["model_name"]] %iin% convert_model(model),
+    check = FALSE
+  )
+  x <- collapse::ss(
+    x,
+    x[["cc_parent"]] %iin% cc,
+    check = FALSE
+  )
+  cheapr::setdiff_(
+    cc,
+    collapse::funique(x[["cc_child"]])
+  )
 }
 
 #' @rdname hierarchies
@@ -75,25 +89,43 @@ icd_to_cc <- function(
   year = 2025,
   simplify = FALSE
 ) {
-  check_character(icd, allow_na = FALSE, allow_null = TRUE)
-  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
+  check_character(
+    icd,
+    allow_na = FALSE,
+    allow_null = TRUE
+  )
+  rlang::check_number_whole(
+    year,
+    min = 2025,
+    max = 2026,
+    allow_null = TRUE
+  )
 
   x <- if (is.null(year)) {
     hcc::ra_dx_to_cc
   } else {
-    collapse::ss(hcc::ra_dx_to_cc, whichv_(hcc::ra_dx_to_cc[["year"]], year))
+    collapse::ss(
+      hcc::ra_dx_to_cc,
+      hcc::ra_dx_to_cc[["year"]] %iin% year,
+      check = FALSE
+    )
   }
 
   x <- collapse::roworderv(x, c("cc", "icd_code", "model_name"))
 
   if (!is.null(model)) {
-    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
+    x <- collapse::ss(
+      x,
+      x[["model_name"]] %iin% convert_model(model),
+      check = FALSE
+    )
   }
 
   if (!is.null(icd)) {
     x <- collapse::ss(
       x,
-      x[["icd_code"]] %iin% convert_icd(icd)
+      x[["icd_code"]] %iin% convert_icd(icd),
+      check = FALSE
     )
   }
 
@@ -112,24 +144,38 @@ cc_to_hierarchy <- function(
   year = NULL,
   simplify = FALSE
 ) {
-  rlang::check_number_whole(year, min = 2025, max = 2026, allow_null = TRUE)
+  rlang::check_number_whole(
+    year,
+    min = 2025,
+    max = 2026,
+    allow_null = TRUE
+  )
 
   x <- if (is.null(year)) {
     hcc::ra_hierarchies
   } else {
     collapse::ss(
       hcc::ra_hierarchies,
-      whichv_(hcc::ra_hierarchies[["year"]], year)
+      hcc::ra_hierarchies[["year"]] %iin% year,
+      check = FALSE
     )
   }
   x <- collapse::roworderv(x, c("cc_parent", "cc_child", "model_name"))
 
   if (!is.null(model)) {
-    x <- collapse::ss(x, x[["model_name"]] %iin% convert_model(model))
+    x <- collapse::ss(
+      x,
+      x[["model_name"]] %iin% convert_model(model),
+      check = FALSE
+    )
   }
 
   if (!is.null(cc)) {
-    x <- collapse::ss(x, x[["cc_child"]] %iin% collapse::funique(cc))
+    x <- collapse::ss(
+      x,
+      x[["cc_child"]] %iin% collapse::funique(cc),
+      check = FALSE
+    )
   }
 
   if (simplify) {
@@ -140,9 +186,15 @@ cc_to_hierarchy <- function(
 
 #' icd_to_cc_hierarchy(c("E1100", "E1022", "E1165", "E119"), "C24", 2025L)
 #' @noRd
-icd_to_cc_hierarchy <- function(icd = NULL, model = NULL, year = NULL) {
+icd_to_cc_hierarchy <- function(
+  icd = NULL,
+  model = NULL,
+  year = NULL
+) {
   x <- icd_to_cc(icd, model, year)
-  y <- cc_to_hierarchy(x$cc, model, year)
 
-  list(icd = x, cc = y)
+  list(
+    icd = x,
+    cc = cc_to_hierarchy(x$cc, model, year)
+  )
 }

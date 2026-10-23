@@ -1,5 +1,5 @@
 test_that("Basic V6 (ACA) categorization", {
-  x = demographics(age = 35, sex = "M", version = "V6")
+  x = demographics(age = 35, sex = "M", ver = "V6")
   expect_equal(x@category, "MAGE_LAST_35_39")
   expect_equal(x@version, "V6")
   expect_true(x@non_aged)
@@ -8,7 +8,7 @@ test_that("Basic V6 (ACA) categorization", {
 })
 
 test_that("Basic V2 (Medicare) categorization", {
-  x = demographics(age = 75, sex = "F", orec = "0", version = "V2")
+  x = demographics(age = 75, sex = "F", orec = 0)
   expect_equal(x@category, "F75_79")
   expect_equal(x@version, "V2")
   expect_false(x@non_aged)
@@ -17,114 +17,114 @@ test_that("Basic V2 (Medicare) categorization", {
 })
 
 test_that("Basic input validation works", {
-  expect_error(demographics(age = "35", sex = "M", version = "V6"))
-  expect_error(demographics(age = -5, sex = "M", version = "V6"))
-  expect_error(demographics(age = 35, sex = "X", version = "V6"))
-  expect_error(demographics(age = 35, sex = "M", version = "V3"))
+  expect_error(demographics(age = "35", sex = "M", ver = "V6"))
+  expect_error(demographics(age = -5, sex = "M", ver = "V6"))
+  expect_error(demographics(age = 35, sex = "X", ver = "V6"))
+  expect_error(demographics(age = 35, sex = "M", ver = "V3"))
 })
 
 test_that("different sex formats are normalized correctly", {
-  x = demographics(age = 35, sex = "M", version = "V6")
-  y = demographics(age = 35, sex = "1", version = "V6")
+  x = demographics(age = 35, sex = "M", ver = "V6")
+  y = demographics(age = 35, sex = "1", ver = "V6")
   expect_equal(x@category, y@category)
 
-  x = demographics(age = 35, sex = "F", version = "V6")
-  y = demographics(age = 35, sex = "2", version = "V6")
+  x = demographics(age = 35, sex = "F", ver = "V6")
+  y = demographics(age = 35, sex = "2", ver = "V6")
   expect_equal(x@category, y@category)
 })
 
 test_that("Current and Original Disability flags are recognized", {
   # Currently disabled
-  x = demographics(age = 45, sex = "M", orec = "1", version = "V2")
+  x = demographics(age = 45, sex = "M", orec = 1)
   expect_true(x@dis_curr)
   expect_false(x@dis_orig)
 
   # Originally disabled, now aged
-  x = demographics(age = 70, sex = "M", orec = "1", version = "V2")
+  x = demographics(age = 70, sex = "M", orec = 1)
   expect_false(x@dis_curr)
   expect_true(x@dis_orig)
 
   # Not disabled
-  x = demographics(age = 70, sex = "M", orec = "0", version = "V2")
+  x = demographics(age = 70, sex = "M", orec = 0)
   expect_false(x@dis_curr)
   expect_false(x@dis_orig)
 })
 
 test_that("Age Range edge cases", {
   # V6 boundaries
-  x = demographics(age = 0, sex = "M", version = "V6")
+  x = demographics(age = 0, sex = "M", ver = "V6")
   expect_equal(x@category, "MAGE_LAST_0_0")
-  x = demographics(age = 1, sex = "M", version = "V6")
+  x = demographics(age = 1, sex = "M", ver = "V6")
   expect_equal(x@category, "MAGE_LAST_1_1")
-  x = demographics(age = 60, sex = "M", version = "V6")
+  x = demographics(age = 60, sex = "M", ver = "V6")
   expect_equal(x@category, "MAGE_LAST_60_GT")
-  x = demographics(age = 99, sex = "M", version = "V6")
+  x = demographics(age = 99, sex = "M", ver = "V6")
   expect_equal(x@category, "MAGE_LAST_60_GT")
 
   # V2 boundaries
-  x = demographics(age = 34, sex = "M", orec = "0", version = "V2")
+  x = demographics(age = 34, sex = "M", orec = 0)
   expect_equal(x@category, "M0_34")
-  x = demographics(age = 35, sex = "M", orec = "0", version = "V2")
+  x = demographics(age = 35, sex = "M", orec = 0)
   expect_equal(x@category, "M35_44")
-  x = demographics(age = 95, sex = "M", orec = "0", version = "V2")
+  x = demographics(age = 95, sex = "M", orec = 0)
   expect_equal(x@category, "M95_GT")
 })
 
 test_that("Dual eligibility categorization", {
   # Full benefit dual
-  x = demographics(age = 65, sex = "M", dual = "02", orec = "0")
+  x = demographics(age = 65, sex = "M", dual = "02", orec = 0)
   expect_true(x@dual_full)
   expect_false(x@dual_part)
 
   # Partial benefit dual
-  x = demographics(age = 65, sex = "M", dual = "01", orec = "0")
+  x = demographics(age = 65, sex = "M", dual = "01", orec = 0)
   expect_false(x@dual_full)
   expect_true(x@dual_part)
 
   # Non-dual
-  x = demographics(age = 65, sex = "M", dual = "00", orec = "0")
+  x = demographics(age = 65, sex = "M", dual = "00", orec = 0)
   expect_false(x@dual_full)
   expect_false(x@dual_part)
 })
 
 test_that("ESRD is detected", {
   # Test with na OREC/CREC
-  x = demographics(age = 65, sex = "M", version = "V6")
+  x = demographics(age = 65, sex = "M", ver = "V6")
   expect_false(x@has_esrd)
 
   # Test with na CREC only
-  x = demographics(age = 65, sex = "M", orec = "0")
+  x = demographics(age = 65, sex = "M", orec = 0)
   expect_false(x@has_esrd)
 
   # Test with na OREC only
-  x = demographics(age = 65, sex = "M", crec = "0", version = "V6")
+  x = demographics(age = 65, sex = "M", crec = 0, ver = "V6")
   expect_false(x@has_esrd)
 
   # ESRD from OREC
-  x = demographics(age = 65, sex = "M", orec = "2")
+  x = demographics(age = 65, sex = "M", orec = 2)
   expect_true(x@has_esrd)
 
   # ESRD from CREC
-  x = demographics(age = 65, sex = "M", orec = "0", crec = "2")
+  x = demographics(age = 65, sex = "M", orec = 0, crec = 2)
   expect_true(x@has_esrd)
 
   # No ESRD
-  x = demographics(age = 65, sex = "M", orec = "0", crec = "0")
+  x = demographics(age = 65, sex = "M", orec = 0, crec = 0)
   expect_false(x@has_esrd)
 })
 
 test_that("New Enrollee and SNP flags are recognized", {
   x = demographics(
-    age = 65.1,
+    age = 65,
     sex = "M",
-    orec = "0",
-    new = TRUE,
+    orec = 0,
+    new_enrollee = TRUE,
     snp = TRUE
   )
   expect_true(x@new_enrollee)
   expect_true(x@has_snp)
 
-  x = demographics(age = 65, sex = "M", orec = "0")
+  x = demographics(age = 65, sex = "M", orec = 0)
   expect_false(x@new_enrollee)
   expect_false(x@has_snp)
 })

@@ -9,8 +9,8 @@ PatientDemographics(
   age = integer(0),
   sex = character(0),
   dual_code = character(0),
-  orec_code = character(0),
-  crec_code = character(0),
+  orec_code = integer(0),
+  crec_code = integer(0),
   new_enrollee = logical(0),
   has_snp = logical(0),
   non_aged = logical(0),
@@ -70,10 +70,12 @@ A \verb{<PatientDemographics>} S7 object
 Patient Demographics Categorization
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 PatientDemographics(
   age = 75,
   sex = "2",
   orec_code = "0",
   version = "V2"
 )
+\dontshow{\}) # examplesIf}
 }

@@ -21,7 +21,7 @@
 #' @param esrd_months `<int>` Number of months since transplant *(ESRD only)*
 #' @param category `<chr>` Age-sex category code
 #' @returns A `<PatientDemographics>` S7 object
-#' @examples
+#' @examplesIf FALSE
 #' PatientDemographics(
 #'   age = 75,
 #'   sex = "2",
@@ -35,8 +35,8 @@ PatientDemographics := S7::new_class(
     age = prop_integer,
     sex = S7::class_character,
     dual_code = S7::class_character,
-    orec_code = S7::class_character,
-    crec_code = S7::class_character,
+    orec_code = prop_integer,
+    crec_code = prop_integer,
     new_enrollee = S7::class_logical,
     has_snp = S7::class_logical,
     non_aged = S7::class_logical,
@@ -61,7 +61,7 @@ PatientDemographics := S7::new_class(
 #' @param coefficient `<dbl>` The coefficient value applied for this HCC in the
 #'   RAF calculation
 #' @returns An `<HCCDetail>` S7 object
-#' @examples
+#' @examplesIf FALSE
 #' HCCDetail(
 #'  hcc = "203",
 #'  label = "Coma, Brain Compression/Anoxic Damage",

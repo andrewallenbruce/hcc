@@ -99,8 +99,8 @@ DUAL_MAP = c(
 # Current Reason for Entitlement Code.
 # May differ from OREC.
 REC_CODES = list(
-  VALID = c("0", "1", "2", "3"),
-  ESRD = c("2", "3"),
+  VALID = 0:3,
+  ESRD = 2:3,
   DESCRIPTION = list(
     "0" = "Old Age and Survivors Insurance (OASI)",
     "1" = "Disability Insurance Benefits (DIB)",
@@ -219,95 +219,6 @@ MODEL = list(
   # "rx8_pdp_mapd" = "RxHCC Model V08 PDP_AND_MAPD",
   # "rx8_pdp" = "RxHCC Model V08 PDP_ONLY",
   # "rx8_mapd" = "RxHCC Model V08 MAPD_ONLY"
-)
-
-AGES = list(
-  V6 = list(
-    RANGE = ivs::iv_pairs(
-      c(0L, 1L),
-      c(1L, 2L),
-      c(2L, 5L),
-      c(5L, 10L),
-      c(10L, 15L),
-      c(15L, 21L),
-      c(21L, 25L),
-      c(25L, 30L),
-      c(30L, 35L),
-      c(35L, 40L),
-      c(40L, 45L),
-      c(45L, 50L),
-      c(50L, 55L),
-      c(55L, 60L),
-      c(60L, 105L)
-    ),
-    LABEL = c(
-      "0_0",
-      "1_1",
-      "2_4",
-      "5_9",
-      "10_14",
-      "15_20",
-      "21_24",
-      "25_29",
-      "30_34",
-      "35_39",
-      "40_44",
-      "45_49",
-      "50_54",
-      "55_59",
-      "60_GT"
-    )
-  ),
-  ESRD = list(
-    RANGE = ivs::iv_pairs(
-      c(0L, 35L),
-      c(35L, 45L),
-      c(45L, 55L),
-      c(55L, 60L),
-      c(60L, 65L),
-      c(65L, 70L),
-      c(70L, 75L),
-      c(75L, 80L),
-      c(80L, 85L),
-      c(85L, 90L),
-      c(90L, 95L),
-      c(95L, 105L)
-    ),
-    LABEL = c(
-      "0_34",
-      "35_44",
-      "45_54",
-      "55_59",
-      "60_64",
-      "65_69",
-      "70_74",
-      "75_79",
-      "80_84",
-      "85_89",
-      "90_94",
-      "95_GT"
-    )
-  ),
-  NEW = list(
-    LABEL = c(
-      "0_34",
-      "35_44",
-      "45_54",
-      "55_59",
-      "60_64",
-      "65",
-      "66",
-      "67",
-      "68",
-      "69",
-      "70_74",
-      "75_79",
-      "80_84",
-      "85_89",
-      "95_GT",
-      NA
-    )
-  )
 )
 
 LANG = list(

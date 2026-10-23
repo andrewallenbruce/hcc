@@ -31,7 +31,7 @@ Creates interaction variables that are model-agnostic. The coefficient
 look-up will match only the relevant coefficients for each model.
 }
 \examples{
-x = demographics(age = 64, sex = "F", orec = "1")
+x = demographics(age = 64, sex = "F", orec = 1)
 interactions(x)
 interactions(x, diagnostics("C24", c(17L, 85L)))
 interactions(x, diagnostics("R08", 130:133))

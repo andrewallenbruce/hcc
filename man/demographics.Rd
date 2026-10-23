@@ -7,13 +7,13 @@
 demographics(
   age,
   sex,
-  version = "V2",
+  ver = "V2",
   dual = NA_character_,
-  orec = NA_character_,
-  crec = NA_character_,
-  new = FALSE,
+  orec = NA_integer_,
+  crec = NA_integer_,
+  new_enrollee = FALSE,
   snp = FALSE,
-  low = FALSE,
+  low_income = FALSE,
   lti = FALSE,
   months = 0,
   prefix = NULL
@@ -24,16 +24,25 @@ demographics(
 
 \item{sex}{\verb{<chr>} Beneficiary sex (\code{M}/\code{1} or \code{F}/\code{2})}
 
-\item{version}{\verb{<chr>} Version of categorization to use (\code{V2}, \code{V4}, \code{V6})}
+\item{ver}{\verb{<chr>} Version of categorization; default is \code{V2}}
 
 \item{dual}{\verb{<chr>} Dual eligibility code (\code{00} - \code{10})}
 
-\item{orec, crec}{\verb{<chr>} Original/Current reason for entitlement
-code (\code{0} - \code{3})}
+\item{orec, crec}{\verb{<chr>} Original/Current reason for entitlement code:
+\itemize{
+\item \code{0}: Old Age and Survivors Insurance (OASI)
+\item \code{1}: Disability Insurance Benefits (DIB)
+\item \code{2}: ESRD - End-Stage Renal Disease
+\item \code{3}: DIB and ESRD
+}}
 
-\item{new, snp, low, lti}{\verb{<lgl>} Beneficiary is a
-\strong{New Enrollee}, in a \strong{Special Needs Plan}, is \strong{Low Income} (RxHCC only),
-and/or is \strong{Long-Term Institutionalized}}
+\item{new_enrollee}{\verb{<lgl>} Beneficiary is a New Enrollee}
+
+\item{snp}{\verb{<lgl>} Beneficiary is in a Special Needs Plan}
+
+\item{low_income}{\verb{<lgl>} Beneficiary is Low Income (RxHCC only)}
+
+\item{lti}{\verb{<lgl>} Beneficiary is Long-Term Institutionalized}
 
 \item{months}{\verb{<int>} Number of months since transplant (ESRD only)}
 
@@ -49,6 +58,6 @@ Demographics object containing derived fields used in risk adjustment models.
 }
 \examples{
 demographics(age = 48, sex = "1")
-demographics(version = "V6", age = 35, sex = "M")
-demographics(version = "V2", age = 75, sex = "2", orec = "0")
+demographics(age = 35, sex = "M", ver = "V6")
+demographics(age = 75, sex = "2", orec = 0)
 }

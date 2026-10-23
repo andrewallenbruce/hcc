@@ -12,7 +12,7 @@
 #' @param ... dots
 #' @returns a character vector of interactions
 #' @examples
-#' x = demographics(age = 64, sex = "F", orec = "1")
+#' x = demographics(age = 64, sex = "F", orec = 1)
 #' interactions(x)
 #' interactions(x, diagnostics("C24", c(17L, 85L)))
 #' interactions(x, diagnostics("R08", 130:133))
@@ -97,7 +97,7 @@ S7::method(
 #' @examples
 #' apply_interactions(
 #'   diagnostics(model = "C24", hcc = c(17L, 85L)),
-#'   demographics(age = 64, sex = "F", orec = "1")
+#'   demographics(age = 64, sex = "F", orec = 1)
 #' )
 #' @export
 apply_interactions <- function(diagnostics, demographics) {

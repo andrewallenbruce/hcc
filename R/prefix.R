@@ -93,7 +93,7 @@ prefix_rxhcc <- function(x) {
 #' @param model `<chr>` model name; default is `"C28"`
 #' @returns String prefix used to look up coefficients for beneficiary type
 #' @examples
-#' x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
+#' x = demographics(age = 70, sex = "F", dual = "00", orec = 0, crec = 0)
 #' prefix(x, "C28")
 #' prefix(x, "D24")
 #' prefix(x, "R05")

@@ -25,12 +25,11 @@ test_that("apply_coefficients works", {
       age = 70,
       sex = "F",
       dual = "00",
-      orec = "0",
-      crec = "0",
-      version = "V2",
-      new = FALSE,
+      orec = 0,
+      crec = 0,
+      new_enrollee = FALSE,
       snp = FALSE,
-      low = FALSE
+      low_income = FALSE
     ),
     hcc = c(19L, 47L, 85L),
     interactions = "D1",

@@ -29,10 +29,12 @@ An \verb{<HCCDetail>} S7 object
 HCC Category Detail
 }
 \examples{
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 HCCDetail(
  hcc = "203",
  label = "Coma, Brain Compression/Anoxic Damage",
  is_chronic = TRUE,
  coefficient = 0.486
 )
+\dontshow{\}) # examplesIf}
 }

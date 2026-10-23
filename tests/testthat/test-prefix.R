@@ -3,15 +3,14 @@ test_that("prefix works", {
   expect_equal(
     prefix(
       demographics(
-        version = "V2",
         age = 70,
         sex = "F",
         dual = "00",
-        orec = "0",
-        crec = "0",
-        new = FALSE,
+        orec = 0,
+        crec = 0,
+        new_enrollee = FALSE,
         snp = FALSE,
-        low = FALSE
+        low_income = FALSE
       )
     ),
     "CNA_"
@@ -21,15 +20,14 @@ test_that("prefix works", {
   expect_equal(
     prefix(
       demographics(
-        version = "V2",
         age = 45,
         sex = "M",
         dual = "00",
-        orec = "2",
-        crec = "0",
-        new = FALSE,
+        orec = 2,
+        crec = 0,
+        new_enrollee = FALSE,
         snp = FALSE,
-        low = FALSE
+        low_income = FALSE
       ),
       model = "D24"
     ),

@@ -18,7 +18,7 @@ String prefix used to look up coefficients for beneficiary type
 Get the coefficient prefix based on beneficiary demographics.
 }
 \examples{
-x = demographics(age = 70, sex = "F", dual = "00", orec = "0", crec = "0")
+x = demographics(age = 70, sex = "F", dual = "00", orec = 0, crec = 0)
 prefix(x, "C28")
 prefix(x, "D24")
 prefix(x, "R05")

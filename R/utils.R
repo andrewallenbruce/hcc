@@ -163,14 +163,14 @@ convert_icd <- function(icd) {
 }
 
 #' @noRd
-convert_sex <- function(sex, version) {
+convert_sex <- function(sex, ver) {
   check_string(sex, allow_empty = FALSE)
-  check_string(version, allow_empty = FALSE)
+  check_string(ver, allow_empty = FALSE)
 
   sex <- rlang::arg_match0(sex, SEX$VALID)
 
   switch(
-    rlang::arg_match0(version, c("V2", "V4", "V6")),
+    rlang::arg_match0(ver, c("V2", "V4", "V6")),
     "V2" = ,
     "V4" = unname(SEX$V2[sex]), # CMS format
     "V6" = unname(SEX$V6[sex])
