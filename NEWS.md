@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# hcc 0.0.0.9084 (2026-10-23)
+
+* added tests for `hierarchies()`
+
+
 # hcc 0.0.0.9083 (2026-10-17)
 
 * `split_interval2` for nested hierarchies
