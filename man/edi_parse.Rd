@@ -32,7 +32,7 @@ Methods for \code{edi_parse}:
 }
 }
 \examples{
-edi_parse(x12_EX$`820`) |> hcc:::tails_(2L)
+edi_parse(x12_EX$`820`)
 edi_parse(x12_EX$`834`) |> hcc:::tails_()
 edi_parse(x12_EX$`837`)
 }

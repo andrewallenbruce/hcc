@@ -4,13 +4,11 @@
 #' Methods for `edi_index`:
 #' `r doclisting::methods_list("edi_text")`
 #'
-#'
 #' @param x raw X12 text input
 #' @param ... dots
 #' @returns an `<hcc::TextEDI>` S7 object
 #' @examples
-#' x = edi_text(x12_EX)
-#' x
+#' edi_text(x12_EX)
 #' @export
 edi_text := S7::new_generic("x")
 
@@ -41,16 +39,10 @@ edi_text_ <- function(x) {
     collapse::na_rm() |>
     charr::str_replace_all(";", "*")
 
-  ST03 <- charr::str_unique(
-    charr::str_sub(
-      charr::str_split_i(
-        charr::str_subset(text, "^ST"),
-        "[*]",
-        4L
-      ),
-      end = 10L
-    )
-  )
+  ST03 <- charr::str_subset(text, "^ST") |>
+    charr::str_split_i("[*]", 4L) |>
+    charr::str_sub(end = 10L) |>
+    charr::str_unique()
 
   type <- cheapr::val_match(
     ST03,
@@ -62,10 +54,14 @@ edi_text_ <- function(x) {
     .default = NA_character_
   )
 
+  short_form <- charr::str_sub(type, 5L, 7L) |>
+    charr::str_unique()
+
   switch(
-    charr::str_unique(charr::str_sub(type, 5L, 7L)),
+    short_form,
     "820" = Text820(type, text),
     "834" = Text834(type, text),
-    "837" = Text837(type, text)
+    "837" = Text837(type, text),
+    cli::cli_abort("{.val {short_form}} is an unrecognized X12 type")
   )
 }
