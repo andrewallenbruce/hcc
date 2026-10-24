@@ -1,5 +1,9 @@
 # Changelog
 
+## hcc 0.0.0.9085 (2026-10-24)
+
+- refactored parsing 820 detail segments
+
 ## hcc 0.0.0.9084 (2026-10-23)
 
 - added tests for

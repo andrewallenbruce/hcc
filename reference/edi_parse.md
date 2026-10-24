@@ -240,13 +240,12 @@ edi_parse(x12_EX$`820`[[2]][[1]])
 #>  .. @ GS : chr [1:8] "RA" "SENDERGS" "RECEIVERGS" "20240221" "134856" ...
 #>  .. @ ST : chr [1:3] "820" "0001" "005010X306"
 #>  @ Details: <hcc::Detail306>
-#>  .. @ BPR  : chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
-#>  .. @ TRN  : chr [1:2] "3" "123456789123385"
-#>  .. @ REF38: chr NA
-#>  .. @ REFTV: chr NA
-#>  .. @ N1PE : chr [1:3] "NATIONAL EAST" "FI" "121231244"
-#>  .. @ N1RM : chr [1:3] "CMS" "58" "CMS"
-#>  .. @ PER  : chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#>  .. @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  .. @ TRN: chr [1:2] "3" "123456789123385"
+#>  .. @ REF: chr NA
+#>  .. @ NPE: chr [1:4] "PE" "NATIONAL EAST" "FI" "121231244"
+#>  .. @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  .. @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #>  @ Entity :List of 3
 #>  .. $ :List of 6
 #>  ..  ..$ :List of 6
@@ -298,6 +297,125 @@ edi_parse(x12_EX$`820`[[2]][[1]])
 #>  .. @ SE : chr [1:2] "38" "0001"
 #>  .. @ GE : chr [1:2] "1" "000000001"
 #>  .. @ IEA: chr [1:2] "1" "000000001"
+edi_parse(x12_EX$`820`$`306`) |>
+purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+#> $`820_EX10_debt_covered_by_affiliate1`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123385"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL EAST" "FI" "121231244"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX11_debt_covered_by_affiliate2`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "12345678945678"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL EAST" "FI" "121231244"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX12_csr_manual_adj`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123456"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX1_different_types_of_pmt_by_HIX`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
+#>  @ TRN: chr [1:2] "3" "78905"
+#>  @ REF: chr [1:4] "38" "123456" "TV" "12565496"
+#>  @ NPE: chr [1:4] "PE" "BATA INSURANCE CO." "FI" "012222222"
+#>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"
+#>  @ PER: chr NA
+#> 
+#> $`820_EX2_payments_exceed_charges1`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123456"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX3_payments_exceed_charges2`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "1110" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
+#>  @ TRN: chr [1:2] "3" "123456789123459"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX4_charges_exceed_payments1`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123457"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "USINS" "FI" "121231234"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX5_charges_exceed_payments2`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123567"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "USINS" "FI" "121231234"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX6_aptc_adjustments1`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "123456789123456"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX7_aptc_adjustments2`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "910" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
+#>  @ TRN: chr [1:2] "3" "123456789123459"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX8_outstanding_debt_owed1`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
+#>  @ TRN: chr [1:2] "3" "1234512345098"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $`820_EX9_outstanding_debt_owed2`
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "985" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
+#>  @ TRN: chr [1:2] "3" "123456789123459"
+#>  @ REF: chr NA
+#>  @ NPE: chr [1:4] "PE" "NATIONAL" "FI" "121231233"
+#>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
+#>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
+#> 
+#> $payment_order_820_360
+#> <hcc::Detail306>
+#>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
+#>  @ TRN: chr [1:2] "3" "78905"
+#>  @ REF: chr [1:4] "38" "123456" "TV" "12565496"
+#>  @ NPE: chr [1:4] "PE" "BATA INSURANCE CO." "FI" "012222222"
+#>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"
+#>  @ PER: chr NA
+#> 
 edi_parse(x12_EX$`820`$`218`) |>
 purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #> $`820_Child_Health_Plus_Payment_EFT`
