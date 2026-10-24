@@ -7,11 +7,11 @@ remittance from a state Medicaid agency or CMS to a managed care plan.
 
 ``` r
 PaymentData(
-  source = character(0),
+  source = NA_character_,
   report_date = .Date(numeric(0L)),
   payment_date = .Date(numeric(0L)),
   total_amount = numeric(0),
-  check_number = character(0),
+  check_number = NA_character_,
   payee = Party(),
   payer = Party(),
   payments = list()

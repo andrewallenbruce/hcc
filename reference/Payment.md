@@ -18,7 +18,7 @@ Payment(order = integer(0), member = Member(), remits = list())
 
 - member:
 
-  `<hcc::Member>`
+  `<Member>`
 
   - `NM1-09` Member identifier
 

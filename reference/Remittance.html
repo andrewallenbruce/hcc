@@ -46,15 +46,15 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Remittance</span><span class="op">(</span></span>
-<span>  reference <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  reference <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>  original <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  adjustment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  payment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  aid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  plan <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  reason <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>  description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  rate <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>  aid <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>  plan <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>  reason <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
+<span>  description <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>  coverage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0L</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0L</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -92,8 +92,8 @@ period; negative = recoupment</p></dd>
 
 
 <dt id="arg-plan">plan<a class="anchor" aria-label="anchor" href="#arg-plan"></a></dt>
-<dd><p><code>&lt;chr&gt;</code> <code>REF*ZZ</code> Plan type; Composite aid_code;plan_type</p><ul><li><p>"1": primary/medical</p></li>
-<li><p>"2" = pharmacy/state-only</p></li>
+<dd><p><code>&lt;chr&gt;</code> <code>REF*ZZ</code> Plan type; Composite aid_code;plan_type</p><ul><li><p><code>1</code>: primary/medical</p></li>
+<li><p><code>2</code>: pharmacy/state-only</p></li>
 </ul></dd>
 
 
@@ -107,7 +107,7 @@ Capitation Dual", "Medi-Cal Only-State Only")</p></dd>
 
 
 <dt id="arg-coverage">coverage<a class="anchor" aria-label="anchor" href="#arg-coverage"></a></dt>
-<dd><p><code>&lt;class_iv&gt;</code> Coverage period start and end date (YYYY-MM-DD) from DTM*582</p></dd>
+<dd><p><code>&lt;DTM*582&gt;</code> Coverage period start and end date (YYYY-MM-DD)</p></dd>
 
 </dl></div>
     <div class="section level2">
