@@ -94,7 +94,7 @@ detail_306 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"), TRUE)
   n <- unname(purrr::map_chr(d, 1L)[3:length(d)])
 
-  if (setequal(n, c("38", "TV", "PE", "RM"))) {
+  if (identical(n, c("38", "TV", "PE", "RM"))) {
     return(
       Detail306(
         BPR = d[["BPR"]],
@@ -106,7 +106,7 @@ detail_306 <- function(x) {
       )
     )
   }
-  if (setequal(n, c("PE", "RM", "IC"))) {
+  if (identical(n, c("PE", "RM", "IC"))) {
     return(
       Detail306(
         BPR = d[["BPR"]],
@@ -125,7 +125,7 @@ detail_218 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"), TRUE)
   n <- names(purrr::map_chr(d, 1L)[4:length(d)])
 
-  if (setequal(n, c("N1", "N1"))) {
+  if (identical(n, c("N1", "N1"))) {
     return(
       Detail218(
         BPR = d[["BPR"]],
@@ -137,7 +137,7 @@ detail_218 <- function(x) {
     )
   }
 
-  if (setequal(n, c("N1", "N3", "N4", "N1"))) {
+  if (identical(n, c("N1", "N3", "N4", "N1"))) {
     return(
       Detail218(
         BPR = d[["BPR"]],
@@ -149,7 +149,7 @@ detail_218 <- function(x) {
     )
   }
 
-  if (setequal(n, c("N1", "N1", "N3", "N4"))) {
+  if (identical(n, c("N1", "N1", "N3", "N4"))) {
     return(
       Detail218(
         BPR = d[["BPR"]],
@@ -161,7 +161,7 @@ detail_218 <- function(x) {
     )
   }
 
-  if (setequal(n, c("N1", "N3", "N4", "N1", "N3", "N4"))) {
+  if (identical(n, c("N1", "N3", "N4", "N1", "N3", "N4"))) {
     return(
       Detail218(
         BPR = d[["BPR"]],
