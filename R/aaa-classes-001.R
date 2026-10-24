@@ -126,11 +126,22 @@ Detail306 := S7::new_class(
 Detail834 := S7::new_class(
   properties = list(
     BGN = S7::class_character,
-    N1P5 = S7::class_character,
-    N1IN = S7::class_character,
-    REF38 = S7::class_character,
+    REF = S7::class_character,
+    DTP = S7::class_character,
     QTY = S7::class_character,
-    DTP = S7::class_character
+    NP5 = S7::class_character,
+    NIN = S7::class_character
+  )
+)
+
+#' @noRd
+Detail837 := S7::new_class(
+  properties = list(
+    BHT = S7::class_character,
+    N41 = S7::class_character,
+    P41 = S7::class_character,
+    N40 = S7::class_character,
+    P40 = S7::class_character
   )
 )
 
@@ -158,7 +169,7 @@ Parsed834 := S7::new_class(
 Parsed837 := S7::new_class(
   properties = list(
     Header = HeaderEDI,
-    Details = S7::class_list,
+    Details = Detail837,
     Claims = S7::class_list,
     Trailer = TrailerEDI
   )

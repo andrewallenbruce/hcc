@@ -36,54 +36,97 @@ edi_trailer <- function(x) {
 }
 
 #' @noRd
-as_detail834 <- function(x) {
-  d <- subset_(x, S7::prop(x, "Details"))
-  if (length(d) == 3L) {
+detail_837 <- function(x) {
+  d <- subset_(x, S7::prop(x, "Details"), TRUE)
+  n <- names(purrr::map_chr(d, 1L)[2:length(d)])
+
+  if (identical(n, c("NM1", "PER", "NM1"))) {
     return(
-      Detail834(
-        BGN = d[[1L]][-1L],
-        N1P5 = d[[2L]][3:5],
-        N1IN = d[[3L]][3:5],
-        REF38 = NA_character_,
-        QTY = NA_character_,
-        DTP = NA_character_
+      Detail837(
+        BHT = d[["BHT"]],
+        N41 = d[[2L]],
+        P41 = d[[3L]],
+        N40 = d[[4L]],
+        P40 = NA_character_
       )
     )
   }
-  if (length(d) == 5L) {
+  if (identical(n, c("NM1", "NM1", "PER"))) {
+    return(
+      Detail837(
+        BHT = d[["BHT"]],
+        N41 = d[[2L]],
+        P41 = NA_character_,
+        N40 = d[[3L]],
+        P40 = d[[4L]]
+      )
+    )
+  }
+  if (identical(n, c("NM1", "PER", "NM1", "PER"))) {
+    return(
+      Detail837(
+        BHT = d[["BHT"]],
+        N41 = d[[2L]],
+        P41 = d[[3L]],
+        N40 = d[[4L]],
+        P40 = d[[5L]]
+      )
+    )
+  }
+}
+
+#' @noRd
+detail_834 <- function(x) {
+  d <- subset_(x, S7::prop(x, "Details"), TRUE)
+  n <- names(purrr::map_chr(d, 1L)[2:length(d)])
+
+  if (identical(n, c("N1", "N1"))) {
     return(
       Detail834(
-        BGN = d[[1L]][-1L],
-        REF38 = d[[2L]][-1L],
-        DTP = d[[3L]][-1L],
-        N1P5 = d[[4L]][3:5],
-        N1IN = d[[5L]][3:5],
-        QTY = NA_character_
+        BGN = d[["BGN"]],
+        REF = NA_character_,
+        DTP = NA_character_,
+        QTY = NA_character_,
+        NP5 = d[[2L]],
+        NIN = d[[3L]]
       )
     )
   }
 
-  if (length(d) == 4L && d[[2]][1] == "QTY") {
+  if (identical(n, c("REF", "N1", "N1"))) {
     return(
       Detail834(
-        BGN = d[[1L]][-1L],
-        QTY = d[[2L]][-1L],
-        N1P5 = d[[3L]][3:5],
-        N1IN = d[[4L]][3:5],
-        REF38 = NA_character_,
-        DTP = NA_character_
+        BGN = d[["BGN"]],
+        REF = d[["REF"]],
+        DTP = NA_character_,
+        QTY = NA_character_,
+        NP5 = d[[3L]],
+        NIN = d[[4L]]
       )
     )
   }
-  if (length(d) == 4L && d[[2]][1] == "REF") {
+
+  if (identical(n, c("QTY", "N1", "N1"))) {
     return(
       Detail834(
-        BGN = d[[1L]][-1L],
-        REF38 = d[[2L]][-1L],
-        N1P5 = d[[3L]][3:5],
-        N1IN = d[[4L]][3:5],
+        BGN = d[["BGN"]],
+        REF = NA_character_,
+        DTP = NA_character_,
+        QTY = d[["QTY"]],
+        NP5 = d[[3L]],
+        NIN = d[[4L]]
+      )
+    )
+  }
+  if (identical(n, c("REF", "DTP", "N1", "N1"))) {
+    return(
+      Detail834(
+        BGN = d[["BGN"]],
+        REF = d[["REF"]],
+        DTP = d[["DTP"]],
         QTY = NA_character_,
-        DTP = NA_character_
+        NP5 = d[[4L]],
+        NIN = d[[5L]]
       )
     )
   }

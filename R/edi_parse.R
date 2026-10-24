@@ -9,14 +9,18 @@
 #' @param ... dots
 #' @returns an `<hcc::ParsedEDI>` S7 object
 #' @examples
-#' edi_parse(x12_EX$`837`[[1]][[1]])
-#' edi_parse(x12_EX$`837`[[2]][[1]])
-#' edi_parse(x12_EX$`834`[[1]])
-#' edi_parse(x12_EX$`820`[[1]][[1]])
-#' edi_parse(x12_EX$`820`[[2]][[1]])
+#' # edi_parse(x12_EX$`837`[[1]][[1]])
+#' # edi_parse(x12_EX$`837`[[2]][[1]])
+#' # edi_parse(x12_EX$`834`[[1]])
+#' # edi_parse(x12_EX$`820`[[1]][[1]])
+#' # edi_parse(x12_EX$`820`[[2]][[1]])
 #' edi_parse(x12_EX$`820`$`306`) |>
 #' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #' edi_parse(x12_EX$`820`$`218`) |>
+#' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+#' edi_parse(x12_EX$`834`) |>
+#' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+#' edi_parse(x12_EX$`837`$I223) |>
 #' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #' @export
 #' @name edi_parse
@@ -59,7 +63,7 @@ S7::method(edi_parse, Index820) <- function(x) {
 S7::method(edi_parse, Index834) <- function(x) {
   Parsed834(
     Header = edi_header(x),
-    Details = as_detail834(x),
+    Details = detail_834(x),
     Member = purrr::map_depth(
       S7::prop(x, "Member"),
       1L,
@@ -74,7 +78,7 @@ S7::method(edi_parse, Index834) <- function(x) {
 S7::method(edi_parse, Index837) <- function(x) {
   Parsed837(
     Header = edi_header(x),
-    Details = subset_(x, S7::prop(x, "Details")),
+    Details = detail_837(x),
     Claims = purrr::map_depth(
       S7::prop(x, "Claims"),
       1L,
