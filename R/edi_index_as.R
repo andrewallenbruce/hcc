@@ -135,14 +135,14 @@ index_837 <- function(x) {
   LX <- charr::str_which(x, "^LX\\*")
 
   rlang::list2(
-    header = cheapr::seq_(ISA, ST),
-    details = cheapr::seq_(ST + 1L, HL[1L] - 1L),
+    header = cheapr::seq_(ISA, collapse::fmin(ST)),
+    details = cheapr::seq_(collapse::fmin(ST) + 1L, HL[1L] - 1L),
     claims = split_interval(
       x,
       HL[1L],
-      SE - 1L,
-      c(HL, CLM, LX, SE - 1L)
+      collapse::fmax(SE) - 1L,
+      c(HL, CLM, LX, collapse::fmax(SE) - 1L)
     ),
-    trailer = cheapr::seq_(SE, IEA)
+    trailer = cheapr::seq_(collapse::fmax(SE), IEA)
   )
 }

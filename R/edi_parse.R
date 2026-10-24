@@ -17,8 +17,7 @@ tails_ <- function(x, d = 1L) {
 #' @examples
 #' edi_parse(x12_EX$`820`) |> hcc:::tails_(2L)
 #' edi_parse(x12_EX$`834`) |> hcc:::tails_()
-#' edi_parse(x12_EX$`837`$I223) |> hcc:::tails_()
-#' edi_parse(x12_EX$`837`$P222[c(1:15, 17)]) |> hcc:::tails_()
+#' edi_parse(x12_EX$`837`)
 #' @export
 #' @name edi_parse
 edi_parse := S7::new_generic("x")
