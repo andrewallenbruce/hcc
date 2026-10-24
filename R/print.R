@@ -11,18 +11,19 @@ print_names_ <- bcyan(c("Type", "Segments"))
 print_names_2 <- bcyan(c("Header", "Detail", "Trailer"))
 
 S7::method(format, TextEDI) <- function(x) {
-  print_class(x)
+  cli::cat_rule(left = angle(attr(x, .c(class))[1]), line = 2L)
 
-  cli::cat_line(
+  cat(
     colon(
-      fright(print_names_),
+      fright(c("Type", "Segments")),
       fleft(
         c(
           toString(S7::prop(x, "Type")),
-          bracket(bcyan(length(S7::prop(x, "Text"))))
+          bracket(length(S7::prop(x, "Text")))
         )
       )
-    )
+    ),
+    sep = "\n"
   )
   cli::cat_rule()
 }

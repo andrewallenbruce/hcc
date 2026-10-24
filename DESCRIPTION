@@ -20,12 +20,11 @@ Imports:
     S7 (>= 0.2.2.9000),
     vctrs (>= 0.7.3)
 Suggests:
+    charr (>= 0.1.0),
     clock (>= 0.7.4),
-    doclisting,
+    doclisting (>= 0.1.0),
     pillar (>= 1.11.1),
     purrr (>= 1.2.2),
-    charr (>= 0.1.0),
-    stringfish (>= 0.19.2),
     testthat (>= 3.3.2)
 Remotes:
     RConsortium/S7
