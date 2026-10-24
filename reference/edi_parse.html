@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hcc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9085</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9086</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,14 +79,91 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># edi_parse(x12_EX$`837`[[1]][[1]])</span></span></span>
-<span class="r-in"><span><span class="co"># edi_parse(x12_EX$`837`[[2]][[1]])</span></span></span>
-<span class="r-in"><span><span class="co"># edi_parse(x12_EX$`834`[[1]])</span></span></span>
-<span class="r-in"><span><span class="co"># edi_parse(x12_EX$`820`[[1]][[1]])</span></span></span>
-<span class="r-in"><span><span class="co"># edi_parse(x12_EX$`820`[[2]][[1]])</span></span></span>
-<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`306`</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_depth.html" class="external-link">map_depth</a></span><span class="op">(</span><span class="fl">1L</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">S7</span><span class="fu">::</span><span class="fu"><a href="https://rconsortium.github.io/S7/reference/prop.html" class="external-link">prop</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Details"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX10_debt_covered_by_affiliate1`</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">tails_</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$`820_Child_Health_Plus_Payment_EFT`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:2] "PR" "CHILD HEALTH PLUS"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$`820_Essentail_Health_Plan`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "123.45" "C" "CHK" NA NA NA NA NA "1141797357" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "000000032788113" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" NA "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:7] "PR" "BASIC HEALTH PLAN" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$`820_Premium_Payment_EFT`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "566.29" "C" "ACH" "CCP" "01" "111111111" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:4] "PR" "NYSDOH" "FI" "141797357"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$`820_Premium_Payment_NOPMT`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA "1234567890" NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:9] "PR" "NYSDOH" "FI" "141797357" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$payment_order_820_218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "C" "19000" "C" "ACH" "CTX" "01" "999999992" "DA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "1" "12345" "1030449999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$sample_820_01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "102139.46" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN01000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$sample_820_02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "91977.81" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN02000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$sample_820_03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "697085.64" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN03000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$sample_820_04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "80865.30" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN04000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`218`$sample_820_05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "499187.57" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN05000001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX10_debt_covered_by_affiliate1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123385"</span>
@@ -95,7 +172,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX11_debt_covered_by_affiliate2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX11_debt_covered_by_affiliate2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "12345678945678"</span>
@@ -104,7 +181,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX12_csr_manual_adj`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX12_csr_manual_adj`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123456"</span>
@@ -113,7 +190,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX1_different_types_of_pmt_by_HIX`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX1_different_types_of_pmt_by_HIX`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "78905"</span>
@@ -122,7 +199,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX2_payments_exceed_charges1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX2_payments_exceed_charges1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123456"</span>
@@ -131,7 +208,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX3_payments_exceed_charges2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX3_payments_exceed_charges2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "1110" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123459"</span>
@@ -140,7 +217,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX4_charges_exceed_payments1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX4_charges_exceed_payments1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123457"</span>
@@ -149,7 +226,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX5_charges_exceed_payments2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX5_charges_exceed_payments2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123567"</span>
@@ -158,7 +235,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX6_aptc_adjustments1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX6_aptc_adjustments1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123456"</span>
@@ -167,7 +244,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX7_aptc_adjustments2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX7_aptc_adjustments2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "910" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123459"</span>
@@ -176,7 +253,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX8_outstanding_debt_owed1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX8_outstanding_debt_owed1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "1234512345098"</span>
@@ -185,7 +262,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_EX9_outstanding_debt_owed2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$`820_EX9_outstanding_debt_owed2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "985" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "123456789123459"</span>
@@ -194,7 +271,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $payment_order_820_360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`306`$payment_order_820_360</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail306&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "78905"</span>
@@ -203,90 +280,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ PER: chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`820`</span><span class="op">$</span><span class="va">`218`</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_depth.html" class="external-link">map_depth</a></span><span class="op">(</span><span class="fl">1L</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">S7</span><span class="fu">::</span><span class="fu"><a href="https://rconsortium.github.io/S7/reference/prop.html" class="external-link">prop</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Details"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Child_Health_Plus_Payment_EFT`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:2] "PR" "CHILD HEALTH PLUS"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Essentail_Health_Plan`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "123.45" "C" "CHK" NA NA NA NA NA "1141797357" NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "000000032788113" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" NA "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:7] "PR" "BASIC HEALTH PLAN" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Premium_Payment_EFT`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "566.29" "C" "ACH" "CCP" "01" "111111111" NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:4] "PR" "NYSDOH" "FI" "141797357"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`820_Premium_Payment_NOPMT`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA "1234567890" NA NA NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "3" "021300000000000" "1123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345678"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:9] "PR" "NYSDOH" "FI" "141797357" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $payment_order_820_218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "C" "19000" "C" "ACH" "CTX" "01" "999999992" "DA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:3] "1" "12345" "1030449999"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "12345"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "102139.46" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN01000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "91977.81" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN02000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "697085.64" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN03000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "80865.30" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN04000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_820_05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail218&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BPR: chr [1:16] "I" "499187.57" "C" "NON" NA NA NA NA NA "68-0317191" NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ TRN: chr [1:2] "3" "TESTTRN05000001"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ REF: chr [1:2] "14" "0000245023"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`834`</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_depth.html" class="external-link">map_depth</a></span><span class="op">(</span><span class="fl">1L</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">S7</span><span class="fu">::</span><span class="fu"><a href="https://rconsortium.github.io/S7/reference/prop.html" class="external-link">prop</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Details"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`834`</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">tails_</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`834_EX2_add_dependent`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail834&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"</span>
@@ -422,8 +417,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NP5: chr [1:4] "P5" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ NIN: chr [1:4] "IN" "Sample PACE Inc." "FI" "999999991"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`837`</span><span class="op">$</span><span class="va">I223</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_depth.html" class="external-link">map_depth</a></span><span class="op">(</span><span class="fl">1L</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">S7</span><span class="fu">::</span><span class="fu"><a href="https://rconsortium.github.io/S7/reference/prop.html" class="external-link">prop</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Details"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`837`</span><span class="op">$</span><span class="va">I223</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">tails_</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`837I_EX1a_institutional_claim`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "0123" "19960918" "0932" "CH"</span>
@@ -551,6 +545,135 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "HMOOffExchangeRegion7" NA NA NA NA "XX" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">edi_parse</span><span class="op">(</span><span class="va">x12_EX</span><span class="op">$</span><span class="va">`837`</span><span class="op">$</span><span class="va">P222</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">17</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">hcc</span><span class="fu">:::</span><span class="fu">tails_</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`005010_837P`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX10a_drug_adm_office`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "0013" "20040801" "1200" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "Associates in Medicine" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "Bud Holly" "TE" "8017268899"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "XYZ Receiver" NA NA NA NA "46" "369852758"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX11_ppo_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "1002" "20050620" "09460000" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "EXTRA HEALTHY INSURANCE" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX12_oon_repriced_claim`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "1024" "20050711" "1335" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "CONSERVATIVE INSURANCE" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX1_commercial-insurance`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX2_encounter`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "0123" "20061015" "1023" "RP"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "AHLIC" NA NA NA NA "46" "66783JJT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX3a_billing_provider_payer_a`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "0123" "20051015" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "JERRY" "TE" "3055552222"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "XYZ REPRICER" NA NA NA NA "46" "66783JJT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX4_medicare_secondary_cob`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "000001142" "20050214" "115101" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "SPECIALISTS" NA NA NA NA "46" "1111111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "SUE" "TE" "8005558888"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "MEDICARE PENNSYLVANIA" NA NA NA NA "46" "10234"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX5_ambulance`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "000017712" "20050208" "1112" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "AAA AMBULANCE SERVICE" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "LISA SMITH" "TE" "3037752536"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "MEDICARE B" NA NA NA NA "46" "123245"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX6_chiropractic`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "007227" "20050215" "075420" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "DAVID GREEN" NA NA NA NA "46" "S01057"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "KATHY SMITH" "TE" "4105558888"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "MEDICARE PART B MARYLAND" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX7_oxygen`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "16" "20050326" "1036" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "OXYGEN SUPPLY COMPANY" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "BONNIE" "TE" "8125551111" "EM" "HELPDESK@OXYGEN.COM"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "DMERC CARRIER" NA NA NA NA "46" "99999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX8_wheelchair`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "16" "20050326" "1036" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "XYZ WHEELCHAIRS INC" NA NA NA NA "46" "ABC55"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "JANE" "TE" "2225551111"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "DMERC CARRIER" NA NA NA NA "46" "99999"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`837P_EX9_anesthesia`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "0123" "20050117" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PROVIDER MEDICAL GROUP" NA NA NA NA "46" "N305"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "NINA" "TE" "6155551212" "EX" "911"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "ABC PAYER" NA NA NA NA "46" "05440"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $claim_payment_837P_222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $claim_payment_EVV_837P_222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sample_837_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hcc::Detail837&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ BHT: chr [1:6] "0019" "00" "244579" "20230516" "1145" "CH"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N41: chr [1:9] "41" "2" "SUBMIT CLINIC" NA NA NA NA "46" "12345"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P41: chr [1:4] "IC" "CONTACT NAME" "TE" "5555550000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ N40: chr [1:9] "40" "2" "RECEIVER NAME" NA NA NA NA "46" "67890"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ P40: chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

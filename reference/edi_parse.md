@@ -47,14 +47,91 @@ Methods for `edi_parse`:
 ## Examples
 
 ``` r
-# edi_parse(x12_EX$`837`[[1]][[1]])
-# edi_parse(x12_EX$`837`[[2]][[1]])
-# edi_parse(x12_EX$`834`[[1]])
-# edi_parse(x12_EX$`820`[[1]][[1]])
-# edi_parse(x12_EX$`820`[[2]][[1]])
-edi_parse(x12_EX$`820`$`306`) |>
-purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
-#> $`820_EX10_debt_covered_by_affiliate1`
+edi_parse(x12_EX$`820`) |> hcc:::tails_(2L)
+#> $`218`
+#> $`218`$`820_Child_Health_Plus_Payment_EFT`
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...
+#>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"
+#>  @ REF: chr [1:2] "14" "12345678"
+#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>  @ NPR: chr [1:2] "PR" "CHILD HEALTH PLUS"
+#> 
+#> $`218`$`820_Essentail_Health_Plan`
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "123.45" "C" "CHK" NA NA NA NA NA "1141797357" NA NA ...
+#>  @ TRN: chr [1:3] "3" "000000032788113" "1141797357"
+#>  @ REF: chr [1:2] "14" "12345678"
+#>  @ NPE: chr [1:4] "PE" NA "FI" "123456789"
+#>  @ NPR: chr [1:7] "PR" "BASIC HEALTH PLAN" ...
+#> 
+#> $`218`$`820_Premium_Payment_EFT`
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "566.29" "C" "ACH" "CCP" "01" "111111111" NA NA ...
+#>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"
+#>  @ REF: chr [1:2] "14" "12345678"
+#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>  @ NPR: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
+#> 
+#> $`218`$`820_Premium_Payment_NOPMT`
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA "1234567890" NA NA NA NA ...
+#>  @ TRN: chr [1:3] "3" "021300000000000" "1123456789"
+#>  @ REF: chr [1:2] "14" "12345678"
+#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
+#>  @ NPR: chr [1:9] "PR" "NYSDOH" "FI" "141797357" ...
+#> 
+#> $`218`$payment_order_820_218
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "C" "19000" "C" "ACH" "CTX" "01" "999999992" "DA" ...
+#>  @ TRN: chr [1:3] "1" "12345" "1030449999"
+#>  @ REF: chr [1:2] "14" "12345"
+#>  @ NPE: chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"
+#>  @ NPR: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"
+#> 
+#> $`218`$sample_820_01
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "102139.46" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
+#>  @ TRN: chr [1:2] "3" "TESTTRN01000001"
+#>  @ REF: chr [1:2] "14" "0000245023"
+#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
+#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+#> $`218`$sample_820_02
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "91977.81" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...
+#>  @ TRN: chr [1:2] "3" "TESTTRN02000001"
+#>  @ REF: chr [1:2] "14" "0000245023"
+#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
+#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+#> $`218`$sample_820_03
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "697085.64" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
+#>  @ TRN: chr [1:2] "3" "TESTTRN03000001"
+#>  @ REF: chr [1:2] "14" "0000245023"
+#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
+#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+#> $`218`$sample_820_04
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "80865.30" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...
+#>  @ TRN: chr [1:2] "3" "TESTTRN04000001"
+#>  @ REF: chr [1:2] "14" "0000245023"
+#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
+#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+#> $`218`$sample_820_05
+#> <hcc::Detail218>
+#>  @ BPR: chr [1:16] "I" "499187.57" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
+#>  @ TRN: chr [1:2] "3" "TESTTRN05000001"
+#>  @ REF: chr [1:2] "14" "0000245023"
+#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
+#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+#> 
+#> $`306`
+#> $`306`$`820_EX10_debt_covered_by_affiliate1`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123385"
@@ -63,7 +140,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX11_debt_covered_by_affiliate2`
+#> $`306`$`820_EX11_debt_covered_by_affiliate2`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "12345678945678"
@@ -72,7 +149,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX12_csr_manual_adj`
+#> $`306`$`820_EX12_csr_manual_adj`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123456"
@@ -81,7 +158,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX1_different_types_of_pmt_by_HIX`
+#> $`306`$`820_EX1_different_types_of_pmt_by_HIX`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
 #>  @ TRN: chr [1:2] "3" "78905"
@@ -90,7 +167,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"
 #>  @ PER: chr NA
 #> 
-#> $`820_EX2_payments_exceed_charges1`
+#> $`306`$`820_EX2_payments_exceed_charges1`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123456"
@@ -99,7 +176,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX3_payments_exceed_charges2`
+#> $`306`$`820_EX3_payments_exceed_charges2`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "1110" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
 #>  @ TRN: chr [1:2] "3" "123456789123459"
@@ -108,7 +185,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX4_charges_exceed_payments1`
+#> $`306`$`820_EX4_charges_exceed_payments1`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123457"
@@ -117,7 +194,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX5_charges_exceed_payments2`
+#> $`306`$`820_EX5_charges_exceed_payments2`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123567"
@@ -126,7 +203,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX6_aptc_adjustments1`
+#> $`306`$`820_EX6_aptc_adjustments1`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "123456789123456"
@@ -135,7 +212,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX7_aptc_adjustments2`
+#> $`306`$`820_EX7_aptc_adjustments2`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "910" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
 #>  @ TRN: chr [1:2] "3" "123456789123459"
@@ -144,7 +221,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX8_outstanding_debt_owed1`
+#> $`306`$`820_EX8_outstanding_debt_owed1`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
 #>  @ TRN: chr [1:2] "3" "1234512345098"
@@ -153,7 +230,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $`820_EX9_outstanding_debt_owed2`
+#> $`306`$`820_EX9_outstanding_debt_owed2`
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "985" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
 #>  @ TRN: chr [1:2] "3" "123456789123459"
@@ -162,7 +239,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
 #>  @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
 #> 
-#> $payment_order_820_360
+#> $`306`$payment_order_820_360
 #> <hcc::Detail306>
 #>  @ BPR: chr [1:16] "I" "220" "C" "ACH" "CCP" NA NA NA NA NA NA "01" ...
 #>  @ TRN: chr [1:2] "3" "78905"
@@ -171,90 +248,8 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NRM: chr [1:4] "RM" "GOVERNMENT AGENCY" "58" "123ABC"
 #>  @ PER: chr NA
 #> 
-edi_parse(x12_EX$`820`$`218`) |>
-purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
-#> $`820_Child_Health_Plus_Payment_EFT`
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...
-#>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"
-#>  @ REF: chr [1:2] "14" "12345678"
-#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>  @ NPR: chr [1:2] "PR" "CHILD HEALTH PLUS"
 #> 
-#> $`820_Essentail_Health_Plan`
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "123.45" "C" "CHK" NA NA NA NA NA "1141797357" NA NA ...
-#>  @ TRN: chr [1:3] "3" "000000032788113" "1141797357"
-#>  @ REF: chr [1:2] "14" "12345678"
-#>  @ NPE: chr [1:4] "PE" NA "FI" "123456789"
-#>  @ NPR: chr [1:7] "PR" "BASIC HEALTH PLAN" ...
-#> 
-#> $`820_Premium_Payment_EFT`
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "566.29" "C" "ACH" "CCP" "01" "111111111" NA NA ...
-#>  @ TRN: chr [1:3] "3" "021300000000000" "1141797357"
-#>  @ REF: chr [1:2] "14" "12345678"
-#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>  @ NPR: chr [1:4] "PR" "NYSDOH" "FI" "141797357"
-#> 
-#> $`820_Premium_Payment_NOPMT`
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA "1234567890" NA NA NA NA ...
-#>  @ TRN: chr [1:3] "3" "021300000000000" "1123456789"
-#>  @ REF: chr [1:2] "14" "12345678"
-#>  @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>  @ NPR: chr [1:9] "PR" "NYSDOH" "FI" "141797357" ...
-#> 
-#> $payment_order_820_218
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "C" "19000" "C" "ACH" "CTX" "01" "999999992" "DA" ...
-#>  @ TRN: chr [1:3] "1" "12345" "1030449999"
-#>  @ REF: chr [1:2] "14" "12345"
-#>  @ NPE: chr [1:4] "PE" "DEF HEALTH CARE INC." "FI" "012222222"
-#>  @ NPR: chr [1:4] "PR" "ABC PLASTICS" "FI" "123456789"
-#> 
-#> $sample_820_01
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "102139.46" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
-#>  @ TRN: chr [1:2] "3" "TESTTRN01000001"
-#>  @ REF: chr [1:2] "14" "0000245023"
-#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
-#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
-#> 
-#> $sample_820_02
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "91977.81" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...
-#>  @ TRN: chr [1:2] "3" "TESTTRN02000001"
-#>  @ REF: chr [1:2] "14" "0000245023"
-#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
-#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
-#> 
-#> $sample_820_03
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "697085.64" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
-#>  @ TRN: chr [1:2] "3" "TESTTRN03000001"
-#>  @ REF: chr [1:2] "14" "0000245023"
-#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
-#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
-#> 
-#> $sample_820_04
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "80865.30" "C" "NON" NA NA NA NA NA "68-0317191" NA NA ...
-#>  @ TRN: chr [1:2] "3" "TESTTRN04000001"
-#>  @ REF: chr [1:2] "14" "0000245023"
-#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
-#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
-#> 
-#> $sample_820_05
-#> <hcc::Detail218>
-#>  @ BPR: chr [1:16] "I" "499187.57" "C" "NON" NA NA NA NA NA "68-0317191" NA ...
-#>  @ TRN: chr [1:2] "3" "TESTTRN05000001"
-#>  @ REF: chr [1:2] "14" "0000245023"
-#>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
-#>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
-#> 
-edi_parse(x12_EX$`834`) |>
-purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+edi_parse(x12_EX$`834`) |> hcc:::tails_()
 #> $`834_EX2_add_dependent`
 #> <hcc::Detail834>
 #>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
@@ -390,8 +385,7 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ NP5: chr [1:4] "P5" ...
 #>  @ NIN: chr [1:4] "IN" "Sample PACE Inc." "FI" "999999991"
 #> 
-edi_parse(x12_EX$`837`$I223) |>
-purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+edi_parse(x12_EX$`837`$I223) |> hcc:::tails_()
 #> $`837I_EX1a_institutional_claim`
 #> <hcc::Detail837>
 #>  @ BHT: chr [1:6] "0019" "00" "0123" "19960918" "0932" "CH"
@@ -519,5 +513,134 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
 #>  @ N40: chr [1:9] "40" "2" "HMOOffExchangeRegion7" NA NA NA NA "XX" ...
 #>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+edi_parse(x12_EX$`837`$P222[c(1:15, 17)]) |> hcc:::tails_()
+#> $`005010_837P`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"
+#>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX10a_drug_adm_office`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0013" "20040801" "1200" "CH"
+#>  @ N41: chr [1:9] "41" "2" "Associates in Medicine" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "Bud Holly" "TE" "8017268899"
+#>  @ N40: chr [1:9] "40" "2" "XYZ Receiver" NA NA NA NA "46" "369852758"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX11_ppo_repriced_claim`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "1002" "20050620" "09460000" "CH"
+#>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"
+#>  @ N40: chr [1:9] "40" "2" "EXTRA HEALTHY INSURANCE" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX12_oon_repriced_claim`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "1024" "20050711" "1335" "CH"
+#>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"
+#>  @ N40: chr [1:9] "40" "2" "CONSERVATIVE INSURANCE" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX1_commercial-insurance`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"
+#>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX2_encounter`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "20061015" "1023" "RP"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"
+#>  @ N40: chr [1:9] "40" "2" "AHLIC" NA NA NA NA "46" "66783JJT"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX3a_billing_provider_payer_a`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "20051015" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:4] "IC" "JERRY" "TE" "3055552222"
+#>  @ N40: chr [1:9] "40" "2" "XYZ REPRICER" NA NA NA NA "46" "66783JJT"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX4_medicare_secondary_cob`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "000001142" "20050214" "115101" "CH"
+#>  @ N41: chr [1:9] "41" "2" "SPECIALISTS" NA NA NA NA "46" "1111111"
+#>  @ P41: chr [1:4] "IC" "SUE" "TE" "8005558888"
+#>  @ N40: chr [1:9] "40" "2" "MEDICARE PENNSYLVANIA" NA NA NA NA "46" "10234"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX5_ambulance`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "000017712" "20050208" "1112" "CH"
+#>  @ N41: chr [1:9] "41" "2" "AAA AMBULANCE SERVICE" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "LISA SMITH" "TE" "3037752536"
+#>  @ N40: chr [1:9] "40" "2" "MEDICARE B" NA NA NA NA "46" "123245"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX6_chiropractic`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "007227" "20050215" "075420" "CH"
+#>  @ N41: chr [1:9] "41" "2" "DAVID GREEN" NA NA NA NA "46" "S01057"
+#>  @ P41: chr [1:4] "IC" "KATHY SMITH" "TE" "4105558888"
+#>  @ N40: chr [1:9] "40" "2" "MEDICARE PART B MARYLAND" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX7_oxygen`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "16" "20050326" "1036" "CH"
+#>  @ N41: chr [1:9] "41" "2" "OXYGEN SUPPLY COMPANY" NA NA NA NA "46" ...
+#>  @ P41: chr [1:6] "IC" "BONNIE" "TE" "8125551111" "EM" "HELPDESK@OXYGEN.COM"
+#>  @ N40: chr [1:9] "40" "2" "DMERC CARRIER" NA NA NA NA "46" "99999"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX8_wheelchair`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "16" "20050326" "1036" "CH"
+#>  @ N41: chr [1:9] "41" "2" "XYZ WHEELCHAIRS INC" NA NA NA NA "46" "ABC55"
+#>  @ P41: chr [1:4] "IC" "JANE" "TE" "2225551111"
+#>  @ N40: chr [1:9] "40" "2" "DMERC CARRIER" NA NA NA NA "46" "99999"
+#>  @ P40: chr NA
+#> 
+#> $`837P_EX9_anesthesia`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "20050117" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PROVIDER MEDICAL GROUP" NA NA NA NA "46" "N305"
+#>  @ P41: chr [1:6] "IC" "NINA" "TE" "6155551212" "EX" "911"
+#>  @ N40: chr [1:9] "40" "2" "ABC PAYER" NA NA NA NA "46" "05440"
+#>  @ P40: chr NA
+#> 
+#> $claim_payment_837P_222
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"
+#>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $claim_payment_EVV_837P_222
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "244579" "20061015" "1023" "CH"
+#>  @ N41: chr [1:9] "41" "2" "PREMIER BILLING SERVICE" NA NA NA NA "46" "TGJ23"
+#>  @ P41: chr [1:6] "IC" "JERRY" "TE" "3055552222" "EX" "231"
+#>  @ N40: chr [1:9] "40" "2" "KEY INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $sample_837_11
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "244579" "20230516" "1145" "CH"
+#>  @ N41: chr [1:9] "41" "2" "SUBMIT CLINIC" NA NA NA NA "46" "12345"
+#>  @ P41: chr [1:4] "IC" "CONTACT NAME" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "RECEIVER NAME" NA NA NA NA "46" "67890"
+#>  @ P40: chr NA
 #> 
 ```
