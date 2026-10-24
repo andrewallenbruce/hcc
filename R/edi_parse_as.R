@@ -90,90 +90,36 @@ as_detail834 <- function(x) {
 }
 
 #' @noRd
-as_detail306 <- function(x) {
-  d <- subset_(x, S7::prop(x, "Details"))
-  if (length(d) == 5L) {
-    return(
-      Detail306(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF38 = NA_character_,
-        REFTV = NA_character_,
-        N1PE = d[[3L]][3:5],
-        N1RM = d[[4L]][3:5],
-        PER = d[[5L]][-1L]
-      )
-    )
-  }
+detail_306 <- function(x) {
+  d <- subset_(x, S7::prop(x, "Details"), TRUE)
+  n <- unname(purrr::map_chr(d, 1L)[3:length(d)])
 
-  if (length(d) == 6L) {
+  if (setequal(n, c("38", "TV", "PE", "RM"))) {
     return(
       Detail306(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF38 = d[[3L]][3L],
-        REFTV = d[[4L]][3L],
-        N1PE = d[[5L]][3:5],
-        N1RM = d[[6L]][3:5],
+        BPR = d[["BPR"]],
+        TRN = d[["TRN"]],
+        REF = c(d[[3L]], d[[4L]]),
+        NPE = d[[5L]],
+        NRM = d[[6L]],
         PER = NA_character_
       )
     )
   }
-}
-
-#' @noRd
-as_detail218 <- function(x) {
-  d <- subset_(x, S7::prop(x, "Details"))
-  if (length(d) == 5L) {
+  if (setequal(n, c("PE", "RM", "IC"))) {
     return(
-      Detail218(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF = d[[3L]][3L],
-        NPE = d[[4L]][3:5],
-        NPR = d[[5L]][3:5]
-      )
-    )
-  }
-
-  if (length(d) == 9L) {
-    return(
-      Detail218(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF = d[[3L]][3L],
-        NPE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
-        NPR = c(d[[7L]][3L], d[[8L]][2L], d[[9L]][-1L])
-      )
-    )
-  }
-  if (length(d[[4L]]) == 3L) {
-    return(
-      Detail218(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF = d[[3L]][3L],
-        NPE = c(d[[4L]][3L], d[[5L]][2L], d[[6L]][-1L]),
-        NPR = d[[7L]][3:5]
-      )
-    )
-  }
-  if (length(d[[4L]]) == 5L) {
-    return(
-      Detail218(
-        BPR = d[[1L]][-1L],
-        TRN = d[[2L]][-1L],
-        REF = d[[3L]][3L],
-        NPE = d[[4L]][3:5],
-        NPR = c(d[[5L]][3L], d[[6L]][2L], d[[7L]][-1L])
+      Detail306(
+        BPR = d[["BPR"]],
+        TRN = d[["TRN"]],
+        REF = NA_character_,
+        NPE = d[[3L]],
+        NRM = d[[4L]],
+        PER = d[[5L]]
       )
     )
   }
 }
 
-# payment_order_820_218:     NPE = 1, NPR = 1
-# 820_Premium_Payment_NOPMT: NPE = 1, NPR = ALL
-# sample_820_01:             NPE = ALL, NPR = ALL
 #' @noRd
 detail_218 <- function(x) {
   d <- subset_(x, S7::prop(x, "Details"), TRUE)

@@ -115,10 +115,9 @@ Detail306 := S7::new_class(
   properties = list(
     BPR = S7::class_character,
     TRN = S7::class_character,
-    REF38 = S7::class_character,
-    REFTV = S7::class_character,
-    N1PE = S7::class_character,
-    N1RM = S7::class_character,
+    REF = S7::class_character,
+    NPE = S7::class_character,
+    NRM = S7::class_character,
     PER = S7::class_character
   )
 )

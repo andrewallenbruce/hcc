@@ -14,6 +14,8 @@
 #' edi_parse(x12_EX$`834`[[1]])
 #' edi_parse(x12_EX$`820`[[1]][[1]])
 #' edi_parse(x12_EX$`820`[[2]][[1]])
+#' edi_parse(x12_EX$`820`$`306`) |>
+#' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #' edi_parse(x12_EX$`820`$`218`) |>
 #' purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #' @export
@@ -46,7 +48,7 @@ S7::method(edi_parse, Index820) <- function(x) {
     Details = switch(
       x@Type,
       "X12 820 (X218)" = detail_218(x),
-      "X12 820 (X306)" = as_detail306(x)
+      "X12 820 (X306)" = detail_306(x)
     ),
     Entity = S7::prop(x, "Entity") |>
       purrr::map_depth(2L, \(id) subset_(x, id)),
