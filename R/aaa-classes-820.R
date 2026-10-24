@@ -15,11 +15,11 @@
 #' @param aid `<chr>` `REF*ZZ` California Medi-Cal aid code (e.g., "1H",
 #'   "M1", "60")
 #' @param plan `<chr>` `REF*ZZ` Plan type; Composite aid_code;plan_type
-#'    - "1": primary/medical
-#'    - "2" = pharmacy/state-only
+#'    - `1`: primary/medical
+#'    - `2`: pharmacy/state-only
 #' @param description `<chr>` `REF*ZZ` Payment description (e.g., "Primary
 #'   Capitation Dual", "Medi-Cal Only-State Only")
-#' @param coverage `<class_iv>` Coverage period start and end date (YYYY-MM-DD) from DTM*582
+#' @param coverage `<DTM*582>` Coverage period start and end date (YYYY-MM-DD)
 #' @param adjustment `<chr>` `ADX-01` Adjustment amount; If negative, it
 #'   is a recoupment
 #' @param reason `<chr>` `ADX-02` Adjustment reason code ("53" = prior period)
@@ -27,15 +27,15 @@
 #' @export
 Remittance := S7::new_class(
   properties = list(
-    reference = S7::class_character,
+    reference = class_string,
     original = prop_double,
     adjustment = prop_double,
     payment = prop_double,
-    rate = S7::class_character,
-    aid = S7::class_character,
-    plan = S7::class_character,
-    reason = S7::class_character,
-    description = S7::class_character,
+    rate = class_string,
+    aid = class_string,
+    plan = class_string,
+    reason = class_string,
+    description = class_string,
     coverage = prop_dtm_rd8
   )
 )
@@ -47,7 +47,7 @@ Remittance := S7::new_class(
 #' (e.g., retroactive adjustments for prior periods).
 #'
 #' @param order `<int>` `ENT-01` ENT sequence number
-#' @param member `<hcc::Member>`
+#' @param member `<Member>`
 #'    - `NM1-09` Member identifier
 #'    - `NM1-03` Member last name
 #'    - `NM1-04` Member first name
@@ -128,11 +128,11 @@ Payment := S7::new_class(
 #' @export
 PaymentData := S7::new_class(
   properties = list(
-    source = S7::class_character,
+    source = class_string,
     report_date = prop_date,
     payment_date = prop_date,
     total_amount = prop_double,
-    check_number = S7::class_character,
+    check_number = class_string,
     payee = Party,
     payer = Party,
     payments = prop_list_of(Payment)

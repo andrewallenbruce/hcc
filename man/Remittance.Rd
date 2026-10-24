@@ -5,15 +5,15 @@
 \title{Remittance Line Item}
 \usage{
 Remittance(
-  reference = character(0),
+  reference = NA_character_,
   original = numeric(0),
   adjustment = numeric(0),
   payment = numeric(0),
-  rate = character(0),
-  aid = character(0),
-  plan = character(0),
-  reason = character(0),
-  description = character(0),
+  rate = NA_character_,
+  aid = NA_character_,
+  plan = NA_character_,
+  reason = NA_character_,
+  description = NA_character_,
   coverage = c(.Date(numeric(0L)), .Date(numeric(0L)))
 )
 }
@@ -36,8 +36,8 @@ period; negative = recoupment}
 
 \item{plan}{\verb{<chr>} \code{REF*ZZ} Plan type; Composite aid_code;plan_type
 \itemize{
-\item "1": primary/medical
-\item "2" = pharmacy/state-only
+\item \code{1}: primary/medical
+\item \code{2}: pharmacy/state-only
 }}
 
 \item{reason}{\verb{<chr>} \code{ADX-02} Adjustment reason code ("53" = prior period)}
@@ -45,7 +45,7 @@ period; negative = recoupment}
 \item{description}{\verb{<chr>} \code{REF*ZZ} Payment description (e.g., "Primary
 Capitation Dual", "Medi-Cal Only-State Only")}
 
-\item{coverage}{\verb{<class_iv>} Coverage period start and end date (YYYY-MM-DD) from DTM*582}
+\item{coverage}{\verb{<DTM*582>} Coverage period start and end date (YYYY-MM-DD)}
 }
 \value{
 A \verb{<hcc::Remittance>} S7 object

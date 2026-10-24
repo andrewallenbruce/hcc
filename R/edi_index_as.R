@@ -67,6 +67,13 @@ split_interval2 <- function(x, start, end, break1, break2) {
   })
 }
 
+# @noRd
+# details_820 <- function(x, st, ent) {
+#   s = cheapr::seq_(st + 1L, ent[1L] - 1L)
+#   z = rlang::set_names(s, charr::str_remove_all(charr::str_sub(x[s], 1L, 3L), "\\*$"))
+#   names(z) %iin% c("N3", "N4")
+# }
+
 #' @noRd
 index_820 <- function(x) {
   ST <- charr::str_which(x, "^ST")

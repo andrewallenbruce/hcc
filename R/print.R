@@ -13,13 +13,17 @@ print_names_2 <- bcyan(c("Header", "Detail", "Trailer"))
 S7::method(format, TextEDI) <- function(x) {
   print_class(x)
 
-  cli::cat_line(colon(
-    fright(print_names_),
-    fleft(c(
-      toString(S7::prop(x, "Type")),
-      bracket(bcyan(length(S7::prop(x, "Text"))))
-    ))
-  ))
+  cli::cat_line(
+    colon(
+      fright(print_names_),
+      fleft(
+        c(
+          toString(S7::prop(x, "Type")),
+          bracket(bcyan(length(S7::prop(x, "Text"))))
+        )
+      )
+    )
+  )
   cli::cat_rule()
 }
 

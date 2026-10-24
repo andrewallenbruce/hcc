@@ -9,7 +9,7 @@ Payment(order = integer(0), member = Member(), remits = list())
 \arguments{
 \item{order}{\verb{<int>} \code{ENT-01} ENT sequence number}
 
-\item{member}{\verb{<hcc::Member>}
+\item{member}{\verb{<Member>}
 \itemize{
 \item \code{NM1-09} Member identifier
 \item \code{NM1-03} Member last name
