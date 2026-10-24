@@ -1,7 +1,7 @@
 #' Create an EDI Text Object
 #'
 #' @details
-#' Methods for `edi_index`:
+#' Methods for `edi_text`:
 #' `r doclisting::methods_list("edi_text")`
 #'
 #' @param x raw X12 text input

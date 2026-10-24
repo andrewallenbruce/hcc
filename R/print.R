@@ -11,7 +11,12 @@ print_names_ <- bcyan(c("Type", "Segments"))
 print_names_2 <- bcyan(c("Header", "Detail", "Trailer"))
 
 S7::method(format, TextEDI) <- function(x) {
-  cli::cat_rule(left = angle(attr(x, .c(class))[1]), line = 2L)
+  cli::cat_rule(
+    left = angle(
+      attr(x, .c(class))[1]
+    ),
+    line = 2L
+  )
 
   cat(
     colon(
