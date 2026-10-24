@@ -47,256 +47,11 @@ Methods for `edi_parse`:
 ## Examples
 
 ``` r
-edi_parse(x12_EX$`837`[[1]][[1]])
-#> <hcc::Parsed837>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "SENDER" "ZZ" "RECEIVER" ...
-#>  .. @ GS : chr [1:8] "HC" "SENDERGS" "RECEIVERGS" "20231106" "140822" ...
-#>  .. @ ST : chr [1:3] "837" "987654" "005010X223A2"
-#>  @ Details:List of 4
-#>  .. $ : chr [1:7] "BHT" "0019" "00" "0123" ...
-#>  .. $ : chr [1:10] "NM1" "41" "2" "JONES HOSPITAL" ...
-#>  .. $ : chr [1:5] "PER" "IC" "JANE DOE" "TE" ...
-#>  .. $ : chr [1:10] "NM1" "40" "2" "MEDICARE" ...
-#>  @ Claims :List of 5
-#>  .. $ :List of 7
-#>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...
-#>  ..  ..$ : chr [1:4] "PRV" "BI" "PXC" "203BA0200N"
-#>  ..  ..$ : chr [1:10] "NM1" "85" "2" "JONES HOSPITAL" ...
-#>  ..  ..$ : chr [1:2] "N3" "225 MAIN STREET BARKLEY BUILDING"
-#>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"
-#>  ..  ..$ : chr [1:3] "REF" "EI" "567891234"
-#>  ..  ..$ : chr [1:5] "PER" "IC" "CONNIE" "TE" ...
-#>  .. $ :List of 8
-#>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...
-#>  ..  ..$ : chr [1:10] "SBR" "P" "18" NA ...
-#>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
-#>  ..  ..$ : chr [1:2] "N3" "125 CITY AVENUE"
-#>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"
-#>  ..  ..$ : chr [1:4] "DMG" "D8" "19261111" "M"
-#>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "MEDICARE B" ...
-#>  ..  ..$ : chr [1:3] "REF" "G2" "330127"
-#>  .. $ :List of 16
-#>  ..  ..$ : chr [1:10] "CLM" "756048Q" "89.93" NA ...
-#>  ..  ..$ : chr [1:4] "DTP" "434" "RD8" "19960911"
-#>  ..  ..$ : chr [1:4] "CL1" "3" NA "01"
-#>  ..  ..$ : chr [1:2] "HI" "BK>3669"
-#>  ..  ..$ : chr [1:3] "HI" "BF>4019" "BF>79431"
-#>  ..  ..$ : chr [1:5] "HI" "BH>A1>D8>19261111" "BH>A2>D8>19911101" "BH>B1>D8>19261111" ...
-#>  ..  ..$ : chr [1:2] "HI" "BE>A2>>>15.31"
-#>  ..  ..$ : chr [1:2] "HI" "BG>09"
-#>  ..  ..$ : chr [1:6] "NM1" "71" "1" "JONES" ...
-#>  ..  ..$ : chr [1:3] "REF" "1G" "B99937"
-#>  ..  ..$ : chr [1:10] "SBR" "S" "01" "351630" ...
-#>  ..  ..$ : chr [1:7] "OI" NA NA "Y" ...
-#>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
-#>  ..  ..$ : chr [1:2] "N3" "125 CITY AVENUE"
-#>  ..  ..$ : chr [1:4] "N4" "CENTERVILLE" "PA" "17111"
-#>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "STATE TEACHERS" ...
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "1"
-#>  ..  ..$ : chr [1:6] "SV2" "0305" "HC>85025" "13.39" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "19960911"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "2"
-#>  ..  ..$ : chr [1:6] "SV2" "0730" "HC>93005" "76.54" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "19960911"
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "43" "987654"
-#>  .. @ GE : chr [1:2] "1" "000000001"
-#>  .. @ IEA: chr [1:2] "1" "000000001"
-edi_parse(x12_EX$`837`[[2]][[1]])
-#> <hcc::Parsed837>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" "AUTHORIZAT" "00" "SECURITY I" "ZZ" ...
-#>  .. @ GS : chr [1:8] "HC" "00000006" "00000001" "20110705" "113253" ...
-#>  .. @ ST : chr [1:3] "837" "0021" "005010X222"
-#>  @ Details:List of 4
-#>  .. $ : chr [1:7] "BHT" "0019" "00" "244579" ...
-#>  .. $ : chr [1:10] "NM1" "41" "2" "PREMIER BILLING SERVICE" ...
-#>  .. $ : chr [1:7] "PER" "IC" "JERRY" "TE" ...
-#>  .. $ : chr [1:10] "NM1" "40" "2" "KEY INSURANCE COMPANY" ...
-#>  @ Claims :List of 8
-#>  .. $ :List of 9
-#>  ..  ..$ : chr [1:5] "HL" "1" NA "20" ...
-#>  ..  ..$ : chr [1:4] "PRV" "BI" "PXC" "203BF0100Y"
-#>  ..  ..$ : chr [1:10] "NM1" "85" "2" "BEN KILDARE SERVICE" ...
-#>  ..  ..$ : chr [1:2] "N3" "234 SEAWAY ST"
-#>  ..  ..$ : chr [1:4] "N4" "MIAMI" "FL" "33111"
-#>  ..  ..$ : chr [1:3] "REF" "EI" "587654321"
-#>  ..  ..$ : chr [1:3] "NM1" "87" "2"
-#>  ..  ..$ : chr [1:2] "N3" "2345 OCEAN BLVD"
-#>  ..  ..$ : chr [1:4] "N4" "MIAMI" "FL" "33111"
-#>  .. $ :List of 6
-#>  ..  ..$ : chr [1:5] "HL" "2" "1" "22" ...
-#>  ..  ..$ : chr [1:10] "SBR" "P" NA "2222-SJ" ...
-#>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "SMITH" ...
-#>  ..  ..$ : chr [1:4] "DMG" "D8" "19430501" "F"
-#>  ..  ..$ : chr [1:10] "NM1" "PR" "2" "KEY INSURANCE COMPANY" ...
-#>  ..  ..$ : chr [1:3] "REF" "G2" "KA6663"
-#>  .. $ :List of 6
-#>  ..  ..$ : chr [1:5] "HL" "3" "2" "23" ...
-#>  ..  ..$ : chr [1:2] "PAT" "19"
-#>  ..  ..$ : chr [1:5] "NM1" "QC" "1" "SMITH" ...
-#>  ..  ..$ : chr [1:2] "N3" "236 N MAIN ST"
-#>  ..  ..$ : chr [1:4] "N4" "MIAMI" "FL" "33413"
-#>  ..  ..$ : chr [1:4] "DMG" "D8" "19730501" "M"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:10] "CLM" "26463774" "100" NA ...
-#>  ..  ..$ : chr [1:3] "REF" "D9" "17312345600006351"
-#>  ..  ..$ : chr [1:3] "HI" "BK:0340" "BF:V7389"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "1"
-#>  ..  ..$ : chr [1:8] "SV1" "HC:99213" "40" "UN" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20061003"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "2"
-#>  ..  ..$ : chr [1:8] "SV1" "HC:87070" "15" "UN" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20061003"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "3"
-#>  ..  ..$ : chr [1:8] "SV1" "HC:99214" "35" "UN" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20061010"
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:2] "LX" "4"
-#>  ..  ..$ : chr [1:8] "SV1" "HC:86663" "10" "UN" ...
-#>  ..  ..$ : chr [1:4] "DTP" "472" "D8" "20061010"
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "42" "0021"
-#>  .. @ GE : chr [1:2] "1" "110705001"
-#>  .. @ IEA: chr [1:2] "1" "110705001"
-edi_parse(x12_EX$`834`[[1]])
-#> <hcc::Parsed834>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "SENDERNAME" "ZZ" "RECEIVERNAME" ...
-#>  .. @ GS : chr [1:8] "BE" "SENDERNAME" "RECEIVERNAME" "20041227" "1324" ...
-#>  .. @ ST : chr [1:3] "834" "12345" "005010X220A1"
-#>  @ Details: <hcc::Detail834>
-#>  .. @ BGN  : chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
-#>  .. @ N1P5 : chr [1:3] NA "FI" "999888777"
-#>  .. @ N1IN : chr [1:3] NA "FI" "654456654"
-#>  .. @ REF38: chr [1:2] "38" "ABCD012354"
-#>  .. @ QTY  : chr NA
-#>  .. @ DTP  : chr NA
-#>  @ Member :List of 5
-#>  .. $ :List of 1
-#>  ..  ..$ : chr [1:10] "INS" "N" "19" "021" ...
-#>  .. $ :List of 3
-#>  ..  ..$ : chr [1:3] "REF" "0F" "123456789"
-#>  ..  ..$ : chr [1:3] "REF" "1L" "123456001"
-#>  ..  ..$ : chr [1:4] "DTP" "351" "D8" "19980515"
-#>  .. $ :List of 2
-#>  ..  ..$ : chr [1:10] "NM1" "IL" "1" "DOE" ...
-#>  ..  ..$ : chr [1:4] "DMG" "D8" "19770816" "M"
-#>  .. $ :List of 1
-#>  ..  ..$ : chr [1:4] "NM1" "M8" "2" "PENN STATE UNIVERSITY"
-#>  .. $ :List of 2
-#>  ..  ..$ : chr [1:4] "HD" "021" NA "HLT"
-#>  ..  ..$ : chr [1:4] "DTP" "348" "D8" "19960601"
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "15" "12345"
-#>  .. @ GE : chr [1:2] "1" "000000103"
-#>  .. @ IEA: chr [1:2] "1" "000000103"
-edi_parse(x12_EX$`820`[[1]][[1]])
-#> <hcc::Parsed820>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "EMEDNYBAT" "ZZ" "ETIN" "141231" ...
-#>  .. @ GS : chr [1:8] "RA" "EMEDNYBAT" "ETIN" "20141231" "11595900" ...
-#>  .. @ ST : chr [1:3] "820" "222222222" "005010X218"
-#>  @ Details: <hcc::Detail218>
-#>  .. @ BPR: chr [1:16] "I" "239.6" "C" "ACH" "CCP" "01" "111111111" NA NA ...
-#>  .. @ TRN: chr [1:3] "3" "021300000000000" "1141797357"
-#>  .. @ REF: chr [1:2] "14" "12345678"
-#>  .. @ NPE: chr [1:4] "PE" "MANAGED CARE" "FI" "123456789"
-#>  .. @ NPR: chr [1:2] "PR" "CHILD HEALTH PLUS"
-#>  @ Entity :List of 2
-#>  .. $ :List of 3
-#>  ..  ..$ :List of 1
-#>  ..  .. ..$ : chr [1:5] "ENT" "1" "2L" "24" ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
-#>  ..  .. ..$ : chr [1:3] "REF" "ZZ" "RECOVERY OF FUNDS"
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "1L" "12345678" NA ...
-#>  ..  .. ..$ : chr [1:3] "REF" "ZZ" "LUMP SUM PAYMENT"
-#>  .. $ :List of 2
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "ENT" "2" "2J" "EI" ...
-#>  ..  .. ..$ : chr [1:10] "NM1" "QE" "1" "LAST NAME" ...
-#>  ..  ..$ :List of 5
-#>  ..  .. ..$ : chr [1:5] "RMR" "AZ" "12345678" NA ...
-#>  ..  .. ..$ : chr [1:3] "REF" "ZZ" "1436500000001230"
-#>  ..  .. ..$ : chr [1:3] "REF" "ZZ" "0123456789"
-#>  ..  .. ..$ : chr [1:3] "REF" "LU" "01"
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "17" "222222222"
-#>  .. @ GE : chr [1:2] "1" "333333333"
-#>  .. @ IEA: chr [1:2] "1" "003333333"
-edi_parse(x12_EX$`820`[[2]][[1]])
-#> <hcc::Parsed820>
-#>  @ Header : <hcc::HeaderEDI>
-#>  .. @ ISA: chr [1:16] "00" NA "00" NA "ZZ" "SENDER" "ZZ" "RECEIVER" ...
-#>  .. @ GS : chr [1:8] "RA" "SENDERGS" "RECEIVERGS" "20240221" "134856" ...
-#>  .. @ ST : chr [1:3] "820" "0001" "005010X306"
-#>  @ Details: <hcc::Detail306>
-#>  .. @ BPR: chr [1:16] "I" "0" "C" "NON" NA NA NA NA NA NA NA NA NA NA NA ...
-#>  .. @ TRN: chr [1:2] "3" "123456789123385"
-#>  .. @ REF: chr NA
-#>  .. @ NPE: chr [1:4] "PE" "NATIONAL EAST" "FI" "121231244"
-#>  .. @ NRM: chr [1:4] "RM" "CMS" "58" "CMS"
-#>  .. @ PER: chr [1:6] "IC" "EXCHANGE OPERATIONS CENTER" "EM" ...
-#>  @ Entity :List of 3
-#>  .. $ :List of 6
-#>  ..  ..$ :List of 6
-#>  ..  .. ..$ : chr [1:2] "ENT" "1"
-#>  ..  .. ..$ : chr [1:10] "NM1" "IL" "1" "HOPE" ...
-#>  ..  .. ..$ : chr [1:3] "REF" "38" "12345MD000011500"
-#>  ..  .. ..$ : chr [1:3] "REF" "POL" "4599"
-#>  ..  .. ..$ : chr [1:3] "REF" "AZ" "PLAN2"
-#>  ..  .. ..$ : chr [1:3] "REF" "0F" "SUB1234"
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "APTC" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "CSR" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "UF" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "APTCADJ" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "APTCADJ" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  .. $ :List of 4
-#>  ..  ..$ :List of 6
-#>  ..  .. ..$ : chr [1:2] "ENT" "2"
-#>  ..  .. ..$ : chr [1:10] "NM1" "IL" "1" "RENEE" ...
-#>  ..  .. ..$ : chr [1:3] "REF" "38" "12346MD000011501"
-#>  ..  .. ..$ : chr [1:3] "REF" "POL" "5678"
-#>  ..  .. ..$ : chr [1:3] "REF" "AZ" "PLAN4"
-#>  ..  .. ..$ : chr [1:3] "REF" "0F" "SUB2348"
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "APTC" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "CSR" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "UF" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  .. $ :List of 2
-#>  ..  ..$ :List of 1
-#>  ..  .. ..$ : chr [1:2] "ENT" "3"
-#>  ..  ..$ :List of 2
-#>  ..  .. ..$ : chr [1:5] "RMR" "ZZ" "BAL" NA ...
-#>  ..  .. ..$ : chr [1:7] "DTM" "582" NA NA ...
-#>  @ Trailer: <hcc::TrailerEDI>
-#>  .. @ SE : chr [1:2] "38" "0001"
-#>  .. @ GE : chr [1:2] "1" "000000001"
-#>  .. @ IEA: chr [1:2] "1" "000000001"
+# edi_parse(x12_EX$`837`[[1]][[1]])
+# edi_parse(x12_EX$`837`[[2]][[1]])
+# edi_parse(x12_EX$`834`[[1]])
+# edi_parse(x12_EX$`820`[[1]][[1]])
+# edi_parse(x12_EX$`820`[[2]][[1]])
 edi_parse(x12_EX$`820`$`306`) |>
 purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #> $`820_EX10_debt_covered_by_affiliate1`
@@ -497,5 +252,272 @@ purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
 #>  @ REF: chr [1:2] "14" "0000245023"
 #>  @ NPE: chr [1:6] "PE" "TEST PAYEE ORGANIZATION" "123 TEST STREET" "TESTCITY" ...
 #>  @ NPR: chr [1:6] "PR" "TEST PAYER AGENCY" "123 TEST STREET" "TESTCITY" "CA" ...
+#> 
+edi_parse(x12_EX$`834`) |>
+purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+#> $`834_EX2_add_dependent`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "ABCD012354"
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX3_enroll_employee_mco`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX4_add_subscriber_coverage`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "20020601" "1200" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "ABCD012354"
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX5_change_subscriber_info`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" "GENERIC INC" "FI" "000111000"
+#>  @ NIN: chr [1:4] "IN" "ABC INSURANCE" "FI" "654456654"
+#> 
+#> $`834_EX6_cancel_dependent`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "ABCD012354"
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX7_terminate_subscriber_eligibility`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX8_reinstate_employee`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "ABCD012354"
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $`834_EX9_reinstate_employee_coverage`
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "20020601" "1200" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "ABCD012354"
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $benefit_enrollment_834_220
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12456" "19980520" "1200" NA NA NA "2"
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" NA "FI" "999888777"
+#>  @ NIN: chr [1:4] "IN" NA "FI" "654456654"
+#> 
+#> $sample_834_01
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "12345" "20250108" "1430" NA NA NA "2"
+#>  @ REF: chr [1:2] "38" "MEDI-CAL"
+#>  @ DTP: chr [1:3] "007" "D8" "20250108"
+#>  @ QTY: chr NA
+#>  @ NP5: chr [1:4] "P5" "CALIFORNIA DHCS" "FI" "953654321"
+#>  @ NIN: chr [1:4] "IN" "HEALTH PLAN NAME" "FI" "987654321"
+#> 
+#> $sample_834_02
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "DHCS834-DA-20250124-Sample PACE-001" "20250124" ...
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr [1:2] "TO" "1"
+#>  @ NP5: chr [1:4] "P5" ...
+#>  @ NIN: chr [1:4] "IN" "Sample PACE Inc." "FI" "999999991"
+#> 
+#> $sample_834_03
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "DHCS834-DA-20250812-Sample South LA PACE-957-001" ...
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr [1:2] "TO" "1"
+#>  @ NP5: chr [1:4] "P5" ...
+#>  @ NIN: chr [1:4] "IN" "Sample South LA PACE Inc." "FI" "999999992"
+#> 
+#> $sample_834_04
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "DHCS834-DA-20251022-Sample South LA PACE-957-001" ...
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr [1:2] "TO" "1"
+#>  @ NP5: chr [1:4] "P5" ...
+#>  @ NIN: chr [1:4] "IN" "Sample South LA PACE Inc." "FI" "999999992"
+#> 
+#> $sample_834_05
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "DHCS834-DA-20251023-Sample South LA PACE-957-001" ...
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr [1:2] "TO" "1"
+#>  @ NP5: chr [1:4] "P5" ...
+#>  @ NIN: chr [1:4] "IN" "Sample South LA PACE Inc." "FI" "999999992"
+#> 
+#> $sample_834_06
+#> <hcc::Detail834>
+#>  @ BGN: chr [1:8] "00" "DHCS834-DA-20250206-Sample PACE-001" "20250206" ...
+#>  @ REF: chr NA
+#>  @ DTP: chr NA
+#>  @ QTY: chr [1:2] "TO" "2"
+#>  @ NP5: chr [1:4] "P5" ...
+#>  @ NIN: chr [1:4] "IN" "Sample PACE Inc." "FI" "999999991"
+#> 
+edi_parse(x12_EX$`837`$I223) |>
+purrr::map_depth(1L, \(x) S7::prop(x, "Details"))
+#> $`837I_EX1a_institutional_claim`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "19960918" "0932" "CH"
+#>  @ N41: chr [1:9] "41" "2" "JONES HOSPITAL" NA NA NA NA "46" "12345"
+#>  @ P41: chr [1:4] "IC" "JANE DOE" "TE" "9005555555"
+#>  @ N40: chr [1:9] "40" "2" "MEDICARE" NA NA NA NA "46" "00120"
+#>  @ P40: chr NA
+#> 
+#> $`837I_EX1b_2claims_1provider`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "20050630" "0932" "CH"
+#>  @ N41: chr [1:9] "41" "2" "JONES HOSPITAL" NA NA NA NA "46" "12345"
+#>  @ P41: chr [1:4] "IC" "JANE DOE" "TE" "1112223333"
+#>  @ N40: chr [1:9] "40" "2" "TRICARE" NA NA NA NA "46" "99999"
+#>  @ P40: chr NA
+#> 
+#> $`837I_EX1c_ppo_repriced_claim`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "1002" "20050721" "09460000" "CH"
+#>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"
+#>  @ N40: chr [1:9] "40" "2" "LOCAL INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837I_EX1d_oon_repriced_claim`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "1024" "20050711" "1335" "CH"
+#>  @ N41: chr [1:9] "41" "2" "REGIONAL PPO NETWORK" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "SUBMITTER CONTACT INFO" "TE" "8001231234"
+#>  @ N40: chr [1:9] "40" "2" "CONSERVATIVE INSURANCE" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $`837I_EX2_car_accident`
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0324" "20051111" "1800" "CH"
+#>  @ N41: chr [1:9] "41" "2" "HALL OF FAME MEMORIAL HOSPITAL" NA NA NA NA "46" ...
+#>  @ P41: chr [1:4] "IC" "KATE CASEY" "TE" "7152569877"
+#>  @ N40: chr [1:9] "40" "2" "HEISMAN INSURANCE COMPANY" NA NA NA NA "46" ...
+#>  @ P40: chr NA
+#> 
+#> $institutional_claim_837I_223
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "0123" "19960918" "0932" "CH"
+#>  @ N41: chr [1:9] "41" "2" "JONES HOSPITAL" NA NA NA NA "46" "12345"
+#>  @ P41: chr [1:4] "IC" "JANE DOE" "TE" "9005555555"
+#>  @ N40: chr [1:9] "40" "2" "MEDICARE" NA NA NA NA "46" "00120"
+#>  @ P40: chr NA
+#> 
+#> $sample_837_1
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204217" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "NATIONAL BIRTH CENTERS INC" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_10
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204222" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "HSA PORT ARTHUR, LLC" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "OptimaFourSight" NA NA NA NA "XX" "89242VA018"
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_2
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204218" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "COMMUNITY BIRTH GROUP" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "AntidoteGoldSafeGuard0TopRx" NA NA NA NA "XX" ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_3
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204218" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "MARYVIEW HOSPITAL LLC" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "MOLINAHEALTHCARE" NA NA NA NA "XX" "64353OH001"
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_4
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204219" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "HSA ST. JOSEPH, LLC" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "HighDeductibleHealthPlanHSA30" NA NA NA NA "XX" ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_5
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204219" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "NATIONAL BIRTH CENTERS INC" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "BlanketStudentAccidentandSicknessUnivofWYPlan1" ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_6
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204220" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "OKEECHOBEE HOSPITAL, INC." NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "EHB2015IPLAELIC" NA NA NA NA "XX" "85570LA014"
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_7
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204220" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "ELMHURST MEMORIAL HOSPITAL" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "HSA2000_10A1" NA NA NA NA "XX" "39424OR071"
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_8
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204221" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "GUTHRIE CORTLAND MEDICAL CENTER" NA NA NA NA "XX" ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "SimplyBluePPOwithabortioncoverage" NA NA NA NA ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#> 
+#> $sample_837_9
+#> <hcc::Detail837>
+#>  @ BHT: chr [1:6] "0019" "00" "241205204221" "20241205" "2042" "CH"
+#>  @ N41: chr [1:9] "41" "2" "HCA HEALTH SERVICES OF TENNESSEE, INC." NA NA NA ...
+#>  @ P41: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
+#>  @ N40: chr [1:9] "40" "2" "HMOOffExchangeRegion7" NA NA NA NA "XX" ...
+#>  @ P40: chr [1:4] "IC" "TEST CONTACT" "TE" "5555550000"
 #> 
 ```
