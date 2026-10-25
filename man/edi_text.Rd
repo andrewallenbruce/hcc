@@ -18,7 +18,7 @@ an \verb{<hcc::TextEDI>} S7 object
 Create an EDI Text Object
 }
 \details{
-Methods for \code{edi_index}:
+Methods for \code{edi_text}:
 \itemize{
 \item \code{ANY}
 \item \code{character}
