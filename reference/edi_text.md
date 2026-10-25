@@ -24,7 +24,7 @@ an `<hcc::TextEDI>` S7 object
 
 ## Details
 
-Methods for `edi_index`:
+Methods for `edi_text`:
 
 - `ANY`
 
